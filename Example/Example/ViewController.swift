@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import JSQCoreDataKit
 
 class ViewController: UIViewController {
 

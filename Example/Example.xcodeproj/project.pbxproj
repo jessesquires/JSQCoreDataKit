@@ -13,6 +13,8 @@
 		88002D2B1AB8F453001787DB /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 88002D2A1AB8F453001787DB /* Images.xcassets */; };
 		88002D2E1AB8F453001787DB /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 88002D2C1AB8F453001787DB /* LaunchScreen.xib */; };
 		88002D3A1AB8F453001787DB /* ExampleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88002D391AB8F453001787DB /* ExampleTests.swift */; };
+		88002D7A1AB8F637001787DB /* JSQCoreDataKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88002D711AB8F58A001787DB /* JSQCoreDataKit.framework */; };
+		88002D7C1AB8F655001787DB /* JSQCoreDataKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 88002D711AB8F58A001787DB /* JSQCoreDataKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -23,7 +25,35 @@
 			remoteGlobalIDString = 88002D1D1AB8F453001787DB;
 			remoteInfo = Example;
 		};
+		88002D701AB8F58A001787DB /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 88002D6B1AB8F58A001787DB /* JSQCoreDataKit.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 88002D4F1AB8F546001787DB;
+			remoteInfo = JSQCoreDataKit;
+		};
+		88002D721AB8F58A001787DB /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 88002D6B1AB8F58A001787DB /* JSQCoreDataKit.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 88002D5A1AB8F547001787DB;
+			remoteInfo = JSQCoreDataKitTests;
+		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		88002D7B1AB8F642001787DB /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				88002D7C1AB8F655001787DB /* JSQCoreDataKit.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		88002D1E1AB8F453001787DB /* Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -36,6 +66,7 @@
 		88002D331AB8F453001787DB /* ExampleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ExampleTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		88002D381AB8F453001787DB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		88002D391AB8F453001787DB /* ExampleTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleTests.swift; sourceTree = "<group>"; };
+		88002D6B1AB8F58A001787DB /* JSQCoreDataKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = JSQCoreDataKit.xcodeproj; path = ../JSQCoreDataKit/JSQCoreDataKit.xcodeproj; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -43,6 +74,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				88002D7A1AB8F637001787DB /* JSQCoreDataKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -62,6 +94,7 @@
 				88002D201AB8F453001787DB /* Example */,
 				88002D361AB8F453001787DB /* ExampleTests */,
 				88002D1F1AB8F453001787DB /* Products */,
+				88002D6B1AB8F58A001787DB /* JSQCoreDataKit.xcodeproj */,
 			);
 			sourceTree = "<group>";
 		};
@@ -112,6 +145,15 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		88002D6C1AB8F58A001787DB /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				88002D711AB8F58A001787DB /* JSQCoreDataKit.framework */,
+				88002D731AB8F58A001787DB /* JSQCoreDataKitTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -122,6 +164,7 @@
 				88002D1A1AB8F453001787DB /* Sources */,
 				88002D1B1AB8F453001787DB /* Frameworks */,
 				88002D1C1AB8F453001787DB /* Resources */,
+				88002D7B1AB8F642001787DB /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -179,6 +222,12 @@
 			mainGroup = 88002D151AB8F453001787DB;
 			productRefGroup = 88002D1F1AB8F453001787DB /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 88002D6C1AB8F58A001787DB /* Products */;
+					ProjectRef = 88002D6B1AB8F58A001787DB /* JSQCoreDataKit.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				88002D1D1AB8F453001787DB /* Example */,
@@ -186,6 +235,23 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		88002D711AB8F58A001787DB /* JSQCoreDataKit.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = JSQCoreDataKit.framework;
+			remoteRef = 88002D701AB8F58A001787DB /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		88002D731AB8F58A001787DB /* JSQCoreDataKitTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = JSQCoreDataKitTests.xctest;
+			remoteRef = 88002D721AB8F58A001787DB /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		88002D1C1AB8F453001787DB /* Resources */ = {
@@ -343,6 +409,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = Example/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -353,6 +420,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = Example/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};

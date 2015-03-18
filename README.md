@@ -18,9 +18,20 @@
 
 ## Documentation
 
->TODO:
+Read the fucking [docs](http://www.jessesquires.com/JSQCoreDataKit/). Generated with [jazzy](https://github.com/realm/jazzy). Hosted by [GitHub Pages](https://pages.github.com).
+
+````bash
+# re-generate documentation
+$ cd /path/to/JSQCoreDataKit/
+$ ./build_docs.sh
+$ open _docs/
+````
 
 ## Getting Started
+
+````swift
+import JSQCoreDataKit
+````
 
 >TODO:
 

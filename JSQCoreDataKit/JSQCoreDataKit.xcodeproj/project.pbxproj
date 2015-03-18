@@ -10,6 +10,9 @@
 		88002D551AB8F546001787DB /* JSQCoreDataKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 88002D541AB8F546001787DB /* JSQCoreDataKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		88002D5B1AB8F547001787DB /* JSQCoreDataKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88002D4F1AB8F546001787DB /* JSQCoreDataKit.framework */; };
 		88002D621AB8F547001787DB /* JSQCoreDataKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88002D611AB8F547001787DB /* JSQCoreDataKitTests.swift */; };
+		88002D821AB8FF4F001787DB /* CoreDataExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88002D7F1AB8FF4F001787DB /* CoreDataExtensions.swift */; };
+		88002D831AB8FF4F001787DB /* CoreDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88002D801AB8FF4F001787DB /* CoreDataModel.swift */; };
+		88002D841AB8FF4F001787DB /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88002D811AB8FF4F001787DB /* CoreDataStack.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -29,6 +32,9 @@
 		88002D5A1AB8F547001787DB /* JSQCoreDataKitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JSQCoreDataKitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		88002D601AB8F547001787DB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		88002D611AB8F547001787DB /* JSQCoreDataKitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSQCoreDataKitTests.swift; sourceTree = "<group>"; };
+		88002D7F1AB8FF4F001787DB /* CoreDataExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataExtensions.swift; sourceTree = "<group>"; };
+		88002D801AB8FF4F001787DB /* CoreDataModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataModel.swift; sourceTree = "<group>"; };
+		88002D811AB8FF4F001787DB /* CoreDataStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,6 +77,9 @@
 		88002D511AB8F546001787DB /* JSQCoreDataKit */ = {
 			isa = PBXGroup;
 			children = (
+				88002D7F1AB8FF4F001787DB /* CoreDataExtensions.swift */,
+				88002D801AB8FF4F001787DB /* CoreDataModel.swift */,
+				88002D811AB8FF4F001787DB /* CoreDataStack.swift */,
 				88002D541AB8F546001787DB /* JSQCoreDataKit.h */,
 				88002D521AB8F546001787DB /* Supporting Files */,
 			);
@@ -209,6 +218,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				88002D841AB8FF4F001787DB /* CoreDataStack.swift in Sources */,
+				88002D831AB8FF4F001787DB /* CoreDataModel.swift in Sources */,
+				88002D821AB8FF4F001787DB /* CoreDataExtensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -323,6 +335,7 @@
 		88002D661AB8F547001787DB /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -333,12 +346,14 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
 		88002D671AB8F547001787DB /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;

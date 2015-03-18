@@ -1,19 +1,23 @@
 //
-//  JSQCoreDataKit.h
-//  JSQCoreDataKit
+//  Created by Jesse Squires
+//  http://www.jessesquires.com
 //
-//  Created by Jesse Squires on 3/17/15.
-//  Copyright (c) 2015 Hexed Bits. All rights reserved.
+//
+//  Documentation
+//  http://www.jessesquires.com/JSQCoreDataKit
+//
+//
+//  GitHub
+//  https://github.com/jessesquires/JSQCoreDataKit
+//
+//
+//  License
+//  Copyright (c) 2015 Jesse Squires
+//  Released under an MIT license: http://opensource.org/licenses/MIT
 //
 
-#import <UIKit/UIKit.h>
+#import <Foundation/Foundation.h>
 
-//! Project version number for JSQCoreDataKit.
 FOUNDATION_EXPORT double JSQCoreDataKitVersionNumber;
 
-//! Project version string for JSQCoreDataKit.
 FOUNDATION_EXPORT const unsigned char JSQCoreDataKitVersionString[];
-
-// In this header, you should import all the public headers of your framework using statements like #import <JSQCoreDataKit/PublicHeader.h>
-
-

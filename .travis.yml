@@ -1,0 +1,9 @@
+language: objective-c
+
+before_install:
+- brew update
+- if brew outdated | grep -qx xctool; then brew upgrade xctool; fi
+
+script: 
+- xctool clean build test -workspace JSQCoreDataKit.xcworkspace -scheme Example -sdk iphonesimulator8.1 ONLY_ACTIVE_ARCH=NO
+- xcodebuild clean build test -project JSQCoreDataKit/JSQCoreDataKit.xcodeproj -scheme JSQCoreDataKit -sdk iphonesimulator8.1 ONLY_ACTIVE_ARCH=NO

@@ -779,6 +779,7 @@
 				88002DAB1AB90FE0001787DB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		88002DAC1AB90FE0001787DB /* Build configuration list for PBXNativeTarget "ExampleModelTests" */ = {
 			isa = XCConfigurationList;
@@ -787,6 +788,7 @@
 				88002DAE1AB90FE0001787DB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 

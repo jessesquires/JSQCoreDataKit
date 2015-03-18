@@ -32,14 +32,14 @@ class CoreDataSaveTests: XCTestCase {
     override func setUp() {
         super.setUp()
     }
-    
+
     override func tearDown() {
         super.tearDown()
     }
 
     func test_ThatSaveAndWait_WithoutChanges_IsIgnored() {
 
-        // GIVEN: a stack and context
+        // GIVEN: a stack and context without changes
         let stack = CoreDataStack(model: model, storeType: NSInMemoryStoreType)
 
         // WHEN: we attempt to save the context
@@ -49,6 +49,33 @@ class CoreDataSaveTests: XCTestCase {
         let result = saveContextAndWait(stack.managedObjectContext)
         XCTAssertTrue(result.success)
         XCTAssertNil(result.error)
+    }
+
+    func test_ThatSaveAndWait_WithChanges_Succeeds() {
+
+        // GIVEN: a stack and context with changes
+        let stack = CoreDataStack(model: model, storeType: NSInMemoryStoreType)
+
+        newFakeBand(stack.managedObjectContext)
+        newFakeBand(stack.managedObjectContext)
+
+        var didSave = false
+        self.expectationForNotification(NSManagedObjectContextDidSaveNotification, object: stack.managedObjectContext) { (notification) -> Bool in
+            didSave = true
+            return true
+        }
+
+        // WHEN: we attempt to save the context
+        let results = saveContextAndWait(stack.managedObjectContext)
+
+        // THEN: the save succeeds without an error
+        let result = saveContextAndWait(stack.managedObjectContext)
+        XCTAssertTrue(result.success)
+        XCTAssertNil(result.error)
+
+        self.waitForExpectationsWithTimeout(1, handler: { (error) -> Void in
+            XCTAssertNil(error, "Expectation should not error")
+        })
     }
     
 }

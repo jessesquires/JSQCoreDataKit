@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="7535.1" systemVersion="14C1510" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
+    <entity name="Album" representedClassName="ExampleModel.Album" syncable="YES">
+        <attribute name="dateReleased" attributeType="Date" syncable="YES"/>
+        <attribute name="price" attributeType="Decimal" minValueString="0" syncable="YES"/>
+        <attribute name="title" attributeType="String" syncable="YES"/>
+        <relationship name="band" maxCount="1" deletionRule="Nullify" destinationEntity="Band" inverseName="albums" inverseEntity="Band" syncable="YES"/>
+    </entity>
+    <entity name="Band" representedClassName="ExampleModel.Band" syncable="YES">
+        <attribute name="city" attributeType="String" syncable="YES"/>
+        <attribute name="dateFounded" attributeType="Date" syncable="YES"/>
+        <attribute name="genre" attributeType="Integer 32" syncable="YES"/>
+        <attribute name="name" attributeType="String" syncable="YES"/>
+        <relationship name="albums" toMany="YES" deletionRule="Nullify" destinationEntity="Album" inverseName="band" inverseEntity="Album" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="Band" positionX="-245" positionY="-66" width="128" height="118"/>
+        <element name="Album" positionX="-54" positionY="-9" width="128" height="103"/>
+    </elements>
+</model>

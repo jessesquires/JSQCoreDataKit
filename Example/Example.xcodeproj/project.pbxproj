@@ -20,6 +20,9 @@
 		88002DA41AB90FE0001787DB /* ExampleModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88002DA31AB90FE0001787DB /* ExampleModelTests.swift */; };
 		88002DA71AB90FE0001787DB /* ExampleModel.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88002D901AB90FE0001787DB /* ExampleModel.framework */; };
 		88002DA81AB90FE0001787DB /* ExampleModel.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 88002D901AB90FE0001787DB /* ExampleModel.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		88002DB11AB910DB001787DB /* ExampleModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 88002DAF1AB910DB001787DB /* ExampleModel.xcdatamodeld */; };
+		88002DB31AB91240001787DB /* Album.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88002DB21AB91240001787DB /* Album.swift */; };
+		88002DB51AB91240001787DB /* Band.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88002DB41AB91240001787DB /* Band.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -100,6 +103,9 @@
 		88002D9A1AB90FE0001787DB /* ExampleModelTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ExampleModelTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		88002DA21AB90FE0001787DB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		88002DA31AB90FE0001787DB /* ExampleModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleModelTests.swift; sourceTree = "<group>"; };
+		88002DB01AB910DB001787DB /* ExampleModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ExampleModel.xcdatamodel; sourceTree = "<group>"; };
+		88002DB21AB91240001787DB /* Album.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Album.swift; sourceTree = "<group>"; };
+		88002DB41AB91240001787DB /* Band.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Band.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -211,6 +217,9 @@
 			isa = PBXGroup;
 			children = (
 				88002D941AB90FE0001787DB /* ExampleModel.h */,
+				88002DAF1AB910DB001787DB /* ExampleModel.xcdatamodeld */,
+				88002DB41AB91240001787DB /* Band.swift */,
+				88002DB21AB91240001787DB /* Album.swift */,
 				88002D921AB90FE0001787DB /* Supporting Files */,
 			);
 			path = ExampleModel;
@@ -454,6 +463,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				88002DB51AB91240001787DB /* Band.swift in Sources */,
+				88002DB11AB910DB001787DB /* ExampleModel.xcdatamodeld in Sources */,
+				88002DB31AB91240001787DB /* Album.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -652,6 +664,7 @@
 		88002DAA1AB90FE0001787DB /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
@@ -663,9 +676,11 @@
 				);
 				INFOPLIST_FILE = ExampleModel/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
@@ -674,6 +689,7 @@
 		88002DAB1AB90FE0001787DB /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
@@ -681,6 +697,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = ExampleModel/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -768,6 +785,19 @@
 			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		88002DAF1AB910DB001787DB /* ExampleModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				88002DB01AB910DB001787DB /* ExampleModel.xcdatamodel */,
+			);
+			currentVersion = 88002DB01AB910DB001787DB /* ExampleModel.xcdatamodel */;
+			path = ExampleModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 88002D161AB8F453001787DB /* Project object */;
 }

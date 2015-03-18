@@ -43,7 +43,7 @@ public final class CoreDataStack: Printable {
             let modelStoreURL: NSURL? = (storeType == NSInMemoryStoreType) ? nil : model.storeURL
 
             self.persistentStoreCoordinator.addPersistentStoreWithType(storeType, configuration: nil, URL: modelStoreURL, options: options, error: &error)
-            assert(error != nil, "*** Error adding persistent store: \(error)")
+            assert(error == nil, "*** Error adding persistent store: \(error)")
 
             self.managedObjectContext = NSManagedObjectContext(concurrencyType: concurrencyType)
             self.managedObjectContext.persistentStoreCoordinator = self.persistentStoreCoordinator

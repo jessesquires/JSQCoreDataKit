@@ -16,18 +16,15 @@
 //  Released under an MIT license: http://opensource.org/licenses/MIT
 //
 
-import UIKit
+import XCTest
 
-import ExampleModel
-
-import JSQCoreDataKit
-
-
-class ViewController: UIViewController {
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
+class ExampleModelTests: XCTestCase {
+    
+    override func setUp() {
+        super.setUp()
     }
-
+    
+    override func tearDown() {
+        super.tearDown()
+    }
 }
-

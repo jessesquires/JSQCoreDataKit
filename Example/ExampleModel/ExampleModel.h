@@ -16,18 +16,8 @@
 //  Released under an MIT license: http://opensource.org/licenses/MIT
 //
 
-import UIKit
+#import <Foundation/Foundation.h>
 
-import ExampleModel
+FOUNDATION_EXPORT double ExampleModelVersionNumber;
 
-import JSQCoreDataKit
-
-
-class ViewController: UIViewController {
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    }
-
-}
-
+FOUNDATION_EXPORT const unsigned char ExampleModelVersionString[];

@@ -34,6 +34,20 @@
                ReferencedContainer = "container:Example.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "NO"
+            buildForArchiving = "NO"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "88002D991AB90FE0001787DB"
+               BuildableName = "ExampleModelTests.xctest"
+               BlueprintName = "ExampleModelTests"
+               ReferencedContainer = "container:Example.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
       </BuildActionEntries>
    </BuildAction>
    <TestAction
@@ -49,6 +63,16 @@
                BlueprintIdentifier = "88002D321AB8F453001787DB"
                BuildableName = "ExampleTests.xctest"
                BlueprintName = "ExampleTests"
+               ReferencedContainer = "container:Example.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "88002D991AB90FE0001787DB"
+               BuildableName = "ExampleModelTests.xctest"
+               BlueprintName = "ExampleModelTests"
                ReferencedContainer = "container:Example.xcodeproj">
             </BuildableReference>
          </TestableReference>

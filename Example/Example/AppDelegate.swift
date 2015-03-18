@@ -17,6 +17,9 @@
 //
 
 import UIKit
+
+import ExampleModel
+
 import JSQCoreDataKit
 
 

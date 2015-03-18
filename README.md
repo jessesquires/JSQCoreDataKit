@@ -5,6 +5,8 @@
 
 ## About
 
+This project is a Swift rewrite and rethinking of [RSTCoreDataKit](https://github.com/rosettastone/RSTCoreDataKit).
+
 >TODO:
 
 ## Requirements

@@ -23,6 +23,7 @@
 		88002DB11AB910DB001787DB /* ExampleModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 88002DAF1AB910DB001787DB /* ExampleModel.xcdatamodeld */; };
 		88002DB31AB91240001787DB /* Album.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88002DB21AB91240001787DB /* Album.swift */; };
 		88002DB51AB91240001787DB /* Band.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88002DB41AB91240001787DB /* Band.swift */; };
+		88002DB81AB92204001787DB /* ModelUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88002DB71AB92204001787DB /* ModelUtils.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -106,6 +107,7 @@
 		88002DB01AB910DB001787DB /* ExampleModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ExampleModel.xcdatamodel; sourceTree = "<group>"; };
 		88002DB21AB91240001787DB /* Album.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Album.swift; sourceTree = "<group>"; };
 		88002DB41AB91240001787DB /* Band.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Band.swift; sourceTree = "<group>"; };
+		88002DB71AB92204001787DB /* ModelUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModelUtils.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -216,10 +218,11 @@
 		88002D911AB90FE0001787DB /* ExampleModel */ = {
 			isa = PBXGroup;
 			children = (
+				88002DB21AB91240001787DB /* Album.swift */,
+				88002DB41AB91240001787DB /* Band.swift */,
 				88002D941AB90FE0001787DB /* ExampleModel.h */,
 				88002DAF1AB910DB001787DB /* ExampleModel.xcdatamodeld */,
-				88002DB41AB91240001787DB /* Band.swift */,
-				88002DB21AB91240001787DB /* Album.swift */,
+				88002DB71AB92204001787DB /* ModelUtils.swift */,
 				88002D921AB90FE0001787DB /* Supporting Files */,
 			);
 			path = ExampleModel;
@@ -463,6 +466,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				88002DB81AB92204001787DB /* ModelUtils.swift in Sources */,
 				88002DB51AB91240001787DB /* Band.swift in Sources */,
 				88002DB11AB910DB001787DB /* ExampleModel.xcdatamodeld in Sources */,
 				88002DB31AB91240001787DB /* Album.swift in Sources */,

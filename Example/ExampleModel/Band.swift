@@ -27,7 +27,7 @@ public final class Band: NSManagedObject {
 
     @NSManaged public var city: String
 
-    @NSManaged public var genre: Int32
+    @NSManaged public var genre: String
 
     @NSManaged public var albums: NSSet
 

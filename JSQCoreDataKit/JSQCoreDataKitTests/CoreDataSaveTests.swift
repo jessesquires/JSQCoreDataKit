@@ -19,14 +19,13 @@
 import XCTest
 import CoreData
 
-import ExampleModel
 import JSQCoreDataKit
-
+import ExampleModel
 
 let modelId = ModelId()
 
 
-class ExampleModelTests: XCTestCase {
+class CoreDataSaveTests: XCTestCase {
 
     let model = CoreDataModel(name: modelId.name, bundle: modelId.bundle)
 
@@ -38,26 +37,18 @@ class ExampleModelTests: XCTestCase {
         super.tearDown()
     }
 
-    func test_ThatFakeBandInserts_Successfully() {
-        
-        let stack = CoreDataStack(model: model, storeType: NSInMemoryStoreType)
-        
-        let band = newFakeBand(stack.managedObjectContext)
+    func test_ThatSaveAndWait_WithoutChanges_IsIgnored() {
 
+        // GIVEN: a stack and context
+        let stack = CoreDataStack(model: model, storeType: NSInMemoryStoreType)
+
+        // WHEN: we attempt to save the context
+        let results = saveContextAndWait(stack.managedObjectContext)
+
+        // THEN: the save operation is ignored, save reports success and no error
         let result = saveContextAndWait(stack.managedObjectContext)
         XCTAssertTrue(result.success)
         XCTAssertNil(result.error)
     }
-
-    func test_ThatFakeAlbumInserts_Successfully() {
-
-        let stack = CoreDataStack(model: model, storeType: NSInMemoryStoreType)
-
-        let band = newFakeBand(stack.managedObjectContext)
-        let album = newFakeAlbum(stack.managedObjectContext, band)
-
-        let result = saveContextAndWait(stack.managedObjectContext)
-        XCTAssertTrue(result.success)
-        XCTAssertNil(result.error)
-    }
+    
 }

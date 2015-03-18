@@ -9,12 +9,12 @@
     <entity name="Band" representedClassName="ExampleModel.Band" syncable="YES">
         <attribute name="city" attributeType="String" syncable="YES"/>
         <attribute name="dateFounded" attributeType="Date" syncable="YES"/>
-        <attribute name="genre" attributeType="Integer 32" syncable="YES"/>
+        <attribute name="genre" attributeType="String" syncable="YES"/>
         <attribute name="name" attributeType="String" syncable="YES"/>
         <relationship name="albums" toMany="YES" deletionRule="Nullify" destinationEntity="Album" inverseName="band" inverseEntity="Album" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Band" positionX="-245" positionY="-66" width="128" height="118"/>
         <element name="Album" positionX="-54" positionY="-9" width="128" height="103"/>
+        <element name="Band" positionX="-245" positionY="-66" width="128" height="120"/>
     </elements>
 </model>

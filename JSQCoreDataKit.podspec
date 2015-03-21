@@ -12,7 +12,7 @@ Pod::Spec.new do |s|
 
    s.source_files = 'JSQCoreDataKit/JSQCoreDataKit/*.swift'
    
-   s.frameworks = 'Foundation', 'UIKit', 'CoreData'
+   s.frameworks = 'Foundation', 'CoreData'
 
    s.requires_arc = true
 end

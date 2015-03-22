@@ -19,7 +19,29 @@ This framework aims to simplify the processes of standing up and testing your [C
 
 ## Installation
 
->TODO:
+From [CocoaPods](http://cocoapods.org):
+
+````ruby
+use_frameworks!
+
+# For latest release in cocoapods
+pod 'JSQCoreDataKit'  
+
+# Feeling adventurous? Get the latest on develop
+pod 'JSQCoreDataKit', :git => 'https://github.com/jessesquires/JSQCoreDataKit.git', :branch => 'develop'
+````
+
+Manually:
+
+1. Clone this repo and add the `JSQCoreDataKit.xcodeproj` to your project
+2. Select your project app target "Build Phases" tab
+3. Add the `JSQCoreDataKit.framework` to the "Link Binary With Libraries"  
+4. Create a new build phase of type "Copy Files" and set the "Destination" to "Frameworks"
+5. Add the `JSQCoreDataKit.framework` and check "Code Sign On Copy"
+
+For an example, see the demo project included in this repo.
+
+For more information, see the [Framework Programming Guide](https://developer.apple.com/library/mac/documentation/MacOSX/Conceptual/BPFrameworks/Tasks/IncludingFrameworks.html#//apple_ref/doc/uid/20002257-BAJJBBHJ).
 
 ## Documentation
 

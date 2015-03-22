@@ -60,14 +60,47 @@ $ open _docs/
 import JSQCoreDataKit
 ````
 
->TODO:
+#### Standing up the stack
+
+````swift
+// todo
+````
+
+#### Saving a managed object context
+
+````swift
+// todo
+````
+
+#### Deleting the store
+
+````swift
+// todo
+````
+
+#### Checking migrations
+
+````swift
+// todo
+````
+
+#### Using child contexts
+
+````swift
+// todo
+````
+
+#### Unit testing with an in-memory store
+
+````swift
+// todo
+````
 
 ## Unit tests
 
 There's a suite of unit tests for the `JSQCoreDataKit.framework`. To run them, open `JSQCoreDataKit.xcworkspace`, select the `JSQCoreDataKit` scheme, then &#x2318;-u.
 
 These tests are well commented and serve as further documentation for how to use this library.
-
 
 ## Contribute
 

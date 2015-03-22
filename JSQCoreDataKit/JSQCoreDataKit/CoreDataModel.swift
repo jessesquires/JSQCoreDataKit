@@ -24,6 +24,8 @@ import CoreData
 ///  It provides the model and store URLs as well as functions for interacting with the store.
 public struct CoreDataModel: Printable {
 
+    // MARK: Properties
+
     ///  The name of the Core Data model resource.
     public let name: String
 
@@ -78,6 +80,21 @@ public struct CoreDataModel: Printable {
         }
     }
 
+    // MARK: Initialization
+
+    ///  Constructs new `CoreDataModel` instance with the specified name and bundle.
+    ///
+    ///  :param: name   The name of the Core Data model.
+    ///  :param: bundle The bundle in which the model is located. The default parameter value is `NSBundle.mainBundle()`.
+    ///
+    ///  :returns: A new `CoreDataModel` instance.
+    public init(name: String, bundle: NSBundle = NSBundle.mainBundle()) {
+        self.name = name
+        self.bundle = bundle
+    }
+
+    // MARK: Methods
+
     ///  Removes the existing model store specfied by the receiver.
     ///
     ///  :returns: A tuple value containing a boolean to indicate success and an error object if an error occurred.
@@ -96,17 +113,6 @@ public struct CoreDataModel: Printable {
         }
 
         return (false, nil)
-    }
-
-    ///  Constructs new `CoreDataModel` instance with the specified name and bundle.
-    ///
-    ///  :param: name   The name of the Core Data model.
-    ///  :param: bundle The bundle in which the model is located. The default parameter value is `NSBundle.mainBundle()`.
-    ///
-    ///  :returns: A new `CoreDataModel` instance.
-    public init(name: String, bundle: NSBundle = NSBundle.mainBundle()) {
-        self.name = name
-        self.bundle = bundle
     }
 
     // MARK: Printable

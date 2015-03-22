@@ -24,14 +24,33 @@ import CoreData
 public typealias ChildManagedObjectContext = NSManagedObjectContext
 
 
+///  An instance of `CoreDataStack` encapsulates the entire Core Data stack for a SQLite store type.
+///  It manages the managed object model, the persistent store coordinator, and the main managed object context.
+///  It provides convenience methods for initializing a stack for common use-cases as well as creating child contexts.
 public final class CoreDataStack: Printable {
 
+    // MARK: Properties
+
+    ///  The model for the stack.
     public let model: CoreDataModel
 
+    ///  The main managed object context for the stack.
     public let managedObjectContext: NSManagedObjectContext
 
+    ///  The persistent store coordinator for the stack.
     public let persistentStoreCoordinator: NSPersistentStoreCoordinator
 
+    // MARK: Initialization
+
+    ///  Constructs a new `CoreDataStack` instance with the specified model, storeType, options, and concurrencyType.
+    ///
+    ///  :param: model           The model describing the stack.
+    ///  :param: storeType       A string constant that specifies the store type. The default parameter value is `NSSQLiteStoreType`.
+    ///  :param: options         A dictionary containing key-value pairs that specify options for the store. 
+    ///                          The default parameter value contains `true` for the following keys: `NSMigratePersistentStoresAutomaticallyOption`, `NSInferMappingModelAutomaticallyOption`.
+    ///  :param: concurrencyType The concurrency pattern with which the managed object context will be used. The default parameter value is `.MainQueueConcurrencyType`.
+    ///
+    ///  :returns: A new `CoreDataStack` instance.
     public init(model: CoreDataModel,
         storeType: String = NSSQLiteStoreType,
         options: [NSObject : AnyObject]? = [NSMigratePersistentStoresAutomaticallyOption : true, NSInferMappingModelAutomaticallyOption : true],
@@ -50,6 +69,16 @@ public final class CoreDataStack: Printable {
             self.managedObjectContext.persistentStoreCoordinator = self.persistentStoreCoordinator
     }
 
+    // MARK: Child contexts
+
+    ///  Creates a new child managed object context with the specified concurrencyType and mergePolicyType.
+    ///
+    ///  :param: concurrencyType The concurrency pattern with which the managed object context will be used.
+    ///                          The default parameter value is `.MainQueueConcurrencyType`.
+    ///  :param: mergePolicyType The merge policy with which the manged object context will be used.
+    ///                          The default parameter value is `.MergeByPropertyObjectTrumpMergePolicyType`.
+    ///
+    ///  :returns: A new child managed object context initialized with the given concurrency type and merge policy type.
     public func childManagedObjectContext(concurrencyType: NSManagedObjectContextConcurrencyType = .MainQueueConcurrencyType,
         mergePolicyType: NSMergePolicyType = .MergeByPropertyObjectTrumpMergePolicyType) -> ChildManagedObjectContext {
 

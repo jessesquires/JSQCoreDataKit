@@ -13,3 +13,5 @@ This project is a Swift rewrite of [RSTCoreDataKit](https://github.com/rosettast
 `JSQCoreDataKit` is released under an [MIT License][mitLink]. See `LICENSE` for details.
 
 >**Copyright &copy; 2015 Jesse Squires.**
+
+[mitLink]:http://opensource.org/licenses/MIT

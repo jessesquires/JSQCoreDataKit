@@ -4,10 +4,13 @@
 *A swifter Core Data stack*
 
 ## About
+This project is a Swift rewrite and rethinking of [RSTCoreDataKit](https://github.com/rosettastone/RSTCoreDataKit). 
 
-This project is a Swift rewrite and rethinking of [RSTCoreDataKit](https://github.com/rosettastone/RSTCoreDataKit).
+This framework aims to simplify the processes of standing up and testing your [Core Data](https://developer.apple.com/library/mac/documentation/Cocoa/Conceptual/CoreData/cdProgrammingGuide.html) stack, and reduces the boilerplate involved in getting started with Core Data. 
 
->TODO:
+![stack](https://developer.apple.com/library/ios/documentation/DataManagement/Devpedia-CoreData/Art/single_persistent_stack.jpg)
+
+*The Core Data Stack, via Apple [Core Data Core Competencies](https://developer.apple.com/library/ios/documentation/DataManagement/Devpedia-CoreData/coreDataStack.html#//apple_ref/doc/uid/TP40010398-CH25-SW1) Guide*
 
 ## Requirements
 
@@ -39,7 +42,10 @@ import JSQCoreDataKit
 
 ## Unit tests
 
->TODO:
+There's a suite of unit tests for the `JSQCoreDataKit.framework`. To run them, open `JSQCoreDataKit.xcworkspace`, select the `JSQCoreDataKit` scheme, then &#x2318;-u.
+
+These tests are well commented and serve as further documentation for how to use this library.
+
 
 ## Contribute
 

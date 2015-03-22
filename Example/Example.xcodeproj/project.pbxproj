@@ -24,6 +24,9 @@
 		88002DB31AB91240001787DB /* Album.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88002DB21AB91240001787DB /* Album.swift */; };
 		88002DB51AB91240001787DB /* Band.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88002DB41AB91240001787DB /* Band.swift */; };
 		88002DB81AB92204001787DB /* ModelUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88002DB71AB92204001787DB /* ModelUtils.swift */; };
+		886FC8A11ABF5496007D445F /* ExampleModel.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 88002D901AB90FE0001787DB /* ExampleModel.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		886FC8A21ABF549C007D445F /* JSQCoreDataKit.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 88002D711AB8F58A001787DB /* JSQCoreDataKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		886FC8A41ABF54B1007D445F /* JSQCoreDataKit.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 88002D711AB8F58A001787DB /* JSQCoreDataKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -82,6 +85,29 @@
 				88002DA81AB90FE0001787DB /* ExampleModel.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		886FC89E1ABF5484007D445F /* Copy Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				886FC8A21ABF549C007D445F /* JSQCoreDataKit.framework in Copy Frameworks */,
+				886FC8A11ABF5496007D445F /* ExampleModel.framework in Copy Frameworks */,
+			);
+			name = "Copy Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		886FC8A31ABF54A7007D445F /* Copy Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				886FC8A41ABF54B1007D445F /* JSQCoreDataKit.framework in Copy Frameworks */,
+			);
+			name = "Copy Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
@@ -293,6 +319,7 @@
 				88002D2F1AB8F453001787DB /* Sources */,
 				88002D301AB8F453001787DB /* Frameworks */,
 				88002D311AB8F453001787DB /* Resources */,
+				886FC89E1ABF5484007D445F /* Copy Frameworks */,
 			);
 			buildRules = (
 			);
@@ -329,6 +356,7 @@
 				88002D961AB90FE0001787DB /* Sources */,
 				88002D971AB90FE0001787DB /* Frameworks */,
 				88002D981AB90FE0001787DB /* Resources */,
+				886FC8A31ABF54A7007D445F /* Copy Frameworks */,
 			);
 			buildRules = (
 			);
@@ -635,10 +663,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
@@ -654,10 +679,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = ExampleTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";

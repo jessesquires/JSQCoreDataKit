@@ -18,11 +18,6 @@
 
 import UIKit
 
-import ExampleModel
-
-import JSQCoreDataKit
-
-
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 

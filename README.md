@@ -63,13 +63,25 @@ import JSQCoreDataKit
 #### Standing up the stack
 
 ````swift
-// todo
+// Initialize the Core Data model, this class encapsulates the notion of a .xcdatamodeld file
+// The name passed here should be the name of an .xcdatamodeld file
+let model = CoreDataModel(name: "MyModel", bundle: NSBundle(identifier: "com.MyApp.MyModelFramework")!)
+
+// Initialize a default stack
+let stack = CoreDataStack(model: model)
+
+// Initialize a private, in-memory stack
+let privateStack = CoreDataStack(model: model, storeType: NSInMemoryStoreType, concurrencyType: .PrivateQueueConcurrencyType)
 ````
 
 #### Saving a managed object context
 
 ````swift
-// todo
+let result: ContextSaveResult = saveContextAndWait(stack.managedObjectContext)
+if !result.success {
+    // save failed
+    println("Save error: \(result.error)")
+}
 ````
 
 #### Deleting the store

@@ -71,7 +71,7 @@ let model = CoreDataModel(name: "MyModel", bundle: NSBundle(identifier: "com.MyA
 let stack = CoreDataStack(model: model)
 
 // Initialize a private, in-memory stack
-let privateStack = CoreDataStack(model: model, storeType: NSInMemoryStoreType, concurrencyType: .PrivateQueueConcurrencyType)
+let privateStack = CoreDataStack(model: model, storeType: NSInMemoryStoreType, options: nil, concurrencyType: .PrivateQueueConcurrencyType)
 ````
 
 #### Saving a managed object context
@@ -87,13 +87,15 @@ if !result.success {
 #### Deleting the store
 
 ````swift
-// todo
+let model = CoreDataModel(name: "MyModel", bundle: NSBundle(identifier: "com.MyApp.MyModelFramework")!)
+model.removeExistingModelStore()
 ````
 
 #### Checking migrations
 
 ````swift
-// todo
+let model = CoreDataModel(name: "MyModel", bundle: NSBundle(identifier: "com.MyApp.MyModelFramework")!)
+let needsMigration: Bool = model.modelStoreNeedsMigration
 ````
 
 #### Using child contexts

@@ -92,6 +92,7 @@ public struct CoreDataModel: Printable {
 
     // MARK: printable
 
+    /// A string containing a textual representation of the `CoreDataModel`.
     public var description: String {
         get {
             return "<\(toString(CoreDataModel.self)): name=\(name), needsMigration=\(modelStoreNeedsMigration), databaseFileName=\(databaseFileName), modelURL=\(modelURL), storeURL=\(storeURL)>"

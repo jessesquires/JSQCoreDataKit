@@ -20,6 +20,7 @@ import Foundation
 import CoreData
 
 
+///  Describes a child managed object context.
 public typealias ChildManagedObjectContext = NSManagedObjectContext
 
 
@@ -60,6 +61,7 @@ public final class CoreDataStack: Printable {
 
     // MARK: printable
 
+    /// A string containing a textual representation of the `CoreDataStack`.
     public var description: String {
         get {
             return "<\(toString(CoreDataStack.self)): model=\(model)>"

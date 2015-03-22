@@ -23,12 +23,12 @@ import ExampleModel
 import JSQCoreDataKit
 
 
-let modelId = ModelId()
+let modelProperties = ExampleModelProperties()
 
 
 class ExampleModelTests: XCTestCase {
 
-    let model = CoreDataModel(name: modelId.name, bundle: modelId.bundle)
+    let model = CoreDataModel(name: modelProperties.name, bundle: modelProperties.bundle)
 
     override func setUp() {
         super.setUp()

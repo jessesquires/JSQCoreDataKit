@@ -20,7 +20,7 @@ import Foundation
 import CoreData
 
 
-public struct ModelId {
+public struct ExampleModelProperties {
     public let name = "ExampleModel"
     public let bundle = NSBundle(identifier: "com.hexedbits.ExampleModel")!
     public init() { }

@@ -21,7 +21,7 @@ import CoreData
 
 ///  A tuple value that describes the results of saving a managed object context.
 ///
-///  :param: success A boolean value indicating whether the save succeeded. `true` if successful, otherwise `false`.
+///  :param: success A boolean value indicating whether the save succeeded. It is `true` if successful, otherwise `false`.
 ///  :param: error   An error object if an error occurred, otherwise `nil`.
 public typealias ContextSaveResult = (success: Bool, error: NSError?)
 

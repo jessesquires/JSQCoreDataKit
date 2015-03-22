@@ -59,7 +59,7 @@ public final class CoreDataStack: Printable {
             return childContext
     }
 
-    // MARK: printable
+    // MARK: Printable
 
     /// A string containing a textual representation of the `CoreDataStack`.
     public var description: String {

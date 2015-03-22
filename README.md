@@ -70,7 +70,7 @@ let model = CoreDataModel(name: "MyModel", bundle: NSBundle(identifier: "com.MyA
 // Initialize a default stack
 let stack = CoreDataStack(model: model)
 
-// Initialize a private, in-memory stack
+// Initialize a private queue, in-memory stack
 let privateStack = CoreDataStack(model: model, storeType: NSInMemoryStoreType, options: nil, concurrencyType: .PrivateQueueConcurrencyType)
 ````
 
@@ -101,13 +101,14 @@ let needsMigration: Bool = model.modelStoreNeedsMigration
 #### Using child contexts
 
 ````swift
-// todo
-````
+let model = CoreDataModel(name: "MyModel", bundle: NSBundle(identifier: "com.MyApp.MyModelFramework")!)
+let stack = CoreDataStack(model: model)
 
-#### Unit testing with an in-memory store
+// Create a default child context on main queue
+let childContext = stack.childManagedObjectContext()
 
-````swift
-// todo
+// Create a private queue child context with custom merge policy
+let privateChildContext = stack.childManagedObjectContext(concurrencyType: .PrivateQueueConcurrencyType, mergePolicyType: .ErrorMergePolicyType)
 ````
 
 ## Unit tests

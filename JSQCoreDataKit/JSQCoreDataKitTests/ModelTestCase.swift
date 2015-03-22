@@ -29,6 +29,9 @@ class ModelTestCase: XCTestCase {
                               bundle: ExampleModelProperties().bundle)
 
     override func setUp() {
+
+        model.removeExistingModelStore()
+
         super.setUp()
     }
 

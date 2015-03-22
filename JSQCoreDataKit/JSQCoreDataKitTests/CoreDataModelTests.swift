@@ -22,7 +22,17 @@ import CoreData
 import JSQCoreDataKit
 import ExampleModel
 
+
 class CoreDataModelTests: XCTestCase {
+
+    override func setUp() {
+
+        let modelProperties = ExampleModelProperties()
+        let model = CoreDataModel(name: modelProperties.name, bundle: modelProperties.bundle)
+        model.removeExistingModelStore()
+
+        super.setUp()
+    }
 
     func test_ThatCoreDataModel_InitializesSuccessfully() {
 

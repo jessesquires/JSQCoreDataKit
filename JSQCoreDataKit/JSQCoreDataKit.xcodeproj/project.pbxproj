@@ -15,6 +15,7 @@
 		88002D841AB8FF4F001787DB /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88002D811AB8FF4F001787DB /* CoreDataStack.swift */; };
 		886FC8971ABF364F007D445F /* CoreDataModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 886FC8961ABF364F007D445F /* CoreDataModelTests.swift */; };
 		886FC8991ABF36A8007D445F /* ModelTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 886FC8981ABF36A8007D445F /* ModelTestCase.swift */; };
+		886FC89B1ABF4091007D445F /* CoreDataStackTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 886FC89A1ABF4091007D445F /* CoreDataStackTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -39,6 +40,7 @@
 		88002D811AB8FF4F001787DB /* CoreDataStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 		886FC8961ABF364F007D445F /* CoreDataModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataModelTests.swift; sourceTree = "<group>"; };
 		886FC8981ABF36A8007D445F /* ModelTestCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModelTestCase.swift; sourceTree = "<group>"; };
+		886FC89A1ABF4091007D445F /* CoreDataStackTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataStackTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +105,7 @@
 			children = (
 				886FC8961ABF364F007D445F /* CoreDataModelTests.swift */,
 				88002D611AB8F547001787DB /* CoreDataSaveTests.swift */,
+				886FC89A1ABF4091007D445F /* CoreDataStackTests.swift */,
 				886FC8981ABF36A8007D445F /* ModelTestCase.swift */,
 				88002D5F1AB8F547001787DB /* Supporting Files */,
 			);
@@ -237,6 +240,7 @@
 				886FC8971ABF364F007D445F /* CoreDataModelTests.swift in Sources */,
 				88002D621AB8F547001787DB /* CoreDataSaveTests.swift in Sources */,
 				886FC8991ABF36A8007D445F /* ModelTestCase.swift in Sources */,
+				886FC89B1ABF4091007D445F /* CoreDataStackTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

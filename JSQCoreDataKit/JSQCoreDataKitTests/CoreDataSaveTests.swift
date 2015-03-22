@@ -22,20 +22,8 @@ import CoreData
 import JSQCoreDataKit
 import ExampleModel
 
-let modelProperties = ExampleModelProperties()
 
-
-class CoreDataSaveTests: XCTestCase {
-
-    let model = CoreDataModel(name: modelProperties.name, bundle: modelProperties.bundle)
-
-    override func setUp() {
-        super.setUp()
-    }
-
-    override func tearDown() {
-        super.tearDown()
-    }
+class CoreDataSaveTests: ModelTestCase {
 
     func test_ThatSaveAndWait_WithoutChanges_IsIgnored() {
 

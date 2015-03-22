@@ -126,7 +126,7 @@ Please follow these sweet [contribution guidelines](https://github.com/jessesqui
 
 Created and maintained by [**@jesse_squires**](https://twitter.com/jesse_squires)
 
-This project is a Swift rewrite of [RSTCoreDataKit](https://github.com/rosettastone/RSTCoreDataKit).
+This project is a Swift rewrite and rethinking of [RSTCoreDataKit](https://github.com/rosettastone/RSTCoreDataKit).
 
 ## License
 

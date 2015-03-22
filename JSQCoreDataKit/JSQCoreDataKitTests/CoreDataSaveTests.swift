@@ -43,10 +43,9 @@ class CoreDataSaveTests: XCTestCase {
         let stack = CoreDataStack(model: model, storeType: NSInMemoryStoreType)
 
         // WHEN: we attempt to save the context
-        let results = saveContextAndWait(stack.managedObjectContext)
+        let result = saveContextAndWait(stack.managedObjectContext)
 
         // THEN: the save operation is ignored, save reports success and no error
-        let result = saveContextAndWait(stack.managedObjectContext)
         XCTAssertTrue(result.success)
         XCTAssertNil(result.error)
     }
@@ -66,12 +65,64 @@ class CoreDataSaveTests: XCTestCase {
         }
 
         // WHEN: we attempt to save the context
-        let results = saveContextAndWait(stack.managedObjectContext)
+        let result = saveContextAndWait(stack.managedObjectContext)
 
         // THEN: the save succeeds without an error
-        let result = saveContextAndWait(stack.managedObjectContext)
         XCTAssertTrue(result.success)
         XCTAssertNil(result.error)
+
+        self.waitForExpectationsWithTimeout(1, handler: { (error) -> Void in
+            XCTAssertNil(error, "Expectation should not error")
+        })
+    }
+
+    func test_ThatSaveAsync_WithoutChanges_ReturnsImmediately() {
+
+        // GIVEN: a stack and context without changes
+        let stack = CoreDataStack(model: model, storeType: NSInMemoryStoreType)
+
+        let saveExpectation = self.expectationWithDescription("\(__FUNCTION__)")
+
+        // WHEN: we attempt to save the context asynchronously
+        saveContext(stack.managedObjectContext, { (result: ContextSaveResult) -> Void in
+
+            // THEN: the save operation is ignored, save reports success and no error
+            XCTAssertTrue(result.success)
+            XCTAssertNil(result.error)
+
+            saveExpectation.fulfill()
+        })
+
+        self.waitForExpectationsWithTimeout(1, handler: { (error) -> Void in
+            XCTAssertNil(error, "Expectation should not error")
+        })
+    }
+
+    func test_ThatSaveAsync_WithChanges_Succeeds() {
+
+        // GIVEN: a stack and context with changes
+        let stack = CoreDataStack(model: model, storeType: NSInMemoryStoreType)
+
+        newFakeBand(stack.managedObjectContext)
+        newFakeBand(stack.managedObjectContext)
+
+        var didSave = false
+        self.expectationForNotification(NSManagedObjectContextDidSaveNotification, object: stack.managedObjectContext) { (notification) -> Bool in
+            didSave = true
+            return true
+        }
+
+        let saveExpectation = self.expectationWithDescription("\(__FUNCTION__)")
+
+        // WHEN: we attempt to save the context asynchronously
+        saveContext(stack.managedObjectContext, { (result: ContextSaveResult) -> Void in
+
+            // THEN: the save succeeds without an error
+            XCTAssertTrue(result.success)
+            XCTAssertNil(result.error)
+
+            saveExpectation.fulfill()
+        })
 
         self.waitForExpectationsWithTimeout(1, handler: { (error) -> Void in
             XCTAssertNil(error, "Expectation should not error")

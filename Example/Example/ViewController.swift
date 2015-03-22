@@ -25,8 +25,19 @@ import JSQCoreDataKit
 
 class ViewController: UIViewController {
 
+    var stack: CoreDataStack?
+
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        let properties = ExampleModelProperties()
+
+        // Create model
+        let model = CoreDataModel(name: properties.name, bundle: properties.bundle)
+
+        // Create stack
+        self.stack = CoreDataStack(model: model)
+
     }
 
 }

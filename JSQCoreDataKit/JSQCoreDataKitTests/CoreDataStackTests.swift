@@ -20,7 +20,6 @@ import XCTest
 import CoreData
 
 import JSQCoreDataKit
-import ExampleModel
 
 
 class CoreDataStackTests: ModelTestCase {

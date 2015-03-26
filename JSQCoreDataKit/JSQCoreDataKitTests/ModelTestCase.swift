@@ -20,13 +20,12 @@ import XCTest
 import CoreData
 
 import JSQCoreDataKit
-import ExampleModel
 
 
 class ModelTestCase: XCTestCase {
 
-    let model = CoreDataModel(name: ExampleModelProperties().name,
-                              bundle: ExampleModelProperties().bundle)
+    let model = CoreDataModel(name: "ExampleModel",
+                              bundle: NSBundle(forClass: CoreDataModelTests.self))
 
     override func setUp() {
 

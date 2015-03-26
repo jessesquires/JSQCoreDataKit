@@ -14,6 +14,10 @@
 		88002D831AB8FF4F001787DB /* CoreDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88002D801AB8FF4F001787DB /* CoreDataModel.swift */; };
 		88002D841AB8FF4F001787DB /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88002D811AB8FF4F001787DB /* CoreDataStack.swift */; };
 		880659731AC4AAD500005BF5 /* JSQCoreDataKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 88002D4F1AB8F546001787DB /* JSQCoreDataKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		8806597E1AC4AEAD00005BF5 /* Album.swift in Sources */ = {isa = PBXBuildFile; fileRef = 880659781AC4AEAD00005BF5 /* Album.swift */; };
+		8806597F1AC4AEAD00005BF5 /* Band.swift in Sources */ = {isa = PBXBuildFile; fileRef = 880659791AC4AEAD00005BF5 /* Band.swift */; };
+		880659801AC4AEAD00005BF5 /* ExampleModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8806597B1AC4AEAD00005BF5 /* ExampleModel.xcdatamodeld */; };
+		880659811AC4AEAD00005BF5 /* ModelUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8806597D1AC4AEAD00005BF5 /* ModelUtils.swift */; };
 		886FC8971ABF364F007D445F /* CoreDataModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 886FC8961ABF364F007D445F /* CoreDataModelTests.swift */; };
 		886FC8991ABF36A8007D445F /* ModelTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 886FC8981ABF36A8007D445F /* ModelTestCase.swift */; };
 		886FC89B1ABF4091007D445F /* CoreDataStackTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 886FC89A1ABF4091007D445F /* CoreDataStackTests.swift */; };
@@ -53,6 +57,11 @@
 		88002D7F1AB8FF4F001787DB /* CoreDataExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataExtensions.swift; sourceTree = "<group>"; };
 		88002D801AB8FF4F001787DB /* CoreDataModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataModel.swift; sourceTree = "<group>"; };
 		88002D811AB8FF4F001787DB /* CoreDataStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
+		880659781AC4AEAD00005BF5 /* Album.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Album.swift; path = ../../Example/ExampleModel/Album.swift; sourceTree = "<group>"; };
+		880659791AC4AEAD00005BF5 /* Band.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Band.swift; path = ../../Example/ExampleModel/Band.swift; sourceTree = "<group>"; };
+		8806597A1AC4AEAD00005BF5 /* ExampleModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ExampleModel.h; path = ../../Example/ExampleModel/ExampleModel.h; sourceTree = "<group>"; };
+		8806597C1AC4AEAD00005BF5 /* ExampleModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ExampleModel.xcdatamodel; sourceTree = "<group>"; };
+		8806597D1AC4AEAD00005BF5 /* ModelUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ModelUtils.swift; path = ../../Example/ExampleModel/ModelUtils.swift; sourceTree = "<group>"; };
 		886FC8961ABF364F007D445F /* CoreDataModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataModelTests.swift; sourceTree = "<group>"; };
 		886FC8981ABF36A8007D445F /* ModelTestCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModelTestCase.swift; sourceTree = "<group>"; };
 		886FC89A1ABF4091007D445F /* CoreDataStackTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataStackTests.swift; sourceTree = "<group>"; };
@@ -118,6 +127,7 @@
 		88002D5E1AB8F547001787DB /* JSQCoreDataKitTests */ = {
 			isa = PBXGroup;
 			children = (
+				880659771AC4AE8C00005BF5 /* Fixtures */,
 				886FC8961ABF364F007D445F /* CoreDataModelTests.swift */,
 				88002D611AB8F547001787DB /* CoreDataSaveTests.swift */,
 				886FC89A1ABF4091007D445F /* CoreDataStackTests.swift */,
@@ -133,6 +143,18 @@
 				88002D601AB8F547001787DB /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		880659771AC4AE8C00005BF5 /* Fixtures */ = {
+			isa = PBXGroup;
+			children = (
+				880659781AC4AEAD00005BF5 /* Album.swift */,
+				880659791AC4AEAD00005BF5 /* Band.swift */,
+				8806597A1AC4AEAD00005BF5 /* ExampleModel.h */,
+				8806597B1AC4AEAD00005BF5 /* ExampleModel.xcdatamodeld */,
+				8806597D1AC4AEAD00005BF5 /* ModelUtils.swift */,
+			);
+			name = Fixtures;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -253,10 +275,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8806597F1AC4AEAD00005BF5 /* Band.swift in Sources */,
 				886FC8971ABF364F007D445F /* CoreDataModelTests.swift in Sources */,
 				88002D621AB8F547001787DB /* CoreDataSaveTests.swift in Sources */,
 				886FC8991ABF36A8007D445F /* ModelTestCase.swift in Sources */,
 				886FC89B1ABF4091007D445F /* CoreDataStackTests.swift in Sources */,
+				880659811AC4AEAD00005BF5 /* ModelUtils.swift in Sources */,
+				8806597E1AC4AEAD00005BF5 /* Album.swift in Sources */,
+				880659801AC4AEAD00005BF5 /* ExampleModel.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -458,6 +484,20 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		8806597B1AC4AEAD00005BF5 /* ExampleModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				8806597C1AC4AEAD00005BF5 /* ExampleModel.xcdatamodel */,
+			);
+			currentVersion = 8806597C1AC4AEAD00005BF5 /* ExampleModel.xcdatamodel */;
+			name = ExampleModel.xcdatamodeld;
+			path = ../../Example/ExampleModel/ExampleModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 88002D461AB8F546001787DB /* Project object */;
 }

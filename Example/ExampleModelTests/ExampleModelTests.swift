@@ -38,6 +38,16 @@ class ExampleModelTests: XCTestCase {
         super.tearDown()
     }
 
+    func test_ThatCoreDataModel_DoesNotNeedMigration() {
+
+        // GIVEN: a model with 1 version
+
+        // WHEN: we check if it needs migration
+
+        // THEN: the store doesn't need migration
+        XCTAssertFalse(model.modelStoreNeedsMigration)
+    }
+
     func test_ThatFakeBandInserts_Successfully() {
         
         let stack = CoreDataStack(model: model, storeType: NSInMemoryStoreType)

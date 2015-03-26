@@ -13,6 +13,7 @@
 		88002D821AB8FF4F001787DB /* CoreDataExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88002D7F1AB8FF4F001787DB /* CoreDataExtensions.swift */; };
 		88002D831AB8FF4F001787DB /* CoreDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88002D801AB8FF4F001787DB /* CoreDataModel.swift */; };
 		88002D841AB8FF4F001787DB /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88002D811AB8FF4F001787DB /* CoreDataStack.swift */; };
+		880659731AC4AAD500005BF5 /* JSQCoreDataKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 88002D4F1AB8F546001787DB /* JSQCoreDataKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		886FC8971ABF364F007D445F /* CoreDataModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 886FC8961ABF364F007D445F /* CoreDataModelTests.swift */; };
 		886FC8991ABF36A8007D445F /* ModelTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 886FC8981ABF36A8007D445F /* ModelTestCase.swift */; };
 		886FC89B1ABF4091007D445F /* CoreDataStackTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 886FC89A1ABF4091007D445F /* CoreDataStackTests.swift */; };
@@ -27,6 +28,20 @@
 			remoteInfo = JSQCoreDataKit;
 		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		880659721AC4AAC600005BF5 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				880659731AC4AAD500005BF5 /* JSQCoreDataKit.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		88002D4F1AB8F546001787DB /* JSQCoreDataKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = JSQCoreDataKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -159,6 +174,7 @@
 				88002D561AB8F547001787DB /* Sources */,
 				88002D571AB8F547001787DB /* Frameworks */,
 				88002D581AB8F547001787DB /* Resources */,
+				880659721AC4AAC600005BF5 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);

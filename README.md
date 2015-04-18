@@ -8,9 +8,9 @@ This project is a Swift rewrite and rethinking of [RSTCoreDataKit](https://githu
 
 This framework aims to simplify the processes of standing up and testing your [Core Data](https://developer.apple.com/library/mac/documentation/Cocoa/Conceptual/CoreData/cdProgrammingGuide.html) stack, and reduces the boilerplate involved in getting started with Core Data. 
 
-![stack](https://developer.apple.com/library/ios/documentation/DataManagement/Devpedia-CoreData/Art/single_persistent_stack.jpg)
-
-*The Core Data Stack, via Apple [Core Data Core Competencies](https://developer.apple.com/library/ios/documentation/DataManagement/Devpedia-CoreData/coreDataStack.html#//apple_ref/doc/uid/TP40010398-CH25-SW1) Guide*
+> **For more information on Core Data:**
+> * [Core Data Programming Guide](https://developer.apple.com/library/mac/documentation/Cocoa/Conceptual/CoreData/cdProgrammingGuide.html)
+> * [Core Data Core Competencies Guide](https://developer.apple.com/library/ios/documentation/DataManagement/Devpedia-CoreData/coreDataStack.html#//apple_ref/doc/uid/TP40010398-CH25-SW1)
 
 ## Requirements
 

@@ -18,11 +18,10 @@
 
 import XCTest
 import CoreData
-
 import JSQCoreDataKit
 
 
-class CoreDataStackTests: ModelTestCase {
+class StackTests: ModelTestCase {
 
     func test_ThatCoreDataStack_InitializesSuccessfully() {
 

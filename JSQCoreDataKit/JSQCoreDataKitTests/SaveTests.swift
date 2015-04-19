@@ -18,11 +18,10 @@
 
 import XCTest
 import CoreData
-
 import JSQCoreDataKit
 
 
-class CoreDataSaveTests: ModelTestCase {
+class SaveTests: ModelTestCase {
 
     func test_ThatSaveAndWait_WithoutChanges_IsIgnored() {
 

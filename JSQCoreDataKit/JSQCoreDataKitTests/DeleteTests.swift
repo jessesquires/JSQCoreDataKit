@@ -18,49 +18,49 @@
 
 import XCTest
 import CoreData
-
 import JSQCoreDataKit
 
-class CoreDataFetchTests: ModelTestCase {
 
-    func test_ThatFetchRequest_Succeeds_WithObjects() {
+class DeleteTests: ModelTestCase {
+
+    func test_ThatDelete_Succeeds_WithObjects() {
 
         // GIVEN: a stack and objects in core data
         let stack = CoreDataStack(model: model, storeType: NSInMemoryStoreType)
 
         let count = 10
+        var objects = [Band]()
         for i in 1...count {
-            newFakeBand(stack.managedObjectContext)
+            objects.append(newFakeBand(stack.managedObjectContext))
         }
 
-        // WHEN: we execute a fetch request
         let request = FetchRequest<Band>(entity: entity(name: Band.entityName, context: stack.managedObjectContext)!)
         let result = fetch(request: request, inContext: stack.managedObjectContext)
-
-        // THEN: we receive the expected data
-        XCTAssertTrue(result.success)
         XCTAssertEqual(result.objects.count, count)
-        XCTAssertNil(result.error)
+
+        // WHEN: we delete the objects
+        deleteObjects(objects, inContext: stack.managedObjectContext)
+
+        // THEN: the objects are removed from the context
+        let resultAfterDelete = fetch(request: request, inContext: stack.managedObjectContext)
+        XCTAssertEqual(resultAfterDelete.objects.count, 0)
 
         let saveResult = saveContextAndWait(stack.managedObjectContext)
         XCTAssertTrue(saveResult.success)
         XCTAssertNil(saveResult.error)
     }
 
-    func test_ThatFetchRequest_Succeeds_WithoutObjects() {
+    func test_ThatDelete_Succeeds_WithEmptyArray() {
 
-        // GIVEN: a stack and no objects in core data
+        // GIVEN: a stack 
         let stack = CoreDataStack(model: model, storeType: NSInMemoryStoreType)
 
-        // WHEN: we execute a fetch request
-        let request = FetchRequest<Band>(entity: entity(name: Band.entityName, context: stack.managedObjectContext)!)
-        let result = fetch(request: request, inContext: stack.managedObjectContext)
+        // WHEN: we delete an empty array of objects
+        deleteObjects([], inContext: stack.managedObjectContext)
 
-        // THEN: we receive the expected data
-        XCTAssertTrue(result.success)
-        XCTAssertEqual(result.objects.count, 0)
-        XCTAssertNil(result.error)
+        // THEN: the operation is ignored
 
+        
         let saveResult = saveContextAndWait(stack.managedObjectContext)
         XCTAssertTrue(saveResult.success)
         XCTAssertNil(saveResult.error)

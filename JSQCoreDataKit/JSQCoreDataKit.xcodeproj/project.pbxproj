@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		88002D551AB8F546001787DB /* JSQCoreDataKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 88002D541AB8F546001787DB /* JSQCoreDataKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		88002D5B1AB8F547001787DB /* JSQCoreDataKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88002D4F1AB8F546001787DB /* JSQCoreDataKit.framework */; };
-		88002D621AB8F547001787DB /* CoreDataSaveTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88002D611AB8F547001787DB /* CoreDataSaveTests.swift */; };
+		88002D621AB8F547001787DB /* SaveTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88002D611AB8F547001787DB /* SaveTests.swift */; };
 		88002D821AB8FF4F001787DB /* CoreDataExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88002D7F1AB8FF4F001787DB /* CoreDataExtensions.swift */; };
 		88002D831AB8FF4F001787DB /* CoreDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88002D801AB8FF4F001787DB /* CoreDataModel.swift */; };
 		88002D841AB8FF4F001787DB /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88002D811AB8FF4F001787DB /* CoreDataStack.swift */; };
@@ -18,11 +18,11 @@
 		8806597F1AC4AEAD00005BF5 /* Band.swift in Sources */ = {isa = PBXBuildFile; fileRef = 880659791AC4AEAD00005BF5 /* Band.swift */; };
 		880659801AC4AEAD00005BF5 /* ExampleModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8806597B1AC4AEAD00005BF5 /* ExampleModel.xcdatamodeld */; };
 		880659811AC4AEAD00005BF5 /* ModelUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8806597D1AC4AEAD00005BF5 /* ModelUtils.swift */; };
-		886FC8971ABF364F007D445F /* CoreDataModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 886FC8961ABF364F007D445F /* CoreDataModelTests.swift */; };
+		886FC8971ABF364F007D445F /* ModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 886FC8961ABF364F007D445F /* ModelTests.swift */; };
 		886FC8991ABF36A8007D445F /* ModelTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 886FC8981ABF36A8007D445F /* ModelTestCase.swift */; };
-		886FC89B1ABF4091007D445F /* CoreDataStackTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 886FC89A1ABF4091007D445F /* CoreDataStackTests.swift */; };
-		88824B9D1AE3264C0096F568 /* CoreDataFetchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88824B9C1AE3264C0096F568 /* CoreDataFetchTests.swift */; };
-		88824BA01AE341180096F568 /* CoreDataDeleteTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88824B9F1AE341180096F568 /* CoreDataDeleteTests.swift */; };
+		886FC89B1ABF4091007D445F /* StackTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 886FC89A1ABF4091007D445F /* StackTests.swift */; };
+		88824B9D1AE3264C0096F568 /* FetchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88824B9C1AE3264C0096F568 /* FetchTests.swift */; };
+		88824BA01AE341180096F568 /* DeleteTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88824B9F1AE341180096F568 /* DeleteTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,7 +55,7 @@
 		88002D541AB8F546001787DB /* JSQCoreDataKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSQCoreDataKit.h; sourceTree = "<group>"; };
 		88002D5A1AB8F547001787DB /* JSQCoreDataKitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JSQCoreDataKitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		88002D601AB8F547001787DB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		88002D611AB8F547001787DB /* CoreDataSaveTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataSaveTests.swift; sourceTree = "<group>"; };
+		88002D611AB8F547001787DB /* SaveTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveTests.swift; sourceTree = "<group>"; };
 		88002D7F1AB8FF4F001787DB /* CoreDataExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataExtensions.swift; sourceTree = "<group>"; };
 		88002D801AB8FF4F001787DB /* CoreDataModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataModel.swift; sourceTree = "<group>"; };
 		88002D811AB8FF4F001787DB /* CoreDataStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
@@ -64,11 +64,11 @@
 		8806597A1AC4AEAD00005BF5 /* ExampleModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ExampleModel.h; path = ../../Example/ExampleModel/ExampleModel.h; sourceTree = "<group>"; };
 		8806597C1AC4AEAD00005BF5 /* ExampleModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ExampleModel.xcdatamodel; sourceTree = "<group>"; };
 		8806597D1AC4AEAD00005BF5 /* ModelUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ModelUtils.swift; path = ../../Example/ExampleModel/ModelUtils.swift; sourceTree = "<group>"; };
-		886FC8961ABF364F007D445F /* CoreDataModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataModelTests.swift; sourceTree = "<group>"; };
+		886FC8961ABF364F007D445F /* ModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModelTests.swift; sourceTree = "<group>"; };
 		886FC8981ABF36A8007D445F /* ModelTestCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModelTestCase.swift; sourceTree = "<group>"; };
-		886FC89A1ABF4091007D445F /* CoreDataStackTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataStackTests.swift; sourceTree = "<group>"; };
-		88824B9C1AE3264C0096F568 /* CoreDataFetchTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataFetchTests.swift; sourceTree = "<group>"; };
-		88824B9F1AE341180096F568 /* CoreDataDeleteTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataDeleteTests.swift; sourceTree = "<group>"; };
+		886FC89A1ABF4091007D445F /* StackTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StackTests.swift; sourceTree = "<group>"; };
+		88824B9C1AE3264C0096F568 /* FetchTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FetchTests.swift; sourceTree = "<group>"; };
+		88824B9F1AE341180096F568 /* DeleteTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeleteTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -131,13 +131,13 @@
 		88002D5E1AB8F547001787DB /* JSQCoreDataKitTests */ = {
 			isa = PBXGroup;
 			children = (
-				88824B9F1AE341180096F568 /* CoreDataDeleteTests.swift */,
-				88824B9C1AE3264C0096F568 /* CoreDataFetchTests.swift */,
-				886FC8961ABF364F007D445F /* CoreDataModelTests.swift */,
-				88002D611AB8F547001787DB /* CoreDataSaveTests.swift */,
-				886FC89A1ABF4091007D445F /* CoreDataStackTests.swift */,
+				88824B9F1AE341180096F568 /* DeleteTests.swift */,
+				88824B9C1AE3264C0096F568 /* FetchTests.swift */,
 				880659771AC4AE8C00005BF5 /* Fixtures */,
 				886FC8981ABF36A8007D445F /* ModelTestCase.swift */,
+				886FC8961ABF364F007D445F /* ModelTests.swift */,
+				88002D611AB8F547001787DB /* SaveTests.swift */,
+				886FC89A1ABF4091007D445F /* StackTests.swift */,
 				88002D5F1AB8F547001787DB /* Supporting Files */,
 			);
 			path = JSQCoreDataKitTests;
@@ -282,12 +282,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				8806597F1AC4AEAD00005BF5 /* Band.swift in Sources */,
-				88824BA01AE341180096F568 /* CoreDataDeleteTests.swift in Sources */,
-				886FC8971ABF364F007D445F /* CoreDataModelTests.swift in Sources */,
-				88002D621AB8F547001787DB /* CoreDataSaveTests.swift in Sources */,
+				88824BA01AE341180096F568 /* DeleteTests.swift in Sources */,
+				886FC8971ABF364F007D445F /* ModelTests.swift in Sources */,
+				88002D621AB8F547001787DB /* SaveTests.swift in Sources */,
 				886FC8991ABF36A8007D445F /* ModelTestCase.swift in Sources */,
-				886FC89B1ABF4091007D445F /* CoreDataStackTests.swift in Sources */,
-				88824B9D1AE3264C0096F568 /* CoreDataFetchTests.swift in Sources */,
+				886FC89B1ABF4091007D445F /* StackTests.swift in Sources */,
+				88824B9D1AE3264C0096F568 /* FetchTests.swift in Sources */,
 				880659811AC4AEAD00005BF5 /* ModelUtils.swift in Sources */,
 				8806597E1AC4AEAD00005BF5 /* Album.swift in Sources */,
 				880659801AC4AEAD00005BF5 /* ExampleModel.xcdatamodeld in Sources */,

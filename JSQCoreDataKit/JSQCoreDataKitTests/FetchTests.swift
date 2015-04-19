@@ -18,49 +18,49 @@
 
 import XCTest
 import CoreData
-
 import JSQCoreDataKit
 
-class CoreDataDeleteTests: ModelTestCase {
 
-    func test_ThatDelete_Succeeds_WithObjects() {
+class FetchTests: ModelTestCase {
+
+    func test_ThatFetchRequest_Succeeds_WithObjects() {
 
         // GIVEN: a stack and objects in core data
         let stack = CoreDataStack(model: model, storeType: NSInMemoryStoreType)
 
         let count = 10
-        var objects = [Band]()
         for i in 1...count {
-            objects.append(newFakeBand(stack.managedObjectContext))
+            newFakeBand(stack.managedObjectContext)
         }
 
+        // WHEN: we execute a fetch request
         let request = FetchRequest<Band>(entity: entity(name: Band.entityName, context: stack.managedObjectContext)!)
         let result = fetch(request: request, inContext: stack.managedObjectContext)
+
+        // THEN: we receive the expected data
+        XCTAssertTrue(result.success)
         XCTAssertEqual(result.objects.count, count)
-
-        // WHEN: we delete the objects
-        deleteObjects(objects, inContext: stack.managedObjectContext)
-
-        // THEN: the objects are removed from the context
-        let resultAfterDelete = fetch(request: request, inContext: stack.managedObjectContext)
-        XCTAssertEqual(resultAfterDelete.objects.count, 0)
+        XCTAssertNil(result.error)
 
         let saveResult = saveContextAndWait(stack.managedObjectContext)
         XCTAssertTrue(saveResult.success)
         XCTAssertNil(saveResult.error)
     }
 
-    func test_ThatDelete_Succeeds_WithEmptyArray() {
+    func test_ThatFetchRequest_Succeeds_WithoutObjects() {
 
-        // GIVEN: a stack 
+        // GIVEN: a stack and no objects in core data
         let stack = CoreDataStack(model: model, storeType: NSInMemoryStoreType)
 
-        // WHEN: we delete an empty array of objects
-        deleteObjects([], inContext: stack.managedObjectContext)
+        // WHEN: we execute a fetch request
+        let request = FetchRequest<Band>(entity: entity(name: Band.entityName, context: stack.managedObjectContext)!)
+        let result = fetch(request: request, inContext: stack.managedObjectContext)
 
-        // THEN: the operation is ignored
+        // THEN: we receive the expected data
+        XCTAssertTrue(result.success)
+        XCTAssertEqual(result.objects.count, 0)
+        XCTAssertNil(result.error)
 
-        
         let saveResult = saveContextAndWait(stack.managedObjectContext)
         XCTAssertTrue(saveResult.success)
         XCTAssertNil(saveResult.error)

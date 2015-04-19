@@ -18,14 +18,13 @@
 
 import XCTest
 import CoreData
-
 import JSQCoreDataKit
 
 
 class ModelTestCase: XCTestCase {
 
     let model = CoreDataModel(name: "ExampleModel",
-                              bundle: NSBundle(forClass: CoreDataModelTests.self))
+                              bundle: NSBundle(forClass: ModelTests.self))
 
     override func setUp() {
 

@@ -4,13 +4,20 @@
 *A swifter Core Data stack*
 
 ## About
-This project is a Swift rewrite and rethinking of [RSTCoreDataKit](https://github.com/rosettastone/RSTCoreDataKit). 
 
-This framework aims to simplify the processes of standing up and testing your [Core Data](https://developer.apple.com/library/mac/documentation/Cocoa/Conceptual/CoreData/cdProgrammingGuide.html) stack, and reduces the boilerplate involved in getting started with Core Data. 
+This framework aims to do the following:
 
-![stack](https://developer.apple.com/library/ios/documentation/DataManagement/Devpedia-CoreData/Art/single_persistent_stack.jpg)
+* Provide better interoperability with Swift
+* Harness Swift features and enforce Swift paradigms
+* Bring functional paradigms to Core Data
+* Simplify the processes of standing up the Core Data stack
+* Aid in testing your Core Data models
+* Reduce the boilerplate involved with Core Data
 
-*The Core Data Stack, via Apple [Core Data Core Competencies](https://developer.apple.com/library/ios/documentation/DataManagement/Devpedia-CoreData/coreDataStack.html#//apple_ref/doc/uid/TP40010398-CH25-SW1) Guide*
+> **For more information on Core Data:**
+> * [Core Data Programming Guide](https://developer.apple.com/library/mac/documentation/Cocoa/Conceptual/CoreData/cdProgrammingGuide.html)
+> * [Core Data Core Competencies Guide](https://developer.apple.com/library/ios/documentation/DataManagement/Devpedia-CoreData/coreDataStack.html#//apple_ref/doc/uid/TP40010398-CH25-SW1)
+> * [objc.io issue #4 on Core Data](http://www.objc.io/issue-4/)
 
 ## Requirements
 
@@ -126,7 +133,7 @@ Please follow these sweet [contribution guidelines](https://github.com/jessesqui
 
 Created and maintained by [**@jesse_squires**](https://twitter.com/jesse_squires)
 
-This project is a Swift rewrite and rethinking of [RSTCoreDataKit](https://github.com/rosettastone/RSTCoreDataKit).
+This project borrows some ideas and concepts from my work on [RSTCoreDataKit](https://github.com/rosettastone/RSTCoreDataKit).
 
 ## License
 

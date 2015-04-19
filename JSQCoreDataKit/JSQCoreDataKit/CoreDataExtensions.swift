@@ -132,7 +132,7 @@ public struct FetchResult <T: NSManagedObject> {
 }
 
 
-///  Executes the given fetch request in the given context and returns the result.
+///  Executes the fetch request in the given context and returns the result.
 ///
 ///  :param: request A fetch request that specifies the search criteria for the fetch.
 ///  :param: context The managed object context in which to search.
@@ -155,4 +155,23 @@ public func fetch <T: NSManagedObject>(#request: FetchRequest<T>, inContext cont
     }
     
     return FetchResult(success: false, objects: [], error: error)
+}
+
+
+///  Deletes the objects from the specified context.
+///  When changes are committed, the objects will be removed from their persistent store.
+///  You must save the context after calling this function to remove objects from the store.
+///
+///  :param: objects The managed objects to be deleted.
+///  :param: context The context to which the objects belong.
+public func deleteObjects <T: NSManagedObject>(objects: [T], inContext context: NSManagedObjectContext) {
+    if objects.count == 0 {
+        return
+    }
+    
+    context.performBlockAndWait { () -> Void in
+        for each in objects {
+            context.deleteObject(each)
+        }
+    }
 }

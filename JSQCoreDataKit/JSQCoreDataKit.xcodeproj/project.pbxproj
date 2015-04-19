@@ -22,6 +22,7 @@
 		886FC8991ABF36A8007D445F /* ModelTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 886FC8981ABF36A8007D445F /* ModelTestCase.swift */; };
 		886FC89B1ABF4091007D445F /* CoreDataStackTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 886FC89A1ABF4091007D445F /* CoreDataStackTests.swift */; };
 		88824B9D1AE3264C0096F568 /* CoreDataFetchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88824B9C1AE3264C0096F568 /* CoreDataFetchTests.swift */; };
+		88824BA01AE341180096F568 /* CoreDataDeleteTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88824B9F1AE341180096F568 /* CoreDataDeleteTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,6 +68,7 @@
 		886FC8981ABF36A8007D445F /* ModelTestCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModelTestCase.swift; sourceTree = "<group>"; };
 		886FC89A1ABF4091007D445F /* CoreDataStackTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataStackTests.swift; sourceTree = "<group>"; };
 		88824B9C1AE3264C0096F568 /* CoreDataFetchTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataFetchTests.swift; sourceTree = "<group>"; };
+		88824B9F1AE341180096F568 /* CoreDataDeleteTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataDeleteTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -129,6 +131,7 @@
 		88002D5E1AB8F547001787DB /* JSQCoreDataKitTests */ = {
 			isa = PBXGroup;
 			children = (
+				88824B9F1AE341180096F568 /* CoreDataDeleteTests.swift */,
 				88824B9C1AE3264C0096F568 /* CoreDataFetchTests.swift */,
 				886FC8961ABF364F007D445F /* CoreDataModelTests.swift */,
 				88002D611AB8F547001787DB /* CoreDataSaveTests.swift */,
@@ -279,6 +282,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8806597F1AC4AEAD00005BF5 /* Band.swift in Sources */,
+				88824BA01AE341180096F568 /* CoreDataDeleteTests.swift in Sources */,
 				886FC8971ABF364F007D445F /* CoreDataModelTests.swift in Sources */,
 				88002D621AB8F547001787DB /* CoreDataSaveTests.swift in Sources */,
 				886FC8991ABF36A8007D445F /* ModelTestCase.swift in Sources */,

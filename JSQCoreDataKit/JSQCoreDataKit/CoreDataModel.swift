@@ -32,13 +32,13 @@ public struct CoreDataModel: Printable {
     ///  The bundle in which the model is located.
     public let bundle: NSBundle
 
-    ///  The file URL specifying the store in the documents directory.
+    ///  The file URL specifying the directory in which the store is located.
+    public let storeDirectoryURL: NSURL
+
+    ///  The file URL specifying the full path to the store.
     public var storeURL: NSURL {
         get {
-            var error: NSError?
-            let documentsDirectoryURL = NSFileManager.defaultManager().URLForDirectory(.DocumentDirectory, inDomain: .UserDomainMask, appropriateForURL: nil, create: true, error: &error)
-            assert(documentsDirectoryURL != nil, "*** Error finding documents directory: \(error)")
-            return documentsDirectoryURL!.URLByAppendingPathComponent(databaseFileName)
+            return storeDirectoryURL.URLByAppendingPathComponent(databaseFileName)
         }
     }
 
@@ -84,13 +84,15 @@ public struct CoreDataModel: Printable {
 
     ///  Constructs new `CoreDataModel` instance with the specified name and bundle.
     ///
-    ///  :param: name   The name of the Core Data model.
-    ///  :param: bundle The bundle in which the model is located. The default parameter value is `NSBundle.mainBundle()`.
+    ///  :param: name              The name of the Core Data model.
+    ///  :param: bundle            The bundle in which the model is located. The default parameter value is `NSBundle.mainBundle()`.
+    ///  :param: storeDirectoryURL The directory in which the model is located. The default parameter value is the user's documents directory.
     ///
     ///  :returns: A new `CoreDataModel` instance.
-    public init(name: String, bundle: NSBundle = NSBundle.mainBundle()) {
+    public init(name: String, bundle: NSBundle = NSBundle.mainBundle(), storeDirectoryURL: NSURL = documentsDirectoryURL()) {
         self.name = name
         self.bundle = bundle
+        self.storeDirectoryURL = storeDirectoryURL
     }
 
     // MARK: Methods
@@ -123,5 +125,13 @@ public struct CoreDataModel: Printable {
             return "<\(toString(CoreDataModel.self)): name=\(name), needsMigration=\(modelStoreNeedsMigration), databaseFileName=\(databaseFileName), modelURL=\(modelURL), storeURL=\(storeURL)>"
         }
     }
-    
+
+}
+
+
+private func documentsDirectoryURL() -> NSURL {
+    var error: NSError?
+    let url = NSFileManager.defaultManager().URLForDirectory(.DocumentDirectory, inDomain: .UserDomainMask, appropriateForURL: nil, create: true, error: &error)
+    assert(url != nil, "*** Error finding documents directory: \(error)")
+    return url!
 }

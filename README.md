@@ -119,6 +119,35 @@ let childContext = stack.childManagedObjectContext()
 let privateChildContext = stack.childManagedObjectContext(concurrencyType: .PrivateQueueConcurrencyType, mergePolicyType: .ErrorMergePolicyType)
 ````
 
+#### Fetching
+
+````swift
+// Create a FetchRequest<T>, where T is a phantom type
+let entity = entity(name: "MyModel", context: context)!
+let request = FetchRequest<MyModel>(entity: entity)
+
+// Fetching returns a FetchResult<T>
+let result = fetch(request: request, inContext: context)
+
+if !result.success {
+    println("Error = \(result.error)")
+}
+
+// use objects, [MyModel]
+result.objects
+````
+
+#### Deleting
+
+````swift
+let objects: [MyModel] = /* array of MyModel objects */
+
+deleteObjects(objects, inContext: context)
+
+// Commit changes, remove objects from store
+saveContextAndWait(context)
+````
+
 ## Unit tests
 
 There's a suite of unit tests for the `JSQCoreDataKit.framework`. To run them, open `JSQCoreDataKit.xcworkspace`, select the `JSQCoreDataKit` scheme, then &#x2318;-u.

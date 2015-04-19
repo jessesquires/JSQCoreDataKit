@@ -117,7 +117,7 @@ public struct CoreDataModel: Printable {
 
     // MARK: Printable
 
-    /// A string containing a textual representation of the `CoreDataModel`.
+    /// :nodoc:
     public var description: String {
         get {
             return "<\(toString(CoreDataModel.self)): name=\(name), needsMigration=\(modelStoreNeedsMigration), databaseFileName=\(databaseFileName), modelURL=\(modelURL), storeURL=\(storeURL)>"

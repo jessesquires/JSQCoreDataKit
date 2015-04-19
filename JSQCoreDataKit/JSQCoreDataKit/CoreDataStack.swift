@@ -90,7 +90,7 @@ public final class CoreDataStack: Printable {
 
     // MARK: Printable
 
-    /// A string containing a textual representation of the `CoreDataStack`.
+    /// :nodoc:
     public var description: String {
         get {
             return "<\(toString(CoreDataStack.self)): model=\(model)>"

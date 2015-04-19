@@ -52,6 +52,7 @@ public func saveContextAndWait(context: NSManagedObjectContext) -> ContextSaveRe
     return (success, error)
 }
 
+
 ///  Attempts to commit unsaved changes to registered objects to the specified context's parent store.
 ///  This method is performed *asynchronously* in a block on the context's queue.
 ///  If the context returns `false` from `hasChanges`, this function returns immediately.
@@ -74,4 +75,84 @@ public func saveContext(context: NSManagedObjectContext, completion: (ContextSav
 
         completion((success, error))
     }
+}
+
+
+///  The `CoreDataEntityType` protocol provides a uniform interface for dealing with
+///  managed objects and entity descriptions.
+///  Only `NSManagedObject` instances should conform to `CoreDataEntityType`.
+public protocol CoreDataEntityType: class {
+
+    ///  The entity name describing the receiver.
+    static var entityName: String { get }
+}
+
+
+///  Returns the entity with the specified name from the managed object model associated with the specified managed object context’s persistent store coordinator.
+///
+///  :param: name    The name of an entity.
+///  :param: context The managed object context to use.
+///
+///  :returns: The entity with the specified name from the managed object model associated with context’s persistent store coordinator.
+public func entity(#name: String, #context: NSManagedObjectContext) -> NSEntityDescription? {
+    return NSEntityDescription.entityForName(name, inManagedObjectContext: context)
+}
+
+
+///  An instance of `FetchRequest` describes search criteria used to retrieve data from a persistent store.
+///  This is a subclass of `NSFetchRequest` that adds a type parameter specifying the type of managed objects for the fetch request.
+///  The type parameter acts as a phantom type.
+public class FetchRequest <T: NSManagedObject>: NSFetchRequest {
+
+    ///  Constructs a new `FetchRequest` instance.
+    ///
+    ///  :param: entity The entity description for the entities that this request fetches.
+    ///
+    ///  :returns: A new `FetchRequest` instance.
+    public init(entity: NSEntityDescription) {
+        super.init()
+        self.entity = entity
+    }
+}
+
+
+///  A `FetchResult` represents the result of executing a fetch request.
+///  It has one type parameter that specifies the type of managed objects that were fetched.
+public struct FetchResult <T: NSManagedObject> {
+
+    ///  Specifies whether or not the fetch succeeded.
+    public let success: Bool
+
+    ///  An array of objects that meet the criteria specified by the fetch request.
+    ///  If the fetch is unsuccessful, this array will be empty.
+    public let objects: [T]
+
+    ///  If unsuccessful, specifies an error that describes the problem executing the fetch. Otherwise, this value is `nil`.
+    public let error: NSError?
+}
+
+
+///  Executes the given fetch request in the given context and returns the result.
+///
+///  :param: request A fetch request that specifies the search criteria for the fetch.
+///  :param: context The managed object context in which to search.
+///
+///  :returns: A instance of `FetchResult` describing the results of executing the request.
+public func fetch <T: NSManagedObject>(#request: FetchRequest<T>, inContext context: NSManagedObjectContext) -> FetchResult<T> {
+
+    var error: NSError?
+    var results: [AnyObject]?
+
+    context.performBlockAndWait { () -> Void in
+        results = context.executeFetchRequest(request, error: &error)
+    }
+
+    if let results = results {
+        return FetchResult(success: true, objects: results as! [T], error: error)
+    }
+    else {
+        println("*** ERROR: [\(__LINE__)] \(__FUNCTION__) Error while executing fetch request: \(error)")
+    }
+    
+    return FetchResult(success: false, objects: [], error: error)
 }

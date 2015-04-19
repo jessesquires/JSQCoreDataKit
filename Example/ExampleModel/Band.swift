@@ -18,8 +18,12 @@
 
 import Foundation
 import CoreData
+import JSQCoreDataKit
 
-public final class Band: NSManagedObject {
+
+public final class Band: NSManagedObject, CoreDataEntityType {
+
+    public static let entityName: String = "Band"
 
     @NSManaged public var name: String
 
@@ -31,9 +35,8 @@ public final class Band: NSManagedObject {
 
     @NSManaged public var albums: NSSet
 
-    public convenience init(context: NSManagedObjectContext) {
-        let entityDescription = NSEntityDescription.entityForName("Band", inManagedObjectContext: context)!
-        self.init(entity: entityDescription, insertIntoManagedObjectContext: context)
+    public init(context: NSManagedObjectContext) {
+        let entity = NSEntityDescription.entityForName(Band.entityName, inManagedObjectContext: context)!
+        super.init(entity: entity, insertIntoManagedObjectContext: context)
     }
-
 }

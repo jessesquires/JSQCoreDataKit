@@ -65,7 +65,7 @@ class CoreDataModelTests: XCTestCase {
         XCTAssertNotNil(model.managedObjectModel)
 
         // THEN: the store doesn't need migration
-//        XCTAssertFalse(model.modelStoreNeedsMigration)
+        XCTAssertFalse(model.modelStoreNeedsMigration)
     }
 
     func test_ThatCoreDataModel_RemoveExistingStore_Succeeds() {

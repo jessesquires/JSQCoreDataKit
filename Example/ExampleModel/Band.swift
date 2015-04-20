@@ -35,8 +35,17 @@ public final class Band: NSManagedObject, CoreDataEntityType {
 
     @NSManaged public var albums: NSSet
 
-    public init(context: NSManagedObjectContext) {
-        let entity = NSEntityDescription.entityForName(Band.entityName, inManagedObjectContext: context)!
-        super.init(entity: entity, insertIntoManagedObjectContext: context)
+    public init(context: NSManagedObjectContext,
+        name: String,
+        dateFounded: NSDate,
+        city: String,
+        genre: String) {
+
+            let entity = NSEntityDescription.entityForName(Band.entityName, inManagedObjectContext: context)!
+            super.init(entity: entity, insertIntoManagedObjectContext: context)
+            self.name = name
+            self.dateFounded = dateFounded
+            self.city = city
+            self.genre = genre
     }
 }

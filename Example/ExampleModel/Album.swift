@@ -33,8 +33,16 @@ public final class Album: NSManagedObject, CoreDataEntityType {
 
     @NSManaged public var band: Band
 
-    public init(context: NSManagedObjectContext) {
-        let entity = NSEntityDescription.entityForName(Album.entityName, inManagedObjectContext: context)!
-        super.init(entity: entity, insertIntoManagedObjectContext: context)
+    public init(context: NSManagedObjectContext,
+        title: String,
+        dateReleased: NSDate,
+        price: NSDecimalNumber,
+        band: Band) {
+            let entity = NSEntityDescription.entityForName(Album.entityName, inManagedObjectContext: context)!
+            super.init(entity: entity, insertIntoManagedObjectContext: context)
+            self.title = title
+            self.dateReleased = dateReleased
+            self.price = price
+            self.band = band
     }
 }

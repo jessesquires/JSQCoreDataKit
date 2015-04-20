@@ -28,27 +28,20 @@ public struct ExampleModelProperties {
 
 
 public func newFakeBand(context: NSManagedObjectContext) -> Band {
-    let id = NSUUID().UUIDString
 
-    let b = Band(context: context)
-    b.name = "Name " + id
-    b.dateFounded = NSDate()
-    b.city = "City " + id
-    b.genre = "Genre " + id
-    
-    return b
+    return Band(context: context,
+        name: "Name " + NSUUID().UUIDString,
+        dateFounded: NSDate(),
+        city: "City",
+        genre: "Genre")
 }
 
 
 public func newFakeAlbum(context: NSManagedObjectContext, band: Band) -> Album {
-    let id = NSUUID().UUIDString
 
-    let a = Album(context: context)
-    a.title = "Title " + id
-    a.dateReleased = NSDate()
-    a.price = 10.0
-
-    a.band = newFakeBand(context)
-    
-    return a
+    return Album(context: context,
+        title: "Title " + NSUUID().UUIDString,
+        dateReleased: NSDate(),
+        price: 10.0,
+        band: band)
 }

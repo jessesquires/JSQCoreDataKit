@@ -133,11 +133,11 @@
 			children = (
 				88824B9F1AE341180096F568 /* DeleteTests.swift */,
 				88824B9C1AE3264C0096F568 /* FetchTests.swift */,
-				880659771AC4AE8C00005BF5 /* Fixtures */,
 				886FC8981ABF36A8007D445F /* ModelTestCase.swift */,
 				886FC8961ABF364F007D445F /* ModelTests.swift */,
 				88002D611AB8F547001787DB /* SaveTests.swift */,
 				886FC89A1ABF4091007D445F /* StackTests.swift */,
+				880659771AC4AE8C00005BF5 /* Fixtures */,
 				88002D5F1AB8F547001787DB /* Supporting Files */,
 			);
 			path = JSQCoreDataKitTests;

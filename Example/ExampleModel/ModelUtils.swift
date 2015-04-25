@@ -27,21 +27,21 @@ public struct ExampleModelProperties {
 }
 
 
-public func newFakeBand(context: NSManagedObjectContext) -> Band {
+public func newFakeBand(context: NSManagedObjectContext,
+    name: String = "Name " + NSUUID().UUIDString,
+    dateFounded: NSDate = NSDate(),
+    city: String = "City",
+    genre: String = "Genre") -> Band {
 
-    return Band(context: context,
-        name: "Name " + NSUUID().UUIDString,
-        dateFounded: NSDate(),
-        city: "City",
-        genre: "Genre")
+        return Band(context: context, name: name, dateFounded: dateFounded, city: city, genre: genre)
 }
 
 
-public func newFakeAlbum(context: NSManagedObjectContext, band: Band) -> Album {
+public func newFakeAlbum(context: NSManagedObjectContext,
+    band: Band,
+    title: String = "Title " + NSUUID().UUIDString,
+    dateReleased: NSDate = NSDate(),
+    price: NSDecimalNumber = 10.0) -> Album {
 
-    return Album(context: context,
-        title: "Title " + NSUUID().UUIDString,
-        dateReleased: NSDate(),
-        price: 10.0,
-        band: band)
+    return Album(context: context, title: title, dateReleased: dateReleased, price: price, band: band)
 }

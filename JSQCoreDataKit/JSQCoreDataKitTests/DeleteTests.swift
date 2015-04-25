@@ -34,7 +34,7 @@ class DeleteTests: ModelTestCase {
             objects.append(newFakeBand(stack.managedObjectContext))
         }
 
-        let request = FetchRequest<Band>(entity: entity(name: Band.entityName, context: stack.managedObjectContext)!)
+        let request = FetchRequest<Band>(entity: entity(name: Band.entityName, context: stack.managedObjectContext))
         let result = fetch(request: request, inContext: stack.managedObjectContext)
         XCTAssertEqual(result.objects.count, count)
 

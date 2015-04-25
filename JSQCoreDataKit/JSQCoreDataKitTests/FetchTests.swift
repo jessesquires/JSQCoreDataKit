@@ -34,7 +34,7 @@ class FetchTests: ModelTestCase {
         }
 
         // WHEN: we execute a fetch request
-        let request = FetchRequest<Band>(entity: entity(name: Band.entityName, context: stack.managedObjectContext)!)
+        let request = FetchRequest<Band>(entity: entity(name: Band.entityName, context: stack.managedObjectContext))
         let result = fetch(request: request, inContext: stack.managedObjectContext)
 
         // THEN: we receive the expected data
@@ -53,7 +53,7 @@ class FetchTests: ModelTestCase {
         let stack = CoreDataStack(model: model, storeType: NSInMemoryStoreType)
 
         // WHEN: we execute a fetch request
-        let request = FetchRequest<Band>(entity: entity(name: Band.entityName, context: stack.managedObjectContext)!)
+        let request = FetchRequest<Band>(entity: entity(name: Band.entityName, context: stack.managedObjectContext))
         let result = fetch(request: request, inContext: stack.managedObjectContext)
 
         // THEN: we receive the expected data

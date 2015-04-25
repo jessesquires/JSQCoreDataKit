@@ -94,12 +94,12 @@ public protocol CoreDataEntityType: class {
 ///  :param: context The managed object context to use.
 ///
 ///  :returns: The entity with the specified name from the managed object model associated with context’s persistent store coordinator.
-public func entity(#name: String, #context: NSManagedObjectContext) -> NSEntityDescription? {
-    return NSEntityDescription.entityForName(name, inManagedObjectContext: context)
+public func entity(#name: String, #context: NSManagedObjectContext) -> NSEntityDescription {
+    return NSEntityDescription.entityForName(name, inManagedObjectContext: context)!
 }
 
 
-///  An instance of `FetchRequest` describes search criteria used to retrieve data from a persistent store.
+///  An instance of `FetchRequest <T: NSManagedObject>` describes search criteria used to retrieve data from a persistent store.
 ///  This is a subclass of `NSFetchRequest` that adds a type parameter specifying the type of managed objects for the fetch request.
 ///  The type parameter acts as a phantom type.
 public class FetchRequest <T: NSManagedObject>: NSFetchRequest {
@@ -165,6 +165,7 @@ public func fetch <T: NSManagedObject>(#request: FetchRequest<T>, inContext cont
 ///  :param: objects The managed objects to be deleted.
 ///  :param: context The context to which the objects belong.
 public func deleteObjects <T: NSManagedObject>(objects: [T], inContext context: NSManagedObjectContext) {
+    
     if objects.count == 0 {
         return
     }

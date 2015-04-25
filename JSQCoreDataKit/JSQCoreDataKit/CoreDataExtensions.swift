@@ -148,7 +148,7 @@ public func fetch <T: NSManagedObject>(#request: FetchRequest<T>, inContext cont
     }
 
     if let results = results {
-        return FetchResult(success: true, objects: results as! [T], error: error)
+        return FetchResult(success: true, objects: map(results, { $0 as! T }), error: error)
     }
     else {
         println("*** ERROR: [\(__LINE__)] \(__FUNCTION__) Error while executing fetch request: \(error)")

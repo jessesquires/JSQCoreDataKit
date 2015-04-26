@@ -150,7 +150,7 @@ saveContextAndWait(context)
 
 ## Unit tests
 
-There's a suite of unit tests for the `JSQCoreDataKit.framework`. To run them, open `JSQCoreDataKit.xcworkspace`, select the `JSQCoreDataKit` scheme, then &#x2318;-u.
+There's a suite of unit tests for `JSQCoreDataKit.framework`. To run them, open `JSQCoreDataKit.xcworkspace`, select the `JSQCoreDataKit` scheme, then &#x2318;-u. Additional tests are under the `Example` scheme.
 
 These tests are well commented and serve as further documentation for how to use this library.
 

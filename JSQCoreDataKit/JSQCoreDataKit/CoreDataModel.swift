@@ -128,6 +128,7 @@ public struct CoreDataModel: Printable {
 
 }
 
+// MARK: Private
 
 private func documentsDirectoryURL() -> NSURL {
     var error: NSError?

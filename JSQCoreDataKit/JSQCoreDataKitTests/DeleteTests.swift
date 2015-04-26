@@ -18,6 +18,7 @@
 
 import XCTest
 import CoreData
+
 import JSQCoreDataKit
 
 
@@ -29,12 +30,12 @@ class DeleteTests: ModelTestCase {
         let stack = CoreDataStack(model: model, storeType: NSInMemoryStoreType)
 
         let count = 10
-        var objects = [Band]()
+        var objects = [MyModel]()
         for i in 1...count {
-            objects.append(newFakeBand(stack.managedObjectContext))
+            objects.append(MyModel(context: stack.managedObjectContext))
         }
 
-        let request = FetchRequest<Band>(entity: entity(name: Band.entityName, context: stack.managedObjectContext))
+        let request = FetchRequest<MyModel>(entity: entity(name: MyModelEntityName, context: stack.managedObjectContext))
         let result = fetch(request: request, inContext: stack.managedObjectContext)
         XCTAssertEqual(result.objects.count, count)
 
@@ -60,7 +61,6 @@ class DeleteTests: ModelTestCase {
 
         // THEN: the operation is ignored
 
-        
         let saveResult = saveContextAndWait(stack.managedObjectContext)
         XCTAssertTrue(saveResult.success)
         XCTAssertNil(saveResult.error)

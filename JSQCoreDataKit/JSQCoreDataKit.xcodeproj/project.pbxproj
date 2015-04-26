@@ -14,15 +14,13 @@
 		88002D831AB8FF4F001787DB /* CoreDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88002D801AB8FF4F001787DB /* CoreDataModel.swift */; };
 		88002D841AB8FF4F001787DB /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88002D811AB8FF4F001787DB /* CoreDataStack.swift */; };
 		880659731AC4AAD500005BF5 /* JSQCoreDataKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 88002D4F1AB8F546001787DB /* JSQCoreDataKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		8806597E1AC4AEAD00005BF5 /* Album.swift in Sources */ = {isa = PBXBuildFile; fileRef = 880659781AC4AEAD00005BF5 /* Album.swift */; };
-		8806597F1AC4AEAD00005BF5 /* Band.swift in Sources */ = {isa = PBXBuildFile; fileRef = 880659791AC4AEAD00005BF5 /* Band.swift */; };
-		880659801AC4AEAD00005BF5 /* ExampleModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8806597B1AC4AEAD00005BF5 /* ExampleModel.xcdatamodeld */; };
-		880659811AC4AEAD00005BF5 /* ModelUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8806597D1AC4AEAD00005BF5 /* ModelUtils.swift */; };
 		886FC8971ABF364F007D445F /* ModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 886FC8961ABF364F007D445F /* ModelTests.swift */; };
-		886FC8991ABF36A8007D445F /* ModelTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 886FC8981ABF36A8007D445F /* ModelTestCase.swift */; };
+		886FC8991ABF36A8007D445F /* TestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 886FC8981ABF36A8007D445F /* TestCase.swift */; };
 		886FC89B1ABF4091007D445F /* StackTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 886FC89A1ABF4091007D445F /* StackTests.swift */; };
 		88824B9D1AE3264C0096F568 /* FetchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88824B9C1AE3264C0096F568 /* FetchTests.swift */; };
 		88824BA01AE341180096F568 /* DeleteTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88824B9F1AE341180096F568 /* DeleteTests.swift */; };
+		88B89CFB1AEC7E80001856CE /* TestModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 88B89CF91AEC7E80001856CE /* TestModel.xcdatamodeld */; };
+		88B89CFD1AEC7EFD001856CE /* MyModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88B89CFC1AEC7EFD001856CE /* MyModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,16 +57,13 @@
 		88002D7F1AB8FF4F001787DB /* CoreDataExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataExtensions.swift; sourceTree = "<group>"; };
 		88002D801AB8FF4F001787DB /* CoreDataModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataModel.swift; sourceTree = "<group>"; };
 		88002D811AB8FF4F001787DB /* CoreDataStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
-		880659781AC4AEAD00005BF5 /* Album.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Album.swift; path = ../../Example/ExampleModel/Album.swift; sourceTree = "<group>"; };
-		880659791AC4AEAD00005BF5 /* Band.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Band.swift; path = ../../Example/ExampleModel/Band.swift; sourceTree = "<group>"; };
-		8806597A1AC4AEAD00005BF5 /* ExampleModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ExampleModel.h; path = ../../Example/ExampleModel/ExampleModel.h; sourceTree = "<group>"; };
-		8806597C1AC4AEAD00005BF5 /* ExampleModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ExampleModel.xcdatamodel; sourceTree = "<group>"; };
-		8806597D1AC4AEAD00005BF5 /* ModelUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ModelUtils.swift; path = ../../Example/ExampleModel/ModelUtils.swift; sourceTree = "<group>"; };
 		886FC8961ABF364F007D445F /* ModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModelTests.swift; sourceTree = "<group>"; };
-		886FC8981ABF36A8007D445F /* ModelTestCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModelTestCase.swift; sourceTree = "<group>"; };
+		886FC8981ABF36A8007D445F /* TestCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TestCase.swift; path = ../TestCase.swift; sourceTree = "<group>"; };
 		886FC89A1ABF4091007D445F /* StackTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StackTests.swift; sourceTree = "<group>"; };
 		88824B9C1AE3264C0096F568 /* FetchTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FetchTests.swift; sourceTree = "<group>"; };
 		88824B9F1AE341180096F568 /* DeleteTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeleteTests.swift; sourceTree = "<group>"; };
+		88B89CFA1AEC7E80001856CE /* TestModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TestModel.xcdatamodel; sourceTree = "<group>"; };
+		88B89CFC1AEC7EFD001856CE /* MyModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -133,12 +128,11 @@
 			children = (
 				88824B9F1AE341180096F568 /* DeleteTests.swift */,
 				88824B9C1AE3264C0096F568 /* FetchTests.swift */,
-				886FC8981ABF36A8007D445F /* ModelTestCase.swift */,
 				886FC8961ABF364F007D445F /* ModelTests.swift */,
 				88002D611AB8F547001787DB /* SaveTests.swift */,
 				886FC89A1ABF4091007D445F /* StackTests.swift */,
-				880659771AC4AE8C00005BF5 /* Fixtures */,
 				88002D5F1AB8F547001787DB /* Supporting Files */,
+				88B89CF81AEC7E6C001856CE /* Test Fixtures */,
 			);
 			path = JSQCoreDataKitTests;
 			sourceTree = "<group>";
@@ -151,16 +145,14 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		880659771AC4AE8C00005BF5 /* Fixtures */ = {
+		88B89CF81AEC7E6C001856CE /* Test Fixtures */ = {
 			isa = PBXGroup;
 			children = (
-				880659781AC4AEAD00005BF5 /* Album.swift */,
-				880659791AC4AEAD00005BF5 /* Band.swift */,
-				8806597A1AC4AEAD00005BF5 /* ExampleModel.h */,
-				8806597B1AC4AEAD00005BF5 /* ExampleModel.xcdatamodeld */,
-				8806597D1AC4AEAD00005BF5 /* ModelUtils.swift */,
+				88B89CFC1AEC7EFD001856CE /* MyModel.swift */,
+				886FC8981ABF36A8007D445F /* TestCase.swift */,
+				88B89CF91AEC7E80001856CE /* TestModel.xcdatamodeld */,
 			);
-			name = Fixtures;
+			path = "Test Fixtures";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -281,16 +273,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8806597F1AC4AEAD00005BF5 /* Band.swift in Sources */,
+				88B89CFB1AEC7E80001856CE /* TestModel.xcdatamodeld in Sources */,
 				88824BA01AE341180096F568 /* DeleteTests.swift in Sources */,
 				886FC8971ABF364F007D445F /* ModelTests.swift in Sources */,
 				88002D621AB8F547001787DB /* SaveTests.swift in Sources */,
-				886FC8991ABF36A8007D445F /* ModelTestCase.swift in Sources */,
+				886FC8991ABF36A8007D445F /* TestCase.swift in Sources */,
 				886FC89B1ABF4091007D445F /* StackTests.swift in Sources */,
 				88824B9D1AE3264C0096F568 /* FetchTests.swift in Sources */,
-				880659811AC4AEAD00005BF5 /* ModelUtils.swift in Sources */,
-				8806597E1AC4AEAD00005BF5 /* Album.swift in Sources */,
-				880659801AC4AEAD00005BF5 /* ExampleModel.xcdatamodeld in Sources */,
+				88B89CFD1AEC7EFD001856CE /* MyModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -494,14 +484,13 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		8806597B1AC4AEAD00005BF5 /* ExampleModel.xcdatamodeld */ = {
+		88B89CF91AEC7E80001856CE /* TestModel.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				8806597C1AC4AEAD00005BF5 /* ExampleModel.xcdatamodel */,
+				88B89CFA1AEC7E80001856CE /* TestModel.xcdatamodel */,
 			);
-			currentVersion = 8806597C1AC4AEAD00005BF5 /* ExampleModel.xcdatamodel */;
-			name = ExampleModel.xcdatamodeld;
-			path = ../../Example/ExampleModel/ExampleModel.xcdatamodeld;
+			currentVersion = 88B89CFA1AEC7E80001856CE /* TestModel.xcdatamodel */;
+			path = TestModel.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};

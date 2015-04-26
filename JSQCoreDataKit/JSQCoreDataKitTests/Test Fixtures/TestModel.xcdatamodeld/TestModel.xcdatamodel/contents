@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="7549" systemVersion="14D136" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
+    <entity name="MyModel" representedClassName="JSQCoreDataKitTests.MyModel" syncable="YES">
+        <attribute name="myBool" attributeType="Boolean" syncable="YES"/>
+        <attribute name="myDate" attributeType="Date" syncable="YES"/>
+        <attribute name="myFloat" attributeType="Float" syncable="YES"/>
+        <attribute name="myInt" attributeType="Integer 32" syncable="YES"/>
+        <attribute name="myString" attributeType="String" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="MyModel" positionX="-63" positionY="-18" width="128" height="118"/>
+    </elements>
+</model>

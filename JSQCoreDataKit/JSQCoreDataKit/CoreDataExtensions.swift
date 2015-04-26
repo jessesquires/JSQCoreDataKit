@@ -78,16 +78,6 @@ public func saveContext(context: NSManagedObjectContext, completion: (ContextSav
 }
 
 
-///  The `CoreDataEntityType` protocol provides a uniform interface for dealing with
-///  managed objects and entity descriptions.
-///  Only `NSManagedObject` instances should conform to `CoreDataEntityType`.
-public protocol CoreDataEntityType: class {
-
-    ///  The entity name describing the receiver.
-    static var entityName: String { get }
-}
-
-
 ///  Returns the entity with the specified name from the managed object model associated with the specified managed object context’s persistent store coordinator.
 ///
 ///  :param: name    The name of an entity.

@@ -41,8 +41,8 @@ class SaveTests: ModelTestCase {
         // GIVEN: a stack and context with changes
         let stack = CoreDataStack(model: model, storeType: NSInMemoryStoreType)
 
-        newFakeBand(stack.managedObjectContext)
-        newFakeBand(stack.managedObjectContext)
+        MyModel(context: stack.managedObjectContext)
+        MyModel(context: stack.managedObjectContext)
 
         var didSave = false
         self.expectationForNotification(NSManagedObjectContextDidSaveNotification, object: stack.managedObjectContext) { (notification) -> Bool in
@@ -89,8 +89,8 @@ class SaveTests: ModelTestCase {
         // GIVEN: a stack and context with changes
         let stack = CoreDataStack(model: model, storeType: NSInMemoryStoreType)
 
-        newFakeBand(stack.managedObjectContext)
-        newFakeBand(stack.managedObjectContext)
+        MyModel(context: stack.managedObjectContext)
+        MyModel(context: stack.managedObjectContext)
 
         var didSave = false
         self.expectationForNotification(NSManagedObjectContextDidSaveNotification, object: stack.managedObjectContext) { (notification) -> Bool in

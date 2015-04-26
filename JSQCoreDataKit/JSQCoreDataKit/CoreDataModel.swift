@@ -46,7 +46,7 @@ public struct CoreDataModel: Printable {
     public var modelURL: NSURL {
         get {
             let url = bundle.URLForResource(name, withExtension: "momd")
-            assert(url != nil, "*** Error loading resource for model: \(name)")
+            assert(url != nil, "*** Error loading resource for model named \(name) at url: \(url)")
             return url!
         }
     }

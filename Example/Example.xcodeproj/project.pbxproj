@@ -16,18 +16,16 @@
 		88002D7A1AB8F637001787DB /* JSQCoreDataKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88002D711AB8F58A001787DB /* JSQCoreDataKit.framework */; };
 		88002D7C1AB8F655001787DB /* JSQCoreDataKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 88002D711AB8F58A001787DB /* JSQCoreDataKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		88002D951AB90FE0001787DB /* ExampleModel.h in Headers */ = {isa = PBXBuildFile; fileRef = 88002D941AB90FE0001787DB /* ExampleModel.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		88002D9B1AB90FE0001787DB /* ExampleModel.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88002D901AB90FE0001787DB /* ExampleModel.framework */; };
-		88002DA41AB90FE0001787DB /* ExampleModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88002DA31AB90FE0001787DB /* ExampleModelTests.swift */; };
 		88002DA71AB90FE0001787DB /* ExampleModel.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88002D901AB90FE0001787DB /* ExampleModel.framework */; };
 		88002DA81AB90FE0001787DB /* ExampleModel.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 88002D901AB90FE0001787DB /* ExampleModel.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		88002DB11AB910DB001787DB /* ExampleModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 88002DAF1AB910DB001787DB /* ExampleModel.xcdatamodeld */; };
 		88002DB31AB91240001787DB /* Album.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88002DB21AB91240001787DB /* Album.swift */; };
 		88002DB51AB91240001787DB /* Band.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88002DB41AB91240001787DB /* Band.swift */; };
 		88002DB81AB92204001787DB /* ModelUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88002DB71AB92204001787DB /* ModelUtils.swift */; };
-		886FC8A11ABF5496007D445F /* ExampleModel.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 88002D901AB90FE0001787DB /* ExampleModel.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		886FC8A21ABF549C007D445F /* JSQCoreDataKit.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 88002D711AB8F58A001787DB /* JSQCoreDataKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		886FC8A41ABF54B1007D445F /* JSQCoreDataKit.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 88002D711AB8F58A001787DB /* JSQCoreDataKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		88F2E8401ADBA235007920B3 /* JSQCoreDataKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88002D711AB8F58A001787DB /* JSQCoreDataKit.framework */; };
+		8866317D1AEC8F53001DCAFE /* ExampleModel.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88002D901AB90FE0001787DB /* ExampleModel.framework */; };
+		8866317E1AEC8F57001DCAFE /* JSQCoreDataKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88002D711AB8F58A001787DB /* JSQCoreDataKit.framework */; };
+		8866317F1AEC8F5D001DCAFE /* ExampleModel.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 88002D901AB90FE0001787DB /* ExampleModel.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		886631801AEC8F61001DCAFE /* JSQCoreDataKit.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 88002D711AB8F58A001787DB /* JSQCoreDataKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,20 +49,6 @@
 			proxyType = 2;
 			remoteGlobalIDString = 88002D5A1AB8F547001787DB;
 			remoteInfo = JSQCoreDataKitTests;
-		};
-		88002D9C1AB90FE0001787DB /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 88002D161AB8F453001787DB /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 88002D8F1AB90FE0001787DB;
-			remoteInfo = ExampleModel;
-		};
-		88002D9E1AB90FE0001787DB /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 88002D161AB8F453001787DB /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 88002D1D1AB8F453001787DB;
-			remoteInfo = Example;
 		};
 		88002DA51AB90FE0001787DB /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -94,19 +78,8 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				886FC8A21ABF549C007D445F /* JSQCoreDataKit.framework in Copy Frameworks */,
-				886FC8A11ABF5496007D445F /* ExampleModel.framework in Copy Frameworks */,
-			);
-			name = "Copy Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		886FC8A31ABF54A7007D445F /* Copy Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				886FC8A41ABF54B1007D445F /* JSQCoreDataKit.framework in Copy Frameworks */,
+				886631801AEC8F61001DCAFE /* JSQCoreDataKit.framework in Copy Frameworks */,
+				8866317F1AEC8F5D001DCAFE /* ExampleModel.framework in Copy Frameworks */,
 			);
 			name = "Copy Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -128,9 +101,6 @@
 		88002D901AB90FE0001787DB /* ExampleModel.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ExampleModel.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		88002D931AB90FE0001787DB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		88002D941AB90FE0001787DB /* ExampleModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ExampleModel.h; sourceTree = "<group>"; };
-		88002D9A1AB90FE0001787DB /* ExampleModelTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ExampleModelTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		88002DA21AB90FE0001787DB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		88002DA31AB90FE0001787DB /* ExampleModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleModelTests.swift; sourceTree = "<group>"; };
 		88002DB01AB910DB001787DB /* ExampleModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ExampleModel.xcdatamodel; sourceTree = "<group>"; };
 		88002DB21AB91240001787DB /* Album.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Album.swift; sourceTree = "<group>"; };
 		88002DB41AB91240001787DB /* Band.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Band.swift; sourceTree = "<group>"; };
@@ -151,6 +121,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8866317E1AEC8F57001DCAFE /* JSQCoreDataKit.framework in Frameworks */,
+				8866317D1AEC8F53001DCAFE /* ExampleModel.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -158,15 +130,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				88F2E8401ADBA235007920B3 /* JSQCoreDataKit.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		88002D971AB90FE0001787DB /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				88002D9B1AB90FE0001787DB /* ExampleModel.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -179,7 +142,6 @@
 				88002D201AB8F453001787DB /* Example */,
 				88002D361AB8F453001787DB /* ExampleTests */,
 				88002D911AB90FE0001787DB /* ExampleModel */,
-				88002DA01AB90FE0001787DB /* ExampleModelTests */,
 				88002D1F1AB8F453001787DB /* Products */,
 				88002D6B1AB8F58A001787DB /* JSQCoreDataKit.xcodeproj */,
 			);
@@ -191,7 +153,6 @@
 				88002D1E1AB8F453001787DB /* Example.app */,
 				88002D331AB8F453001787DB /* ExampleTests.xctest */,
 				88002D901AB90FE0001787DB /* ExampleModel.framework */,
-				88002D9A1AB90FE0001787DB /* ExampleModelTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -260,23 +221,6 @@
 			isa = PBXGroup;
 			children = (
 				88002D931AB90FE0001787DB /* Info.plist */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		88002DA01AB90FE0001787DB /* ExampleModelTests */ = {
-			isa = PBXGroup;
-			children = (
-				88002DA31AB90FE0001787DB /* ExampleModelTests.swift */,
-				88002DA11AB90FE0001787DB /* Supporting Files */,
-			);
-			path = ExampleModelTests;
-			sourceTree = "<group>";
-		};
-		88002DA11AB90FE0001787DB /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				88002DA21AB90FE0001787DB /* Info.plist */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -351,26 +295,6 @@
 			productReference = 88002D901AB90FE0001787DB /* ExampleModel.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		88002D991AB90FE0001787DB /* ExampleModelTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 88002DAC1AB90FE0001787DB /* Build configuration list for PBXNativeTarget "ExampleModelTests" */;
-			buildPhases = (
-				88002D961AB90FE0001787DB /* Sources */,
-				88002D971AB90FE0001787DB /* Frameworks */,
-				88002D981AB90FE0001787DB /* Resources */,
-				886FC8A31ABF54A7007D445F /* Copy Frameworks */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				88002D9D1AB90FE0001787DB /* PBXTargetDependency */,
-				88002D9F1AB90FE0001787DB /* PBXTargetDependency */,
-			);
-			name = ExampleModelTests;
-			productName = ExampleModelTests;
-			productReference = 88002D9A1AB90FE0001787DB /* ExampleModelTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -389,10 +313,6 @@
 					};
 					88002D8F1AB90FE0001787DB = {
 						CreatedOnToolsVersion = 6.3;
-					};
-					88002D991AB90FE0001787DB = {
-						CreatedOnToolsVersion = 6.3;
-						TestTargetID = 88002D1D1AB8F453001787DB;
 					};
 				};
 			};
@@ -418,7 +338,6 @@
 				88002D1D1AB8F453001787DB /* Example */,
 				88002D321AB8F453001787DB /* ExampleTests */,
 				88002D8F1AB90FE0001787DB /* ExampleModel */,
-				88002D991AB90FE0001787DB /* ExampleModelTests */,
 			);
 		};
 /* End PBXProject section */
@@ -465,13 +384,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		88002D981AB90FE0001787DB /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -503,14 +415,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		88002D961AB90FE0001787DB /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				88002DA41AB90FE0001787DB /* ExampleModelTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -518,16 +422,6 @@
 			isa = PBXTargetDependency;
 			target = 88002D1D1AB8F453001787DB /* Example */;
 			targetProxy = 88002D341AB8F453001787DB /* PBXContainerItemProxy */;
-		};
-		88002D9D1AB90FE0001787DB /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 88002D8F1AB90FE0001787DB /* ExampleModel */;
-			targetProxy = 88002D9C1AB90FE0001787DB /* PBXContainerItemProxy */;
-		};
-		88002D9F1AB90FE0001787DB /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 88002D1D1AB8F453001787DB /* Example */;
-			targetProxy = 88002D9E1AB90FE0001787DB /* PBXContainerItemProxy */;
 		};
 		88002DA61AB90FE0001787DB /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -734,38 +628,6 @@
 			};
 			name = Release;
 		};
-		88002DAD1AB90FE0001787DB /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = ExampleModelTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Example.app/Example";
-			};
-			name = Debug;
-		};
-		88002DAE1AB90FE0001787DB /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = ExampleModelTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Example.app/Example";
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -801,15 +663,6 @@
 			buildConfigurations = (
 				88002DAA1AB90FE0001787DB /* Debug */,
 				88002DAB1AB90FE0001787DB /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		88002DAC1AB90FE0001787DB /* Build configuration list for PBXNativeTarget "ExampleModelTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				88002DAD1AB90FE0001787DB /* Debug */,
-				88002DAE1AB90FE0001787DB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

@@ -18,12 +18,9 @@
 
 import Foundation
 import CoreData
-import JSQCoreDataKit
 
 
-public final class Band: NSManagedObject, CoreDataEntityType {
-
-    public static let entityName: String = "Band"
+public final class Band: NSManagedObject {
 
     @NSManaged public var name: String
 
@@ -41,8 +38,9 @@ public final class Band: NSManagedObject, CoreDataEntityType {
         city: String,
         genre: String) {
 
-            let entity = NSEntityDescription.entityForName(Band.entityName, inManagedObjectContext: context)!
+            let entity = NSEntityDescription.entityForName(ExampleModelEntity.Band, inManagedObjectContext: context)!
             super.init(entity: entity, insertIntoManagedObjectContext: context)
+            
             self.name = name
             self.dateFounded = dateFounded
             self.city = city

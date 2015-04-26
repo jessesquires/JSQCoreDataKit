@@ -27,6 +27,12 @@ public struct ExampleModelProperties {
 }
 
 
+public struct ExampleModelEntity {
+    public static let Band = "Band"
+    public static let Album = "Album"
+}
+
+
 public func newFakeBand(context: NSManagedObjectContext,
     name: String = "Name " + NSUUID().UUIDString,
     dateFounded: NSDate = NSDate(),
@@ -43,5 +49,5 @@ public func newFakeAlbum(context: NSManagedObjectContext,
     dateReleased: NSDate = NSDate(),
     price: NSDecimalNumber = 10.0) -> Album {
 
-    return Album(context: context, title: title, dateReleased: dateReleased, price: price, band: band)
+        return Album(context: context, title: title, dateReleased: dateReleased, price: price, band: band)
 }

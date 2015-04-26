@@ -58,7 +58,7 @@
 		88002D801AB8FF4F001787DB /* CoreDataModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataModel.swift; sourceTree = "<group>"; };
 		88002D811AB8FF4F001787DB /* CoreDataStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 		886FC8961ABF364F007D445F /* ModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModelTests.swift; sourceTree = "<group>"; };
-		886FC8981ABF36A8007D445F /* TestCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TestCase.swift; path = ../TestCase.swift; sourceTree = "<group>"; };
+		886FC8981ABF36A8007D445F /* TestCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestCase.swift; sourceTree = "<group>"; };
 		886FC89A1ABF4091007D445F /* StackTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StackTests.swift; sourceTree = "<group>"; };
 		88824B9C1AE3264C0096F568 /* FetchTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FetchTests.swift; sourceTree = "<group>"; };
 		88824B9F1AE341180096F568 /* DeleteTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeleteTests.swift; sourceTree = "<group>"; };
@@ -133,6 +133,7 @@
 				886FC89A1ABF4091007D445F /* StackTests.swift */,
 				88002D5F1AB8F547001787DB /* Supporting Files */,
 				88B89CF81AEC7E6C001856CE /* Test Fixtures */,
+				886FC8981ABF36A8007D445F /* TestCase.swift */,
 			);
 			path = JSQCoreDataKitTests;
 			sourceTree = "<group>";
@@ -149,7 +150,6 @@
 			isa = PBXGroup;
 			children = (
 				88B89CFC1AEC7EFD001856CE /* MyModel.swift */,
-				886FC8981ABF36A8007D445F /* TestCase.swift */,
 				88B89CF91AEC7E80001856CE /* TestModel.xcdatamodeld */,
 			);
 			path = "Test Fixtures";

@@ -20,11 +20,9 @@ import Foundation
 import CoreData
 
 
-public struct ExampleModelProperties {
-    public let name = "ExampleModel"
-    public let bundle = NSBundle(identifier: "com.hexedbits.ExampleModel")!
-    public init() { }
-}
+public let ModelName = "ExampleModel"
+
+public let ModelBundle = NSBundle(identifier: "com.hexedbits.ExampleModel")!
 
 
 public struct ExampleModelEntity {

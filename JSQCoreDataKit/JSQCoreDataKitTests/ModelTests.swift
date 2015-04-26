@@ -60,9 +60,6 @@ class ModelTests: XCTestCase {
 
         // THEN: the managed object model does not assert
         XCTAssertNotNil(model.managedObjectModel)
-
-        // THEN: the store doesn't need migration
-        XCTAssertFalse(model.modelStoreNeedsMigration)
     }
 
     func test_ThatCoreDataModel_RemoveExistingStore_Succeeds() {

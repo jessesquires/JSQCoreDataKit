@@ -51,11 +51,11 @@ class SaveTests: ModelTestCase {
         }
 
         // WHEN: we attempt to save the context
-        let result = saveContextAndWait(stack.managedObjectContext)
+        let saveResult = saveContextAndWait(stack.managedObjectContext)
 
         // THEN: the save succeeds without an error
-        XCTAssertTrue(result.success)
-        XCTAssertNil(result.error)
+        XCTAssertTrue(saveResult.success, "Save should succeed")
+        XCTAssertNil(saveResult.error, "Save should not error")
 
         self.waitForExpectationsWithTimeout(1, handler: { (error) -> Void in
             XCTAssertNil(error, "Expectation should not error")
@@ -73,8 +73,8 @@ class SaveTests: ModelTestCase {
         saveContext(stack.managedObjectContext, { (result: ContextSaveResult) -> Void in
 
             // THEN: the save operation is ignored, save reports success and no error
-            XCTAssertTrue(result.success)
-            XCTAssertNil(result.error)
+            XCTAssertTrue(result.success, "Save should succeed")
+            XCTAssertNil(result.error, "Save should not error")
 
             saveExpectation.fulfill()
         })
@@ -104,8 +104,8 @@ class SaveTests: ModelTestCase {
         saveContext(stack.managedObjectContext, { (result: ContextSaveResult) -> Void in
 
             // THEN: the save succeeds without an error
-            XCTAssertTrue(result.success)
-            XCTAssertNil(result.error)
+            XCTAssertTrue(result.success, "Save should succeed")
+            XCTAssertNil(result.error, "Save should not error")
 
             saveExpectation.fulfill()
         })

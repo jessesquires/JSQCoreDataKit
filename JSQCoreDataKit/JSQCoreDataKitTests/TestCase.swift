@@ -27,11 +27,10 @@ let modelBundle = NSBundle(forClass: ModelTests.self)
 
 class ModelTestCase: XCTestCase {
 
-    let model = CoreDataModel(name: modelName, bundle: modelBundle)
+    let model = CoreDataModel(name: modelName, bundle: modelBundle, storeDirectoryURL: NSURL())
 
     override func setUp() {
         model.removeExistingModelStore()
-
         super.setUp()
     }
 

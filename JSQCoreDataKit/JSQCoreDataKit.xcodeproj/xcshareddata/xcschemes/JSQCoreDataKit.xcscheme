@@ -28,7 +28,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "88002D591AB8F547001787DB"
+               BlueprintIdentifier = "88E25ABA1AEC95EE008DD916"
                BuildableName = "JSQCoreDataKitTests.xctest"
                BlueprintName = "JSQCoreDataKitTests"
                ReferencedContainer = "container:JSQCoreDataKit.xcodeproj">
@@ -46,7 +46,7 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "88002D591AB8F547001787DB"
+               BlueprintIdentifier = "88E25ABA1AEC95EE008DD916"
                BuildableName = "JSQCoreDataKitTests.xctest"
                BlueprintName = "JSQCoreDataKitTests"
                ReferencedContainer = "container:JSQCoreDataKit.xcodeproj">

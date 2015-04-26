@@ -50,10 +50,8 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let properties = ExampleModelProperties()
-
         // Create model
-        let model = CoreDataModel(name: properties.name, bundle: properties.bundle)
+        let model = CoreDataModel(name: ModelName, bundle: ModelBundle)
 
         // Create stack
         self.stack = CoreDataStack(model: model)

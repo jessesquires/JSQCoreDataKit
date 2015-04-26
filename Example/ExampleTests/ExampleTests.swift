@@ -18,18 +18,12 @@
 
 import XCTest
 import CoreData
-
 import ExampleModel
 
 import JSQCoreDataKit
 
 
-let modelProperties = ExampleModelProperties()
-
-
 class ExampleTests: XCTestCase {
-
-    let model = CoreDataModel(name: modelProperties.name, bundle: modelProperties.bundle)
 
     override func setUp() {
         super.setUp()
@@ -39,17 +33,9 @@ class ExampleTests: XCTestCase {
         super.tearDown()
     }
 
-    func test_ThatCoreDataModel_DoesNotNeedMigration() {
-
-        // GIVEN: a model with 1 version
-
-        // WHEN: we check if it needs migration
-
-        // THEN: the store doesn't need migration
-        XCTAssertFalse(model.modelStoreNeedsMigration)
-    }
-
     func test_ThatFakeBandInserts_Successfully() {
+
+        let model = CoreDataModel(name: ModelName, bundle: ModelBundle)
 
         let stack = CoreDataStack(model: model, storeType: NSInMemoryStoreType)
 
@@ -61,6 +47,8 @@ class ExampleTests: XCTestCase {
     }
 
     func test_ThatFakeAlbumInserts_Successfully() {
+        
+        let model = CoreDataModel(name: ModelName, bundle: ModelBundle)
 
         let stack = CoreDataStack(model: model, storeType: NSInMemoryStoreType)
 

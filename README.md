@@ -1,5 +1,5 @@
 # JSQCoreDataKit
-[![Version Status](http://img.shields.io/cocoapods/v/JSQCoreDataKit.png)][docsLink] [![license MIT](http://img.shields.io/badge/license-MIT-orange.png)][mitLink]
+[![Version Status](http://img.shields.io/cocoapods/v/JSQCoreDataKit.png)][docsLink] [![license MIT](http://img.shields.io/badge/license-MIT-orange.png)][mitLink] [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 
 *A swifter Core Data stack*
 
@@ -26,7 +26,7 @@ This framework aims to do the following:
 
 ## Installation
 
-From [CocoaPods](http://cocoapods.org):
+#### [CocoaPods](http://cocoapods.org)
 
 ````ruby
 use_frameworks!
@@ -38,7 +38,13 @@ pod 'JSQCoreDataKit'
 pod 'JSQCoreDataKit', :git => 'https://github.com/jessesquires/JSQCoreDataKit.git', :branch => 'develop'
 ````
 
-Manually:
+#### [Carthage](https://github.com/Carthage/Carthage)
+
+````bash
+github "jessesquires/JSQCoreDataKit"
+````
+
+#### Manually
 
 1. Clone this repo and add the `JSQCoreDataKit.xcodeproj` to your project
 2. Select your project app target "Build Phases" tab

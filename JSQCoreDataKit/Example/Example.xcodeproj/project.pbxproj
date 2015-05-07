@@ -13,8 +13,6 @@
 		88002D2B1AB8F453001787DB /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 88002D2A1AB8F453001787DB /* Images.xcassets */; };
 		88002D2E1AB8F453001787DB /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 88002D2C1AB8F453001787DB /* LaunchScreen.xib */; };
 		88002D3A1AB8F453001787DB /* ExampleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88002D391AB8F453001787DB /* ExampleTests.swift */; };
-		88002D7A1AB8F637001787DB /* JSQCoreDataKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88002D711AB8F58A001787DB /* JSQCoreDataKit.framework */; };
-		88002D7C1AB8F655001787DB /* JSQCoreDataKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 88002D711AB8F58A001787DB /* JSQCoreDataKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		88002D951AB90FE0001787DB /* ExampleModel.h in Headers */ = {isa = PBXBuildFile; fileRef = 88002D941AB90FE0001787DB /* ExampleModel.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		88002DA71AB90FE0001787DB /* ExampleModel.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88002D901AB90FE0001787DB /* ExampleModel.framework */; };
 		88002DA81AB90FE0001787DB /* ExampleModel.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 88002D901AB90FE0001787DB /* ExampleModel.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -23,10 +21,10 @@
 		88002DB51AB91240001787DB /* Band.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88002DB41AB91240001787DB /* Band.swift */; };
 		88002DB81AB92204001787DB /* ModelUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88002DB71AB92204001787DB /* ModelUtils.swift */; };
 		8866317D1AEC8F53001DCAFE /* ExampleModel.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88002D901AB90FE0001787DB /* ExampleModel.framework */; };
-		8866317E1AEC8F57001DCAFE /* JSQCoreDataKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88002D711AB8F58A001787DB /* JSQCoreDataKit.framework */; };
 		8866317F1AEC8F5D001DCAFE /* ExampleModel.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 88002D901AB90FE0001787DB /* ExampleModel.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		886631801AEC8F61001DCAFE /* JSQCoreDataKit.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 88002D711AB8F58A001787DB /* JSQCoreDataKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		88D7F13A1AEC99C000D62FD2 /* JSQCoreDataKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88D7F1391AEC99C000D62FD2 /* JSQCoreDataKitTests.swift */; };
+		FA6E3A311AFAEC75006E0C18 /* JSQCoreDataKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA6E3A291AFAEBA9006E0C18 /* JSQCoreDataKit.framework */; };
+		FA6E3A321AFAEC75006E0C18 /* JSQCoreDataKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = FA6E3A291AFAEBA9006E0C18 /* JSQCoreDataKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,26 +35,33 @@
 			remoteGlobalIDString = 88002D1D1AB8F453001787DB;
 			remoteInfo = Example;
 		};
-		88002D701AB8F58A001787DB /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 88002D6B1AB8F58A001787DB /* JSQCoreDataKit.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 88002D4F1AB8F546001787DB;
-			remoteInfo = JSQCoreDataKit;
-		};
-		88002D721AB8F58A001787DB /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 88002D6B1AB8F58A001787DB /* JSQCoreDataKit.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 88002D5A1AB8F547001787DB;
-			remoteInfo = JSQCoreDataKitTests;
-		};
 		88002DA51AB90FE0001787DB /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 88002D161AB8F453001787DB /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 88002D8F1AB90FE0001787DB;
 			remoteInfo = ExampleModel;
+		};
+		FA6E3A281AFAEBA9006E0C18 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 88002D6B1AB8F58A001787DB /* JSQCoreDataKit.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 88002D4F1AB8F546001787DB;
+			remoteInfo = JSQCoreDataKit;
+		};
+		FA6E3A2A1AFAEBA9006E0C18 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 88002D6B1AB8F58A001787DB /* JSQCoreDataKit.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 88E25ABB1AEC95EE008DD916;
+			remoteInfo = JSQCoreDataKitTests;
+		};
+		FA6E3A331AFAEC75006E0C18 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 88002D6B1AB8F58A001787DB /* JSQCoreDataKit.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 88002D4E1AB8F546001787DB;
+			remoteInfo = JSQCoreDataKit;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -67,8 +72,8 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				88002D7C1AB8F655001787DB /* JSQCoreDataKit.framework in Embed Frameworks */,
 				88002DA81AB90FE0001787DB /* ExampleModel.framework in Embed Frameworks */,
+				FA6E3A321AFAEC75006E0C18 /* JSQCoreDataKit.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -79,7 +84,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				886631801AEC8F61001DCAFE /* JSQCoreDataKit.framework in Copy Frameworks */,
 				8866317F1AEC8F5D001DCAFE /* ExampleModel.framework in Copy Frameworks */,
 			);
 			name = "Copy Frameworks";
@@ -98,7 +102,7 @@
 		88002D331AB8F453001787DB /* ExampleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ExampleTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		88002D381AB8F453001787DB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		88002D391AB8F453001787DB /* ExampleTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleTests.swift; sourceTree = "<group>"; };
-		88002D6B1AB8F58A001787DB /* JSQCoreDataKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = JSQCoreDataKit.xcodeproj; path = ../JSQCoreDataKit/JSQCoreDataKit.xcodeproj; sourceTree = "<group>"; };
+		88002D6B1AB8F58A001787DB /* JSQCoreDataKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = JSQCoreDataKit.xcodeproj; path = ../JSQCoreDataKit.xcodeproj; sourceTree = "<group>"; };
 		88002D901AB90FE0001787DB /* ExampleModel.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ExampleModel.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		88002D931AB90FE0001787DB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		88002D941AB90FE0001787DB /* ExampleModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ExampleModel.h; sourceTree = "<group>"; };
@@ -114,8 +118,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				88002D7A1AB8F637001787DB /* JSQCoreDataKit.framework in Frameworks */,
 				88002DA71AB90FE0001787DB /* ExampleModel.framework in Frameworks */,
+				FA6E3A311AFAEC75006E0C18 /* JSQCoreDataKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -123,7 +127,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8866317E1AEC8F57001DCAFE /* JSQCoreDataKit.framework in Frameworks */,
 				8866317D1AEC8F53001DCAFE /* ExampleModel.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -198,15 +201,6 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		88002D6C1AB8F58A001787DB /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				88002D711AB8F58A001787DB /* JSQCoreDataKit.framework */,
-				88002D731AB8F58A001787DB /* JSQCoreDataKitTests.xctest */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
 		88002D911AB90FE0001787DB /* ExampleModel */ = {
 			isa = PBXGroup;
 			children = (
@@ -226,6 +220,15 @@
 				88002D931AB90FE0001787DB /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		FA6E3A241AFAEBA9006E0C18 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				FA6E3A291AFAEBA9006E0C18 /* JSQCoreDataKit.framework */,
+				FA6E3A2B1AFAEBA9006E0C18 /* JSQCoreDataKitTests.xctest */,
+			);
+			name = Products;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -255,6 +258,7 @@
 			);
 			dependencies = (
 				88002DA61AB90FE0001787DB /* PBXTargetDependency */,
+				FA6E3A341AFAEC75006E0C18 /* PBXTargetDependency */,
 			);
 			name = Example;
 			productName = Example;
@@ -332,7 +336,7 @@
 			projectDirPath = "";
 			projectReferences = (
 				{
-					ProductGroup = 88002D6C1AB8F58A001787DB /* Products */;
+					ProductGroup = FA6E3A241AFAEBA9006E0C18 /* Products */;
 					ProjectRef = 88002D6B1AB8F58A001787DB /* JSQCoreDataKit.xcodeproj */;
 				},
 			);
@@ -346,18 +350,18 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
-		88002D711AB8F58A001787DB /* JSQCoreDataKit.framework */ = {
+		FA6E3A291AFAEBA9006E0C18 /* JSQCoreDataKit.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
 			path = JSQCoreDataKit.framework;
-			remoteRef = 88002D701AB8F58A001787DB /* PBXContainerItemProxy */;
+			remoteRef = FA6E3A281AFAEBA9006E0C18 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		88002D731AB8F58A001787DB /* JSQCoreDataKitTests.xctest */ = {
+		FA6E3A2B1AFAEBA9006E0C18 /* JSQCoreDataKitTests.xctest */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.cfbundle;
 			path = JSQCoreDataKitTests.xctest;
-			remoteRef = 88002D721AB8F58A001787DB /* PBXContainerItemProxy */;
+			remoteRef = FA6E3A2A1AFAEBA9006E0C18 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
@@ -431,6 +435,11 @@
 			isa = PBXTargetDependency;
 			target = 88002D8F1AB90FE0001787DB /* ExampleModel */;
 			targetProxy = 88002DA51AB90FE0001787DB /* PBXContainerItemProxy */;
+		};
+		FA6E3A341AFAEC75006E0C18 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = JSQCoreDataKit;
+			targetProxy = FA6E3A331AFAEC75006E0C18 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 

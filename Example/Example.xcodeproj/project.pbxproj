@@ -88,7 +88,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		88002D1E1AB8F453001787DB /* Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		88002D1E1AB8F453001787DB /* CoreDataKit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CoreDataKit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		88002D221AB8F453001787DB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		88002D231AB8F453001787DB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		88002D251AB8F453001787DB /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -152,7 +152,7 @@
 		88002D1F1AB8F453001787DB /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				88002D1E1AB8F453001787DB /* Example.app */,
+				88002D1E1AB8F453001787DB /* CoreDataKit.app */,
 				88002D331AB8F453001787DB /* ExampleTests.xctest */,
 				88002D901AB90FE0001787DB /* ExampleModel.framework */,
 			);
@@ -258,7 +258,7 @@
 			);
 			name = Example;
 			productName = Example;
-			productReference = 88002D1E1AB8F453001787DB /* Example.app */;
+			productReference = 88002D1E1AB8F453001787DB /* CoreDataKit.app */;
 			productType = "com.apple.product-type.application";
 		};
 		88002D321AB8F453001787DB /* ExampleTests */ = {
@@ -493,6 +493,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = CoreDataKit;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -531,6 +532,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = CoreDataKit;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
@@ -544,7 +546,7 @@
 				INFOPLIST_FILE = Example/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = CoreDataKit;
 			};
 			name = Debug;
 		};
@@ -555,7 +557,7 @@
 				INFOPLIST_FILE = Example/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = CoreDataKit;
 			};
 			name = Release;
 		};

@@ -9,14 +9,11 @@ Pod::Spec.new do |s|
 
    s.social_media_url = 'https://twitter.com/jesse_squires'
    s.authors = { 'Jesse Squires' => 'jesse.squires.developer@gmail.com' }
-   
+
    s.source = { :git => 'https://github.com/jessesquires/JSQCoreDataKit.git', :tag => s.version }
+   s.source_files = 'JSQCoreDataKit/JSQCoreDataKit/*.swift'
 
    s.platform = :ios, '8.0'
-
-   s.source_files = 'JSQCoreDataKit/JSQCoreDataKit/*.swift'
-   
    s.frameworks = 'Foundation', 'CoreData'
-
    s.requires_arc = true
 end

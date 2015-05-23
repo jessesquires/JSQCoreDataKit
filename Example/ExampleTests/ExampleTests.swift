@@ -39,9 +39,9 @@ class ExampleTests: XCTestCase {
 
         let stack = CoreDataStack(model: model, storeType: NSInMemoryStoreType)
 
-        let band = newFakeBand(stack.managedObjectContext)
+        let band = newFakeBand(stack.context)
 
-        let result = saveContextAndWait(stack.managedObjectContext)
+        let result = saveContextAndWait(stack.context)
         XCTAssertTrue(result.success)
         XCTAssertNil(result.error)
     }
@@ -52,10 +52,10 @@ class ExampleTests: XCTestCase {
 
         let stack = CoreDataStack(model: model, storeType: NSInMemoryStoreType)
 
-        let band = newFakeBand(stack.managedObjectContext)
-        let album = newFakeAlbum(stack.managedObjectContext, band)
+        let band = newFakeBand(stack.context)
+        let album = newFakeAlbum(stack.context, band)
 
-        let result = saveContextAndWait(stack.managedObjectContext)
+        let result = saveContextAndWait(stack.context)
         XCTAssertTrue(result.success)
         XCTAssertNil(result.error)
     }

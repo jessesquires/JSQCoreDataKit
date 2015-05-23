@@ -86,7 +86,7 @@ let privateStack = CoreDataStack(model: model, storeType: NSInMemoryStoreType, o
 
 ````swift
 // Saving returns a tuple (Bool, NSError?)
-let result: ContextSaveResult = saveContextAndWait(stack.managedObjectContext)
+let result: ContextSaveResult = saveContextAndWait(stack.context)
 if !result.success {
     // save failed
     println("Save error: \(result.error)")

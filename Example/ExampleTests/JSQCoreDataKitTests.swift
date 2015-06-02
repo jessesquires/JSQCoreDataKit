@@ -106,7 +106,7 @@ class JSQCoreDataKitTests: XCTestCase {
 
         // THEN: it is setup as expected
         XCTAssertTrue(NSFileManager.defaultManager().fileExistsAtPath(model.storeURL.path!), "Model store should exist on disk")
-        XCTAssertEqual(stack.managedObjectContext.concurrencyType, .MainQueueConcurrencyType)
+        XCTAssertEqual(stack.context.concurrencyType, .MainQueueConcurrencyType)
     }
 
     func test_ThatChildContext_IsCreatedSuccessfully() {
@@ -118,7 +118,7 @@ class JSQCoreDataKitTests: XCTestCase {
         let childContext = stack.childManagedObjectContext(concurrencyType: .PrivateQueueConcurrencyType, mergePolicyType: .ErrorMergePolicyType)
 
         // THEN: it is initialized as expected
-        XCTAssertEqual(childContext.parentContext!, stack.managedObjectContext)
+        XCTAssertEqual(childContext.parentContext!, stack.context)
         XCTAssertEqual(childContext.concurrencyType, .PrivateQueueConcurrencyType)
         XCTAssertEqual(childContext.mergePolicy.mergeType, .ErrorMergePolicyType)
     }

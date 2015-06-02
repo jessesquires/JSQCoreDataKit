@@ -29,7 +29,7 @@ class SaveTests: ModelTestCase {
         let stack = CoreDataStack(model: model, storeType: NSInMemoryStoreType)
 
         // WHEN: we attempt to save the context
-        let result = saveContextAndWait(stack.managedObjectContext)
+        let result = saveContextAndWait(stack.context)
 
         // THEN: the save operation is ignored, save reports success and no error
         XCTAssertTrue(result.success)
@@ -41,17 +41,17 @@ class SaveTests: ModelTestCase {
         // GIVEN: a stack and context with changes
         let stack = CoreDataStack(model: model, storeType: NSInMemoryStoreType)
 
-        MyModel(context: stack.managedObjectContext)
-        MyModel(context: stack.managedObjectContext)
+        MyModel(context: stack.context)
+        MyModel(context: stack.context)
 
         var didSave = false
-        self.expectationForNotification(NSManagedObjectContextDidSaveNotification, object: stack.managedObjectContext) { (notification) -> Bool in
+        self.expectationForNotification(NSManagedObjectContextDidSaveNotification, object: stack.context) { (notification) -> Bool in
             didSave = true
             return true
         }
 
         // WHEN: we attempt to save the context
-        let saveResult = saveContextAndWait(stack.managedObjectContext)
+        let saveResult = saveContextAndWait(stack.context)
 
         // THEN: the save succeeds without an error
         XCTAssertTrue(saveResult.success, "Save should succeed")
@@ -70,7 +70,7 @@ class SaveTests: ModelTestCase {
         let saveExpectation = self.expectationWithDescription("\(__FUNCTION__)")
 
         // WHEN: we attempt to save the context asynchronously
-        saveContext(stack.managedObjectContext, { (result: ContextSaveResult) -> Void in
+        saveContext(stack.context, { (result: ContextSaveResult) -> Void in
 
             // THEN: the save operation is ignored, save reports success and no error
             XCTAssertTrue(result.success, "Save should succeed")
@@ -89,11 +89,11 @@ class SaveTests: ModelTestCase {
         // GIVEN: a stack and context with changes
         let stack = CoreDataStack(model: model, storeType: NSInMemoryStoreType)
 
-        MyModel(context: stack.managedObjectContext)
-        MyModel(context: stack.managedObjectContext)
+        MyModel(context: stack.context)
+        MyModel(context: stack.context)
 
         var didSave = false
-        self.expectationForNotification(NSManagedObjectContextDidSaveNotification, object: stack.managedObjectContext) { (notification) -> Bool in
+        self.expectationForNotification(NSManagedObjectContextDidSaveNotification, object: stack.context) { (notification) -> Bool in
             didSave = true
             return true
         }
@@ -101,7 +101,7 @@ class SaveTests: ModelTestCase {
         let saveExpectation = self.expectationWithDescription("\(__FUNCTION__)")
 
         // WHEN: we attempt to save the context asynchronously
-        saveContext(stack.managedObjectContext, { (result: ContextSaveResult) -> Void in
+        saveContext(stack.context, { (result: ContextSaveResult) -> Void in
 
             // THEN: the save succeeds without an error
             XCTAssertTrue(result.success, "Save should succeed")

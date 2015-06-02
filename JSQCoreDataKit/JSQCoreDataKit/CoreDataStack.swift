@@ -35,7 +35,7 @@ public final class CoreDataStack: Printable {
     public let model: CoreDataModel
 
     ///  The main managed object context for the stack.
-    public let managedObjectContext: NSManagedObjectContext
+    public let context: NSManagedObjectContext
 
     ///  The persistent store coordinator for the stack.
     public let persistentStoreCoordinator: NSPersistentStoreCoordinator
@@ -65,8 +65,8 @@ public final class CoreDataStack: Printable {
             self.persistentStoreCoordinator.addPersistentStoreWithType(storeType, configuration: nil, URL: modelStoreURL, options: options, error: &error)
             assert(error == nil, "*** Error adding persistent store: \(error)")
 
-            self.managedObjectContext = NSManagedObjectContext(concurrencyType: concurrencyType)
-            self.managedObjectContext.persistentStoreCoordinator = self.persistentStoreCoordinator
+            self.context = NSManagedObjectContext(concurrencyType: concurrencyType)
+            self.context.persistentStoreCoordinator = self.persistentStoreCoordinator
     }
 
     // MARK: Child contexts
@@ -83,7 +83,7 @@ public final class CoreDataStack: Printable {
         mergePolicyType: NSMergePolicyType = .MergeByPropertyObjectTrumpMergePolicyType) -> ChildManagedObjectContext {
 
             let childContext = NSManagedObjectContext(concurrencyType: concurrencyType)
-            childContext.parentContext = managedObjectContext
+            childContext.parentContext = context
             childContext.mergePolicy = NSMergePolicy(mergeType: mergePolicyType)
             return childContext
     }

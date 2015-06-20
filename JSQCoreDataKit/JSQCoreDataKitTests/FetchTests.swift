@@ -30,22 +30,20 @@ class FetchTests: ModelTestCase {
         let stack = CoreDataStack(model: model, storeType: NSInMemoryStoreType)
 
         let count = 10
-        for i in 1...count {
+        for _ in 1...count {
             MyModel(context: stack.managedObjectContext)
         }
 
         // WHEN: we execute a fetch request
         let request = FetchRequest<MyModel>(entity: entity(name: MyModelEntityName, context: stack.managedObjectContext))
-        let result = fetch(request: request, inContext: stack.managedObjectContext)
+        let results = try! fetch(request: request, inContext: stack.managedObjectContext)
 
         // THEN: we receive the expected data
-        XCTAssertTrue(result.success, "Fetch should succeed")
-        XCTAssertEqual(result.objects.count, count, "Fetch should return \(count) objects")
-        XCTAssertNil(result.error, "Fetch should not error")
+        XCTAssertEqual(results.count, count, "Fetch should return \(count) objects")
 
-        let saveResult = saveContextAndWait(stack.managedObjectContext)
-        XCTAssertTrue(saveResult.success, "Save should succeed")
-        XCTAssertNil(saveResult.error, "Save should not error")
+        saveContext(stack.managedObjectContext) { error in
+            XCTAssertNil(error, "Save should not error")
+        }
     }
 
     func test_ThatFetchRequest_Succeeds_WithSpecificObject() {
@@ -54,28 +52,25 @@ class FetchTests: ModelTestCase {
         let stack = CoreDataStack(model: model, storeType: NSInMemoryStoreType)
 
         let count = 10
-        for i in 1...count {
+        for _ in 1...count {
             MyModel(context: stack.managedObjectContext)
         }
 
         let myModel = MyModel(context: stack.managedObjectContext)
-        
+
         // WHEN: we execute a fetch request for the specific object
         let request = FetchRequest<MyModel>(entity: entity(name: MyModelEntityName, context: stack.managedObjectContext))
         request.predicate = NSPredicate(format: "myString == %@", myModel.myString)
 
-        let result = fetch(request: request, inContext: stack.managedObjectContext)
-        let firstObject = result.objects.first
-        
-        // THEN: we receive the expected data
-        XCTAssertTrue(result.success, "Fetch should succeed")
-        XCTAssertEqual(result.objects.count, 1, "Fetch should return specific object \(myModel.description)")
-        XCTAssertEqual(result.objects.first!, myModel, "Fetched object should equal expected model")
-        XCTAssertNil(result.error, "Fetch should not error")
+        let results = try! fetch(request: request, inContext: stack.managedObjectContext)
 
-        let saveResult = saveContextAndWait(stack.managedObjectContext)
-        XCTAssertTrue(saveResult.success, "Save should succeed")
-        XCTAssertNil(saveResult.error, "Save should not error")
+        // THEN: we receive the expected data
+        XCTAssertEqual(results.count, 1, "Fetch should return specific object \(myModel.description)")
+        XCTAssertEqual(results.first!, myModel, "Fetched object should equal expected model")
+
+        saveContext(stack.managedObjectContext) { error in
+            XCTAssertNil(error, "Save should not error")
+        }
     }
 
     func test_ThatFetchRequest_Succeeds_WithoutObjects() {
@@ -85,16 +80,14 @@ class FetchTests: ModelTestCase {
 
         // WHEN: we execute a fetch request
         let request = FetchRequest<MyModel>(entity: entity(name: MyModelEntityName, context: stack.managedObjectContext))
-        let result = fetch(request: request, inContext: stack.managedObjectContext)
+        let results = try! fetch(request: request, inContext: stack.managedObjectContext)
 
         // THEN: we receive the expected data
-        XCTAssertTrue(result.success, "Fetch should succeed")
-        XCTAssertEqual(result.objects.count, 0, "Fetch should return 0 objects")
-        XCTAssertNil(result.error, "Fetch should not error")
+        XCTAssertEqual(results.count, 0, "Fetch should return 0 objects")
 
-        let saveResult = saveContextAndWait(stack.managedObjectContext)
-        XCTAssertTrue(saveResult.success, "Save should succeed")
-        XCTAssertNil(saveResult.error, "Save should not error")
+        saveContext(stack.managedObjectContext) { error in
+            XCTAssertNil(error, "Save should not error")
+        }
     }
-
+    
 }

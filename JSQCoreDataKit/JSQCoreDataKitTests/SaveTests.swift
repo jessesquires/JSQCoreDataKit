@@ -27,13 +27,16 @@ class SaveTests: ModelTestCase {
 
         // GIVEN: a stack and context without changes
         let stack = CoreDataStack(model: model, storeType: NSInMemoryStoreType)
+        var didSave = false
 
         // WHEN: we attempt to save the context
-        let result = saveContextAndWait(stack.managedObjectContext)
 
-        // THEN: the save operation is ignored, save reports success and no error
-        XCTAssertTrue(result.success)
-        XCTAssertNil(result.error)
+        // THEN: the save operation is ignored
+        saveContext(stack.managedObjectContext) { error in
+            didSave = true
+        }
+
+        XCTAssertFalse(didSave, "Save should be ignored")
     }
 
     func test_ThatSaveAndWait_WithChanges_Succeeds() {
@@ -51,14 +54,16 @@ class SaveTests: ModelTestCase {
         }
 
         // WHEN: we attempt to save the context
-        let saveResult = saveContextAndWait(stack.managedObjectContext)
 
         // THEN: the save succeeds without an error
-        XCTAssertTrue(saveResult.success, "Save should succeed")
-        XCTAssertNil(saveResult.error, "Save should not error")
+        saveContext(stack.managedObjectContext) { error in
+            XCTAssertNil(error, "Save should not error")
+        }
 
         self.waitForExpectationsWithTimeout(1, handler: { (error) -> Void in
             XCTAssertNil(error, "Expectation should not error")
+
+            XCTAssertTrue(didSave, "Context should be saved")
         })
     }
 
@@ -66,22 +71,15 @@ class SaveTests: ModelTestCase {
 
         // GIVEN: a stack and context without changes
         let stack = CoreDataStack(model: model, storeType: NSInMemoryStoreType)
-
-        let saveExpectation = self.expectationWithDescription("\(__FUNCTION__)")
+        var didSave = false
 
         // WHEN: we attempt to save the context asynchronously
-        saveContext(stack.managedObjectContext, { (result: ContextSaveResult) -> Void in
+        saveContext(stack.managedObjectContext, wait: false) { error in
+            didSave = true
+        }
 
-            // THEN: the save operation is ignored, save reports success and no error
-            XCTAssertTrue(result.success, "Save should succeed")
-            XCTAssertNil(result.error, "Save should not error")
-
-            saveExpectation.fulfill()
-        })
-
-        self.waitForExpectationsWithTimeout(1, handler: { (error) -> Void in
-            XCTAssertNil(error, "Expectation should not error")
-        })
+        // THEN: the save operation is ignored
+        XCTAssertFalse(didSave, "Save should be ignored")
     }
 
     func test_ThatSaveAsync_WithChanges_Succeeds() {
@@ -101,17 +99,17 @@ class SaveTests: ModelTestCase {
         let saveExpectation = self.expectationWithDescription("\(__FUNCTION__)")
 
         // WHEN: we attempt to save the context asynchronously
-        saveContext(stack.managedObjectContext, { (result: ContextSaveResult) -> Void in
+        saveContext(stack.managedObjectContext, wait: false) { error in
 
             // THEN: the save succeeds without an error
-            XCTAssertTrue(result.success, "Save should succeed")
-            XCTAssertNil(result.error, "Save should not error")
+            XCTAssertNil(error, "Save should not error")
 
             saveExpectation.fulfill()
-        })
+        }
 
         self.waitForExpectationsWithTimeout(1, handler: { (error) -> Void in
             XCTAssertNil(error, "Expectation should not error")
+            XCTAssertTrue(didSave, "Context should be saved")
         })
     }
     

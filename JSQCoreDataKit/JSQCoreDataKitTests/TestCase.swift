@@ -27,16 +27,19 @@ let modelBundle = NSBundle(forClass: ModelTests.self)
 
 class ModelTestCase: XCTestCase {
 
-    // We'll be using an in-memory store, thus we don't need an real storeURL
-    let model = CoreDataModel(name: modelName, bundle: modelBundle, storeDirectoryURL: NSURL())
+    // We'll be using an in-memory store, thus we don't need a real storeURL
+    let model = CoreDataModel(name: modelName, bundle: modelBundle, storeDirectory: NSURL())
 
     override func setUp() {
-        model.removeExistingModelStore()
+        do {
+            try model.removeExistingModelStore()
+        } catch { }
+
         super.setUp()
     }
 
     override func tearDown() {
         super.tearDown()
     }
-
+    
 }

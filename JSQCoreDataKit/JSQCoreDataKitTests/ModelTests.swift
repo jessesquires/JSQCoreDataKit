@@ -25,10 +25,11 @@ import JSQCoreDataKit
 class ModelTests: XCTestCase {
 
     override func setUp() {
-
         let model = CoreDataModel(name: modelName, bundle: modelBundle)
 
-        model.removeExistingModelStore()
+        do {
+            try model.removeExistingModelStore()
+        } catch { }
 
         super.setUp()
     }
@@ -49,14 +50,14 @@ class ModelTests: XCTestCase {
 
         // THEN: the store file is in the documents directory
         let storeURLComponents = model.storeURL.pathComponents!
-        XCTAssertEqual(toString(storeURLComponents.last!), model.databaseFileName)
-        XCTAssertEqual(toString(storeURLComponents[storeURLComponents.count - 2]), "Documents")
+        XCTAssertEqual(String(storeURLComponents.last!), model.databaseFileName)
+        XCTAssertEqual(String(storeURLComponents[storeURLComponents.count - 2]), "Documents")
         XCTAssertTrue(model.storeURL.fileURL)
 
         // THEN: the model is in its specified bundle
         let modelURLComponents = model.modelURL.pathComponents!
-        XCTAssertEqual(toString(modelURLComponents.last!), model.name + ".momd")
-        XCTAssertEqual(toString(modelURLComponents[modelURLComponents.count - 2]), model.bundle.bundlePath.lastPathComponent)
+        XCTAssertEqual(String(modelURLComponents.last!), model.name + ".momd")
+        XCTAssertEqual(String(modelURLComponents[modelURLComponents.count - 2]), model.bundle.bundlePath.lastPathComponent)
 
         // THEN: the managed object model does not assert
         XCTAssertNotNil(model.managedObjectModel)
@@ -67,15 +68,20 @@ class ModelTests: XCTestCase {
         // GIVEN: a core data model and stack
         let model = CoreDataModel(name: modelName, bundle: modelBundle)
         let stack = CoreDataStack(model: model)
+        saveContext(stack.managedObjectContext) { error in
+        }
 
         XCTAssertTrue(NSFileManager.defaultManager().fileExistsAtPath(model.storeURL.path!), "Model store should exist on disk")
 
         // WHEN: we remove the existing model store
-        let results = model.removeExistingModelStore()
+        do {
+            try model.removeExistingModelStore()
+        }
+        catch {
+            XCTFail("Removing existing model store should not error.")
+        }
 
         // THEN: the model store is successfully removed
-        XCTAssertTrue(results.success, "Removing store should succeed")
-        XCTAssertNil(results.error, "Removing store should not error")
         XCTAssertFalse(NSFileManager.defaultManager().fileExistsAtPath(model.storeURL.path!), "Model store should not exist on disk")
     }
 
@@ -90,10 +96,16 @@ class ModelTests: XCTestCase {
         XCTAssertFalse(NSFileManager.defaultManager().fileExistsAtPath(model.storeURL.path!), "Model store should not exist on disk")
 
         // WHEN: we attempt to remove the existing model store
-        let results = model.removeExistingModelStore()
-
-        // THEN: then removal fails
-        XCTAssertFalse(results.success, "Removing store should fail")
+        var success = true
+        do {
+            try model.removeExistingModelStore()
+        }
+        catch {
+            success = false
+        }
+        
+        // THEN: then removal is ignored
+        XCTAssertTrue(success, "Removing store should be ignored")
     }
-
+    
 }

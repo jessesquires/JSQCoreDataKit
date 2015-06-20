@@ -11,19 +11,19 @@
 		88002D821AB8FF4F001787DB /* CoreDataExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88002D7F1AB8FF4F001787DB /* CoreDataExtensions.swift */; };
 		88002D831AB8FF4F001787DB /* CoreDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88002D801AB8FF4F001787DB /* CoreDataModel.swift */; };
 		88002D841AB8FF4F001787DB /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88002D811AB8FF4F001787DB /* CoreDataStack.swift */; };
+		883890C11B35F35E00B6D6DE /* JSQCoreDataKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88002D4F1AB8F546001787DB /* JSQCoreDataKit.framework */; };
+		883890C21B35F36400B6D6DE /* JSQCoreDataKit.framework in Embedded Frameworks */ = {isa = PBXBuildFile; fileRef = 88002D4F1AB8F546001787DB /* JSQCoreDataKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		88D7F12A1AEC962500D62FD2 /* DeleteTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88D7F1241AEC962500D62FD2 /* DeleteTests.swift */; };
 		88D7F12B1AEC962500D62FD2 /* FetchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88D7F1251AEC962500D62FD2 /* FetchTests.swift */; };
 		88D7F12C1AEC962500D62FD2 /* ModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88D7F1261AEC962500D62FD2 /* ModelTests.swift */; };
 		88D7F12D1AEC962500D62FD2 /* SaveTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88D7F1271AEC962500D62FD2 /* SaveTests.swift */; };
 		88D7F12F1AEC962500D62FD2 /* TestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88D7F1291AEC962500D62FD2 /* TestCase.swift */; };
-		88D7F1311AEC96B900D62FD2 /* JSQCoreDataKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 88002D4F1AB8F546001787DB /* JSQCoreDataKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		88D7F1361AEC981A00D62FD2 /* MyModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88D7F1331AEC981A00D62FD2 /* MyModel.swift */; };
 		88D7F1371AEC981A00D62FD2 /* TestModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 88D7F1341AEC981A00D62FD2 /* TestModel.xcdatamodeld */; };
-		88E25AC11AEC95EE008DD916 /* JSQCoreDataKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88002D4F1AB8F546001787DB /* JSQCoreDataKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		88E25AC21AEC95EE008DD916 /* PBXContainerItemProxy */ = {
+		88F35AD01B2FA85F00BAB521 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 88002D461AB8F546001787DB /* Project object */;
 			proxyType = 1;
@@ -33,15 +33,15 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		88D7F1301AEC96A500D62FD2 /* Embed Frameworks */ = {
+		883890BF1B35F34B00B6D6DE /* Embedded Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				88D7F1311AEC96B900D62FD2 /* JSQCoreDataKit.framework in Embed Frameworks */,
+				883890C21B35F36400B6D6DE /* JSQCoreDataKit.framework in Embedded Frameworks */,
 			);
-			name = "Embed Frameworks";
+			name = "Embedded Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
@@ -72,11 +72,11 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		88E25AB81AEC95EE008DD916 /* Frameworks */ = {
+		883890C01B35F35300B6D6DE /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				88E25AC11AEC95EE008DD916 /* JSQCoreDataKit.framework in Frameworks */,
+				883890C11B35F35E00B6D6DE /* JSQCoreDataKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -189,14 +189,13 @@
 			buildConfigurationList = 88E25AC41AEC95EE008DD916 /* Build configuration list for PBXNativeTarget "JSQCoreDataKitTests" */;
 			buildPhases = (
 				88E25AB71AEC95EE008DD916 /* Sources */,
-				88E25AB81AEC95EE008DD916 /* Frameworks */,
-				88E25AB91AEC95EE008DD916 /* Resources */,
-				88D7F1301AEC96A500D62FD2 /* Embed Frameworks */,
+				883890C01B35F35300B6D6DE /* Frameworks */,
+				883890BF1B35F34B00B6D6DE /* Embedded Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				88E25AC31AEC95EE008DD916 /* PBXTargetDependency */,
+				88F35AD11B2FA85F00BAB521 /* PBXTargetDependency */,
 			);
 			name = JSQCoreDataKitTests;
 			productName = JSQCoreDataKitTests;
@@ -209,7 +208,8 @@
 		88002D461AB8F546001787DB /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0630;
+				LastSwiftUpdateCheck = 0700;
+				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = "Hexed Bits";
 				TargetAttributes = {
 					88002D4E1AB8F546001787DB = {
@@ -246,13 +246,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		88E25AB91AEC95EE008DD916 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -283,10 +276,10 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		88E25AC31AEC95EE008DD916 /* PBXTargetDependency */ = {
+		88F35AD11B2FA85F00BAB521 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 88002D4E1AB8F546001787DB /* JSQCoreDataKit */;
-			targetProxy = 88E25AC21AEC95EE008DD916 /* PBXContainerItemProxy */;
+			targetProxy = 88F35AD01B2FA85F00BAB521 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -313,6 +306,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -383,16 +377,23 @@
 		88002D661AB8F547001787DB /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ANALYZER_SECURITY_FLOATLOOPCOUNTER = YES;
 				CLANG_ENABLE_MODULES = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				DYLIB_INSTALL_NAME_BASE = "";
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
+				GCC_GENERATE_TEST_COVERAGE_FILES = NO;
+				GCC_TREAT_WARNINGS_AS_ERRORS = YES;
+				GCC_WARN_ABOUT_MISSING_NEWLINE = YES;
+				GCC_WARN_PEDANTIC = NO;
 				INFOPLIST_FILE = JSQCoreDataKit/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited)";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.hexedbits.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -402,16 +403,23 @@
 		88002D671AB8F547001787DB /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ANALYZER_SECURITY_FLOATLOOPCOUNTER = YES;
 				CLANG_ENABLE_MODULES = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				DYLIB_INSTALL_NAME_BASE = "";
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
+				GCC_GENERATE_TEST_COVERAGE_FILES = NO;
+				GCC_TREAT_WARNINGS_AS_ERRORS = YES;
+				GCC_WARN_ABOUT_MISSING_NEWLINE = YES;
+				GCC_WARN_PEDANTIC = NO;
 				INFOPLIST_FILE = JSQCoreDataKit/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited)";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.hexedbits.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 			};
@@ -420,32 +428,30 @@
 		88E25AC51AEC95EE008DD916 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = JSQCoreDataKitTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited)";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.hexedbits.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_INCLUDE_PATHS = "";
 			};
 			name = Debug;
 		};
 		88E25AC61AEC95EE008DD916 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = JSQCoreDataKitTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited)";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.hexedbits.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_INCLUDE_PATHS = "";
 			};
 			name = Release;
 		};

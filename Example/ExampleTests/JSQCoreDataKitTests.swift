@@ -67,7 +67,7 @@ class JSQCoreDataKitTests: XCTestCase {
         // WHEN: we check if it needs migration
 
         // THEN: the store doesn't need migration
-        XCTAssertFalse(model.modelStoreNeedsMigration)
+        XCTAssertFalse(model.needsMigration)
     }
 
     func test_ThatCoreDataModel_InitializesSuccessfully() {
@@ -99,7 +99,7 @@ class JSQCoreDataKitTests: XCTestCase {
         XCTAssertNotNil(model.managedObjectModel)
 
         // THEN: the store doesn't need migration
-        XCTAssertFalse(model.modelStoreNeedsMigration)
+        XCTAssertFalse(model.needsMigration)
     }
 
     func test_ThatCoreDataStack_InitializesSuccessfully() {

@@ -75,7 +75,7 @@ public struct CoreDataModel: CustomStringConvertible {
     and returns whether or not a migration is needed.
     Returns `true` if the store requires a migration, `false` otherwise.
     */
-    public var modelStoreNeedsMigration: Bool {
+    public var needsMigration: Bool {
         get {
             do {
                 let sourceMetaData = try NSPersistentStoreCoordinator.metadataForPersistentStoreOfType(NSSQLiteStoreType, URL: storeURL, options: nil)
@@ -124,7 +124,7 @@ public struct CoreDataModel: CustomStringConvertible {
     /// :nodoc:
     public var description: String {
         get {
-            return "<\(CoreDataModel.self): name=\(name), needsMigration=\(modelStoreNeedsMigration), databaseFileName=\(databaseFileName), modelURL=\(modelURL), storeURL=\(storeURL)>"
+            return "<\(CoreDataModel.self): name=\(name), needsMigration=\(needsMigration), databaseFileName=\(databaseFileName), modelURL=\(modelURL), storeURL=\(storeURL)>"
         }
     }
 

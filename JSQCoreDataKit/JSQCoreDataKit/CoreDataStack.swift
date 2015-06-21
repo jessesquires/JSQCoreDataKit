@@ -35,8 +35,8 @@ public final class CoreDataStack: CustomStringConvertible {
     /// The model for the stack.
     public let model: CoreDataModel
 
-    /// The main managed object context for the stack.
-    public let managedObjectContext: NSManagedObjectContext
+    ///  The main managed object context for the stack.
+    public let context: NSManagedObjectContext
 
     /// The persistent store coordinator for the stack.
     public let persistentStoreCoordinator: NSPersistentStoreCoordinator
@@ -72,8 +72,8 @@ public final class CoreDataStack: CustomStringConvertible {
                 fatalError("*** Error adding persistent store: \(error)")
             }
 
-            managedObjectContext = NSManagedObjectContext(concurrencyType: concurrencyType)
-            managedObjectContext.persistentStoreCoordinator = persistentStoreCoordinator
+            context = NSManagedObjectContext(concurrencyType: concurrencyType)
+            context.persistentStoreCoordinator = persistentStoreCoordinator
     }
 
     // MARK: Child contexts
@@ -90,7 +90,7 @@ public final class CoreDataStack: CustomStringConvertible {
         mergePolicyType: NSMergePolicyType = .MergeByPropertyObjectTrumpMergePolicyType) -> ChildManagedObjectContext {
 
             let childContext = NSManagedObjectContext(concurrencyType: concurrencyType)
-            childContext.parentContext = managedObjectContext
+            childContext.parentContext = context
             childContext.mergePolicy = NSMergePolicy(mergeType: mergePolicyType)
             return childContext
     }

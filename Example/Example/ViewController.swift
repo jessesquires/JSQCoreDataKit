@@ -56,7 +56,7 @@ class ViewController: UIViewController {
         // Create stack
         stack = CoreDataStack(model: model)
 
-        saveContext(stack!.managedObjectContext) { (error: NSError?) in
+        saveContext(stack!.context) { (error: NSError?) in
             // perform post save operations
             // handle error, if any
         }

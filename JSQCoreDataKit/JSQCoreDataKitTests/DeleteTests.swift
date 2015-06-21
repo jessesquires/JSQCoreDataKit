@@ -32,21 +32,21 @@ class DeleteTests: ModelTestCase {
         let count = 10
         var objects = [MyModel]()
         for _ in 1...count {
-            objects.append(MyModel(context: stack.managedObjectContext))
+            objects.append(MyModel(context: stack.context))
         }
 
-        let request = FetchRequest<MyModel>(entity: entity(name: MyModelEntityName, context: stack.managedObjectContext))
-        let results = try! fetch(request: request, inContext: stack.managedObjectContext)
+        let request = FetchRequest<MyModel>(entity: entity(name: MyModelEntityName, context: stack.context))
+        let results = try! fetch(request: request, inContext: stack.context)
         XCTAssertEqual(results.count, count)
 
         // WHEN: we delete the objects
-        deleteObjects(objects, inContext: stack.managedObjectContext)
+        deleteObjects(objects, inContext: stack.context)
 
         // THEN: the objects are removed from the context
-        let resultAfterDelete = try! fetch(request: request, inContext: stack.managedObjectContext)
+        let resultAfterDelete = try! fetch(request: request, inContext: stack.context)
         XCTAssertEqual(resultAfterDelete.count, 0, "Fetch should return 0 objects")
 
-        saveContext(stack.managedObjectContext) { error in
+        saveContext(stack.context) { error in
             XCTAssertNil(error, "Save should not error")
         }
     }
@@ -59,33 +59,33 @@ class DeleteTests: ModelTestCase {
         let count = 10
         var objects = [MyModel]()
         for _ in 1..<count {
-            objects.append(MyModel(context: stack.managedObjectContext))
+            objects.append(MyModel(context: stack.context))
         }
 
-        let myModel = MyModel(context: stack.managedObjectContext)
+        let myModel = MyModel(context: stack.context)
 
-        let request = FetchRequest<MyModel>(entity: entity(name: MyModelEntityName, context: stack.managedObjectContext))
-        let results = try! fetch(request: request, inContext: stack.managedObjectContext)
+        let request = FetchRequest<MyModel>(entity: entity(name: MyModelEntityName, context: stack.context))
+        let results = try! fetch(request: request, inContext: stack.context)
         XCTAssertEqual(results.count, count, "Fetch should return all \(count) objects")
 
-        let requestForObject = FetchRequest<MyModel>(entity: entity(name: MyModelEntityName, context: stack.managedObjectContext))
+        let requestForObject = FetchRequest<MyModel>(entity: entity(name: MyModelEntityName, context: stack.context))
         requestForObject.predicate = NSPredicate(format: "myString == %@", myModel.myString)
 
-        let resultForObject = try! fetch(request: requestForObject, inContext: stack.managedObjectContext)
+        let resultForObject = try! fetch(request: requestForObject, inContext: stack.context)
         XCTAssertEqual(resultForObject.count, 1, "Fetch should return specific object \(myModel.description)")
         XCTAssertEqual(resultForObject.first!, myModel, "Fetched object should equal expected model")
 
         // WHEN: we delete a specific object
-        deleteObjects([myModel], inContext: stack.managedObjectContext)
+        deleteObjects([myModel], inContext: stack.context)
 
         // THEN: the specific object is removed from the context
-        let resultAfterDelete = try! fetch(request: request, inContext: stack.managedObjectContext)
+        let resultAfterDelete = try! fetch(request: request, inContext: stack.context)
         XCTAssertEqual(resultAfterDelete.count, count - 1, "Fetch should return remaining objects")
 
-        let resultForObjectAfterDelete = try! fetch(request: requestForObject, inContext: stack.managedObjectContext)
+        let resultForObjectAfterDelete = try! fetch(request: requestForObject, inContext: stack.context)
         XCTAssertEqual(resultForObjectAfterDelete.count, 0, "Fetch for specific object should return no objects")
 
-        saveContext(stack.managedObjectContext) { error in
+        saveContext(stack.context) { error in
             XCTAssertNil(error, "Save should not error")
         }
     }
@@ -96,10 +96,10 @@ class DeleteTests: ModelTestCase {
         let stack = CoreDataStack(model: model, storeType: NSInMemoryStoreType)
 
         // WHEN: we delete an empty array of objects
-        deleteObjects([], inContext: stack.managedObjectContext)
+        deleteObjects([], inContext: stack.context)
 
         // THEN: the operation is ignored
-        saveContext(stack.managedObjectContext) { error in
+        saveContext(stack.context) { error in
             XCTAssertNil(error, "Save should not error")
         }
     }

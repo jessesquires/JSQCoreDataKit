@@ -31,17 +31,17 @@ class FetchTests: ModelTestCase {
 
         let count = 10
         for _ in 1...count {
-            MyModel(context: stack.managedObjectContext)
+            MyModel(context: stack.context)
         }
 
         // WHEN: we execute a fetch request
-        let request = FetchRequest<MyModel>(entity: entity(name: MyModelEntityName, context: stack.managedObjectContext))
-        let results = try! fetch(request: request, inContext: stack.managedObjectContext)
+        let request = FetchRequest<MyModel>(entity: entity(name: MyModelEntityName, context: stack.context))
+        let results = try! fetch(request: request, inContext: stack.context)
 
         // THEN: we receive the expected data
         XCTAssertEqual(results.count, count, "Fetch should return \(count) objects")
 
-        saveContext(stack.managedObjectContext) { error in
+        saveContext(stack.context) { error in
             XCTAssertNil(error, "Save should not error")
         }
     }
@@ -53,22 +53,22 @@ class FetchTests: ModelTestCase {
 
         let count = 10
         for _ in 1...count {
-            MyModel(context: stack.managedObjectContext)
+            MyModel(context: stack.context)
         }
 
-        let myModel = MyModel(context: stack.managedObjectContext)
-
+        let myModel = MyModel(context: stack.context)
+        
         // WHEN: we execute a fetch request for the specific object
-        let request = FetchRequest<MyModel>(entity: entity(name: MyModelEntityName, context: stack.managedObjectContext))
+        let request = FetchRequest<MyModel>(entity: entity(name: MyModelEntityName, context: stack.context))
         request.predicate = NSPredicate(format: "myString == %@", myModel.myString)
 
-        let results = try! fetch(request: request, inContext: stack.managedObjectContext)
+        let results = try! fetch(request: request, inContext: stack.context)
 
         // THEN: we receive the expected data
         XCTAssertEqual(results.count, 1, "Fetch should return specific object \(myModel.description)")
         XCTAssertEqual(results.first!, myModel, "Fetched object should equal expected model")
 
-        saveContext(stack.managedObjectContext) { error in
+        saveContext(stack.context) { error in
             XCTAssertNil(error, "Save should not error")
         }
     }
@@ -79,13 +79,13 @@ class FetchTests: ModelTestCase {
         let stack = CoreDataStack(model: model, storeType: NSInMemoryStoreType)
 
         // WHEN: we execute a fetch request
-        let request = FetchRequest<MyModel>(entity: entity(name: MyModelEntityName, context: stack.managedObjectContext))
-        let results = try! fetch(request: request, inContext: stack.managedObjectContext)
+        let request = FetchRequest<MyModel>(entity: entity(name: MyModelEntityName, context: stack.context))
+        let results = try! fetch(request: request, inContext: stack.context)
 
         // THEN: we receive the expected data
         XCTAssertEqual(results.count, 0, "Fetch should return 0 objects")
 
-        saveContext(stack.managedObjectContext) { error in
+        saveContext(stack.context) { error in
             XCTAssertNil(error, "Save should not error")
         }
     }

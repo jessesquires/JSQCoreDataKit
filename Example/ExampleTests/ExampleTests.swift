@@ -39,9 +39,9 @@ class ExampleTests: XCTestCase {
 
         let stack = CoreDataStack(model: model, storeType: NSInMemoryStoreType)
 
-        newFakeBand(stack.managedObjectContext)
+        newFakeBand(stack.context)
 
-        saveContext(stack.managedObjectContext) { error in
+        saveContext(stack.context) { error in
             XCTAssertNil(error, "Save should not error")
         }
     }
@@ -52,10 +52,10 @@ class ExampleTests: XCTestCase {
 
         let stack = CoreDataStack(model: model, storeType: NSInMemoryStoreType)
 
-        let band = newFakeBand(stack.managedObjectContext)
-        newFakeAlbum(stack.managedObjectContext, band: band)
+        let band = newFakeBand(stack.context)
+        newFakeAlbum(stack.context, band: band)
 
-        saveContext(stack.managedObjectContext) { error in
+        saveContext(stack.context) { error in
             XCTAssertNil(error, "Save should not error")
         }
     }

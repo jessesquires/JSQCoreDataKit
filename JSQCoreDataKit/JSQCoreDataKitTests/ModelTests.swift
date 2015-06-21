@@ -68,7 +68,7 @@ class ModelTests: XCTestCase {
         // GIVEN: a core data model and stack
         let model = CoreDataModel(name: modelName, bundle: modelBundle)
         let stack = CoreDataStack(model: model)
-        saveContext(stack.managedObjectContext) { error in
+        saveContext(stack.context) { error in
         }
 
         XCTAssertTrue(NSFileManager.defaultManager().fileExistsAtPath(model.storeURL.path!), "Model store should exist on disk")

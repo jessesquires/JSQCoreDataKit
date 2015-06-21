@@ -72,8 +72,8 @@ public final class CoreDataStack: CustomStringConvertible {
                 fatalError("*** Error adding persistent store: \(error)")
             }
 
-            self.context = NSManagedObjectContext(concurrencyType: concurrencyType)
-            self.context.persistentStoreCoordinator = self.persistentStoreCoordinator
+            context = NSManagedObjectContext(concurrencyType: concurrencyType)
+            context.persistentStoreCoordinator = persistentStoreCoordinator
     }
 
     // MARK: Child contexts

@@ -35,11 +35,11 @@ public final class CoreDataStack: CustomStringConvertible {
     /// The model for the stack.
     public let model: CoreDataModel
 
-    ///  The main managed object context for the stack.
+    /// The main managed object context for the stack.
     public let context: NSManagedObjectContext
 
     /// The persistent store coordinator for the stack.
-    public let persistentStoreCoordinator: NSPersistentStoreCoordinator
+    public let storeCoordinator: NSPersistentStoreCoordinator
 
     // MARK: Initialization
 
@@ -62,18 +62,18 @@ public final class CoreDataStack: CustomStringConvertible {
         concurrencyType: NSManagedObjectContextConcurrencyType = .MainQueueConcurrencyType) {
 
             self.model = model
-            persistentStoreCoordinator = NSPersistentStoreCoordinator(managedObjectModel: model.managedObjectModel)
+            storeCoordinator = NSPersistentStoreCoordinator(managedObjectModel: model.managedObjectModel)
 
             do {
                 let modelStoreURL: NSURL? = (storeType == NSInMemoryStoreType) ? nil : model.storeURL
-                try persistentStoreCoordinator.addPersistentStoreWithType(storeType, configuration: nil, URL: modelStoreURL, options: options)
+                try storeCoordinator.addPersistentStoreWithType(storeType, configuration: nil, URL: modelStoreURL, options: options)
             }
             catch {
                 fatalError("*** Error adding persistent store: \(error)")
             }
 
             context = NSManagedObjectContext(concurrencyType: concurrencyType)
-            context.persistentStoreCoordinator = persistentStoreCoordinator
+            context.persistentStoreCoordinator = storeCoordinator
     }
 
     // MARK: Child contexts

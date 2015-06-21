@@ -29,14 +29,16 @@ import JSQCoreDataKit
 ///
 ///  This is a workaround for issues with xcodebuild, xctool, and travis-ci
 ///
-///  Failed to query the list of test cases in the test bundle: 
+///  Failed to query the list of test cases in the test bundle:
 ///  /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/sim:
 ///  No simulator devices appear to be running.  Setting data directories to /var/empty.
-///  
+///
 ///  DYLD_INSERT_LIBRARIES contains possible bad values. Caller beware: /usr/local/Cellar/xctool/0.2.3/libexec/lib/otest-query-lib-ios.dylib
-///  
-///  assertion failed: *** Error finding documents directory: Optional(Error Domain=NSCocoaErrorDomain Code=513 "The operation couldn’t be completed. (Cocoa error 513.)"
-///  UserInfo=0x7bb40ae0 {NSFilePath=/var/empty/Documents, NSUnderlyingError=0x7bb40a10 "The operation couldn’t be completed. Permission denied"}): 
+///
+///  assertion failed: *** Error finding documents directory:
+///  Optional(Error Domain=NSCocoaErrorDomain Code=513 "The operation couldn’t be completed. (Cocoa error 513.)"
+///
+///  UserInfo=0x7bb40ae0 {NSFilePath=/var/empty/Documents, NSUnderlyingError=0x7bb40a10 "The operation couldn’t be completed. Permission denied"}):
 ///  file /Users/jesse/GitHub/JSQCoreDataKit/JSQCoreDataKit/JSQCoreDataKit/CoreDataModel.swift, line 136
 ///
 ///  --------------------------------------------
@@ -47,7 +49,10 @@ class JSQCoreDataKitTests: XCTestCase {
     let model = CoreDataModel(name: ModelName, bundle: ModelBundle)
 
     override func setUp() {
-        model.removeExistingModelStore()
+        do {
+            try  model.removeExistingModelStore()
+        } catch { }
+
         super.setUp()
     }
 
@@ -62,7 +67,7 @@ class JSQCoreDataKitTests: XCTestCase {
         // WHEN: we check if it needs migration
 
         // THEN: the store doesn't need migration
-        XCTAssertFalse(model.modelStoreNeedsMigration)
+        XCTAssertFalse(model.needsMigration)
     }
 
     func test_ThatCoreDataModel_InitializesSuccessfully() {
@@ -81,20 +86,20 @@ class JSQCoreDataKitTests: XCTestCase {
 
         // THEN: the store file is in the documents directory
         let storeURLComponents = model.storeURL.pathComponents!
-        XCTAssertEqual(toString(storeURLComponents.last!), model.databaseFileName)
-        XCTAssertEqual(toString(storeURLComponents[storeURLComponents.count - 2]), "Documents")
+        XCTAssertEqual(String(storeURLComponents.last!), model.databaseFileName)
+        XCTAssertEqual(String(storeURLComponents[storeURLComponents.count - 2]), "Documents")
         XCTAssertTrue(model.storeURL.fileURL)
 
         // THEN: the model is in its specified bundle
         let modelURLComponents = model.modelURL.pathComponents!
-        XCTAssertEqual(toString(modelURLComponents.last!), model.name + ".momd")
-        XCTAssertEqual(toString(modelURLComponents[modelURLComponents.count - 2]), model.bundle.bundlePath.lastPathComponent)
+        XCTAssertEqual(String(modelURLComponents.last!), model.name + ".momd")
+        XCTAssertEqual(String(modelURLComponents[modelURLComponents.count - 2]), model.bundle.bundlePath.lastPathComponent)
 
         // THEN: the managed object model does not assert
         XCTAssertNotNil(model.managedObjectModel)
 
         // THEN: the store doesn't need migration
-        XCTAssertFalse(model.modelStoreNeedsMigration)
+        XCTAssertFalse(model.needsMigration)
     }
 
     func test_ThatCoreDataStack_InitializesSuccessfully() {

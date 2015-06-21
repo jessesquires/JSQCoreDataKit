@@ -39,11 +39,11 @@ class ExampleTests: XCTestCase {
 
         let stack = CoreDataStack(model: model, storeType: NSInMemoryStoreType)
 
-        let band = newFakeBand(stack.context)
+        newFakeBand(stack.managedObjectContext)
 
-        let result = saveContextAndWait(stack.context)
-        XCTAssertTrue(result.success)
-        XCTAssertNil(result.error)
+        saveContext(stack.managedObjectContext) { error in
+            XCTAssertNil(error, "Save should not error")
+        }
     }
 
     func test_ThatFakeAlbumInserts_Successfully() {
@@ -52,12 +52,12 @@ class ExampleTests: XCTestCase {
 
         let stack = CoreDataStack(model: model, storeType: NSInMemoryStoreType)
 
-        let band = newFakeBand(stack.context)
-        let album = newFakeAlbum(stack.context, band)
+        let band = newFakeBand(stack.managedObjectContext)
+        newFakeAlbum(stack.managedObjectContext, band: band)
 
-        let result = saveContextAndWait(stack.context)
-        XCTAssertTrue(result.success)
-        XCTAssertNil(result.error)
+        saveContext(stack.managedObjectContext) { error in
+            XCTAssertNil(error, "Save should not error")
+        }
     }
-    
+
 }

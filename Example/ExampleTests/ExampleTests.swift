@@ -48,7 +48,7 @@ class ExampleTests: XCTestCase {
 
     func test_ThatFakeAlbumInserts_Successfully() {
         
-        let model = CoreDataModel(inMemoryName: ModelBundle, bundle: ModelBundle)
+        let model = CoreDataModel(inMemoryName: ModelName, bundle: ModelBundle)
 
         let stack = CoreDataStack(model: model)
 

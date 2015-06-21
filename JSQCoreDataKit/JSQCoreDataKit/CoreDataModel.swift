@@ -23,14 +23,26 @@ import CoreData
 /// Describes a Core Data persistent store type.
 public enum StoreType: CustomStringConvertible {
 
-    /// The SQLite database store type.
-    case SQLite
+    /// The SQLite database store type. The associated file URL specifies the directory for the store.
+    case SQLite (NSURL)
 
-    /// The binary store type.
-    case Binary
+    /// The binary store type. The associated file URL specifies the directory for the store.
+    case Binary (NSURL)
 
     /// The in-memory store type.
     case InMemory
+
+    /**
+    - returns: The file URL specifying the directory in which the store is located. 
+               If the store is in-memory, then this value will be `nil`.
+    */
+    public func storeDirectory() -> NSURL? {
+        switch self {
+        case let .SQLite(url): return url
+        case let .Binary(url): return url
+        case .InMemory: return nil
+        }
+    }
 
     /// :nodoc:
     public var description: String {
@@ -63,18 +75,12 @@ public struct CoreDataModel: CustomStringConvertible {
     public let bundle: NSBundle
 
     /**
-    The file URL specifying the directory in which the store is located.
-    If the store is in-memory, then this value will be `nil`.
-    */
-    public let storeDirectory: NSURL?
-
-    /**
     The file URL specifying the full path to the store.
     If the store is in-memory, then this value will be `nil`.
     */
     public var storeURL: NSURL? {
         get {
-            return storeDirectory?.URLByAppendingPathComponent(databaseFileName)
+            return storeType.storeDirectory()?.URLByAppendingPathComponent(databaseFileName)
         }
     }
 
@@ -134,17 +140,15 @@ public struct CoreDataModel: CustomStringConvertible {
     Constructs a new `CoreDataModel` instance with the specified name and bundle.
 
     - parameter name:           The name of the Core Data model.
-    - parameter storeType:      The store type for the Core Data model. The default is `.SQLite`.
+    - parameter storeType:      The store type for the Core Data model. The default is `.SQLite`, with the user's documents directory.
     - parameter bundle:         The bundle in which the model is located. The default is the main bundle.
-    - parameter storeDirectory: The directory in which the model is located. The default is the user's documents directory.
 
     - returns: A new `CoreDataModel` instance.
     */
-    public init(name: String, storeType: StoreType = .SQLite, bundle: NSBundle = NSBundle.mainBundle(), storeDirectory: NSURL? = documentsDirectoryURL()) {
+    public init(name: String, storeType: StoreType = .SQLite(DocumentsDirectoryURL()), bundle: NSBundle = .mainBundle()) {
         self.name = name
         self.storeType = storeType
         self.bundle = bundle
-        self.storeDirectory = storeDirectory
     }
 
     /**
@@ -155,8 +159,8 @@ public struct CoreDataModel: CustomStringConvertible {
 
     - returns: A new `CoreDataModel` instance.
     */
-    public init(inMemoryName name: String, bundle: NSBundle = NSBundle.mainBundle()) {
-        self.init(name: name, storeType: .InMemory, bundle: bundle, storeDirectory: nil)
+    public init(inMemoryName name: String, bundle: NSBundle = .mainBundle()) {
+        self.init(name: name, storeType: .InMemory, bundle: bundle)
     }
 
     // MARK: Methods
@@ -178,7 +182,7 @@ public struct CoreDataModel: CustomStringConvertible {
     /// :nodoc:
     public var description: String {
         get {
-            return "<\(CoreDataModel.self): name=\(name), needsMigration=\(needsMigration), modelURL=\(modelURL), storeURL=\(storeURL)>"
+            return "<\(CoreDataModel.self): name=\(name), storeType=\(storeType) needsMigration=\(needsMigration), modelURL=\(modelURL), storeURL=\(storeURL)>"
         }
     }
 
@@ -186,7 +190,7 @@ public struct CoreDataModel: CustomStringConvertible {
 
 // MARK: Private
 
-private func documentsDirectoryURL() -> NSURL {
+private func DocumentsDirectoryURL() -> NSURL {
     do {
         return try NSFileManager.defaultManager().URLForDirectory(.DocumentDirectory, inDomain: .UserDomainMask, appropriateForURL: nil, create: true)
     }

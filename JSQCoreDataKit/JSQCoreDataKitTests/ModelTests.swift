@@ -39,7 +39,7 @@ class ModelTests: XCTestCase {
         // GIVEN: a model name and bundle
 
         // WHEN: we create a model
-        let model = CoreDataModel(name: modelName, storeType: .SQLite, bundle: modelBundle)
+        let model = CoreDataModel(name: modelName, bundle: modelBundle)
 
         // THEN: the model has the correct name and bundle
         XCTAssertEqual(model.name, modelName)
@@ -66,7 +66,7 @@ class ModelTests: XCTestCase {
     func test_ThatSQLiteModel_RemoveExistingStore_Succeeds() {
 
         // GIVEN: a core data model and stack
-        let model = CoreDataModel(name: modelName, storeType: .SQLite, bundle: modelBundle)
+        let model = CoreDataModel(name: modelName, bundle: modelBundle)
         let stack = CoreDataStack(model: model)
         saveContext(stack.context) { error in
         }
@@ -88,7 +88,7 @@ class ModelTests: XCTestCase {
     func test_ThatSQLiteModel_RemoveExistingStore_Fails() {
 
         // GIVEN: a core data model
-        let model = CoreDataModel(name: modelName, storeType: .SQLite, bundle: modelBundle)
+        let model = CoreDataModel(name: modelName, bundle: modelBundle)
 
         // WHEN: we do not create a core data stack
 
@@ -109,7 +109,7 @@ class ModelTests: XCTestCase {
     }
 
     func test_ThatModel_HasDescription() {
-        let model = CoreDataModel(name: modelName, storeType: .SQLite, bundle: modelBundle)
+        let model = CoreDataModel(name: modelName, bundle: modelBundle)
         XCTAssertNotNil(model.description)
         print("Description = \(model.description)")
     }

@@ -23,30 +23,48 @@ import JSQCoreDataKit
 
 
 class StackTests: XCTestCase {
-    
-    override func setUp() {
-        let model = CoreDataModel(name: modelName, bundle: modelBundle)
 
-        do {
-            try model.removeExistingModelStore()
-        } catch { }
+    func test_ThatSQLiteStack_InitializesSuccessfully() {
 
-        super.setUp()
-    }
-
-    func test_ThatStack_InitializesSuccessfully() {
         // GIVEN: a SQLite model
-        let model = CoreDataModel(name: modelName, bundle: modelBundle)
+        let sqliteModel = CoreDataModel(name: modelName, bundle: modelBundle)
 
         // WHEN: we create a stack
-        let stack = CoreDataStack(model: model)
+        let stack = CoreDataStack(model: sqliteModel)
 
         // THEN: it is setup as expected
-        XCTAssertTrue(NSFileManager.defaultManager().fileExistsAtPath(model.storeURL!.path!), "Model store should exist on disk")
+        XCTAssertTrue(NSFileManager.defaultManager().fileExistsAtPath(sqliteModel.storeURL!.path!), "Model store should exist on disk")
         XCTAssertEqual(stack.context.concurrencyType, .MainQueueConcurrencyType)
     }
 
+    func test_ThatBinaryStack_InitializesSuccessfully() {
+
+        // GIVEN: a binary model
+        let binaryModel = CoreDataModel(name: modelName, storeType: .Binary(NSURL(fileURLWithPath: NSTemporaryDirectory())), bundle: modelBundle)
+
+        // WHEN: we create a stack
+        let stack = CoreDataStack(model: binaryModel)
+
+        // THEN: it is setup as expected
+        XCTAssertTrue(NSFileManager.defaultManager().fileExistsAtPath(binaryModel.storeURL!.path!), "Model store should exist on disk")
+        XCTAssertEqual(stack.context.concurrencyType, .MainQueueConcurrencyType)
+    }
+
+    func test_ThatInMemoryStack_InitializesSuccessfully() {
+
+        // GIVEN: a in-memory model
+        let inMemoryModel = CoreDataModel(name: modelName, storeType: .InMemory, bundle: modelBundle)
+
+        // WHEN: we create a stack
+        let stack = CoreDataStack(model: inMemoryModel, options: nil, concurrencyType: .PrivateQueueConcurrencyType)
+
+        // THEN: it is setup as expected
+        XCTAssertNil(inMemoryModel.storeURL, "Model store should not exist on disk")
+        XCTAssertEqual(stack.context.concurrencyType, .PrivateQueueConcurrencyType)
+    }
+
     func test_ThatChildContext_IsCreatedSuccessfully() {
+
         // GIVEN: a model and stack
         let model = CoreDataModel(name: modelName, bundle: modelBundle)
         let stack = CoreDataStack(model: model)
@@ -59,12 +77,12 @@ class StackTests: XCTestCase {
         XCTAssertEqual(childContext.concurrencyType, .PrivateQueueConcurrencyType)
         XCTAssertEqual(childContext.mergePolicy.mergeType, .ErrorMergePolicyType)
     }
-    
+
     func test_ThatStack_HasDescription() {
         let model = CoreDataModel(name: modelName, bundle: modelBundle)
         let stack = CoreDataStack(model: model)
         XCTAssertNotNil(stack.description)
         print("Description = \(stack.description)")
     }
-
+    
 }

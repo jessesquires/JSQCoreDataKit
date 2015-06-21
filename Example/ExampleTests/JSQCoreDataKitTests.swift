@@ -85,10 +85,10 @@ class JSQCoreDataKitTests: XCTestCase {
         XCTAssertEqual(model.databaseFileName, model.name + ".sqlite")
 
         // THEN: the store file is in the documents directory
-        let storeURLComponents = model.storeURL.pathComponents!
+        let storeURLComponents = model.storeURL!.pathComponents!
         XCTAssertEqual(String(storeURLComponents.last!), model.databaseFileName)
         XCTAssertEqual(String(storeURLComponents[storeURLComponents.count - 2]), "Documents")
-        XCTAssertTrue(model.storeURL.fileURL)
+        XCTAssertTrue(model.storeURL!.fileURL)
 
         // THEN: the model is in its specified bundle
         let modelURLComponents = model.modelURL.pathComponents!
@@ -100,32 +100,6 @@ class JSQCoreDataKitTests: XCTestCase {
 
         // THEN: the store doesn't need migration
         XCTAssertFalse(model.needsMigration)
-    }
-
-    func test_ThatCoreDataStack_InitializesSuccessfully() {
-
-        // GIVEN: a model
-
-        // WHEN: we create a stack
-        let stack = CoreDataStack(model: model)
-
-        // THEN: it is setup as expected
-        XCTAssertTrue(NSFileManager.defaultManager().fileExistsAtPath(model.storeURL.path!), "Model store should exist on disk")
-        XCTAssertEqual(stack.context.concurrencyType, .MainQueueConcurrencyType)
-    }
-
-    func test_ThatChildContext_IsCreatedSuccessfully() {
-
-        // GIVEN: a model and stack
-        let stack = CoreDataStack(model: model)
-
-        // WHEN: we create a child context
-        let childContext = stack.childManagedObjectContext(concurrencyType: .PrivateQueueConcurrencyType, mergePolicyType: .ErrorMergePolicyType)
-
-        // THEN: it is initialized as expected
-        XCTAssertEqual(childContext.parentContext!, stack.context)
-        XCTAssertEqual(childContext.concurrencyType, .PrivateQueueConcurrencyType)
-        XCTAssertEqual(childContext.mergePolicy.mergeType, .ErrorMergePolicyType)
     }
     
 }

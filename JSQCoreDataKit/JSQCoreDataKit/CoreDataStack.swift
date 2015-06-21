@@ -47,17 +47,14 @@ public final class CoreDataStack: CustomStringConvertible {
     Constructs a new `CoreDataStack` instance with the specified `model`, `storeType`, `options`, and `concurrencyType`.
 
     - parameter model:           The model describing the stack.
-    - parameter storeType:       A string constant that specifies the store type. The default is `NSSQLiteStoreType`.
-    - parameter options:         A dictionary containing key-value pairs that specify options for the store. 
+    - parameter options:         A dictionary containing key-value pairs that specify options for the store.
                                  The default contains `true` for the following keys:
                                  `NSMigratePersistentStoresAutomaticallyOption`, `NSInferMappingModelAutomaticallyOption`.
-    - parameter concurrencyType: The concurrency pattern with which the managed object context will be used. 
-                                 The default is `.MainQueueConcurrencyType`.
+    - parameter concurrencyType: The concurrency pattern to use for the managed object context. The default is `.MainQueueConcurrencyType`.
 
     - returns: A new `CoreDataStack` instance.
     */
     public init(model: CoreDataModel,
-        storeType: String = NSSQLiteStoreType,
         options: [NSObject : AnyObject]? = [NSMigratePersistentStoresAutomaticallyOption : true, NSInferMappingModelAutomaticallyOption : true],
         concurrencyType: NSManagedObjectContextConcurrencyType = .MainQueueConcurrencyType) {
 
@@ -65,8 +62,7 @@ public final class CoreDataStack: CustomStringConvertible {
             storeCoordinator = NSPersistentStoreCoordinator(managedObjectModel: model.managedObjectModel)
 
             do {
-                let modelStoreURL: NSURL? = (storeType == NSInMemoryStoreType) ? nil : model.storeURL
-                try storeCoordinator.addPersistentStoreWithType(storeType, configuration: nil, URL: modelStoreURL, options: options)
+                try storeCoordinator.addPersistentStoreWithType(model.storeType.description, configuration: nil, URL: model.storeURL, options: options)
             }
             catch {
                 fatalError("*** Error adding persistent store: \(error)")
@@ -100,7 +96,7 @@ public final class CoreDataStack: CustomStringConvertible {
     /// :nodoc:
     public var description: String {
         get {
-            return "<\(CoreDataStack.self): model=\(model)>"
+            return "<\(CoreDataStack.self): model=\(model.name), context=\(context)>"
         }
     }
     

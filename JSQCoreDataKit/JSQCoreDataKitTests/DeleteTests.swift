@@ -22,12 +22,12 @@ import CoreData
 import JSQCoreDataKit
 
 
-class DeleteTests: ModelTestCase {
+class DeleteTests: TestCase {
 
     func test_ThatDelete_Succeeds_WithManyObjects() {
 
         // GIVEN: a stack and objects in core data
-        let stack = CoreDataStack(model: model, storeType: NSInMemoryStoreType)
+        let stack = CoreDataStack(model: inMemoryModel)
 
         let count = 10
         var objects = [MyModel]()
@@ -54,7 +54,7 @@ class DeleteTests: ModelTestCase {
     func test_ThatDelete_Succeeds_WithSpecificObject() {
 
         // GIVEN: a stack and objects in core data
-        let stack = CoreDataStack(model: model, storeType: NSInMemoryStoreType)
+        let stack = CoreDataStack(model: inMemoryModel)
 
         let count = 10
         var objects = [MyModel]()
@@ -93,7 +93,7 @@ class DeleteTests: ModelTestCase {
     func test_ThatDelete_Succeeds_WithEmptyArray() {
 
         // GIVEN: a stack
-        let stack = CoreDataStack(model: model, storeType: NSInMemoryStoreType)
+        let stack = CoreDataStack(model: inMemoryModel)
 
         // WHEN: we delete an empty array of objects
         deleteObjects([], inContext: stack.context)

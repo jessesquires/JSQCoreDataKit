@@ -35,9 +35,9 @@ class ExampleTests: XCTestCase {
 
     func test_ThatFakeBandInserts_Successfully() {
 
-        let model = CoreDataModel(name: ModelName, bundle: ModelBundle)
+        let model = CoreDataModel(inMemoryName: ModelName, bundle: ModelBundle)
 
-        let stack = CoreDataStack(model: model, storeType: NSInMemoryStoreType)
+        let stack = CoreDataStack(model: model)
 
         newFakeBand(stack.context)
 
@@ -48,9 +48,9 @@ class ExampleTests: XCTestCase {
 
     func test_ThatFakeAlbumInserts_Successfully() {
         
-        let model = CoreDataModel(name: ModelName, bundle: ModelBundle)
+        let model = CoreDataModel(inMemoryName: ModelBundle, bundle: ModelBundle)
 
-        let stack = CoreDataStack(model: model, storeType: NSInMemoryStoreType)
+        let stack = CoreDataStack(model: model)
 
         let band = newFakeBand(stack.context)
         newFakeAlbum(stack.context, band: band)

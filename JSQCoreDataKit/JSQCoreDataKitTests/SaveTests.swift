@@ -21,12 +21,12 @@ import CoreData
 import JSQCoreDataKit
 
 
-class SaveTests: ModelTestCase {
+class SaveTests: TestCase {
 
     func test_ThatSaveAndWait_WithoutChanges_IsIgnored() {
 
         // GIVEN: a stack and context without changes
-        let stack = CoreDataStack(model: model, storeType: NSInMemoryStoreType)
+        let stack = CoreDataStack(model: inMemoryModel)
         var didSave = false
 
         // WHEN: we attempt to save the context
@@ -42,7 +42,7 @@ class SaveTests: ModelTestCase {
     func test_ThatSaveAndWait_WithChanges_Succeeds() {
 
         // GIVEN: a stack and context with changes
-        let stack = CoreDataStack(model: model, storeType: NSInMemoryStoreType)
+        let stack = CoreDataStack(model: inMemoryModel)
 
         MyModel(context: stack.context)
         MyModel(context: stack.context)
@@ -70,7 +70,7 @@ class SaveTests: ModelTestCase {
     func test_ThatSaveAsync_WithoutChanges_ReturnsImmediately() {
 
         // GIVEN: a stack and context without changes
-        let stack = CoreDataStack(model: model, storeType: NSInMemoryStoreType)
+        let stack = CoreDataStack(model: inMemoryModel)
         var didSave = false
 
         // WHEN: we attempt to save the context asynchronously
@@ -85,7 +85,7 @@ class SaveTests: ModelTestCase {
     func test_ThatSaveAsync_WithChanges_Succeeds() {
 
         // GIVEN: a stack and context with changes
-        let stack = CoreDataStack(model: model, storeType: NSInMemoryStoreType)
+        let stack = CoreDataStack(model: inMemoryModel)
 
         MyModel(context: stack.context)
         MyModel(context: stack.context)

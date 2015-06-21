@@ -19,6 +19,7 @@
 		881219DB1B361F13005E5AA7 /* ModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 881219D61B361F13005E5AA7 /* ModelTests.swift */; };
 		881219DC1B361F13005E5AA7 /* SaveTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 881219D71B361F13005E5AA7 /* SaveTests.swift */; };
 		881219DD1B361F13005E5AA7 /* TestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 881219D81B361F13005E5AA7 /* TestCase.swift */; };
+		8851E2DB1B37423000E875DC /* StackTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8851E2DA1B37423000E875DC /* StackTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +48,7 @@
 		881219D61B361F13005E5AA7 /* ModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModelTests.swift; sourceTree = "<group>"; };
 		881219D71B361F13005E5AA7 /* SaveTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SaveTests.swift; sourceTree = "<group>"; };
 		881219D81B361F13005E5AA7 /* TestCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestCase.swift; sourceTree = "<group>"; };
+		8851E2DA1B37423000E875DC /* StackTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StackTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,6 +115,7 @@
 				881219D51B361F13005E5AA7 /* FetchTests.swift */,
 				881219D61B361F13005E5AA7 /* ModelTests.swift */,
 				881219D71B361F13005E5AA7 /* SaveTests.swift */,
+				8851E2DA1B37423000E875DC /* StackTests.swift */,
 				881219E01B361FB6005E5AA7 /* Supporting Files */,
 				881219CE1B361EF8005E5AA7 /* Test Fixtures */,
 				881219D81B361F13005E5AA7 /* TestCase.swift */,
@@ -259,6 +262,7 @@
 				881219D21B361EF8005E5AA7 /* MyModel.swift in Sources */,
 				881219DD1B361F13005E5AA7 /* TestCase.swift in Sources */,
 				881219D31B361EF8005E5AA7 /* TestModel.xcdatamodeld in Sources */,
+				8851E2DB1B37423000E875DC /* StackTests.swift in Sources */,
 				881219DB1B361F13005E5AA7 /* ModelTests.swift in Sources */,
 				881219DC1B361F13005E5AA7 /* SaveTests.swift in Sources */,
 				881219D91B361F13005E5AA7 /* DeleteTests.swift in Sources */,

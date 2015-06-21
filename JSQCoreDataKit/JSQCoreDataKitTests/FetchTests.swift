@@ -22,12 +22,12 @@ import CoreData
 import JSQCoreDataKit
 
 
-class FetchTests: ModelTestCase {
+class FetchTests: TestCase {
 
     func test_ThatFetchRequest_Succeeds_WithManyObjects() {
 
         // GIVEN: a stack and objects in core data
-        let stack = CoreDataStack(model: model, storeType: NSInMemoryStoreType)
+        let stack = CoreDataStack(model: inMemoryModel)
 
         let count = 10
         for _ in 1...count {
@@ -49,7 +49,7 @@ class FetchTests: ModelTestCase {
     func test_ThatFetchRequest_Succeeds_WithSpecificObject() {
 
         // GIVEN: a stack and objects in core data
-        let stack = CoreDataStack(model: model, storeType: NSInMemoryStoreType)
+        let stack = CoreDataStack(model: inMemoryModel)
 
         let count = 10
         for _ in 1...count {
@@ -76,7 +76,7 @@ class FetchTests: ModelTestCase {
     func test_ThatFetchRequest_Succeeds_WithoutObjects() {
 
         // GIVEN: a stack and no objects in core data
-        let stack = CoreDataStack(model: model, storeType: NSInMemoryStoreType)
+        let stack = CoreDataStack(model: inMemoryModel)
 
         // WHEN: we execute a fetch request
         let request = FetchRequest<MyModel>(entity: entity(name: MyModelEntityName, context: stack.context))

@@ -75,7 +75,7 @@ class ModelTests: XCTestCase {
         // GIVEN: a model name and bundle
 
         // WHEN: we create a model
-        let model = CoreDataModel(name: modelName, storeType: .Binary(NSURL(fileURLWithPath: NSTemporaryDirectory())), bundle: modelBundle)
+        let model = CoreDataModel(name: modelName, bundle: modelBundle, storeType: .Binary(NSURL(fileURLWithPath: NSTemporaryDirectory())))
 
         // THEN: the model has the correct name, bundle, and type
         XCTAssertEqual(model.name, modelName)
@@ -108,7 +108,7 @@ class ModelTests: XCTestCase {
         // GIVEN: a model name and bundle
 
         // WHEN: we create a model
-        let model = CoreDataModel(name: modelName, storeType: .InMemory, bundle: modelBundle)
+        let model = CoreDataModel(name: modelName, bundle: modelBundle, storeType: .InMemory)
 
         // THEN: the model has the correct name, bundle, and type
         XCTAssertEqual(model.name, modelName)
@@ -181,7 +181,7 @@ class ModelTests: XCTestCase {
     func test_ThatInMemoryModel_RemoveExistingStore_Fails() {
 
         // GIVEN: a core data model in-memory
-        let model = CoreDataModel(name: modelName, storeType: .InMemory, bundle: modelBundle)
+        let model = CoreDataModel(name: modelName, bundle: modelBundle, storeType: .InMemory)
 
         // THEN: the store URL is nil
         XCTAssertNil(model.storeURL)

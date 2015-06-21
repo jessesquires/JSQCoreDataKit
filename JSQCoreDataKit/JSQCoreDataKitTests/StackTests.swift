@@ -40,7 +40,7 @@ class StackTests: XCTestCase {
     func test_ThatBinaryStack_InitializesSuccessfully() {
 
         // GIVEN: a binary model
-        let binaryModel = CoreDataModel(name: modelName, storeType: .Binary(NSURL(fileURLWithPath: NSTemporaryDirectory())), bundle: modelBundle)
+        let binaryModel = CoreDataModel(name: modelName, bundle: modelBundle, storeType: .Binary(NSURL(fileURLWithPath: NSTemporaryDirectory())))
 
         // WHEN: we create a stack
         let stack = CoreDataStack(model: binaryModel)
@@ -53,7 +53,7 @@ class StackTests: XCTestCase {
     func test_ThatInMemoryStack_InitializesSuccessfully() {
 
         // GIVEN: a in-memory model
-        let inMemoryModel = CoreDataModel(name: modelName, storeType: .InMemory, bundle: modelBundle)
+        let inMemoryModel = CoreDataModel(name: modelName, bundle: modelBundle, storeType: .InMemory)
 
         // WHEN: we create a stack
         let stack = CoreDataStack(model: inMemoryModel, options: nil, concurrencyType: .PrivateQueueConcurrencyType)

@@ -79,11 +79,11 @@ public struct CoreDataModel: CustomStringConvertible {
     /// The name of the Core Data model resource.
     public let name: String
 
-    /// The type of the Core Data persistent store for the model.
-    public let storeType: StoreType
-
     /// The bundle in which the model is located.
     public let bundle: NSBundle
+    
+    /// The type of the Core Data persistent store for the model.
+    public let storeType: StoreType
 
     /**
     The file URL specifying the full path to the store.
@@ -151,15 +151,15 @@ public struct CoreDataModel: CustomStringConvertible {
     Constructs a new `CoreDataModel` instance with the specified name and bundle.
 
     - parameter name:           The name of the Core Data model.
-    - parameter storeType:      The store type for the Core Data model. The default is `.SQLite`, with the user's documents directory.
     - parameter bundle:         The bundle in which the model is located. The default is the main bundle.
+    - parameter storeType:      The store type for the Core Data model. The default is `.SQLite`, with the user's documents directory.
 
     - returns: A new `CoreDataModel` instance.
     */
-    public init(name: String, storeType: StoreType = .SQLite(DocumentsDirectoryURL()), bundle: NSBundle = .mainBundle()) {
+    public init(name: String, bundle: NSBundle = .mainBundle(), storeType: StoreType = .SQLite(DocumentsDirectoryURL())) {
         self.name = name
-        self.storeType = storeType
         self.bundle = bundle
+        self.storeType = storeType
     }
 
     // MARK: Methods

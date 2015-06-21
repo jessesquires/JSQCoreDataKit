@@ -78,8 +78,11 @@ let model = CoreDataModel(name: "MyModel", bundle: NSBundle(identifier: "com.MyA
 // Initialize a default stack
 let stack = CoreDataStack(model: model)
 
+// ----------------------------------
+
 // Initialize a private queue, in-memory stack
-let privateStack = CoreDataStack(model: model, storeType: NSInMemoryStoreType, options: nil, concurrencyType: .PrivateQueueConcurrencyType)
+let inMemoryModel = CoreDataModel(name: myName, storeType: .InMemory, bundle: myBundle)
+let privateStack = CoreDataStack(model: inMemoryModel, options: nil, concurrencyType: .PrivateQueueConcurrencyType)
 ````
 
 #### Saving a managed object context

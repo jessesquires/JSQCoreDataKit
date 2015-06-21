@@ -27,7 +27,7 @@ let modelBundle = NSBundle(forClass: ModelTests.self)
 
 class TestCase: XCTestCase {
 
-    let inMemoryModel = CoreDataModel(inMemoryName: modelName, bundle: modelBundle)
+    let inMemoryModel = CoreDataModel(name: modelName, storeType: .InMemory, bundle: modelBundle)
 
     override func setUp() {
         super.setUp()

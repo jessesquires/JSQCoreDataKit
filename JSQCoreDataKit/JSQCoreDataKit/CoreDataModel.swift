@@ -20,8 +20,19 @@ import Foundation
 import CoreData
 
 
+/// :nodoc:
+public func ==(lhs: StoreType, rhs: StoreType) -> Bool {
+    switch (lhs, rhs) {
+    case let (.SQLite(left), .SQLite(right)) where left == right: return true
+    case let (.Binary(left), .Binary(right)) where left == right: return true
+    case (.InMemory, .InMemory): return true
+    default: return false
+    }
+}
+
+
 /// Describes a Core Data persistent store type.
-public enum StoreType: CustomStringConvertible {
+public enum StoreType: CustomStringConvertible, Equatable {
 
     /// The SQLite database store type. The associated file URL specifies the directory for the store.
     case SQLite (NSURL)
@@ -149,18 +160,6 @@ public struct CoreDataModel: CustomStringConvertible {
         self.name = name
         self.storeType = storeType
         self.bundle = bundle
-    }
-
-    /**
-    Constructs a new in-memory `CoreDataModel` instance with the specified name and bundle.
-
-    - parameter inMemoryName: The name of the Core Data model.
-    - parameter bundle:       The bundle in which the model is located. The default is the main bundle.
-
-    - returns: A new `CoreDataModel` instance.
-    */
-    public init(inMemoryName name: String, bundle: NSBundle = .mainBundle()) {
-        self.init(name: name, storeType: .InMemory, bundle: bundle)
     }
 
     // MARK: Methods

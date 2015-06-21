@@ -26,7 +26,6 @@
 		8866317E1AEC8F57001DCAFE /* JSQCoreDataKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88002D711AB8F58A001787DB /* JSQCoreDataKit.framework */; };
 		8866317F1AEC8F5D001DCAFE /* ExampleModel.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 88002D901AB90FE0001787DB /* ExampleModel.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		886631801AEC8F61001DCAFE /* JSQCoreDataKit.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 88002D711AB8F58A001787DB /* JSQCoreDataKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		88D7F13A1AEC99C000D62FD2 /* JSQCoreDataKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88D7F1391AEC99C000D62FD2 /* JSQCoreDataKitTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -106,7 +105,6 @@
 		88002DB21AB91240001787DB /* Album.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Album.swift; sourceTree = "<group>"; };
 		88002DB41AB91240001787DB /* Band.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Band.swift; sourceTree = "<group>"; };
 		88002DB71AB92204001787DB /* ModelUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModelUtils.swift; sourceTree = "<group>"; };
-		88D7F1391AEC99C000D62FD2 /* JSQCoreDataKitTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSQCoreDataKitTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -184,7 +182,6 @@
 			isa = PBXGroup;
 			children = (
 				88002D391AB8F453001787DB /* ExampleTests.swift */,
-				88D7F1391AEC99C000D62FD2 /* JSQCoreDataKitTests.swift */,
 				88002D371AB8F453001787DB /* Supporting Files */,
 			);
 			path = ExampleTests;
@@ -404,7 +401,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				88D7F13A1AEC99C000D62FD2 /* JSQCoreDataKitTests.swift in Sources */,
 				88002D3A1AB8F453001787DB /* ExampleTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

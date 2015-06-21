@@ -35,7 +35,7 @@ class ExampleTests: XCTestCase {
 
     func test_ThatFakeBandInserts_Successfully() {
 
-        let model = CoreDataModel(inMemoryName: ModelName, bundle: ModelBundle)
+        let model = CoreDataModel(name: ModelName, storeType: .InMemory, bundle: ModelBundle)
 
         let stack = CoreDataStack(model: model)
 
@@ -47,8 +47,8 @@ class ExampleTests: XCTestCase {
     }
 
     func test_ThatFakeAlbumInserts_Successfully() {
-        
-        let model = CoreDataModel(inMemoryName: ModelName, bundle: ModelBundle)
+
+        let model = CoreDataModel(name: ModelName, storeType: .InMemory, bundle: ModelBundle)
 
         let stack = CoreDataStack(model: model)
 

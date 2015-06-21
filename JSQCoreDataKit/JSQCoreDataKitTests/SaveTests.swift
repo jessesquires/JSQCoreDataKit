@@ -67,6 +67,32 @@ class SaveTests: TestCase {
         })
     }
 
+    func test_ThatSaveAndWait_WithChanges_WithoutCompletionClosure_Succeeds() {
+
+        // GIVEN: a stack and context with changes
+        let stack = CoreDataStack(model: inMemoryModel)
+
+        MyModel(context: stack.context)
+        MyModel(context: stack.context)
+
+        var didSave = false
+        self.expectationForNotification(NSManagedObjectContextDidSaveNotification, object: stack.context) { (notification) -> Bool in
+            didSave = true
+            return true
+        }
+
+        // WHEN: we attempt to save the context
+
+        // THEN: the save succeeds without an error
+        saveContext(stack.context)
+        
+        self.waitForExpectationsWithTimeout(1, handler: { (error) -> Void in
+            XCTAssertNil(error, "Expectation should not error")
+
+            XCTAssertTrue(didSave, "Context should be saved")
+        })
+    }
+
     func test_ThatSaveAsync_WithoutChanges_ReturnsImmediately() {
 
         // GIVEN: a stack and context without changes

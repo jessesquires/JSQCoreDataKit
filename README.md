@@ -81,7 +81,7 @@ let stack = CoreDataStack(model: model)
 // ----------------------------------
 
 // Initialize a private queue, in-memory stack
-let inMemoryModel = CoreDataModel(name: myName, storeType: .InMemory, bundle: myBundle)
+let inMemoryModel = CoreDataModel(name: myName, bundle: myBundle, storeType: .InMemory)
 let privateStack = CoreDataStack(model: inMemoryModel, options: nil, concurrencyType: .PrivateQueueConcurrencyType)
 ````
 

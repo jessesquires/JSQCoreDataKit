@@ -80,8 +80,7 @@ public class FetchRequest <T: NSManagedObject>: NSFetchRequest {
 /**
 Executes the fetch request in the given context and returns the result.
 This function is performed synchronously in a block on the context's queue.
-
-**Note:** In cases of failure, this function throws an `NSError`.
+- Note: In cases of failure, this function throws an `NSError`.
 
 - parameter request: A fetch request that specifies the search criteria for the fetch.
 - parameter context: The managed object context in which to search.

@@ -45,7 +45,7 @@ public enum StoreType: CustomStringConvertible, Equatable {
 
     /**
     - returns: The file URL specifying the directory in which the store is located. 
-               If the store is in-memory, then this value will be `nil`.
+    - Note: If the store is in-memory, then this value will be `nil`.
     */
     public func storeDirectory() -> NSURL? {
         switch self {
@@ -87,7 +87,7 @@ public struct CoreDataModel: CustomStringConvertible {
 
     /**
     The file URL specifying the full path to the store.
-    If the store is in-memory, then this value will be `nil`.
+    - Note: If the store is in-memory, then this value will be `nil`.
     */
     public var storeURL: NSURL? {
         get {
@@ -128,7 +128,8 @@ public struct CoreDataModel: CustomStringConvertible {
     /**
     Queries the meta data for the persistent store specified by the receiver
     and returns whether or not a migration is needed.
-    Returns `true` if the store requires a migration, `false` otherwise.
+
+    - returns: `true` if the store requires a migration, `false` otherwise.
     */
     public var needsMigration: Bool {
         get {
@@ -166,8 +167,7 @@ public struct CoreDataModel: CustomStringConvertible {
 
     /**
     Removes the existing model store specfied by the receiver.
-
-    **Note:** In cases of failure, this function throws an `NSError`.
+    - Note: In cases of failure, this function throws an `NSError`.
     */
     public func removeExistingModelStore() throws {
         let fileManager = NSFileManager.defaultManager()

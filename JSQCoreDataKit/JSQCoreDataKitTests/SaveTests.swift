@@ -44,8 +44,8 @@ class SaveTests: TestCase {
         // GIVEN: a stack and context with changes
         let stack = CoreDataStack(model: inMemoryModel)
 
-        MyModel(context: stack.context)
-        MyModel(context: stack.context)
+        let _ = MyModel(context: stack.context)
+        let _ = MyModel(context: stack.context)
 
         var didSave = false
         self.expectationForNotification(NSManagedObjectContextDidSaveNotification, object: stack.context) { (notification) -> Bool in
@@ -72,8 +72,8 @@ class SaveTests: TestCase {
         // GIVEN: a stack and context with changes
         let stack = CoreDataStack(model: inMemoryModel)
 
-        MyModel(context: stack.context)
-        MyModel(context: stack.context)
+        let _ = MyModel(context: stack.context)
+        let _ = MyModel(context: stack.context)
 
         var didSave = false
         self.expectationForNotification(NSManagedObjectContextDidSaveNotification, object: stack.context) { (notification) -> Bool in
@@ -113,8 +113,8 @@ class SaveTests: TestCase {
         // GIVEN: a stack and context with changes
         let stack = CoreDataStack(model: inMemoryModel)
 
-        MyModel(context: stack.context)
-        MyModel(context: stack.context)
+        let _ = MyModel(context: stack.context)
+        let _ = MyModel(context: stack.context)
 
         var didSave = false
         self.expectationForNotification(NSManagedObjectContextDidSaveNotification, object: stack.context) { (notification) -> Bool in

@@ -31,7 +31,7 @@ class FetchTests: TestCase {
 
         let count = 10
         for _ in 1...count {
-            MyModel(context: stack.context)
+            let _ = MyModel(context: stack.context)
         }
 
         // WHEN: we execute a fetch request
@@ -53,7 +53,7 @@ class FetchTests: TestCase {
 
         let count = 10
         for _ in 1...count {
-            MyModel(context: stack.context)
+            let _ = MyModel(context: stack.context)
         }
 
         let myModel = MyModel(context: stack.context)

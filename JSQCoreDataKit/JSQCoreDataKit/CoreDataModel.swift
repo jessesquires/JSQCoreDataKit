@@ -167,7 +167,8 @@ public struct CoreDataModel: CustomStringConvertible {
 
     /**
     Removes the existing model store specfied by the receiver.
-    - Note: In cases of failure, this function throws an `NSError`.
+
+    - throws: If removing the store fails or errors, then this function throws an `NSError`.
     */
     public func removeExistingModelStore() throws {
         let fileManager = NSFileManager.defaultManager()

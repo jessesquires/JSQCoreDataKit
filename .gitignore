@@ -21,7 +21,13 @@ DerivedData
 # CocoaPods
 
 Pods/
+Podfile.lock
 
 # jazzy docs
 
 _docs/
+
+#AppCode IDE
+
+.idea/
+

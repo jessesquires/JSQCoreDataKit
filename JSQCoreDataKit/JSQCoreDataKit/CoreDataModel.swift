@@ -22,6 +22,7 @@ import CoreData
 
 ///  An instance of `CoreDataModel` represents a Core Data model.
 ///  It provides the model and store URLs as well as functions for interacting with the store.
+
 public struct CoreDataModel: Printable {
 
     // MARK: Properties
@@ -32,13 +33,13 @@ public struct CoreDataModel: Printable {
     ///  The bundle in which the model is located.
     public let bundle: NSBundle
 
-    ///  The file URL specifying the store in the documents directory.
+    ///  The file URL specifying the directory in which the store is located.
+    public let storeDirectoryURL: NSURL
+
+    ///  The file URL specifying the full path to the store.
     public var storeURL: NSURL {
         get {
-            var error: NSError?
-            let documentsDirectoryURL = NSFileManager.defaultManager().URLForDirectory(.DocumentDirectory, inDomain: .UserDomainMask, appropriateForURL: nil, create: true, error: &error)
-            assert(documentsDirectoryURL != nil, "*** Error finding documents directory: \(error)")
-            return documentsDirectoryURL!.URLByAppendingPathComponent(databaseFileName)
+            return storeDirectoryURL.URLByAppendingPathComponent(databaseFileName)
         }
     }
 
@@ -46,7 +47,7 @@ public struct CoreDataModel: Printable {
     public var modelURL: NSURL {
         get {
             let url = bundle.URLForResource(name, withExtension: "momd")
-            assert(url != nil, "*** Error loading resource for model: \(name)")
+            assert(url != nil, "*** Error loading resource for model named \(name) at url: \(url)")
             return url!
         }
     }
@@ -84,13 +85,15 @@ public struct CoreDataModel: Printable {
 
     ///  Constructs new `CoreDataModel` instance with the specified name and bundle.
     ///
-    ///  :param: name   The name of the Core Data model.
-    ///  :param: bundle The bundle in which the model is located. The default parameter value is `NSBundle.mainBundle()`.
+    ///  :param: name              The name of the Core Data model.
+    ///  :param: bundle            The bundle in which the model is located. The default parameter value is `NSBundle.mainBundle()`.
+    ///  :param: storeDirectoryURL The directory in which the model is located. The default parameter value is the user's documents directory.
     ///
     ///  :returns: A new `CoreDataModel` instance.
-    public init(name: String, bundle: NSBundle = NSBundle.mainBundle()) {
+    public init(name: String, bundle: NSBundle = NSBundle.mainBundle(), storeDirectoryURL: NSURL = documentsDirectoryURL()) {
         self.name = name
         self.bundle = bundle
+        self.storeDirectoryURL = storeDirectoryURL
     }
 
     // MARK: Methods
@@ -98,7 +101,7 @@ public struct CoreDataModel: Printable {
     ///  Removes the existing model store specfied by the receiver.
     ///
     ///  :returns: A tuple value containing a boolean to indicate success and an error object if an error occurred.
-    public func removeExistingModelStore() -> (success: Bool, error: NSError?) {
+    public func removeExistingModelStore() -> (success:Bool, error:NSError?) {
         var error: NSError?
         let fileManager = NSFileManager.defaultManager()
 
@@ -117,11 +120,20 @@ public struct CoreDataModel: Printable {
 
     // MARK: Printable
 
-    /// A string containing a textual representation of the `CoreDataModel`.
+    /// :nodoc:
     public var description: String {
         get {
             return "<\(toString(CoreDataModel.self)): name=\(name), needsMigration=\(modelStoreNeedsMigration), databaseFileName=\(databaseFileName), modelURL=\(modelURL), storeURL=\(storeURL)>"
         }
     }
-    
+
+}
+
+// MARK: Private
+
+private func documentsDirectoryURL() -> NSURL {
+    var error: NSError?
+    let url = NSFileManager.defaultManager().URLForDirectory(.DocumentDirectory, inDomain: .UserDomainMask, appropriateForURL: nil, create: true, error: &error)
+    assert(url != nil, "*** Error finding documents directory: \(error)")
+    return url!
 }

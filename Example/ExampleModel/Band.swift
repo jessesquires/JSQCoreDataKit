@@ -35,5 +35,13 @@ public final class Band: NSManagedObject {
         let entityDescription = NSEntityDescription.entityForName("Band", inManagedObjectContext: context)!
         self.init(entity: entityDescription, insertIntoManagedObjectContext: context)
     }
-
+    
+    override public var description: String {
+        let formatter = NSDateFormatter()
+        formatter.dateStyle = .ShortStyle
+        formatter.timeStyle = .ShortStyle
+        let foundedDateString = formatter.stringFromDate(self.dateFounded)
+        
+        return "Band: '\(self.name)', \(self.city), \(self.genre), \(foundedDateString)"
+    }
 }

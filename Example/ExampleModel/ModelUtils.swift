@@ -28,8 +28,11 @@ public struct ExampleModelProperties {
 
 
 public func newFakeBand(context: NSManagedObjectContext) -> Band {
-    let id = NSUUID().UUIDString
-
+    let nsstringId = NSUUID().UUIDString as NSString
+    
+    // Make UUID shorter
+    let id = nsstringId.substringWithRange(NSMakeRange(0, 3))
+    
     let b = Band(context: context)
     b.name = "Name " + id
     b.dateFounded = NSDate()
@@ -41,7 +44,10 @@ public func newFakeBand(context: NSManagedObjectContext) -> Band {
 
 
 public func newFakeAlbum(context: NSManagedObjectContext, band: Band) -> Album {
-    let id = NSUUID().UUIDString
+    let nsstringId = NSUUID().UUIDString as NSString
+    
+    // Make UUID shorter
+    let id = nsstringId.substringWithRange(NSMakeRange(0, 3))
 
     let a = Album(context: context)
     a.title = "Title " + id

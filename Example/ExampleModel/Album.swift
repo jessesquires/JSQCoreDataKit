@@ -34,4 +34,13 @@ public final class Album: NSManagedObject {
         self.init(entity: entityDescription, insertIntoManagedObjectContext: context)
     }
     
+    override public var description: String {
+        let formatter = NSDateFormatter()
+        formatter.dateStyle = .ShortStyle
+        formatter.timeStyle = .ShortStyle
+        let releasedDateString = formatter.stringFromDate(self.dateReleased)
+        
+        return "Album: '\(self.title)', \(releasedDateString), $\(self.price.stringValue)"
+    }
+    
 }

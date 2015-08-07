@@ -27,6 +27,7 @@
 		886FC8A11ABF5496007D445F /* ExampleModel.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 88002D901AB90FE0001787DB /* ExampleModel.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		886FC8A21ABF549C007D445F /* JSQCoreDataKit.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 88002D711AB8F58A001787DB /* JSQCoreDataKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		886FC8A41ABF54B1007D445F /* JSQCoreDataKit.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 88002D711AB8F58A001787DB /* JSQCoreDataKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		C8C80F2C1B74AF500022BCD6 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8C80F2B1B74AF500022BCD6 /* DetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -134,6 +135,7 @@
 		88002DB21AB91240001787DB /* Album.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Album.swift; sourceTree = "<group>"; };
 		88002DB41AB91240001787DB /* Band.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Band.swift; sourceTree = "<group>"; };
 		88002DB71AB92204001787DB /* ModelUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModelUtils.swift; sourceTree = "<group>"; };
+		C8C80F2B1B74AF500022BCD6 /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -198,6 +200,7 @@
 			isa = PBXGroup;
 			children = (
 				88002D231AB8F453001787DB /* AppDelegate.swift */,
+				C8C80F2B1B74AF500022BCD6 /* DetailViewController.swift */,
 				88002D251AB8F453001787DB /* ViewController.swift */,
 				88002D271AB8F453001787DB /* Main.storyboard */,
 				88002D2A1AB8F453001787DB /* Images.xcassets */,
@@ -477,6 +480,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C8C80F2C1B74AF500022BCD6 /* DetailViewController.swift in Sources */,
 				88002D261AB8F453001787DB /* ViewController.swift in Sources */,
 				88002D241AB8F453001787DB /* AppDelegate.swift in Sources */,
 			);

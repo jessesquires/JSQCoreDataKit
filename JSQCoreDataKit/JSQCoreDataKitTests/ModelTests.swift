@@ -47,7 +47,7 @@ class ModelTests: XCTestCase {
 
         let docsDir = try! NSFileManager.defaultManager().URLForDirectory(.DocumentDirectory,
             inDomain: .UserDomainMask, appropriateForURL: nil, create: true)
-        XCTAssertEqual(model.storeType, .SQLite(docsDir))
+        XCTAssertEqual(model.storeType, StoreType.SQLite(docsDir))
 
         // THEN: the model returns the correct database filename
         XCTAssertEqual(model.databaseFileName, model.name + ".sqlite")
@@ -61,7 +61,7 @@ class ModelTests: XCTestCase {
         // THEN: the model is in its specified bundle
         let modelURLComponents = model.modelURL.pathComponents!
         XCTAssertEqual(String(modelURLComponents.last!), model.name + ".momd")
-        XCTAssertEqual(String(modelURLComponents[modelURLComponents.count - 2]), model.bundle.bundlePath.lastPathComponent)
+        XCTAssertEqual(String(modelURLComponents[modelURLComponents.count - 2]), NSString(string: model.bundle.bundlePath).lastPathComponent)
 
         // THEN: the managed object model does not assert
         XCTAssertNotNil(model.managedObjectModel)
@@ -80,7 +80,7 @@ class ModelTests: XCTestCase {
         // THEN: the model has the correct name, bundle, and type
         XCTAssertEqual(model.name, modelName)
         XCTAssertEqual(model.bundle, modelBundle)
-        XCTAssertEqual(model.storeType, .Binary(NSURL(fileURLWithPath: NSTemporaryDirectory())))
+        XCTAssertEqual(model.storeType, StoreType.Binary(NSURL(fileURLWithPath: NSTemporaryDirectory())))
 
         // THEN: the model returns the correct database filename
         XCTAssertEqual(model.databaseFileName, model.name)
@@ -94,7 +94,7 @@ class ModelTests: XCTestCase {
         // THEN: the model is in its specified bundle
         let modelURLComponents = model.modelURL.pathComponents!
         XCTAssertEqual(String(modelURLComponents.last!), model.name + ".momd")
-        XCTAssertEqual(String(modelURLComponents[modelURLComponents.count - 2]), model.bundle.bundlePath.lastPathComponent)
+        XCTAssertEqual(String(modelURLComponents[modelURLComponents.count - 2]), NSString(string: model.bundle.bundlePath).lastPathComponent)
 
         // THEN: the managed object model does not assert
         XCTAssertNotNil(model.managedObjectModel)
@@ -113,7 +113,7 @@ class ModelTests: XCTestCase {
         // THEN: the model has the correct name, bundle, and type
         XCTAssertEqual(model.name, modelName)
         XCTAssertEqual(model.bundle, modelBundle)
-        XCTAssertEqual(model.storeType, .InMemory)
+        XCTAssertEqual(model.storeType, StoreType.InMemory)
 
         // THEN: the model returns the correct database filename
         XCTAssertEqual(model.databaseFileName, model.name)
@@ -124,7 +124,7 @@ class ModelTests: XCTestCase {
         // THEN: the model is in its specified bundle
         let modelURLComponents = model.modelURL.pathComponents!
         XCTAssertEqual(String(modelURLComponents.last!), model.name + ".momd")
-        XCTAssertEqual(String(modelURLComponents[modelURLComponents.count - 2]), model.bundle.bundlePath.lastPathComponent)
+        XCTAssertEqual(String(modelURLComponents[modelURLComponents.count - 2]), NSString(string: model.bundle.bundlePath).lastPathComponent)
 
         // THEN: the managed object model does not assert
         XCTAssertNotNil(model.managedObjectModel)

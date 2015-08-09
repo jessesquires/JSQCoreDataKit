@@ -48,7 +48,7 @@ class SaveTests: TestCase {
         let _ = MyModel(context: stack.context)
 
         var didSave = false
-        self.expectationForNotification(NSManagedObjectContextDidSaveNotification, object: stack.context) { (notification) -> Bool in
+        self.expectationForNotification(NSManagedObjectContextDidSaveNotification, object: stack.context) { (notification) -> ObjCBool in
             didSave = true
             return true
         }
@@ -76,7 +76,7 @@ class SaveTests: TestCase {
         let _ = MyModel(context: stack.context)
 
         var didSave = false
-        self.expectationForNotification(NSManagedObjectContextDidSaveNotification, object: stack.context) { (notification) -> Bool in
+        self.expectationForNotification(NSManagedObjectContextDidSaveNotification, object: stack.context) { (notification) -> ObjCBool in
             didSave = true
             return true
         }
@@ -117,7 +117,7 @@ class SaveTests: TestCase {
         let _ = MyModel(context: stack.context)
 
         var didSave = false
-        self.expectationForNotification(NSManagedObjectContextDidSaveNotification, object: stack.context) { (notification) -> Bool in
+        self.expectationForNotification(NSManagedObjectContextDidSaveNotification, object: stack.context) { (notification) -> ObjCBool in
             didSave = true
             return true
         }

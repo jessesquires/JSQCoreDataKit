@@ -50,7 +50,8 @@ public final class CoreDataStack: CustomStringConvertible {
     - parameter options:         A dictionary containing key-value pairs that specify options for the store.
                                  The default contains `true` for the following keys:
                                  `NSMigratePersistentStoresAutomaticallyOption`, `NSInferMappingModelAutomaticallyOption`.
-    - parameter concurrencyType: The concurrency pattern to use for the managed object context. The default is `.MainQueueConcurrencyType`.
+    - parameter concurrencyType: The concurrency pattern to use for the managed object context. 
+                                 The default is `.MainQueueConcurrencyType`.
 
     - returns: A new `CoreDataStack` instance.
     */
@@ -62,7 +63,10 @@ public final class CoreDataStack: CustomStringConvertible {
             storeCoordinator = NSPersistentStoreCoordinator(managedObjectModel: model.managedObjectModel)
 
             do {
-                try storeCoordinator.addPersistentStoreWithType(model.storeType.description, configuration: nil, URL: model.storeURL, options: options)
+                try storeCoordinator.addPersistentStoreWithType(model.storeType.description,
+                    configuration: nil,
+                    URL: model.storeURL,
+                    options: options)
             }
             catch {
                 fatalError("*** Error adding persistent store: \(error)")

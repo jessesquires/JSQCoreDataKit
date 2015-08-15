@@ -51,7 +51,8 @@ the specified managed object context’s persistent store coordinator.
 - parameter name:    The name of an entity.
 - parameter context: The managed object context to use.
 
-- returns: The entity with the specified name from the managed object model associated with context’s persistent store coordinator.
+- returns: The entity with the specified name from the managed object 
+model associated with context’s persistent store coordinator.
 */
 public func entity(name name: String, context: NSManagedObjectContext) -> NSEntityDescription {
     return NSEntityDescription.entityForName(name, inManagedObjectContext: context)!
@@ -110,7 +111,7 @@ public func fetch <T: NSManagedObject>(request request: FetchRequest<T>, inConte
 
 /**
 Deletes the objects from the specified context.
-You must save the context after calling this function to remove objects from their persistent store..
+You must save the context after calling this function to remove objects from their persistent store.
 This function is performed synchronously in a block on the context's queue.
 
 - parameter objects: The managed objects to be deleted.

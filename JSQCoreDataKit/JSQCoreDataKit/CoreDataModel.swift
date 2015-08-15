@@ -136,11 +136,14 @@ public struct CoreDataModel: CustomStringConvertible {
             guard let storeURL = storeURL else { return false }
 
             do {
-                let sourceMetaData = try NSPersistentStoreCoordinator.metadataForPersistentStoreOfType(storeType.description, URL: storeURL, options: nil)
+                let sourceMetaData = try NSPersistentStoreCoordinator.metadataForPersistentStoreOfType(
+                    storeType.description,
+                    URL: storeURL,
+                    options: nil)
                 return !managedObjectModel.isConfiguration(nil, compatibleWithStoreMetadata: sourceMetaData)
             }
             catch {
-                print("*** Error checking persistent store coordinator meta data: \(error)")
+                debugPrint("*** Error checking persistent store coordinator meta data: \(error)")
                 return false
             }
         }

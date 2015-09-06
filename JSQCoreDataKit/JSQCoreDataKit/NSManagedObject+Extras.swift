@@ -22,4 +22,16 @@ extension NSManagedObject {
         
         return nameComponents.last!
     }
+    
+    /**
+        This convenience initializer makes it easier to init an NSManagedObject subclass without needing to
+        provide boiler plate code to setup an entity description in every subclass init method; simply make a call to init on self in your subclass.
+    
+        :param: context The NSManagedObjectContext to init the subclassed NSManagedObject with.
+    */
+    public convenience init(context: NSManagedObjectContext) {
+        let entityName = self.dynamicType.entityName()
+        let entity = NSEntityDescription.entityForName(entityName, inManagedObjectContext: context)!
+        self.init(entity: entity, insertIntoManagedObjectContext: context)
+    }
 }

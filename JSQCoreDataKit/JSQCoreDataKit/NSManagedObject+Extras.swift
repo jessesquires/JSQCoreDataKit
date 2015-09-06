@@ -10,6 +10,11 @@ import Foundation
 import CoreData
 
 extension NSManagedObject {
+    
+    /**
+    Convenience static function to grab name of an entity to make life easier when creating an NSEntityDescription instance especially on
+    NSManagedObject subclass's during initialization.
+    */
     public static func entityName() -> String {
         let fullClassName = NSStringFromClass(object_getClass(self))
         let nameComponents = fullClassName.characters.split { $0 == "." }

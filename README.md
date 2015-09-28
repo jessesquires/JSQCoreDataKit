@@ -1,5 +1,5 @@
 # JSQCoreDataKit
-[![Build Status](https://secure.travis-ci.org/jessesquires/JSQCoreDataKit.svg)](http://travis-ci.org/jessesquires/JSQCoreDataKit) [![Version Status](http://img.shields.io/cocoapods/v/JSQCoreDataKit.png)][docsLink] [![license MIT](http://img.shields.io/badge/license-MIT-orange.png)][mitLink] [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
+[![Build Status](https://secure.travis-ci.org/jessesquires/JSQCoreDataKit.svg)](http://travis-ci.org/jessesquires/JSQCoreDataKit) [![Version Status](https://img.shields.io/cocoapods/v/JSQCoreDataKit.svg)][podLink] [![license MIT](https://img.shields.io/cocoapods/l/JSQCoreDataKit.svg)][mitLink] [![Platform](https://img.shields.io/cocoapods/p/JSQCoreDataKit.svg)][docsLink] [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 
 *A swifter Core Data stack*
 
@@ -173,5 +173,6 @@ This project borrows some ideas and concepts from my work on [RSTCoreDataKit](ht
 
 *Please provide attribution, it is greatly appreciated.*
 
-[mitLink]:http://opensource.org/licenses/MIT
+[podLink]:https://cocoapods.org/pods/JSQCoreDataKit
 [docsLink]:http://www.jessesquires.com/JSQCoreDataKit
+[mitLink]:http://opensource.org/licenses/MIT

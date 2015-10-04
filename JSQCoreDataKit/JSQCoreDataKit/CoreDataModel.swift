@@ -20,59 +20,12 @@ import Foundation
 import CoreData
 
 
-/// :nodoc:
-public func ==(lhs: StoreType, rhs: StoreType) -> Bool {
-    switch (lhs, rhs) {
-    case let (.SQLite(left), .SQLite(right)) where left == right: return true
-    case let (.Binary(left), .Binary(right)) where left == right: return true
-    case (.InMemory, .InMemory): return true
-    default: return false
-    }
-}
-
-
-/// Describes a Core Data persistent store type.
-public enum StoreType: CustomStringConvertible, Equatable {
-
-    /// The SQLite database store type. The associated file URL specifies the directory for the store.
-    case SQLite (NSURL)
-
-    /// The binary store type. The associated file URL specifies the directory for the store.
-    case Binary (NSURL)
-
-    /// The in-memory store type.
-    case InMemory
-
-    /**
-    - returns: The file URL specifying the directory in which the store is located. 
-    - Note: If the store is in-memory, then this value will be `nil`.
-    */
-    public func storeDirectory() -> NSURL? {
-        switch self {
-        case let .SQLite(url): return url
-        case let .Binary(url): return url
-        case .InMemory: return nil
-        }
-    }
-
-    /// :nodoc:
-    public var description: String {
-        get {
-            switch self {
-            case .SQLite: return NSSQLiteStoreType
-            case .Binary: return NSBinaryStoreType
-            case .InMemory: return NSInMemoryStoreType
-            }
-        }
-    }
-}
-
-
 /**
 An instance of `CoreDataModel` represents a Core Data model.
 It provides the model and store URLs as well as methods for interacting with the store.
 */
 public struct CoreDataModel: CustomStringConvertible {
+
 
     // MARK: Properties
 
@@ -81,7 +34,7 @@ public struct CoreDataModel: CustomStringConvertible {
 
     /// The bundle in which the model is located.
     public let bundle: NSBundle
-    
+
     /// The type of the Core Data persistent store for the model.
     public let storeType: StoreType
 
@@ -149,6 +102,7 @@ public struct CoreDataModel: CustomStringConvertible {
         }
     }
 
+
     // MARK: Initialization
 
     /**
@@ -166,6 +120,7 @@ public struct CoreDataModel: CustomStringConvertible {
         self.storeType = storeType
     }
 
+
     // MARK: Methods
 
     /**
@@ -180,6 +135,7 @@ public struct CoreDataModel: CustomStringConvertible {
         }
     }
 
+
     // MARK: CustomStringConvertible
 
     /// :nodoc:
@@ -190,6 +146,7 @@ public struct CoreDataModel: CustomStringConvertible {
     }
 
 }
+
 
 // MARK: Private
 

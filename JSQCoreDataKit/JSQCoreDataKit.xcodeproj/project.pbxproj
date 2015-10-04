@@ -20,6 +20,7 @@
 		881219DC1B361F13005E5AA7 /* SaveTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 881219D71B361F13005E5AA7 /* SaveTests.swift */; };
 		881219DD1B361F13005E5AA7 /* TestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 881219D81B361F13005E5AA7 /* TestCase.swift */; };
 		8851E2DB1B37423000E875DC /* StackTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8851E2DA1B37423000E875DC /* StackTests.swift */; };
+		887CC6871BC107300069022A /* StoreType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 887CC6861BC107300069022A /* StoreType.swift */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +50,7 @@
 		881219D71B361F13005E5AA7 /* SaveTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SaveTests.swift; sourceTree = "<group>"; };
 		881219D81B361F13005E5AA7 /* TestCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestCase.swift; sourceTree = "<group>"; };
 		8851E2DA1B37423000E875DC /* StackTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StackTests.swift; sourceTree = "<group>"; };
+		887CC6861BC107300069022A /* StoreType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoreType.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,6 +97,7 @@
 				88002D801AB8FF4F001787DB /* CoreDataModel.swift */,
 				88002D811AB8FF4F001787DB /* CoreDataStack.swift */,
 				88002D541AB8F546001787DB /* JSQCoreDataKit.h */,
+				887CC6861BC107300069022A /* StoreType.swift */,
 				88002D521AB8F546001787DB /* Supporting Files */,
 			);
 			path = JSQCoreDataKit;
@@ -249,6 +252,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				88002D841AB8FF4F001787DB /* CoreDataStack.swift in Sources */,
+				887CC6871BC107300069022A /* StoreType.swift in Sources */,
 				88002D831AB8FF4F001787DB /* CoreDataModel.swift in Sources */,
 				88002D821AB8FF4F001787DB /* CoreDataExtensions.swift in Sources */,
 			);

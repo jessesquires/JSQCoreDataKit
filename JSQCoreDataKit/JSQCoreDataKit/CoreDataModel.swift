@@ -20,109 +20,172 @@ import Foundation
 import CoreData
 
 
-///  An instance of `CoreDataModel` represents a Core Data model.
-///  It provides the model and store URLs as well as functions for interacting with the store.
-public struct CoreDataModel: Printable {
+/// :nodoc:
+public func ==(lhs: StoreType, rhs: StoreType) -> Bool {
+    switch (lhs, rhs) {
+    case let (.SQLite(left), .SQLite(right)) where left == right: return true
+    case let (.Binary(left), .Binary(right)) where left == right: return true
+    case (.InMemory, .InMemory): return true
+    default: return false
+    }
+}
+
+
+/// Describes a Core Data persistent store type.
+public enum StoreType: CustomStringConvertible, Equatable {
+
+    /// The SQLite database store type. The associated file URL specifies the directory for the store.
+    case SQLite (NSURL)
+
+    /// The binary store type. The associated file URL specifies the directory for the store.
+    case Binary (NSURL)
+
+    /// The in-memory store type.
+    case InMemory
+
+    /**
+    - returns: The file URL specifying the directory in which the store is located. 
+    - Note: If the store is in-memory, then this value will be `nil`.
+    */
+    public func storeDirectory() -> NSURL? {
+        switch self {
+        case let .SQLite(url): return url
+        case let .Binary(url): return url
+        case .InMemory: return nil
+        }
+    }
+
+    /// :nodoc:
+    public var description: String {
+        get {
+            switch self {
+            case .SQLite: return NSSQLiteStoreType
+            case .Binary: return NSBinaryStoreType
+            case .InMemory: return NSInMemoryStoreType
+            }
+        }
+    }
+}
+
+
+/**
+An instance of `CoreDataModel` represents a Core Data model.
+It provides the model and store URLs as well as methods for interacting with the store.
+*/
+public struct CoreDataModel: CustomStringConvertible {
 
     // MARK: Properties
 
-    ///  The name of the Core Data model resource.
+    /// The name of the Core Data model resource.
     public let name: String
 
-    ///  The bundle in which the model is located.
+    /// The bundle in which the model is located.
     public let bundle: NSBundle
+    
+    /// The type of the Core Data persistent store for the model.
+    public let storeType: StoreType
 
-    ///  The file URL specifying the directory in which the store is located.
-    public let storeDirectoryURL: NSURL
-
-    ///  The file URL specifying the full path to the store.
-    public var storeURL: NSURL {
+    /**
+    The file URL specifying the full path to the store.
+    - Note: If the store is in-memory, then this value will be `nil`.
+    */
+    public var storeURL: NSURL? {
         get {
-            return storeDirectoryURL.URLByAppendingPathComponent(databaseFileName)
+            return storeType.storeDirectory()?.URLByAppendingPathComponent(databaseFileName)
         }
     }
 
-    ///  The file URL specifying the model file in the bundle specified by `bundle`.
+    /// The file URL specifying the model file in the bundle specified by `bundle`.
     public var modelURL: NSURL {
         get {
-            let url = bundle.URLForResource(name, withExtension: "momd")
-            assert(url != nil, "*** Error loading resource for model named \(name) at url: \(url)")
-            return url!
+            guard let url = bundle.URLForResource(name, withExtension: "momd") else {
+                fatalError("*** Error loading model URL for model named \(name) in bundle: \(bundle)")
+            }
+            return url
         }
     }
 
-    ///  The database file name for the store.
+    /// The database file name for the store.
     public var databaseFileName: String {
         get {
-            return name + ".sqlite"
+            switch storeType {
+            case .SQLite: return name + ".sqlite"
+            default: return name
+            }
         }
     }
 
-    ///  The managed object model for the model specified by `name`.
+    /// The managed object model for the model specified by `name`.
     public var managedObjectModel: NSManagedObjectModel {
         get {
-            let model = NSManagedObjectModel(contentsOfURL: modelURL)
-            assert(model != nil, "*** Error loading managed object model at url: \(modelURL)")
-            return model!
+            guard let model = NSManagedObjectModel(contentsOfURL: modelURL) else {
+                fatalError("*** Error loading managed object model at url: \(modelURL)")
+            }
+            return model
         }
     }
 
-    ///  Queries the meta data for the persistent store specified by the receiver and returns whether or not a migration is needed.
-    ///  Returns `true` if the store requires a migration, `false` otherwise.
-    public var modelStoreNeedsMigration: Bool {
+    /**
+    Queries the meta data for the persistent store specified by the receiver
+    and returns whether or not a migration is needed.
+
+    - returns: `true` if the store requires a migration, `false` otherwise.
+    */
+    public var needsMigration: Bool {
         get {
-            var error: NSError?
-            if let sourceMetaData = NSPersistentStoreCoordinator.metadataForPersistentStoreOfType(nil, URL: storeURL, error: &error) {
+            guard let storeURL = storeURL else { return false }
+
+            do {
+                let sourceMetaData = try NSPersistentStoreCoordinator.metadataForPersistentStoreOfType(
+                    storeType.description,
+                    URL: storeURL,
+                    options: nil)
                 return !managedObjectModel.isConfiguration(nil, compatibleWithStoreMetadata: sourceMetaData)
             }
-            println("*** \(toString(CoreDataModel.self)) ERROR: [\(__LINE__)] \(__FUNCTION__) Failure checking persistent store coordinator meta data: \(error)")
-            return false
+            catch {
+                debugPrint("*** Error checking persistent store coordinator meta data: \(error)")
+                return false
+            }
         }
     }
 
     // MARK: Initialization
 
-    ///  Constructs new `CoreDataModel` instance with the specified name and bundle.
-    ///
-    ///  :param: name              The name of the Core Data model.
-    ///  :param: bundle            The bundle in which the model is located. The default parameter value is `NSBundle.mainBundle()`.
-    ///  :param: storeDirectoryURL The directory in which the model is located. The default parameter value is the user's documents directory.
-    ///
-    ///  :returns: A new `CoreDataModel` instance.
-    public init(name: String, bundle: NSBundle = NSBundle.mainBundle(), storeDirectoryURL: NSURL = documentsDirectoryURL()) {
+    /**
+    Constructs a new `CoreDataModel` instance with the specified name and bundle.
+
+    - parameter name:           The name of the Core Data model.
+    - parameter bundle:         The bundle in which the model is located. The default is the main bundle.
+    - parameter storeType:      The store type for the Core Data model. The default is `.SQLite`, with the user's documents directory.
+
+    - returns: A new `CoreDataModel` instance.
+    */
+    public init(name: String, bundle: NSBundle = .mainBundle(), storeType: StoreType = .SQLite(DocumentsDirectoryURL())) {
         self.name = name
         self.bundle = bundle
-        self.storeDirectoryURL = storeDirectoryURL
+        self.storeType = storeType
     }
 
     // MARK: Methods
 
-    ///  Removes the existing model store specfied by the receiver.
-    ///
-    ///  :returns: A tuple value containing a boolean to indicate success and an error object if an error occurred.
-    public func removeExistingModelStore() -> (success: Bool, error: NSError?) {
-        var error: NSError?
+    /**
+    Removes the existing model store specfied by the receiver.
+
+    - throws: If removing the store fails or errors, then this function throws an `NSError`.
+    */
+    public func removeExistingModelStore() throws {
         let fileManager = NSFileManager.defaultManager()
-
-        if let storePath = storeURL.path {
-            if fileManager.fileExistsAtPath(storePath) {
-                let success = fileManager.removeItemAtURL(storeURL, error: &error)
-                if !success {
-                    println("*** \(toString(CoreDataModel.self)) ERROR: [\(__LINE__)] \(__FUNCTION__) Could not remove model store at url: \(error)")
-                }
-                return (success, error)
-            }
+        if let storePath = storeURL?.path where fileManager.fileExistsAtPath(storePath) {
+            try fileManager.removeItemAtPath(storePath)
         }
-
-        return (false, nil)
     }
 
-    // MARK: Printable
+    // MARK: CustomStringConvertible
 
     /// :nodoc:
     public var description: String {
         get {
-            return "<\(toString(CoreDataModel.self)): name=\(name), needsMigration=\(modelStoreNeedsMigration), databaseFileName=\(databaseFileName), modelURL=\(modelURL), storeURL=\(storeURL)>"
+            return "<\(CoreDataModel.self): name=\(name), storeType=\(storeType) needsMigration=\(needsMigration), modelURL=\(modelURL), storeURL=\(storeURL)>"
         }
     }
 
@@ -130,9 +193,11 @@ public struct CoreDataModel: Printable {
 
 // MARK: Private
 
-private func documentsDirectoryURL() -> NSURL {
-    var error: NSError?
-    let url = NSFileManager.defaultManager().URLForDirectory(.DocumentDirectory, inDomain: .UserDomainMask, appropriateForURL: nil, create: true, error: &error)
-    assert(url != nil, "*** Error finding documents directory: \(error)")
-    return url!
+private func DocumentsDirectoryURL() -> NSURL {
+    do {
+        return try NSFileManager.defaultManager().URLForDirectory(.DocumentDirectory, inDomain: .UserDomainMask, appropriateForURL: nil, create: true)
+    }
+    catch {
+        fatalError("*** Error finding documents directory: \(error)")
+    }
 }

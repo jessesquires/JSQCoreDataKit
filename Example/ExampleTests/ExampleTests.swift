@@ -23,6 +23,11 @@ import ExampleModel
 import JSQCoreDataKit
 
 
+let model = CoreDataModel(name: ModelName, bundle: ModelBundle, storeType: .InMemory)
+
+let stack = CoreDataStack(model: model)
+
+
 class ExampleTests: XCTestCase {
 
     override func setUp() {
@@ -35,29 +40,21 @@ class ExampleTests: XCTestCase {
 
     func test_ThatFakeBandInserts_Successfully() {
 
-        let model = CoreDataModel(name: ModelName, bundle: ModelBundle)
+        newFakeBand(stack.context)
 
-        let stack = CoreDataStack(model: model, storeType: NSInMemoryStoreType)
-
-        let band = newFakeBand(stack.managedObjectContext)
-
-        let result = saveContextAndWait(stack.managedObjectContext)
-        XCTAssertTrue(result.success)
-        XCTAssertNil(result.error)
+        saveContext(stack.context) { error in
+            XCTAssertNil(error, "Save should not error")
+        }
     }
 
     func test_ThatFakeAlbumInserts_Successfully() {
-        
-        let model = CoreDataModel(name: ModelName, bundle: ModelBundle)
 
-        let stack = CoreDataStack(model: model, storeType: NSInMemoryStoreType)
+        let band = newFakeBand(stack.context)
+        newFakeAlbum(stack.context, band: band)
 
-        let band = newFakeBand(stack.managedObjectContext)
-        let album = newFakeAlbum(stack.managedObjectContext, band)
-
-        let result = saveContextAndWait(stack.managedObjectContext)
-        XCTAssertTrue(result.success)
-        XCTAssertNil(result.error)
+        saveContext(stack.context) { error in
+            XCTAssertNil(error, "Save should not error")
+        }
     }
-    
+
 }

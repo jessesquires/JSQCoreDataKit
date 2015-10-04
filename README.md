@@ -22,7 +22,7 @@ This framework aims to do the following:
 ## Requirements
 
 * iOS 8
-* Swift 1.2
+* Swift 2.0
 
 ## Installation
 
@@ -78,18 +78,19 @@ let model = CoreDataModel(name: "MyModel", bundle: NSBundle(identifier: "com.MyA
 // Initialize a default stack
 let stack = CoreDataStack(model: model)
 
+// ----------------------------------
+
 // Initialize a private queue, in-memory stack
-let privateStack = CoreDataStack(model: model, storeType: NSInMemoryStoreType, options: nil, concurrencyType: .PrivateQueueConcurrencyType)
+let inMemoryModel = CoreDataModel(name: myName, bundle: myBundle, storeType: .InMemory)
+let privateStack = CoreDataStack(model: inMemoryModel, options: nil, concurrencyType: .PrivateQueueConcurrencyType)
 ````
 
 #### Saving a managed object context
 
 ````swift
-// Saving returns a tuple (Bool, NSError?)
-let result: ContextSaveResult = saveContextAndWait(stack.managedObjectContext)
-if !result.success {
-    // save failed
-    println("Save error: \(result.error)")
+saveContext(context) { (error: NSError?) in
+    // perform post save operations
+    // handle error, if any
 }
 ````
 
@@ -97,14 +98,20 @@ if !result.success {
 
 ````swift
 let model = CoreDataModel(name: "MyModel", bundle: NSBundle(identifier: "com.MyApp.MyModelFramework")!)
-model.removeExistingModelStore()
+do {
+    try model.removeExistingModelStore()
+} catch {
+    print("Error: \(error)")
+}
 ````
 
 #### Checking migrations
 
 ````swift
 let model = CoreDataModel(name: "MyModel", bundle: NSBundle(identifier: "com.MyApp.MyModelFramework")!)
-let needsMigration: Bool = model.modelStoreNeedsMigration
+if model.needsMigration {
+    // do migration
+}
 ````
 
 #### Using child contexts
@@ -127,15 +134,15 @@ let privateChildContext = stack.childManagedObjectContext(concurrencyType: .Priv
 let entity = entity(name: "MyModel", context: context)!
 let request = FetchRequest<MyModel>(entity: entity)
 
-// Fetching returns a FetchResult<T>
-let result = fetch(request: request, inContext: context)
-
-if !result.success {
-    println("Error = \(result.error)")
+var results = [MyModel]()
+do {
+    results = try fetch(request: request, inContext: context)
+}
+catch {
+    print("Fetch error: \(error)")
 }
 
-// use objects, [MyModel]
-result.objects
+print("Results = \(results)")
 ````
 
 #### Deleting
@@ -145,8 +152,8 @@ let objects: [MyModel] = /* array of MyModel objects */
 
 deleteObjects(objects, inContext: context)
 
-// Commit changes, remove objects from store
-saveContextAndWait(context)
+// Commit changes to remove objects from store
+saveContext(context)
 ````
 
 ## Unit tests

@@ -54,8 +54,12 @@ class ViewController: UIViewController {
         let model = CoreDataModel(name: ModelName, bundle: ModelBundle)
 
         // Create stack
-        self.stack = CoreDataStack(model: model)
+        stack = CoreDataStack(model: model)
 
+        saveContext(stack!.context) { (error: NSError?) in
+            // perform post save operations
+            // handle error, if any
+        }
     }
 
 }

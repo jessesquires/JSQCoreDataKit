@@ -12,12 +12,12 @@
 //
 //
 //  License
-//  Copyright (c) 2015 Jesse Squires
+//  Copyright © 2015 Jesse Squires
 //  Released under an MIT license: http://opensource.org/licenses/MIT
 //
 
-import Foundation
 import CoreData
+import Foundation
 
 
 /**
@@ -99,7 +99,9 @@ public struct CoreDataModel: CustomStringConvertible, Equatable {
     */
     public var needsMigration: Bool {
         get {
-            guard let storeURL = storeURL else { return false }
+            guard let storeURL = storeURL else {
+                return false
+            }
 
             do {
                 let sourceMetaData = try NSPersistentStoreCoordinator.metadataForPersistentStoreOfType(
@@ -154,7 +156,8 @@ public struct CoreDataModel: CustomStringConvertible, Equatable {
     /// :nodoc:
     public var description: String {
         get {
-            return "<\(CoreDataModel.self): name=\(name), storeType=\(storeType) needsMigration=\(needsMigration), modelURL=\(modelURL), storeURL=\(storeURL)>"
+            return "<\(CoreDataModel.self): name=\(name); storeType=\(storeType); needsMigration=\(needsMigration); "
+                + "modelURL=\(modelURL); storeURL=\(storeURL)>"
         }
     }
 

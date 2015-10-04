@@ -21,10 +21,23 @@ import CoreData
 
 
 /**
+- parameter lhs: A `CoreDataModel` instance.
+- parameter rhs: A `CoreDataModel` instance.
+
+- returns: True if `lhs` is equal to `rhs`, false otherwise.
+*/
+public func ==(lhs: CoreDataModel, rhs: CoreDataModel) -> Bool {
+    return lhs.name == rhs.name
+        && lhs.bundle.isEqual(rhs.bundle)
+        && lhs.storeType == rhs.storeType
+}
+
+
+/**
 An instance of `CoreDataModel` represents a Core Data model.
 It provides the model and store URLs as well as methods for interacting with the store.
 */
-public struct CoreDataModel: CustomStringConvertible {
+public struct CoreDataModel: CustomStringConvertible, Equatable {
 
 
     // MARK: Properties
@@ -152,7 +165,11 @@ public struct CoreDataModel: CustomStringConvertible {
 
 private func DocumentsDirectoryURL() -> NSURL {
     do {
-        return try NSFileManager.defaultManager().URLForDirectory(.DocumentDirectory, inDomain: .UserDomainMask, appropriateForURL: nil, create: true)
+        return try NSFileManager.defaultManager().URLForDirectory(
+            .DocumentDirectory,
+            inDomain: .UserDomainMask,
+            appropriateForURL: nil,
+            create: true)
     }
     catch {
         fatalError("*** Error finding documents directory: \(error)")

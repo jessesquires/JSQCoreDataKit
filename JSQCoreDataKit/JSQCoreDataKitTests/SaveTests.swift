@@ -32,7 +32,7 @@ class SaveTests: TestCase {
         // WHEN: we attempt to save the context
 
         // THEN: the save operation is ignored
-        saveContext(stack.context) { error in
+        saveContext(stack.mainQueueContext) { error in
             didSave = true
         }
 
@@ -44,11 +44,11 @@ class SaveTests: TestCase {
         // GIVEN: a stack and context with changes
         let stack = CoreDataStack(model: inMemoryModel)
 
-        let _ = MyModel(context: stack.context)
-        let _ = MyModel(context: stack.context)
+        let _ = MyModel(context: stack.mainQueueContext)
+        let _ = MyModel(context: stack.mainQueueContext)
 
         var didSave = false
-        self.expectationForNotification(NSManagedObjectContextDidSaveNotification, object: stack.context) { (notification) -> Bool in
+        self.expectationForNotification(NSManagedObjectContextDidSaveNotification, object: stack.mainQueueContext) { (notification) -> Bool in
             didSave = true
             return true
         }
@@ -56,7 +56,7 @@ class SaveTests: TestCase {
         // WHEN: we attempt to save the context
 
         // THEN: the save succeeds without an error
-        saveContext(stack.context) { error in
+        saveContext(stack.mainQueueContext) { error in
             XCTAssertNil(error, "Save should not error")
         }
 
@@ -72,11 +72,11 @@ class SaveTests: TestCase {
         // GIVEN: a stack and context with changes
         let stack = CoreDataStack(model: inMemoryModel)
 
-        let _ = MyModel(context: stack.context)
-        let _ = MyModel(context: stack.context)
+        let _ = MyModel(context: stack.mainQueueContext)
+        let _ = MyModel(context: stack.mainQueueContext)
 
         var didSave = false
-        self.expectationForNotification(NSManagedObjectContextDidSaveNotification, object: stack.context) { (notification) -> Bool in
+        self.expectationForNotification(NSManagedObjectContextDidSaveNotification, object: stack.mainQueueContext) { (notification) -> Bool in
             didSave = true
             return true
         }
@@ -84,7 +84,7 @@ class SaveTests: TestCase {
         // WHEN: we attempt to save the context
 
         // THEN: the save succeeds without an error
-        saveContext(stack.context)
+        saveContext(stack.mainQueueContext)
         
         self.waitForExpectationsWithTimeout(1, handler: { (error) -> Void in
             XCTAssertNil(error, "Expectation should not error")
@@ -100,7 +100,7 @@ class SaveTests: TestCase {
         var didSave = false
 
         // WHEN: we attempt to save the context asynchronously
-        saveContext(stack.context, wait: false) { error in
+        saveContext(stack.mainQueueContext, wait: false) { error in
             didSave = true
         }
 
@@ -113,11 +113,11 @@ class SaveTests: TestCase {
         // GIVEN: a stack and context with changes
         let stack = CoreDataStack(model: inMemoryModel)
 
-        let _ = MyModel(context: stack.context)
-        let _ = MyModel(context: stack.context)
+        let _ = MyModel(context: stack.mainQueueContext)
+        let _ = MyModel(context: stack.mainQueueContext)
 
         var didSave = false
-        self.expectationForNotification(NSManagedObjectContextDidSaveNotification, object: stack.context) { (notification) -> Bool in
+        self.expectationForNotification(NSManagedObjectContextDidSaveNotification, object: stack.mainQueueContext) { (notification) -> Bool in
             didSave = true
             return true
         }
@@ -125,7 +125,7 @@ class SaveTests: TestCase {
         let saveExpectation = self.expectationWithDescription("\(__FUNCTION__)")
 
         // WHEN: we attempt to save the context asynchronously
-        saveContext(stack.context, wait: false) { error in
+        saveContext(stack.mainQueueContext, wait: false) { error in
 
             // THEN: the save succeeds without an error
             XCTAssertNil(error, "Save should not error")

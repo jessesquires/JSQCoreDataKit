@@ -30,13 +30,14 @@ It provides convenience methods for initializing a stack for common use-cases as
 */
 public final class CoreDataStack: CustomStringConvertible {
 
+
     // MARK: Properties
 
     /// The model for the stack.
     public let model: CoreDataModel
 
     /// The main managed object context for the stack.
-    public let context: NSManagedObjectContext
+    public let mainQueueContext: NSManagedObjectContext
 
     /// The persistent store coordinator for the stack.
     public let storeCoordinator: NSPersistentStoreCoordinator
@@ -72,9 +73,10 @@ public final class CoreDataStack: CustomStringConvertible {
                 fatalError("*** Error adding persistent store: \(error)")
             }
 
-            context = NSManagedObjectContext(concurrencyType: concurrencyType)
-            context.persistentStoreCoordinator = storeCoordinator
+            mainQueueContext = NSManagedObjectContext(concurrencyType: concurrencyType)
+            mainQueueContext.persistentStoreCoordinator = storeCoordinator
     }
+
 
     // MARK: Child contexts
 
@@ -90,17 +92,18 @@ public final class CoreDataStack: CustomStringConvertible {
         mergePolicyType: NSMergePolicyType = .MergeByPropertyObjectTrumpMergePolicyType) -> ChildManagedObjectContext {
 
             let childContext = NSManagedObjectContext(concurrencyType: concurrencyType)
-            childContext.parentContext = context
+            childContext.parentContext = mainQueueContext
             childContext.mergePolicy = NSMergePolicy(mergeType: mergePolicyType)
             return childContext
     }
 
+    
     // MARK: CustomStringConvertible
 
     /// :nodoc:
     public var description: String {
         get {
-            return "<\(CoreDataStack.self): model=\(model.name), context=\(context)>"
+            return "<\(CoreDataStack.self): model=\(model.name), context=\(mainQueueContext)>"
         }
     }
     

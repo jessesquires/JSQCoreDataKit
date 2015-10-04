@@ -40,19 +40,19 @@ class ExampleTests: XCTestCase {
 
     func test_ThatFakeBandInserts_Successfully() {
 
-        newFakeBand(stack.context)
+        newFakeBand(stack.mainQueueContext)
 
-        saveContext(stack.context) { error in
+        saveContext(stack.mainQueueContext) { error in
             XCTAssertNil(error, "Save should not error")
         }
     }
 
     func test_ThatFakeAlbumInserts_Successfully() {
 
-        let band = newFakeBand(stack.context)
-        newFakeAlbum(stack.context, band: band)
+        let band = newFakeBand(stack.mainQueueContext)
+        newFakeAlbum(stack.mainQueueContext, band: band)
 
-        saveContext(stack.context) { error in
+        saveContext(stack.mainQueueContext) { error in
             XCTAssertNil(error, "Save should not error")
         }
     }

@@ -34,7 +34,7 @@ class StackTests: XCTestCase {
 
         // THEN: it is setup as expected
         XCTAssertTrue(NSFileManager.defaultManager().fileExistsAtPath(sqliteModel.storeURL!.path!), "Model store should exist on disk")
-        XCTAssertEqual(stack.context.concurrencyType, NSManagedObjectContextConcurrencyType.MainQueueConcurrencyType)
+        XCTAssertEqual(stack.mainQueueContext.concurrencyType, NSManagedObjectContextConcurrencyType.MainQueueConcurrencyType)
     }
 
     func test_ThatBinaryStack_InitializesSuccessfully() {
@@ -47,7 +47,7 @@ class StackTests: XCTestCase {
 
         // THEN: it is setup as expected
         XCTAssertTrue(NSFileManager.defaultManager().fileExistsAtPath(binaryModel.storeURL!.path!), "Model store should exist on disk")
-        XCTAssertEqual(stack.context.concurrencyType, NSManagedObjectContextConcurrencyType.MainQueueConcurrencyType)
+        XCTAssertEqual(stack.mainQueueContext.concurrencyType, NSManagedObjectContextConcurrencyType.MainQueueConcurrencyType)
     }
 
     func test_ThatInMemoryStack_InitializesSuccessfully() {
@@ -60,7 +60,7 @@ class StackTests: XCTestCase {
 
         // THEN: it is setup as expected
         XCTAssertNil(inMemoryModel.storeURL, "Model store should not exist on disk")
-        XCTAssertEqual(stack.context.concurrencyType, NSManagedObjectContextConcurrencyType.PrivateQueueConcurrencyType)
+        XCTAssertEqual(stack.mainQueueContext.concurrencyType, NSManagedObjectContextConcurrencyType.PrivateQueueConcurrencyType)
     }
 
     func test_ThatChildContext_IsCreatedSuccessfully() {
@@ -73,7 +73,7 @@ class StackTests: XCTestCase {
         let childContext = stack.childManagedObjectContext(concurrencyType: .PrivateQueueConcurrencyType, mergePolicyType: .ErrorMergePolicyType)
 
         // THEN: it is initialized as expected
-        XCTAssertEqual(childContext.parentContext!, stack.context)
+        XCTAssertEqual(childContext.parentContext!, stack.mainQueueContext)
         XCTAssertEqual(childContext.concurrencyType, NSManagedObjectContextConcurrencyType.PrivateQueueConcurrencyType)
         XCTAssertEqual(childContext.mergePolicy.mergeType, NSMergePolicyType.ErrorMergePolicyType)
     }

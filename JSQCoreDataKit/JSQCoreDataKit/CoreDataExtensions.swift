@@ -12,12 +12,13 @@
 //
 //
 //  License
-//  Copyright (c) 2015 Jesse Squires
+//  Copyright © 2015 Jesse Squires
 //  Released under an MIT license: http://opensource.org/licenses/MIT
 //
 
-import Foundation
 import CoreData
+import Foundation
+
 
 /**
 Attempts to commit unsaved changes to registered objects to the specified context's parent store. 
@@ -25,10 +26,10 @@ This function is performed in a block on the context's queue. If the context has
 then this function returns immediately and the completion block is not called.
 
 - parameter context:    The managed object context to save.
-- parameter wait:       If true (the default), perform the save synchronously.
+- parameter wait:       If false (the default), saves asynchronously. If true, saves synchronously.
 - parameter completion: The closure to be executed when the save operation completes.
 */
-public func saveContext(context: NSManagedObjectContext, wait: Bool = true, completion: ((NSError?) -> Void)? = nil) {
+public func saveContext(context: NSManagedObjectContext, wait: Bool = false, completion: ((NSError?) -> Void)? = nil) {
     guard context.hasChanges else { return }
 
     let block = { () -> Void in
@@ -44,6 +45,7 @@ public func saveContext(context: NSManagedObjectContext, wait: Bool = true, comp
     wait ? context.performBlockAndWait(block) : context.performBlock(block)
 }
 
+
 /**
 Returns the entity with the specified name from the managed object model associated with 
 the specified managed object context’s persistent store coordinator.
@@ -58,8 +60,9 @@ public func entity(name name: String, context: NSManagedObjectContext) -> NSEnti
     return NSEntityDescription.entityForName(name, inManagedObjectContext: context)!
 }
 
+
 /**
-An instance of `FetchRequest <T: NSManagedObject>` describes search criteria used to retrieve data from a persistent store.
+An instance of `FetchRequest` describes search criteria used to retrieve data from a persistent store.
 This is a subclass of `NSFetchRequest` that adds a type parameter specifying the type of managed objects for the fetch request.
 The type parameter acts as a phantom type.
 */
@@ -77,6 +80,7 @@ public class FetchRequest <T: NSManagedObject>: NSFetchRequest {
         self.entity = entity
     }
 }
+
 
 /**
 Executes the fetch request in the given context and returns the result.
@@ -108,6 +112,7 @@ public func fetch <T: NSManagedObject>(request request: FetchRequest<T>, inConte
 
     return results as! [T]
 }
+
 
 /**
 Deletes the objects from the specified context.

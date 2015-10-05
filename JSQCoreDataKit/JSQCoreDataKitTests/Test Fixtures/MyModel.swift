@@ -45,5 +45,9 @@ class MyModel: NSManagedObject {
             self.myFloat = myFloat
             self.myBool = myBool
     }
+
+    private override init(entity: NSEntityDescription, insertIntoManagedObjectContext context: NSManagedObjectContext?) {
+        super.init(entity: entity, insertIntoManagedObjectContext: context)
+    }
     
 }

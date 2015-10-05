@@ -14,10 +14,13 @@ This framework aims to do the following:
 * Aid in testing your Core Data models
 * Reduce the boilerplate involved with Core Data
 
-> **For more information on Core Data:**
+> **Further reading on Core Data:**
 > * [Core Data Programming Guide](https://developer.apple.com/library/mac/documentation/Cocoa/Conceptual/CoreData/cdProgrammingGuide.html)
 > * [Core Data Core Competencies Guide](https://developer.apple.com/library/ios/documentation/DataManagement/Devpedia-CoreData/coreDataStack.html#//apple_ref/doc/uid/TP40010398-CH25-SW1)
 > * [objc.io issue #4 on Core Data](http://www.objc.io/issue-4/)
+> * [Concurrent Core Data Stacks – Performance Shootout](http://floriankugler.com/2013/04/29/concurrent-core-data-stack-performance-shootout/)
+> * [Backstage with Nested Managed Object Contexts](http://floriankugler.com/2013/05/13/backstage-with-nested-managed-object-contexts/)
+> * [BNR core data stack](https://www.bignerdranch.com/blog/introducing-the-big-nerd-ranch-core-data-stack/)
 
 ## Requirements
 

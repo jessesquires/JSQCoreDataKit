@@ -12,12 +12,12 @@
 //
 //
 //  License
-//  Copyright (c) 2015 Jesse Squires
+//  Copyright © 2015 Jesse Squires
 //  Released under an MIT license: http://opensource.org/licenses/MIT
 //
 
-import Foundation
 import CoreData
+import Foundation
 
 
 /**
@@ -64,8 +64,8 @@ public enum StoreType: CustomStringConvertible, Equatable {
         }
     }
 
-    /// :nodoc:
-    public var description: String {
+    /// Returns the type string description for the store type.
+    public var type: String {
         get {
             switch self {
             case .SQLite: return NSSQLiteStoreType
@@ -74,4 +74,15 @@ public enum StoreType: CustomStringConvertible, Equatable {
             }
         }
     }
+
+
+    // MARK: CustomStringConvertible
+
+    /// :nodoc:
+    public var description: String {
+        get {
+            return "<\(StoreType.self): \(type)>"
+        }
+    }
+    
 }

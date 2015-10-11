@@ -135,7 +135,9 @@ class ModelTests: XCTestCase {
 
         // GIVEN: a core data model and stack
         let model = CoreDataModel(name: modelName, bundle: modelBundle)
-        let stack = CoreDataStack(model: model)
+        let factory = CoreDataStackFactory(model: model)
+        let result = factory.createStack()
+        let stack = result.stack()!
         saveContext(stack.mainContext) { error in
         }
 

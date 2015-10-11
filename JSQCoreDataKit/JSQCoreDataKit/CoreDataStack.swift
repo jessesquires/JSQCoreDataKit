@@ -12,7 +12,7 @@
 //
 //
 //  License
-//  Copyright (c) 2015 Jesse Squires
+//  Copyright © 2015 Jesse Squires
 //  Released under an MIT license: http://opensource.org/licenses/MIT
 //
 
@@ -28,6 +28,8 @@ It is composed of a main context and a background context, both of which are con
 These two contexts operate on the main queue and a private background queue, respectively.
 
 Data between the two contexts is kept in sync.
+
+**You cannot create a `CoreDataStack` instance directly. Instead, use a `CoreDataStackFactory` for initialization.**
 */
 public final class CoreDataStack: CustomStringConvertible, Equatable {
 
@@ -52,64 +54,25 @@ public final class CoreDataStack: CustomStringConvertible, Equatable {
 
     // MARK: Initialization
 
-    /**
-    Constructs a new `CoreDataStack` instance with the specified `model` and `options`.
+    internal init(
+        model: CoreDataModel,
+        mainContext: NSManagedObjectContext,
+        backgroundContext: NSManagedObjectContext,
+        storeCoordinator: NSPersistentStoreCoordinator) {
+            self.model = model
+            self.mainContext = mainContext
+            self.backgroundContext = backgroundContext
+            self.storeCoordinator = storeCoordinator
 
-    - parameter model:   The model describing the stack.
-    - parameter options: A dictionary that specifies options for the store. The default is `nil`.
+            NSNotificationCenter.defaultCenter().addObserver(self,
+                selector: Selector("didReceiveMainContextDidSaveNotification:"),
+                name: NSManagedObjectContextDidSaveNotification,
+                object: mainContext)
 
-    - returns: A new `CoreDataStack` instance.
-
-    - Warning: You should not create a `CoreDataStack` directly. Instead, use a `CoreDataStackFactory` for initialization.
-    */
-    public init(model: CoreDataModel, options: PersistentStoreOptions? = nil) {
-        self.model = model
-        storeCoordinator = NSPersistentStoreCoordinator(managedObjectModel: model.managedObjectModel)
-
-        let name = "JSQCoreDataKit.CoreDataStack.context"
-
-        var tempMainContext: NSManagedObjectContext!
-        let setupMainContext: () -> Void = {
-            tempMainContext = NSManagedObjectContext(concurrencyType: .MainQueueConcurrencyType)
-            tempMainContext.mergePolicy = NSMergePolicy(mergeType: .MergeByPropertyStoreTrumpMergePolicyType)
-            tempMainContext.name = name + ".main"
-        }
-
-        if !NSThread.isMainThread() {
-            dispatch_sync(dispatch_get_main_queue()) {
-                setupMainContext()
-            }
-        }
-        else {
-            setupMainContext()
-        }
-
-        mainContext = tempMainContext
-        mainContext.persistentStoreCoordinator = storeCoordinator
-
-        backgroundContext = NSManagedObjectContext(concurrencyType: .PrivateQueueConcurrencyType)
-        backgroundContext.mergePolicy = NSMergePolicy(mergeType: .MergeByPropertyStoreTrumpMergePolicyType)
-        backgroundContext.persistentStoreCoordinator = storeCoordinator
-        backgroundContext.name = name + ".background"
-
-        do {
-            try storeCoordinator.addPersistentStoreWithType(model.storeType.type,
-                configuration: nil,
-                URL: model.storeURL,
-                options: options)
-        } catch {
-            fatalError("everything is broken")
-        }
-
-        NSNotificationCenter.defaultCenter().addObserver(self,
-            selector: Selector("didReceiveMainContextDidSaveNotification:"),
-            name: NSManagedObjectContextDidSaveNotification,
-            object: mainContext)
-
-        NSNotificationCenter.defaultCenter().addObserver(self,
-            selector: Selector("didReceiveBackgroundContextDidSaveNotification:"),
-            name: NSManagedObjectContextDidSaveNotification,
-            object: backgroundContext)
+            NSNotificationCenter.defaultCenter().addObserver(self,
+                selector: Selector("didReceiveBackgroundContextDidSaveNotification:"),
+                name: NSManagedObjectContextDidSaveNotification,
+                object: backgroundContext)
     }
 
     /// :nodoc:
@@ -203,7 +166,7 @@ public final class CoreDataStack: CustomStringConvertible, Equatable {
     @objc
     private func didReceiveChildContextDidSaveNotification(notification: NSNotification) {
         guard let context = notification.object as? NSManagedObjectContext else {
-            assertionFailure("\(notification.name) posted from object of type \(notification.object.self). "
+            assertionFailure("*** Error: \(notification.name) posted from object of type \(notification.object.self). "
                 + "Expected \(NSManagedObjectContext.self) instead.")
             return
         }

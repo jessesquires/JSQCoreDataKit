@@ -49,7 +49,9 @@ class StackResultTests: TestCase {
         XCTAssertEqual(success1, success2)
 
         let model = CoreDataModel(name: modelName, bundle: modelBundle, storeType: .SQLite(DocumentsDirectoryURL()))
-        let stack = CoreDataStack(model: model)
+        let factory = CoreDataStackFactory(model: model)
+        let result = factory.createStack()
+        let stack = result.stack()!
         let success3 = CoreDataStackResult.Success(stack)
         XCTAssertNotEqual(success1, success3)
 

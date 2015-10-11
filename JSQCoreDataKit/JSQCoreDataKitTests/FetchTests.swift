@@ -29,7 +29,7 @@ class FetchTests: TestCase {
     func test_ThatFetchRequest_Succeeds_WithManyObjects() {
 
         // GIVEN: a stack and objects in core data
-        let stack = CoreDataStack(model: inMemoryModel)
+        let stack = self.inMemoryStack
 
         let count = 10
         for _ in 1...count {
@@ -51,7 +51,7 @@ class FetchTests: TestCase {
     func test_ThatFetchRequest_Succeeds_WithSpecificObject() {
 
         // GIVEN: a stack and objects in core data
-        let stack = CoreDataStack(model: inMemoryModel)
+        let stack = self.inMemoryStack
 
         let count = 10
         for _ in 1...count {
@@ -78,7 +78,7 @@ class FetchTests: TestCase {
     func test_ThatFetchRequest_Succeeds_WithoutObjects() {
 
         // GIVEN: a stack and no objects in core data
-        let stack = CoreDataStack(model: inMemoryModel)
+        let stack = self.inMemoryStack
 
         // WHEN: we execute a fetch request
         let request = FetchRequest<Employee>(entity: entity(name: Employee.entityName, context: stack.mainContext))

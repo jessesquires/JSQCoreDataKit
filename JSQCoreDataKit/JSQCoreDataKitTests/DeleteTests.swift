@@ -29,7 +29,7 @@ class DeleteTests: TestCase {
     func test_ThatDelete_Succeeds_WithManyObjects() {
 
         // GIVEN: a stack and objects in core data
-        let stack = CoreDataStack(model: inMemoryModel)
+        let stack = self.inMemoryStack
 
         let count = 10
         var objects = [Employee]()
@@ -56,7 +56,7 @@ class DeleteTests: TestCase {
     func test_ThatDelete_Succeeds_WithSpecificObject() {
 
         // GIVEN: a stack and objects in core data
-        let stack = CoreDataStack(model: inMemoryModel)
+        let stack = self.inMemoryStack
 
         let count = 10
         var objects = [Employee]()
@@ -95,7 +95,7 @@ class DeleteTests: TestCase {
     func test_ThatDelete_Succeeds_WithEmptyArray() {
 
         // GIVEN: a stack
-        let stack = CoreDataStack(model: inMemoryModel)
+        let stack = self.inMemoryStack
 
         // WHEN: we delete an empty array of objects
         deleteObjects([], inContext: stack.mainContext)

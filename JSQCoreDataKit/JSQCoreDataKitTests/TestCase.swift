@@ -12,7 +12,7 @@
 //
 //
 //  License
-//  Copyright (c) 2015 Jesse Squires
+//  Copyright © 2015 Jesse Squires
 //  Released under an MIT license: http://opensource.org/licenses/MIT
 //
 
@@ -32,14 +32,14 @@ class TestCase: XCTestCase {
 
     let inMemoryModel = CoreDataModel(name: modelName, bundle: modelBundle, storeType: .InMemory)
 
-    let inMemoryStack: CoreDataStack = {
-        let inMemoryModel = CoreDataModel(name: modelName, bundle: modelBundle, storeType: .InMemory)
-        return CoreDataStack(model: inMemoryModel)
-    }()
-
+    var inMemoryStack: CoreDataStack!
 
     override func setUp() {
         super.setUp()
+
+        let factory = CoreDataStackFactory(model: inMemoryModel)
+        let result = factory.createStack()
+        inMemoryStack = result.stack()
     }
 
     override func tearDown() {

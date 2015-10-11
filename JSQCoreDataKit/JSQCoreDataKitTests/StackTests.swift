@@ -30,8 +30,9 @@ class StackTests: XCTestCase {
         let sqliteModel = CoreDataModel(name: modelName, bundle: modelBundle)
 
         // WHEN: we create a stack
-
-        let stack = CoreDataStack(model: sqliteModel)
+        let factory = CoreDataStackFactory(model: sqliteModel)
+        let result = factory.createStack()
+        let stack = result.stack()!
 
         // THEN: it is setup as expected
         XCTAssertTrue(NSFileManager.defaultManager().fileExistsAtPath(sqliteModel.storeURL!.path!), "Model store should exist on disk")
@@ -44,7 +45,9 @@ class StackTests: XCTestCase {
         let binaryModel = CoreDataModel(name: modelName, bundle: modelBundle, storeType: .Binary(NSURL(fileURLWithPath: NSTemporaryDirectory())))
 
         // WHEN: we create a stack
-        let stack = CoreDataStack(model: binaryModel)
+        let factory = CoreDataStackFactory(model: binaryModel)
+        let result = factory.createStack()
+        let stack = result.stack()!
 
         // THEN: it is setup as expected
         XCTAssertTrue(NSFileManager.defaultManager().fileExistsAtPath(binaryModel.storeURL!.path!), "Model store should exist on disk")
@@ -57,7 +60,9 @@ class StackTests: XCTestCase {
         let inMemoryModel = CoreDataModel(name: modelName, bundle: modelBundle, storeType: .InMemory)
 
         // WHEN: we create a stack
-        let stack = CoreDataStack(model: inMemoryModel, options: nil)
+        let factory = CoreDataStackFactory(model: inMemoryModel, options: nil)
+        let result = factory.createStack()
+        let stack = result.stack()!
 
         // THEN: it is setup as expected
         XCTAssertNil(inMemoryModel.storeURL, "Model store should not exist on disk")
@@ -68,7 +73,9 @@ class StackTests: XCTestCase {
 
         // GIVEN: a model and stack
         let model = CoreDataModel(name: modelName, bundle: modelBundle)
-        let stack = CoreDataStack(model: model)
+        let factory = CoreDataStackFactory(model: model)
+        let result = factory.createStack()
+        let stack = result.stack()!
 
         // WHEN: we create a child context from main
         let childContext = stack.childContextFromMain(concurrencyType: .PrivateQueueConcurrencyType, mergePolicyType: .ErrorMergePolicyType)
@@ -83,7 +90,9 @@ class StackTests: XCTestCase {
 
         // GIVEN: a model and stack
         let model = CoreDataModel(name: modelName, bundle: modelBundle)
-        let stack = CoreDataStack(model: model)
+        let factory = CoreDataStackFactory(model: model)
+        let result = factory.createStack()
+        let stack = result.stack()!
 
         // WHEN: we create a child context from background
         let childContext = stack.childContextFromBackground(concurrencyType: .PrivateQueueConcurrencyType, mergePolicyType: .ErrorMergePolicyType)
@@ -96,7 +105,9 @@ class StackTests: XCTestCase {
 
     func test_Stack_Description() {
         let model = CoreDataModel(name: modelName, bundle: modelBundle)
-        let stack = CoreDataStack(model: model)
+        let factory = CoreDataStackFactory(model: model)
+        let result = factory.createStack()
+        let stack = result.stack()!
         print(stack)
     }
     

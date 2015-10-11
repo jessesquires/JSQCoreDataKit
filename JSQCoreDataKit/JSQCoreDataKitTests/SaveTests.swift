@@ -29,7 +29,7 @@ class SaveTests: TestCase {
     func test_ThatSaveAndWait_WithoutChanges_IsIgnored() {
 
         // GIVEN: a stack and context without changes
-        let stack = CoreDataStack(model: inMemoryModel)
+        let stack = self.inMemoryStack
         var didSave = false
 
         // WHEN: we attempt to save the context
@@ -45,7 +45,7 @@ class SaveTests: TestCase {
     func test_ThatSaveAndWait_WithChanges_Succeeds() {
 
         // GIVEN: a stack and context with changes
-        let stack = CoreDataStack(model: inMemoryModel)
+        let stack = self.inMemoryStack
 
         let _ = Employee.newEmployee(stack.mainContext)
         let _ = Employee.newEmployee(stack.mainContext)
@@ -73,7 +73,7 @@ class SaveTests: TestCase {
     func test_ThatSaveAndWait_WithChanges_WithoutCompletionClosure_Succeeds() {
 
         // GIVEN: a stack and context with changes
-        let stack = CoreDataStack(model: inMemoryModel)
+        let stack = self.inMemoryStack
 
         let _ = Employee.newEmployee(stack.mainContext)
         let _ = Employee.newEmployee(stack.mainContext)
@@ -99,7 +99,7 @@ class SaveTests: TestCase {
     func test_ThatSaveAsync_WithoutChanges_ReturnsImmediately() {
 
         // GIVEN: a stack and context without changes
-        let stack = CoreDataStack(model: inMemoryModel)
+        let stack = self.inMemoryStack
         var didSave = false
 
         // WHEN: we attempt to save the context asynchronously
@@ -114,7 +114,7 @@ class SaveTests: TestCase {
     func test_ThatSaveAsync_WithChanges_Succeeds() {
 
         // GIVEN: a stack and context with changes
-        let stack = CoreDataStack(model: inMemoryModel)
+        let stack = self.inMemoryStack
 
         let _ = Employee.newEmployee(stack.mainContext)
         let _ = Employee.newEmployee(stack.mainContext)

@@ -25,8 +25,6 @@ A result object representing the result of creating a `CoreDataStack` via a `Cor
 */
 public enum CoreDataStackResult: CustomStringConvertible, Equatable {
 
-    // MARK: Cases
-    
     /// The success result, containing the successfully initialized `CoreDataStack`.
     case Success(CoreDataStack)
 

@@ -33,19 +33,7 @@ public enum StoreType: CustomStringConvertible, Equatable {
     case InMemory
 
 
-    // MARK: Methods
-
-    /**
-    - Note: If the store is in-memory, then this value will be `nil`.
-    - returns: The file URL specifying the directory in which the store is located.
-    */
-    public func storeDirectory() -> NSURL? {
-        switch self {
-        case let .SQLite(url): return url
-        case let .Binary(url): return url
-        case .InMemory: return nil
-        }
-    }
+    // MARK: Properties
 
     /// Returns the type string description for the store type.
     public var type: String {
@@ -59,6 +47,21 @@ public enum StoreType: CustomStringConvertible, Equatable {
     }
 
 
+    // MARK: Methods
+
+    /**
+    - returns: The file URL specifying the directory in which the store is located.
+    - Note: If the store is in-memory, then this value will be `nil`.
+    */
+    public func storeDirectory() -> NSURL? {
+        switch self {
+        case let .SQLite(url): return url
+        case let .Binary(url): return url
+        case .InMemory: return nil
+        }
+    }
+
+
     // MARK: CustomStringConvertible
 
     /// :nodoc:
@@ -67,5 +70,4 @@ public enum StoreType: CustomStringConvertible, Equatable {
             return "<\(StoreType.self): \(type)>"
         }
     }
-    
 }

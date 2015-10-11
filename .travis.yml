@@ -24,7 +24,7 @@ before_install:
 script:
 - xctool clean build -project ExampleApp/ExampleApp.xcodeproj -scheme ExampleApp -sdk iphonesimulator9.0 ONLY_ACTIVE_ARCH=NO
 
-- xctool clean build -workspace JSQCoreDataKit.xcworkspace -scheme ExampleModel -sdk iphonesimulator9.0 ONLY_ACTIVE_ARCH=NO
+- xctool clean build -project ExampleModel/ExampleModel.xcodeproj -scheme ExampleModel -sdk iphonesimulator9.0 ONLY_ACTIVE_ARCH=NO
 
 - xctool clean build test -workspace JSQCoreDataKit.xcworkspace -scheme "$SCHEME" -sdk "$SDK" -destination "$DESTINATION" -configuration Debug ONLY_ACTIVE_ARCH=NO
 - xctool clean build test -workspace JSQCoreDataKit.xcworkspace -scheme "$SCHEME" -sdk "$SDK" -destination "$DESTINATION" -configuration Release ONLY_ACTIVE_ARCH=NO

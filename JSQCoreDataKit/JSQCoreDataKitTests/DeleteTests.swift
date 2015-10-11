@@ -21,6 +21,8 @@ import CoreData
 
 import JSQCoreDataKit
 
+import ExampleModel
+
 
 class DeleteTests: TestCase {
 
@@ -30,12 +32,12 @@ class DeleteTests: TestCase {
         let stack = CoreDataStack(model: inMemoryModel)
 
         let count = 10
-        var objects = [MyModel]()
+        var objects = [Employee]()
         for _ in 1...count {
-            objects.append(MyModel(context: stack.mainContext))
+            objects.append(Employee.newEmployee(stack.mainContext))
         }
 
-        let request = FetchRequest<MyModel>(entity: entity(name: MyModelEntityName, context: stack.mainContext))
+        let request = FetchRequest<Employee>(entity: entity(name: Employee.entityName, context: stack.mainContext))
         let results = try! fetch(request: request, inContext: stack.mainContext)
         XCTAssertEqual(results.count, count)
 
@@ -57,26 +59,26 @@ class DeleteTests: TestCase {
         let stack = CoreDataStack(model: inMemoryModel)
 
         let count = 10
-        var objects = [MyModel]()
+        var objects = [Employee]()
         for _ in 1..<count {
-            objects.append(MyModel(context: stack.mainContext))
+            objects.append(Employee.newEmployee(stack.mainContext))
         }
 
-        let myModel = MyModel(context: stack.mainContext)
+        let myEmployee = Employee.newEmployee(stack.mainContext)
 
-        let request = FetchRequest<MyModel>(entity: entity(name: MyModelEntityName, context: stack.mainContext))
+        let request = FetchRequest<Employee>(entity: entity(name: Employee.entityName, context: stack.mainContext))
         let results = try! fetch(request: request, inContext: stack.mainContext)
         XCTAssertEqual(results.count, count, "Fetch should return all \(count) objects")
 
-        let requestForObject = FetchRequest<MyModel>(entity: entity(name: MyModelEntityName, context: stack.mainContext))
-        requestForObject.predicate = NSPredicate(format: "myString == %@", myModel.myString)
+        let requestForObject = FetchRequest<Employee>(entity: entity(name: Employee.entityName, context: stack.mainContext))
+        requestForObject.predicate = NSPredicate(format: "name == %@", myEmployee.name)
 
         let resultForObject = try! fetch(request: requestForObject, inContext: stack.mainContext)
-        XCTAssertEqual(resultForObject.count, 1, "Fetch should return specific object \(myModel.description)")
-        XCTAssertEqual(resultForObject.first!, myModel, "Fetched object should equal expected model")
+        XCTAssertEqual(resultForObject.count, 1, "Fetch should return specific object \(myEmployee.description)")
+        XCTAssertEqual(resultForObject.first!, myEmployee, "Fetched object should equal expected model")
 
         // WHEN: we delete a specific object
-        deleteObjects([myModel], inContext: stack.mainContext)
+        deleteObjects([myEmployee], inContext: stack.mainContext)
 
         // THEN: the specific object is removed from the context
         let resultAfterDelete = try! fetch(request: request, inContext: stack.mainContext)

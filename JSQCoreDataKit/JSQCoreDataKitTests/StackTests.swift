@@ -51,18 +51,18 @@ class StackTests: XCTestCase {
         XCTAssertEqual(stack.mainContext.concurrencyType, NSManagedObjectContextConcurrencyType.MainQueueConcurrencyType)
     }
 
-//    func test_ThatInMemoryStack_InitializesSuccessfully() {
-//
-//        // GIVEN: a in-memory model
-//        let inMemoryModel = CoreDataModel(name: modelName, bundle: modelBundle, storeType: .InMemory)
-//
-//        // WHEN: we create a stack
-//        let stack = CoreDataStack(model: inMemoryModel, options: nil)
-//
-//        // THEN: it is setup as expected
-//        XCTAssertNil(inMemoryModel.storeURL, "Model store should not exist on disk")
-//        XCTAssertEqual(stack.mainContext.concurrencyType, NSManagedObjectContextConcurrencyType.PrivateQueueConcurrencyType)
-//    }
+    func test_ThatInMemoryStack_InitializesSuccessfully() {
+
+        // GIVEN: a in-memory model
+        let inMemoryModel = CoreDataModel(name: modelName, bundle: modelBundle, storeType: .InMemory)
+
+        // WHEN: we create a stack
+        let stack = CoreDataStack(model: inMemoryModel, options: nil)
+
+        // THEN: it is setup as expected
+        XCTAssertNil(inMemoryModel.storeURL, "Model store should not exist on disk")
+        XCTAssertEqual(stack.mainContext.concurrencyType, NSManagedObjectContextConcurrencyType.MainQueueConcurrencyType)
+    }
 
     func test_ThatChildContext_IsCreatedSuccessfully() {
 

@@ -18,7 +18,10 @@
 
 import XCTest
 import CoreData
+
 import JSQCoreDataKit
+
+import ExampleModel
 
 
 class SaveTests: TestCase {
@@ -44,8 +47,8 @@ class SaveTests: TestCase {
         // GIVEN: a stack and context with changes
         let stack = CoreDataStack(model: inMemoryModel)
 
-        let _ = MyModel(context: stack.mainContext)
-        let _ = MyModel(context: stack.mainContext)
+        let _ = Employee.newEmployee(stack.mainContext)
+        let _ = Employee.newEmployee(stack.mainContext)
 
         var didSave = false
         self.expectationForNotification(NSManagedObjectContextDidSaveNotification, object: stack.mainContext) { (notification) -> Bool in
@@ -72,8 +75,8 @@ class SaveTests: TestCase {
         // GIVEN: a stack and context with changes
         let stack = CoreDataStack(model: inMemoryModel)
 
-        let _ = MyModel(context: stack.mainContext)
-        let _ = MyModel(context: stack.mainContext)
+        let _ = Employee.newEmployee(stack.mainContext)
+        let _ = Employee.newEmployee(stack.mainContext)
 
         var didSave = false
         self.expectationForNotification(NSManagedObjectContextDidSaveNotification, object: stack.mainContext) { (notification) -> Bool in
@@ -113,8 +116,8 @@ class SaveTests: TestCase {
         // GIVEN: a stack and context with changes
         let stack = CoreDataStack(model: inMemoryModel)
 
-        let _ = MyModel(context: stack.mainContext)
-        let _ = MyModel(context: stack.mainContext)
+        let _ = Employee.newEmployee(stack.mainContext)
+        let _ = Employee.newEmployee(stack.mainContext)
 
         var didSave = false
         self.expectationForNotification(NSManagedObjectContextDidSaveNotification, object: stack.mainContext) { (notification) -> Bool in

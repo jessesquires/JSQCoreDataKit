@@ -21,13 +21,22 @@ import CoreData
 
 import JSQCoreDataKit
 
-let modelName = "TestModel"
-let modelBundle = NSBundle(forClass: ModelTests.self)
+import ExampleModel
+
+
+let modelName = "ExampleModel"
+let modelBundle = NSBundle(identifier: "com.hexedbits.ExampleModel")!
 
 
 class TestCase: XCTestCase {
 
     let inMemoryModel = CoreDataModel(name: modelName, bundle: modelBundle, storeType: .InMemory)
+
+    let inMemoryStack: CoreDataStack = {
+        let inMemoryModel = CoreDataModel(name: modelName, bundle: modelBundle, storeType: .InMemory)
+        return CoreDataStack(model: inMemoryModel)
+    }()
+
 
     override func setUp() {
         super.setUp()

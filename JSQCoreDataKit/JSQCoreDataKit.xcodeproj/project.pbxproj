@@ -12,8 +12,6 @@
 		88002D831AB8FF4F001787DB /* CoreDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88002D801AB8FF4F001787DB /* CoreDataModel.swift */; };
 		88002D841AB8FF4F001787DB /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88002D811AB8FF4F001787DB /* CoreDataStack.swift */; };
 		881219C81B361EAF005E5AA7 /* JSQCoreDataKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88002D4F1AB8F546001787DB /* JSQCoreDataKit.framework */; };
-		881219D21B361EF8005E5AA7 /* MyModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 881219CF1B361EF8005E5AA7 /* MyModel.swift */; };
-		881219D31B361EF8005E5AA7 /* TestModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 881219D01B361EF8005E5AA7 /* TestModel.xcdatamodeld */; };
 		881219D91B361F13005E5AA7 /* DeleteTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 881219D41B361F13005E5AA7 /* DeleteTests.swift */; };
 		881219DA1B361F13005E5AA7 /* FetchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 881219D51B361F13005E5AA7 /* FetchTests.swift */; };
 		881219DB1B361F13005E5AA7 /* ModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 881219D61B361F13005E5AA7 /* ModelTests.swift */; };
@@ -23,6 +21,8 @@
 		887CC6871BC107300069022A /* StoreType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 887CC6861BC107300069022A /* StoreType.swift */; settings = {ASSET_TAGS = (); }; };
 		887CC68B1BC1F0A40069022A /* CoreDataStackFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 887CC68A1BC1F0A40069022A /* CoreDataStackFactory.swift */; settings = {ASSET_TAGS = (); }; };
 		887CC68D1BC200BA0069022A /* StackFactoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 887CC68C1BC200BA0069022A /* StackFactoryTests.swift */; settings = {ASSET_TAGS = (); }; };
+		88B9F8AA1BC9F2930053CD6D /* ExampleModel.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88B9F8A91BC9F27C0053CD6D /* ExampleModel.framework */; };
+		88B9F8AC1BC9F5570053CD6D /* ExampleModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88B9F8AB1BC9F5570053CD6D /* ExampleModelTests.swift */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -32,6 +32,13 @@
 			proxyType = 1;
 			remoteGlobalIDString = 88002D4E1AB8F546001787DB;
 			remoteInfo = JSQCoreDataKit;
+		};
+		88B9F8A81BC9F27C0053CD6D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 88B9F8921BC9F0C70053CD6D /* ExampleModel.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 8853944A1BC9EA0300699506;
+			remoteInfo = ExampleModel;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -44,8 +51,6 @@
 		88002D811AB8FF4F001787DB /* CoreDataStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 		881219C31B361EAF005E5AA7 /* JSQCoreDataKitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JSQCoreDataKitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		881219C71B361EAF005E5AA7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		881219CF1B361EF8005E5AA7 /* MyModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyModel.swift; sourceTree = "<group>"; };
-		881219D11B361EF8005E5AA7 /* TestModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TestModel.xcdatamodel; sourceTree = "<group>"; };
 		881219D41B361F13005E5AA7 /* DeleteTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeleteTests.swift; sourceTree = "<group>"; };
 		881219D51B361F13005E5AA7 /* FetchTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FetchTests.swift; sourceTree = "<group>"; };
 		881219D61B361F13005E5AA7 /* ModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModelTests.swift; sourceTree = "<group>"; };
@@ -55,6 +60,8 @@
 		887CC6861BC107300069022A /* StoreType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoreType.swift; sourceTree = "<group>"; };
 		887CC68A1BC1F0A40069022A /* CoreDataStackFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataStackFactory.swift; sourceTree = "<group>"; };
 		887CC68C1BC200BA0069022A /* StackFactoryTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StackFactoryTests.swift; sourceTree = "<group>"; };
+		88B9F8921BC9F0C70053CD6D /* ExampleModel.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ExampleModel.xcodeproj; path = ../../ExampleModel/ExampleModel.xcodeproj; sourceTree = "<group>"; };
+		88B9F8AB1BC9F5570053CD6D /* ExampleModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExampleModelTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,6 +76,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				88B9F8AA1BC9F2930053CD6D /* ExampleModel.framework in Frameworks */,
 				881219C81B361EAF005E5AA7 /* JSQCoreDataKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -119,6 +127,8 @@
 		881219C41B361EAF005E5AA7 /* JSQCoreDataKitTests */ = {
 			isa = PBXGroup;
 			children = (
+				88B9F8921BC9F0C70053CD6D /* ExampleModel.xcodeproj */,
+				88B9F8AB1BC9F5570053CD6D /* ExampleModelTests.swift */,
 				881219D41B361F13005E5AA7 /* DeleteTests.swift */,
 				881219D51B361F13005E5AA7 /* FetchTests.swift */,
 				881219D61B361F13005E5AA7 /* ModelTests.swift */,
@@ -126,19 +136,9 @@
 				887CC68C1BC200BA0069022A /* StackFactoryTests.swift */,
 				8851E2DA1B37423000E875DC /* StackTests.swift */,
 				881219E01B361FB6005E5AA7 /* Supporting Files */,
-				881219CE1B361EF8005E5AA7 /* Test Fixtures */,
 				881219D81B361F13005E5AA7 /* TestCase.swift */,
 			);
 			path = JSQCoreDataKitTests;
-			sourceTree = "<group>";
-		};
-		881219CE1B361EF8005E5AA7 /* Test Fixtures */ = {
-			isa = PBXGroup;
-			children = (
-				881219CF1B361EF8005E5AA7 /* MyModel.swift */,
-				881219D01B361EF8005E5AA7 /* TestModel.xcdatamodeld */,
-			);
-			path = "Test Fixtures";
 			sourceTree = "<group>";
 		};
 		881219E01B361FB6005E5AA7 /* Supporting Files */ = {
@@ -147,6 +147,14 @@
 				881219C71B361EAF005E5AA7 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		88B9F8A51BC9F27C0053CD6D /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				88B9F8A91BC9F27C0053CD6D /* ExampleModel.framework */,
+			);
+			name = Products;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -227,6 +235,12 @@
 			mainGroup = 88002D451AB8F546001787DB;
 			productRefGroup = 88002D501AB8F546001787DB /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 88B9F8A51BC9F27C0053CD6D /* Products */;
+					ProjectRef = 88B9F8921BC9F0C70053CD6D /* ExampleModel.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				88002D4E1AB8F546001787DB /* JSQCoreDataKit */,
@@ -234,6 +248,16 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		88B9F8A91BC9F27C0053CD6D /* ExampleModel.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = ExampleModel.framework;
+			remoteRef = 88B9F8A81BC9F27C0053CD6D /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		88002D4D1AB8F546001787DB /* Resources */ = {
@@ -270,9 +294,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				881219DA1B361F13005E5AA7 /* FetchTests.swift in Sources */,
-				881219D21B361EF8005E5AA7 /* MyModel.swift in Sources */,
 				881219DD1B361F13005E5AA7 /* TestCase.swift in Sources */,
-				881219D31B361EF8005E5AA7 /* TestModel.xcdatamodeld in Sources */,
+				88B9F8AC1BC9F5570053CD6D /* ExampleModelTests.swift in Sources */,
 				8851E2DB1B37423000E875DC /* StackTests.swift in Sources */,
 				881219DB1B361F13005E5AA7 /* ModelTests.swift in Sources */,
 				887CC68D1BC200BA0069022A /* StackFactoryTests.swift in Sources */,
@@ -490,19 +513,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCVersionGroup section */
-		881219D01B361EF8005E5AA7 /* TestModel.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				881219D11B361EF8005E5AA7 /* TestModel.xcdatamodel */,
-			);
-			currentVersion = 881219D11B361EF8005E5AA7 /* TestModel.xcdatamodel */;
-			path = TestModel.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-/* End XCVersionGroup section */
 	};
 	rootObject = 88002D461AB8F546001787DB /* Project object */;
 }

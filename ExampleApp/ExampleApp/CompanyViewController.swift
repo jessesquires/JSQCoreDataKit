@@ -16,8 +16,19 @@
 //  Released under an MIT license: http://opensource.org/licenses/MIT
 //
 
-#import <Foundation/Foundation.h>
+import UIKit
+import CoreData
 
-FOUNDATION_EXPORT double JSQCoreDataKitVersionNumber;
+import JSQCoreDataKit
 
-FOUNDATION_EXPORT const unsigned char JSQCoreDataKitVersionString[];
+import ExampleModel
+
+
+
+class CompanyViewController: UITableViewController {
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+    }
+
+}

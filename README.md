@@ -24,7 +24,7 @@ This framework aims to do the following:
 
 ## Requirements
 
-* iOS 8
+* iOS 8+
 * Swift 2.0
 
 ## Installation
@@ -161,7 +161,7 @@ saveContext(context)
 
 ## Unit tests
 
-There's a suite of unit tests for `JSQCoreDataKit.framework`. To run them, open `JSQCoreDataKit.xcworkspace`, select the `JSQCoreDataKit` scheme, then &#x2318;-u. Additional tests are under the `Example` scheme.
+There's a suite of unit tests for `JSQCoreDataKit.framework`. To run them, open `JSQCoreDataKit.xcworkspace`, select the `JSQCoreDataKit` scheme, then &#x2318;-u.
 
 These tests are well commented and serve as further documentation for how to use this library.
 
@@ -171,9 +171,7 @@ Please follow these sweet [contribution guidelines](https://github.com/jessesqui
 
 ## Credits
 
-Created and maintained by [**@jesse_squires**](https://twitter.com/jesse_squires)
-
-This project borrows some ideas and concepts from my work on [RSTCoreDataKit](https://github.com/rosettastone/RSTCoreDataKit).
+Created and maintained by [**@jesse_squires**](https://twitter.com/jesse_squires).
 
 ## License
 

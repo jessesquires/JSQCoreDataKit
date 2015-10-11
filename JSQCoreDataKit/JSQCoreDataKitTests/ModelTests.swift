@@ -12,13 +12,14 @@
 //
 //
 //  License
-//  Copyright (c) 2015 Jesse Squires
+//  Copyright © 2015 Jesse Squires
 //  Released under an MIT license: http://opensource.org/licenses/MIT
 //
 
 import XCTest
 import CoreData
 
+@testable
 import JSQCoreDataKit
 
 
@@ -44,10 +45,7 @@ class ModelTests: XCTestCase {
         // THEN: the model has the correct name, bundle, and type
         XCTAssertEqual(model.name, modelName)
         XCTAssertEqual(model.bundle, modelBundle)
-
-        let docsDir = try! NSFileManager.defaultManager().URLForDirectory(.DocumentDirectory,
-            inDomain: .UserDomainMask, appropriateForURL: nil, create: true)
-        XCTAssertEqual(model.storeType, StoreType.SQLite(docsDir))
+        XCTAssertEqual(model.storeType, StoreType.SQLite(DocumentsDirectoryURL()))
 
         // THEN: the model returns the correct database filename
         XCTAssertEqual(model.databaseFileName, model.name + ".sqlite")
@@ -138,7 +136,7 @@ class ModelTests: XCTestCase {
         // GIVEN: a core data model and stack
         let model = CoreDataModel(name: modelName, bundle: modelBundle)
         let stack = CoreDataStack(model: model)
-        saveContext(stack.mainQueueContext) { error in
+        saveContext(stack.mainContext) { error in
         }
 
         XCTAssertTrue(NSFileManager.defaultManager().fileExistsAtPath(model.storeURL!.path!), "Model store should exist on disk")
@@ -199,10 +197,11 @@ class ModelTests: XCTestCase {
         XCTAssertTrue(success, "Removing store should be ignored")
     }
 
-    func test_ThatModel_HasDescription() {
-        let model = CoreDataModel(name: modelName, bundle: modelBundle)
-        XCTAssertNotNil(model.description)
-        print("Description = \(model.description)")
+    func test_Model_Description() {
+        print("\(__FUNCTION__)")
+
+        let model = CoreDataModel(name: modelName, bundle: modelBundle, storeType: .InMemory)
+        print(model)
     }
     
 }

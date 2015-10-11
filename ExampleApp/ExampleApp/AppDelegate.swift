@@ -16,8 +16,15 @@
 //  Released under an MIT license: http://opensource.org/licenses/MIT
 //
 
-#import <Foundation/Foundation.h>
+import UIKit
 
-FOUNDATION_EXPORT double JSQCoreDataKitVersionNumber;
+@UIApplicationMain
+class AppDelegate: UIResponder, UIApplicationDelegate {
 
-FOUNDATION_EXPORT const unsigned char JSQCoreDataKitVersionString[];
+    var window: UIWindow?
+
+    func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+        return true
+    }
+
+}

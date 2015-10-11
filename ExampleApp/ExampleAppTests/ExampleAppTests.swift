@@ -16,8 +16,18 @@
 //  Released under an MIT license: http://opensource.org/licenses/MIT
 //
 
-#import <Foundation/Foundation.h>
+import XCTest
+@testable import ExampleApp
 
-FOUNDATION_EXPORT double JSQCoreDataKitVersionNumber;
 
-FOUNDATION_EXPORT const unsigned char JSQCoreDataKitVersionString[];
+class ExampleAppTests: XCTestCase {
+    
+    override func setUp() {
+        super.setUp()
+    }
+    
+    override func tearDown() {
+        super.tearDown()
+    }
+    
+}

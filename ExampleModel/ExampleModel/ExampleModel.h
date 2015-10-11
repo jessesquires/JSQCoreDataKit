@@ -16,8 +16,10 @@
 //  Released under an MIT license: http://opensource.org/licenses/MIT
 //
 
-#import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 
-FOUNDATION_EXPORT double JSQCoreDataKitVersionNumber;
+//! Project version number for ExampleModel.
+FOUNDATION_EXPORT double ExampleModelVersionNumber;
 
-FOUNDATION_EXPORT const unsigned char JSQCoreDataKitVersionString[];
+//! Project version string for ExampleModel.
+FOUNDATION_EXPORT const unsigned char ExampleModelVersionString[];

@@ -12,25 +12,12 @@
 //
 //
 //  License
-//  Copyright (c) 2015 Jesse Squires
+//  Copyright © 2015 Jesse Squires
 //  Released under an MIT license: http://opensource.org/licenses/MIT
 //
 
-import Foundation
 import CoreData
-
-
-/**
-- parameter lhs: A `CoreDataModel` instance.
-- parameter rhs: A `CoreDataModel` instance.
-
-- returns: True if `lhs` is equal to `rhs`, false otherwise.
-*/
-public func ==(lhs: CoreDataModel, rhs: CoreDataModel) -> Bool {
-    return lhs.name == rhs.name
-        && lhs.bundle.isEqual(rhs.bundle)
-        && lhs.storeType == rhs.storeType
-}
+import Foundation
 
 
 /**
@@ -99,7 +86,9 @@ public struct CoreDataModel: CustomStringConvertible, Equatable {
     */
     public var needsMigration: Bool {
         get {
-            guard let storeURL = storeURL else { return false }
+            guard let storeURL = storeURL else {
+                return false
+            }
 
             do {
                 let sourceMetaData = try NSPersistentStoreCoordinator.metadataForPersistentStoreOfType(
@@ -154,16 +143,17 @@ public struct CoreDataModel: CustomStringConvertible, Equatable {
     /// :nodoc:
     public var description: String {
         get {
-            return "<\(CoreDataModel.self): name=\(name), storeType=\(storeType) needsMigration=\(needsMigration), modelURL=\(modelURL), storeURL=\(storeURL)>"
+            return "<\(CoreDataModel.self): name=\(name); storeType=\(storeType); needsMigration=\(needsMigration); "
+                + "modelURL=\(modelURL); storeURL=\(storeURL)>"
         }
     }
 
 }
 
 
-// MARK: Private
+// MARK: Internal
 
-private func DocumentsDirectoryURL() -> NSURL {
+internal func DocumentsDirectoryURL() -> NSURL {
     do {
         return try NSFileManager.defaultManager().URLForDirectory(
             .DocumentDirectory,

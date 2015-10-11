@@ -12,32 +12,12 @@
 //
 //
 //  License
-//  Copyright (c) 2015 Jesse Squires
+//  Copyright © 2015 Jesse Squires
 //  Released under an MIT license: http://opensource.org/licenses/MIT
 //
 
-import Foundation
 import CoreData
-
-
-/**
-- parameter lhs: A `StoreType` instance.
-- parameter rhs: A `StoreType` instance.
-
-- returns: True if `lhs` is equal to `rhs`, false otherwise.
-*/
-public func ==(lhs: StoreType, rhs: StoreType) -> Bool {
-    switch (lhs, rhs) {
-    case let (.SQLite(left), .SQLite(right)) where left == right:
-        return true
-    case let (.Binary(left), .Binary(right)) where left == right:
-        return true
-    case (.InMemory, .InMemory):
-        return true
-    default:
-        return false
-    }
-}
+import Foundation
 
 
 /// Describes a Core Data persistent store type.
@@ -52,6 +32,23 @@ public enum StoreType: CustomStringConvertible, Equatable {
     /// The in-memory store type.
     case InMemory
 
+
+    // MARK: Properties
+
+    /// Returns the type string description for the store type.
+    public var type: String {
+        get {
+            switch self {
+            case .SQLite: return NSSQLiteStoreType
+            case .Binary: return NSBinaryStoreType
+            case .InMemory: return NSInMemoryStoreType
+            }
+        }
+    }
+
+
+    // MARK: Methods
+
     /**
     - returns: The file URL specifying the directory in which the store is located.
     - Note: If the store is in-memory, then this value will be `nil`.
@@ -64,14 +61,13 @@ public enum StoreType: CustomStringConvertible, Equatable {
         }
     }
 
+
+    // MARK: CustomStringConvertible
+
     /// :nodoc:
     public var description: String {
         get {
-            switch self {
-            case .SQLite: return NSSQLiteStoreType
-            case .Binary: return NSBinaryStoreType
-            case .InMemory: return NSInMemoryStoreType
-            }
+            return "<\(StoreType.self): \(type); directory=\(storeDirectory()?.lastPathComponent)>"
         }
     }
 }

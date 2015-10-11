@@ -65,22 +65,24 @@ public func ==(lhs: StoreType, rhs: StoreType) -> Bool {
 
 
 /// :nodoc:
-public func==(lhs: CoreDataStackFactory, rhs: CoreDataStackFactory) -> Bool {
-    return lhs.model == rhs.model
-        && lhs.options == rhs.options
+public func ==(lhs: CoreDataStackFactory, rhs: CoreDataStackFactory) -> Bool {
+    let equalModels = (lhs.model == rhs.model)
+
+    if let lhsOptions = lhs.options, let rhsOptions = rhs.options {
+        return equalModels
+            && lhsOptions == rhsOptions
+    }
+
+    if lhs.options == nil && rhs.options == nil {
+        return equalModels
+    }
+
+    return false
 }
 
 
 /// :nodoc:
-public func ==(lhs: PersistentStoreOptions?, rhs: PersistentStoreOptions?) -> Bool {
-    if lhs == nil && rhs == nil {
-        return true
-    }
-    
-    guard let lhs = lhs, let rhs = rhs else {
-        return false
-    }
-
+public func ==(lhs: PersistentStoreOptions, rhs: PersistentStoreOptions) -> Bool {
     guard lhs.count == rhs.count else {
         return false
     }

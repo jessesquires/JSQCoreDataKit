@@ -54,9 +54,9 @@ class StoreTypeTests: XCTestCase {
         let binary = StoreType.Binary(url)
         let memory = StoreType.InMemory
 
-        XCTAssertNotEqual(sqlite, binary, "Store types should not be equal")
-        XCTAssertNotEqual(sqlite, memory, "Store types should not be equal")
-        XCTAssertNotEqual(binary, memory, "Store types should not be equal")
+        XCTAssertNotEqual(sqlite, binary)
+        XCTAssertNotEqual(sqlite, memory)
+        XCTAssertNotEqual(binary, memory)
     }
 
     func test_StoreType_Equality_SQLite() {
@@ -64,10 +64,10 @@ class StoreTypeTests: XCTestCase {
 
         let sqlite1 = StoreType.SQLite(url)
         let sqlite2 = StoreType.SQLite(url)
-        XCTAssertEqual(sqlite1, sqlite2, "Store types should be equal")
+        XCTAssertEqual(sqlite1, sqlite2)
 
-        let sqlite3 = StoreType.SQLite(NSURL(fileURLWithPath: "file://test/fake"))
-        XCTAssertNotEqual(sqlite1, sqlite3, "Store types should not be equal")
+        let sqlite3 = StoreType.SQLite(NSURL(fileURLWithPath: NSTemporaryDirectory()))
+        XCTAssertNotEqual(sqlite1, sqlite3)
     }
 
     func test_StoreType_Equality_Binary() {
@@ -75,16 +75,16 @@ class StoreTypeTests: XCTestCase {
 
         let binary1 = StoreType.Binary(url)
         let binary2 = StoreType.Binary(url)
-        XCTAssertEqual(binary1, binary2, "Store types should be equal")
+        XCTAssertEqual(binary1, binary2)
 
-        let binary3 = StoreType.Binary(NSURL(fileURLWithPath: "file://test/fake"))
-        XCTAssertNotEqual(binary1, binary3, "Store types should not be equal")
+        let binary3 = StoreType.Binary(NSURL(fileURLWithPath: NSTemporaryDirectory()))
+        XCTAssertNotEqual(binary1, binary3)
     }
 
     func test_StoreType_Equality_InMemory() {
         let memory1 = StoreType.InMemory
         let memory2 = StoreType.InMemory
-        XCTAssertEqual(memory1, memory2, "Store types should be equal")
+        XCTAssertEqual(memory1, memory2)
     }
 
     func test_StoreType_Description() {

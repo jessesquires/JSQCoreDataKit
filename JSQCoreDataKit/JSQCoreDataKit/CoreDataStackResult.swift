@@ -60,7 +60,14 @@ public enum CoreDataStackResult: CustomStringConvertible, Equatable {
     /// :nodoc:
     public var description: String {
         get {
-            return "<\(CoreDataStackResult.self): \(self)>"
+            var str = "<\(CoreDataStackResult.self): "
+            switch self {
+            case .Success(let s):
+                str += ".Success(\(s)"
+            case .Failure(let e):
+                str += ".Failure(\(e))"
+            }
+            return str + ">"
         }
     }
 }

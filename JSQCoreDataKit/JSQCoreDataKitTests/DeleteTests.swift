@@ -19,9 +19,10 @@
 import XCTest
 import CoreData
 
-import JSQCoreDataKit
-
 import ExampleModel
+
+@testable
+import JSQCoreDataKit
 
 
 class DeleteTests: TestCase {

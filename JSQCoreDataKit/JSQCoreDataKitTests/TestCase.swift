@@ -19,13 +19,10 @@
 import XCTest
 import CoreData
 
-import JSQCoreDataKit
-
 import ExampleModel
 
-
-let modelName = "ExampleModel"
-let modelBundle = NSBundle(identifier: "com.hexedbits.ExampleModel")!
+@testable
+import JSQCoreDataKit
 
 
 class TestCase: XCTestCase {

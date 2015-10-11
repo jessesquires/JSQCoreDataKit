@@ -19,6 +19,9 @@
 import XCTest
 import CoreData
 
+import ExampleModel
+
+@testable
 import JSQCoreDataKit
 
 

@@ -11,6 +11,7 @@
 		885394661BC9EAB100699506 /* ExampleModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 885394641BC9EAB100699506 /* ExampleModel.xcdatamodeld */; settings = {ASSET_TAGS = (); }; };
 		8853946C1BC9EB7900699506 /* Employee.swift in Sources */ = {isa = PBXBuildFile; fileRef = 885394681BC9EB7900699506 /* Employee.swift */; settings = {ASSET_TAGS = (); }; };
 		8853946E1BC9EB7900699506 /* Company.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8853946A1BC9EB7900699506 /* Company.swift */; settings = {ASSET_TAGS = (); }; };
+		88807BBB1BCB24FD00F95B95 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88807BBA1BCB24FD00F95B95 /* Model.swift */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -20,6 +21,7 @@
 		885394651BC9EAB100699506 /* ExampleModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ExampleModel.xcdatamodel; sourceTree = "<group>"; };
 		885394681BC9EB7900699506 /* Employee.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Employee.swift; sourceTree = "<group>"; };
 		8853946A1BC9EB7900699506 /* Company.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Company.swift; sourceTree = "<group>"; };
+		88807BBA1BCB24FD00F95B95 /* Model.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,6 +59,7 @@
 				8853944D1BC9EA0300699506 /* ExampleModel.h */,
 				885394641BC9EAB100699506 /* ExampleModel.xcdatamodeld */,
 				8853944F1BC9EA0300699506 /* Info.plist */,
+				88807BBA1BCB24FD00F95B95 /* Model.swift */,
 			);
 			path = ExampleModel;
 			sourceTree = "<group>";
@@ -143,6 +146,7 @@
 				885394661BC9EAB100699506 /* ExampleModel.xcdatamodeld in Sources */,
 				8853946C1BC9EB7900699506 /* Employee.swift in Sources */,
 				8853946E1BC9EB7900699506 /* Company.swift in Sources */,
+				88807BBB1BCB24FD00F95B95 /* Model.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

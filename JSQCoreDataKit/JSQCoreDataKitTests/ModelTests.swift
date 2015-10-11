@@ -12,13 +12,14 @@
 //
 //
 //  License
-//  Copyright (c) 2015 Jesse Squires
+//  Copyright © 2015 Jesse Squires
 //  Released under an MIT license: http://opensource.org/licenses/MIT
 //
 
 import XCTest
 import CoreData
 
+@testable
 import JSQCoreDataKit
 
 
@@ -45,8 +46,7 @@ class ModelTests: XCTestCase {
         XCTAssertEqual(model.name, modelName)
         XCTAssertEqual(model.bundle, modelBundle)
 
-        let docsDir = try! NSFileManager.defaultManager().URLForDirectory(.DocumentDirectory,
-            inDomain: .UserDomainMask, appropriateForURL: nil, create: true)
+        let docsDir = DocumentsDirectoryURL()
         XCTAssertEqual(model.storeType, StoreType.SQLite(docsDir))
 
         // THEN: the model returns the correct database filename

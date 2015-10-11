@@ -67,7 +67,7 @@ public enum StoreType: CustomStringConvertible, Equatable {
     /// :nodoc:
     public var description: String {
         get {
-            return "<\(StoreType.self): \(type)>"
+            return "<\(StoreType.self): \(type); directory=\(storeDirectory()?.lastPathComponent)>"
         }
     }
 }

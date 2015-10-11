@@ -151,9 +151,9 @@ public struct CoreDataModel: CustomStringConvertible, Equatable {
 }
 
 
-// MARK: Private
+// MARK: Internal
 
-private func DocumentsDirectoryURL() -> NSURL {
+internal func DocumentsDirectoryURL() -> NSURL {
     do {
         return try NSFileManager.defaultManager().URLForDirectory(
             .DocumentDirectory,

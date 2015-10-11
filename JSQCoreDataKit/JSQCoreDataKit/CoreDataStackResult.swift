@@ -25,11 +25,16 @@ A result object representing the result of creating a `CoreDataStack` via a `Cor
 */
 public enum CoreDataStackResult: CustomStringConvertible, Equatable {
 
+    // MARK: Cases
+    
     /// The success result, containing the successfully initialized `CoreDataStack`.
     case Success(CoreDataStack)
 
     /// The failure result, containing an `NSError` instance that describes the error.
     case Failure(NSError)
+
+
+    // MARK: Methods
 
     /**
     - returns: The result's `CoreDataStack` if `.Success`, otherwise `nil`.

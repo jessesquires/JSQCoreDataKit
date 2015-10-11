@@ -24,10 +24,10 @@ import Foundation
 An instance of `CoreDataStack` encapsulates the entire Core Data stack.
 It manages the managed object model, the persistent store coordinator, and managed object contexts.
 
-It is composed of a main and a background context, both of which are connected to the same persistent store coordinator.
-These two contexts ooperate on the main thread and a background thread, respectively.
+It is composed of a main context and a background context, both of which are connected to the same persistent store coordinator.
+These two contexts operate on the main queue and a private background queue, respectively. 
 
-- Warning: You should not create a `CoreDataStack` directly. Instead, use a `CoreDataStackFactory` for initialization.
+Data between the two contexts is kept in sync.
 */
 public final class CoreDataStack: CustomStringConvertible, Equatable {
 
@@ -37,10 +37,10 @@ public final class CoreDataStack: CustomStringConvertible, Equatable {
     /// The model for the stack.
     public let model: CoreDataModel
 
-    /// The main managed object context for the stack, which operates on the main thread.
+    /// The main managed object context for the stack, which operates on the main queue.
     public let mainContext: NSManagedObjectContext
 
-    /// The background managed object context for the stack, which operates on a background thread.
+    /// The background managed object context for the stack, which operates on a background queue.
     public let backgroundContext: NSManagedObjectContext
 
     /**
@@ -59,6 +59,8 @@ public final class CoreDataStack: CustomStringConvertible, Equatable {
     - parameter options: A dictionary that specifies options for the store. The default is `nil`.
 
     - returns: A new `CoreDataStack` instance.
+
+    - Warning: You should not create a `CoreDataStack` directly. Instead, use a `CoreDataStackFactory` for initialization.
     */
     public init(model: CoreDataModel, options: PersistentStoreOptions? = nil) {
 

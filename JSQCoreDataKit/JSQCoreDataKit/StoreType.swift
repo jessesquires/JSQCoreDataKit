@@ -36,8 +36,8 @@ public enum StoreType: CustomStringConvertible, Equatable {
     // MARK: Methods
 
     /**
-    - returns: The file URL specifying the directory in which the store is located.
     - Note: If the store is in-memory, then this value will be `nil`.
+    - returns: The file URL specifying the directory in which the store is located.
     */
     public func storeDirectory() -> NSURL? {
         switch self {

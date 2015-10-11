@@ -21,10 +21,7 @@ import Foundation
 
 
 /// Describes default persistent store options.
-public let DefaultStoreOptions = [
-    NSMigratePersistentStoresAutomaticallyOption : true,
-    NSInferMappingModelAutomaticallyOption : true
-]
+public let DefaultStoreOptions = [NSMigratePersistentStoresAutomaticallyOption : true, NSInferMappingModelAutomaticallyOption : true]
 
 
 /**

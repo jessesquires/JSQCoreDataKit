@@ -77,6 +77,8 @@ The type parameter acts as a phantom type.
 */
 public class FetchRequest <T: NSManagedObject>: NSFetchRequest {
 
+    // MARK: Initialization
+
     /**
     Constructs a new `FetchRequest` instance.
 

@@ -64,13 +64,13 @@ class StackTests: XCTestCase {
         XCTAssertEqual(stack.mainContext.concurrencyType, NSManagedObjectContextConcurrencyType.MainQueueConcurrencyType)
     }
 
-    func test_ThatChildContext_IsCreatedSuccessfully() {
+    func test_ThatMainChildContext_IsCreatedSuccessfully() {
 
         // GIVEN: a model and stack
         let model = CoreDataModel(name: modelName, bundle: modelBundle)
         let stack = CoreDataStack(model: model)
 
-        // WHEN: we create a child context
+        // WHEN: we create a child context from main
         let childContext = stack.childContextFromMain(concurrencyType: .PrivateQueueConcurrencyType, mergePolicyType: .ErrorMergePolicyType)
 
         // THEN: it is initialized as expected
@@ -79,11 +79,25 @@ class StackTests: XCTestCase {
         XCTAssertEqual(childContext.mergePolicy.mergeType, NSMergePolicyType.ErrorMergePolicyType)
     }
 
-    func test_ThatStack_HasDescription() {
+    func test_ThatBackgroundChildContext_IsCreatedSuccessfully() {
+
+        // GIVEN: a model and stack
         let model = CoreDataModel(name: modelName, bundle: modelBundle)
         let stack = CoreDataStack(model: model)
-        XCTAssertNotNil(stack.description)
-        print("Description = \(stack.description)")
+
+        // WHEN: we create a child context from background
+        let childContext = stack.childContextFromBackground(concurrencyType: .PrivateQueueConcurrencyType, mergePolicyType: .ErrorMergePolicyType)
+
+        // THEN: it is initialized as expected
+        XCTAssertEqual(childContext.parentContext!, stack.backgroundContext)
+        XCTAssertEqual(childContext.concurrencyType, NSManagedObjectContextConcurrencyType.PrivateQueueConcurrencyType)
+        XCTAssertEqual(childContext.mergePolicy.mergeType, NSMergePolicyType.ErrorMergePolicyType)
+    }
+
+    func test_Stack_Description() {
+        let model = CoreDataModel(name: modelName, bundle: modelBundle)
+        let stack = CoreDataStack(model: model)
+        print(stack)
     }
     
 }

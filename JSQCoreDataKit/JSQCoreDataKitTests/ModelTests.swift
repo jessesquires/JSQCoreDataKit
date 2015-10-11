@@ -197,10 +197,11 @@ class ModelTests: XCTestCase {
         XCTAssertTrue(success, "Removing store should be ignored")
     }
 
-    func test_ThatModel_HasDescription() {
-        let model = CoreDataModel(name: modelName, bundle: modelBundle)
-        XCTAssertNotNil(model.description)
-        print("Description = \(model.description)")
+    func test_Model_Description() {
+        print("\(__FUNCTION__)")
+
+        let model = CoreDataModel(name: modelName, bundle: modelBundle, storeType: .InMemory)
+        print(model)
     }
     
 }

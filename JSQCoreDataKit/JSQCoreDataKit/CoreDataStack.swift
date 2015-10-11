@@ -67,13 +67,15 @@ public final class CoreDataStack: CustomStringConvertible, Equatable {
         self.model = model
         storeCoordinator = NSPersistentStoreCoordinator(managedObjectModel: model.managedObjectModel)
 
+        let name = "JSQCoreDataKit.CoreDataStack.context"
+
         mainContext = NSManagedObjectContext(concurrencyType: .MainQueueConcurrencyType)
         mainContext.persistentStoreCoordinator = storeCoordinator
-        mainContext.name = "JSQCoreDataKit.context.primary.main"
+        mainContext.name = name + ".main"
 
         backgroundContext = NSManagedObjectContext(concurrencyType: .PrivateQueueConcurrencyType)
         backgroundContext.persistentStoreCoordinator = storeCoordinator
-        backgroundContext.name = "JSQCoreDataKit.context.primary.background"
+        backgroundContext.name = name + ".background"
 
         do {
             try storeCoordinator.addPersistentStoreWithType(model.storeType.type,
@@ -145,7 +147,7 @@ public final class CoreDataStack: CustomStringConvertible, Equatable {
     /// :nodoc:
     public var description: String {
         get {
-            return "<\(CoreDataStack.self): model=\(model.name); mainContext=\(mainContext)>"
+            return "<\(CoreDataStack.self): model=\(model.name); mainContext=\(mainContext); backgroundContext=\(backgroundContext)>"
         }
     }
 

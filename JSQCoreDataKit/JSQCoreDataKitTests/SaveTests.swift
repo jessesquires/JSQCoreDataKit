@@ -59,8 +59,8 @@ class SaveTests: TestCase {
         // WHEN: we attempt to save the context
 
         // THEN: the save succeeds without an error
-        saveContext(stack.mainContext) { error in
-            XCTAssertNil(error, "Save should not error")
+        saveContext(stack.mainContext) { result in
+            XCTAssertTrue(result == .Success, "Save should not error")
         }
 
         self.waitForExpectationsWithTimeout(1, handler: { (error) -> Void in
@@ -128,10 +128,10 @@ class SaveTests: TestCase {
         let saveExpectation = self.expectationWithDescription("\(__FUNCTION__)")
 
         // WHEN: we attempt to save the context asynchronously
-        saveContext(stack.mainContext, wait: false) { error in
+        saveContext(stack.mainContext, wait: false) { result in
 
             // THEN: the save succeeds without an error
-            XCTAssertNil(error, "Save should not error")
+            XCTAssertTrue(result == .Success, "Save should not error")
 
             saveExpectation.fulfill()
         }

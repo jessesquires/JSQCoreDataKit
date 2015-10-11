@@ -43,8 +43,8 @@ class FetchTests: TestCase {
         // THEN: we receive the expected data
         XCTAssertEqual(results.count, count, "Fetch should return \(count) objects")
 
-        saveContext(stack.mainContext) { error in
-            XCTAssertNil(error, "Save should not error")
+        saveContext(stack.mainContext) { result in
+            XCTAssertTrue(result == .Success, "Save should not error")
         }
     }
 
@@ -70,8 +70,8 @@ class FetchTests: TestCase {
         XCTAssertEqual(results.count, 1, "Fetch should return specific object \(myEmployee.description)")
         XCTAssertEqual(results.first!, myEmployee, "Fetched object should equal expected model")
 
-        saveContext(stack.mainContext) { error in
-            XCTAssertNil(error, "Save should not error")
+        saveContext(stack.mainContext) { result in
+            XCTAssertTrue(result == .Success, "Save should not error")
         }
     }
 
@@ -86,10 +86,6 @@ class FetchTests: TestCase {
 
         // THEN: we receive the expected data
         XCTAssertEqual(results.count, 0, "Fetch should return 0 objects")
-
-        saveContext(stack.mainContext) { error in
-            XCTAssertNil(error, "Save should not error")
-        }
     }
     
 }

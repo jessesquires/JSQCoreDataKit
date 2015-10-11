@@ -35,19 +35,19 @@ This function is performed in a block on the context's queue. If the context has
 then this function returns immediately and the completion block is not called.
 
 - parameter context:    The managed object context to save.
-- parameter wait:       If false (the default), saves asynchronously. If true, saves synchronously.
+- parameter wait:       If true (the default), saves synchronously. If false, saves asynchronously.
 - parameter completion: The closure to be executed when the save operation completes.
 */
-public func saveContext(context: NSManagedObjectContext, wait: Bool = false, completion: ((NSError?) -> Void)? = nil) {
+public func saveContext(context: NSManagedObjectContext, wait: Bool = true, completion: ((CoreDataSaveResult) -> Void)? = nil) {
     guard context.hasChanges else { return }
 
     let block = { () -> Void in
         do {
             try context.save()
-            completion?(nil)
+            completion?(.Success)
         }
         catch {
-            completion?(error as NSError)
+            completion?(.Failure(error as NSError))
         }
     }
 

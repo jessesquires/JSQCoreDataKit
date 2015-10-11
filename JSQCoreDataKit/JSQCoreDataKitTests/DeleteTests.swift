@@ -48,8 +48,10 @@ class DeleteTests: TestCase {
         let resultAfterDelete = try! fetch(request: request, inContext: stack.mainContext)
         XCTAssertEqual(resultAfterDelete.count, 0, "Fetch should return 0 objects")
 
-        saveContext(stack.mainContext) { error in
-            XCTAssertNil(error, "Save should not error")
+        XCTAssertTrue(stack.mainContext.hasChanges)
+
+        saveContext(stack.mainContext) { result in
+            XCTAssertTrue(result == .Success, "Save should not error")
         }
     }
 
@@ -87,8 +89,10 @@ class DeleteTests: TestCase {
         let resultForObjectAfterDelete = try! fetch(request: requestForObject, inContext: stack.mainContext)
         XCTAssertEqual(resultForObjectAfterDelete.count, 0, "Fetch for specific object should return no objects")
 
-        saveContext(stack.mainContext) { error in
-            XCTAssertNil(error, "Save should not error")
+        XCTAssertTrue(stack.mainContext.hasChanges)
+
+        saveContext(stack.mainContext) { result in
+            XCTAssertTrue(result == .Success, "Save should not error")
         }
     }
 
@@ -101,9 +105,7 @@ class DeleteTests: TestCase {
         deleteObjects([], inContext: stack.mainContext)
 
         // THEN: the operation is ignored
-        saveContext(stack.mainContext) { error in
-            XCTAssertNil(error, "Save should not error")
-        }
+        XCTAssertFalse(stack.mainContext.hasChanges)
     }
     
 }

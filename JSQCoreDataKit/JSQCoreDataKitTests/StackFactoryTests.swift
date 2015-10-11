@@ -42,6 +42,7 @@ class StackFactoryTests: TestCase {
     }
 
     func test_ThatStackFactory_CreatesStackInBackground_Successfully() {
+
         // GIVEN: a core data model
         let sqliteModel = CoreDataModel(name: modelName, bundle: modelBundle)
 
@@ -51,13 +52,14 @@ class StackFactoryTests: TestCase {
         var stack: CoreDataStack?
         let expectation = self.expectationWithDescription("\(__FUNCTION__)")
 
-        // WHEN: we attempt to create a stack
-        factory.createStackInBackground { (result: CoreDataStackResult) -> Void in
-            XCTAssertTrue(NSThread.isMainThread())
+        // WHEN: we create a stack in the background
+        factory.createStackInBackground { (result: CoreDataStackResult) in
+            XCTAssertTrue(NSThread.isMainThread(), "Factory completion handler should return on main thread")
 
             switch result {
             case .Success(let s):
                 stack = s
+                XCTAssertNotNil(s)
 
             case .Failure(let e):
                 XCTFail("Error: \(e)")
@@ -72,6 +74,26 @@ class StackFactoryTests: TestCase {
         }
 
         XCTAssertNotNil(stack)
+
+        validateStack(stack!, fromFactory: factory)
+    }
+
+    func test_ThatStackFactory_CreatesStackSynchronously_Successfully() {
+
+        // GIVEN: a core data model
+        let sqliteModel = CoreDataModel(name: modelName, bundle: modelBundle)
+
+        // GIVEN: a factory
+        let factory = CoreDataStackFactory(model: sqliteModel)
+
+        // WHEN: we create a stack
+        let result = factory.createStack()
+        let stack = result.stack()
+
+        XCTAssertNotNil(stack)
+        XCTAssertNil(result.error())
+
+        validateStack(stack!, fromFactory: factory)
     }
 
     func test_StackFactory_Equality() {
@@ -92,6 +114,25 @@ class StackFactoryTests: TestCase {
 
         let factory = CoreDataStackFactory(model: inMemoryModel)
         print(factory)
+    }
+
+
+    // MARK: Helpers
+
+    func validateStack(stack: CoreDataStack, fromFactory factory:CoreDataStackFactory) {
+        XCTAssertEqual(stack.model, factory.model)
+
+        XCTAssertNotNil(stack.storeCoordinator)
+
+        XCTAssertEqual(stack.mainContext.name, "JSQCoreDataKit.CoreDataStack.context.main")
+        XCTAssertEqual(stack.mainContext.concurrencyType, NSManagedObjectContextConcurrencyType.MainQueueConcurrencyType)
+        XCTAssertNil(stack.mainContext.parentContext)
+        XCTAssertNotNil(stack.mainContext.persistentStoreCoordinator)
+
+        XCTAssertEqual(stack.backgroundContext.name, "JSQCoreDataKit.CoreDataStack.context.background")
+        XCTAssertEqual(stack.backgroundContext.concurrencyType, NSManagedObjectContextConcurrencyType.PrivateQueueConcurrencyType)
+        XCTAssertNil(stack.backgroundContext.parentContext)
+        XCTAssertNotNil(stack.backgroundContext.persistentStoreCoordinator)
     }
 
 }

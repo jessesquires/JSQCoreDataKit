@@ -71,7 +71,7 @@ class StackTests: XCTestCase {
         let stack = CoreDataStack(model: model)
 
         // WHEN: we create a child context
-        let childContext = stack.mainChildContext(concurrencyType: .PrivateQueueConcurrencyType, mergePolicyType: .ErrorMergePolicyType)
+        let childContext = stack.childContextFromMain(concurrencyType: .PrivateQueueConcurrencyType, mergePolicyType: .ErrorMergePolicyType)
 
         // THEN: it is initialized as expected
         XCTAssertEqual(childContext.parentContext!, stack.mainContext)

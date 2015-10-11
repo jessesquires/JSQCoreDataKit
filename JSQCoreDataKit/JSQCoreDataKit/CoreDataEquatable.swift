@@ -50,6 +50,21 @@ public func ==(lhs: CoreDataStackResult, rhs: CoreDataStackResult) -> Bool {
 
 
 /// :nodoc:
+public func ==(lhs: CoreDataSaveResult, rhs: CoreDataSaveResult) -> Bool {
+    switch (lhs, rhs) {
+    case (.Success, .Success):
+        return true
+
+    case (let .Failure(error1), let .Failure(error2)):
+        return error1 == error2
+
+    default:
+        return false
+    }
+}
+
+
+/// :nodoc:
 public func ==(lhs: StoreType, rhs: StoreType) -> Bool {
     switch (lhs, rhs) {
     case let (.SQLite(left), .SQLite(right)) where left == right:

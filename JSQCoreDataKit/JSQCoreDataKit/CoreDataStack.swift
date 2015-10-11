@@ -24,10 +24,17 @@ import Foundation
 public typealias ChildContext = NSManagedObjectContext
 
 
-private let DefaultStackOptions = [
-    NSMigratePersistentStoresAutomaticallyOption : true,
-    NSInferMappingModelAutomaticallyOption : true
-]
+
+/**
+- parameter lhs: A `CoreDataStack` instance.
+- parameter rhs: A `CoreDataStack` instance.
+
+- returns: True if `lhs` is equal to `rhs`, false otherwise.
+*/
+public func ==(lhs: CoreDataStack, rhs: CoreDataStack) -> Bool {
+    return lhs.model == rhs.model
+}
+
 
 
 /**
@@ -36,8 +43,10 @@ It manages the managed object model, the persistent store coordinator, and manag
 
 It is composed of a main and a background context, both of which are connected to the same persistent store coordinator.
 These two contexts ooperate on the main thread and a background thread, respectively.
+
+- Warning: You should not create a `CoreDataStack` directly. Instead, use a `CoreDataStackFactory` for initialization.
 */
-public final class CoreDataStack: CustomStringConvertible {
+public final class CoreDataStack: CustomStringConvertible, Equatable {
 
 
     // MARK: Properties
@@ -64,13 +73,11 @@ public final class CoreDataStack: CustomStringConvertible {
     Constructs a new `CoreDataStack` instance with the specified `model` and `options`.
 
     - parameter model:   The model describing the stack.
-    - parameter options: A dictionary containing key-value pairs that specify options for the store.
-    The default contains `true` for the following keys:
-    `NSMigratePersistentStoresAutomaticallyOption`, `NSInferMappingModelAutomaticallyOption`.
+    - parameter options: A dictionary that specifies options for the store. The default is `nil`.
 
     - returns: A new `CoreDataStack` instance.
     */
-    public init(model: CoreDataModel, options: [NSObject : AnyObject]? = DefaultStackOptions) {
+    public init(model: CoreDataModel, options: PersistentStoreOptions? = nil) {
 
         self.model = model
         storeCoordinator = NSPersistentStoreCoordinator(managedObjectModel: model.managedObjectModel)
@@ -167,6 +174,7 @@ public final class CoreDataStack: CustomStringConvertible {
         }
 
         guard let parentContext = context.parentContext else {
+            debugPrint("*** Warning: child context saved without a parent context from notification: \(notification)")
             return
         }
 

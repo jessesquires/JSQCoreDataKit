@@ -45,8 +45,6 @@ extension NSManagedObject {
 
 class ViewController: UIViewController {
 
-    var stack: CoreDataStack?
-
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -54,9 +52,9 @@ class ViewController: UIViewController {
         let model = CoreDataModel(name: ModelName, bundle: ModelBundle)
 
         // Create stack
-        stack = CoreDataStack(model: model)
+        let stack = CoreDataStack(model: model)
 
-        saveContext(stack!.mainQueueContext) { (error: NSError?) in
+        saveContext(stack.mainContext) { (error: NSError?) in
             // perform post save operations
             // handle error, if any
         }

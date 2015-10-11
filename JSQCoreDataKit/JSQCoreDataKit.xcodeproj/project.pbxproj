@@ -21,7 +21,8 @@
 		881219DD1B361F13005E5AA7 /* TestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 881219D81B361F13005E5AA7 /* TestCase.swift */; };
 		8851E2DB1B37423000E875DC /* StackTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8851E2DA1B37423000E875DC /* StackTests.swift */; };
 		887CC6871BC107300069022A /* StoreType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 887CC6861BC107300069022A /* StoreType.swift */; settings = {ASSET_TAGS = (); }; };
-		887CC68B1BC1F0A40069022A /* CoreDataStackInitializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 887CC68A1BC1F0A40069022A /* CoreDataStackInitializer.swift */; settings = {ASSET_TAGS = (); }; };
+		887CC68B1BC1F0A40069022A /* CoreDataStackFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 887CC68A1BC1F0A40069022A /* CoreDataStackFactory.swift */; settings = {ASSET_TAGS = (); }; };
+		887CC68D1BC200BA0069022A /* StackFactoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 887CC68C1BC200BA0069022A /* StackFactoryTests.swift */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,7 +53,8 @@
 		881219D81B361F13005E5AA7 /* TestCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestCase.swift; sourceTree = "<group>"; };
 		8851E2DA1B37423000E875DC /* StackTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StackTests.swift; sourceTree = "<group>"; };
 		887CC6861BC107300069022A /* StoreType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoreType.swift; sourceTree = "<group>"; };
-		887CC68A1BC1F0A40069022A /* CoreDataStackInitializer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataStackInitializer.swift; sourceTree = "<group>"; };
+		887CC68A1BC1F0A40069022A /* CoreDataStackFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataStackFactory.swift; sourceTree = "<group>"; };
+		887CC68C1BC200BA0069022A /* StackFactoryTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StackFactoryTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,7 +100,7 @@
 				88002D7F1AB8FF4F001787DB /* CoreDataExtensions.swift */,
 				88002D801AB8FF4F001787DB /* CoreDataModel.swift */,
 				88002D811AB8FF4F001787DB /* CoreDataStack.swift */,
-				887CC68A1BC1F0A40069022A /* CoreDataStackInitializer.swift */,
+				887CC68A1BC1F0A40069022A /* CoreDataStackFactory.swift */,
 				88002D541AB8F546001787DB /* JSQCoreDataKit.h */,
 				887CC6861BC107300069022A /* StoreType.swift */,
 				88002D521AB8F546001787DB /* Supporting Files */,
@@ -121,6 +123,7 @@
 				881219D51B361F13005E5AA7 /* FetchTests.swift */,
 				881219D61B361F13005E5AA7 /* ModelTests.swift */,
 				881219D71B361F13005E5AA7 /* SaveTests.swift */,
+				887CC68C1BC200BA0069022A /* StackFactoryTests.swift */,
 				8851E2DA1B37423000E875DC /* StackTests.swift */,
 				881219E01B361FB6005E5AA7 /* Supporting Files */,
 				881219CE1B361EF8005E5AA7 /* Test Fixtures */,
@@ -254,7 +257,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				887CC68B1BC1F0A40069022A /* CoreDataStackInitializer.swift in Sources */,
+				887CC68B1BC1F0A40069022A /* CoreDataStackFactory.swift in Sources */,
 				88002D841AB8FF4F001787DB /* CoreDataStack.swift in Sources */,
 				887CC6871BC107300069022A /* StoreType.swift in Sources */,
 				88002D831AB8FF4F001787DB /* CoreDataModel.swift in Sources */,
@@ -272,6 +275,7 @@
 				881219D31B361EF8005E5AA7 /* TestModel.xcdatamodeld in Sources */,
 				8851E2DB1B37423000E875DC /* StackTests.swift in Sources */,
 				881219DB1B361F13005E5AA7 /* ModelTests.swift in Sources */,
+				887CC68D1BC200BA0069022A /* StackFactoryTests.swift in Sources */,
 				881219DC1B361F13005E5AA7 /* SaveTests.swift in Sources */,
 				881219D91B361F13005E5AA7 /* DeleteTests.swift in Sources */,
 			);

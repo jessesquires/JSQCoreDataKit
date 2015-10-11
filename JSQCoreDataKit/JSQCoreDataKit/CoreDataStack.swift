@@ -25,7 +25,7 @@ An instance of `CoreDataStack` encapsulates the entire Core Data stack.
 It manages the managed object model, the persistent store coordinator, and managed object contexts.
 
 It is composed of a main context and a background context, both of which are connected to the same persistent store coordinator.
-These two contexts operate on the main queue and a private background queue, respectively. 
+These two contexts operate on the main queue and a private background queue, respectively.
 
 Data between the two contexts is kept in sync.
 */
@@ -63,17 +63,32 @@ public final class CoreDataStack: CustomStringConvertible, Equatable {
     - Warning: You should not create a `CoreDataStack` directly. Instead, use a `CoreDataStackFactory` for initialization.
     */
     public init(model: CoreDataModel, options: PersistentStoreOptions? = nil) {
-
         self.model = model
         storeCoordinator = NSPersistentStoreCoordinator(managedObjectModel: model.managedObjectModel)
 
         let name = "JSQCoreDataKit.CoreDataStack.context"
 
-        mainContext = NSManagedObjectContext(concurrencyType: .MainQueueConcurrencyType)
+        var tempMainContext: NSManagedObjectContext!
+        let setupMainContext: () -> Void = {
+            tempMainContext = NSManagedObjectContext(concurrencyType: .MainQueueConcurrencyType)
+            tempMainContext.mergePolicy = NSMergePolicy(mergeType: .MergeByPropertyStoreTrumpMergePolicyType)
+            tempMainContext.name = name + ".main"
+        }
+
+        if !NSThread.isMainThread() {
+            dispatch_sync(dispatch_get_main_queue()) {
+                setupMainContext()
+            }
+        }
+        else {
+            setupMainContext()
+        }
+
+        mainContext = tempMainContext
         mainContext.persistentStoreCoordinator = storeCoordinator
-        mainContext.name = name + ".main"
 
         backgroundContext = NSManagedObjectContext(concurrencyType: .PrivateQueueConcurrencyType)
+        backgroundContext.mergePolicy = NSMergePolicy(mergeType: .MergeByPropertyStoreTrumpMergePolicyType)
         backgroundContext.persistentStoreCoordinator = storeCoordinator
         backgroundContext.name = name + ".background"
 

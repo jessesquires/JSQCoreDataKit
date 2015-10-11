@@ -19,61 +19,12 @@
 import CoreData
 import Foundation
 
-/// Describes the initialization options for a persistent store.
-public typealias PersistentStoreOptions = [NSObject : AnyObject]
-
 
 /// Describes default persistent store options.
 public let DefaultStoreOptions = [
     NSMigratePersistentStoresAutomaticallyOption : true,
     NSInferMappingModelAutomaticallyOption : true
 ]
-
-
-/**
-- parameter lhs: A `CoreDataStackResult` instance.
-- parameter rhs: A `CoreDataStackResult` instance.
-
-- returns: True if `lhs` is equal to `rhs`, false otherwise.
-*/
-public func ==(lhs: CoreDataStackResult, rhs: CoreDataStackResult) -> Bool {
-    switch (lhs, rhs) {
-    case (let .Success(stack1), let .Success(stack2)):
-        return stack1 == stack2
-
-    case (let .Failure(error1), let .Failure(error2)):
-        return error1 == error2
-
-    default:
-        return false
-    }
-}
-
-
-/**
-The result of creating a `CoreDataStack` via a `CoreDataStackFactory`.
-
-- Success: Initializing the `CoreDataStack` succeeded.
-- Failure: Initializing the `CoreDataStack` failed, with the specified error.
-*/
-public enum CoreDataStackResult {
-    case Success(CoreDataStack)
-    case Failure(NSError)
-
-    public func stack() -> CoreDataStack? {
-        if case .Success(let stack) = self {
-            return stack
-        }
-        return nil
-    }
-
-    public func error() -> NSError? {
-        if case .Failure(let error) = self {
-            return error
-        }
-        return nil
-    }
-}
 
 
 /**
@@ -86,10 +37,15 @@ See this [guide](https://developer.apple.com/library/prerelease/ios/documentatio
 
 - Note: You should not create instances of `CoreDataStack` directly. Use a `CoreDataStackFactory` instead.
 */
-public struct CoreDataStackFactory {
+public struct CoreDataStackFactory: CustomStringConvertible, Equatable {
+
+    // MARK: Typealiases
 
     /// The completion handler for initializing a `CoreDataStack`.
     public typealias CompletionHandler = (result: CoreDataStackResult) -> Void
+
+
+    // MARK: Properties
 
     /// The model for the stack that the factory produces.
     public let model: CoreDataModel
@@ -100,6 +56,9 @@ public struct CoreDataStackFactory {
     */
     public let options: PersistentStoreOptions?
 
+
+    // MARK: Initialization
+    
     /**
     Constructs a new `CoreDataStackFactory` instance with the specified `model` and `options`.
 
@@ -112,6 +71,9 @@ public struct CoreDataStackFactory {
         self.model = model
         self.options = options
     }
+
+
+    // MARK: Methods 
 
     /**
     Initializes a new `CoreDataStack` instance using the factory's `model` and `options`.
@@ -131,6 +93,13 @@ public struct CoreDataStackFactory {
         }
     }
 
-    // TODO: function to reset stack?
 
+    // MARK: CustomStringConvertible
+
+    /// :nodoc:
+    public var description: String {
+        get {
+            return "<\(CoreDataStackFactory.self): model=\(model.name); options=\(options)>"
+        }
+    }
 }

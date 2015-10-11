@@ -23,6 +23,8 @@
 		887CC68D1BC200BA0069022A /* StackFactoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 887CC68C1BC200BA0069022A /* StackFactoryTests.swift */; settings = {ASSET_TAGS = (); }; };
 		88B9F8AA1BC9F2930053CD6D /* ExampleModel.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88B9F8A91BC9F27C0053CD6D /* ExampleModel.framework */; };
 		88B9F8AC1BC9F5570053CD6D /* ExampleModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88B9F8AB1BC9F5570053CD6D /* ExampleModelTests.swift */; settings = {ASSET_TAGS = (); }; };
+		88B9F8D61BCA26B70053CD6D /* CoreDataEquatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88B9F8D51BCA26B70053CD6D /* CoreDataEquatable.swift */; settings = {ASSET_TAGS = (); }; };
+		88B9F8D91BCA28C70053CD6D /* CoreDataStackResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88B9F8D81BCA28C70053CD6D /* CoreDataStackResult.swift */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -62,6 +64,8 @@
 		887CC68C1BC200BA0069022A /* StackFactoryTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StackFactoryTests.swift; sourceTree = "<group>"; };
 		88B9F8921BC9F0C70053CD6D /* ExampleModel.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ExampleModel.xcodeproj; path = ../../ExampleModel/ExampleModel.xcodeproj; sourceTree = "<group>"; };
 		88B9F8AB1BC9F5570053CD6D /* ExampleModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExampleModelTests.swift; sourceTree = "<group>"; };
+		88B9F8D51BCA26B70053CD6D /* CoreDataEquatable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataEquatable.swift; sourceTree = "<group>"; };
+		88B9F8D81BCA28C70053CD6D /* CoreDataStackResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataStackResult.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,10 +109,12 @@
 		88002D511AB8F546001787DB /* JSQCoreDataKit */ = {
 			isa = PBXGroup;
 			children = (
+				88B9F8D51BCA26B70053CD6D /* CoreDataEquatable.swift */,
 				88002D7F1AB8FF4F001787DB /* CoreDataExtensions.swift */,
 				88002D801AB8FF4F001787DB /* CoreDataModel.swift */,
 				88002D811AB8FF4F001787DB /* CoreDataStack.swift */,
 				887CC68A1BC1F0A40069022A /* CoreDataStackFactory.swift */,
+				88B9F8D81BCA28C70053CD6D /* CoreDataStackResult.swift */,
 				88002D541AB8F546001787DB /* JSQCoreDataKit.h */,
 				887CC6861BC107300069022A /* StoreType.swift */,
 				88002D521AB8F546001787DB /* Supporting Files */,
@@ -282,9 +288,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				887CC68B1BC1F0A40069022A /* CoreDataStackFactory.swift in Sources */,
+				88B9F8D61BCA26B70053CD6D /* CoreDataEquatable.swift in Sources */,
 				88002D841AB8FF4F001787DB /* CoreDataStack.swift in Sources */,
 				887CC6871BC107300069022A /* StoreType.swift in Sources */,
 				88002D831AB8FF4F001787DB /* CoreDataModel.swift in Sources */,
+				88B9F8D91BCA28C70053CD6D /* CoreDataStackResult.swift in Sources */,
 				88002D821AB8FF4F001787DB /* CoreDataExtensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

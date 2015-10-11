@@ -20,23 +20,6 @@ import CoreData
 import Foundation
 
 
-/// Describes a child managed object context.
-public typealias ChildContext = NSManagedObjectContext
-
-
-
-/**
-- parameter lhs: A `CoreDataStack` instance.
-- parameter rhs: A `CoreDataStack` instance.
-
-- returns: True if `lhs` is equal to `rhs`, false otherwise.
-*/
-public func ==(lhs: CoreDataStack, rhs: CoreDataStack) -> Bool {
-    return lhs.model == rhs.model
-}
-
-
-
 /**
 An instance of `CoreDataStack` encapsulates the entire Core Data stack.
 It manages the managed object model, the persistent store coordinator, and managed object contexts.

@@ -20,26 +20,6 @@ import CoreData
 import Foundation
 
 
-/**
-- parameter lhs: A `StoreType` instance.
-- parameter rhs: A `StoreType` instance.
-
-- returns: True if `lhs` is equal to `rhs`, false otherwise.
-*/
-public func ==(lhs: StoreType, rhs: StoreType) -> Bool {
-    switch (lhs, rhs) {
-    case let (.SQLite(left), .SQLite(right)) where left == right:
-        return true
-    case let (.Binary(left), .Binary(right)) where left == right:
-        return true
-    case (.InMemory, .InMemory):
-        return true
-    default:
-        return false
-    }
-}
-
-
 /// Describes a Core Data persistent store type.
 public enum StoreType: CustomStringConvertible, Equatable {
 
@@ -51,6 +31,9 @@ public enum StoreType: CustomStringConvertible, Equatable {
 
     /// The in-memory store type.
     case InMemory
+
+
+    // MARK: Methods
 
     /**
     - returns: The file URL specifying the directory in which the store is located.

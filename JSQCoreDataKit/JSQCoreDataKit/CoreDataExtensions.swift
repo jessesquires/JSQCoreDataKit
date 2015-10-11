@@ -20,6 +20,15 @@ import CoreData
 import Foundation
 
 
+/// Describes a child managed object context.
+public typealias ChildContext = NSManagedObjectContext
+
+
+/// Describes the initialization options for a persistent store.
+public typealias PersistentStoreOptions = [NSObject : AnyObject]
+
+
+
 /**
 Attempts to commit unsaved changes to registered objects to the specified context's parent store. 
 This function is performed in a block on the context's queue. If the context has no changes,

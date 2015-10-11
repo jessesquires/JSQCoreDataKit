@@ -22,6 +22,8 @@ before_install:
 - brew outdated xctool || brew upgrade xctool
 
 script:
+- xctool clean build -project ExampleApp/ExampleApp.xcodeproj -scheme ExampleApp -sdk iphonesimulator9.0 ONLY_ACTIVE_ARCH=NO
+
 - xctool clean build -workspace JSQCoreDataKit.xcworkspace -scheme ExampleModel -sdk iphonesimulator9.0 ONLY_ACTIVE_ARCH=NO
 
 - xctool clean build test -workspace JSQCoreDataKit.xcworkspace -scheme "$SCHEME" -sdk "$SDK" -destination "$DESTINATION" -configuration Debug ONLY_ACTIVE_ARCH=NO

@@ -20,6 +20,34 @@
                ReferencedContainer = "container:JSQCoreDataKit.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "NO"
+            buildForProfiling = "NO"
+            buildForArchiving = "NO"
+            buildForAnalyzing = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "885394491BC9EA0300699506"
+               BuildableName = "ExampleModel.framework"
+               BlueprintName = "ExampleModel"
+               ReferencedContainer = "container:../ExampleModel/ExampleModel.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "NO"
+            buildForProfiling = "NO"
+            buildForArchiving = "NO"
+            buildForAnalyzing = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "881219C21B361EAF005E5AA7"
+               BuildableName = "JSQCoreDataKitTests.xctest"
+               BlueprintName = "JSQCoreDataKitTests"
+               ReferencedContainer = "container:JSQCoreDataKit.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
       </BuildActionEntries>
    </BuildAction>
    <TestAction

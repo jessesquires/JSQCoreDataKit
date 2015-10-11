@@ -8,9 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		8853944E1BC9EA0300699506 /* ExampleModel.h in Headers */ = {isa = PBXBuildFile; fileRef = 8853944D1BC9EA0300699506 /* ExampleModel.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		885394661BC9EAB100699506 /* ExampleModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 885394641BC9EAB100699506 /* ExampleModel.xcdatamodeld */; settings = {ASSET_TAGS = (); }; };
-		8853946C1BC9EB7900699506 /* Employee.swift in Sources */ = {isa = PBXBuildFile; fileRef = 885394681BC9EB7900699506 /* Employee.swift */; settings = {ASSET_TAGS = (); }; };
-		8853946E1BC9EB7900699506 /* Company.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8853946A1BC9EB7900699506 /* Company.swift */; settings = {ASSET_TAGS = (); }; };
+		885394661BC9EAB100699506 /* ExampleModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 885394641BC9EAB100699506 /* ExampleModel.xcdatamodeld */; };
+		8853946C1BC9EB7900699506 /* Employee.swift in Sources */ = {isa = PBXBuildFile; fileRef = 885394681BC9EB7900699506 /* Employee.swift */; };
+		8853946E1BC9EB7900699506 /* Company.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8853946A1BC9EB7900699506 /* Company.swift */; };
+		EB6D66A01BCAD12A001C5A66 /* ExampleModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 885394641BC9EAB100699506 /* ExampleModel.xcdatamodeld */; };
+		EB6D66A11BCAD12A001C5A66 /* Employee.swift in Sources */ = {isa = PBXBuildFile; fileRef = 885394681BC9EB7900699506 /* Employee.swift */; };
+		EB6D66A21BCAD12A001C5A66 /* Company.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8853946A1BC9EB7900699506 /* Company.swift */; };
+		EB6D66A51BCAD12A001C5A66 /* ExampleModel.h in Headers */ = {isa = PBXBuildFile; fileRef = 8853944D1BC9EA0300699506 /* ExampleModel.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -20,10 +24,18 @@
 		885394651BC9EAB100699506 /* ExampleModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ExampleModel.xcdatamodel; sourceTree = "<group>"; };
 		885394681BC9EB7900699506 /* Employee.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Employee.swift; sourceTree = "<group>"; };
 		8853946A1BC9EB7900699506 /* Company.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Company.swift; sourceTree = "<group>"; };
+		EB6D66AA1BCAD12A001C5A66 /* ExampleModel.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ExampleModel.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		885394461BC9EA0300699506 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EB6D66A31BCAD12A001C5A66 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -45,6 +57,7 @@
 			isa = PBXGroup;
 			children = (
 				8853944A1BC9EA0300699506 /* ExampleModel.framework */,
+				EB6D66AA1BCAD12A001C5A66 /* ExampleModel.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -72,6 +85,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		EB6D66A41BCAD12A001C5A66 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EB6D66A51BCAD12A001C5A66 /* ExampleModel.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
@@ -91,6 +112,24 @@
 			name = ExampleModel;
 			productName = ExampleModel;
 			productReference = 8853944A1BC9EA0300699506 /* ExampleModel.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		EB6D669E1BCAD12A001C5A66 /* ExampleModel tvOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EB6D66A71BCAD12A001C5A66 /* Build configuration list for PBXNativeTarget "ExampleModel tvOS" */;
+			buildPhases = (
+				EB6D669F1BCAD12A001C5A66 /* Sources */,
+				EB6D66A31BCAD12A001C5A66 /* Frameworks */,
+				EB6D66A41BCAD12A001C5A66 /* Headers */,
+				EB6D66A61BCAD12A001C5A66 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "ExampleModel tvOS";
+			productName = ExampleModel;
+			productReference = EB6D66AA1BCAD12A001C5A66 /* ExampleModel.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 /* End PBXNativeTarget section */
@@ -121,12 +160,20 @@
 			projectRoot = "";
 			targets = (
 				885394491BC9EA0300699506 /* ExampleModel */,
+				EB6D669E1BCAD12A001C5A66 /* ExampleModel tvOS */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
 		885394481BC9EA0300699506 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EB6D66A61BCAD12A001C5A66 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -143,6 +190,16 @@
 				885394661BC9EAB100699506 /* ExampleModel.xcdatamodeld in Sources */,
 				8853946C1BC9EB7900699506 /* Employee.swift in Sources */,
 				8853946E1BC9EB7900699506 /* Company.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EB6D669F1BCAD12A001C5A66 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EB6D66A01BCAD12A001C5A66 /* ExampleModel.xcdatamodeld in Sources */,
+				EB6D66A11BCAD12A001C5A66 /* Employee.swift in Sources */,
+				EB6D66A21BCAD12A001C5A66 /* Company.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -273,6 +330,45 @@
 			};
 			name = Release;
 		};
+		EB6D66A81BCAD12A001C5A66 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = ExampleModel/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.hexedbits.ExampleModel;
+				PRODUCT_NAME = ExampleModel;
+				SDKROOT = appletvos;
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = 3;
+			};
+			name = Debug;
+		};
+		EB6D66A91BCAD12A001C5A66 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = ExampleModel/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.hexedbits.ExampleModel;
+				PRODUCT_NAME = ExampleModel;
+				SDKROOT = appletvos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 3;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -290,6 +386,15 @@
 			buildConfigurations = (
 				8853945F1BC9EA0300699506 /* Debug */,
 				885394601BC9EA0300699506 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		EB6D66A71BCAD12A001C5A66 /* Build configuration list for PBXNativeTarget "ExampleModel tvOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EB6D66A81BCAD12A001C5A66 /* Debug */,
+				EB6D66A91BCAD12A001C5A66 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

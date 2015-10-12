@@ -36,7 +36,7 @@ class SaveTests: TestCase {
         // WHEN: we attempt to save the context
 
         // THEN: the save operation is ignored
-        saveContext(stack.mainContext) { error in
+        saveContext(stack.mainContext) { result in
             didSave = true
         }
 
@@ -104,7 +104,7 @@ class SaveTests: TestCase {
         var didSave = false
 
         // WHEN: we attempt to save the context asynchronously
-        saveContext(stack.mainContext, wait: false) { error in
+        saveContext(stack.mainContext, wait: false) { result in
             didSave = true
         }
 

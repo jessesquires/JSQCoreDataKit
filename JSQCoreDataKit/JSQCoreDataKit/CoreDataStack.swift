@@ -24,10 +24,13 @@ import Foundation
 An instance of `CoreDataStack` encapsulates the entire Core Data stack.
 It manages the managed object model, the persistent store coordinator, and managed object contexts.
 
-It is composed of a main context and a background context, both of which are connected to the same persistent store coordinator.
+It is composed of a main context and a background context
 These two contexts operate on the main queue and a private background queue, respectively.
+The background context is the root level context, which is connected to the persistent store coordinator.
+The main context is a child of the background context.
 
-Data between the two contexts is kept in sync.
+Data between these two primary contexts and child contexts is kept in sync.
+Changes to a context are propagated to its parent context and eventually the persistent store when saving.
 
 **You cannot create a `CoreDataStack` instance directly. Instead, use a `CoreDataStackFactory` for initialization.**
 */
@@ -39,15 +42,20 @@ public final class CoreDataStack: CustomStringConvertible, Equatable {
     /// The model for the stack.
     public let model: CoreDataModel
 
-    /// The main managed object context for the stack, which operates on the main queue.
+    /**
+    The main managed object context for the stack, which operates on the main queue.
+    This context is a child context of `backgroundContext`.
+    */
     public let mainContext: NSManagedObjectContext
 
-    /// The background managed object context for the stack, which operates on a background queue.
+    /** 
+    The background managed object context for the stack, which operates on a background queue.
+    This context is the root level context that is connected to the `storeCoordinator`.
+    */
     public let backgroundContext: NSManagedObjectContext
 
     /**
-    The persistent store coordinator for the stack.
-    Both the `mainContext` and `backgroundContext` are connected to this coordinator.
+    The persistent store coordinator for the stack. The `backgroundContext` is connected to this coordinator.
     */
     public let storeCoordinator: NSPersistentStoreCoordinator
 
@@ -65,14 +73,9 @@ public final class CoreDataStack: CustomStringConvertible, Equatable {
             self.storeCoordinator = storeCoordinator
 
             NSNotificationCenter.defaultCenter().addObserver(self,
-                selector: Selector("didReceiveMainContextDidSaveNotification:"),
+                selector: Selector("didReceiveChildContextDidSaveNotification:"),
                 name: NSManagedObjectContextDidSaveNotification,
                 object: mainContext)
-
-            NSNotificationCenter.defaultCenter().addObserver(self,
-                selector: Selector("didReceiveBackgroundContextDidSaveNotification:"),
-                name: NSManagedObjectContextDidSaveNotification,
-                object: backgroundContext)
     }
 
     /// :nodoc:
@@ -85,38 +88,32 @@ public final class CoreDataStack: CustomStringConvertible, Equatable {
 
     /**
     Creates a new child context whose parent is `mainContext` and has the specified `concurrencyType` and `mergePolicyType`.
+    Saving the returned context will propagate changes through `mainContext`, `backgroundContext`, 
+    and finally the persistent store.
 
     - parameter concurrencyType: The concurrency pattern to use. The default is `.PrivateQueueConcurrencyType`.
     - parameter mergePolicyType: The merge policy to use. The default is `.MergeByPropertyObjectTrumpMergePolicyType`.
 
     - returns: A new child managed object context whose parent is `mainContext`.
     */
-    public func childContextFromMain(
+    public func childContext(
         concurrencyType concurrencyType: NSManagedObjectContextConcurrencyType = .PrivateQueueConcurrencyType,
         mergePolicyType: NSMergePolicyType = .MergeByPropertyObjectTrumpMergePolicyType) -> ChildContext {
 
-            return childContext(
-                fromParent: mainContext,
-                concurrencyType: concurrencyType,
-                mergePolicyType: mergePolicyType)
-    }
+            let childContext = NSManagedObjectContext(concurrencyType: concurrencyType)
+            childContext.parentContext = mainContext
+            childContext.mergePolicy = NSMergePolicy(mergeType: mergePolicyType)
 
-    /**
-    Creates a new child context whose parent is `backgroundContext` and has the specified `concurrencyType` and `mergePolicyType`.
+            if let name = mainContext.name {
+                childContext.name = name + ".child"
+            }
 
-    - parameter concurrencyType: The concurrency pattern to use. The default is `.PrivateQueueConcurrencyType`.
-    - parameter mergePolicyType: The merge policy to use. The default is `.MergeByPropertyObjectTrumpMergePolicyType`.
+            NSNotificationCenter.defaultCenter().addObserver(self,
+                selector: Selector("didReceiveChildContextDidSaveNotification:"),
+                name: NSManagedObjectContextDidSaveNotification,
+                object: childContext)
 
-    - returns: A new child managed object context whose parent is `backgroundContext`.
-    */
-    public func childContextFromBackground(
-        concurrencyType concurrencyType: NSManagedObjectContextConcurrencyType = .PrivateQueueConcurrencyType,
-        mergePolicyType: NSMergePolicyType = .MergeByPropertyObjectTrumpMergePolicyType) -> ChildContext {
-
-            return childContext(
-                fromParent: backgroundContext,
-                concurrencyType: concurrencyType,
-                mergePolicyType: mergePolicyType)
+            return childContext
     }
 
 
@@ -132,37 +129,6 @@ public final class CoreDataStack: CustomStringConvertible, Equatable {
 
     // MARK: Private
 
-    private func childContext(
-        fromParent parent: NSManagedObjectContext,
-        concurrencyType: NSManagedObjectContextConcurrencyType,
-        mergePolicyType: NSMergePolicyType) -> ChildContext {
-
-            let childContext = NSManagedObjectContext(concurrencyType: concurrencyType)
-            childContext.parentContext = parent
-            childContext.mergePolicy = NSMergePolicy(mergeType: mergePolicyType)
-
-            if let name = parent.name {
-                childContext.name = name + ".child"
-            }
-
-            NSNotificationCenter.defaultCenter().addObserver(self,
-                selector: Selector("didReceiveChildContextDidSaveNotification:"),
-                name: NSManagedObjectContextDidSaveNotification,
-                object: childContext)
-
-            return childContext
-    }
-
-    @objc
-    private func didReceiveMainContextDidSaveNotification(notification: NSNotification) {
-        backgroundContext.mergeChangesFromContextDidSaveNotification(notification)
-    }
-
-    @objc
-    private func didReceiveBackgroundContextDidSaveNotification(notifcation: NSNotification) {
-        mainContext.mergeChangesFromContextDidSaveNotification(notifcation)
-    }
-
     @objc
     private func didReceiveChildContextDidSaveNotification(notification: NSNotification) {
         guard let context = notification.object as? NSManagedObjectContext else {
@@ -172,7 +138,7 @@ public final class CoreDataStack: CustomStringConvertible, Equatable {
         }
 
         guard let parentContext = context.parentContext else {
-            debugPrint("*** Warning: child context saved without a parent context from notification: \(notification)")
+            // have reached the root context, nothing to do
             return
         }
 

@@ -38,7 +38,7 @@ class EmployeeViewController: UITableViewController, NSFetchedResultsControllerD
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        tableView.allowsSelection = false
         setupFRC()
     }
 
@@ -53,13 +53,15 @@ class EmployeeViewController: UITableViewController, NSFetchedResultsControllerD
     }
 
     @IBAction func didTapTrashButton(sender: UIBarButtonItem) {
-        stack.backgroundContext.performBlockAndWait {
-            let request = self.fetchRequest(self.stack.backgroundContext)
+        let backgroundChildContext = self.stack.childContext()
+
+        backgroundChildContext.performBlockAndWait {
+            let request = self.fetchRequest(backgroundChildContext)
 
             do {
-                let objects = try fetch(request: request, inContext: self.stack.backgroundContext)
-                deleteObjects(objects, inContext: self.stack.backgroundContext)
-                saveContext(self.stack.backgroundContext)
+                let objects = try fetch(request: request, inContext: backgroundChildContext)
+                deleteObjects(objects, inContext: backgroundChildContext)
+                saveContext(backgroundChildContext)
             } catch {
                 print("Error deleting objects: \(error)")
             }

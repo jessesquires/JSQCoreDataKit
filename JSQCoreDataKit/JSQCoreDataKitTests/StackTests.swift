@@ -75,7 +75,7 @@ class StackTests: XCTestCase {
         XCTAssertEqual(stack.backgroundContext.concurrencyType, NSManagedObjectContextConcurrencyType.PrivateQueueConcurrencyType)
     }
 
-    func test_ThatMainChildContext_IsCreatedSuccessfully() {
+    func test_ThaChildContext_IsCreatedSuccessfully() {
 
         // GIVEN: a model and stack
         let model = CoreDataModel(name: modelName, bundle: modelBundle)
@@ -83,8 +83,8 @@ class StackTests: XCTestCase {
         let result = factory.createStack()
         let stack = result.stack()!
 
-        // WHEN: we create a child context from main
-        let childContext = stack.childContextFromMain()
+        // WHEN: we create a child context
+        let childContext = stack.childContext()
 
         // THEN: it is initialized as expected
         XCTAssertEqual(childContext.name, "JSQCoreDataKit.CoreDataStack.context.main.child")
@@ -93,7 +93,7 @@ class StackTests: XCTestCase {
         XCTAssertEqual(childContext.mergePolicy.mergeType, NSMergePolicyType.MergeByPropertyObjectTrumpMergePolicyType)
     }
 
-    func test_ThatMainChildContext_IsCreatedSuccessfully_WithCustomParameters() {
+    func test_ThatChildContext_IsCreatedSuccessfully_WithCustomParameters() {
 
         // GIVEN: a model and stack
         let model = CoreDataModel(name: modelName, bundle: modelBundle)
@@ -101,48 +101,12 @@ class StackTests: XCTestCase {
         let result = factory.createStack()
         let stack = result.stack()!
 
-        // WHEN: we create a child context from main
-        let childContext = stack.childContextFromMain(concurrencyType: .MainQueueConcurrencyType, mergePolicyType: .ErrorMergePolicyType)
+        // WHEN: we create a child context
+        let childContext = stack.childContext(concurrencyType: .MainQueueConcurrencyType, mergePolicyType: .ErrorMergePolicyType)
 
         // THEN: it is initialized as expected
         XCTAssertEqual(childContext.name, "JSQCoreDataKit.CoreDataStack.context.main.child")
         XCTAssertEqual(childContext.parentContext!, stack.mainContext)
-        XCTAssertEqual(childContext.concurrencyType, NSManagedObjectContextConcurrencyType.MainQueueConcurrencyType)
-        XCTAssertEqual(childContext.mergePolicy.mergeType, NSMergePolicyType.ErrorMergePolicyType)
-    }
-
-    func test_ThatBackgroundChildContext_IsCreatedSuccessfully() {
-
-        // GIVEN: a model and stack
-        let model = CoreDataModel(name: modelName, bundle: modelBundle)
-        let factory = CoreDataStackFactory(model: model)
-        let result = factory.createStack()
-        let stack = result.stack()!
-
-        // WHEN: we create a child context from background
-        let childContext = stack.childContextFromBackground()
-
-        // THEN: it is initialized as expected
-        XCTAssertEqual(childContext.name, "JSQCoreDataKit.CoreDataStack.context.background.child")
-        XCTAssertEqual(childContext.parentContext!, stack.backgroundContext)
-        XCTAssertEqual(childContext.concurrencyType, NSManagedObjectContextConcurrencyType.PrivateQueueConcurrencyType)
-        XCTAssertEqual(childContext.mergePolicy.mergeType, NSMergePolicyType.MergeByPropertyObjectTrumpMergePolicyType)
-    }
-
-    func test_ThatBackgroundChildContext_IsCreatedSuccessfully_WithCustomParameters() {
-
-        // GIVEN: a model and stack
-        let model = CoreDataModel(name: modelName, bundle: modelBundle)
-        let factory = CoreDataStackFactory(model: model)
-        let result = factory.createStack()
-        let stack = result.stack()!
-
-        // WHEN: we create a child context from background
-        let childContext = stack.childContextFromBackground(concurrencyType: .MainQueueConcurrencyType, mergePolicyType: .ErrorMergePolicyType)
-
-        // THEN: it is initialized as expected
-        XCTAssertEqual(childContext.name, "JSQCoreDataKit.CoreDataStack.context.background.child")
-        XCTAssertEqual(childContext.parentContext!, stack.backgroundContext)
         XCTAssertEqual(childContext.concurrencyType, NSManagedObjectContextConcurrencyType.MainQueueConcurrencyType)
         XCTAssertEqual(childContext.mergePolicy.mergeType, NSMergePolicyType.ErrorMergePolicyType)
     }

@@ -99,10 +99,12 @@ public struct CoreDataStackFactory: CustomStringConvertible, Equatable {
                     return
                 }
 
-                let backgroundContext = self.createContext(.PrivateQueueConcurrencyType, storeCoordinator: storeCoordinator, name: "background")
+                let backgroundContext = self.createContext(.PrivateQueueConcurrencyType, name: "background")
+                backgroundContext.persistentStoreCoordinator = storeCoordinator
 
                 dispatch_async(dispatch_get_main_queue()) {
-                    let mainContext = self.createContext(.MainQueueConcurrencyType, storeCoordinator: storeCoordinator, name: "main")
+                    let mainContext = self.createContext(.MainQueueConcurrencyType, name: "main")
+                    mainContext.parentContext = backgroundContext
 
                     let stack = CoreDataStack(
                         model: self.model,
@@ -133,8 +135,11 @@ public struct CoreDataStackFactory: CustomStringConvertible, Equatable {
             return .Failure(error as NSError)
         }
 
-        let backgroundContext = self.createContext(.PrivateQueueConcurrencyType, storeCoordinator: storeCoordinator, name: "background")
-        let mainContext = self.createContext(.MainQueueConcurrencyType, storeCoordinator: storeCoordinator, name: "main")
+        let backgroundContext = self.createContext(.PrivateQueueConcurrencyType, name: "background")
+        backgroundContext.persistentStoreCoordinator = storeCoordinator
+
+        let mainContext = self.createContext(.MainQueueConcurrencyType, name: "main")
+        mainContext.parentContext = backgroundContext
 
         let stack = CoreDataStack(
             model: model,
@@ -159,11 +164,9 @@ public struct CoreDataStackFactory: CustomStringConvertible, Equatable {
 
     private func createContext(
         concurrencyType: NSManagedObjectContextConcurrencyType,
-        storeCoordinator: NSPersistentStoreCoordinator,
         name: String) -> NSManagedObjectContext {
             let context = NSManagedObjectContext(concurrencyType: concurrencyType)
             context.mergePolicy = NSMergePolicy(mergeType: .MergeByPropertyStoreTrumpMergePolicyType)
-            context.persistentStoreCoordinator = storeCoordinator
 
             let contextName = "JSQCoreDataKit.CoreDataStack.context."
             context.name = contextName + name

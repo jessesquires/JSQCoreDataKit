@@ -117,20 +117,22 @@ class CompanyViewController: UITableViewController, NSFetchedResultsControllerDe
     // MARK: Actions
 
     func didTapAddButton(sender: UIBarButtonItem) {
-        stack.backgroundContext.performBlockAndWait {
-            Company.newCompany(self.stack.backgroundContext)
-            saveContext(self.stack.backgroundContext)
+        stack.mainContext.performBlockAndWait {
+            Company.newCompany(self.stack.mainContext)
+            saveContext(self.stack.mainContext)
         }
     }
 
     @IBAction func didTapTrashButton(sender: UIBarButtonItem) {
-        stack.backgroundContext.performBlockAndWait {
-            let request = self.fetchRequest(self.stack.backgroundContext)
+        let backgroundChildContext = self.stack.childContext()
+
+        backgroundChildContext.performBlockAndWait {
+            let request = self.fetchRequest(backgroundChildContext)
 
             do {
-                let objects = try fetch(request: request, inContext: self.stack.backgroundContext)
-                deleteObjects(objects, inContext: self.stack.backgroundContext)
-                saveContext(self.stack.backgroundContext)
+                let objects = try fetch(request: request, inContext: backgroundChildContext)
+                deleteObjects(objects, inContext: backgroundChildContext)
+                saveContext(backgroundChildContext)
             } catch {
                 print("Error deleting objects: \(error)")
             }
@@ -152,6 +154,7 @@ class CompanyViewController: UITableViewController, NSFetchedResultsControllerDe
         let company = self.frc?.objectAtIndexPath(indexPath) as! Company
         cell.textLabel?.text = company.name
         cell.detailTextLabel?.text = "$\(company.profits).00"
+        cell.accessoryType = .DisclosureIndicator
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {

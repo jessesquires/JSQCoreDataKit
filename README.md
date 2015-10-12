@@ -159,6 +159,10 @@ deleteObjects(objects, inContext: context)
 saveContext(context)
 ````
 
+## Example app
+
+There's an example app in the `ExampleApp/` directory. Open the `ExampleApp.xcodeproj` to run it. The project exercises most basic functionality of the framework.
+
 ## Unit tests
 
 There's a suite of unit tests for `JSQCoreDataKit.framework`. To run them, open `JSQCoreDataKit.xcworkspace`, select the `JSQCoreDataKit` scheme, then &#x2318;-u.

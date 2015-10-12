@@ -31,4 +31,7 @@ class EmployeeViewController: UITableViewController {
         super.viewDidLoad()
     }
     
+    @IBAction func didTapAddButton(sender: UIBarButtonItem) {
+        
+    }
 }

@@ -45,8 +45,10 @@ public final class Company: NSManagedObject {
     }
 
     public class func newCompany(context: NSManagedObjectContext) -> Company {
+        let name = "Company " + String(NSUUID().UUIDString.characters.split { $0 == "-" }.first!)
+
         return Company(context: context,
-            name: NSUUID().UUIDString,
+            name: name,
             dateFounded: NSDate.distantPast(),
             profits: NSDecimalNumber(unsignedInt: arc4random_uniform(1_000_000)))
     }

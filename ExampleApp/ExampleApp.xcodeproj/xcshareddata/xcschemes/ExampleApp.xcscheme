@@ -14,10 +14,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "885394491BC9EA0300699506"
-               BuildableName = "ExampleModel.framework"
-               BlueprintName = "ExampleModel"
-               ReferencedContainer = "container:../ExampleModel/ExampleModel.xcodeproj">
+               BlueprintIdentifier = "88002D4E1AB8F546001787DB"
+               BuildableName = "JSQCoreDataKit.framework"
+               BlueprintName = "JSQCoreDataKit"
+               ReferencedContainer = "container:../JSQCoreDataKit/JSQCoreDataKit.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
          <BuildActionEntry
@@ -28,10 +28,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "88002D4E1AB8F546001787DB"
-               BuildableName = "JSQCoreDataKit.framework"
-               BlueprintName = "JSQCoreDataKit"
-               ReferencedContainer = "container:../JSQCoreDataKit/JSQCoreDataKit.xcodeproj">
+               BlueprintIdentifier = "885394491BC9EA0300699506"
+               BuildableName = "ExampleModel.framework"
+               BlueprintName = "ExampleModel"
+               ReferencedContainer = "container:../ExampleModel/ExampleModel.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
          <BuildActionEntry

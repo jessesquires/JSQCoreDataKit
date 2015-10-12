@@ -42,7 +42,7 @@
                                 </tableViewCellContentView>
                                 <animations/>
                                 <connections>
-                                    <segue destination="NXN-OL-qVC" kind="show" id="4kV-oo-Aui"/>
+                                    <segue destination="NXN-OL-qVC" kind="show" identifier="segue" id="4kV-oo-Aui"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -51,15 +51,13 @@
                             <outlet property="delegate" destination="CQI-i4-Odi" id="xYA-3j-IIv"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="JSQCoreDataKit" id="iMk-wu-2Mg">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="k9C-JE-u7o"/>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="JSQCoreDataKit" id="iMk-wu-2Mg"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qK0-0H-ZaR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="634" y="800"/>
         </scene>
-        <!--Employee View Controller-->
+        <!--Employee-->
         <scene sceneID="vsw-kZ-FSJ">
             <objects>
                 <tableViewController id="NXN-OL-qVC" customClass="EmployeeViewController" customModule="ExampleApp" customModuleProvider="target" sceneMemberID="viewController">
@@ -103,6 +101,13 @@
                             <outlet property="delegate" destination="NXN-OL-qVC" id="4SO-kc-SKe"/>
                         </connections>
                     </tableView>
+                    <navigationItem key="navigationItem" title="Employee" id="rzm-t2-uPs">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="gQI-zX-k76">
+                            <connections>
+                                <action selector="didTapAddButton:" destination="NXN-OL-qVC" id="VHI-xN-Elz"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Qj9-IC-IQi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

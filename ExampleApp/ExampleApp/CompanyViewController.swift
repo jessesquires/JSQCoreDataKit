@@ -57,6 +57,18 @@ class CompanyViewController: UITableViewController, NSFetchedResultsControllerDe
     }
 
 
+    // MARK: Segues
+
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "segue" {
+            let employeeVC = segue.destinationViewController as! EmployeeViewController
+            let company = frc?.objectAtIndexPath(tableView.indexPathForSelectedRow!) as! Company
+            employeeVC.stack = self.stack
+            employeeVC.company = company
+        }
+    }
+
+
     // MARK: Helpers
 
     func fetchRequest(context: NSManagedObjectContext) -> FetchRequest<Company> {
@@ -68,7 +80,7 @@ class CompanyViewController: UITableViewController, NSFetchedResultsControllerDe
 
     func setupFRC() {
         let request = fetchRequest(self.stack.mainContext)
-        
+
         self.frc = NSFetchedResultsController(fetchRequest: request,
             managedObjectContext: self.stack.mainContext,
             sectionNameKeyPath: nil,

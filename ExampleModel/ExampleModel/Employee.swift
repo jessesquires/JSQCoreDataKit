@@ -46,8 +46,10 @@ public final class Employee: NSManagedObject {
     }
 
     public class func newEmployee(context: NSManagedObjectContext, company: Company? = nil) -> Employee {
+        let name = "Employee " + String(NSUUID().UUIDString.characters.split { $0 == "-" }.first!)
+
         return Employee(context: context,
-            name: NSUUID().UUIDString,
+            name: name,
             birthDate: NSDate.distantPast(),
             salary: NSDecimalNumber(unsignedInt: arc4random_uniform(100_000)),
             company: company)

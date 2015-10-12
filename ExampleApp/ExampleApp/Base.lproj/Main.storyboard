@@ -111,7 +111,11 @@
                     </tableView>
                     <toolbarItems>
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="eEL-EH-dRB"/>
-                        <barButtonItem systemItem="trash" id="cFV-Ok-T3u"/>
+                        <barButtonItem systemItem="trash" id="cFV-Ok-T3u">
+                            <connections>
+                                <action selector="didTapTrashButton:" destination="NXN-OL-qVC" id="67o-EN-CEP"/>
+                            </connections>
+                        </barButtonItem>
                     </toolbarItems>
                     <navigationItem key="navigationItem" title="Employee" id="rzm-t2-uPs">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="gQI-zX-k76">

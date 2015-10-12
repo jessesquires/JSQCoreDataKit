@@ -141,11 +141,8 @@ if model.needsMigration {
 #### Using child contexts
 
 ````swift
-// Create a child context from the main queue context
-let childContext = stack.childContextFromMain()
-
-// Create a child context from the background queue context
-let childContext = stack.childContextFromBackground()
+// Create a background queue child context from the main queue context
+let childContext = stack.childContext()
 ````
 
 #### Fetching
@@ -179,7 +176,7 @@ saveContext(context)
 
 ## Example app
 
-There's an example app in the `ExampleApp/` directory. Open the `ExampleApp.xcodeproj` to run it. The project exercises most basic functionality of the framework.
+There's an example app in the `ExampleApp/` directory. Open the `ExampleApp.xcodeproj` to run it. The project exercises all basic functionality of the framework.
 
 ## Unit tests
 

@@ -76,31 +76,51 @@ import JSQCoreDataKit
 ````swift
 // Initialize the Core Data model, this class encapsulates the notion of a .xcdatamodeld file
 // The name passed here should be the name of an .xcdatamodeld file
-let model = CoreDataModel(name: "MyModel", bundle: NSBundle(identifier: "com.MyApp.MyModelFramework")!)
+let bundle = NSBundle(identifier: "com.MyApp.MyModelFramework")!
+let model = CoreDataModel(name: "MyModel", bundle: bundle)
 
-// Initialize a default stack
-let stack = CoreDataStack(model: model)
+// Initialize a stack with a factory
+let factory = CoreDataStackFactory(model: model)
 
-// ----------------------------------
+let stack: CoreDataStack?
+factory.createStackInBackground { (result: CoreDataStackResult) in
+    switch result {
+        case .Success(let s):
+            stack = s
+            
+        case .Failure(let e):
+            print("Error: \(e)")
+    }
+}
+````
 
-// Initialize a private queue, in-memory stack
+#### In-memory stacks for testing
+
+````swift
 let inMemoryModel = CoreDataModel(name: myName, bundle: myBundle, storeType: .InMemory)
-let privateStack = CoreDataStack(model: inMemoryModel, options: nil, concurrencyType: .PrivateQueueConcurrencyType)
+let factory = CoreDataStackFactory(model: inMemoryModel)
+let stack = factory.createStack()
 ````
 
 #### Saving a managed object context
 
 ````swift
-saveContext(context) { (error: NSError?) in
-    // perform post save operations
-    // handle error, if any
+saveContext(stack.mainContext) { result in
+    switch result {
+        case .Success:
+            print("save succeeded")
+            
+        case .Failure(let error):
+            print("save failed: \(error)")
+    }
 }
 ````
 
 #### Deleting the store
 
 ````swift
-let model = CoreDataModel(name: "MyModel", bundle: NSBundle(identifier: "com.MyApp.MyModelFramework")!)
+let bundle = NSBundle(identifier: "com.MyApp.MyModelFramework")!
+let model = CoreDataModel(name: "MyModel", bundle: bundle)
 do {
     try model.removeExistingModelStore()
 } catch {
@@ -111,7 +131,8 @@ do {
 #### Checking migrations
 
 ````swift
-let model = CoreDataModel(name: "MyModel", bundle: NSBundle(identifier: "com.MyApp.MyModelFramework")!)
+let bundle = NSBundle(identifier: "com.MyApp.MyModelFramework")!
+let model = CoreDataModel(name: "MyModel", bundle: bundle)
 if model.needsMigration {
     // do migration
 }
@@ -120,14 +141,11 @@ if model.needsMigration {
 #### Using child contexts
 
 ````swift
-let model = CoreDataModel(name: "MyModel", bundle: NSBundle(identifier: "com.MyApp.MyModelFramework")!)
-let stack = CoreDataStack(model: model)
+// Create a child context from the main queue context
+let childContext = stack.childContextFromMain()
 
-// Create a default child context on main queue
-let childContext = stack.childManagedObjectContext()
-
-// Create a private queue child context with custom merge policy
-let privateChildContext = stack.childManagedObjectContext(concurrencyType: .PrivateQueueConcurrencyType, mergePolicyType: .ErrorMergePolicyType)
+// Create a child context from the background queue context
+let childContext = stack.childContextFromBackground()
 ````
 
 #### Fetching

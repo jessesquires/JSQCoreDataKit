@@ -51,6 +51,14 @@
                             <outlet property="delegate" destination="CQI-i4-Odi" id="xYA-3j-IIv"/>
                         </connections>
                     </tableView>
+                    <toolbarItems>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="O2H-7d-mLm"/>
+                        <barButtonItem systemItem="trash" id="cKM-Df-9qz">
+                            <connections>
+                                <action selector="didTapTrashButton:" destination="CQI-i4-Odi" id="YwJ-s5-Zmm"/>
+                            </connections>
+                        </barButtonItem>
+                    </toolbarItems>
                     <navigationItem key="navigationItem" title="JSQCoreDataKit" id="iMk-wu-2Mg"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qK0-0H-ZaR" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -101,6 +109,10 @@
                             <outlet property="delegate" destination="NXN-OL-qVC" id="4SO-kc-SKe"/>
                         </connections>
                     </tableView>
+                    <toolbarItems>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="eEL-EH-dRB"/>
+                        <barButtonItem systemItem="trash" id="cFV-Ok-T3u"/>
+                    </toolbarItems>
                     <navigationItem key="navigationItem" title="Employee" id="rzm-t2-uPs">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="gQI-zX-k76">
                             <connections>
@@ -116,12 +128,17 @@
         <!--Navigation Controller-->
         <scene sceneID="MNb-C0-JdC">
             <objects>
-                <navigationController id="wkS-m3-UTl" sceneMemberID="viewController">
+                <navigationController toolbarHidden="NO" id="wkS-m3-UTl" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="6yZ-Tk-NgJ">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <animations/>
                     </navigationBar>
+                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="MaP-jp-RMt">
+                        <rect key="frame" x="0.0" y="556" width="600" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <animations/>
+                    </toolbar>
                     <connections>
                         <segue destination="CQI-i4-Odi" kind="relationship" relationship="rootViewController" id="oCj-aR-zwM"/>
                     </connections>

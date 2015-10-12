@@ -59,11 +59,17 @@ class CompanyViewController: UITableViewController, NSFetchedResultsControllerDe
 
     // MARK: Helpers
 
-    func setupFRC() {
-        let fetch = NSFetchRequest(entityName: Company.entityName)
+    func fetchRequest(context: NSManagedObjectContext) -> FetchRequest<Company> {
+        let e = entity(name: Company.entityName, context: context)
+        let fetch = FetchRequest<Company>(entity: e)
         fetch.sortDescriptors = [NSSortDescriptor(key: "name", ascending: true)]
+        return fetch
+    }
 
-        self.frc = NSFetchedResultsController(fetchRequest: fetch,
+    func setupFRC() {
+        let request = fetchRequest(self.stack.mainContext)
+        
+        self.frc = NSFetchedResultsController(fetchRequest: request,
             managedObjectContext: self.stack.mainContext,
             sectionNameKeyPath: nil,
             cacheName: nil)
@@ -105,6 +111,20 @@ class CompanyViewController: UITableViewController, NSFetchedResultsControllerDe
         }
     }
 
+    @IBAction func didTapTrashButton(sender: UIBarButtonItem) {
+        stack.backgroundContext.performBlockAndWait {
+            let request = self.fetchRequest(self.stack.backgroundContext)
+
+            do {
+                let objects = try fetch(request: request, inContext: self.stack.backgroundContext)
+                deleteObjects(objects, inContext: self.stack.backgroundContext)
+                saveContext(self.stack.backgroundContext)
+            } catch {
+                print("Error deleting objects: \(error)")
+            }
+        }
+    }
+
 
     // MARK: Table view data source
 
@@ -140,7 +160,11 @@ class CompanyViewController: UITableViewController, NSFetchedResultsControllerDe
     }
 
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        //
+        if editingStyle == .Delete {
+            let obj = frc?.objectAtIndexPath(indexPath) as! Company
+            deleteObjects([obj], inContext: self.stack.mainContext)
+            saveContext(self.stack.mainContext)
+        }
     }
 
 
@@ -183,7 +207,7 @@ class CompanyViewController: UITableViewController, NSFetchedResultsControllerDe
                 tableView.insertRowsAtIndexPaths([newIndexPath!], withRowAnimation: .Fade)
             }
     }
-
+    
     func controllerDidChangeContent(controller: NSFetchedResultsController) {
         tableView.endUpdates()
     }

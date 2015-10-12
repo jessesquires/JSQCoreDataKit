@@ -51,23 +51,30 @@ class SaveTests: TestCase {
         let _ = Employee.newEmployee(stack.mainContext)
         let _ = Employee.newEmployee(stack.mainContext)
 
-        var didSave = false
+        var didSaveMain = false
         self.expectationForNotification(NSManagedObjectContextDidSaveNotification, object: stack.mainContext) { (notification) -> Bool in
-            didSave = true
+            didSaveMain = true
+            return true
+        }
+
+        var didSaveBackground = false
+        self.expectationForNotification(NSManagedObjectContextDidSaveNotification, object: stack.backgroundContext) { (notification) -> Bool in
+            didSaveBackground = true
             return true
         }
 
         // WHEN: we attempt to save the context
 
         // THEN: the save succeeds without an error
-        saveContext(stack.mainContext) { result in
+        saveContext(stack.mainContext, wait: true) { result in
             XCTAssertTrue(result == .Success, "Save should not error")
         }
 
-        self.waitForExpectationsWithTimeout(1, handler: { (error) -> Void in
+        self.waitForExpectationsWithTimeout(5, handler: { (error) -> Void in
             XCTAssertNil(error, "Expectation should not error")
 
-            XCTAssertTrue(didSave, "Context should be saved")
+            XCTAssertTrue(didSaveMain, "Main context should be saved")
+            XCTAssertTrue(didSaveBackground, "Background context should be saved")
         })
     }
 
@@ -79,9 +86,15 @@ class SaveTests: TestCase {
         let _ = Employee.newEmployee(stack.mainContext)
         let _ = Employee.newEmployee(stack.mainContext)
 
-        var didSave = false
+        var didSaveMain = false
         self.expectationForNotification(NSManagedObjectContextDidSaveNotification, object: stack.mainContext) { (notification) -> Bool in
-            didSave = true
+            didSaveMain = true
+            return true
+        }
+
+        var didSaveBackground = false
+        self.expectationForNotification(NSManagedObjectContextDidSaveNotification, object: stack.backgroundContext) { (notification) -> Bool in
+            didSaveBackground = true
             return true
         }
 
@@ -90,10 +103,11 @@ class SaveTests: TestCase {
         // THEN: the save succeeds without an error
         saveContext(stack.mainContext)
         
-        self.waitForExpectationsWithTimeout(1, handler: { (error) -> Void in
+        self.waitForExpectationsWithTimeout(5, handler: { (error) -> Void in
             XCTAssertNil(error, "Expectation should not error")
 
-            XCTAssertTrue(didSave, "Context should be saved")
+            XCTAssertTrue(didSaveMain, "Main context should be saved")
+            XCTAssertTrue(didSaveBackground, "Background context should be saved")
         })
     }
 

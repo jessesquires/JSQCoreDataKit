@@ -40,8 +40,21 @@ class ContextSyncTests: TestCase {
         super.tearDown()
     }
 
-    // TODO:
+    func test_ThatChangesPropagate_FromMainContext_ToBackgroundContext_ToStore() {
+        // TODO:
+    }
 
+    func test_ThatChangesPropagate_FromBackgroundContext_ToMainContext() {
+        // TODO:
+    }
+
+    func test_ThatChangesPropagate_FromChildContext_ToMainContext() {
+        // TODO:
+    }
+
+    func test_ThatUnsavedChangesFromChildContext_DoNotPropogate() {
+        // TODO:
+    }
 
 
     // MARK: Helpers

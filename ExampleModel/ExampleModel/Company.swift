@@ -30,7 +30,7 @@ public final class Company: NSManagedObject {
 
     @NSManaged public var profits: NSDecimalNumber
 
-    @NSManaged public var employees: NSSet
+    @NSManaged public var employees: Set<Employee>
 
     public init(context: NSManagedObjectContext,
         name: String,

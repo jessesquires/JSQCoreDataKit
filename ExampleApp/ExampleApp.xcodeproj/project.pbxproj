@@ -81,7 +81,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		8853941D1BC9E9DE00699506 /* JSQCoreDataKit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = JSQCoreDataKit.app; path = ExampleApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		8853941D1BC9E9DE00699506 /* ExampleApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ExampleApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		885394201BC9E9DE00699506 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		885394221BC9E9DE00699506 /* CompanyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompanyViewController.swift; sourceTree = "<group>"; };
 		885394251BC9E9DE00699506 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -130,7 +130,7 @@
 		8853941E1BC9E9DE00699506 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				8853941D1BC9E9DE00699506 /* JSQCoreDataKit.app */,
+				8853941D1BC9E9DE00699506 /* ExampleApp.app */,
 				885394311BC9E9DE00699506 /* ExampleAppTests.xctest */,
 			);
 			name = Products;
@@ -196,7 +196,7 @@
 			);
 			name = ExampleApp;
 			productName = ExampleApp;
-			productReference = 8853941D1BC9E9DE00699506 /* JSQCoreDataKit.app */;
+			productReference = 8853941D1BC9E9DE00699506 /* ExampleApp.app */;
 			productType = "com.apple.product-type.application";
 		};
 		885394301BC9E9DE00699506 /* ExampleAppTests */ = {

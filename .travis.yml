@@ -26,4 +26,7 @@ script:
 
 - xctool clean build -project ExampleModel/ExampleModel.xcodeproj -scheme ExampleModel -sdk iphonesimulator9.0 ONLY_ACTIVE_ARCH=NO
 
-- xctool clean build test -workspace JSQCoreDataKit.xcworkspace -scheme "$SCHEME" -sdk "$SDK" -destination "$DESTINATION" -configuration Debug ONLY_ACTIVE_ARCH=NO
+- xctool clean build test -workspace JSQCoreDataKit.xcworkspace -scheme "$SCHEME" -sdk "$SDK" -destination "$DESTINATION" -configuration Debug ONLY_ACTIVE_ARCH=NO GCC_INSTRUMENT_PROGRAM_FLOW_ARCS=YES GCC_GENERATE_TEST_COVERAGE_FILES=YES
+
+after_success:
+- bash <(curl -s https://codecov.io/bash)

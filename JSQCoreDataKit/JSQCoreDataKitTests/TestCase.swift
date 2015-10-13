@@ -25,6 +25,9 @@ import ExampleModel
 import JSQCoreDataKit
 
 
+let DefaultTimeout = NSTimeInterval(15)
+
+
 class TestCase: XCTestCase {
 
     let inMemoryModel = CoreDataModel(name: modelName, bundle: modelBundle, storeType: .InMemory)
@@ -53,7 +56,7 @@ class TestCase: XCTestCase {
         let companies = generateCompaniesInContext(context, count: numCompanies)
 
         for c in companies {
-            let numEmployees = Int(arc4random_uniform(1000))
+            let numEmployees = Int(arc4random_uniform(1_000))
             generateEmployeesInContext(context, company: c, count: numEmployees)
         }
 

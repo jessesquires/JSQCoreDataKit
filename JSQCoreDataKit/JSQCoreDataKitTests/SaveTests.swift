@@ -170,7 +170,7 @@ class SaveTests: TestCase {
         let stack = self.inMemoryStack
         let childContext = stack.childContext()
 
-        generateFakeDataInContext(childContext)
+        generateCompaniesInContext(stack.mainContext, count: 5)
 
         var didSaveChild = false
         expectationForNotification(NSManagedObjectContextDidSaveNotification, object: childContext) { (notification) -> Bool in

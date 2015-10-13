@@ -25,7 +25,7 @@ import ExampleModel
 import JSQCoreDataKit
 
 
-let DefaultTimeout = NSTimeInterval(15)
+let DefaultTimeout = NSTimeInterval(20)
 
 
 class TestCase: XCTestCase {

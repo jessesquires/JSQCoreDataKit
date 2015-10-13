@@ -33,9 +33,7 @@ class FetchTests: TestCase {
         let stack = self.inMemoryStack
 
         let count = 10
-        for _ in 1...count {
-            let _ = Employee.newEmployee(stack.mainContext)
-        }
+        generateEmployeesInContext(stack.mainContext, company: nil, count: count)
 
         // WHEN: we execute a fetch request
         let request = FetchRequest<Employee>(entity: entity(name: Employee.entityName, context: stack.mainContext))
@@ -55,10 +53,7 @@ class FetchTests: TestCase {
         let stack = self.inMemoryStack
 
         let count = 10
-        for _ in 1...count {
-            let _ = Employee.newEmployee(stack.mainContext)
-        }
-
+        generateEmployeesInContext(stack.mainContext, company: nil, count: count - 1)
         let myEmployee = Employee.newEmployee(stack.mainContext)
         
         // WHEN: we execute a fetch request for the specific object

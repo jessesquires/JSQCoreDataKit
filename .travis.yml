@@ -29,7 +29,7 @@ script:
 
 - xctool test -workspace JSQCoreDataKit.xcworkspace -scheme "$SCHEME" -sdk "$SDK" -destination "$DESTINATION" -configuration Debug ONLY_ACTIVE_ARCH=NO
 
-- xcodebuild test -project JSQCoreDataKit/JSQCoreDataKit.xcodeproj -scheme JSQCoreDataKit -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO
+- xcodebuild test -project JSQCoreDataKit/JSQCoreDataKit.xcodeproj -scheme JSQCoreDataKit -sdk iphonesimulator
 
 after_success:
 - bash <(curl -s https://codecov.io/bash)

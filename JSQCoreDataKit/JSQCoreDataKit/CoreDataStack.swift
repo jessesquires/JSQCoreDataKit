@@ -24,7 +24,7 @@ import Foundation
 An instance of `CoreDataStack` encapsulates the entire Core Data stack.
 It manages the managed object model, the persistent store coordinator, and managed object contexts.
 
-It is composed of a main context and a background context
+It is composed of a main context and a background context. 
 These two contexts operate on the main queue and a private background queue, respectively.
 The background context is the root level context, which is connected to the persistent store coordinator.
 The main context is a child of the background context.

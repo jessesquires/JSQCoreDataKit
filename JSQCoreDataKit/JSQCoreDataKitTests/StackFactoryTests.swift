@@ -52,7 +52,7 @@ class StackFactoryTests: TestCase {
         let factory = CoreDataStackFactory(model: sqliteModel)
 
         var stack: CoreDataStack?
-        let expectation = self.expectationWithDescription("\(__FUNCTION__)")
+        let expectation = expectationWithDescription("\(__FUNCTION__)")
 
         // WHEN: we create a stack in the background
         factory.createStackInBackground { (result: CoreDataStackResult) in
@@ -71,7 +71,7 @@ class StackFactoryTests: TestCase {
         }
 
         // THEN: creating a stack succeeds
-        waitForExpectationsWithTimeout(10) { (error) -> Void in
+        waitForExpectationsWithTimeout(DefaultTimeout) { (error) -> Void in
             XCTAssertNil(error, "Expectation should not error")
         }
 
@@ -105,6 +105,9 @@ class StackFactoryTests: TestCase {
 
         let factory3 = CoreDataStackFactory(model: inMemoryModel, options: nil)
         XCTAssertNotEqual(factory1, factory3)
+
+        let factory4 = CoreDataStackFactory(model: inMemoryModel, options: nil)
+        XCTAssertEqual(factory3, factory4)
 
         let sqliteModel = CoreDataModel(name: modelName, bundle: modelBundle)
         let sqliteFactory = CoreDataStackFactory(model: sqliteModel)

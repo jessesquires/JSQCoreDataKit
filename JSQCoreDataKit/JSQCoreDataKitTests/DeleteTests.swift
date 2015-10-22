@@ -33,10 +33,7 @@ class DeleteTests: TestCase {
         let stack = self.inMemoryStack
 
         let count = 10
-        var objects = [Employee]()
-        for _ in 1...count {
-            objects.append(Employee.newEmployee(stack.mainContext))
-        }
+        let objects = generateEmployeesInContext(stack.mainContext, company: nil, count: count)
 
         let request = FetchRequest<Employee>(entity: entity(name: Employee.entityName, context: stack.mainContext))
         let results = try! fetch(request: request, inContext: stack.mainContext)
@@ -62,11 +59,7 @@ class DeleteTests: TestCase {
         let stack = self.inMemoryStack
 
         let count = 10
-        var objects = [Employee]()
-        for _ in 1..<count {
-            objects.append(Employee.newEmployee(stack.mainContext))
-        }
-
+        generateEmployeesInContext(stack.mainContext, company: nil, count: count - 1)
         let myEmployee = Employee.newEmployee(stack.mainContext)
 
         let request = FetchRequest<Employee>(entity: entity(name: Employee.entityName, context: stack.mainContext))

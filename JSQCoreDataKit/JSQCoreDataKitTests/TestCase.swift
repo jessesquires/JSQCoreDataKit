@@ -25,6 +25,9 @@ import ExampleModel
 import JSQCoreDataKit
 
 
+let DefaultTimeout = NSTimeInterval(20)
+
+
 class TestCase: XCTestCase {
 
     let inMemoryModel = CoreDataModel(name: modelName, bundle: modelBundle, storeType: .InMemory)
@@ -40,7 +43,45 @@ class TestCase: XCTestCase {
     }
 
     override func tearDown() {
+        inMemoryStack = nil
         super.tearDown()
+    }
+
+
+    // MARK: Helpers
+
+    func generateDataInContext(context: NSManagedObjectContext,
+        companiesCount: Int = Int(arc4random_uniform(10)),
+        employeesCount: Int = Int(arc4random_uniform(1_000))) -> [Company] {
+            let companies = generateCompaniesInContext(context, count: companiesCount)
+
+            companies.forEach { c in
+                generateEmployeesInContext(context, company: c, count: employeesCount)
+            }
+
+            return companies
+    }
+
+    func generateCompaniesInContext(context: NSManagedObjectContext, count: Int) -> [Company] {
+        var companies = [Company]()
+
+        for _ in 0..<count {
+            let c = Company.newCompany(context)
+            companies.append(c)
+        }
+
+        return companies
+    }
+
+    func generateEmployeesInContext(context: NSManagedObjectContext, company: Company? = nil, count: Int) -> [Employee] {
+        var employees = [Employee]()
+
+        for _ in 0..<count {
+            let c = Employee.newEmployee(context, company: company)
+            employees.append(c)
+        }
+        
+        return employees
     }
     
 }

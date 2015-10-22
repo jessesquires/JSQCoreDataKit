@@ -30,7 +30,7 @@ public typealias PersistentStoreOptions = [NSObject : AnyObject]
 
 
 /**
-Attempts to commit unsaved changes to registered objects to the specified context's parent store. 
+Attempts to commit unsaved changes to registered objects in the context. 
 This function is performed in a block on the context's queue. If the context has no changes,
 then this function returns immediately and the completion block is not called.
 

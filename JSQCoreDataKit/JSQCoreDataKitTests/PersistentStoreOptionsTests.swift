@@ -46,15 +46,58 @@ class PersistentStoreOptionsTests: XCTestCase {
         XCTAssertTrue(result)
     }
 
-    func test_ThatPersistentStoreOptions_AreNotEqual() {
+    func test_ThatPersistentStoreOptions_AreNotEqual_MissingKeys() {
         // GIVEN: two distinct PersistentStoreOptions objects
         let first: PersistentStoreOptions = [
             "key0": "fake value",
-            "key1": 234
+            "key1": 234,
+            "key2": NSDate()
         ]
 
         let second: PersistentStoreOptions = [
             "key0": "fake value"
+        ]
+
+        // WHEN: we compare them
+        let result = (first == second)
+
+        // THEN: they are not equal
+        XCTAssertFalse(result)
+    }
+
+    func test_ThatPersistentStoreOptions_AreNotEqual_DifferentValues() {
+        // GIVEN: two distinct PersistentStoreOptions objects
+        let first: PersistentStoreOptions = [
+            "key0": "fake value",
+            "key1": 234,
+            "key2": NSDate()
+        ]
+
+        let second: PersistentStoreOptions = [
+            "key0": "different",
+            "key1": 4567,
+            "key2": NSDate()
+        ]
+
+        // WHEN: we compare them
+        let result = (first == second)
+
+        // THEN: they are not equal
+        XCTAssertFalse(result)
+    }
+
+    func test_ThatPersistentStoreOptions_AreNotEqual_DifferentKeys() {
+        // GIVEN: two distinct PersistentStoreOptions objects
+        let first: PersistentStoreOptions = [
+            "key0": "fake value",
+            "key1": 234,
+            "key2": NSDate()
+        ]
+
+        let second: PersistentStoreOptions = [
+            "key7": "different",
+            "key8": 4567,
+            "key9": NSDate()
         ]
 
         // WHEN: we compare them

@@ -5,7 +5,7 @@
 
 ## About
 
-This framework aims to do the following:
+This library aims to do the following:
 
 * Provide better interoperability with Swift
 * Harness Swift features and enforce Swift paradigms
@@ -35,7 +35,7 @@ This framework aims to do the following:
 use_frameworks!
 
 # For latest release in cocoapods
-pod 'JSQCoreDataKit'  
+pod 'JSQCoreDataKit'
 
 # Feeling adventurous? Get the latest on develop
 pod 'JSQCoreDataKit', :git => 'https://github.com/jessesquires/JSQCoreDataKit.git', :branch => 'develop'
@@ -51,7 +51,7 @@ github "jessesquires/JSQCoreDataKit"
 
 1. Clone this repo and add the `JSQCoreDataKit.xcodeproj` to your project
 2. Select your project app target "Build Phases" tab
-3. Add the `JSQCoreDataKit.framework` to the "Link Binary With Libraries"  
+3. Add the `JSQCoreDataKit.framework` to the "Link Binary With Libraries"
 4. Create a new build phase of type "Copy Files" and set the "Destination" to "Frameworks"
 5. Add the `JSQCoreDataKit.framework` and check "Code Sign On Copy"
 
@@ -87,7 +87,7 @@ factory.createStackInBackground { (result: CoreDataStackResult) in
     switch result {
         case .Success(let s):
             stack = s
-            
+
         case .Failure(let e):
             print("Error: \(e)")
     }
@@ -109,7 +109,7 @@ saveContext(stack.mainContext) { result in
     switch result {
         case .Success:
             print("save succeeded")
-            
+
         case .Failure(let error):
             print("save failed: \(error)")
     }
@@ -176,7 +176,7 @@ saveContext(context)
 
 ## Example app
 
-There's an example app in the `ExampleApp/` directory. Open the `ExampleApp.xcodeproj` to run it. The project exercises all basic functionality of the framework.
+There's an example app in the `ExampleApp/` directory. Open the `ExampleApp.xcodeproj` to run it. The project exercises all basic functionality of the library.
 
 ## Unit tests
 

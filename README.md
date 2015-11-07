@@ -196,7 +196,7 @@ Created and maintained by [**@jesse_squires**](https://twitter.com/jesse_squires
 
 `JSQCoreDataKit` is released under an [MIT License][mitLink]. See `LICENSE` for details.
 
->**Copyright &copy; 2015 Jesse Squires.**
+>**Copyright &copy; 2015-present Jesse Squires.**
 
 *Please provide attribution, it is greatly appreciated.*
 

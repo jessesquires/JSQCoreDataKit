@@ -32,7 +32,7 @@ The main context is a child of the background context.
 Data between these two primary contexts and child contexts is kept in sync.
 Changes to a context are propagated to its parent context and eventually the persistent store when saving.
 
-**You cannot create a `CoreDataStack` instance directly. Instead, use a `CoreDataStackFactory` for initialization.**
+- warning: **You cannot create a `CoreDataStack` instance directly. Instead, use a `CoreDataStackFactory` for initialization.**
 */
 public final class CoreDataStack: CustomStringConvertible, Equatable {
 

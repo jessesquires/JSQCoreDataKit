@@ -35,7 +35,7 @@ of a `CoreDataStack` can take an unknown amount of time, you should not perform 
 
 See this [guide](https://developer.apple.com/library/prerelease/ios/documentation/Cocoa/Conceptual/CoreData/IntegratingCoreData.html#//apple_ref/doc/uid/TP40001075-CH9-SW1) for more details.
 
-- note: You should not create instances of `CoreDataStack` directly. Use a `CoreDataStackFactory` instead.
+- warning: You should not create instances of `CoreDataStack` directly. Use a `CoreDataStackFactory` instead.
 */
 public struct CoreDataStackFactory: CustomStringConvertible, Equatable {
 

@@ -35,7 +35,7 @@ of a `CoreDataStack` can take an unknown amount of time, you should not perform 
 
 See this [guide](https://developer.apple.com/library/prerelease/ios/documentation/Cocoa/Conceptual/CoreData/IntegratingCoreData.html#//apple_ref/doc/uid/TP40001075-CH9-SW1) for more details.
 
-- Note: You should not create instances of `CoreDataStack` directly. Use a `CoreDataStackFactory` instead.
+- note: You should not create instances of `CoreDataStack` directly. Use a `CoreDataStackFactory` instead.
 */
 public struct CoreDataStackFactory: CustomStringConvertible, Equatable {
 
@@ -77,7 +77,7 @@ public struct CoreDataStackFactory: CustomStringConvertible, Equatable {
 
     /**
     Asynchronously initializes a new `CoreDataStack` instance using the factory's `model` and `options`.
-    This operation is performed on a background queue.
+    - note: This operation is performed on a background queue.
 
     - parameter queue:      A background queue on which to initialize the stack. The default is a high priority background queue.
     - parameter completion: The closure to be called once initialization is complete.
@@ -119,9 +119,8 @@ public struct CoreDataStackFactory: CustomStringConvertible, Equatable {
 
     /**
     Synchronously initializes a new `CoreDataStack` instance using the factory's `model` and `options`.
-    **This method must be called on the main thread.**
-
-    This method is primarily intended for unit testing purposes.
+    - warning: This method must be called on the main thread.
+    - note: This method is primarily intended for unit testing purposes.
 
     - returns: A `CoreDataStackResult` instance, describing the success or failure of creating the stack.
     */

@@ -14,6 +14,7 @@ Pod::Spec.new do |s|
    s.source_files = 'JSQCoreDataKit/JSQCoreDataKit/*.swift'
 
    s.platform = :ios, '8.0'
+   s.tvos.deployment_target = '9.0'
    s.frameworks = 'Foundation', 'CoreData'
    s.requires_arc = true
 end

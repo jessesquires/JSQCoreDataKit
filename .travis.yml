@@ -38,9 +38,11 @@ script:
 - xctool clean build -project ExampleModel/ExampleModel.xcodeproj -scheme ExampleModel -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO
 
 - if [ $RUN_TESTS == "YES" ]; then
-    xctool clean build test -workspace JSQCoreDataKit.xcworkspace -scheme "$SCHEME" -sdk "$SDK" -destination "$DESTINATION" -configuration Debug ONLY_ACTIVE_ARCH=NO
+      xctool clean build test -workspace JSQCoreDataKit.xcworkspace -scheme "$SCHEME" -sdk "$SDK" -destination "$DESTINATION" -configuration Debug ONLY_ACTIVE_ARCH=NO;
+      xctool clean build test -workspace JSQCoreDataKit.xcworkspace -scheme "$SCHEME" -sdk "$SDK" -destination "$DESTINATION" -configuration Release ONLY_ACTIVE_ARCH=NO;
   else
-    xctool clean build -workspace JSQCoreDataKit.xcworkspace -scheme "$SCHEME" -sdk "$SDK" -destination "$DESTINATION" -configuration Debug ONLY_ACTIVE_ARCH=NO
+      xctool clean build -workspace JSQCoreDataKit.xcworkspace -scheme "$SCHEME" -sdk "$SDK" -destination "$DESTINATION" -configuration Debug ONLY_ACTIVE_ARCH=NO;
+      xctool clean build -workspace JSQCoreDataKit.xcworkspace -scheme "$SCHEME" -sdk "$SDK" -destination "$DESTINATION" -configuration Release ONLY_ACTIVE_ARCH=NO;
   fi
 
 - xcodebuild test -project JSQCoreDataKit/JSQCoreDataKit.xcodeproj -scheme JSQCoreDataKit-iOS -sdk iphonesimulator

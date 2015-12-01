@@ -15,6 +15,7 @@ This library aims to do the following:
 * Reduce the boilerplate involved with Core Data
 
 > **Further reading on Core Data:**
+>
 > * [Core Data Programming Guide](https://developer.apple.com/library/mac/documentation/Cocoa/Conceptual/CoreData/cdProgrammingGuide.html)
 > * [Core Data Core Competencies Guide](https://developer.apple.com/library/ios/documentation/DataManagement/Devpedia-CoreData/coreDataStack.html#//apple_ref/doc/uid/TP40010398-CH25-SW1)
 > * [objc.io issue #4 on Core Data](http://www.objc.io/issue-4/)
@@ -27,7 +28,7 @@ This library aims to do the following:
 * iOS 8+
 * tvOS 9.0+
 * watchOS 2.0+
-* Swift 2.0
+* Swift 2.0+
 
 ## Installation
 

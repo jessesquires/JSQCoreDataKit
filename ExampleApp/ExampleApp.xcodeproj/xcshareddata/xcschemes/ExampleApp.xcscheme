@@ -16,7 +16,7 @@
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "88002D4E1AB8F546001787DB"
                BuildableName = "JSQCoreDataKit.framework"
-               BlueprintName = "JSQCoreDataKit"
+               BlueprintName = "JSQCoreDataKit iOS"
                ReferencedContainer = "container:../JSQCoreDataKit/JSQCoreDataKit.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>

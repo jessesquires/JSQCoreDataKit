@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "887403121C0D6A6D00FE0C31"
-               BuildableName = "JSQCoreDataKit tvOS.framework"
+               BuildableName = "JSQCoreDataKit.framework"
                BlueprintName = "JSQCoreDataKit tvOS"
                ReferencedContainer = "container:JSQCoreDataKit.xcodeproj">
             </BuildableReference>
@@ -46,7 +46,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "887403121C0D6A6D00FE0C31"
-            BuildableName = "JSQCoreDataKit tvOS.framework"
+            BuildableName = "JSQCoreDataKit.framework"
             BlueprintName = "JSQCoreDataKit tvOS"
             ReferencedContainer = "container:JSQCoreDataKit.xcodeproj">
          </BuildableReference>
@@ -64,7 +64,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "887403121C0D6A6D00FE0C31"
-            BuildableName = "JSQCoreDataKit tvOS.framework"
+            BuildableName = "JSQCoreDataKit.framework"
             BlueprintName = "JSQCoreDataKit tvOS"
             ReferencedContainer = "container:JSQCoreDataKit.xcodeproj">
          </BuildableReference>

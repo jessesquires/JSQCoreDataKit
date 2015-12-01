@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "88002D4E1AB8F546001787DB"
-               BuildableName = "JSQCoreDataKit iOS.framework"
+               BuildableName = "JSQCoreDataKit.framework"
                BlueprintName = "JSQCoreDataKit iOS"
                ReferencedContainer = "container:JSQCoreDataKit.xcodeproj">
             </BuildableReference>
@@ -44,7 +44,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "88002D4E1AB8F546001787DB"
-            BuildableName = "JSQCoreDataKit iOS.framework"
+            BuildableName = "JSQCoreDataKit.framework"
             BlueprintName = "JSQCoreDataKit iOS"
             ReferencedContainer = "container:JSQCoreDataKit.xcodeproj">
          </BuildableReference>
@@ -66,7 +66,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "88002D4E1AB8F546001787DB"
-            BuildableName = "JSQCoreDataKit iOS.framework"
+            BuildableName = "JSQCoreDataKit.framework"
             BlueprintName = "JSQCoreDataKit iOS"
             ReferencedContainer = "container:JSQCoreDataKit.xcodeproj">
          </BuildableReference>
@@ -84,7 +84,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "88002D4E1AB8F546001787DB"
-            BuildableName = "JSQCoreDataKit iOS.framework"
+            BuildableName = "JSQCoreDataKit.framework"
             BlueprintName = "JSQCoreDataKit iOS"
             ReferencedContainer = "container:JSQCoreDataKit.xcodeproj">
          </BuildableReference>

@@ -26,6 +26,7 @@ This library aims to do the following:
 
 * iOS 8+
 * tvOS 9.0+
+* watchOS 2.0+
 * Swift 2.0
 
 ## Installation

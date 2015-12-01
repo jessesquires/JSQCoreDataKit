@@ -6,7 +6,6 @@ Pod::Spec.new do |s|
    s.summary = 'A swifter Core Data stack'
    s.homepage = 'https://github.com/jessesquires/JSQCoreDataKit'
    s.documentation_url = 'http://jessesquires.com/JSQCoreDataKit'
-
    s.social_media_url = 'https://twitter.com/jesse_squires'
    s.authors = { 'Jesse Squires' => 'jesse.squires.developer@gmail.com' }
 
@@ -15,6 +14,7 @@ Pod::Spec.new do |s|
 
    s.ios.deployment_target = '8.0'
    s.tvos.deployment_target = '9.0'
+   s.watchos.deployment_target = '2.0'
 
    s.frameworks = 'CoreData'
 

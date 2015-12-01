@@ -17,20 +17,29 @@
 		881219DB1B361F13005E5AA7 /* ModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 881219D61B361F13005E5AA7 /* ModelTests.swift */; };
 		881219DC1B361F13005E5AA7 /* SaveTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 881219D71B361F13005E5AA7 /* SaveTests.swift */; };
 		881219DD1B361F13005E5AA7 /* TestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 881219D81B361F13005E5AA7 /* TestCase.swift */; };
-		8829182D1BCB894E00DA5B82 /* ContextSyncTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8829182C1BCB894E00DA5B82 /* ContextSyncTests.swift */; settings = {ASSET_TAGS = (); }; };
+		8829182D1BCB894E00DA5B82 /* ContextSyncTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8829182C1BCB894E00DA5B82 /* ContextSyncTests.swift */; };
 		8851E2DB1B37423000E875DC /* StackTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8851E2DA1B37423000E875DC /* StackTests.swift */; };
-		886487D71BCA336200671052 /* StoreTypeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 886487D61BCA336200671052 /* StoreTypeTests.swift */; settings = {ASSET_TAGS = (); }; };
-		886487DA1BCA3C2900671052 /* StackResultTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 886487D91BCA3C2900671052 /* StackResultTests.swift */; settings = {ASSET_TAGS = (); }; };
-		886487DC1BCA417C00671052 /* PersistentStoreOptionsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 886487DB1BCA417C00671052 /* PersistentStoreOptionsTests.swift */; settings = {ASSET_TAGS = (); }; };
-		887CC6871BC107300069022A /* StoreType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 887CC6861BC107300069022A /* StoreType.swift */; settings = {ASSET_TAGS = (); }; };
-		887CC68B1BC1F0A40069022A /* CoreDataStackFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 887CC68A1BC1F0A40069022A /* CoreDataStackFactory.swift */; settings = {ASSET_TAGS = (); }; };
-		887CC68D1BC200BA0069022A /* StackFactoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 887CC68C1BC200BA0069022A /* StackFactoryTests.swift */; settings = {ASSET_TAGS = (); }; };
-		88807BB11BCB096F00F95B95 /* CoreDataSaveResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88807BB01BCB096F00F95B95 /* CoreDataSaveResult.swift */; settings = {ASSET_TAGS = (); }; };
-		88807BB41BCB0C4900F95B95 /* SaveResultTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88807BB31BCB0C4900F95B95 /* SaveResultTests.swift */; settings = {ASSET_TAGS = (); }; };
+		886487D71BCA336200671052 /* StoreTypeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 886487D61BCA336200671052 /* StoreTypeTests.swift */; };
+		886487DA1BCA3C2900671052 /* StackResultTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 886487D91BCA3C2900671052 /* StackResultTests.swift */; };
+		886487DC1BCA417C00671052 /* PersistentStoreOptionsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 886487DB1BCA417C00671052 /* PersistentStoreOptionsTests.swift */; };
+		8874031C1C0D6AD400FE0C31 /* CoreDataEquatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88B9F8D51BCA26B70053CD6D /* CoreDataEquatable.swift */; };
+		8874031D1C0D6AD400FE0C31 /* CoreDataExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88002D7F1AB8FF4F001787DB /* CoreDataExtensions.swift */; };
+		8874031E1C0D6AD400FE0C31 /* CoreDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88002D801AB8FF4F001787DB /* CoreDataModel.swift */; };
+		8874031F1C0D6AD400FE0C31 /* CoreDataSaveResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88807BB01BCB096F00F95B95 /* CoreDataSaveResult.swift */; };
+		887403201C0D6AD400FE0C31 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88002D811AB8FF4F001787DB /* CoreDataStack.swift */; };
+		887403211C0D6AD400FE0C31 /* CoreDataStackFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 887CC68A1BC1F0A40069022A /* CoreDataStackFactory.swift */; };
+		887403221C0D6AD400FE0C31 /* CoreDataStackResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88B9F8D81BCA28C70053CD6D /* CoreDataStackResult.swift */; };
+		887403231C0D6AD400FE0C31 /* JSQCoreDataKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 88002D541AB8F546001787DB /* JSQCoreDataKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		887403241C0D6AD400FE0C31 /* StoreType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 887CC6861BC107300069022A /* StoreType.swift */; };
+		887CC6871BC107300069022A /* StoreType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 887CC6861BC107300069022A /* StoreType.swift */; };
+		887CC68B1BC1F0A40069022A /* CoreDataStackFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 887CC68A1BC1F0A40069022A /* CoreDataStackFactory.swift */; };
+		887CC68D1BC200BA0069022A /* StackFactoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 887CC68C1BC200BA0069022A /* StackFactoryTests.swift */; };
+		88807BB11BCB096F00F95B95 /* CoreDataSaveResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88807BB01BCB096F00F95B95 /* CoreDataSaveResult.swift */; };
+		88807BB41BCB0C4900F95B95 /* SaveResultTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88807BB31BCB0C4900F95B95 /* SaveResultTests.swift */; };
 		88B9F8AA1BC9F2930053CD6D /* ExampleModel.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88B9F8A91BC9F27C0053CD6D /* ExampleModel.framework */; };
-		88B9F8AC1BC9F5570053CD6D /* ExampleModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88B9F8AB1BC9F5570053CD6D /* ExampleModelTests.swift */; settings = {ASSET_TAGS = (); }; };
-		88B9F8D61BCA26B70053CD6D /* CoreDataEquatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88B9F8D51BCA26B70053CD6D /* CoreDataEquatable.swift */; settings = {ASSET_TAGS = (); }; };
-		88B9F8D91BCA28C70053CD6D /* CoreDataStackResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88B9F8D81BCA28C70053CD6D /* CoreDataStackResult.swift */; settings = {ASSET_TAGS = (); }; };
+		88B9F8AC1BC9F5570053CD6D /* ExampleModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88B9F8AB1BC9F5570053CD6D /* ExampleModelTests.swift */; };
+		88B9F8D61BCA26B70053CD6D /* CoreDataEquatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88B9F8D51BCA26B70053CD6D /* CoreDataEquatable.swift */; };
+		88B9F8D91BCA28C70053CD6D /* CoreDataStackResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88B9F8D81BCA28C70053CD6D /* CoreDataStackResult.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -69,6 +78,8 @@
 		886487D61BCA336200671052 /* StoreTypeTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoreTypeTests.swift; sourceTree = "<group>"; };
 		886487D91BCA3C2900671052 /* StackResultTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StackResultTests.swift; sourceTree = "<group>"; };
 		886487DB1BCA417C00671052 /* PersistentStoreOptionsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersistentStoreOptionsTests.swift; sourceTree = "<group>"; };
+		887403131C0D6A6D00FE0C31 /* JSQCoreDataKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = JSQCoreDataKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		887403171C0D6A6D00FE0C31 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		887CC6861BC107300069022A /* StoreType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoreType.swift; sourceTree = "<group>"; };
 		887CC68A1BC1F0A40069022A /* CoreDataStackFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataStackFactory.swift; sourceTree = "<group>"; };
 		887CC68C1BC200BA0069022A /* StackFactoryTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StackFactoryTests.swift; sourceTree = "<group>"; };
@@ -97,6 +108,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		8874030F1C0D6A6D00FE0C31 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -105,6 +123,7 @@
 			children = (
 				88002D511AB8F546001787DB /* JSQCoreDataKit */,
 				881219C41B361EAF005E5AA7 /* JSQCoreDataKitTests */,
+				887403141C0D6A6D00FE0C31 /* JSQCoreDataKit tvOS */,
 				88002D501AB8F546001787DB /* Products */,
 			);
 			sourceTree = "<group>";
@@ -114,6 +133,7 @@
 			children = (
 				88002D4F1AB8F546001787DB /* JSQCoreDataKit.framework */,
 				881219C31B361EAF005E5AA7 /* JSQCoreDataKitTests.xctest */,
+				887403131C0D6A6D00FE0C31 /* JSQCoreDataKit.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -173,6 +193,14 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		887403141C0D6A6D00FE0C31 /* JSQCoreDataKit tvOS */ = {
+			isa = PBXGroup;
+			children = (
+				887403171C0D6A6D00FE0C31 /* Info.plist */,
+			);
+			path = "JSQCoreDataKit tvOS";
+			sourceTree = "<group>";
+		};
 		88B9F8A51BC9F27C0053CD6D /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -192,12 +220,20 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		887403101C0D6A6D00FE0C31 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				887403231C0D6AD400FE0C31 /* JSQCoreDataKit.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		88002D4E1AB8F546001787DB /* JSQCoreDataKit */ = {
+		88002D4E1AB8F546001787DB /* JSQCoreDataKit iOS */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 88002D651AB8F547001787DB /* Build configuration list for PBXNativeTarget "JSQCoreDataKit" */;
+			buildConfigurationList = 88002D651AB8F547001787DB /* Build configuration list for PBXNativeTarget "JSQCoreDataKit iOS" */;
 			buildPhases = (
 				88002D4A1AB8F546001787DB /* Sources */,
 				88002D4B1AB8F546001787DB /* Frameworks */,
@@ -208,7 +244,7 @@
 			);
 			dependencies = (
 			);
-			name = JSQCoreDataKit;
+			name = "JSQCoreDataKit iOS";
 			productName = JSQCoreDataKit;
 			productReference = 88002D4F1AB8F546001787DB /* JSQCoreDataKit.framework */;
 			productType = "com.apple.product-type.framework";
@@ -231,6 +267,24 @@
 			productReference = 881219C31B361EAF005E5AA7 /* JSQCoreDataKitTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
+		887403121C0D6A6D00FE0C31 /* JSQCoreDataKit tvOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8874031B1C0D6A6D00FE0C31 /* Build configuration list for PBXNativeTarget "JSQCoreDataKit tvOS" */;
+			buildPhases = (
+				8874030E1C0D6A6D00FE0C31 /* Sources */,
+				8874030F1C0D6A6D00FE0C31 /* Frameworks */,
+				887403101C0D6A6D00FE0C31 /* Headers */,
+				887403111C0D6A6D00FE0C31 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "JSQCoreDataKit tvOS";
+			productName = "JSQCoreDataKit tvOS";
+			productReference = 887403131C0D6A6D00FE0C31 /* JSQCoreDataKit.framework */;
+			productType = "com.apple.product-type.framework";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -246,6 +300,9 @@
 					};
 					881219C21B361EAF005E5AA7 = {
 						CreatedOnToolsVersion = 7.0;
+					};
+					887403121C0D6A6D00FE0C31 = {
+						CreatedOnToolsVersion = 7.1.1;
 					};
 				};
 			};
@@ -267,8 +324,9 @@
 			);
 			projectRoot = "";
 			targets = (
-				88002D4E1AB8F546001787DB /* JSQCoreDataKit */,
+				88002D4E1AB8F546001787DB /* JSQCoreDataKit iOS */,
 				881219C21B361EAF005E5AA7 /* JSQCoreDataKitTests */,
+				887403121C0D6A6D00FE0C31 /* JSQCoreDataKit tvOS */,
 			);
 		};
 /* End PBXProject section */
@@ -292,6 +350,13 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		881219C11B361EAF005E5AA7 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		887403111C0D6A6D00FE0C31 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -336,12 +401,27 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		8874030E1C0D6A6D00FE0C31 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				887403211C0D6AD400FE0C31 /* CoreDataStackFactory.swift in Sources */,
+				887403241C0D6AD400FE0C31 /* StoreType.swift in Sources */,
+				887403201C0D6AD400FE0C31 /* CoreDataStack.swift in Sources */,
+				8874031F1C0D6AD400FE0C31 /* CoreDataSaveResult.swift in Sources */,
+				8874031E1C0D6AD400FE0C31 /* CoreDataModel.swift in Sources */,
+				8874031D1C0D6AD400FE0C31 /* CoreDataExtensions.swift in Sources */,
+				887403221C0D6AD400FE0C31 /* CoreDataStackResult.swift in Sources */,
+				8874031C1C0D6AD400FE0C31 /* CoreDataEquatable.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
 		881219CA1B361EAF005E5AA7 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 88002D4E1AB8F546001787DB /* JSQCoreDataKit */;
+			target = 88002D4E1AB8F546001787DB /* JSQCoreDataKit iOS */;
 			targetProxy = 881219C91B361EAF005E5AA7 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -457,7 +537,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.hexedbits.$(PRODUCT_NAME:rfc1034identifier)";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = JSQCoreDataKit;
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
@@ -484,7 +564,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.hexedbits.$(PRODUCT_NAME:rfc1034identifier)";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = JSQCoreDataKit;
 				SKIP_INSTALL = YES;
 			};
 			name = Release;
@@ -515,6 +595,45 @@
 			};
 			name = Release;
 		};
+		887403181C0D6A6D00FE0C31 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "JSQCoreDataKit tvOS/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.hexedbits.JSQCoreDataKit;
+				PRODUCT_NAME = JSQCoreDataKit;
+				SDKROOT = appletvos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 3;
+				TVOS_DEPLOYMENT_TARGET = 9.0;
+			};
+			name = Debug;
+		};
+		887403191C0D6A6D00FE0C31 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "JSQCoreDataKit tvOS/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.hexedbits.JSQCoreDataKit;
+				PRODUCT_NAME = JSQCoreDataKit;
+				SDKROOT = appletvos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 3;
+				TVOS_DEPLOYMENT_TARGET = 9.0;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -527,7 +646,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		88002D651AB8F547001787DB /* Build configuration list for PBXNativeTarget "JSQCoreDataKit" */ = {
+		88002D651AB8F547001787DB /* Build configuration list for PBXNativeTarget "JSQCoreDataKit iOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				88002D661AB8F547001787DB /* Debug */,
@@ -544,6 +663,14 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
+		};
+		8874031B1C0D6A6D00FE0C31 /* Build configuration list for PBXNativeTarget "JSQCoreDataKit tvOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				887403181C0D6A6D00FE0C31 /* Debug */,
+				887403191C0D6A6D00FE0C31 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
 	};

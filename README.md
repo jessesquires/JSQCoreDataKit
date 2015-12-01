@@ -25,6 +25,7 @@ This library aims to do the following:
 ## Requirements
 
 * iOS 8+
+* tvOS 9.0+
 * Swift 2.0
 
 ## Installation

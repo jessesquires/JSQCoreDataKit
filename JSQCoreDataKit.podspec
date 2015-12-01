@@ -15,6 +15,8 @@ Pod::Spec.new do |s|
 
    s.ios.deployment_target = '8.0'
    s.tvos.deployment_target = '9.0'
-   s.frameworks = 'Foundation', 'CoreData'
+
+   s.frameworks = 'CoreData'
+
    s.requires_arc = true
 end

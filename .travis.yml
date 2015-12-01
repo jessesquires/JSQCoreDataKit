@@ -1,4 +1,4 @@
-osx_image: xcode7
+osx_image: xcode7.1
 
 language: objective-c
 
@@ -7,24 +7,25 @@ env:
    - LANG=en_US.UTF-8
 
    matrix:
-   - DESTINATION="OS=8.1,name=iPhone 4s" SDK=iphonesimulator9.0
-   - DESTINATION="OS=8.2,name=iPhone 5" SDK=iphonesimulator9.0
-   - DESTINATION="OS=8.3,name=iPhone 5s" SDK=iphonesimulator9.0
-   - DESTINATION="OS=8.4,name=iPhone 6" SDK=iphonesimulator9.0
-   - DESTINATION="OS=9.0,name=iPhone 6 Plus" SDK=iphonesimulator9.0
-   - DESTINATION="OS=8.1,name=iPad 2" SDK=iphonesimulator9.0
-   - DESTINATION="OS=8.4,name=iPad Retina" SDK=iphonesimulator9.0
-   - DESTINATION="OS=9.0,name=iPad Air" SDK=iphonesimulator9.0
+   - DESTINATION="OS=8.1,name=iPhone 4s" SDK=iphonesimulator9.1
+   - DESTINATION="OS=8.2,name=iPhone 5" SDK=iphonesimulator9.1
+   - DESTINATION="OS=8.3,name=iPhone 5s" SDK=iphonesimulator9.1
+   - DESTINATION="OS=8.4,name=iPhone 6" SDK=iphonesimulator9.1
+   - DESTINATION="OS=9.0,name=iPhone 6 Plus" SDK=iphonesimulator9.1
+   - DESTINATION="OS=8.1,name=iPad 2" SDK=iphonesimulator9.1
+   - DESTINATION="OS=8.4,name=iPad Retina" SDK=iphonesimulator9.1
+   - DESTINATION="OS=9.0,name=iPad Air" SDK=iphonesimulator9.1
 
 # before_install:
 # - brew update
 # - brew outdated xctool || brew upgrade xctool
 
 script:
+- pod spec lint
 - pod lib lint
 
-- xctool clean build -project ExampleApp/ExampleApp.xcodeproj -scheme ExampleApp -sdk iphonesimulator9.0 ONLY_ACTIVE_ARCH=NO
-- xctool clean build -project ExampleModel/ExampleModel.xcodeproj -scheme ExampleModel -sdk iphonesimulator9.0 ONLY_ACTIVE_ARCH=NO
+- xctool clean build -project ExampleApp/ExampleApp.xcodeproj -scheme ExampleApp -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO
+- xctool clean build -project ExampleModel/ExampleModel.xcodeproj -scheme ExampleModel -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO
 
 - xctool clean build test -workspace JSQCoreDataKit.xcworkspace -scheme JSQCoreDataKit -sdk "$SDK" -destination "$DESTINATION" -configuration Debug ONLY_ACTIVE_ARCH=NO
 

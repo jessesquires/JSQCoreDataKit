@@ -19,6 +19,7 @@
 import CoreData
 import Foundation
 
+
 /**
 A result object representing the result of saving an `NSManagedObjectContext`.
 */

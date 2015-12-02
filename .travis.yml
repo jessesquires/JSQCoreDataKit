@@ -50,6 +50,7 @@ script:
       xcodebuild clean build -workspace JSQCoreDataKit.xcworkspace -scheme "$SCHEME" -sdk "$SDK" -destination "$DESTINATION" -configuration Debug ONLY_ACTIVE_ARCH=NO | xcpretty -c;
   fi
 
+
 # Build for reporting test coverage
 - xcodebuild test -project JSQCoreDataKit/JSQCoreDataKit.xcodeproj -scheme JSQCoreDataKit-iOS -sdk iphonesimulator
 

@@ -26,6 +26,7 @@ This library aims to do the following:
 ## Requirements
 
 * iOS 8+
+* OSX 10.10+
 * tvOS 9.0+
 * watchOS 2.0+
 * Swift 2.0+

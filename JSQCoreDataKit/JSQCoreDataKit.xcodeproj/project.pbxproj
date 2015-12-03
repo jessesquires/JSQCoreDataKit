@@ -933,6 +933,7 @@
 				88AC4B391C0FD8DB00A04563 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

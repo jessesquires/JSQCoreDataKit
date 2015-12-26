@@ -28,15 +28,15 @@ public let DefaultStoreOptions: PersistentStoreOptions = [
 
 
 /**
-An instance of `CoreDataStackFactory` is responsible for creating instances of `CoreDataStack`.
+ An instance of `CoreDataStackFactory` is responsible for creating instances of `CoreDataStack`.
 
-Because the adding of the persistent store to the persistent store coordinator during initialization
-of a `CoreDataStack` can take an unknown amount of time, you should not perform this operation on the main queue.
+ Because the adding of the persistent store to the persistent store coordinator during initialization
+ of a `CoreDataStack` can take an unknown amount of time, you should not perform this operation on the main queue.
 
-See this [guide](https://developer.apple.com/library/prerelease/ios/documentation/Cocoa/Conceptual/CoreData/IntegratingCoreData.html#//apple_ref/doc/uid/TP40001075-CH9-SW1) for more details.
+ See this [guide](https://developer.apple.com/library/prerelease/ios/documentation/Cocoa/Conceptual/CoreData/IntegratingCoreData.html#//apple_ref/doc/uid/TP40001075-CH9-SW1) for more details.
 
-- warning: You should not create instances of `CoreDataStack` directly. Use a `CoreDataStackFactory` instead.
-*/
+ - warning: You should not create instances of `CoreDataStack` directly. Use a `CoreDataStackFactory` instead.
+ */
 public struct CoreDataStackFactory: CustomStringConvertible, Equatable {
 
     // MARK: Typealiases
@@ -51,9 +51,9 @@ public struct CoreDataStackFactory: CustomStringConvertible, Equatable {
     public let model: CoreDataModel
 
     /**
-    A dictionary that specifies options for the store that the factory produces.
-    The default value is `DefaultStoreOptions`.
-    */
+     A dictionary that specifies options for the store that the factory produces.
+     The default value is `DefaultStoreOptions`.
+     */
     public let options: PersistentStoreOptions?
 
 
@@ -118,12 +118,12 @@ public struct CoreDataStackFactory: CustomStringConvertible, Equatable {
     }
 
     /**
-    Synchronously initializes a new `CoreDataStack` instance using the factory's `model` and `options`.
-    - warning: This method must be called on the main thread.
-    - note: This method is primarily intended for unit testing purposes.
+     Synchronously initializes a new `CoreDataStack` instance using the factory's `model` and `options`.
+     - warning: This method must be called on the main thread.
+     - note: This method is primarily intended for unit testing purposes.
 
-    - returns: A `CoreDataStackResult` instance, describing the success or failure of creating the stack.
-    */
+     - returns: A `CoreDataStackResult` instance, describing the success or failure of creating the stack.
+     */
     public func createStack() -> CoreDataStackResult {
         assert(NSThread.isMainThread(), "*** Error: \(__FUNCTION__) must be called on main thread")
 

@@ -21,19 +21,19 @@ import Foundation
 
 
 /**
-An instance of `CoreDataStack` encapsulates the entire Core Data stack.
-It manages the managed object model, the persistent store coordinator, and managed object contexts.
+ An instance of `CoreDataStack` encapsulates the entire Core Data stack.
+ It manages the managed object model, the persistent store coordinator, and managed object contexts.
 
-It is composed of a main context and a background context. 
-These two contexts operate on the main queue and a private background queue, respectively.
-The background context is the root level context, which is connected to the persistent store coordinator.
-The main context is a child of the background context.
+ It is composed of a main context and a background context.
+ These two contexts operate on the main queue and a private background queue, respectively.
+ The background context is the root level context, which is connected to the persistent store coordinator.
+ The main context is a child of the background context.
 
-Data between these two primary contexts and child contexts is kept in sync.
-Changes to a context are propagated to its parent context and eventually the persistent store when saving.
+ Data between these two primary contexts and child contexts is kept in sync.
+ Changes to a context are propagated to its parent context and eventually the persistent store when saving.
 
-- warning: **You cannot create a `CoreDataStack` instance directly. Instead, use a `CoreDataStackFactory` for initialization.**
-*/
+ - warning: **You cannot create a `CoreDataStack` instance directly. Instead, use a `CoreDataStackFactory` for initialization.**
+ */
 public final class CoreDataStack: CustomStringConvertible, Equatable {
 
 
@@ -43,20 +43,20 @@ public final class CoreDataStack: CustomStringConvertible, Equatable {
     public let model: CoreDataModel
 
     /**
-    The main managed object context for the stack, which operates on the main queue.
-    This context is a child context of `backgroundContext`.
-    */
+     The main managed object context for the stack, which operates on the main queue.
+     This context is a child context of `backgroundContext`.
+     */
     public let mainContext: NSManagedObjectContext
 
-    /** 
-    The background managed object context for the stack, which operates on a background queue.
-    This context is the root level context that is connected to the `storeCoordinator`.
-    */
+    /**
+     The background managed object context for the stack, which operates on a background queue.
+     This context is the root level context that is connected to the `storeCoordinator`.
+     */
     public let backgroundContext: NSManagedObjectContext
 
     /**
-    The persistent store coordinator for the stack. The `backgroundContext` is connected to this coordinator.
-    */
+     The persistent store coordinator for the stack. The `backgroundContext` is connected to this coordinator.
+     */
     public let storeCoordinator: NSPersistentStoreCoordinator
 
 
@@ -88,7 +88,7 @@ public final class CoreDataStack: CustomStringConvertible, Equatable {
 
     /**
     Creates a new child context whose parent is `mainContext` and has the specified `concurrencyType` and `mergePolicyType`.
-    Saving the returned context will propagate changes through `mainContext`, `backgroundContext`, 
+    Saving the returned context will propagate changes through `mainContext`, `backgroundContext`,
     and finally the persistent store.
 
     - parameter concurrencyType: The concurrency pattern to use. The default is `.PrivateQueueConcurrencyType`.
@@ -141,7 +141,7 @@ public final class CoreDataStack: CustomStringConvertible, Equatable {
             // have reached the root context, nothing to do
             return
         }
-
+        
         saveContext(parentContext)
     }
     

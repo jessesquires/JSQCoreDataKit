@@ -21,8 +21,8 @@ import Foundation
 
 
 /**
-A result object representing the result of creating a `CoreDataStack` via a `CoreDataStackFactory`.
-*/
+ A result object representing the result of creating a `CoreDataStack` via a `CoreDataStackFactory`.
+ */
 public enum CoreDataStackResult: CustomStringConvertible, Equatable {
 
     /// The success result, containing the successfully initialized `CoreDataStack`.
@@ -45,8 +45,8 @@ public enum CoreDataStackResult: CustomStringConvertible, Equatable {
     }
 
     /**
-    - returns: The result's `NSError` if `.Failure`, otherwise `nil`.
-    */
+     - returns: The result's `NSError` if `.Failure`, otherwise `nil`.
+     */
     public func error() -> NSError? {
         if case .Failure(let error) = self {
             return error

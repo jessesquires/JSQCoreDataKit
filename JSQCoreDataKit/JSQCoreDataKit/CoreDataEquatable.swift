@@ -111,6 +111,6 @@ public func ==(lhs: PersistentStoreOptions, rhs: PersistentStoreOptions) -> Bool
             return false
         }
     }
-
+    
     return true
 }

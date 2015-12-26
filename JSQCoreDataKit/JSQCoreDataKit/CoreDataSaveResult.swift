@@ -21,8 +21,8 @@ import Foundation
 
 
 /**
-A result object representing the result of saving an `NSManagedObjectContext`.
-*/
+ A result object representing the result of saving an `NSManagedObjectContext`.
+ */
 public enum CoreDataSaveResult: CustomStringConvertible, Equatable {
 
     /// The success result.

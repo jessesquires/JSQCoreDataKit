@@ -21,9 +21,9 @@ import Foundation
 
 
 /**
-An instance of `CoreDataModel` represents a Core Data model.
-It provides the model and store URLs as well as methods for interacting with the store.
-*/
+ An instance of `CoreDataModel` represents a Core Data model.
+ It provides the model and store URLs as well as methods for interacting with the store.
+ */
 public struct CoreDataModel: CustomStringConvertible, Equatable {
 
 
@@ -39,9 +39,9 @@ public struct CoreDataModel: CustomStringConvertible, Equatable {
     public let storeType: StoreType
 
     /**
-    The file URL specifying the full path to the store.
-    - Note: If the store is in-memory, then this value will be `nil`.
-    */
+     The file URL specifying the full path to the store.
+     - Note: If the store is in-memory, then this value will be `nil`.
+     */
     public var storeURL: NSURL? {
         get {
             return storeType.storeDirectory()?.URLByAppendingPathComponent(databaseFileName)
@@ -79,11 +79,11 @@ public struct CoreDataModel: CustomStringConvertible, Equatable {
     }
 
     /**
-    Queries the meta data for the persistent store specified by the receiver
-    and returns whether or not a migration is needed.
+     Queries the meta data for the persistent store specified by the receiver
+     and returns whether or not a migration is needed.
 
-    - returns: `true` if the store requires a migration, `false` otherwise.
-    */
+     - returns: `true` if the store requires a migration, `false` otherwise.
+     */
     public var needsMigration: Bool {
         get {
             guard let storeURL = storeURL else {

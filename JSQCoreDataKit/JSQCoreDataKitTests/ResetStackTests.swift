@@ -1,6 +1,6 @@
 //
-//  Created by Marius Serban
-//  http://www.serbanmarius.com
+//  Created by Jesse Squires
+//  http://www.jessesquires.com
 //
 //
 //  Documentation
@@ -12,7 +12,7 @@
 //
 //
 //  License
-//  Copyright © 2015 Marius Serban
+//  Copyright © 2015 Jesse Squires
 //  Released under an MIT license: http://opensource.org/licenses/MIT
 //
 
@@ -28,7 +28,6 @@ import JSQCoreDataKit
 class ResetStackTests: TestCase {
 
     func test_ThatMainContext_WithChanges_DoesNotHaveObjects_AfterReset() {
-
         // GIVEN: a stack and context with changes
         let stack = self.inMemoryStack
         generateCompaniesInContext(stack.mainContext, count: 3)
@@ -37,7 +36,7 @@ class ResetStackTests: TestCase {
         do {
             try resetStack(stack)
         } catch {
-            XCTFail("Exception while resetting the stack: \(error)")
+            XCTFail("Error while resetting the stack: \(error)")
         }
 
         // THEN: the context contains no managed objects
@@ -46,7 +45,6 @@ class ResetStackTests: TestCase {
     }
 
     func test_ThatBackgroundContext_WithChanges_DoesNotHaveObjects_AfterReset() {
-
         // GIVEN: a stack and context with changes
         let stack = self.inMemoryStack
         generateCompaniesInContext(stack.backgroundContext, count: 3)
@@ -55,7 +53,7 @@ class ResetStackTests: TestCase {
         do {
             try resetStack(stack)
         } catch {
-            XCTFail("Exception while resetting the stack: \(error)")
+            XCTFail("Error while resetting the stack: \(error)")
         }
 
         // THEN: the context contains no managed objects
@@ -64,7 +62,6 @@ class ResetStackTests: TestCase {
     }
 
     func test_ThatPersistentStore_WithChanges_DoesNotHaveObjects_AfterReset() {
-
         // GIVEN: a stack and persistent store with changes
         let model = CoreDataModel(name: modelName, bundle: modelBundle)
         let factory = CoreDataStackFactory(model: model)
@@ -77,7 +74,7 @@ class ResetStackTests: TestCase {
         do {
             try resetStack(stack)
         } catch {
-            XCTFail("Exception while resetting the stack: \(error)")
+            XCTFail("Error while resetting the stack: \(error)")
         }
 
         // THEN: the stack contains no managed objects
@@ -87,6 +84,5 @@ class ResetStackTests: TestCase {
         XCTAssertNil(error)
         XCTAssertEqual(numberOfObjects, 0)
     }
-
 
 }

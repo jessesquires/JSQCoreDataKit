@@ -144,17 +144,21 @@ public func deleteObjects <T: NSManagedObject>(objects: [T], inContext context: 
 }
 
 /**
-This function resets the all the managed object contexts in the stack and deletes and recreates the
-persistent store connected to the coordinator.
-For binary and SQLite based stacks, this function will also remove the SQLite store from disk and re-create it
-afterwards.
+Resets the managed object contexts in the stack, then deletes and recreates the persistent store connected to the coordinator.
+For binary and SQLite based stores, this will also remove the store from disk 
  
-- parameter stack: The `CoreDataStack` to be reseted
- */
+- parameter stack: The `CoreDataStack` instance to be reset.
+ 
+- throws: If the reset fails or errors, then this function throws an `NSError`.
+*/
 public func resetStack(stack: CoreDataStack) throws {
+    stack.mainContext.performBlockAndWait {
+        stack.mainContext.reset()
+    }
 
-    stack.mainContext.reset()
-    stack.backgroundContext.reset()
+    stack.backgroundContext.performBlockAndWait {
+        stack.backgroundContext.reset()
+    }
 
     guard let store = stack.storeCoordinator.persistentStores.first else {
         return
@@ -167,9 +171,9 @@ public func resetStack(stack: CoreDataStack) throws {
     storeCoordinator.performBlockAndWait {
         do {
             try storeCoordinator.removePersistentStore(store)
-
             try model.removeExistingModelStore()
 
+            // TODO: should perform on background thread, similar to CoreDataStackFactory
             try storeCoordinator.addPersistentStoreWithType(model.storeType.type,
                 configuration: nil,
                 URL: model.storeURL,
@@ -183,5 +187,4 @@ public func resetStack(stack: CoreDataStack) throws {
     guard caughtError == nil else {
         throw caughtError!
     }
-    
 }

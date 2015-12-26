@@ -77,6 +77,7 @@ public struct CoreDataStackFactory: CustomStringConvertible, Equatable {
 
     /**
     Asynchronously initializes a new `CoreDataStack` instance using the factory's `model` and `options`.
+
     - note: This operation is performed on a background queue.
 
     - parameter queue:      A background queue on which to initialize the stack. The default is a high priority background queue.
@@ -119,7 +120,9 @@ public struct CoreDataStackFactory: CustomStringConvertible, Equatable {
 
     /**
      Synchronously initializes a new `CoreDataStack` instance using the factory's `model` and `options`.
+
      - warning: This method must be called on the main thread.
+
      - note: This method is primarily intended for unit testing purposes.
 
      - returns: A `CoreDataStackResult` instance, describing the success or failure of creating the stack.

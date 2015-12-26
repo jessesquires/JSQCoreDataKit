@@ -40,7 +40,8 @@ public struct CoreDataModel: CustomStringConvertible, Equatable {
 
     /**
      The file URL specifying the full path to the store.
-     - Note: If the store is in-memory, then this value will be `nil`.
+
+     - note: If the store is in-memory, then this value will be `nil`.
      */
     public var storeURL: NSURL? {
         get {

@@ -95,6 +95,7 @@ public class FetchRequest <T: NSManagedObject>: NSFetchRequest {
 
 /**
  Executes the fetch request in the given context and returns the result.
+ 
  - note: This function is performed synchronously in a block on the context's queue.
 
  - parameter request: A fetch request that specifies the search criteria for the fetch.
@@ -128,6 +129,7 @@ public func fetch <T: NSManagedObject>(request request: FetchRequest<T>, inConte
 /**
  Deletes the objects from the specified context.
  You must save the context after calling this function to remove objects from their persistent store.
+
  - note: This function is performed synchronously in a block on the context's queue.
 
  - parameter objects: The managed objects to be deleted.

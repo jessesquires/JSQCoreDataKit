@@ -38,7 +38,6 @@ class ModelTests: XCTestCase {
     }
 
     func test_ThatSQLiteModel_InitializesSuccessfully() {
-
         // GIVEN: a model name and bundle
 
         // WHEN: we create a model
@@ -71,7 +70,6 @@ class ModelTests: XCTestCase {
     }
 
     func test_ThatBinaryModel_InitializesSuccessfully() {
-
         // GIVEN: a model name and bundle
 
         // WHEN: we create a model
@@ -104,7 +102,6 @@ class ModelTests: XCTestCase {
     }
 
     func test_ThatInMemoryModel_InitializesSuccessfully() {
-
         // GIVEN: a model name and bundle
 
         // WHEN: we create a model
@@ -134,7 +131,6 @@ class ModelTests: XCTestCase {
     }
 
     func test_ThatSQLiteModel_RemoveExistingStore_Succeeds() {
-
         // GIVEN: a core data model and stack
         let model = CoreDataModel(name: modelName, bundle: modelBundle)
         let factory = CoreDataStackFactory(model: model)
@@ -158,7 +154,6 @@ class ModelTests: XCTestCase {
     }
 
     func test_ThatSQLiteModel_RemoveExistingStore_Fails() {
-
         // GIVEN: a core data model
         let model = CoreDataModel(name: modelName, bundle: modelBundle)
 
@@ -181,7 +176,6 @@ class ModelTests: XCTestCase {
     }
 
     func test_ThatInMemoryModel_RemoveExistingStore_Fails() {
-
         // GIVEN: a core data model in-memory
         let model = CoreDataModel(name: modelName, bundle: modelBundle, storeType: .InMemory)
 

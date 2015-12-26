@@ -28,7 +28,6 @@ import JSQCoreDataKit
 class DeleteTests: TestCase {
 
     func test_ThatDelete_Succeeds_WithManyObjects() {
-
         // GIVEN: a stack and objects in core data
         let stack = self.inMemoryStack
 
@@ -54,7 +53,6 @@ class DeleteTests: TestCase {
     }
 
     func test_ThatDelete_Succeeds_WithSpecificObject() {
-
         // GIVEN: a stack and objects in core data
         let stack = self.inMemoryStack
 
@@ -91,7 +89,6 @@ class DeleteTests: TestCase {
     }
 
     func test_ThatDelete_Succeeds_WithEmptyArray() {
-
         // GIVEN: a stack
         let stack = self.inMemoryStack
 

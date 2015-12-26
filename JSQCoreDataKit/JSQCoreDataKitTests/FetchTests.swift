@@ -28,7 +28,6 @@ import JSQCoreDataKit
 class FetchTests: TestCase {
 
     func test_ThatFetchRequest_Succeeds_WithManyObjects() {
-
         // GIVEN: a stack and objects in core data
         let stack = self.inMemoryStack
 
@@ -48,7 +47,6 @@ class FetchTests: TestCase {
     }
 
     func test_ThatFetchRequest_Succeeds_WithSpecificObject() {
-
         // GIVEN: a stack and objects in core data
         let stack = self.inMemoryStack
 
@@ -72,7 +70,6 @@ class FetchTests: TestCase {
     }
 
     func test_ThatFetchRequest_Succeeds_WithoutObjects() {
-
         // GIVEN: a stack and no objects in core data
         let stack = self.inMemoryStack
 

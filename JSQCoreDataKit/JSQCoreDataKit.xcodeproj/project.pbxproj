@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2938CD271C1F060800C10C59 /* ResetStackTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2938CD261C1F060800C10C59 /* ResetStackTests.swift */; };
 		88002D551AB8F546001787DB /* JSQCoreDataKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 88002D541AB8F546001787DB /* JSQCoreDataKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		88002D821AB8FF4F001787DB /* CoreDataExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88002D7F1AB8FF4F001787DB /* CoreDataExtensions.swift */; };
 		88002D831AB8FF4F001787DB /* CoreDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88002D801AB8FF4F001787DB /* CoreDataModel.swift */; };
@@ -78,6 +79,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2938CD261C1F060800C10C59 /* ResetStackTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResetStackTests.swift; sourceTree = "<group>"; };
 		88002D4F1AB8F546001787DB /* JSQCoreDataKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = JSQCoreDataKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		88002D531AB8F546001787DB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		88002D541AB8F546001787DB /* JSQCoreDataKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSQCoreDataKit.h; sourceTree = "<group>"; };
@@ -219,6 +221,7 @@
 				886487D91BCA3C2900671052 /* StackResultTests.swift */,
 				8851E2DA1B37423000E875DC /* StackTests.swift */,
 				886487D61BCA336200671052 /* StoreTypeTests.swift */,
+				2938CD261C1F060800C10C59 /* ResetStackTests.swift */,
 				881219E01B361FB6005E5AA7 /* Supporting Files */,
 				881219D81B361F13005E5AA7 /* TestCase.swift */,
 			);
@@ -517,6 +520,7 @@
 			files = (
 				881219DA1B361F13005E5AA7 /* FetchTests.swift in Sources */,
 				881219DD1B361F13005E5AA7 /* TestCase.swift in Sources */,
+				2938CD271C1F060800C10C59 /* ResetStackTests.swift in Sources */,
 				88B9F8AC1BC9F5570053CD6D /* ExampleModelTests.swift in Sources */,
 				8851E2DB1B37423000E875DC /* StackTests.swift in Sources */,
 				881219DB1B361F13005E5AA7 /* ModelTests.swift in Sources */,

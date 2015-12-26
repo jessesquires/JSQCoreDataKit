@@ -142,3 +142,46 @@ public func deleteObjects <T: NSManagedObject>(objects: [T], inContext context: 
         }
     }
 }
+
+/**
+This function resets the all the managed object contexts in the stack and deletes and recreates the
+persistent store connected to the coordinator.
+For binary and SQLite based stacks, this function will also remove the SQLite store from disk and re-create it
+afterwards.
+ 
+- parameter stack: The `CoreDataStack` to be reseted
+ */
+public func resetStack(stack: CoreDataStack) throws {
+
+    stack.mainContext.reset()
+    stack.backgroundContext.reset()
+
+    guard let store = stack.storeCoordinator.persistentStores.first else {
+        return
+    }
+
+    let storeCoordinator = stack.storeCoordinator
+    let model = stack.model
+
+    var caughtError: NSError?
+    storeCoordinator.performBlockAndWait {
+        do {
+            try storeCoordinator.removePersistentStore(store)
+
+            try model.removeExistingModelStore()
+
+            try storeCoordinator.addPersistentStoreWithType(model.storeType.type,
+                configuration: nil,
+                URL: model.storeURL,
+                options: store.options)
+        }
+        catch {
+            caughtError = error as NSError
+        }
+    }
+
+    guard caughtError == nil else {
+        throw caughtError!
+    }
+    
+}

@@ -35,20 +35,20 @@ class ResetStackTests: TestCase {
         let expectation = expectationWithDescription("\(__FUNCTION__)")
 
         // WHEN: we attempt to reset the stack
-        resetStackInBackground(stack) {  (result: CoreDataStackResult) in
+        resetStack(stack) { (result: CoreDataStackResult) in
             if case .Failure(let e) = result {
                 XCTFail("Error while resetting the stack: \(e)")
             }
-
             expectation.fulfill()
         }
 
-        // THEN: the main context contains no managed objects
+        // THEN: the reset succeeds and the contexts contain no objects
         waitForExpectationsWithTimeout(DefaultTimeout) { (error) -> Void in
             XCTAssertNil(error, "Expectation should not error")
         }
-        let numberOfObjects = stack.mainContext.registeredObjects.count
-        XCTAssertEqual(numberOfObjects, 0)
+
+        XCTAssertEqual(stack.mainContext.registeredObjects.count, 0)
+        XCTAssertEqual(stack.backgroundContext.registeredObjects.count, 0)
     }
 
     func test_ThatBackgroundContext_WithChanges_DoesNotHaveObjects_AfterReset() {
@@ -59,51 +59,56 @@ class ResetStackTests: TestCase {
         let expectation = expectationWithDescription("\(__FUNCTION__)")
 
         // WHEN: we attempt to reset the stack
-        resetStackInBackground(stack) {  (result: CoreDataStackResult) in
+        resetStack(stack) { (result: CoreDataStackResult) in
             if case .Failure(let e) = result {
                 XCTFail("Error while resetting the stack: \(e)")
             }
-
             expectation.fulfill()
         }
 
-        // THEN: the background context contains no managed objects
+        // THEN: the reset succeeds and the contexts contain no objects
         waitForExpectationsWithTimeout(DefaultTimeout) { (error) -> Void in
             XCTAssertNil(error, "Expectation should not error")
         }
-        let numberOfObjects = stack.backgroundContext.registeredObjects.count
-        XCTAssertEqual(numberOfObjects, 0)
+
+        XCTAssertEqual(stack.mainContext.registeredObjects.count, 0)
+        XCTAssertEqual(stack.backgroundContext.registeredObjects.count, 0)
     }
 
     func test_ThatPersistentStore_WithChanges_DoesNotHaveObjects_AfterReset() {
-        // GIVEN: a stack and persistent store with changes
+        // GIVEN: a stack and persistent store with data
         let model = CoreDataModel(name: modelName, bundle: modelBundle)
         let factory = CoreDataStackFactory(model: model)
-        let stack: CoreDataStack! = factory.createStack().stack()
+        let stack = factory.createStack().stack()!
 
-        generateCompaniesInContext(stack.backgroundContext, count: 3)
-        saveContext(stack.backgroundContext)
+        generateDataInContext(stack.mainContext, companiesCount: 3, employeesCount: 2)
+        saveContext(stack.mainContext)
+
+        var error: NSError?
+        let request = FetchRequest<Company>(entity: entity(name: Company.entityName, context: stack.mainContext))
+
+        let objectsBefore = stack.mainContext.countForFetchRequest(request, error: &error)
+        XCTAssertNil(error)
+        XCTAssertEqual(objectsBefore, 3)
 
         let expectation = expectationWithDescription("\(__FUNCTION__)")
 
         // WHEN: we attempt to reset the stack
-        resetStackInBackground(stack) {  (result: CoreDataStackResult) in
+        resetStack(stack) { (result: CoreDataStackResult) in
             if case .Failure(let e) = result {
                 XCTFail("Error while resetting the stack: \(e)")
             }
-
             expectation.fulfill()
         }
 
-        // THEN: the stack contains no managed objects
+        // THEN: the reset succeeds and the stack contains no managed objects
         waitForExpectationsWithTimeout(DefaultTimeout) { (error) -> Void in
             XCTAssertNil(error, "Expectation should not error")
         }
-        var error: NSError?
-        let request = FetchRequest<Company>(entity: entity(name: Company.entityName, context: stack.mainContext))
-        let numberOfObjects = stack.backgroundContext.countForFetchRequest(request, error: &error)
-        XCTAssertNil(error)
-        XCTAssertEqual(numberOfObjects, 0)
-    }
 
+        let objectsAfter = stack.mainContext.countForFetchRequest(request, error: &error)
+        XCTAssertNil(error)
+        XCTAssertEqual(objectsAfter, 0)
+    }
+    
 }

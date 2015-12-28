@@ -28,7 +28,6 @@ import JSQCoreDataKit
 class StackTests: XCTestCase {
 
     func test_ThatSQLiteStack_InitializesSuccessfully() {
-
         // GIVEN: a SQLite model
         let sqliteModel = CoreDataModel(name: modelName, bundle: modelBundle)
 
@@ -44,7 +43,6 @@ class StackTests: XCTestCase {
     }
 
     func test_ThatBinaryStack_InitializesSuccessfully() {
-
         // GIVEN: a binary model
         let binaryModel = CoreDataModel(name: modelName, bundle: modelBundle, storeType: .Binary(NSURL(fileURLWithPath: NSTemporaryDirectory())))
 
@@ -60,7 +58,6 @@ class StackTests: XCTestCase {
     }
 
     func test_ThatInMemoryStack_InitializesSuccessfully() {
-
         // GIVEN: a in-memory model
         let inMemoryModel = CoreDataModel(name: modelName, bundle: modelBundle, storeType: .InMemory)
 
@@ -76,7 +73,6 @@ class StackTests: XCTestCase {
     }
 
     func test_ThaChildContext_IsCreatedSuccessfully() {
-
         // GIVEN: a model and stack
         let model = CoreDataModel(name: modelName, bundle: modelBundle)
         let factory = CoreDataStackFactory(model: model)
@@ -94,7 +90,6 @@ class StackTests: XCTestCase {
     }
 
     func test_ThatChildContext_IsCreatedSuccessfully_WithCustomParameters() {
-
         // GIVEN: a model and stack
         let model = CoreDataModel(name: modelName, bundle: modelBundle)
         let factory = CoreDataStackFactory(model: model)

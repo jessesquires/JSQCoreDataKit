@@ -44,7 +44,6 @@ class StackFactoryTests: TestCase {
     }
 
     func test_ThatStackFactory_CreatesStackInBackground_Successfully() {
-
         // GIVEN: a core data model
         let sqliteModel = CoreDataModel(name: modelName, bundle: modelBundle)
 
@@ -81,7 +80,6 @@ class StackFactoryTests: TestCase {
     }
 
     func test_ThatStackFactory_CreatesStackSynchronously_Successfully() {
-
         // GIVEN: a core data model
         let sqliteModel = CoreDataModel(name: modelName, bundle: modelBundle)
 

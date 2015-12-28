@@ -28,6 +28,9 @@ public typealias ChildContext = NSManagedObjectContext
 public typealias PersistentStoreOptions = [NSObject : AnyObject]
 
 
+/// Describes a closure that receives a `CoreDataStackResult`.
+public typealias StackResultClosure = (result: CoreDataStackResult) -> Void
+
 
 /**
  Attempts to commit unsaved changes to registered objects in the context.
@@ -41,7 +44,7 @@ public typealias PersistentStoreOptions = [NSObject : AnyObject]
 public func saveContext(context: NSManagedObjectContext, wait: Bool = true, completion: ((CoreDataSaveResult) -> Void)? = nil) {
     guard context.hasChanges else { return }
 
-    let block = { () -> Void in
+    let block = {
         do {
             try context.save()
             completion?(.Success)
@@ -95,7 +98,7 @@ public class FetchRequest <T: NSManagedObject>: NSFetchRequest {
 
 /**
  Executes the fetch request in the given context and returns the result.
- 
+
  - note: This function is performed synchronously in a block on the context's queue.
 
  - parameter request: A fetch request that specifies the search criteria for the fetch.
@@ -109,7 +112,7 @@ public func fetch <T: NSManagedObject>(request request: FetchRequest<T>, inConte
     var results = [AnyObject]()
     var caughtError: NSError?
 
-    context.performBlockAndWait { () -> Void in
+    context.performBlockAndWait {
         do {
             results = try context.executeFetchRequest(request)
         }
@@ -118,9 +121,7 @@ public func fetch <T: NSManagedObject>(request request: FetchRequest<T>, inConte
         }
     }
 
-    guard caughtError == nil else {
-        throw caughtError!
-    }
+    guard caughtError == nil else { throw caughtError! }
 
     return results as! [T]
 }
@@ -138,7 +139,7 @@ public func fetch <T: NSManagedObject>(request request: FetchRequest<T>, inConte
 public func deleteObjects <T: NSManagedObject>(objects: [T], inContext context: NSManagedObjectContext) {
     guard objects.count != 0 else { return }
 
-    context.performBlockAndWait { () -> Void in
+    context.performBlockAndWait {
         for each in objects {
             context.deleteObject(each)
         }
@@ -146,31 +147,23 @@ public func deleteObjects <T: NSManagedObject>(objects: [T], inContext context: 
 }
 
 /**
- Asynchronously resets a `CoreDataStack` instance.
- Resets the managed object contexts in the stack, then deletes and recreates the persistent store connected to the coordinator.
+ Resets the managed object contexts in the stack on their respective threads.
+ Then, if the coordinator is connected to a persistent store, the store will be deleted and recreated on a background thread.
+ The completion closure is executed on the main thread.
+
+ - note: Removing and re-adding the persistent store is performed on a background queue.
  For binary and SQLite stores, this will also remove the store from disk.
 
- - note: This operation is performed on a background queue.
-
- - parameter stack:      The `CoreDataStack` instance to be reset.
+ - parameter stack:      The stack to reset.
  - parameter queue:      A background queue on which to reset the stack. The default is a high priority background queue.
  - parameter completion: The closure to be called once resetting is complete.
  */
-public func resetStackInBackground(
-    stack: CoreDataStack,
+public func resetStack(stack: CoreDataStack,
     queue: dispatch_queue_t = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0),
-    completion: CoreDataStackFactory.CompletionHandler) {
+    completion: StackResultClosure) {
 
-    dispatch_async(queue) {
-        assert(!NSThread.isMainThread(), "*** Error: cannot reset a stack on the main queue via \(__FUNCTION__)")
-
-        stack.mainContext.performBlockAndWait {
-            stack.mainContext.reset()
-        }
-
-        stack.backgroundContext.performBlockAndWait {
-            stack.backgroundContext.reset()
-        }
+        stack.mainContext.performBlockAndWait { stack.mainContext.reset() }
+        stack.backgroundContext.performBlockAndWait { stack.backgroundContext.reset() }
 
         guard let store = stack.storeCoordinator.persistentStores.first else {
             dispatch_async(dispatch_get_main_queue()) {
@@ -179,28 +172,32 @@ public func resetStackInBackground(
             return
         }
 
-        let storeCoordinator = stack.storeCoordinator
-        let model = stack.model
+        dispatch_async(queue) {
+            assert(!NSThread.isMainThread(), "*** Error: cannot reset a stack on the main queue")
 
-        storeCoordinator.performBlockAndWait {
-            do {
-                try storeCoordinator.removePersistentStore(store)
-                try model.removeExistingModelStore()
+            let storeCoordinator = stack.storeCoordinator
+            let options = store.options
+            let model = stack.model
 
-                try storeCoordinator.addPersistentStoreWithType(model.storeType.type,
-                    configuration: nil,
-                    URL: model.storeURL,
-                    options: store.options)
-            }
-            catch {
+            storeCoordinator.performBlockAndWait {
+                do {
+                    try model.removeExistingModelStore()
+                    try storeCoordinator.removePersistentStore(store)
+                    try storeCoordinator.addPersistentStoreWithType(model.storeType.type,
+                        configuration: nil,
+                        URL: model.storeURL,
+                        options: options)
+                }
+                catch {
+                    dispatch_async(dispatch_get_main_queue()) {
+                        completion(result: .Failure(error as NSError))
+                    }
+                    return
+                }
+
                 dispatch_async(dispatch_get_main_queue()) {
-                    completion(result: .Failure(error as NSError))
+                    completion(result: .Success(stack))
                 }
             }
         }
-
-        dispatch_async(dispatch_get_main_queue()) {
-            completion(result: .Success(stack))
-        }
-    }
 }

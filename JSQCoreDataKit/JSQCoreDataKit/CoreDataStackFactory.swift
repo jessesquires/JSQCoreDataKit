@@ -39,12 +39,6 @@ public let DefaultStoreOptions: PersistentStoreOptions = [
  */
 public struct CoreDataStackFactory: CustomStringConvertible, Equatable {
 
-    // MARK: Typealiases
-
-    /// The completion handler for initializing a `CoreDataStack`.
-    public typealias CompletionHandler = (result: CoreDataStackResult) -> Void
-
-
     // MARK: Properties
 
     /// The model for the stack that the factory produces.
@@ -85,7 +79,7 @@ public struct CoreDataStackFactory: CustomStringConvertible, Equatable {
     */
     public func createStackInBackground(
         queue: dispatch_queue_t = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0),
-        completion: CompletionHandler) {
+        completion: StackResultClosure) {
 
             dispatch_async(queue) {
                 assert(!NSThread.isMainThread(), "*** Error: cannot create a stack on the main queue via \(__FUNCTION__)")

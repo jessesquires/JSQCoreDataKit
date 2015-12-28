@@ -28,7 +28,6 @@ import JSQCoreDataKit
 class SaveTests: TestCase {
 
     func test_ThatSaveAndWait_WithoutChanges_CompletionHandlerIsNotCalled() {
-
         // GIVEN: a stack and context without changes
         let stack = self.inMemoryStack
         var didCallCompletion = false
@@ -44,7 +43,6 @@ class SaveTests: TestCase {
     }
 
     func test_ThatSaveAndWait_WithChangesSucceeds_CompletionHandlerIsCalled() {
-
         // GIVEN: a stack and context with changes
         let stack = self.inMemoryStack
 
@@ -81,7 +79,6 @@ class SaveTests: TestCase {
     }
 
     func test_ThatSaveAndWait_WithChanges_WithoutCompletionClosure_Succeeds() {
-
         // GIVEN: a stack and context with changes
         let stack = self.inMemoryStack
 
@@ -113,7 +110,6 @@ class SaveTests: TestCase {
     }
 
     func test_ThatSaveAsync_WithoutChanges_ReturnsImmediately() {
-
         // GIVEN: a stack and context without changes
         let stack = self.inMemoryStack
         var didCallCompletion = false
@@ -128,7 +124,6 @@ class SaveTests: TestCase {
     }
 
     func test_ThatSaveAsync_WithChanges_Succeeds() {
-
         // GIVEN: a stack and context with changes
         let stack = self.inMemoryStack
 
@@ -165,7 +160,6 @@ class SaveTests: TestCase {
     }
 
     func test_ThatSavingChildContext_SucceedsAndSavesParents() {
-
         // GIVEN: a stack and child context with changes
         let stack = self.inMemoryStack
         let childContext = stack.childContext()
@@ -208,5 +202,5 @@ class SaveTests: TestCase {
             XCTAssertTrue(didSaveBackground, "Background context should be saved")
         })
     }
-    
+
 }

@@ -50,5 +50,12 @@ script:
       xcodebuild clean build -workspace JSQCoreDataKit.xcworkspace -scheme "$SCHEME" -sdk "$SDK" -destination "$DESTINATION" -configuration Debug ONLY_ACTIVE_ARCH=NO | xcpretty -c;
   fi
 
+
+# Build for reporting test coverage
+- if [ $RUN_TESTS == "YES" ]; then
+   xctool test -project JSQCoreDataKit/JSQCoreDataKit.xcodeproj -scheme "JSQCoreDataKit-iOS" -sdk iphonesimulator;
+if
+
+
 after_success:
 - bash <(curl -s https://codecov.io/bash)

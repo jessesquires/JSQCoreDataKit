@@ -146,47 +146,61 @@ public func deleteObjects <T: NSManagedObject>(objects: [T], inContext context: 
 }
 
 /**
+ Asynchronously resets a `CoreDataStack` instance.
  Resets the managed object contexts in the stack, then deletes and recreates the persistent store connected to the coordinator.
  For binary and SQLite stores, this will also remove the store from disk.
 
- - parameter stack: The `CoreDataStack` instance to be reset.
+ - note: This operation is performed on a background queue.
 
- - throws: If the reset fails or errors, then this function throws an `NSError`.
+ - parameter stack:      The `CoreDataStack` instance to be reset.
+ - parameter queue:      A background queue on which to reset the stack. The default is a high priority background queue.
+ - parameter completion: The closure to be called once resetting is complete.
  */
-public func resetStack(stack: CoreDataStack) throws {
-    stack.mainContext.performBlockAndWait {
-        stack.mainContext.reset()
-    }
+public func resetStackInBackground(
+    stack: CoreDataStack,
+    queue: dispatch_queue_t = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0),
+    completion: CoreDataStackFactory.CompletionHandler) {
 
-    stack.backgroundContext.performBlockAndWait {
-        stack.backgroundContext.reset()
-    }
+    dispatch_async(queue) {
+        assert(!NSThread.isMainThread(), "*** Error: cannot reset a stack on the main queue via \(__FUNCTION__)")
 
-    guard let store = stack.storeCoordinator.persistentStores.first else {
-        return
-    }
-
-    let storeCoordinator = stack.storeCoordinator
-    let model = stack.model
-
-    var caughtError: NSError?
-    storeCoordinator.performBlockAndWait {
-        do {
-            try storeCoordinator.removePersistentStore(store)
-            try model.removeExistingModelStore()
-
-            // TODO: should perform on background thread, similar to CoreDataStackFactory
-            try storeCoordinator.addPersistentStoreWithType(model.storeType.type,
-                configuration: nil,
-                URL: model.storeURL,
-                options: store.options)
+        stack.mainContext.performBlockAndWait {
+            stack.mainContext.reset()
         }
-        catch {
-            caughtError = error as NSError
+
+        stack.backgroundContext.performBlockAndWait {
+            stack.backgroundContext.reset()
         }
-    }
-    
-    guard caughtError == nil else {
-        throw caughtError!
+
+        guard let store = stack.storeCoordinator.persistentStores.first else {
+            dispatch_async(dispatch_get_main_queue()) {
+                completion(result: .Success(stack))
+            }
+            return
+        }
+
+        let storeCoordinator = stack.storeCoordinator
+        let model = stack.model
+
+        storeCoordinator.performBlockAndWait {
+            do {
+                try storeCoordinator.removePersistentStore(store)
+                try model.removeExistingModelStore()
+
+                try storeCoordinator.addPersistentStoreWithType(model.storeType.type,
+                    configuration: nil,
+                    URL: model.storeURL,
+                    options: store.options)
+            }
+            catch {
+                dispatch_async(dispatch_get_main_queue()) {
+                    completion(result: .Failure(error as NSError))
+                }
+            }
+        }
+
+        dispatch_async(dispatch_get_main_queue()) {
+            completion(result: .Success(stack))
+        }
     }
 }

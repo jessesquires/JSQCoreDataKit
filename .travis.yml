@@ -53,7 +53,7 @@ script:
 
 # Build for reporting test coverage
 - if [ $RUN_TESTS == "YES" ]; then
-      xctool test -project JSQCoreDataKit/JSQCoreDataKit.xcodeproj -scheme "JSQCoreDataKit-iOS" -sdk iphonesimulator;
+      xcodebuild test -project JSQCoreDataKit/JSQCoreDataKit.xcodeproj -scheme "JSQCoreDataKit-iOS" -sdk iphonesimulator -destination 'name=iPhone 6s';
   fi
 
 

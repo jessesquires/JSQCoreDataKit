@@ -10,7 +10,7 @@ Pod::Spec.new do |s|
    s.authors = { 'Jesse Squires' => 'jesse.squires.developer@gmail.com' }
 
    s.source = { :git => 'https://github.com/jessesquires/JSQCoreDataKit.git', :tag => s.version }
-   s.source_files = 'JSQCoreDataKit/JSQCoreDataKit/*.swift'
+   s.source_files = 'Source/*.swift'
 
    s.ios.deployment_target = '8.0'
    s.osx.deployment_target = '10.10'

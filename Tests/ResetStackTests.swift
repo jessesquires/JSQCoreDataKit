@@ -81,7 +81,7 @@ class ResetStackTests: TestCase {
         let factory = CoreDataStackFactory(model: model)
         let stack = factory.createStack().stack()!
 
-        generateDataInContext(stack.mainContext, companiesCount: 3, employeesCount: 2)
+        generateCompaniesInContext(stack.mainContext, count: 3)
         saveContext(stack.mainContext)
 
         var error: NSError?

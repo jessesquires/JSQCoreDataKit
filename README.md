@@ -54,9 +54,7 @@ github "jessesquires/JSQCoreDataKit"
 
 ## Documentation
 
-Read the [docs][docsLink]. Generated with [jazzy](https://github.com/realm/jazzy). Hosted by [GitHub Pages](https://pages.github.com).
-
-More information on the [`gh-pages`](https://github.com/jessesquires/JSQCoreDataKit/tree/gh-pages) branch.
+Read the [docs][docsLink]. Generated with [jazzy](https://github.com/realm/jazzy). Hosted by [GitHub Pages](https://pages.github.com). More information on the [`gh-pages`](https://github.com/jessesquires/JSQCoreDataKit/tree/gh-pages) branch.
 
 ## Getting Started
 
@@ -169,11 +167,11 @@ saveContext(context)
 
 ## Example app
 
-There's an example app in the `ExampleApp/` directory. Open the `ExampleApp.xcodeproj` to run it. The project exercises all basic functionality of the library.
+There's an example app in the `Example/` directory. Open the `ExampleApp.xcodeproj` to run it. The project exercises all basic functionality of the library.
 
 ## Unit tests
 
-There's a suite of unit tests for `JSQCoreDataKit.framework`. To run them, open `JSQCoreDataKit.xcworkspace`, select the `JSQCoreDataKit` scheme, then &#x2318;-u.
+There's a suite of unit tests for `JSQCoreDataKit.framework`. To run them, open `JSQCoreDataKit.xcodeproj`, select the `JSQCoreDataKit-iOS` scheme, then &#x2318;-u.
 
 These tests are well commented and serve as further documentation for how to use this library.
 

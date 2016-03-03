@@ -117,7 +117,7 @@ public struct CoreDataModel: CustomStringConvertible, Equatable {
 
     - returns: A new `CoreDataModel` instance.
     */
-    public init(name: String, bundle: NSBundle = .mainBundle(), storeType: StoreType = .SQLite(DocumentsDirectoryURL())) {
+    public init(name: String, bundle: NSBundle = .mainBundle(), storeType: StoreType = .SQLite(DefaultDirectoryURL())) {
         self.name = name
         self.bundle = bundle
         self.storeType = storeType
@@ -154,15 +154,21 @@ public struct CoreDataModel: CustomStringConvertible, Equatable {
 
 // MARK: Internal
 
-internal func DocumentsDirectoryURL() -> NSURL {
+internal func DefaultDirectoryURL() -> NSURL {
     do {
+        #if os(tvOS)
+            let searchPathDirectory = NSSearchPathDirectory.CachesDirectory
+        #else
+            let searchPathDirectory = NSSearchPathDirectory.DocumentDirectory
+        #endif
+		
         return try NSFileManager.defaultManager().URLForDirectory(
-            .DocumentDirectory,
+            searchPathDirectory,
             inDomain: .UserDomainMask,
             appropriateForURL: nil,
             create: true)
     }
     catch {
-        fatalError("*** Error finding documents directory: \(error)")
+        fatalError("*** Error finding default directory: \(error)")
     }
 }

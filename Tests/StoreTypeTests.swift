@@ -28,7 +28,7 @@ import JSQCoreDataKit
 class StoreTypeTests: XCTestCase {
 
     func test_StoreType_SQLite() {
-        let url = DocumentsDirectoryURL()
+        let url = DefaultDirectoryURL()
 
         let s = StoreType.SQLite(url)
         XCTAssertEqual(s.type, NSSQLiteStoreType)
@@ -36,7 +36,7 @@ class StoreTypeTests: XCTestCase {
     }
 
     func test_StoreType_Binary() {
-        let url = DocumentsDirectoryURL()
+        let url = DefaultDirectoryURL()
 
         let s = StoreType.Binary(url)
         XCTAssertEqual(s.type, NSBinaryStoreType)
@@ -50,7 +50,7 @@ class StoreTypeTests: XCTestCase {
     }
 
     func test_StoreType_Equality() {
-        let url = DocumentsDirectoryURL()
+        let url = DefaultDirectoryURL()
 
         let sqlite = StoreType.SQLite(url)
         let binary = StoreType.Binary(url)
@@ -62,7 +62,7 @@ class StoreTypeTests: XCTestCase {
     }
 
     func test_StoreType_Equality_SQLite() {
-        let url = DocumentsDirectoryURL()
+        let url = DefaultDirectoryURL()
 
         let sqlite1 = StoreType.SQLite(url)
         let sqlite2 = StoreType.SQLite(url)
@@ -73,7 +73,7 @@ class StoreTypeTests: XCTestCase {
     }
 
     func test_StoreType_Equality_Binary() {
-        let url = DocumentsDirectoryURL()
+        let url = DefaultDirectoryURL()
 
         let binary1 = StoreType.Binary(url)
         let binary2 = StoreType.Binary(url)
@@ -91,7 +91,7 @@ class StoreTypeTests: XCTestCase {
 
     func test_StoreType_Description() {
         print("\(__FUNCTION__)")
-        let url = DocumentsDirectoryURL()
+        let url = DefaultDirectoryURL()
 
         let sqlite = StoreType.SQLite(url)
         print(sqlite)

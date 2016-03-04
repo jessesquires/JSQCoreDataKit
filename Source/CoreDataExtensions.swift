@@ -53,7 +53,8 @@ public func saveContext(context: NSManagedObjectContext, wait: Bool = true, comp
     }
     context.performBlock({
         guard context.hasChanges else { return }
-        wait ? context.performBlockAndWait(block) : context.performBlock(block)
+        guard wait else { block(); return }
+        context.performBlockAndWait(block)
     })
 }
 

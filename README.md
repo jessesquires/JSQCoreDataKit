@@ -1,11 +1,11 @@
 # JSQCoreDataKit
-[![Build Status](https://secure.travis-ci.org/jessesquires/JSQCoreDataKit.svg)](http://travis-ci.org/jessesquires/JSQCoreDataKit) [![Version Status](http://img.shields.io/cocoapods/v/JSQCoreDataKit.png)][docsLink] [![license MIT](http://img.shields.io/badge/license-MIT-orange.png)][mitLink] [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
+[![Build Status](https://secure.travis-ci.org/jessesquires/JSQCoreDataKit.svg)](http://travis-ci.org/jessesquires/JSQCoreDataKit) [![Version Status](https://img.shields.io/cocoapods/v/JSQCoreDataKit.svg)][podLink] [![license MIT](https://img.shields.io/cocoapods/l/JSQCoreDataKit.svg)][mitLink] [![codecov.io](https://img.shields.io/codecov/c/github/jessesquires/JSQCoreDataKit.svg)](http://codecov.io/github/jessesquires/JSQCoreDataKit) [![Platform](https://img.shields.io/cocoapods/p/JSQCoreDataKit.svg)][docsLink] [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 
 *A swifter Core Data stack*
 
 ## About
 
-This framework aims to do the following:
+This library aims to do the following:
 
 * Provide better interoperability with Swift
 * Harness Swift features and enforce Swift paradigms
@@ -14,25 +14,33 @@ This framework aims to do the following:
 * Aid in testing your Core Data models
 * Reduce the boilerplate involved with Core Data
 
-> **For more information on Core Data:**
+> **Further reading on Core Data:**
+>
 > * [Core Data Programming Guide](https://developer.apple.com/library/mac/documentation/Cocoa/Conceptual/CoreData/cdProgrammingGuide.html)
 > * [Core Data Core Competencies Guide](https://developer.apple.com/library/ios/documentation/DataManagement/Devpedia-CoreData/coreDataStack.html#//apple_ref/doc/uid/TP40010398-CH25-SW1)
 > * [objc.io issue #4 on Core Data](http://www.objc.io/issue-4/)
+> * [Concurrent Core Data Stacks – Performance Shootout](http://floriankugler.com/2013/04/29/concurrent-core-data-stack-performance-shootout/)
+> * [Backstage with Nested Managed Object Contexts](http://floriankugler.com/2013/05/13/backstage-with-nested-managed-object-contexts/)
+> * [BNR core data stack](https://www.bignerdranch.com/blog/introducing-the-big-nerd-ranch-core-data-stack/)
 
 ## Requirements
 
-* iOS 8
-* Swift 1.2
+* Xcode 7.2+
+* iOS 8.0+
+* OSX 10.10+
+* tvOS 9.1+
+* watchOS 2.0+
+* Swift 2.0+
 
 ## Installation
 
-#### [CocoaPods](http://cocoapods.org)
+#### [CocoaPods](http://cocoapods.org) (recommended)
 
 ````ruby
 use_frameworks!
 
 # For latest release in cocoapods
-pod 'JSQCoreDataKit'  
+pod 'JSQCoreDataKit'
 
 # Feeling adventurous? Get the latest on develop
 pod 'JSQCoreDataKit', :git => 'https://github.com/jessesquires/JSQCoreDataKit.git', :branch => 'develop'
@@ -44,23 +52,9 @@ pod 'JSQCoreDataKit', :git => 'https://github.com/jessesquires/JSQCoreDataKit.gi
 github "jessesquires/JSQCoreDataKit"
 ````
 
-#### Manually
-
-1. Clone this repo and add the `JSQCoreDataKit.xcodeproj` to your project
-2. Select your project app target "Build Phases" tab
-3. Add the `JSQCoreDataKit.framework` to the "Link Binary With Libraries"  
-4. Create a new build phase of type "Copy Files" and set the "Destination" to "Frameworks"
-5. Add the `JSQCoreDataKit.framework` and check "Code Sign On Copy"
-
-For an example, see the demo project included in this repo.
-
-For more information, see the [Framework Programming Guide](https://developer.apple.com/library/mac/documentation/MacOSX/Conceptual/BPFrameworks/Tasks/IncludingFrameworks.html#//apple_ref/doc/uid/20002257-BAJJBBHJ).
-
 ## Documentation
 
-Read the fucking [docs][docsLink]. Generated with [jazzy](https://github.com/realm/jazzy). Hosted by [GitHub Pages](https://pages.github.com).
-
-More information on the [gh-pages](https://github.com/jessesquires/JSQCoreDataKit/tree/gh-pages) branch.
+Read the [docs][docsLink]. Generated with [jazzy](https://github.com/realm/jazzy). Hosted by [GitHub Pages](https://pages.github.com). More information on the [`gh-pages`](https://github.com/jessesquires/JSQCoreDataKit/tree/gh-pages) branch.
 
 ## Getting Started
 
@@ -73,51 +67,73 @@ import JSQCoreDataKit
 ````swift
 // Initialize the Core Data model, this class encapsulates the notion of a .xcdatamodeld file
 // The name passed here should be the name of an .xcdatamodeld file
-let model = CoreDataModel(name: "MyModel", bundle: NSBundle(identifier: "com.MyApp.MyModelFramework")!)
+let bundle = NSBundle(identifier: "com.MyApp.MyModelFramework")!
+let model = CoreDataModel(name: "MyModel", bundle: bundle)
 
-// Initialize a default stack
-let stack = CoreDataStack(model: model)
+// Initialize a stack with a factory
+let factory = CoreDataStackFactory(model: model)
 
-// Initialize a private queue, in-memory stack
-let privateStack = CoreDataStack(model: model, storeType: NSInMemoryStoreType, options: nil, concurrencyType: .PrivateQueueConcurrencyType)
+let stack: CoreDataStack?
+factory.createStackInBackground { (result: CoreDataStackResult) in
+    switch result {
+        case .Success(let s):
+            stack = s
+
+        case .Failure(let e):
+            print("Error: \(e)")
+    }
+}
+````
+
+#### In-memory stacks for testing
+
+````swift
+let inMemoryModel = CoreDataModel(name: myName, bundle: myBundle, storeType: .InMemory)
+let factory = CoreDataStackFactory(model: inMemoryModel)
+let stack = factory.createStack()
 ````
 
 #### Saving a managed object context
 
 ````swift
-// Saving returns a tuple (Bool, NSError?)
-let result: ContextSaveResult = saveContextAndWait(stack.managedObjectContext)
-if !result.success {
-    // save failed
-    println("Save error: \(result.error)")
+saveContext(stack.mainContext) { result in
+    switch result {
+        case .Success:
+            print("save succeeded")
+
+        case .Failure(let error):
+            print("save failed: \(error)")
+    }
 }
 ````
 
 #### Deleting the store
 
 ````swift
-let model = CoreDataModel(name: "MyModel", bundle: NSBundle(identifier: "com.MyApp.MyModelFramework")!)
-model.removeExistingModelStore()
+let bundle = NSBundle(identifier: "com.MyApp.MyModelFramework")!
+let model = CoreDataModel(name: "MyModel", bundle: bundle)
+do {
+    try model.removeExistingModelStore()
+} catch {
+    print("Error: \(error)")
+}
 ````
 
 #### Checking migrations
 
 ````swift
-let model = CoreDataModel(name: "MyModel", bundle: NSBundle(identifier: "com.MyApp.MyModelFramework")!)
-let needsMigration: Bool = model.modelStoreNeedsMigration
+let bundle = NSBundle(identifier: "com.MyApp.MyModelFramework")!
+let model = CoreDataModel(name: "MyModel", bundle: bundle)
+if model.needsMigration {
+    // do migration
+}
 ````
 
 #### Using child contexts
 
 ````swift
-let model = CoreDataModel(name: "MyModel", bundle: NSBundle(identifier: "com.MyApp.MyModelFramework")!)
-let stack = CoreDataStack(model: model)
-
-// Create a default child context on main queue
-let childContext = stack.childManagedObjectContext()
-
-// Create a private queue child context with custom merge policy
-let privateChildContext = stack.childManagedObjectContext(concurrencyType: .PrivateQueueConcurrencyType, mergePolicyType: .ErrorMergePolicyType)
+// Create a background queue child context from the main queue context
+let childContext = stack.childContext()
 ````
 
 #### Fetching
@@ -127,15 +143,15 @@ let privateChildContext = stack.childManagedObjectContext(concurrencyType: .Priv
 let entity = entity(name: "MyModel", context: context)!
 let request = FetchRequest<MyModel>(entity: entity)
 
-// Fetching returns a FetchResult<T>
-let result = fetch(request: request, inContext: context)
-
-if !result.success {
-    println("Error = \(result.error)")
+var results = [MyModel]()
+do {
+    results = try fetch(request: request, inContext: context)
+}
+catch {
+    print("Fetch error: \(error)")
 }
 
-// use objects, [MyModel]
-result.objects
+print("Results = \(results)")
 ````
 
 #### Deleting
@@ -145,13 +161,17 @@ let objects: [MyModel] = /* array of MyModel objects */
 
 deleteObjects(objects, inContext: context)
 
-// Commit changes, remove objects from store
-saveContextAndWait(context)
+// Commit changes to remove objects from store
+saveContext(context)
 ````
+
+## Example app
+
+There's an example app in the `Example/` directory. Open the `ExampleApp.xcodeproj` to run it. The project exercises all basic functionality of the library.
 
 ## Unit tests
 
-There's a suite of unit tests for `JSQCoreDataKit.framework`. To run them, open `JSQCoreDataKit.xcworkspace`, select the `JSQCoreDataKit` scheme, then &#x2318;-u. Additional tests are under the `Example` scheme.
+There's a suite of unit tests for `JSQCoreDataKit.framework`. To run them, open `JSQCoreDataKit.xcodeproj`, select the `JSQCoreDataKit-iOS` scheme, then &#x2318;-u.
 
 These tests are well commented and serve as further documentation for how to use this library.
 
@@ -161,17 +181,16 @@ Please follow these sweet [contribution guidelines](https://github.com/jessesqui
 
 ## Credits
 
-Created and maintained by [**@jesse_squires**](https://twitter.com/jesse_squires)
-
-This project borrows some ideas and concepts from my work on [RSTCoreDataKit](https://github.com/rosettastone/RSTCoreDataKit).
+Created and maintained by [**@jesse_squires**](https://twitter.com/jesse_squires).
 
 ## License
 
 `JSQCoreDataKit` is released under an [MIT License][mitLink]. See `LICENSE` for details.
 
->**Copyright &copy; 2015 Jesse Squires.**
+>**Copyright &copy; 2015-present Jesse Squires.**
 
 *Please provide attribution, it is greatly appreciated.*
 
-[mitLink]:http://opensource.org/licenses/MIT
+[podLink]:https://cocoapods.org/pods/JSQCoreDataKit
 [docsLink]:http://www.jessesquires.com/JSQCoreDataKit
+[mitLink]:http://opensource.org/licenses/MIT

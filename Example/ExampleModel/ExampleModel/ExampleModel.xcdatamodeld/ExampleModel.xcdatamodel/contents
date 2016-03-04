@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="8195" systemVersion="15A284" minimumToolsVersion="Xcode 7.0">
+    <entity name="Company" representedClassName=".Company" syncable="YES">
+        <attribute name="dateFounded" attributeType="Date" syncable="YES"/>
+        <attribute name="name" attributeType="String" syncable="YES"/>
+        <attribute name="profits" attributeType="Decimal" defaultValueString="0.0" syncable="YES"/>
+        <relationship name="employees" toMany="YES" deletionRule="Cascade" destinationEntity="Employee" inverseName="company" inverseEntity="Employee" syncable="YES"/>
+    </entity>
+    <entity name="Employee" representedClassName=".Employee" syncable="YES">
+        <attribute name="birthDate" attributeType="Date" syncable="YES"/>
+        <attribute name="name" attributeType="String" syncable="YES"/>
+        <attribute name="salary" attributeType="Decimal" defaultValueString="0.0" syncable="YES"/>
+        <relationship name="company" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Company" inverseName="employees" inverseEntity="Company" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="Company" positionX="-63" positionY="-18" width="128" height="105"/>
+        <element name="Employee" positionX="124" positionY="-6" width="128" height="103"/>
+    </elements>
+</model>

@@ -42,9 +42,8 @@ public typealias StackResultClosure = (result: CoreDataStackResult) -> Void
  - parameter completion: The closure to be executed when the save operation completes.
  */
 public func saveContext(context: NSManagedObjectContext, wait: Bool = true, completion: ((CoreDataSaveResult) -> Void)? = nil) {
-    guard context.hasChanges else { return }
-
     let block = {
+        guard context.hasChanges else { return }
         do {
             try context.save()
             completion?(.Success)
@@ -53,7 +52,6 @@ public func saveContext(context: NSManagedObjectContext, wait: Bool = true, comp
             completion?(.Failure(error as NSError))
         }
     }
-
     wait ? context.performBlockAndWait(block) : context.performBlock(block)
 }
 

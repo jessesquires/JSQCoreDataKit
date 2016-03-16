@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		297C7D2D1C710A1D008E516B /* MigrationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 297C7D2C1C710A1D008E516B /* MigrationTests.swift */; };
+		298F00F71C9C559100AEC77E /* Migrate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 298F00F61C9C559100AEC77E /* Migrate.swift */; };
+		298F00F81C9C559100AEC77E /* Migrate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 298F00F61C9C559100AEC77E /* Migrate.swift */; };
+		298F00F91C9C559100AEC77E /* Migrate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 298F00F61C9C559100AEC77E /* Migrate.swift */; };
+		298F00FA1C9C559100AEC77E /* Migrate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 298F00F61C9C559100AEC77E /* Migrate.swift */; };
 		881219C81B361EAF005E5AA7 /* JSQCoreDataKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88002D4F1AB8F546001787DB /* JSQCoreDataKit.framework */; };
 		8873E2271C51E09700DFE009 /* CoreDataEquatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8873E21D1C51E09700DFE009 /* CoreDataEquatable.swift */; };
 		8873E2281C51E09700DFE009 /* CoreDataExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8873E21E1C51E09700DFE009 /* CoreDataExtensions.swift */; };
@@ -62,6 +67,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		292393AE1C6BC37E0025E6EF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8873E2BB1C51E3B000DFE009 /* ExampleModel.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 885394491BC9EA0300699506;
+			remoteInfo = ExampleModel;
+		};
 		881219C91B361EAF005E5AA7 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 88002D461AB8F546001787DB /* Project object */;
@@ -79,6 +91,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		297C7D2C1C710A1D008E516B /* MigrationTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MigrationTests.swift; sourceTree = "<group>"; };
+		298F00F61C9C559100AEC77E /* Migrate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Migrate.swift; sourceTree = "<group>"; };
 		88002D4F1AB8F546001787DB /* JSQCoreDataKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = JSQCoreDataKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		881219C31B361EAF005E5AA7 /* JSQCoreDataKitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JSQCoreDataKitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		883C83DB1C0D7647007A16F5 /* JSQCoreDataKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = JSQCoreDataKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -186,6 +200,7 @@
 				8873E2231C51E09700DFE009 /* CoreDataStackResult.swift */,
 				8873E2241C51E09700DFE009 /* Info.plist */,
 				8873E2251C51E09700DFE009 /* JSQCoreDataKit.h */,
+				298F00F61C9C559100AEC77E /* Migrate.swift */,
 				8873E2261C51E09700DFE009 /* StoreType.swift */,
 			);
 			path = Source;
@@ -200,6 +215,7 @@
 				8873E24F1C51E10100DFE009 /* ExampleModelTests.swift */,
 				8873E2501C51E10100DFE009 /* FetchTests.swift */,
 				8873E2511C51E10100DFE009 /* Info.plist */,
+				297C7D2C1C710A1D008E516B /* MigrationTests.swift */,
 				8873E2521C51E10100DFE009 /* ModelTests.swift */,
 				8873E2531C51E10100DFE009 /* PersistentStoreOptionsTests.swift */,
 				8873E2541C51E10100DFE009 /* ResetStackTests.swift */,
@@ -289,6 +305,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				292393AF1C6BC37E0025E6EF /* PBXTargetDependency */,
 				881219CA1B361EAF005E5AA7 /* PBXTargetDependency */,
 			);
 			name = JSQCoreDataKitTests;
@@ -460,6 +477,7 @@
 				8873E22C1C51E09700DFE009 /* CoreDataStackFactory.swift in Sources */,
 				8873E2301C51E09700DFE009 /* StoreType.swift in Sources */,
 				8873E22B1C51E09700DFE009 /* CoreDataStack.swift in Sources */,
+				298F00F71C9C559100AEC77E /* Migrate.swift in Sources */,
 				8873E22A1C51E09700DFE009 /* CoreDataSaveResult.swift in Sources */,
 				8873E2291C51E09700DFE009 /* CoreDataModel.swift in Sources */,
 				8873E2281C51E09700DFE009 /* CoreDataExtensions.swift in Sources */,
@@ -477,6 +495,7 @@
 				8873E2641C51E10100DFE009 /* SaveResultTests.swift in Sources */,
 				8873E2661C51E10100DFE009 /* StackFactoryTests.swift in Sources */,
 				8873E2621C51E10100DFE009 /* PersistentStoreOptionsTests.swift in Sources */,
+				297C7D2D1C710A1D008E516B /* MigrationTests.swift in Sources */,
 				8873E2631C51E10100DFE009 /* ResetStackTests.swift in Sources */,
 				8873E25D1C51E10100DFE009 /* DeleteTests.swift in Sources */,
 				8873E2671C51E10100DFE009 /* StackResultTests.swift in Sources */,
@@ -496,6 +515,7 @@
 				8873E2411C51E0DE00DFE009 /* CoreDataStackFactory.swift in Sources */,
 				8873E2431C51E0DE00DFE009 /* StoreType.swift in Sources */,
 				8873E2401C51E0DE00DFE009 /* CoreDataStack.swift in Sources */,
+				298F00F91C9C559100AEC77E /* Migrate.swift in Sources */,
 				8873E23F1C51E0DE00DFE009 /* CoreDataSaveResult.swift in Sources */,
 				8873E23E1C51E0DE00DFE009 /* CoreDataModel.swift in Sources */,
 				8873E23D1C51E0DE00DFE009 /* CoreDataExtensions.swift in Sources */,
@@ -511,6 +531,7 @@
 				8873E2391C51E0DD00DFE009 /* CoreDataStackFactory.swift in Sources */,
 				8873E23B1C51E0DD00DFE009 /* StoreType.swift in Sources */,
 				8873E2381C51E0DD00DFE009 /* CoreDataStack.swift in Sources */,
+				298F00F81C9C559100AEC77E /* Migrate.swift in Sources */,
 				8873E2371C51E0DD00DFE009 /* CoreDataSaveResult.swift in Sources */,
 				8873E2361C51E0DD00DFE009 /* CoreDataModel.swift in Sources */,
 				8873E2351C51E0DD00DFE009 /* CoreDataExtensions.swift in Sources */,
@@ -526,6 +547,7 @@
 				8873E2491C51E0DE00DFE009 /* CoreDataStackFactory.swift in Sources */,
 				8873E24B1C51E0DE00DFE009 /* StoreType.swift in Sources */,
 				8873E2481C51E0DE00DFE009 /* CoreDataStack.swift in Sources */,
+				298F00FA1C9C559100AEC77E /* Migrate.swift in Sources */,
 				8873E2471C51E0DE00DFE009 /* CoreDataSaveResult.swift in Sources */,
 				8873E2461C51E0DE00DFE009 /* CoreDataModel.swift in Sources */,
 				8873E2451C51E0DE00DFE009 /* CoreDataExtensions.swift in Sources */,
@@ -537,6 +559,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		292393AF1C6BC37E0025E6EF /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = ExampleModel;
+			targetProxy = 292393AE1C6BC37E0025E6EF /* PBXContainerItemProxy */;
+		};
 		881219CA1B361EAF005E5AA7 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 88002D4E1AB8F546001787DB /* JSQCoreDataKit iOS */;

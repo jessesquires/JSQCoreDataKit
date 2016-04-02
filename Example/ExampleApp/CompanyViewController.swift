@@ -110,7 +110,7 @@ class CompanyViewController: UITableViewController, NSFetchedResultsControllerDe
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(
             barButtonSystemItem: .Add,
             target: self,
-            action: "didTapAddButton:")
+            action: #selector(didTapAddButton(_:)))
     }
 
 

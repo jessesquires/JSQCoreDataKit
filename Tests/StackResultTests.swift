@@ -74,7 +74,7 @@ class StackResultTests: TestCase {
     }
 
     func test_StackResult_Description() {
-        print("\(__FUNCTION__)")
+        print("\(#function)")
 
         let success = CoreDataStackResult.Success(inMemoryStack)
         print(success)

@@ -73,7 +73,7 @@ public final class CoreDataStack: CustomStringConvertible, Equatable {
             self.storeCoordinator = storeCoordinator
 
             NSNotificationCenter.defaultCenter().addObserver(self,
-                selector: Selector("didReceiveChildContextDidSaveNotification:"),
+                selector: #selector(didReceiveChildContextDidSaveNotification(_:)),
                 name: NSManagedObjectContextDidSaveNotification,
                 object: mainContext)
     }
@@ -109,7 +109,7 @@ public final class CoreDataStack: CustomStringConvertible, Equatable {
             }
 
             NSNotificationCenter.defaultCenter().addObserver(self,
-                selector: Selector("didReceiveChildContextDidSaveNotification:"),
+                selector: #selector(didReceiveChildContextDidSaveNotification(_:)),
                 name: NSManagedObjectContextDidSaveNotification,
                 object: childContext)
 

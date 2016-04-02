@@ -196,7 +196,7 @@ class ModelTests: XCTestCase {
     }
 
     func test_Model_Description() {
-        print("\(__FUNCTION__)")
+        print("\(#function)")
 
         let model = CoreDataModel(name: modelName, bundle: modelBundle, storeType: .InMemory)
         print(model)

@@ -32,7 +32,7 @@ class ResetStackTests: TestCase {
         let stack = self.inMemoryStack
         generateCompaniesInContext(stack.mainContext, count: 3)
 
-        let expectation = expectationWithDescription("\(__FUNCTION__)")
+        let expectation = expectationWithDescription("\(#function)")
 
         // WHEN: we attempt to reset the stack
         resetStack(stack) { (result: CoreDataStackResult) in
@@ -56,7 +56,7 @@ class ResetStackTests: TestCase {
         let stack = self.inMemoryStack
         generateCompaniesInContext(stack.backgroundContext, count: 3)
 
-        let expectation = expectationWithDescription("\(__FUNCTION__)")
+        let expectation = expectationWithDescription("\(#function)")
 
         // WHEN: we attempt to reset the stack
         resetStack(stack) { (result: CoreDataStackResult) in
@@ -91,7 +91,7 @@ class ResetStackTests: TestCase {
         XCTAssertNil(error)
         XCTAssertEqual(objectsBefore, 3)
 
-        let expectation = expectationWithDescription("\(__FUNCTION__)")
+        let expectation = expectationWithDescription("\(#function)")
 
         // WHEN: we attempt to reset the stack
         resetStack(stack) { (result: CoreDataStackResult) in

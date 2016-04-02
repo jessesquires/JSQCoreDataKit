@@ -90,7 +90,7 @@ class StoreTypeTests: XCTestCase {
     }
 
     func test_StoreType_Description() {
-        print("\(__FUNCTION__)")
+        print("\(#function)")
         let url = DefaultDirectoryURL()
 
         let sqlite = StoreType.SQLite(url)

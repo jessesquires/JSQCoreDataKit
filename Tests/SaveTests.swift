@@ -60,7 +60,7 @@ class SaveTests: TestCase {
             return true
         }
 
-        let saveExpectation = expectationWithDescription("\(__FUNCTION__)")
+        let saveExpectation = expectationWithDescription("\(#function)")
 
         // WHEN: we attempt to save the context
         saveContext(stack.mainContext, wait: true) { result in
@@ -141,7 +141,7 @@ class SaveTests: TestCase {
             return true
         }
 
-        let saveExpectation = expectationWithDescription("\(__FUNCTION__)")
+        let saveExpectation = expectationWithDescription("\(#function)")
 
         // WHEN: we attempt to save the context asynchronously
         saveContext(stack.mainContext, wait: false) { result in
@@ -184,7 +184,7 @@ class SaveTests: TestCase {
             return true
         }
 
-        let saveExpectation = expectationWithDescription("\(__FUNCTION__)")
+        let saveExpectation = expectationWithDescription("\(#function)")
 
         // WHEN: we attempt to save the context
         saveContext(childContext) { result in

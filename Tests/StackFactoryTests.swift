@@ -51,7 +51,7 @@ class StackFactoryTests: TestCase {
         let factory = CoreDataStackFactory(model: sqliteModel)
 
         var stack: CoreDataStack?
-        let expectation = expectationWithDescription("\(__FUNCTION__)")
+        let expectation = expectationWithDescription("\(#function)")
 
         // WHEN: we create a stack in the background
         factory.createStackInBackground { (result: CoreDataStackResult) in
@@ -113,7 +113,7 @@ class StackFactoryTests: TestCase {
     }
 
     func test_StackFactory_Description() {
-        print("\(__FUNCTION__)")
+        print("\(#function)")
 
         let factory = CoreDataStackFactory(model: inMemoryModel)
         print(factory)

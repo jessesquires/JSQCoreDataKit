@@ -58,7 +58,7 @@ class SaveResultTests: XCTestCase {
     }
 
     func test_SaveResult_Description() {
-        print("\(__FUNCTION__)")
+        print("\(#function)")
 
         let success = CoreDataSaveResult.Success
         print(success)

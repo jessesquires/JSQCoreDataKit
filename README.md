@@ -25,12 +25,12 @@ This library aims to do the following:
 
 ## Requirements
 
-* Xcode 7.2+
+* Xcode 7.3+
 * iOS 8.0+
 * OSX 10.10+
 * tvOS 9.1+
 * watchOS 2.0+
-* Swift 2.0+
+* Swift 2.2+
 
 ## Installation
 

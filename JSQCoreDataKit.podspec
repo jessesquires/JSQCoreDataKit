@@ -1,11 +1,11 @@
 Pod::Spec.new do |s|
    s.name = 'JSQCoreDataKit'
-   s.version = '2.2.1'
+   s.version = '3.0.0'
    s.license = 'MIT'
 
    s.summary = 'A swifter Core Data stack'
    s.homepage = 'https://github.com/jessesquires/JSQCoreDataKit'
-   s.documentation_url = 'http://jessesquires.com/JSQCoreDataKit'
+   s.documentation_url = 'http://www.jessesquires.com/JSQCoreDataKit/'
    s.social_media_url = 'https://twitter.com/jesse_squires'
    s.author = 'Jesse Squires'
 

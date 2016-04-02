@@ -4,6 +4,15 @@ The changelog for `JSQCoreDataKit`. Also see the [releases](https://github.com/j
 
 --------------------------------------
 
+3.0.0
+-----
+
+This release closes the [3.0.0 milestone](https://github.com/jessesquires/JSQCoreDataKit/issues?q=milestone%3A3.0.0).
+
+### Breaking changes
+
+- Migrated to Swift 2.2. Swift 2.2 and above is now required. (#67)
+
 2.2.1
 -----
 

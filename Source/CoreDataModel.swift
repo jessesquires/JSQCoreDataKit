@@ -109,14 +109,14 @@ public struct CoreDataModel: CustomStringConvertible, Equatable {
     // MARK: Initialization
 
     /**
-    Constructs a new `CoreDataModel` instance with the specified name and bundle.
+     Constructs a new `CoreDataModel` instance with the specified name and bundle.
 
-    - parameter name:           The name of the Core Data model.
-    - parameter bundle:         The bundle in which the model is located. The default is the main bundle.
-    - parameter storeType:      The store type for the Core Data model. The default is `.SQLite`, with the user's documents directory.
+     - parameter name:      The name of the Core Data model.
+     - parameter bundle:    The bundle in which the model is located. The default is the main bundle.
+     - parameter storeType: The store type for the Core Data model. The default is `.SQLite`, with the user's documents directory.
 
-    - returns: A new `CoreDataModel` instance.
-    */
+     - returns: A new `CoreDataModel` instance.
+     */
     public init(name: String, bundle: NSBundle = .mainBundle(), storeType: StoreType = .SQLite(DefaultDirectoryURL())) {
         self.name = name
         self.bundle = bundle
@@ -127,10 +127,10 @@ public struct CoreDataModel: CustomStringConvertible, Equatable {
     // MARK: Methods
 
     /**
-    Removes the existing model store specfied by the receiver.
+     Removes the existing model store specfied by the receiver.
 
-    - throws: If removing the store fails or errors, then this function throws an `NSError`.
-    */
+     - throws: If removing the store fails or errors, then this function throws an `NSError`.
+     */
     public func removeExistingModelStore() throws {
         let fileManager = NSFileManager.defaultManager()
         if let storePath = storeURL?.path where fileManager.fileExistsAtPath(storePath) {
@@ -161,7 +161,7 @@ internal func DefaultDirectoryURL() -> NSURL {
         #else
             let searchPathDirectory = NSSearchPathDirectory.DocumentDirectory
         #endif
-		
+
         return try NSFileManager.defaultManager().URLForDirectory(
             searchPathDirectory,
             inDomain: .UserDomainMask,

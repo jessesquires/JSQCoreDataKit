@@ -17,6 +17,8 @@
 //
 
 import CoreData
+import Foundation
+
 
 public enum MigrationError: ErrorType {
     case SourceManagedObjectModelNotFound
@@ -27,11 +29,15 @@ public enum MigrationError: ErrorType {
  Progressively migrates the persistent store of a `CoreDataModel` based on mapping models found in the model's bundle.
 
  - note: Migration is only supported for on-disk persistent stores.
- A complete 'path' of mapping models must exist between the peristent store's version and the model's version
+ A complete 'path' of mapping models must exist between the peristent store's version and the model's version.
 
  - parameter model:      The `CoreDataModel` to perform migration upon.
 
- - throws: If the `NSManagedObjectModel` corresponding to the existing persistent store is not found in the model bundle then this function throws `.SourceManagedObjectModelNotFound`. If an `NSMappingModel` part of the progressive migration 'path' is not found in the model bundle then a `.MappingModelNotFound` is thrown. The function rethrows exceptions that may result from reading the persistent store metadata, file system operations or migration with `NSMigrationManager`.
+ - throws: If the `NSManagedObjectModel` corresponding to the existing persistent store is not found in the model bundle
+ then this function throws `.SourceManagedObjectModelNotFound`. If an `NSMappingModel` part of the progressive
+ migration 'path' is not found in the model bundle then a `.MappingModelNotFound` is thrown.
+ The function rethrows exceptions that may result from reading the persistent store metadata,
+ file system operations or migration with `NSMigrationManager`.
  */
 public func migrate(model: CoreDataModel) throws {
 
@@ -86,7 +92,9 @@ internal func findModelsInBundle(bundle: NSBundle) -> [NSManagedObjectModel] {
     return modelURLs.flatMap { NSManagedObjectModel(contentsOfURL: $0) }
 }
 
-internal func buildMappingModelPath(bundle: NSBundle, sourceModel: NSManagedObjectModel, destinationModel: NSManagedObjectModel) throws -> [(source: NSManagedObjectModel, mapping: NSMappingModel, destination: NSManagedObjectModel)] {
+internal func buildMappingModelPath(bundle: NSBundle,
+                                    sourceModel: NSManagedObjectModel,
+                                    destinationModel: NSManagedObjectModel) throws -> [(source: NSManagedObjectModel, mapping: NSMappingModel, destination: NSManagedObjectModel)] {
     var migrationSteps: [(source: NSManagedObjectModel, mapping: NSMappingModel, destination: NSManagedObjectModel)] = []
     var stepModel: NSManagedObjectModel = sourceModel
     repeat {
@@ -108,6 +116,6 @@ internal func nextIncrementalModelAndMapping(sourceModel sourceModel: NSManagedO
             return (nextDestinationModel, mappingModel)
         }
     }
-
+    
     return nil
 }

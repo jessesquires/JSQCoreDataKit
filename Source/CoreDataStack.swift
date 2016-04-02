@@ -67,15 +67,15 @@ public final class CoreDataStack: CustomStringConvertible, Equatable {
         mainContext: NSManagedObjectContext,
         backgroundContext: NSManagedObjectContext,
         storeCoordinator: NSPersistentStoreCoordinator) {
-            self.model = model
-            self.mainContext = mainContext
-            self.backgroundContext = backgroundContext
-            self.storeCoordinator = storeCoordinator
+        self.model = model
+        self.mainContext = mainContext
+        self.backgroundContext = backgroundContext
+        self.storeCoordinator = storeCoordinator
 
-            NSNotificationCenter.defaultCenter().addObserver(self,
-                selector: #selector(didReceiveChildContextDidSaveNotification(_:)),
-                name: NSManagedObjectContextDidSaveNotification,
-                object: mainContext)
+        NSNotificationCenter.defaultCenter().addObserver(self,
+                                                         selector: #selector(didReceiveChildContextDidSaveNotification(_:)),
+                                                         name: NSManagedObjectContextDidSaveNotification,
+                                                         object: mainContext)
     }
 
     /// :nodoc:
@@ -87,33 +87,33 @@ public final class CoreDataStack: CustomStringConvertible, Equatable {
     // MARK: Child contexts
 
     /**
-    Creates a new child context whose parent is `mainContext` and has the specified `concurrencyType` and `mergePolicyType`.
-    Saving the returned context will propagate changes through `mainContext`, `backgroundContext`,
-    and finally the persistent store.
+     Creates a new child context whose parent is `mainContext` and has the specified `concurrencyType` and `mergePolicyType`.
+     Saving the returned context will propagate changes through `mainContext`, `backgroundContext`,
+     and finally the persistent store.
 
-    - parameter concurrencyType: The concurrency pattern to use. The default is `.PrivateQueueConcurrencyType`.
-    - parameter mergePolicyType: The merge policy to use. The default is `.MergeByPropertyObjectTrumpMergePolicyType`.
+     - parameter concurrencyType: The concurrency pattern to use. The default is `.PrivateQueueConcurrencyType`.
+     - parameter mergePolicyType: The merge policy to use. The default is `.MergeByPropertyObjectTrumpMergePolicyType`.
 
-    - returns: A new child managed object context whose parent is `mainContext`.
-    */
+     - returns: A new child managed object context whose parent is `mainContext`.
+     */
     public func childContext(
         concurrencyType concurrencyType: NSManagedObjectContextConcurrencyType = .PrivateQueueConcurrencyType,
-        mergePolicyType: NSMergePolicyType = .MergeByPropertyObjectTrumpMergePolicyType) -> ChildContext {
+                        mergePolicyType: NSMergePolicyType = .MergeByPropertyObjectTrumpMergePolicyType) -> ChildContext {
 
-            let childContext = NSManagedObjectContext(concurrencyType: concurrencyType)
-            childContext.parentContext = mainContext
-            childContext.mergePolicy = NSMergePolicy(mergeType: mergePolicyType)
+        let childContext = NSManagedObjectContext(concurrencyType: concurrencyType)
+        childContext.parentContext = mainContext
+        childContext.mergePolicy = NSMergePolicy(mergeType: mergePolicyType)
 
-            if let name = mainContext.name {
-                childContext.name = name + ".child"
-            }
+        if let name = mainContext.name {
+            childContext.name = name + ".child"
+        }
 
-            NSNotificationCenter.defaultCenter().addObserver(self,
-                selector: #selector(didReceiveChildContextDidSaveNotification(_:)),
-                name: NSManagedObjectContextDidSaveNotification,
-                object: childContext)
+        NSNotificationCenter.defaultCenter().addObserver(self,
+                                                         selector: #selector(didReceiveChildContextDidSaveNotification(_:)),
+                                                         name: NSManagedObjectContextDidSaveNotification,
+                                                         object: childContext)
 
-            return childContext
+        return childContext
     }
 
 

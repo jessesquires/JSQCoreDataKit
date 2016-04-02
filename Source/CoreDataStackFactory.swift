@@ -54,13 +54,13 @@ public struct CoreDataStackFactory: CustomStringConvertible, Equatable {
     // MARK: Initialization
 
     /**
-    Constructs a new `CoreDataStackFactory` instance with the specified `model` and `options`.
+     Constructs a new `CoreDataStackFactory` instance with the specified `model` and `options`.
 
-    - parameter model:   The model describing the stack.
-    - parameter options: Options for the persistent store.
+     - parameter model:   The model describing the stack.
+     - parameter options: Options for the persistent store.
 
-    - returns: A new `CoreDataStackFactory` instance.
-    */
+     - returns: A new `CoreDataStackFactory` instance.
+     */
     public init(model: CoreDataModel, options: PersistentStoreOptions? = DefaultStoreOptions) {
         self.model = model
         self.options = options
@@ -70,46 +70,46 @@ public struct CoreDataStackFactory: CustomStringConvertible, Equatable {
     // MARK: Creating a stack
 
     /**
-    Asynchronously initializes a new `CoreDataStack` instance using the factory's `model` and `options`.
+     Asynchronously initializes a new `CoreDataStack` instance using the factory's `model` and `options`.
 
-    - note: This operation is performed on a background queue.
+     - note: This operation is performed on a background queue.
 
-    - parameter queue:      A background queue on which to initialize the stack. The default is a high priority background queue.
-    - parameter completion: The closure to be called once initialization is complete.
-    */
+     - parameter queue:      A background queue on which to initialize the stack. The default is a high priority background queue.
+     - parameter completion: The closure to be called once initialization is complete.
+     */
     public func createStackInBackground(
         queue: dispatch_queue_t = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0),
         completion: StackResultClosure) {
 
-            dispatch_async(queue) {
-                assert(!NSThread.isMainThread(), "*** Error: cannot create a stack on the main queue via \(#function)")
+        dispatch_async(queue) {
+            assert(!NSThread.isMainThread(), "*** Error: cannot create a stack on the main queue via \(#function)")
 
-                let storeCoordinator: NSPersistentStoreCoordinator
-                do {
-                    storeCoordinator = try self.createStoreCoordinator()
-                } catch {
-                    dispatch_async(dispatch_get_main_queue()) {
-                        completion(result: .Failure(error as NSError))
-                    }
-                    return
-                }
-
-                let backgroundContext = self.createContext(.PrivateQueueConcurrencyType, name: "background")
-                backgroundContext.persistentStoreCoordinator = storeCoordinator
-
+            let storeCoordinator: NSPersistentStoreCoordinator
+            do {
+                storeCoordinator = try self.createStoreCoordinator()
+            } catch {
                 dispatch_async(dispatch_get_main_queue()) {
-                    let mainContext = self.createContext(.MainQueueConcurrencyType, name: "main")
-                    mainContext.parentContext = backgroundContext
-
-                    let stack = CoreDataStack(
-                        model: self.model,
-                        mainContext: mainContext,
-                        backgroundContext: backgroundContext,
-                        storeCoordinator: storeCoordinator)
-
-                    completion(result: .Success(stack))
+                    completion(result: .Failure(error as NSError))
                 }
+                return
             }
+
+            let backgroundContext = self.createContext(.PrivateQueueConcurrencyType, name: "background")
+            backgroundContext.persistentStoreCoordinator = storeCoordinator
+
+            dispatch_async(dispatch_get_main_queue()) {
+                let mainContext = self.createContext(.MainQueueConcurrencyType, name: "main")
+                mainContext.parentContext = backgroundContext
+
+                let stack = CoreDataStack(
+                    model: self.model,
+                    mainContext: mainContext,
+                    backgroundContext: backgroundContext,
+                    storeCoordinator: storeCoordinator)
+
+                completion(result: .Success(stack))
+            }
+        }
     }
 
     /**
@@ -152,22 +152,22 @@ public struct CoreDataStackFactory: CustomStringConvertible, Equatable {
     private func createStoreCoordinator() throws -> NSPersistentStoreCoordinator {
         let storeCoordinator = NSPersistentStoreCoordinator(managedObjectModel: model.managedObjectModel)
         try storeCoordinator.addPersistentStoreWithType(model.storeType.type,
-            configuration: nil,
-            URL: model.storeURL,
-            options: options)
+                                                        configuration: nil,
+                                                        URL: model.storeURL,
+                                                        options: options)
         return storeCoordinator
     }
 
     private func createContext(
         concurrencyType: NSManagedObjectContextConcurrencyType,
         name: String) -> NSManagedObjectContext {
-            let context = NSManagedObjectContext(concurrencyType: concurrencyType)
-            context.mergePolicy = NSMergePolicy(mergeType: .MergeByPropertyStoreTrumpMergePolicyType)
+        let context = NSManagedObjectContext(concurrencyType: concurrencyType)
+        context.mergePolicy = NSMergePolicy(mergeType: .MergeByPropertyStoreTrumpMergePolicyType)
 
-            let contextName = "JSQCoreDataKit.CoreDataStack.context."
-            context.name = contextName + name
+        let contextName = "JSQCoreDataKit.CoreDataStack.context."
+        context.name = contextName + name
 
-            return context
+        return context
     }
     
     

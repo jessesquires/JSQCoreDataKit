@@ -81,12 +81,12 @@ public class FetchRequest <T: NSManagedObject>: NSFetchRequest {
     // MARK: Initialization
 
     /**
-    Constructs a new `FetchRequest` instance.
+     Constructs a new `FetchRequest` instance.
 
-    - parameter entity: The entity description for the entities that this request fetches.
+     - parameter entity: The entity description for the entities that this request fetches.
 
-    - returns: A new `FetchRequest` instance.
-    */
+     - returns: A new `FetchRequest` instance.
+     */
     public init(entity: NSEntityDescription) {
         super.init()
         self.entity = entity
@@ -157,45 +157,45 @@ public func deleteObjects <T: NSManagedObject>(objects: [T], inContext context: 
  - parameter completion: The closure to be called once resetting is complete.
  */
 public func resetStack(stack: CoreDataStack,
-    queue: dispatch_queue_t = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0),
-    completion: StackResultClosure) {
+                       queue: dispatch_queue_t = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0),
+                       completion: StackResultClosure) {
 
-        stack.mainContext.performBlockAndWait { stack.mainContext.reset() }
-        stack.backgroundContext.performBlockAndWait { stack.backgroundContext.reset() }
+    stack.mainContext.performBlockAndWait { stack.mainContext.reset() }
+    stack.backgroundContext.performBlockAndWait { stack.backgroundContext.reset() }
 
-        guard let store = stack.storeCoordinator.persistentStores.first else {
+    guard let store = stack.storeCoordinator.persistentStores.first else {
+        dispatch_async(dispatch_get_main_queue()) {
+            completion(result: .Success(stack))
+        }
+        return
+    }
+
+    dispatch_async(queue) {
+        assert(!NSThread.isMainThread(), "*** Error: cannot reset a stack on the main queue")
+
+        let storeCoordinator = stack.storeCoordinator
+        let options = store.options
+        let model = stack.model
+
+        storeCoordinator.performBlockAndWait {
+            do {
+                try model.removeExistingModelStore()
+                try storeCoordinator.removePersistentStore(store)
+                try storeCoordinator.addPersistentStoreWithType(model.storeType.type,
+                    configuration: nil,
+                    URL: model.storeURL,
+                    options: options)
+            }
+            catch {
+                dispatch_async(dispatch_get_main_queue()) {
+                    completion(result: .Failure(error as NSError))
+                }
+                return
+            }
+
             dispatch_async(dispatch_get_main_queue()) {
                 completion(result: .Success(stack))
             }
-            return
         }
-
-        dispatch_async(queue) {
-            assert(!NSThread.isMainThread(), "*** Error: cannot reset a stack on the main queue")
-
-            let storeCoordinator = stack.storeCoordinator
-            let options = store.options
-            let model = stack.model
-
-            storeCoordinator.performBlockAndWait {
-                do {
-                    try model.removeExistingModelStore()
-                    try storeCoordinator.removePersistentStore(store)
-                    try storeCoordinator.addPersistentStoreWithType(model.storeType.type,
-                        configuration: nil,
-                        URL: model.storeURL,
-                        options: options)
-                }
-                catch {
-                    dispatch_async(dispatch_get_main_queue()) {
-                        completion(result: .Failure(error as NSError))
-                    }
-                    return
-                }
-
-                dispatch_async(dispatch_get_main_queue()) {
-                    completion(result: .Success(stack))
-                }
-            }
-        }
+    }
 }

@@ -35,8 +35,8 @@ public enum CoreDataSaveResult: CustomStringConvertible, Equatable {
     // MARK: Methods
 
     /**
-    - returns: The result's `NSError` if `.Failure`, otherwise `nil`.
-    */
+     - returns: The result's `NSError` if `.Failure`, otherwise `nil`.
+     */
     public func error() -> NSError? {
         if case .Failure(let error) = self {
             return error

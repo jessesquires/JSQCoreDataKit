@@ -35,8 +35,8 @@ public enum CoreDataStackResult: CustomStringConvertible, Equatable {
     // MARK: Methods
 
     /**
-    - returns: The result's `CoreDataStack` if `.Success`, otherwise `nil`.
-    */
+     - returns: The result's `CoreDataStack` if `.Success`, otherwise `nil`.
+     */
     public func stack() -> CoreDataStack? {
         if case .Success(let stack) = self {
             return stack

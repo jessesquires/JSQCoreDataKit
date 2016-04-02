@@ -82,7 +82,7 @@ public struct CoreDataStackFactory: CustomStringConvertible, Equatable {
         completion: StackResultClosure) {
 
         dispatch_async(queue) {
-            assert(!NSThread.isMainThread(), "*** Error: cannot create a stack on the main queue via \(#function)")
+            precondition(!NSThread.isMainThread(), "*** Error: cannot create a stack on the main queue via \(#function)")
 
             let storeCoordinator: NSPersistentStoreCoordinator
             do {
@@ -122,7 +122,7 @@ public struct CoreDataStackFactory: CustomStringConvertible, Equatable {
      - returns: A `CoreDataStackResult` instance, describing the success or failure of creating the stack.
      */
     public func createStack() -> CoreDataStackResult {
-        assert(NSThread.isMainThread(), "*** Error: \(#function) must be called on main thread")
+        precondition(NSThread.isMainThread(), "*** Error: \(#function) must be called on main thread")
 
         let storeCoordinator: NSPersistentStoreCoordinator
         do {

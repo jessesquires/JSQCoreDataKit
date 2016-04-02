@@ -171,7 +171,7 @@ public func resetStack(stack: CoreDataStack,
     }
 
     dispatch_async(queue) {
-        assert(!NSThread.isMainThread(), "*** Error: cannot reset a stack on the main queue")
+        precondition(!NSThread.isMainThread(), "*** Error: cannot reset a stack on the main queue")
 
         let storeCoordinator = stack.storeCoordinator
         let options = store.options

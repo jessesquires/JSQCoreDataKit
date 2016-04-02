@@ -33,7 +33,7 @@ class EmployeeViewController: UITableViewController, NSFetchedResultsControllerD
 
     var company: Company!
 
-    
+
     // MARK: View lifecycle
 
     override func viewDidLoad() {
@@ -67,7 +67,7 @@ class EmployeeViewController: UITableViewController, NSFetchedResultsControllerD
             }
         }
     }
-    
+
 
     // MARK: Helpers
 
@@ -83,9 +83,9 @@ class EmployeeViewController: UITableViewController, NSFetchedResultsControllerD
         let request = fetchRequest(self.stack.mainContext)
 
         self.frc = NSFetchedResultsController(fetchRequest: request,
-            managedObjectContext: self.stack.mainContext,
-            sectionNameKeyPath: nil,
-            cacheName: nil)
+                                              managedObjectContext: self.stack.mainContext,
+                                              sectionNameKeyPath: nil,
+                                              cacheName: nil)
 
         self.frc?.delegate = self
 
@@ -142,7 +142,7 @@ class EmployeeViewController: UITableViewController, NSFetchedResultsControllerD
             saveContext(self.stack.mainContext)
         }
     }
-    
+
 
     // MARK: Fetched results controller delegate
 
@@ -153,39 +153,39 @@ class EmployeeViewController: UITableViewController, NSFetchedResultsControllerD
     func controller(
         controller: NSFetchedResultsController,
         didChangeSection sectionInfo: NSFetchedResultsSectionInfo,
-        atIndex sectionIndex: Int,
-        forChangeType type: NSFetchedResultsChangeType) {
-            switch type {
-            case .Insert:
-                tableView.insertSections(NSIndexSet(index: sectionIndex), withRowAnimation: .Fade)
-            case .Delete:
-                tableView.deleteSections(NSIndexSet(index: sectionIndex), withRowAnimation: .Fade)
-            default:
-                break
-            }
+                         atIndex sectionIndex: Int,
+                                 forChangeType type: NSFetchedResultsChangeType) {
+        switch type {
+        case .Insert:
+            tableView.insertSections(NSIndexSet(index: sectionIndex), withRowAnimation: .Fade)
+        case .Delete:
+            tableView.deleteSections(NSIndexSet(index: sectionIndex), withRowAnimation: .Fade)
+        default:
+            break
+        }
     }
 
     func controller(
         controller: NSFetchedResultsController,
         didChangeObject anObject: AnyObject,
-        atIndexPath indexPath: NSIndexPath?,
-        forChangeType type: NSFetchedResultsChangeType,
-        newIndexPath: NSIndexPath?) {
-            switch type {
-            case .Insert:
-                tableView.insertRowsAtIndexPaths([newIndexPath!], withRowAnimation: .Fade)
-            case .Delete:
-                tableView.deleteRowsAtIndexPaths([indexPath!], withRowAnimation: .Fade)
-            case .Update:
-                configureCell(tableView.cellForRowAtIndexPath(indexPath!)!, atIndexPath: indexPath!)
-            case .Move:
-                tableView.deleteRowsAtIndexPaths([indexPath!], withRowAnimation: .Fade)
-                tableView.insertRowsAtIndexPaths([newIndexPath!], withRowAnimation: .Fade)
-            }
+                        atIndexPath indexPath: NSIndexPath?,
+                                    forChangeType type: NSFetchedResultsChangeType,
+                                                  newIndexPath: NSIndexPath?) {
+        switch type {
+        case .Insert:
+            tableView.insertRowsAtIndexPaths([newIndexPath!], withRowAnimation: .Fade)
+        case .Delete:
+            tableView.deleteRowsAtIndexPaths([indexPath!], withRowAnimation: .Fade)
+        case .Update:
+            configureCell(tableView.cellForRowAtIndexPath(indexPath!)!, atIndexPath: indexPath!)
+        case .Move:
+            tableView.deleteRowsAtIndexPaths([indexPath!], withRowAnimation: .Fade)
+            tableView.insertRowsAtIndexPaths([newIndexPath!], withRowAnimation: .Fade)
+        }
     }
-
+    
     func controllerDidChangeContent(controller: NSFetchedResultsController) {
         tableView.endUpdates()
     }
-
+    
 }

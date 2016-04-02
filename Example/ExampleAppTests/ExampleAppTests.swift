@@ -21,13 +21,13 @@ import XCTest
 
 
 class ExampleAppTests: XCTestCase {
-    
+
     override func setUp() {
         super.setUp()
     }
-    
+
     override func tearDown() {
         super.tearDown()
     }
-    
+
 }

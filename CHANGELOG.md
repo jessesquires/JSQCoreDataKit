@@ -11,7 +11,7 @@ This release closes the [2.2.1 milestone](https://github.com/jessesquires/JSQCor
 
 ### Fixes
 
-- Fixed multithreading Violation while saving context (#63, #59, #65). Thanks @saurabytes and @markkrenek!
+- Fixed multithreading violation while saving context (#63, #59, #65). Thanks @saurabytes and @markkrenek!
 - On `tvOS`, the default SQLite directory now defaults to `.CacheDirectory` instead of `.DocumentDirectory` (#61, #62). Thanks @cgoldsby !
 
 

@@ -9,9 +9,14 @@ The changelog for `JSQCoreDataKit`. Also see the [releases](https://github.com/j
 
 This release closes the [3.0.0 milestone](https://github.com/jessesquires/JSQCoreDataKit/issues?q=milestone%3A3.0.0).
 
-### Breaking changes
+### Breaking changes :warning: 
 
-- Migrated to Swift 2.2. Swift 2.2 and above is now required. (#67)
+- Migrated to Swift 2.2. (#67) **Swift 2.2 and above is now required.**
+
+### New
+
+- Support for Swift Package Manager (#55) :tada: 
+- Core Data model migration support! (#46, #66) Thanks @marius-serban ! :tada: See the [README](https://github.com/jessesquires/JSQCoreDataKit/blob/develop/README.md) and [docs](http://www.jessesquires.com/JSQCoreDataKit/) for details!
 
 2.2.1
 -----

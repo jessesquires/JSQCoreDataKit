@@ -51,15 +51,15 @@ class TestCase: XCTestCase {
     // MARK: Helpers
 
     func generateDataInContext(context: NSManagedObjectContext,
-        companiesCount: Int = Int(arc4random_uniform(10)),
-        employeesCount: Int = Int(arc4random_uniform(1_000))) -> [Company] {
-            let companies = generateCompaniesInContext(context, count: companiesCount)
+                               companiesCount: Int = Int(arc4random_uniform(10)),
+                               employeesCount: Int = Int(arc4random_uniform(1_000))) -> [Company] {
+        let companies = generateCompaniesInContext(context, count: companiesCount)
 
-            companies.forEach { c in
-                generateEmployeesInContext(context, company: c, count: employeesCount)
-            }
+        companies.forEach { c in
+            generateEmployeesInContext(context, company: c, count: employeesCount)
+        }
 
-            return companies
+        return companies
     }
 
     func generateCompaniesInContext(context: NSManagedObjectContext, count: Int) -> [Company] {

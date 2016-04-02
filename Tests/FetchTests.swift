@@ -53,7 +53,7 @@ class FetchTests: TestCase {
         let count = 10
         generateEmployeesInContext(stack.mainContext, company: nil, count: count - 1)
         let myEmployee = Employee.newEmployee(stack.mainContext)
-        
+
         // WHEN: we execute a fetch request for the specific object
         let request = FetchRequest<Employee>(entity: entity(name: Employee.entityName, context: stack.mainContext))
         request.predicate = NSPredicate(format: "name == %@", myEmployee.name)

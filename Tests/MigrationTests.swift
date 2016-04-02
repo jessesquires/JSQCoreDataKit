@@ -27,12 +27,11 @@ import JSQCoreDataKit
 
 class MigrationTests: TestCase {
 
-    lazy var model: CoreDataModel = CoreDataModel(name: modelName, bundle: modelBundle, storeType: .SQLite(DefaultDirectoryURL()))
+    let model: CoreDataModel = CoreDataModel(name: modelName, bundle: modelBundle, storeType: .SQLite(DefaultDirectoryURL()))
 
     override func setUp() {
         super.setUp()
-
-        try! model.removeExistingModelStore()
+        _ = try? model.removeExistingModelStore()
     }
 
     func test_GivenExistingPersistentStoreIsStale_ThenCoreDataModel_needsMigration() {
@@ -117,7 +116,7 @@ class MigrationTests: TestCase {
         do {
             try buildMappingModelPath(model.bundle, sourceModel: sourceModel, destinationModel: destinationModel)
 
-        // THEN: a `MigrationError.MappingModelNotFound` exception is thrown
+            // THEN: a `MigrationError.MappingModelNotFound` exception is thrown
         } catch MigrationError.MappingModelNotFound(let errorModel) {
             XCTAssertEqual(errorModel, managedObjectModelVersion("Version 3"))
             return
@@ -173,12 +172,12 @@ class MigrationTests: TestCase {
         guard let mappingModelURL = model.bundle.URLForResource(name, withExtension: "cdm") else {
             preconditionFailure("Mapping model named \(name) not found in bundle.")
         }
-
+        
         guard let result = NSMappingModel(contentsOfURL: mappingModelURL) else {
             preconditionFailure("Mapping model named \(name) is invalid.")
         }
-
+        
         return result
     }
-
+    
 }

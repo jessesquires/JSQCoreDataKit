@@ -98,7 +98,7 @@ class StoreTypeTests: XCTestCase {
 
         let binary = StoreType.Binary(url)
         print(binary)
-
+        
         let memory = StoreType.InMemory
         print(memory)
     }

@@ -94,7 +94,7 @@ class DeleteTests: TestCase {
 
         // WHEN: we delete an empty array of objects
         deleteObjects([], inContext: stack.mainContext)
-
+        
         // THEN: the operation is ignored
         XCTAssertFalse(stack.mainContext.hasChanges)
     }

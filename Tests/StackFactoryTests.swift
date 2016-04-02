@@ -26,7 +26,7 @@ import JSQCoreDataKit
 
 
 class StackFactoryTests: TestCase {
-    
+
     override func setUp() {
         let model = CoreDataModel(name: modelName, bundle: modelBundle)
 
@@ -138,5 +138,5 @@ class StackFactoryTests: TestCase {
         XCTAssertNil(stack.backgroundContext.parentContext)
         XCTAssertNotNil(stack.backgroundContext.persistentStoreCoordinator)
     }
-
+    
 }

@@ -29,11 +29,7 @@ class ModelTests: XCTestCase {
 
     override func setUp() {
         let model = CoreDataModel(name: modelName, bundle: modelBundle)
-
-        do {
-            try model.removeExistingModelStore()
-        } catch { }
-
+        _ = try? model.removeExistingModelStore()
         super.setUp()
     }
 
@@ -170,7 +166,7 @@ class ModelTests: XCTestCase {
         catch {
             success = false
         }
-        
+
         // THEN: then removal is ignored
         XCTAssertTrue(success, "Removing store should be ignored")
     }
@@ -194,10 +190,10 @@ class ModelTests: XCTestCase {
         // THEN: then removal is ignored
         XCTAssertTrue(success, "Removing store should be ignored")
     }
-
+    
     func test_Model_Description() {
         print("\(#function)")
-
+        
         let model = CoreDataModel(name: modelName, bundle: modelBundle, storeType: .InMemory)
         print(model)
     }

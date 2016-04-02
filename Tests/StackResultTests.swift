@@ -26,7 +26,7 @@ import JSQCoreDataKit
 
 
 class StackResultTests: TestCase {
-    
+
     func test_StackResult_Success() {
         let success = CoreDataStackResult.Success(inMemoryStack)
         XCTAssertNotNil(success.stack())

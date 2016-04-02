@@ -29,13 +29,11 @@ class ExampleModelTests: TestCase {
 
     func test_ThatEmployeeInsertsSuccessfully() {
         let e = Employee.newEmployee(inMemoryStack.mainContext)
-
         XCTAssertNotNil(e)
     }
 
     func test_ThatCompanyInsertsSuccessfully() {
         let c = Company.newCompany(inMemoryStack.mainContext)
-
         XCTAssertNotNil(c)
     }
     

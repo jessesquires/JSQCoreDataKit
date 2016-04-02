@@ -20,8 +20,9 @@ import CoreData
 import Foundation
 
 
+
 public enum MigrationError: ErrorType {
-    case SourceManagedObjectModelNotFound
+    case SourceModelNotFound(model: CoreDataModel)
     case MappingModelNotFound(sourceManagedObjectModel: NSManagedObjectModel)
 }
 
@@ -50,7 +51,7 @@ public func migrate(model: CoreDataModel) throws {
     let storeType = model.storeType.type
 
     guard let sourceModel = try findModelCompatibleWithStore(model.bundle, storeType: storeType, storeURL: storeURL) else {
-        throw MigrationError.SourceManagedObjectModelNotFound
+        throw MigrationError.SourceModelNotFound(model: model)
     }
 
     let migrationSteps = try buildMappingModelPath(model.bundle, sourceModel: sourceModel, destinationModel: model.managedObjectModel)

@@ -56,13 +56,13 @@ public func migrate(model: CoreDataModel) throws {
     guard model.needsMigration else { return }
 
     guard let storeURL = model.storeURL else {
-        preconditionFailure("*** Error: migration is only available for on-disk persistent stores. Model storeURL is nil.")
+        preconditionFailure("*** Error: migration is only available for on-disk persistent stores. model.storeURL is nil.")
     }
 
     let bundle = model.bundle
     let storeType = model.storeType.type
 
-    guard let sourceModel = try findModelCompatibleWithStore(bundle, storeType: storeType, storeURL: storeURL) else {
+    guard let sourceModel = try findCompatibleModel(withBundle: bundle, storeType: storeType, storeURL: storeURL) else {
         throw MigrationError.SourceModelNotFound(model: model)
     }
 
@@ -91,14 +91,12 @@ internal struct MigrationMappingStep {
 }
 
 
-internal func findModelCompatibleWithStore(bundle: NSBundle, storeType: String, storeURL: NSURL) throws -> NSManagedObjectModel? {
+internal func findCompatibleModel(withBundle bundle: NSBundle, storeType: String, storeURL: NSURL) throws -> NSManagedObjectModel? {
     let storeMetadata = try NSPersistentStoreCoordinator.metadataForPersistentStoreOfType(storeType, URL: storeURL, options: nil)
-
     let modelsInBundle = findModelsInBundle(bundle)
     for model in modelsInBundle where model.isConfiguration(nil, compatibleWithStoreMetadata: storeMetadata) {
         return model
     }
-
     return nil
 }
 

@@ -62,18 +62,6 @@ class MigrationTests: TestCase {
         XCTAssertFalse(model.needsMigration)
     }
 
-    func test_GivenExistingStore_WhenFindingItsModel_ThenTheCorrectModelIsFound() {
-        // GIVEN: a SQLite store with metadata pointing to a specific version of the model
-        let version1Model = managedObjectModelVersion("Version 1")
-        let persistentStore = createSQLitePersistentStore(version1Model)
-
-        // WHEN: the compatible model is found in the test bundle
-        let foundModel = try! findModelCompatibleWithStore(model.bundle, storeType: persistentStore.type, storeURL: persistentStore.URL!)
-
-        // THEN: the found model is the same as the one used to create the store
-        XCTAssertEqual(foundModel, version1Model)
-    }
-
     func test_GivenSourceAndDestinationModels_WhenBuildingTheMappingPathsBetweenThem_ThenTheMappingStepsAreCorrect() {
         // GIVEN: the source and destination models
         let sourceModel = managedObjectModelVersion("Version 1")
@@ -113,6 +101,37 @@ class MigrationTests: TestCase {
         } catch { }
 
         XCTFail("Expected exception not thrown")
+    }
+
+
+    // MARK: findCompatibleModel
+
+    func test_thatWhenFindingACompatibleModel_ForAValidStore_ThenTheCorrectModelIsFound() {
+        // GIVEN: a SQLite store with metadata pointing to a specific version of the model
+        let version1Model = managedObjectModelVersion("Version 1")
+        let persistentStore = createSQLitePersistentStore(version1Model)
+
+        // WHEN: we search for a compatible model in the bundle
+        let foundModel = try! findCompatibleModel(withBundle: model.bundle, storeType: persistentStore.type, storeURL: persistentStore.URL!)
+
+        // THEN: the found model is the same as the one used to create the store
+        XCTAssertEqual(foundModel, version1Model)
+    }
+
+    func test_thatWhenFindingACompatibleModel_ForAnInvalidStore_ThenNoModelIsFound_AndAnErrorIsThrown() {
+        // GIVEN: an invalid store bundle
+        let bundle = NSBundle(forClass: MigrationTests.self)
+
+        // WHEN: we search for a compatible model in the bundle
+        var foundModel: NSManagedObjectModel?
+        do {
+            foundModel = try findCompatibleModel(withBundle: bundle, storeType: model.storeType.type, storeURL: model.storeURL!)
+        } catch {
+            XCTAssertNotNil(error)
+        }
+
+        // THEN: no model is found
+        XCTAssertNil(foundModel)
     }
 
 
@@ -198,7 +217,6 @@ class MigrationTests: TestCase {
         guard let result = NSManagedObjectModel(contentsOfURL: modelURL) else {
             preconditionFailure("Model with given name not found in bundle or is invalid.")
         }
-
         return result
     }
 
@@ -210,7 +228,6 @@ class MigrationTests: TestCase {
         guard let result = NSMappingModel(contentsOfURL: mappingModelURL) else {
             preconditionFailure("Mapping model named \(name) is invalid.")
         }
-        
         return result
     }
     

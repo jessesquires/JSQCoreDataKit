@@ -29,7 +29,7 @@ import Foundation
  - parameter wait:       If true (the default), saves synchronously. If false, saves asynchronously.
  - parameter completion: The closure to be executed when the save operation completes.
  */
-public func saveContext(context: NSManagedObjectContext, wait: Bool = true, completion: ((CoreDataSaveResult) -> Void)? = nil) {
+public func saveContext(context: NSManagedObjectContext, wait: Bool = true, completion: ((SaveResult) -> Void)? = nil) {
     let block = {
         guard context.hasChanges else { return }
         do {

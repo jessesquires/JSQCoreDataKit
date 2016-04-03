@@ -50,7 +50,7 @@ public func ==(lhs: CoreDataStackResult, rhs: CoreDataStackResult) -> Bool {
 
 
 /// :nodoc:
-public func ==(lhs: CoreDataSaveResult, rhs: CoreDataSaveResult) -> Bool {
+public func ==(lhs: SaveResult, rhs: SaveResult) -> Bool {
     switch (lhs, rhs) {
     case (.Success, .Success):
         return true

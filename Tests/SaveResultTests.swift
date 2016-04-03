@@ -28,42 +28,42 @@ import JSQCoreDataKit
 class SaveResultTests: XCTestCase {
 
     func test_SaveResult_Error() {
-        let success = CoreDataSaveResult.Success
+        let success = SaveResult.Success
         XCTAssertNil(success.error())
 
-        let failure = CoreDataSaveResult.Failure(NSError(domain: "err", code: 0, userInfo: nil))
+        let failure = SaveResult.Failure(NSError(domain: "err", code: 0, userInfo: nil))
         XCTAssertNotNil(failure.error())
     }
 
     func test_SaveResult_Equality() {
-        let success = CoreDataSaveResult.Success
-        let failure = CoreDataSaveResult.Failure(NSError(domain: "err", code: 0, userInfo: nil))
+        let success = SaveResult.Success
+        let failure = SaveResult.Failure(NSError(domain: "err", code: 0, userInfo: nil))
         XCTAssertNotEqual(success, failure)
     }
 
     func test_SaveResult_Equality_Success() {
-        let success1 = CoreDataSaveResult.Success
-        let success2 = CoreDataSaveResult.Success
+        let success1 = SaveResult.Success
+        let success2 = SaveResult.Success
         XCTAssertEqual(success1, success2)
     }
 
     func test_SaveResult_Equality_Failure() {
         let err = NSError(domain: "err", code: 0, userInfo: nil)
-        let failure1 = CoreDataSaveResult.Failure(err)
-        let failure2 = CoreDataSaveResult.Failure(err)
+        let failure1 = SaveResult.Failure(err)
+        let failure2 = SaveResult.Failure(err)
         XCTAssertEqual(failure1, failure2)
 
-        let failure3 = CoreDataSaveResult.Failure(NSError(domain: "err2", code: 2, userInfo: nil))
+        let failure3 = SaveResult.Failure(NSError(domain: "err2", code: 2, userInfo: nil))
         XCTAssertNotEqual(failure1, failure3)
     }
 
     func test_SaveResult_Description() {
         print("\(#function)")
 
-        let success = CoreDataSaveResult.Success
+        let success = SaveResult.Success
         print(success)
 
-        let failure = CoreDataSaveResult.Failure(NSError(domain: "err", code: 0, userInfo: nil))
+        let failure = SaveResult.Failure(NSError(domain: "err", code: 0, userInfo: nil))
         print(failure)
     }
 }

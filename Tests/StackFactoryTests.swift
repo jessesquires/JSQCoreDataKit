@@ -40,7 +40,7 @@ class StackFactoryTests: TestCase {
     func test_ThatStackFactory_InitializesSuccessFully() {
         let factory = CoreDataStackFactory(model: inMemoryModel)
         XCTAssertEqual(factory.model, inMemoryModel)
-        XCTAssertTrue(factory.options! == DefaultStoreOptions)
+        XCTAssertTrue(factory.options! == defaultStoreOptions)
     }
 
     func test_ThatStackFactory_CreatesStackInBackground_Successfully() {

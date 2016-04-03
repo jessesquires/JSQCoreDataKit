@@ -149,13 +149,13 @@ class MigrationTests: TestCase {
         XCTAssertNil(result)
     }
 
+
     // MARK: Helpers
 
     func createSQLitePersistentStore(managedObjectModel: NSManagedObjectModel) -> NSPersistentStore {
-        let persistentStoreCoordinator = NSPersistentStoreCoordinator(managedObjectModel: managedObjectModel)
-        let persistentStoreURL = DefaultDirectoryURL().URLByAppendingPathComponent("\(modelName).sqlite")
-
-        return try! persistentStoreCoordinator.addPersistentStoreWithType(NSSQLiteStoreType, configuration: nil, URL: persistentStoreURL, options: nil)
+        let coordinator = NSPersistentStoreCoordinator(managedObjectModel: managedObjectModel)
+        let storeURL = DefaultDirectoryURL().URLByAppendingPathComponent("\(modelName).sqlite")
+        return try! coordinator.addPersistentStoreWithType(NSSQLiteStoreType, configuration: nil, URL: storeURL, options: nil)
     }
 
     func managedObjectModelVersion(name: String) -> NSManagedObjectModel {

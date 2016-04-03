@@ -23,7 +23,7 @@ import Foundation
 /**
  A result object representing the result of creating a `CoreDataStack` via a `CoreDataStackFactory`.
  */
-public enum CoreDataStackResult: CustomStringConvertible, Equatable {
+public enum StackResult: CustomStringConvertible, Equatable {
 
     /// The success result, containing the successfully initialized `CoreDataStack`.
     case Success(CoreDataStack)
@@ -60,7 +60,7 @@ public enum CoreDataStackResult: CustomStringConvertible, Equatable {
     /// :nodoc:
     public var description: String {
         get {
-            var str = "<\(CoreDataStackResult.self): "
+            var str = "<\(StackResult.self): "
             switch self {
             case .Success(let s):
                 str += ".Success(\(s)"

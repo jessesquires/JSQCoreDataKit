@@ -35,7 +35,7 @@ class ResetStackTests: TestCase {
         let expectation = expectationWithDescription("\(#function)")
 
         // WHEN: we attempt to reset the stack
-        resetStack(stack) { (result: CoreDataStackResult) in
+        resetStack(stack) { (result: StackResult) in
             if case .Failure(let e) = result {
                 XCTFail("Error while resetting the stack: \(e)")
             }
@@ -59,7 +59,7 @@ class ResetStackTests: TestCase {
         let expectation = expectationWithDescription("\(#function)")
 
         // WHEN: we attempt to reset the stack
-        resetStack(stack) { (result: CoreDataStackResult) in
+        resetStack(stack) { (result: StackResult) in
             if case .Failure(let e) = result {
                 XCTFail("Error while resetting the stack: \(e)")
             }
@@ -94,7 +94,7 @@ class ResetStackTests: TestCase {
         let expectation = expectationWithDescription("\(#function)")
 
         // WHEN: we attempt to reset the stack
-        resetStack(stack) { (result: CoreDataStackResult) in
+        resetStack(stack) { (result: StackResult) in
             if case .Failure(let e) = result {
                 XCTFail("Error while resetting the stack: \(e)")
             }

@@ -112,9 +112,9 @@ public struct CoreDataStackFactory: CustomStringConvertible, Equatable {
 
      - note: This method is primarily intended for unit testing purposes.
 
-     - returns: A `CoreDataStackResult` instance, describing the success or failure of creating the stack.
+     - returns: A `StackResult` instance, describing the success or failure of creating the stack.
      */
-    public func createStack() -> CoreDataStackResult {
+    public func createStack() -> StackResult {
         precondition(NSThread.isMainThread(), "*** Error: \(#function) must be called on main thread")
 
         let storeCoordinator: NSPersistentStoreCoordinator

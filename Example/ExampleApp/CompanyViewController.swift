@@ -42,7 +42,7 @@ class CompanyViewController: UITableViewController, NSFetchedResultsControllerDe
         let model = CoreDataModel(name: modelName, bundle: modelBundle)
         let factory = CoreDataStackFactory(model: model)
 
-        factory.createStackInBackground { (result: CoreDataStackResult) -> Void in
+        factory.createStackInBackground { (result: StackResult) -> Void in
             switch result {
             case .Success(let s):
                 self.stack = s

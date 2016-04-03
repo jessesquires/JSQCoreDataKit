@@ -28,8 +28,8 @@ public typealias ChildContext = NSManagedObjectContext
 public typealias PersistentStoreOptions = [NSObject : AnyObject]
 
 
-/// Describes a closure that receives a `CoreDataStackResult`.
-public typealias StackResultClosure = (result: CoreDataStackResult) -> Void
+/// Describes a closure that receives a `StackResult`.
+public typealias StackResultClosure = (result: StackResult) -> Void
 
 
 /// Describes default persistent store options.

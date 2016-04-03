@@ -34,6 +34,31 @@ class MigrationTests: TestCase {
         _ = try? model.removeExistingStore()
     }
 
+    func test_thatFindModelsInBundle_returnsExpectedModels() {
+        // GIVEN: a model in a bundle
+        let bundle = model.bundle
+
+        // WHEN: fetching all model versions from the bundle
+        let modelsInBundle = findModelsInBundle(bundle)
+
+        // THEN: all model versions are found
+        let version1 = managedObjectModelVersion("Version 1")
+        let version2 = managedObjectModelVersion("Version 2")
+        let version3 = managedObjectModelVersion("Version 3")
+        XCTAssertEqual(modelsInBundle, [version1, version2, version3])
+    }
+
+    func test_thatFindModelsInBundle_returnsEmptyArrayForInvalidBundle() {
+        // GIVEN: no models in a bundle
+        let bundle = NSBundle(forClass: MigrationTests.self)
+
+        // WHEN: fetching all model versions from the bundle
+        let modelsInBundle = findModelsInBundle(bundle)
+
+        // THEN: all model versions are found
+        XCTAssertEqual(modelsInBundle.count, 0)
+    }
+
     func test_GivenExistingPersistentStoreIsStale_ThenCoreDataModel_needsMigration() {
         // GIVEN: an existing SQLite file with metadata pointing to an old version of the model
         createSQLitePersistentStore(managedObjectModelVersion("Version 1"))
@@ -72,17 +97,6 @@ class MigrationTests: TestCase {
 
         // THEN: the found model is the same as the one used to create the store
         XCTAssertEqual(foundModel, version1Model)
-    }
-
-    func test_WhenFetchinglAllModelVersions_AllVersionsAreFound() {
-        // WHEN: fetching all model versions from the test bundle
-        let modelsInBundle = findModelsInBundle(model.bundle)
-
-        // THEN: all model versions are found
-        let version1 = managedObjectModelVersion("Version 1")
-        let version2 = managedObjectModelVersion("Version 2")
-        let version3 = managedObjectModelVersion("Version 3")
-        XCTAssertEqual(Set(modelsInBundle), Set([version1, version2, version3]))
     }
 
     func test_GivenSourceAndDestinationModels_WhenBuildingTheMappingPathsBetweenThem_ThenTheMappingStepsAreCorrect() {

@@ -19,42 +19,54 @@
 import CoreData
 import Foundation
 
-
-
+/**
+ An error type that specifies possible errors that are thrown by calling `func migrate(model: CoreDataModel) throws`
+ */
 public enum MigrationError: ErrorType {
+
+    /**
+     Specifies that the `NSManagedObjectModel` corresponding to the existing persistent store was not found in the model's bundle.
+
+     - parameter model: The model attempting to be migrated.
+     */
     case SourceModelNotFound(model: CoreDataModel)
+
+    /**
+     Specifies that an `NSMappingModel` was not found in the model's bundle in the progressive migration 'path'.
+
+     - parameter sourceManagedObjectModel: The managed object model
+     */
     case MappingModelNotFound(sourceManagedObjectModel: NSManagedObjectModel)
 }
 
+
 /**
- Progressively migrates the persistent store of a `CoreDataModel` based on mapping models found in the model's bundle.
+ Progressively migrates the persistent store of the specified `CoreDataModel` based on mapping models found in the model's bundle.
+ If model returns false from `.needsMigration`, this function does nothing.
 
- - note: Migration is only supported for on-disk persistent stores.
+ - parameter model: The `CoreDataModel` instance on which to perform a migration.
+
+ - throws: If an error occurs, a `MigrationError` is thrown.
+ - seealso: `MigrationError`
+
+ - warning: Migration is only supported for on-disk persistent stores.
  A complete 'path' of mapping models must exist between the peristent store's version and the model's version.
-
- - parameter model:      The `CoreDataModel` to perform migration upon.
-
- - throws: If the `NSManagedObjectModel` corresponding to the existing persistent store is not found in the model bundle
- then this function throws `.SourceManagedObjectModelNotFound`. If an `NSMappingModel` part of the progressive
- migration 'path' is not found in the model bundle then a `.MappingModelNotFound` is thrown.
- The function rethrows exceptions that may result from reading the persistent store metadata,
- file system operations or migration with `NSMigrationManager`.
  */
 public func migrate(model: CoreDataModel) throws {
-
     guard model.needsMigration else { return }
 
     guard let storeURL = model.storeURL else {
-        preconditionFailure("Migration is only available for on-disk persistent stores")
+        preconditionFailure("*** Error: migration is only available for on-disk persistent stores. Model storeURL is nil.")
     }
 
+    let bundle = model.bundle
     let storeType = model.storeType.type
 
-    guard let sourceModel = try findModelCompatibleWithStore(model.bundle, storeType: storeType, storeURL: storeURL) else {
+    guard let sourceModel = try findModelCompatibleWithStore(bundle, storeType: storeType, storeURL: storeURL) else {
         throw MigrationError.SourceModelNotFound(model: model)
     }
 
-    let migrationSteps = try buildMappingModelPath(model.bundle, sourceModel: sourceModel, destinationModel: model.managedObjectModel)
+    let migrationSteps = try buildMappingModelPath(bundle, sourceModel: sourceModel, destinationModel: model.managedObjectModel)
 
     for step in migrationSteps {
         let tempURL = defaultDirectoryURL().URLByAppendingPathComponent("migration.sqlite")
@@ -74,24 +86,35 @@ public func migrate(model: CoreDataModel) throws {
 internal func findModelCompatibleWithStore(bundle: NSBundle, storeType: String, storeURL: NSURL) throws -> NSManagedObjectModel? {
     let storeMetadata = try NSPersistentStoreCoordinator.metadataForPersistentStoreOfType(storeType, URL: storeURL, options: nil)
 
-    for model in findModelsInBundle(bundle) where model.isConfiguration(nil, compatibleWithStoreMetadata: storeMetadata) {
+    let modelsInBundle = findModelsInBundle(bundle)
+    for model in modelsInBundle where model.isConfiguration(nil, compatibleWithStoreMetadata: storeMetadata) {
         return model
     }
 
     return nil
 }
 
+
 internal func findModelsInBundle(bundle: NSBundle) -> [NSManagedObjectModel] {
-    guard let modelDirectoryURLs = bundle.URLsForResourcesWithExtension("momd", subdirectory: nil) else {
+    guard let modelBundleDirectoryURLs = bundle.URLsForResourcesWithExtension(ModelFileExtension.bundle.rawValue, subdirectory: nil) else {
         return []
     }
 
-    let modelDirectoryNames = modelDirectoryURLs.flatMap { $0.lastPathComponent }
+    let modelBundleDirectoryNames = modelBundleDirectoryURLs.flatMap { url -> String? in
+        url.lastPathComponent
+    }
 
-    let modelURLs = Array(modelDirectoryNames.flatMap { bundle.URLsForResourcesWithExtension("mom", subdirectory: $0) }.flatten())
+    let modelVersionFileURLs = modelBundleDirectoryNames.flatMap { name -> [NSURL]? in
+        bundle.URLsForResourcesWithExtension(ModelFileExtension.versionedFile.rawValue, subdirectory: name)
+    }
 
-    return modelURLs.flatMap { NSManagedObjectModel(contentsOfURL: $0) }
+    let managedObjectModels = Array(modelVersionFileURLs.flatten()).flatMap { url -> NSManagedObjectModel? in
+        NSManagedObjectModel(contentsOfURL: url)
+    }
+
+    return managedObjectModels
 }
+
 
 internal func buildMappingModelPath(bundle: NSBundle,
                                     sourceModel: NSManagedObjectModel,
@@ -112,7 +135,8 @@ internal func buildMappingModelPath(bundle: NSBundle,
 }
 
 internal func nextIncrementalModelAndMapping(sourceModel sourceModel: NSManagedObjectModel, bundle: NSBundle) -> (destination: NSManagedObjectModel, mapping: NSMappingModel)? {
-    for nextDestinationModel in findModelsInBundle(bundle) where nextDestinationModel != sourceModel {
+    let modelsInBundle = findModelsInBundle(bundle)
+    for nextDestinationModel in modelsInBundle where nextDestinationModel != sourceModel {
         if let mappingModel = NSMappingModel(fromBundles: [bundle], forSourceModel: sourceModel, destinationModel: nextDestinationModel) {
             return (nextDestinationModel, mappingModel)
         }

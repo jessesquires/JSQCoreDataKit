@@ -34,31 +34,6 @@ class MigrationTests: TestCase {
         _ = try? model.removeExistingStore()
     }
 
-    func test_thatFindModelsInBundle_returnsExpectedModels() {
-        // GIVEN: a model in a bundle
-        let bundle = model.bundle
-
-        // WHEN: fetching all model versions from the bundle
-        let modelsInBundle = findModelsInBundle(bundle)
-
-        // THEN: all model versions are found
-        let version1 = managedObjectModelVersion("Version 1")
-        let version2 = managedObjectModelVersion("Version 2")
-        let version3 = managedObjectModelVersion("Version 3")
-        XCTAssertEqual(modelsInBundle, [version1, version2, version3])
-    }
-
-    func test_thatFindModelsInBundle_returnsEmptyArrayForInvalidBundle() {
-        // GIVEN: no models in a bundle
-        let bundle = NSBundle(forClass: MigrationTests.self)
-
-        // WHEN: fetching all model versions from the bundle
-        let modelsInBundle = findModelsInBundle(bundle)
-
-        // THEN: all model versions are found
-        XCTAssertEqual(modelsInBundle.count, 0)
-    }
-
     func test_GivenExistingPersistentStoreIsStale_ThenCoreDataModel_needsMigration() {
         // GIVEN: an existing SQLite file with metadata pointing to an old version of the model
         createSQLitePersistentStore(managedObjectModelVersion("Version 1"))
@@ -105,7 +80,7 @@ class MigrationTests: TestCase {
         let destinationModel = managedObjectModelVersion("Version 3")
 
         // WHEN: building the mapping path
-        let mappingPath = try! buildMappingModelPath(model.bundle, sourceModel: sourceModel, destinationModel: destinationModel)
+        let mappingPath = try! buildMigrationMappingSteps(model.bundle, sourceModel: sourceModel, destinationModel: destinationModel)
 
         // THEN: the mapping steps are correct
         let version2Model = managedObjectModelVersion("Version 2")
@@ -128,7 +103,7 @@ class MigrationTests: TestCase {
 
         // WHEN: building the mapping path
         do {
-            try buildMappingModelPath(model.bundle, sourceModel: sourceModel, destinationModel: destinationModel)
+            try buildMigrationMappingSteps(model.bundle, sourceModel: sourceModel, destinationModel: destinationModel)
 
             // THEN: a `MigrationError.MappingModelNotFound` exception is thrown
         } catch MigrationError.MappingModelNotFound(let errorModel) {
@@ -140,26 +115,71 @@ class MigrationTests: TestCase {
         XCTFail("Expected exception not thrown")
     }
 
-    func test_GivenModelWithForwardMapping_WhenFetchingTheNextMappingAndModel_ThenTheCorrectPairIsFound() {
+
+    // MARK: findModelsInBundle
+
+    func test_ThatFindModelsInBundle_ReturnsExpectedModels() {
+        // GIVEN: a model in a bundle
+        let bundle = model.bundle
+
+        // WHEN: fetching all model versions from the bundle
+        let modelsInBundle = findModelsInBundle(bundle)
+
+        // THEN: all model versions are found
+        let version1 = managedObjectModelVersion("Version 1")
+        let version2 = managedObjectModelVersion("Version 2")
+        let version3 = managedObjectModelVersion("Version 3")
+        XCTAssertEqual(modelsInBundle, [version1, version2, version3])
+    }
+
+    func test_ThatFindModelsInBundle_ReturnsEmptyArrayForInvalidBundle() {
+        // GIVEN: no models in a bundle
+        let bundle = NSBundle(forClass: MigrationTests.self)
+
+        // WHEN: fetching all model versions from the bundle
+        let modelsInBundle = findModelsInBundle(bundle)
+
+        // THEN: all model versions are found
+        XCTAssertEqual(modelsInBundle.count, 0)
+    }
+
+
+    // MARK: nextMigrationMappingStep
+
+    func test_thatWhenFetchingTheNextMigrationMappingStep_ThenTheCorrectMappingIsFound_Version1to2() {
         // GIVEN: a model that has a corresponding mapping model
         let version1Model = managedObjectModelVersion("Version 1")
 
         // WHEN: finding the next model and mapping
-        let (targetModel, mapping) = nextIncrementalModelAndMapping(sourceModel: version1Model, bundle: model.bundle)!
+        let mappingStep = nextMigrationMappingStep(fromSourceModel: version1Model, bundle: model.bundle)!
 
         // THEN: the correct mapping and target model are found
-        XCTAssertEqual(mapping, mappingModel("Version1_to_Version2"))
-        XCTAssertEqual(targetModel, managedObjectModelVersion("Version 2"))
+        XCTAssertEqual(mappingStep.source, version1Model)
+        XCTAssertEqual(mappingStep.mapping, mappingModel("Version1_to_Version2"))
+        XCTAssertEqual(mappingStep.destination, managedObjectModelVersion("Version 2"))
     }
 
-    func test_GivenModelWithNoForwardMapping_WhenFindingTheNextMappingAndModel_ThenNilIsReturned() {
+    func test_thatWhenFetchingTheNextMigrationMappingStep_ThenTheCorrectMappingIsFound_Version2to3() {
         // GIVEN: a model that has a corresponding mapping model
+        let version1Model = managedObjectModelVersion("Version 2")
+
+        // WHEN: finding the next model and mapping
+        let mappingStep = nextMigrationMappingStep(fromSourceModel: version1Model, bundle: model.bundle)!
+
+        // THEN: the correct mapping and target model are found
+        XCTAssertEqual(mappingStep.source, version1Model)
+        XCTAssertEqual(mappingStep.mapping, mappingModel("Version2_to_Version3"))
+        XCTAssertEqual(mappingStep.destination, managedObjectModelVersion("Version 3"))
+    }
+
+    func test_thatWhenFetchingTheNextMigrationMappingStep_ThenNilIsReturned_WhenNoStepsLeft() {
+        // GIVEN: a model that does not have a corresponding mapping model
         let version3Model = managedObjectModelVersion("Version 3")
 
         // WHEN: finding the next model and mapping
-        let result = nextIncrementalModelAndMapping(sourceModel: version3Model, bundle: model.bundle)
+        let result = nextMigrationMappingStep(fromSourceModel: version3Model, bundle: model.bundle)
 
-        // THEN: the return value is nil
+        // THEN: no more mapping steps are found
         XCTAssertNil(result)
     }
 

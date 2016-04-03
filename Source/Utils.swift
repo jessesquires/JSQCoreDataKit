@@ -33,7 +33,7 @@ public typealias StackResultClosure = (result: CoreDataStackResult) -> Void
 
 
 /// Describes default persistent store options.
-public let DefaultStoreOptions: PersistentStoreOptions = [
+public let defaultStoreOptions: PersistentStoreOptions = [
     NSMigratePersistentStoresAutomaticallyOption: true,
     NSInferMappingModelAutomaticallyOption: true
 ]

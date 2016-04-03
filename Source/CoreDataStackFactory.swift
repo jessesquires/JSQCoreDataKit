@@ -54,7 +54,7 @@ public struct CoreDataStackFactory: CustomStringConvertible, Equatable {
 
      - returns: A new `CoreDataStackFactory` instance.
      */
-    public init(model: CoreDataModel, options: PersistentStoreOptions? = DefaultStoreOptions) {
+    public init(model: CoreDataModel, options: PersistentStoreOptions? = defaultStoreOptions) {
         self.model = model
         self.options = options
     }

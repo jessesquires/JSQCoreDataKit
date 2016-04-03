@@ -34,9 +34,9 @@ public enum MigrationError: ErrorType {
     /**
      Specifies that an `NSMappingModel` was not found in the model's bundle in the progressive migration 'path'.
 
-     - parameter sourceModel: The source managed object model for which a mapping model was not found.
+     - parameter sourceModel: The destination managed object model for which a mapping model was not found.
      */
-    case MappingModelNotFound(sourceModel: NSManagedObjectModel)
+    case MappingModelNotFound(destinationModel: NSManagedObjectModel)
 }
 
 
@@ -66,7 +66,9 @@ public func migrate(model: CoreDataModel) throws {
         throw MigrationError.SourceModelNotFound(model: model)
     }
 
-    let migrationSteps = try buildMigrationMappingSteps(bundle, sourceModel: sourceModel, destinationModel: model.managedObjectModel)
+    let migrationSteps = try buildMigrationMappingSteps(bundle: bundle,
+                                                        sourceModel: sourceModel,
+                                                        destinationModel: model.managedObjectModel)
 
     for step in migrationSteps {
         let tempURL = defaultDirectoryURL().URLByAppendingPathComponent("migration.sqlite")
@@ -83,11 +85,16 @@ public func migrate(model: CoreDataModel) throws {
 
 // MARK: Internal
 
-
-internal struct MigrationMappingStep {
+internal struct MigrationMappingStep: CustomStringConvertible {
     let source: NSManagedObjectModel
     let mapping: NSMappingModel
     let destination: NSManagedObjectModel
+
+    var description: String {
+        get {
+            return "\(MigrationMappingStep.self): source=\(source); mapping=\(mapping); destination=\(destination);"
+        }
+    }
 }
 
 
@@ -122,17 +129,17 @@ internal func findModelsInBundle(bundle: NSBundle) -> [NSManagedObjectModel] {
 }
 
 
-internal func buildMigrationMappingSteps(bundle: NSBundle,
-                                         sourceModel: NSManagedObjectModel,
-                                         destinationModel: NSManagedObjectModel) throws -> [MigrationMappingStep] {
+internal func buildMigrationMappingSteps(bundle bundle: NSBundle,
+                                                sourceModel: NSManagedObjectModel,
+                                                destinationModel: NSManagedObjectModel) throws -> [MigrationMappingStep] {
     var migrationSteps = [MigrationMappingStep]()
     var nextModel = sourceModel
     repeat {
-        guard let nextMigrationMappingStep = nextMigrationMappingStep(fromSourceModel: nextModel, bundle: bundle) else {
-            throw MigrationError.MappingModelNotFound(sourceModel: nextModel)
+        guard let nextStep = nextMigrationMappingStep(fromSourceModel: nextModel, bundle: bundle) else {
+            throw MigrationError.MappingModelNotFound(destinationModel: nextModel)
         }
-        migrationSteps.append(nextMigrationMappingStep)
-        nextModel = nextMigrationMappingStep.destination
+        migrationSteps.append(nextStep)
+        nextModel = nextStep.destination
 
     } while nextModel != destinationModel
 

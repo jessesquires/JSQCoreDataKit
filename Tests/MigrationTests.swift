@@ -62,45 +62,47 @@ class MigrationTests: TestCase {
         XCTAssertFalse(model.needsMigration)
     }
 
-    func test_GivenSourceAndDestinationModels_WhenBuildingTheMappingPathsBetweenThem_ThenTheMappingStepsAreCorrect() {
+
+    // MARK: buildMigrationMappingSteps
+
+    func test_ThatBuildingMigrationMappingSteps_WithValidModels_ReturnsCorrectSteps() {
         // GIVEN: the source and destination models
         let sourceModel = managedObjectModelVersion("Version 1")
         let destinationModel = managedObjectModelVersion("Version 3")
 
-        // WHEN: building the mapping path
-        let mappingPath = try! buildMigrationMappingSteps(model.bundle, sourceModel: sourceModel, destinationModel: destinationModel)
+        // WHEN: building the mapping steps
+        let mappingSteps = try! buildMigrationMappingSteps(bundle: model.bundle, sourceModel: sourceModel, destinationModel: destinationModel)
 
         // THEN: the mapping steps are correct
         let version2Model = managedObjectModelVersion("Version 2")
         let version1ToVersion2Mapping = mappingModel("Version1_to_Version2")
         let version2ToVersion3Mapping = mappingModel("Version2_to_Version3")
 
-        XCTAssertEqual(mappingPath[0].source, sourceModel)
-        XCTAssertEqual(mappingPath[0].mapping, version1ToVersion2Mapping)
-        XCTAssertEqual(mappingPath[0].destination, version2Model)
+        XCTAssertEqual(mappingSteps[0].source, sourceModel)
+        XCTAssertEqual(mappingSteps[0].mapping, version1ToVersion2Mapping)
+        XCTAssertEqual(mappingSteps[0].destination, version2Model)
 
-        XCTAssertEqual(mappingPath[1].source, version2Model)
-        XCTAssertEqual(mappingPath[1].mapping, version2ToVersion3Mapping)
-        XCTAssertEqual(mappingPath[1].destination, destinationModel)
+        XCTAssertEqual(mappingSteps[1].source, version2Model)
+        XCTAssertEqual(mappingSteps[1].mapping, version2ToVersion3Mapping)
+        XCTAssertEqual(mappingSteps[1].destination, destinationModel)
     }
 
-    func test_GivenTwoModelsWithNoMappingPath_WhenBuildingTheMappingPathsBetweenThem_ThenExceptionIsThrown() {
-        // GIVEN: the source and destination models
+    func test_ThatBuildingMigrationMappingSteps_WithInvalidModels_ThrowsError() {
+        // GIVEN: invalid source and destination models
         let sourceModel = managedObjectModelVersion("Version 1")
         let destinationModel = sourceModel
 
-        // WHEN: building the mapping path
+        // WHEN: building the mapping steps
+        var mappingSteps: [MigrationMappingStep]?
         do {
-            try buildMigrationMappingSteps(model.bundle, sourceModel: sourceModel, destinationModel: destinationModel)
-
-            // THEN: a `MigrationError.MappingModelNotFound` exception is thrown
-        } catch MigrationError.MappingModelNotFound(let errorModel) {
-            XCTAssertEqual(errorModel, managedObjectModelVersion("Version 3"))
-            return
-
-        } catch { }
-
-        XCTFail("Expected exception not thrown")
+            mappingSteps = try buildMigrationMappingSteps(bundle: model.bundle, sourceModel: sourceModel, destinationModel: destinationModel)
+        } catch MigrationError.MappingModelNotFound(let destinationModel) {
+            // THEN: the expected error is thrown
+            XCTAssertNil(mappingSteps)
+            XCTAssertEqual(destinationModel, managedObjectModelVersion("Version 3"))
+        } catch {
+            XCTFail("Unexpected error was thrown: \(error)")
+        }
     }
 
 

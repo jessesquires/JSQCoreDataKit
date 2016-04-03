@@ -57,7 +57,7 @@ public func migrate(model: CoreDataModel) throws {
     let migrationSteps = try buildMappingModelPath(model.bundle, sourceModel: sourceModel, destinationModel: model.managedObjectModel)
 
     for step in migrationSteps {
-        let tempURL = DefaultDirectoryURL().URLByAppendingPathComponent("migration.sqlite")
+        let tempURL = defaultDirectoryURL().URLByAppendingPathComponent("migration.sqlite")
 
         let manager = NSMigrationManager(sourceModel: step.source, destinationModel: step.destination)
         try manager.migrateStoreFromURL(storeURL, type: storeType, options: nil, withMappingModel: step.mapping, toDestinationURL: tempURL, destinationType: storeType, destinationOptions: nil)

@@ -27,7 +27,7 @@ import JSQCoreDataKit
 
 class MigrationTests: TestCase {
 
-    let model: CoreDataModel = CoreDataModel(name: modelName, bundle: modelBundle, storeType: .SQLite(DefaultDirectoryURL()))
+    let model: CoreDataModel = CoreDataModel(name: modelName, bundle: modelBundle, storeType: .SQLite(defaultDirectoryURL()))
 
     override func setUp() {
         super.setUp()
@@ -154,7 +154,7 @@ class MigrationTests: TestCase {
 
     func createSQLitePersistentStore(managedObjectModel: NSManagedObjectModel) -> NSPersistentStore {
         let coordinator = NSPersistentStoreCoordinator(managedObjectModel: managedObjectModel)
-        let storeURL = DefaultDirectoryURL().URLByAppendingPathComponent("\(modelName).sqlite")
+        let storeURL = defaultDirectoryURL().URLByAppendingPathComponent("\(modelName).sqlite")
         return try! coordinator.addPersistentStoreWithType(NSSQLiteStoreType, configuration: nil, URL: storeURL, options: nil)
     }
 

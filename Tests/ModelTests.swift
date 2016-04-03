@@ -42,7 +42,7 @@ class ModelTests: XCTestCase {
         // THEN: the model has the correct name, bundle, and type
         XCTAssertEqual(model.name, modelName)
         XCTAssertEqual(model.bundle, modelBundle)
-        XCTAssertEqual(model.storeType, StoreType.SQLite(DefaultDirectoryURL()))
+        XCTAssertEqual(model.storeType, StoreType.SQLite(defaultDirectoryURL()))
 
         // THEN: the model returns the correct database filename
         XCTAssertEqual(model.databaseFileName, model.name + ".sqlite")

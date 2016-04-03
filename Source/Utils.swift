@@ -41,7 +41,7 @@ public let DefaultStoreOptions: PersistentStoreOptions = [
 
 // MARK: Internal
 
-internal func DefaultDirectoryURL() -> NSURL {
+internal func defaultDirectoryURL() -> NSURL {
     do {
         #if os(tvOS)
             let searchPathDirectory = NSSearchPathDirectory.CachesDirectory

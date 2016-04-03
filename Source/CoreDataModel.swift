@@ -117,7 +117,7 @@ public struct CoreDataModel: CustomStringConvertible, Equatable {
 
      - returns: A new `CoreDataModel` instance.
      */
-    public init(name: String, bundle: NSBundle = .mainBundle(), storeType: StoreType = .SQLite(DefaultDirectoryURL())) {
+    public init(name: String, bundle: NSBundle = .mainBundle(), storeType: StoreType = .SQLite(defaultDirectoryURL())) {
         self.name = name
         self.bundle = bundle
         self.storeType = storeType

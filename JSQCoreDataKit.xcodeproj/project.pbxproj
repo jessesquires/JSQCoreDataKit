@@ -13,7 +13,7 @@
 		298F00F91C9C559100AEC77E /* Migrate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 298F00F61C9C559100AEC77E /* Migrate.swift */; };
 		298F00FA1C9C559100AEC77E /* Migrate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 298F00F61C9C559100AEC77E /* Migrate.swift */; };
 		881219C81B361EAF005E5AA7 /* JSQCoreDataKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88002D4F1AB8F546001787DB /* JSQCoreDataKit.framework */; };
-		8873E2271C51E09700DFE009 /* CoreDataEquatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8873E21D1C51E09700DFE009 /* CoreDataEquatable.swift */; };
+		8873E2271C51E09700DFE009 /* Equatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8873E21D1C51E09700DFE009 /* Equatable.swift */; };
 		8873E2281C51E09700DFE009 /* CoreDataExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8873E21E1C51E09700DFE009 /* CoreDataExtensions.swift */; };
 		8873E2291C51E09700DFE009 /* CoreDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8873E21F1C51E09700DFE009 /* CoreDataModel.swift */; };
 		8873E22A1C51E09700DFE009 /* CoreDataSaveResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8873E2201C51E09700DFE009 /* CoreDataSaveResult.swift */; };
@@ -25,7 +25,7 @@
 		8873E2311C51E0CF00DFE009 /* JSQCoreDataKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 8873E2251C51E09700DFE009 /* JSQCoreDataKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		8873E2321C51E0CF00DFE009 /* JSQCoreDataKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 8873E2251C51E09700DFE009 /* JSQCoreDataKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		8873E2331C51E0D000DFE009 /* JSQCoreDataKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 8873E2251C51E09700DFE009 /* JSQCoreDataKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		8873E2341C51E0DD00DFE009 /* CoreDataEquatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8873E21D1C51E09700DFE009 /* CoreDataEquatable.swift */; };
+		8873E2341C51E0DD00DFE009 /* Equatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8873E21D1C51E09700DFE009 /* Equatable.swift */; };
 		8873E2351C51E0DD00DFE009 /* CoreDataExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8873E21E1C51E09700DFE009 /* CoreDataExtensions.swift */; };
 		8873E2361C51E0DD00DFE009 /* CoreDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8873E21F1C51E09700DFE009 /* CoreDataModel.swift */; };
 		8873E2371C51E0DD00DFE009 /* CoreDataSaveResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8873E2201C51E09700DFE009 /* CoreDataSaveResult.swift */; };
@@ -33,7 +33,7 @@
 		8873E2391C51E0DD00DFE009 /* CoreDataStackFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8873E2221C51E09700DFE009 /* CoreDataStackFactory.swift */; };
 		8873E23A1C51E0DD00DFE009 /* CoreDataStackResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8873E2231C51E09700DFE009 /* CoreDataStackResult.swift */; };
 		8873E23B1C51E0DD00DFE009 /* StoreType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8873E2261C51E09700DFE009 /* StoreType.swift */; };
-		8873E23C1C51E0DE00DFE009 /* CoreDataEquatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8873E21D1C51E09700DFE009 /* CoreDataEquatable.swift */; };
+		8873E23C1C51E0DE00DFE009 /* Equatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8873E21D1C51E09700DFE009 /* Equatable.swift */; };
 		8873E23D1C51E0DE00DFE009 /* CoreDataExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8873E21E1C51E09700DFE009 /* CoreDataExtensions.swift */; };
 		8873E23E1C51E0DE00DFE009 /* CoreDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8873E21F1C51E09700DFE009 /* CoreDataModel.swift */; };
 		8873E23F1C51E0DE00DFE009 /* CoreDataSaveResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8873E2201C51E09700DFE009 /* CoreDataSaveResult.swift */; };
@@ -41,7 +41,7 @@
 		8873E2411C51E0DE00DFE009 /* CoreDataStackFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8873E2221C51E09700DFE009 /* CoreDataStackFactory.swift */; };
 		8873E2421C51E0DE00DFE009 /* CoreDataStackResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8873E2231C51E09700DFE009 /* CoreDataStackResult.swift */; };
 		8873E2431C51E0DE00DFE009 /* StoreType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8873E2261C51E09700DFE009 /* StoreType.swift */; };
-		8873E2441C51E0DE00DFE009 /* CoreDataEquatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8873E21D1C51E09700DFE009 /* CoreDataEquatable.swift */; };
+		8873E2441C51E0DE00DFE009 /* Equatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8873E21D1C51E09700DFE009 /* Equatable.swift */; };
 		8873E2451C51E0DE00DFE009 /* CoreDataExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8873E21E1C51E09700DFE009 /* CoreDataExtensions.swift */; };
 		8873E2461C51E0DE00DFE009 /* CoreDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8873E21F1C51E09700DFE009 /* CoreDataModel.swift */; };
 		8873E2471C51E0DE00DFE009 /* CoreDataSaveResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8873E2201C51E09700DFE009 /* CoreDataSaveResult.swift */; };
@@ -96,7 +96,7 @@
 		88002D4F1AB8F546001787DB /* JSQCoreDataKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = JSQCoreDataKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		881219C31B361EAF005E5AA7 /* JSQCoreDataKitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JSQCoreDataKitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		883C83DB1C0D7647007A16F5 /* JSQCoreDataKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = JSQCoreDataKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		8873E21D1C51E09700DFE009 /* CoreDataEquatable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataEquatable.swift; sourceTree = "<group>"; };
+		8873E21D1C51E09700DFE009 /* Equatable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Equatable.swift; sourceTree = "<group>"; };
 		8873E21E1C51E09700DFE009 /* CoreDataExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataExtensions.swift; sourceTree = "<group>"; };
 		8873E21F1C51E09700DFE009 /* CoreDataModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataModel.swift; sourceTree = "<group>"; };
 		8873E2201C51E09700DFE009 /* CoreDataSaveResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataSaveResult.swift; sourceTree = "<group>"; };
@@ -191,13 +191,13 @@
 		8873E21C1C51E09700DFE009 /* Source */ = {
 			isa = PBXGroup;
 			children = (
-				8873E21D1C51E09700DFE009 /* CoreDataEquatable.swift */,
 				8873E21E1C51E09700DFE009 /* CoreDataExtensions.swift */,
 				8873E21F1C51E09700DFE009 /* CoreDataModel.swift */,
 				8873E2201C51E09700DFE009 /* CoreDataSaveResult.swift */,
 				8873E2211C51E09700DFE009 /* CoreDataStack.swift */,
 				8873E2221C51E09700DFE009 /* CoreDataStackFactory.swift */,
 				8873E2231C51E09700DFE009 /* CoreDataStackResult.swift */,
+				8873E21D1C51E09700DFE009 /* Equatable.swift */,
 				8873E2241C51E09700DFE009 /* Info.plist */,
 				8873E2251C51E09700DFE009 /* JSQCoreDataKit.h */,
 				298F00F61C9C559100AEC77E /* Migrate.swift */,
@@ -482,7 +482,7 @@
 				8873E2291C51E09700DFE009 /* CoreDataModel.swift in Sources */,
 				8873E2281C51E09700DFE009 /* CoreDataExtensions.swift in Sources */,
 				8873E22D1C51E09700DFE009 /* CoreDataStackResult.swift in Sources */,
-				8873E2271C51E09700DFE009 /* CoreDataEquatable.swift in Sources */,
+				8873E2271C51E09700DFE009 /* Equatable.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -520,7 +520,7 @@
 				8873E23E1C51E0DE00DFE009 /* CoreDataModel.swift in Sources */,
 				8873E23D1C51E0DE00DFE009 /* CoreDataExtensions.swift in Sources */,
 				8873E2421C51E0DE00DFE009 /* CoreDataStackResult.swift in Sources */,
-				8873E23C1C51E0DE00DFE009 /* CoreDataEquatable.swift in Sources */,
+				8873E23C1C51E0DE00DFE009 /* Equatable.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -536,7 +536,7 @@
 				8873E2361C51E0DD00DFE009 /* CoreDataModel.swift in Sources */,
 				8873E2351C51E0DD00DFE009 /* CoreDataExtensions.swift in Sources */,
 				8873E23A1C51E0DD00DFE009 /* CoreDataStackResult.swift in Sources */,
-				8873E2341C51E0DD00DFE009 /* CoreDataEquatable.swift in Sources */,
+				8873E2341C51E0DD00DFE009 /* Equatable.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -552,7 +552,7 @@
 				8873E2461C51E0DE00DFE009 /* CoreDataModel.swift in Sources */,
 				8873E2451C51E0DE00DFE009 /* CoreDataExtensions.swift in Sources */,
 				8873E24A1C51E0DE00DFE009 /* CoreDataStackResult.swift in Sources */,
-				8873E2441C51E0DE00DFE009 /* CoreDataEquatable.swift in Sources */,
+				8873E2441C51E0DE00DFE009 /* Equatable.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

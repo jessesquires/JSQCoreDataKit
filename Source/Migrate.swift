@@ -62,7 +62,7 @@ public func migrate(model: CoreDataModel) throws {
         let manager = NSMigrationManager(sourceModel: step.source, destinationModel: step.destination)
         try manager.migrateStoreFromURL(storeURL, type: storeType, options: nil, withMappingModel: step.mapping, toDestinationURL: tempURL, destinationType: storeType, destinationOptions: nil)
 
-        try model.removeExistingModelStore()
+        try model.removeExistingStore()
         try NSFileManager.defaultManager().moveItemAtURL(tempURL, toURL: storeURL)
     }
 

@@ -31,7 +31,7 @@ class MigrationTests: TestCase {
 
     override func setUp() {
         super.setUp()
-        _ = try? model.removeExistingModelStore()
+        _ = try? model.removeExistingStore()
     }
 
     func test_GivenExistingPersistentStoreIsStale_ThenCoreDataModel_needsMigration() {

@@ -131,7 +131,7 @@ public struct CoreDataModel: CustomStringConvertible, Equatable {
 
      - throws: If removing the store fails or errors, then this function throws an `NSError`.
      */
-    public func removeExistingModelStore() throws {
+    public func removeExistingStore() throws {
         let fileManager = NSFileManager.defaultManager()
         if let storePath = storeURL?.path where fileManager.fileExistsAtPath(storePath) {
             try fileManager.removeItemAtPath(storePath)

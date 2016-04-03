@@ -57,9 +57,7 @@ class StackResultTests: TestCase {
         let success3 = StackResult.Success(stack)
         XCTAssertNotEqual(success1, success3)
 
-        do {
-            try model.removeExistingModelStore()
-        } catch { }
+        _ = try? model.removeExistingStore()
     }
 
     func test_StackResult_Equality_Failure() {

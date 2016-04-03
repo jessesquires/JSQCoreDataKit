@@ -29,7 +29,7 @@ class ModelTests: XCTestCase {
 
     override func setUp() {
         let model = CoreDataModel(name: modelName, bundle: modelBundle)
-        _ = try? model.removeExistingModelStore()
+        _ = try? model.removeExistingStore()
         super.setUp()
     }
 
@@ -139,7 +139,7 @@ class ModelTests: XCTestCase {
 
         // WHEN: we remove the existing model store
         do {
-            try model.removeExistingModelStore()
+            try model.removeExistingStore()
         }
         catch {
             XCTFail("Removing existing model store should not error.")
@@ -161,7 +161,7 @@ class ModelTests: XCTestCase {
         // WHEN: we attempt to remove the existing model store
         var success = true
         do {
-            try model.removeExistingModelStore()
+            try model.removeExistingStore()
         }
         catch {
             success = false
@@ -181,7 +181,7 @@ class ModelTests: XCTestCase {
         // WHEN: we attempt to remove the existing model store
         var success = true
         do {
-            try model.removeExistingModelStore()
+            try model.removeExistingStore()
         }
         catch {
             success = false

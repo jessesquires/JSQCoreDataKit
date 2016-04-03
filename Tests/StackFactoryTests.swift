@@ -29,11 +29,7 @@ class StackFactoryTests: TestCase {
 
     override func setUp() {
         let model = CoreDataModel(name: modelName, bundle: modelBundle)
-
-        do {
-            try model.removeExistingModelStore()
-        } catch { }
-
+        _ = try? model.removeExistingStore()
         super.setUp()
     }
 

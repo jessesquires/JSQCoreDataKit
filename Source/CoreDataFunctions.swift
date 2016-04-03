@@ -167,7 +167,7 @@ public func resetStack(stack: CoreDataStack,
 
         storeCoordinator.performBlockAndWait {
             do {
-                try model.removeExistingModelStore()
+                try model.removeExistingStore()
                 try storeCoordinator.removePersistentStore(store)
                 try storeCoordinator.addPersistentStoreWithType(model.storeType.type,
                     configuration: nil,

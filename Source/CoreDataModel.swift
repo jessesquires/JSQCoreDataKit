@@ -93,7 +93,7 @@ public struct CoreDataModel: CustomStringConvertible, Equatable {
 
             do {
                 let sourceMetaData = try NSPersistentStoreCoordinator.metadataForPersistentStoreOfType(
-                    storeType.description,
+                    storeType.type,
                     URL: storeURL,
                     options: nil)
                 return !managedObjectModel.isConfiguration(nil, compatibleWithStoreMetadata: sourceMetaData)

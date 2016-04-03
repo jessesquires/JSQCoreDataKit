@@ -146,7 +146,7 @@ public func deleteObjects <T: NSManagedObject>(objects: [T], inContext context: 
  */
 public func resetStack(stack: CoreDataStack,
                        queue: dispatch_queue_t = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0),
-                       completion: StackResultClosure) {
+                       completion: (result: StackResult) -> Void) {
 
     stack.mainContext.performBlockAndWait { stack.mainContext.reset() }
     stack.backgroundContext.performBlockAndWait { stack.backgroundContext.reset() }

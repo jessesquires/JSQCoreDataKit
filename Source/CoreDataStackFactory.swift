@@ -72,7 +72,7 @@ public struct CoreDataStackFactory: CustomStringConvertible, Equatable {
      */
     public func createStackInBackground(
         queue: dispatch_queue_t = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0),
-        completion: StackResultClosure) {
+        completion: (result: StackResult) -> Void) {
 
         dispatch_async(queue) {
             precondition(!NSThread.isMainThread(), "*** Error: cannot create a stack on the main queue via \(#function)")

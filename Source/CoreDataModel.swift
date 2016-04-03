@@ -21,11 +21,24 @@ import Foundation
 
 
 /**
- An instance of `CoreDataModel` represents a Core Data model.
+ Describes a Core Data model file exention type based on the
+ [Model File Format and Versions](https://developer.apple.com/library/ios/documentation/Cocoa/Conceptual/CoreDataVersioning/Articles/vmModelFormat.html)
+ documentation.
+ */
+public enum ModelFileExtension: String {
+    /// The extension for a model bundle, or a `.xcdatamodeld` file package.
+    case bundle = "momd"
+
+    /// The extension for a versioned model file, or a `.xcdatamodel` file.
+    case versionedFile = "mom"
+}
+
+
+/**
+ An instance of `CoreDataModel` represents a Core Data model — a `.xcdatamodeld` file package.
  It provides the model and store URLs as well as methods for interacting with the store.
  */
 public struct CoreDataModel: CustomStringConvertible, Equatable {
-
 
     // MARK: Properties
 
@@ -52,7 +65,7 @@ public struct CoreDataModel: CustomStringConvertible, Equatable {
     /// The file URL specifying the model file in the bundle specified by `bundle`.
     public var modelURL: NSURL {
         get {
-            guard let url = bundle.URLForResource(name, withExtension: "momd") else {
+            guard let url = bundle.URLForResource(name, withExtension: ModelFileExtension.bundle.rawValue) else {
                 fatalError("*** Error loading model URL for model named \(name) in bundle: \(bundle)")
             }
             return url
@@ -87,16 +100,13 @@ public struct CoreDataModel: CustomStringConvertible, Equatable {
      */
     public var needsMigration: Bool {
         get {
-            guard let storeURL = storeURL else {
-                return false
-            }
+            guard let storeURL = storeURL else { return false }
 
             do {
-                let sourceMetaData = try NSPersistentStoreCoordinator.metadataForPersistentStoreOfType(
-                    storeType.type,
-                    URL: storeURL,
-                    options: nil)
-                return !managedObjectModel.isConfiguration(nil, compatibleWithStoreMetadata: sourceMetaData)
+                let metadata = try NSPersistentStoreCoordinator.metadataForPersistentStoreOfType(storeType.type,
+                                                                                                 URL: storeURL,
+                                                                                                 options: nil)
+                return !managedObjectModel.isConfiguration(nil, compatibleWithStoreMetadata: metadata)
             }
             catch {
                 debugPrint("*** Error checking persistent store coordinator meta data: \(error)")
@@ -148,5 +158,5 @@ public struct CoreDataModel: CustomStringConvertible, Equatable {
                 + "modelURL=\(modelURL); storeURL=\(storeURL)>"
         }
     }
-
+    
 }

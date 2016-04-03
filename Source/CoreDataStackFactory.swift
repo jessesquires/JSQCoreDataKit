@@ -20,13 +20,6 @@ import CoreData
 import Foundation
 
 
-/// Describes default persistent store options.
-public let DefaultStoreOptions: PersistentStoreOptions = [
-    NSMigratePersistentStoresAutomaticallyOption: true,
-    NSInferMappingModelAutomaticallyOption: true
-]
-
-
 /**
  An instance of `CoreDataStackFactory` is responsible for creating instances of `CoreDataStack`.
 

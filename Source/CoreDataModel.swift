@@ -150,25 +150,3 @@ public struct CoreDataModel: CustomStringConvertible, Equatable {
     }
 
 }
-
-
-// MARK: Internal
-
-internal func DefaultDirectoryURL() -> NSURL {
-    do {
-        #if os(tvOS)
-            let searchPathDirectory = NSSearchPathDirectory.CachesDirectory
-        #else
-            let searchPathDirectory = NSSearchPathDirectory.DocumentDirectory
-        #endif
-
-        return try NSFileManager.defaultManager().URLForDirectory(
-            searchPathDirectory,
-            inDomain: .UserDomainMask,
-            appropriateForURL: nil,
-            create: true)
-    }
-    catch {
-        fatalError("*** Error finding default directory: \(error)")
-    }
-}

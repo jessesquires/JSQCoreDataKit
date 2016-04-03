@@ -13,6 +13,7 @@
 		298F00F91C9C559100AEC77E /* Migrate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 298F00F61C9C559100AEC77E /* Migrate.swift */; };
 		298F00FA1C9C559100AEC77E /* Migrate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 298F00F61C9C559100AEC77E /* Migrate.swift */; };
 		881219C81B361EAF005E5AA7 /* JSQCoreDataKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88002D4F1AB8F546001787DB /* JSQCoreDataKit.framework */; };
+		883378C51CB187E500205B24 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 883378C41CB187E500205B24 /* Utils.swift */; };
 		8873E2271C51E09700DFE009 /* Equatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8873E21D1C51E09700DFE009 /* Equatable.swift */; };
 		8873E2281C51E09700DFE009 /* CoreDataExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8873E21E1C51E09700DFE009 /* CoreDataExtensions.swift */; };
 		8873E2291C51E09700DFE009 /* CoreDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8873E21F1C51E09700DFE009 /* CoreDataModel.swift */; };
@@ -95,6 +96,7 @@
 		298F00F61C9C559100AEC77E /* Migrate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Migrate.swift; sourceTree = "<group>"; };
 		88002D4F1AB8F546001787DB /* JSQCoreDataKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = JSQCoreDataKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		881219C31B361EAF005E5AA7 /* JSQCoreDataKitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JSQCoreDataKitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		883378C41CB187E500205B24 /* Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		883C83DB1C0D7647007A16F5 /* JSQCoreDataKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = JSQCoreDataKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8873E21D1C51E09700DFE009 /* Equatable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Equatable.swift; sourceTree = "<group>"; };
 		8873E21E1C51E09700DFE009 /* CoreDataExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataExtensions.swift; sourceTree = "<group>"; };
@@ -202,6 +204,7 @@
 				8873E2251C51E09700DFE009 /* JSQCoreDataKit.h */,
 				298F00F61C9C559100AEC77E /* Migrate.swift */,
 				8873E2261C51E09700DFE009 /* StoreType.swift */,
+				883378C41CB187E500205B24 /* Utils.swift */,
 			);
 			path = Source;
 			sourceTree = "<group>";
@@ -479,6 +482,7 @@
 				8873E22B1C51E09700DFE009 /* CoreDataStack.swift in Sources */,
 				298F00F71C9C559100AEC77E /* Migrate.swift in Sources */,
 				8873E22A1C51E09700DFE009 /* CoreDataSaveResult.swift in Sources */,
+				883378C51CB187E500205B24 /* Utils.swift in Sources */,
 				8873E2291C51E09700DFE009 /* CoreDataModel.swift in Sources */,
 				8873E2281C51E09700DFE009 /* CoreDataExtensions.swift in Sources */,
 				8873E22D1C51E09700DFE009 /* CoreDataStackResult.swift in Sources */,

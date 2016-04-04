@@ -152,7 +152,7 @@ public func resetStack(stack: CoreDataStack,
 
     guard let store = stack.storeCoordinator.persistentStores.first else {
         dispatch_async(dispatch_get_main_queue()) {
-            completion(result: .Success(stack))
+            completion(result: .success(stack))
         }
         return
     }
@@ -175,13 +175,13 @@ public func resetStack(stack: CoreDataStack,
             }
             catch {
                 dispatch_async(dispatch_get_main_queue()) {
-                    completion(result: .Failure(error as NSError))
+                    completion(result: .failure(error as NSError))
                 }
                 return
             }
 
             dispatch_async(dispatch_get_main_queue()) {
-                completion(result: .Success(stack))
+                completion(result: .success(stack))
             }
         }
     }

@@ -30,7 +30,7 @@ let DefaultTimeout = NSTimeInterval(20)
 
 class TestCase: XCTestCase {
 
-    let inMemoryModel = CoreDataModel(name: modelName, bundle: modelBundle, storeType: .InMemory)
+    let inMemoryModel = CoreDataModel(name: modelName, bundle: modelBundle, storeType: .inMemory)
 
     var inMemoryStack: CoreDataStack!
 

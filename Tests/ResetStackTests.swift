@@ -36,7 +36,7 @@ class ResetStackTests: TestCase {
 
         // WHEN: we attempt to reset the stack
         resetStack(stack) { (result: StackResult) in
-            if case .Failure(let e) = result {
+            if case .failure(let e) = result {
                 XCTFail("Error while resetting the stack: \(e)")
             }
             expectation.fulfill()
@@ -60,7 +60,7 @@ class ResetStackTests: TestCase {
 
         // WHEN: we attempt to reset the stack
         resetStack(stack) { (result: StackResult) in
-            if case .Failure(let e) = result {
+            if case .failure(let e) = result {
                 XCTFail("Error while resetting the stack: \(e)")
             }
             expectation.fulfill()
@@ -95,7 +95,7 @@ class ResetStackTests: TestCase {
 
         // WHEN: we attempt to reset the stack
         resetStack(stack) { (result: StackResult) in
-            if case .Failure(let e) = result {
+            if case .failure(let e) = result {
                 XCTFail("Error while resetting the stack: \(e)")
             }
             expectation.fulfill()

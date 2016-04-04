@@ -24,13 +24,13 @@ import Foundation
 public enum StoreType: CustomStringConvertible, Equatable {
 
     /// The SQLite database store type. The associated file URL specifies the directory for the store.
-    case SQLite (NSURL)
+    case sqlite (NSURL)
 
     /// The binary store type. The associated file URL specifies the directory for the store.
-    case Binary (NSURL)
+    case binary (NSURL)
 
     /// The in-memory store type.
-    case InMemory
+    case inMemory
 
 
     // MARK: Properties
@@ -39,9 +39,9 @@ public enum StoreType: CustomStringConvertible, Equatable {
     public var type: String {
         get {
             switch self {
-            case .SQLite: return NSSQLiteStoreType
-            case .Binary: return NSBinaryStoreType
-            case .InMemory: return NSInMemoryStoreType
+            case .sqlite: return NSSQLiteStoreType
+            case .binary: return NSBinaryStoreType
+            case .inMemory: return NSInMemoryStoreType
             }
         }
     }
@@ -55,9 +55,9 @@ public enum StoreType: CustomStringConvertible, Equatable {
      */
     public func storeDirectory() -> NSURL? {
         switch self {
-        case let .SQLite(url): return url
-        case let .Binary(url): return url
-        case .InMemory: return nil
+        case let .sqlite(url): return url
+        case let .binary(url): return url
+        case .inMemory: return nil
         }
     }
 

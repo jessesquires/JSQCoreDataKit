@@ -42,7 +42,7 @@ class ModelTests: XCTestCase {
         // THEN: the model has the correct name, bundle, and type
         XCTAssertEqual(model.name, modelName)
         XCTAssertEqual(model.bundle, modelBundle)
-        XCTAssertEqual(model.storeType, StoreType.SQLite(defaultDirectoryURL()))
+        XCTAssertEqual(model.storeType, StoreType.sqlite(defaultDirectoryURL()))
 
         // THEN: the model returns the correct database filename
         XCTAssertEqual(model.databaseFileName, model.name + "." + ModelFileExtension.sqlite.rawValue)
@@ -69,12 +69,12 @@ class ModelTests: XCTestCase {
         // GIVEN: a model name and bundle
 
         // WHEN: we create a model
-        let model = CoreDataModel(name: modelName, bundle: modelBundle, storeType: .Binary(NSURL(fileURLWithPath: NSTemporaryDirectory())))
+        let model = CoreDataModel(name: modelName, bundle: modelBundle, storeType: .binary(NSURL(fileURLWithPath: NSTemporaryDirectory())))
 
         // THEN: the model has the correct name, bundle, and type
         XCTAssertEqual(model.name, modelName)
         XCTAssertEqual(model.bundle, modelBundle)
-        XCTAssertEqual(model.storeType, StoreType.Binary(NSURL(fileURLWithPath: NSTemporaryDirectory())))
+        XCTAssertEqual(model.storeType, StoreType.binary(NSURL(fileURLWithPath: NSTemporaryDirectory())))
 
         // THEN: the model returns the correct database filename
         XCTAssertEqual(model.databaseFileName, model.name)
@@ -101,12 +101,12 @@ class ModelTests: XCTestCase {
         // GIVEN: a model name and bundle
 
         // WHEN: we create a model
-        let model = CoreDataModel(name: modelName, bundle: modelBundle, storeType: .InMemory)
+        let model = CoreDataModel(name: modelName, bundle: modelBundle, storeType: .inMemory)
 
         // THEN: the model has the correct name, bundle, and type
         XCTAssertEqual(model.name, modelName)
         XCTAssertEqual(model.bundle, modelBundle)
-        XCTAssertEqual(model.storeType, StoreType.InMemory)
+        XCTAssertEqual(model.storeType, StoreType.inMemory)
 
         // THEN: the model returns the correct database filename
         XCTAssertEqual(model.databaseFileName, model.name)
@@ -173,7 +173,7 @@ class ModelTests: XCTestCase {
 
     func test_ThatInMemoryModel_RemoveExistingStore_Fails() {
         // GIVEN: a core data model in-memory
-        let model = CoreDataModel(name: modelName, bundle: modelBundle, storeType: .InMemory)
+        let model = CoreDataModel(name: modelName, bundle: modelBundle, storeType: .inMemory)
 
         // THEN: the store URL is nil
         XCTAssertNil(model.storeURL)
@@ -194,7 +194,7 @@ class ModelTests: XCTestCase {
     func test_Model_Description() {
         print("\(#function)")
         
-        let model = CoreDataModel(name: modelName, bundle: modelBundle, storeType: .InMemory)
+        let model = CoreDataModel(name: modelName, bundle: modelBundle, storeType: .inMemory)
         print(model)
     }
     

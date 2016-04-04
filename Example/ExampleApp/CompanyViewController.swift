@@ -44,11 +44,11 @@ class CompanyViewController: UITableViewController, NSFetchedResultsControllerDe
 
         factory.createStackInBackground { (result: StackResult) -> Void in
             switch result {
-            case .Success(let s):
+            case .success(let s):
                 self.stack = s
                 self.setupFRC()
 
-            case .Failure(let err):
+            case .failure(let err):
                 assertionFailure("Error creating stack: \(err)")
             }
 

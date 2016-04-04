@@ -53,9 +53,9 @@ public enum SaveResult: CustomStringConvertible, Equatable {
             var str = "<\(SaveResult.self): "
             switch self {
             case .success:
-                str += ".Success"
+                str += ".success"
             case .failure(let e):
-                str += ".Failure(\(e))"
+                str += ".failure(\(e))"
             }
             return str + ">"
         }

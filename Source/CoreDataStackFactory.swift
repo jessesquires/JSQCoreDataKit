@@ -82,7 +82,7 @@ public struct CoreDataStackFactory: CustomStringConvertible, Equatable {
                 storeCoordinator = try self.createStoreCoordinator()
             } catch {
                 dispatch_async(dispatch_get_main_queue()) {
-                    completion(result: .Failure(error as NSError))
+                    completion(result: .failure(error as NSError))
                 }
                 return
             }
@@ -100,7 +100,7 @@ public struct CoreDataStackFactory: CustomStringConvertible, Equatable {
                     backgroundContext: backgroundContext,
                     storeCoordinator: storeCoordinator)
 
-                completion(result: .Success(stack))
+                completion(result: .success(stack))
             }
         }
     }
@@ -121,7 +121,7 @@ public struct CoreDataStackFactory: CustomStringConvertible, Equatable {
         do {
             storeCoordinator = try self.createStoreCoordinator()
         } catch {
-            return .Failure(error as NSError)
+            return .failure(error as NSError)
         }
 
         let backgroundContext = self.createContext(.PrivateQueueConcurrencyType, name: "background")
@@ -136,7 +136,7 @@ public struct CoreDataStackFactory: CustomStringConvertible, Equatable {
             backgroundContext: backgroundContext,
             storeCoordinator: storeCoordinator)
 
-        return .Success(stack)
+        return .success(stack)
     }
 
 

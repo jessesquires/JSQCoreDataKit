@@ -82,7 +82,7 @@ public struct CoreDataModel: CustomStringConvertible, Equatable {
     public var databaseFileName: String {
         get {
             switch storeType {
-            case .SQLite: return name + "." + ModelFileExtension.sqlite.rawValue
+            case .sqlite: return name + "." + ModelFileExtension.sqlite.rawValue
             default: return name
             }
         }
@@ -129,11 +129,11 @@ public struct CoreDataModel: CustomStringConvertible, Equatable {
 
      - parameter name:      The name of the Core Data model.
      - parameter bundle:    The bundle in which the model is located. The default is the main bundle.
-     - parameter storeType: The store type for the Core Data model. The default is `.SQLite`, with the user's documents directory.
+     - parameter storeType: The store type for the Core Data model. The default is `.sqlite`, with the user's documents directory.
 
      - returns: A new `CoreDataModel` instance.
      */
-    public init(name: String, bundle: NSBundle = .mainBundle(), storeType: StoreType = .SQLite(defaultDirectoryURL())) {
+    public init(name: String, bundle: NSBundle = .mainBundle(), storeType: StoreType = .sqlite(defaultDirectoryURL())) {
         self.name = name
         self.bundle = bundle
         self.storeType = storeType

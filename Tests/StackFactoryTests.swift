@@ -54,11 +54,11 @@ class StackFactoryTests: TestCase {
             XCTAssertTrue(NSThread.isMainThread(), "Factory completion handler should return on main thread")
 
             switch result {
-            case .Success(let s):
+            case .success(let s):
                 stack = s
                 XCTAssertNotNil(s)
 
-            case .Failure(let e):
+            case .failure(let e):
                 XCTFail("Error: \(e)")
             }
 

@@ -89,7 +89,6 @@ public func migrate(model: CoreDataModel) throws {
         try model.removeExistingStore()
         try NSFileManager.defaultManager().moveItemAtURL(tempURL, toURL: storeURL)
     }
-
 }
 
 

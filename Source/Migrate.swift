@@ -46,8 +46,9 @@ public enum MigrationError: ErrorType {
 
  - parameter model: The `CoreDataModel` instance on which to perform a migration.
 
- - throws: If an error occurs, a `MigrationError` is thrown.
- - seealso: `MigrationError`
+ - throws: If an error occurs, either an `NSError` or a `MigrationError` is thrown. If an `NSError` is thrown, it could 
+ specify any of the following: an error checking persistent store metadata, an error from `NSMigrationManager`, or
+ an error from `NSFileManager`.
 
  - warning: Migration is only supported for on-disk persistent stores.
  A complete 'path' of mapping models must exist between the peristent store's version and the model's version.
@@ -55,13 +56,14 @@ public enum MigrationError: ErrorType {
 public func migrate(model: CoreDataModel) throws {
     guard model.needsMigration else { return }
 
-    guard let storeURL = model.storeURL else {
-        preconditionFailure("*** Error: migration is only available for on-disk persistent stores. model.storeURL is nil.")
+    guard let storeURL = model.storeURL, let storeDirectory = model.storeType.storeDirectory() else {
+        preconditionFailure("*** Error: migration is only available for on-disk persistent stores. Received invalid model: \(model)")
     }
 
     let bundle = model.bundle
     let storeType = model.storeType.type
 
+    // could also throw NSError from NSPersistentStoreCoordinator
     guard let sourceModel = try findCompatibleModel(withBundle: bundle, storeType: storeType, storeURL: storeURL) else {
         throw MigrationError.SourceModelNotFound(model: model)
     }
@@ -71,11 +73,19 @@ public func migrate(model: CoreDataModel) throws {
                                                         destinationModel: model.managedObjectModel)
 
     for step in migrationSteps {
-        let tempURL = defaultDirectoryURL().URLByAppendingPathComponent("migration.sqlite")
+        let tempURL = storeDirectory.URLByAppendingPathComponent("migration." + ModelFileExtension.sqlite.rawValue)
 
+        // could throw error from `migrateStoreFromURL`
         let manager = NSMigrationManager(sourceModel: step.source, destinationModel: step.destination)
-        try manager.migrateStoreFromURL(storeURL, type: storeType, options: nil, withMappingModel: step.mapping, toDestinationURL: tempURL, destinationType: storeType, destinationOptions: nil)
+        try manager.migrateStoreFromURL(storeURL,
+                                        type: storeType,
+                                        options: nil,
+                                        withMappingModel: step.mapping,
+                                        toDestinationURL: tempURL,
+                                        destinationType: storeType,
+                                        destinationOptions: nil)
 
+        // could throw file system errors
         try model.removeExistingStore()
         try NSFileManager.defaultManager().moveItemAtURL(tempURL, toURL: storeURL)
     }

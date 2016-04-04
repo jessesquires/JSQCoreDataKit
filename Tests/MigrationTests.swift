@@ -39,27 +39,34 @@ class MigrationTests: TestCase {
         createSQLitePersistentStore(managedObjectModel: managedObjectModel(versionName: "Version 1"))
 
         // WHEN: we ask if it needs migration
-
         // THEN: model needs migration
         XCTAssertTrue(model.needsMigration)
     }
 
     func test_ThatCoreDataModel_DoesNotNeedMigration_WhenUsingMostRecentModel() {
         // GIVEN: an existing SQLite file with metadata pointing to the latest version of the model
+        XCTAssertFalse(model.needsMigration)
         createSQLitePersistentStore(managedObjectModel: managedObjectModel(versionName: "Version 3"))
 
         // WHEN: we ask if it needs migration
-
         // THEN: model does not need migration
         XCTAssertFalse(model.needsMigration)
+
+        // THEN: calling migrate does nothing
+        try! migrate(model)
     }
 
     func test_ThatModelMigrates_Successfully() {
         // GIVEN: an existing SQLite file with metadata pointing to an old version of the model
         createSQLitePersistentStore(managedObjectModel: managedObjectModel(versionName: "Version 1"))
+        XCTAssertTrue(model.needsMigration)
 
         // WHEN: CoreDataModel is migrated
-        try! migrate(model)
+        do {
+            try migrate(model)
+        } catch {
+            XCTFail("Failed to migrate model: \(error)")
+        }
 
         // THEN: model does not need migration
         XCTAssertFalse(model.needsMigration)

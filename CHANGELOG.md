@@ -9,14 +9,25 @@ The changelog for `JSQCoreDataKit`. Also see the [releases](https://github.com/j
 
 This release closes the [3.0.0 milestone](https://github.com/jessesquires/JSQCoreDataKit/issues?q=milestone%3A3.0.0).
 
+The goals of this release are primarily to adopt Swift 2.2 and refine the API to make it more *Swifty*, as the definition of *Swifty* has evolved. 
+
 ### Breaking changes :warning: 
 
-- Migrated to Swift 2.2. (#67) **Swift 2.2 and above is now required.**
+There are many breaking changes in this release, however — with the exception of Swift 2.2 — they are all **merely name changes** that aim to reduce verbosity.
 
-### New
+- Migrated to Swift 2.2. (#67) **Swift 2.2 and above is now required.**
+- Renamed `DefaultStoreOptions` to `defaultStoreOptions`
+- Renamed `CoreDataSaveResult` to `SaveResult`
+- Renamed `CoreDataStackResult` to `StackResult`
+- Renamed `CoreDataModel.removeExistingModelStore()` to `CoreDataModel.removeExistingStore()`
+- Renamed all `enum` cases to be lowercase, in line with latest [Swift API guidelines](https://github.com/apple/swift-evolution/blob/master/proposals/0006-apply-api-guidelines-to-the-standard-library.md)
+- The `StackResultClosure` typealias has been removed
+ 
+### New features
 
 - Support for Swift Package Manager (#55) :tada: 
-- Core Data model migration support! (#46, #66) Thanks @marius-serban ! :tada: See the [README](https://github.com/jessesquires/JSQCoreDataKit/blob/develop/README.md) and [docs](http://www.jessesquires.com/JSQCoreDataKit/) for details!
+- Core Data model migration support! (#46, #66) Thanks @marius-serban ! :tada: See the [README](https://github.com/jessesquires/JSQCoreDataKit/blob/develop/README.md) and [docs](http://www.jessesquires.com/JSQCoreDataKit/Functions.html#/s:F14JSQCoreDataKit7migrateFzVS_13CoreDataModelT_) for details!
+
 
 2.2.1
 -----

@@ -119,13 +119,17 @@ do {
 }
 ````
 
-#### Checking migrations
+#### Performing migrations
 
 ````swift
 let bundle = NSBundle(identifier: "com.MyApp.MyModelFramework")!
 let model = CoreDataModel(name: "MyModel", bundle: bundle)
 if model.needsMigration {
-    // do migration
+    do {
+        try migrate(model)
+    } catch {
+        print("Failed to migrate model: \(error)")
+    }
 }
 ````
 

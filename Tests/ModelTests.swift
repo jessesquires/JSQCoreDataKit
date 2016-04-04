@@ -45,7 +45,7 @@ class ModelTests: XCTestCase {
         XCTAssertEqual(model.storeType, StoreType.SQLite(defaultDirectoryURL()))
 
         // THEN: the model returns the correct database filename
-        XCTAssertEqual(model.databaseFileName, model.name + ".sqlite")
+        XCTAssertEqual(model.databaseFileName, model.name + "." + ModelFileExtension.sqlite.rawValue)
 
         // THEN: the store file is in the documents directory
         let storeURLComponents = model.storeURL!.pathComponents!

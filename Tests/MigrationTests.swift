@@ -34,26 +34,29 @@ class MigrationTests: TestCase {
         _ = try? model.removeExistingStore()
     }
 
-    func test_GivenExistingPersistentStoreIsStale_ThenCoreDataModel_needsMigration() {
+    func test_ThatCoreDataModel_NeedsMigration_WhenUsingOldModel() {
         // GIVEN: an existing SQLite file with metadata pointing to an old version of the model
-        createSQLitePersistentStore(managedObjectModelVersion("Version 1"))
+        createSQLitePersistentStore(managedObjectModel: managedObjectModel(versionName: "Version 1"))
+
+        // WHEN: we ask if it needs migration
 
         // THEN: model needs migration
         XCTAssertTrue(model.needsMigration)
     }
 
-    func test_GivenExistingPersistentStoreIsFresh_ThenCoreDataModel_doesNotNeedMigration() {
+    func test_ThatCoreDataModel_DoesNotNeedMigration_WhenUsingMostRecentModel() {
         // GIVEN: an existing SQLite file with metadata pointing to the latest version of the model
-        createSQLitePersistentStore(managedObjectModelVersion("Version 3"))
+        createSQLitePersistentStore(managedObjectModel: managedObjectModel(versionName: "Version 3"))
+
+        // WHEN: we ask if it needs migration
 
         // THEN: model does not need migration
         XCTAssertFalse(model.needsMigration)
     }
 
-
-    func test_GivenStalePersistentStore_WhenModelIsMigrated_ThenModelDoesNotNeedMigration() {
+    func test_ThatModelMigrates_Successfully() {
         // GIVEN: an existing SQLite file with metadata pointing to an old version of the model
-        createSQLitePersistentStore(managedObjectModelVersion("Version 1"))
+        createSQLitePersistentStore(managedObjectModel: managedObjectModel(versionName: "Version 1"))
 
         // WHEN: CoreDataModel is migrated
         try! migrate(model)
@@ -67,16 +70,16 @@ class MigrationTests: TestCase {
 
     func test_ThatBuildingMigrationMappingSteps_WithValidModels_ReturnsCorrectSteps() {
         // GIVEN: the source and destination models
-        let sourceModel = managedObjectModelVersion("Version 1")
-        let destinationModel = managedObjectModelVersion("Version 3")
+        let sourceModel = managedObjectModel(versionName: "Version 1")
+        let destinationModel = managedObjectModel(versionName: "Version 3")
 
         // WHEN: building the mapping steps
         let mappingSteps = try! buildMigrationMappingSteps(bundle: model.bundle, sourceModel: sourceModel, destinationModel: destinationModel)
 
         // THEN: the mapping steps are correct
-        let version2Model = managedObjectModelVersion("Version 2")
-        let version1ToVersion2Mapping = mappingModel("Version1_to_Version2")
-        let version2ToVersion3Mapping = mappingModel("Version2_to_Version3")
+        let version2Model = managedObjectModel(versionName: "Version 2")
+        let version1ToVersion2Mapping = mappingModel(name: "Version1_to_Version2")
+        let version2ToVersion3Mapping = mappingModel(name: "Version2_to_Version3")
 
         XCTAssertEqual(mappingSteps[0].source, sourceModel)
         XCTAssertEqual(mappingSteps[0].mapping, version1ToVersion2Mapping)
@@ -89,7 +92,7 @@ class MigrationTests: TestCase {
 
     func test_ThatBuildingMigrationMappingSteps_WithInvalidModels_ThrowsError() {
         // GIVEN: invalid source and destination models
-        let sourceModel = managedObjectModelVersion("Version 1")
+        let sourceModel = managedObjectModel(versionName: "Version 1")
         let destinationModel = sourceModel
 
         // WHEN: building the mapping steps
@@ -99,7 +102,7 @@ class MigrationTests: TestCase {
         } catch MigrationError.MappingModelNotFound(let destinationModel) {
             // THEN: the expected error is thrown
             XCTAssertNil(mappingSteps)
-            XCTAssertEqual(destinationModel, managedObjectModelVersion("Version 3"))
+            XCTAssertEqual(destinationModel, managedObjectModel(versionName: "Version 3"))
         } catch {
             XCTFail("Unexpected error was thrown: \(error)")
         }
@@ -110,8 +113,8 @@ class MigrationTests: TestCase {
 
     func test_thatWhenFindingACompatibleModel_ForAValidStore_ThenTheCorrectModelIsFound() {
         // GIVEN: a SQLite store with metadata pointing to a specific version of the model
-        let version1Model = managedObjectModelVersion("Version 1")
-        let persistentStore = createSQLitePersistentStore(version1Model)
+        let version1Model = managedObjectModel(versionName: "Version 1")
+        let persistentStore = createSQLitePersistentStore(managedObjectModel: version1Model)
 
         // WHEN: we search for a compatible model in the bundle
         let foundModel = try! findCompatibleModel(withBundle: model.bundle, storeType: persistentStore.type, storeURL: persistentStore.URL!)
@@ -147,9 +150,9 @@ class MigrationTests: TestCase {
         let modelsInBundle = findModelsInBundle(bundle)
 
         // THEN: all model versions are found
-        let version1 = managedObjectModelVersion("Version 1")
-        let version2 = managedObjectModelVersion("Version 2")
-        let version3 = managedObjectModelVersion("Version 3")
+        let version1 = managedObjectModel(versionName: "Version 1")
+        let version2 = managedObjectModel(versionName: "Version 2")
+        let version3 = managedObjectModel(versionName: "Version 3")
         XCTAssertEqual(modelsInBundle, [version1, version2, version3])
     }
 
@@ -169,33 +172,33 @@ class MigrationTests: TestCase {
 
     func test_thatWhenFetchingTheNextMigrationMappingStep_ThenTheCorrectMappingIsFound_Version1to2() {
         // GIVEN: a model that has a corresponding mapping model
-        let version1Model = managedObjectModelVersion("Version 1")
+        let version1Model = managedObjectModel(versionName: "Version 1")
 
         // WHEN: finding the next model and mapping
         let mappingStep = nextMigrationMappingStep(fromSourceModel: version1Model, bundle: model.bundle)!
 
         // THEN: the correct mapping and target model are found
         XCTAssertEqual(mappingStep.source, version1Model)
-        XCTAssertEqual(mappingStep.mapping, mappingModel("Version1_to_Version2"))
-        XCTAssertEqual(mappingStep.destination, managedObjectModelVersion("Version 2"))
+        XCTAssertEqual(mappingStep.mapping, mappingModel(name: "Version1_to_Version2"))
+        XCTAssertEqual(mappingStep.destination, managedObjectModel(versionName: "Version 2"))
     }
 
     func test_thatWhenFetchingTheNextMigrationMappingStep_ThenTheCorrectMappingIsFound_Version2to3() {
         // GIVEN: a model that has a corresponding mapping model
-        let version1Model = managedObjectModelVersion("Version 2")
+        let version1Model = managedObjectModel(versionName: "Version 2")
 
         // WHEN: finding the next model and mapping
         let mappingStep = nextMigrationMappingStep(fromSourceModel: version1Model, bundle: model.bundle)!
 
         // THEN: the correct mapping and target model are found
         XCTAssertEqual(mappingStep.source, version1Model)
-        XCTAssertEqual(mappingStep.mapping, mappingModel("Version2_to_Version3"))
-        XCTAssertEqual(mappingStep.destination, managedObjectModelVersion("Version 3"))
+        XCTAssertEqual(mappingStep.mapping, mappingModel(name: "Version2_to_Version3"))
+        XCTAssertEqual(mappingStep.destination, managedObjectModel(versionName: "Version 3"))
     }
 
     func test_thatWhenFetchingTheNextMigrationMappingStep_ThenNilIsReturned_WhenNoStepsLeft() {
         // GIVEN: a model that does not have a corresponding mapping model
-        let version3Model = managedObjectModelVersion("Version 3")
+        let version3Model = managedObjectModel(versionName: "Version 3")
 
         // WHEN: finding the next model and mapping
         let result = nextMigrationMappingStep(fromSourceModel: version3Model, bundle: model.bundle)
@@ -207,14 +210,14 @@ class MigrationTests: TestCase {
 
     // MARK: Helpers
 
-    func createSQLitePersistentStore(managedObjectModel: NSManagedObjectModel) -> NSPersistentStore {
+    func createSQLitePersistentStore(managedObjectModel managedObjectModel: NSManagedObjectModel) -> NSPersistentStore {
         let coordinator = NSPersistentStoreCoordinator(managedObjectModel: managedObjectModel)
-        let storeURL = defaultDirectoryURL().URLByAppendingPathComponent("\(modelName).sqlite")
+        let storeURL = defaultDirectoryURL().URLByAppendingPathComponent("\(modelName)." + ModelFileExtension.sqlite.rawValue)
         return try! coordinator.addPersistentStoreWithType(NSSQLiteStoreType, configuration: nil, URL: storeURL, options: nil)
     }
 
-    func managedObjectModelVersion(name: String) -> NSManagedObjectModel {
-        let modelURL = model.modelURL.URLByAppendingPathComponent("\(name).mom")
+    func managedObjectModel(versionName versionName: String) -> NSManagedObjectModel {
+        let modelURL = model.modelURL.URLByAppendingPathComponent("\(versionName).\(ModelFileExtension.versionedFile.rawValue)")
 
         guard let result = NSManagedObjectModel(contentsOfURL: modelURL) else {
             preconditionFailure("Model with given name not found in bundle or is invalid.")
@@ -222,8 +225,8 @@ class MigrationTests: TestCase {
         return result
     }
 
-    func mappingModel(name: String) -> NSMappingModel {
-        guard let mappingModelURL = model.bundle.URLForResource(name, withExtension: "cdm") else {
+    func mappingModel(name name: String) -> NSMappingModel {
+        guard let mappingModelURL = model.bundle.URLForResource(name, withExtension: ModelFileExtension.mapping.rawValue) else {
             preconditionFailure("Mapping model named \(name) not found in bundle.")
         }
         

@@ -31,6 +31,12 @@ public enum ModelFileExtension: String {
 
     /// The extension for a versioned model file, or a `.xcdatamodel` file.
     case versionedFile = "mom"
+
+    /// The extension for a mapping model file, or a `.xcmappingmodel` file.
+    case mapping = "cdm"
+
+    /// The extension for a sqlite store.
+    case sqlite = "sqlite"
 }
 
 
@@ -76,7 +82,7 @@ public struct CoreDataModel: CustomStringConvertible, Equatable {
     public var databaseFileName: String {
         get {
             switch storeType {
-            case .SQLite: return name + ".sqlite"
+            case .SQLite: return name + "." + ModelFileExtension.sqlite.rawValue
             default: return name
             }
         }

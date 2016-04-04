@@ -48,7 +48,7 @@ class DeleteTests: TestCase {
         XCTAssertTrue(stack.mainContext.hasChanges)
 
         saveContext(stack.mainContext) { result in
-            XCTAssertTrue(result == .Success, "Save should not error")
+            XCTAssertTrue(result == .success, "Save should not error")
         }
     }
 
@@ -84,7 +84,7 @@ class DeleteTests: TestCase {
         XCTAssertTrue(stack.mainContext.hasChanges)
 
         saveContext(stack.mainContext) { result in
-            XCTAssertTrue(result == .Success, "Save should not error")
+            XCTAssertTrue(result == .success, "Save should not error")
         }
     }
 

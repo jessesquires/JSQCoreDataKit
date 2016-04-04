@@ -52,10 +52,10 @@ public func ==(lhs: StackResult, rhs: StackResult) -> Bool {
 /// :nodoc:
 public func ==(lhs: SaveResult, rhs: SaveResult) -> Bool {
     switch (lhs, rhs) {
-    case (.Success, .Success):
+    case (.success, .success):
         return true
 
-    case (let .Failure(error1), let .Failure(error2)):
+    case (let .failure(error1), let .failure(error2)):
         return error1 == error2
 
     default:

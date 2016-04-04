@@ -34,10 +34,10 @@ public func saveContext(context: NSManagedObjectContext, wait: Bool = true, comp
         guard context.hasChanges else { return }
         do {
             try context.save()
-            completion?(.Success)
+            completion?(.success)
         }
         catch {
-            completion?(.Failure(error as NSError))
+            completion?(.failure(error as NSError))
         }
     }
     wait ? context.performBlockAndWait(block) : context.performBlock(block)

@@ -53,7 +53,7 @@ class ContextSyncTests: TestCase {
         expectationForNotification(NSManagedObjectContextDidSaveNotification, object: inMemoryStack.backgroundContext, handler: nil)
 
         saveContext(inMemoryStack.mainContext) { result in
-            XCTAssertTrue(result == .Success)
+            XCTAssertTrue(result == .success)
         }
 
         waitForExpectationsWithTimeout(DefaultTimeout) { (error) in
@@ -96,7 +96,7 @@ class ContextSyncTests: TestCase {
         // WHEN: we save the child context
         expectationForNotification(NSManagedObjectContextDidSaveNotification, object: childContext, handler: nil)
         saveContext(childContext) { (result) -> Void in
-            XCTAssertTrue(result == .Success)
+            XCTAssertTrue(result == .success)
         }
 
         waitForExpectationsWithTimeout(DefaultTimeout) { (error) in

@@ -29,14 +29,14 @@ public enum MigrationError: ErrorType {
 
      - parameter model: The model that failed to be migrated.
      */
-    case SourceModelNotFound(model: CoreDataModel)
+    case sourceModelNotFound(model: CoreDataModel)
 
     /**
      Specifies that an `NSMappingModel` was not found in the model's bundle in the progressive migration 'path'.
 
      - parameter sourceModel: The destination managed object model for which a mapping model was not found.
      */
-    case MappingModelNotFound(destinationModel: NSManagedObjectModel)
+    case mappingModelNotFound(destinationModel: NSManagedObjectModel)
 }
 
 
@@ -65,7 +65,7 @@ public func migrate(model: CoreDataModel) throws {
 
     // could also throw NSError from NSPersistentStoreCoordinator
     guard let sourceModel = try findCompatibleModel(withBundle: bundle, storeType: storeType, storeURL: storeURL) else {
-        throw MigrationError.SourceModelNotFound(model: model)
+        throw MigrationError.sourceModelNotFound(model: model)
     }
 
     let migrationSteps = try buildMigrationMappingSteps(bundle: bundle,
@@ -146,7 +146,7 @@ internal func buildMigrationMappingSteps(bundle bundle: NSBundle,
     var nextModel = sourceModel
     repeat {
         guard let nextStep = nextMigrationMappingStep(fromSourceModel: nextModel, bundle: bundle) else {
-            throw MigrationError.MappingModelNotFound(destinationModel: nextModel)
+            throw MigrationError.mappingModelNotFound(destinationModel: nextModel)
         }
         migrationSteps.append(nextStep)
         nextModel = nextStep.destination

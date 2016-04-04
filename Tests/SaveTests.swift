@@ -66,7 +66,7 @@ class SaveTests: TestCase {
         saveContext(stack.mainContext, wait: true) { result in
 
             // THEN: the save succeeds without an error
-            XCTAssertTrue(result == .Success, "Save should not error")
+            XCTAssertTrue(result == .success, "Save should not error")
             saveExpectation.fulfill()
         }
 
@@ -147,7 +147,7 @@ class SaveTests: TestCase {
         saveContext(stack.mainContext, wait: false) { result in
 
             // THEN: the save succeeds without an error
-            XCTAssertTrue(result == .Success, "Save should not error")
+            XCTAssertTrue(result == .success, "Save should not error")
             saveExpectation.fulfill()
         }
 
@@ -190,7 +190,7 @@ class SaveTests: TestCase {
         saveContext(childContext) { result in
 
             // THEN: the save succeeds without an error
-            XCTAssertTrue(result == .Success, "Save should not error")
+            XCTAssertTrue(result == .success, "Save should not error")
             saveExpectation.fulfill()
         }
 

@@ -26,10 +26,10 @@ import Foundation
 public enum StackResult: CustomStringConvertible, Equatable {
 
     /// The success result, containing the successfully initialized `CoreDataStack`.
-    case success(CoreDataStack)
+    case Success(CoreDataStack)
 
     /// The failure result, containing an `NSError` instance that describes the error.
-    case failure(NSError)
+    case Failure(NSError)
 
 
     // MARK: Methods
@@ -38,7 +38,7 @@ public enum StackResult: CustomStringConvertible, Equatable {
      - returns: The result's `CoreDataStack` if `.Success`, otherwise `nil`.
      */
     public func stack() -> CoreDataStack? {
-        if case .success(let stack) = self {
+        if case .Success(let stack) = self {
             return stack
         }
         return nil
@@ -48,7 +48,7 @@ public enum StackResult: CustomStringConvertible, Equatable {
      - returns: The result's `NSError` if `.Failure`, otherwise `nil`.
      */
     public func error() -> NSError? {
-        if case .failure(let error) = self {
+        if case .Failure(let error) = self {
             return error
         }
         return nil
@@ -62,9 +62,9 @@ public enum StackResult: CustomStringConvertible, Equatable {
         get {
             var str = "<\(StackResult.self): "
             switch self {
-            case .success(let s):
+            case .Success(let s):
                 str += ".success(\(s)"
-            case .failure(let e):
+            case .Failure(let e):
                 str += ".failure(\(e))"
             }
             return str + ">"

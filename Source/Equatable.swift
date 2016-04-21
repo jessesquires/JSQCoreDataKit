@@ -37,10 +37,10 @@ public func ==(lhs: CoreDataStack, rhs: CoreDataStack) -> Bool {
 /// :nodoc:
 public func ==(lhs: StackResult, rhs: StackResult) -> Bool {
     switch (lhs, rhs) {
-    case (let .success(stack1), let .success(stack2)):
+    case (let .Success(stack1), let .Success(stack2)):
         return stack1 == stack2
 
-    case (let .failure(error1), let .failure(error2)):
+    case (let .Failure(error1), let .Failure(error2)):
         return error1 == error2
 
     default:

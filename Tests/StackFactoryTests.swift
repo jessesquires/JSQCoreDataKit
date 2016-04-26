@@ -126,7 +126,7 @@ class StackFactoryTests: TestCase {
 
         XCTAssertEqual(stack.mainContext.name, "JSQCoreDataKit.CoreDataStack.context.main")
         XCTAssertEqual(stack.mainContext.concurrencyType, NSManagedObjectContextConcurrencyType.MainQueueConcurrencyType)
-        XCTAssertEqual(stack.mainContext.parentContext, stack.backgroundContext)
+        XCTAssertNil(stack.mainContext.parentContext)
         XCTAssertNotNil(stack.mainContext.persistentStoreCoordinator)
 
         XCTAssertEqual(stack.backgroundContext.name, "JSQCoreDataKit.CoreDataStack.context.background")

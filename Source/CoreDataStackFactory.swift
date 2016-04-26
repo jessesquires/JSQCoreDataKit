@@ -92,7 +92,7 @@ public struct CoreDataStackFactory: CustomStringConvertible, Equatable {
 
             dispatch_async(dispatch_get_main_queue()) {
                 let mainContext = self.createContext(.MainQueueConcurrencyType, name: "main")
-                mainContext.parentContext = backgroundContext
+                mainContext.persistentStoreCoordinator = storeCoordinator
 
                 let stack = CoreDataStack(
                     model: self.model,
@@ -128,7 +128,7 @@ public struct CoreDataStackFactory: CustomStringConvertible, Equatable {
         backgroundContext.persistentStoreCoordinator = storeCoordinator
 
         let mainContext = self.createContext(.MainQueueConcurrencyType, name: "main")
-        mainContext.parentContext = backgroundContext
+        mainContext.persistentStoreCoordinator = storeCoordinator
 
         let stack = CoreDataStack(
             model: model,

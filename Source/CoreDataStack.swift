@@ -26,11 +26,11 @@ import Foundation
 
  It is composed of a main context and a background context.
  These two contexts operate on the main queue and a private background queue, respectively.
- The background context is the root level context, which is connected to the persistent store coordinator.
- The main context is a child of the background context.
+ Both are connected to the persistent store coordinator.
 
- Data between these two primary contexts and child contexts is kept in sync.
- Changes to a context are propagated to its parent context and eventually the persistent store when saving.
+ Data between the main and background contexts is perpetually kept in sync.
+
+ Changes to a child context are propagated to its parent context and eventually the persistent store when saving.
 
  - warning: **You cannot create a `CoreDataStack` instance directly. Instead, use a `CoreDataStackFactory` for initialization.**
  */
@@ -72,10 +72,15 @@ public final class CoreDataStack: CustomStringConvertible, Equatable {
         self.backgroundContext = backgroundContext
         self.storeCoordinator = storeCoordinator
 
-        NSNotificationCenter.defaultCenter().addObserver(self,
-                                                         selector: #selector(didReceiveChildContextDidSaveNotification(_:)),
-                                                         name: NSManagedObjectContextDidSaveNotification,
-                                                         object: mainContext)
+        let notificationCenter = NSNotificationCenter.defaultCenter()
+        notificationCenter.addObserver(self,
+                                       selector: #selector(didReceiveMainContextDidSaveNotification(_:)),
+                                       name: NSManagedObjectContextDidSaveNotification,
+                                       object: mainContext)
+        notificationCenter.addObserver(self,
+                                       selector: #selector(didReceiveBackgroundContextDidSaveNotification(_:)),
+                                       name: NSManagedObjectContextDidSaveNotification,
+                                       object: backgroundContext)
     }
 
     /// :nodoc:
@@ -144,5 +149,14 @@ public final class CoreDataStack: CustomStringConvertible, Equatable {
         
         saveContext(parentContext)
     }
-    
+
+    @objc
+    private func didReceiveBackgroundContextDidSaveNotification(notification: NSNotification) {
+        mainContext.mergeChangesFromContextDidSaveNotification(notification)
+    }
+
+    @objc
+    private func didReceiveMainContextDidSaveNotification(notification: NSNotification) {
+        backgroundContext.mergeChangesFromContextDidSaveNotification(notification)
+    }
 }

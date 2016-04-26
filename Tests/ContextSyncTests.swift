@@ -50,7 +50,6 @@ class ContextSyncTests: TestCase {
 
         // WHEN: we save the main context
         expectationForNotification(NSManagedObjectContextDidSaveNotification, object: inMemoryStack.mainContext, handler: nil)
-        expectationForNotification(NSManagedObjectContextDidSaveNotification, object: inMemoryStack.backgroundContext, handler: nil)
 
         saveContext(inMemoryStack.mainContext) { result in
             XCTAssertTrue(result == .success)
@@ -75,6 +74,17 @@ class ContextSyncTests: TestCase {
         // GIVEN: objects in the background context
         let companies = generateDataInContext(inMemoryStack.backgroundContext, companiesCount: 3, employeesCount: 3)
         let companyNames = companies.map { $0.name }
+
+        // WHEN: we save the background context
+        expectationForNotification(NSManagedObjectContextDidSaveNotification, object: inMemoryStack.backgroundContext, handler: nil)
+
+        saveContext(inMemoryStack.backgroundContext) { result in
+            XCTAssertTrue(result == .success)
+        }
+
+        waitForExpectationsWithTimeout(DefaultTimeout) { (error) in
+            XCTAssertNil(error, "Expectation should not error")
+        }
 
         // WHEN: we fetch the objects from the main context
         let request = FetchRequest<Company>(entity: entity(name: Company.entityName, context: inMemoryStack.mainContext))

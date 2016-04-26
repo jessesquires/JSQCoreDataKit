@@ -93,8 +93,8 @@ public final class CoreDataStack: CustomStringConvertible, Equatable {
 
     /**
      Creates a new child context whose parent is `mainContext` and has the specified `concurrencyType` and `mergePolicyType`.
-     Saving the returned context will propagate changes through `mainContext`, `backgroundContext`,
-     and finally the persistent store.
+     Saving the returned context will propagate changes through `mainContext`
+     and then the persistent store.
 
      - parameter concurrencyType: The concurrency pattern to use. The default is `.PrivateQueueConcurrencyType`.
      - parameter mergePolicyType: The merge policy to use. The default is `.MergeByPropertyObjectTrumpMergePolicyType`.

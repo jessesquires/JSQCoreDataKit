@@ -88,7 +88,6 @@ public final class CoreDataStack: CustomStringConvertible, Equatable {
         NSNotificationCenter.defaultCenter().removeObserver(self)
     }
 
-
     // MARK: Child contexts
 
     /**
@@ -98,18 +97,28 @@ public final class CoreDataStack: CustomStringConvertible, Equatable {
 
      - parameter concurrencyType: The concurrency pattern to use. The default is `.PrivateQueueConcurrencyType`.
      - parameter mergePolicyType: The merge policy to use. The default is `.MergeByPropertyObjectTrumpMergePolicyType`.
+     - parameter childContextType: The parent context to use. The default is `.main`.
 
      - returns: A new child managed object context whose parent is `mainContext`.
      */
     public func childContext(
         concurrencyType concurrencyType: NSManagedObjectContextConcurrencyType = .PrivateQueueConcurrencyType,
-                        mergePolicyType: NSMergePolicyType = .MergeByPropertyObjectTrumpMergePolicyType) -> ChildContext {
+                        mergePolicyType: NSMergePolicyType = .MergeByPropertyObjectTrumpMergePolicyType,
+                       childContextType: ChildContextType = .main) -> ChildContext {
 
         let childContext = NSManagedObjectContext(concurrencyType: concurrencyType)
-        childContext.parentContext = mainContext
         childContext.mergePolicy = NSMergePolicy(mergeType: mergePolicyType)
 
-        if let name = mainContext.name {
+        let parentContext: NSManagedObjectContext
+        switch childContextType {
+        case .main:
+            parentContext = mainContext
+        case .background:
+            parentContext = backgroundContext
+        }
+
+        childContext.parentContext = parentContext
+        if let name = parentContext.name {
             childContext.name = name + ".child"
         }
 

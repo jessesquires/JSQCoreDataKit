@@ -34,6 +34,14 @@ public let defaultStoreOptions: PersistentStoreOptions = [
     NSInferMappingModelAutomaticallyOption: true
 ]
 
+/// Describes a type of child context parenting.
+public enum ChildContextType {
+    /// Use main context as parent.
+    case main
+
+    /// Use background context as parent.
+    case background
+}
 
 // MARK: Internal
 

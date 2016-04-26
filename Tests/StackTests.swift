@@ -72,7 +72,7 @@ class StackTests: XCTestCase {
         XCTAssertEqual(stack.backgroundContext.concurrencyType, NSManagedObjectContextConcurrencyType.PrivateQueueConcurrencyType)
     }
 
-    func test_ThaChildContext_IsCreatedSuccessfully() {
+    func test_ThatChildContext_IsCreatedSuccessfully() {
         // GIVEN: a model and stack
         let model = CoreDataModel(name: modelName, bundle: modelBundle)
         let factory = CoreDataStackFactory(model: model)

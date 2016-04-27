@@ -92,37 +92,35 @@ public final class CoreDataStack: CustomStringConvertible, Equatable {
 
     /**
      Creates a new child context with the specified `concurrencyType` and `mergePolicyType`.
-     His parent is `mainContext` or `backgroundContext` dependending on the `concurrencyType` value:
-     * `.PrivateQueueConcurrencyType` will use `backgroundContext` as parent
-     * `.MainQueueConcurrencyType` will use `mainContext` as parent
 
-     Saving the returned context will propagate changes through parent context
-     and then to the persistent store.
+     The parent context is either `mainContext` or `backgroundContext` dependending on the specified `concurrencyType`:
+     * `.PrivateQueueConcurrencyType` will set `backgroundContext` as the parent.
+     * `.MainQueueConcurrencyType` will set `mainContext` as the parent.
 
-     - parameter concurrencyType: The concurrency pattern to use. The default is `.PrivateQueueConcurrencyType`.
+     Saving the returned context will propagate changes through the parent context and then to the persistent store.
+
+     - parameter concurrencyType: The concurrency pattern to use. The default is `.MainQueueConcurrencyType`.
      - parameter mergePolicyType: The merge policy to use. The default is `.MergeByPropertyObjectTrumpMergePolicyType`.
 
-     - returns: A new child managed object context whose parent is `mainContext`.
+     - returns: A new child managed object context.
      */
     public func childContext(
-        concurrencyType concurrencyType: NSManagedObjectContextConcurrencyType = .PrivateQueueConcurrencyType,
+        concurrencyType concurrencyType: NSManagedObjectContextConcurrencyType = .MainQueueConcurrencyType,
                         mergePolicyType: NSMergePolicyType = .MergeByPropertyObjectTrumpMergePolicyType) -> ChildContext {
 
         let childContext = NSManagedObjectContext(concurrencyType: concurrencyType)
         childContext.mergePolicy = NSMergePolicy(mergeType: mergePolicyType)
 
-        let parentContext: NSManagedObjectContext
         switch concurrencyType {
         case .MainQueueConcurrencyType:
-            parentContext = mainContext
+            childContext.parentContext = mainContext
         case .PrivateQueueConcurrencyType:
-            parentContext = backgroundContext
+            childContext.parentContext = backgroundContext
         case .ConfinementConcurrencyType:
             fatalError("ConfinementConcurrencyType is not supported because it is being deprecated in iOS 9.0")
         }
 
-        childContext.parentContext = parentContext
-        if let name = parentContext.name {
+        if let name = childContext.parentContext?.name {
             childContext.name = name + ".child"
         }
 
@@ -130,7 +128,6 @@ public final class CoreDataStack: CustomStringConvertible, Equatable {
                                                          selector: #selector(didReceiveChildContextDidSaveNotification(_:)),
                                                          name: NSManagedObjectContextDidSaveNotification,
                                                          object: childContext)
-
         return childContext
     }
 
@@ -159,7 +156,7 @@ public final class CoreDataStack: CustomStringConvertible, Equatable {
             // have reached the root context, nothing to do
             return
         }
-        
+
         saveContext(parentContext)
     }
 

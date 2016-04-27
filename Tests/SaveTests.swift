@@ -162,7 +162,7 @@ class SaveTests: TestCase {
     func test_ThatSavingChildContext_SucceedsAndSavesParentMainContext() {
         // GIVEN: a stack and child context with changes
         let stack = self.inMemoryStack
-        let childContext = stack.childContext()
+        let childContext = stack.childContext(concurrencyType: .MainQueueConcurrencyType)
 
         generateCompaniesInContext(childContext, count: 3)
 
@@ -206,7 +206,7 @@ class SaveTests: TestCase {
     func test_ThatSavingChildContext_SucceedsAndSavesParentBackgroundContext() {
         // GIVEN: a stack and child context with changes
         let stack = self.inMemoryStack
-        let childContext = stack.childContext(childContextType: .background)
+        let childContext = stack.childContext(concurrencyType: .PrivateQueueConcurrencyType)
 
         generateCompaniesInContext(childContext, count: 3)
 

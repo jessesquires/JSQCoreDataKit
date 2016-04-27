@@ -99,7 +99,7 @@ class ContextSyncTests: TestCase {
 
     func test_ThatChangesPropagate_FromChildContext_ToMainContext() {
         // GIVEN: objects in a child context
-        let childContext = inMemoryStack.childContext()
+        let childContext = inMemoryStack.childContext(concurrencyType: .MainQueueConcurrencyType)
         let companies = generateDataInContext(childContext, companiesCount: 3, employeesCount: 3)
         let companyNames = companies.map { $0.name }
 
@@ -126,7 +126,7 @@ class ContextSyncTests: TestCase {
 
     func test_ThatChangesPropagate_FromChildContext_ToBackgroundContext() {
         // GIVEN: objects in a child context
-        let childContext = inMemoryStack.childContext(childContextType: .background)
+        let childContext = inMemoryStack.childContext(concurrencyType: .PrivateQueueConcurrencyType)
         let companies = generateDataInContext(childContext, companiesCount: 3, employeesCount: 3)
         let companyNames = companies.map { $0.name }
 

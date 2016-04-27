@@ -83,8 +83,8 @@ class StackTests: XCTestCase {
         let childContext = stack.childContext()
 
         // THEN: it is initialized as expected
-        XCTAssertEqual(childContext.name, "JSQCoreDataKit.CoreDataStack.context.main.child")
-        XCTAssertEqual(childContext.parentContext!, stack.mainContext)
+        XCTAssertEqual(childContext.name, "JSQCoreDataKit.CoreDataStack.context.background.child")
+        XCTAssertEqual(childContext.parentContext!, stack.backgroundContext)
         XCTAssertEqual(childContext.concurrencyType, NSManagedObjectContextConcurrencyType.PrivateQueueConcurrencyType)
         XCTAssertEqual(childContext.mergePolicy.mergeType, NSMergePolicyType.MergeByPropertyObjectTrumpMergePolicyType)
     }
@@ -97,11 +97,11 @@ class StackTests: XCTestCase {
         let stack = result.stack()!
 
         // WHEN: we create a child context
-        let childContext = stack.childContext(concurrencyType: .MainQueueConcurrencyType, mergePolicyType: .ErrorMergePolicyType, childContextType: .background)
+        let childContext = stack.childContext(concurrencyType: .MainQueueConcurrencyType, mergePolicyType: .ErrorMergePolicyType)
 
         // THEN: it is initialized as expected
-        XCTAssertEqual(childContext.name, "JSQCoreDataKit.CoreDataStack.context.background.child")
-        XCTAssertEqual(childContext.parentContext!, stack.backgroundContext)
+        XCTAssertEqual(childContext.name, "JSQCoreDataKit.CoreDataStack.context.main.child")
+        XCTAssertEqual(childContext.parentContext!, stack.mainContext)
         XCTAssertEqual(childContext.concurrencyType, NSManagedObjectContextConcurrencyType.MainQueueConcurrencyType)
         XCTAssertEqual(childContext.mergePolicy.mergeType, NSMergePolicyType.ErrorMergePolicyType)
     }

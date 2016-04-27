@@ -131,6 +131,58 @@ public final class CoreDataStack: CustomStringConvertible, Equatable {
         return childContext
     }
 
+    /**
+     Resets the managed object contexts in the stack on their respective threads.
+     Then, if the coordinator is connected to a persistent store, the store will be deleted and recreated on a background thread.
+     The completion closure is executed on the main thread.
+
+     - note: Removing and re-adding the persistent store is performed on a background queue.
+     For binary and SQLite stores, this will also remove the store from disk.
+
+     - parameter queue:      A background queue on which to reset the stack. The default is a high priority background queue.
+     - parameter completion: The closure to be called once resetting is complete.
+     */
+    public func reset(onQueue queue: dispatch_queue_t = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0),
+                              completion: (result: StackResult) -> Void) {
+        mainContext.performBlockAndWait { self.mainContext.reset() }
+        backgroundContext.performBlockAndWait { self.backgroundContext.reset() }
+
+        guard let store = storeCoordinator.persistentStores.first else {
+            dispatch_async(dispatch_get_main_queue()) {
+                completion(result: .success(self))
+            }
+            return
+        }
+
+        dispatch_async(queue) {
+            precondition(!NSThread.isMainThread(), "*** Error: cannot reset a stack on the main queue")
+
+            let storeCoordinator = self.storeCoordinator
+            let options = store.options
+            let model = self.model
+
+            storeCoordinator.performBlockAndWait {
+                do {
+                    try model.removeExistingStore()
+                    try storeCoordinator.removePersistentStore(store)
+                    try storeCoordinator.addPersistentStoreWithType(model.storeType.type,
+                        configuration: nil,
+                        URL: model.storeURL,
+                        options: options)
+                }
+                catch {
+                    dispatch_async(dispatch_get_main_queue()) {
+                        completion(result: .failure(error as NSError))
+                    }
+                    return
+                }
+
+                dispatch_async(dispatch_get_main_queue()) {
+                    completion(result: .success(self))
+                }
+            }
+        }
+    }
 
     // MARK: CustomStringConvertible
 

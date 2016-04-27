@@ -34,7 +34,6 @@ public let defaultStoreOptions: PersistentStoreOptions = [
     NSInferMappingModelAutomaticallyOption: true
 ]
 
-
 // MARK: Internal
 
 internal func defaultDirectoryURL() -> NSURL {

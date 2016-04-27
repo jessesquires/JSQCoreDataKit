@@ -99,7 +99,7 @@ class ContextSyncTests: TestCase {
 
     func test_ThatChangesPropagate_FromChildContext_ToMainContext() {
         // GIVEN: objects in a child context
-        let childContext = inMemoryStack.childContext()
+        let childContext = inMemoryStack.childContext(concurrencyType: .MainQueueConcurrencyType)
         let companies = generateDataInContext(childContext, companiesCount: 3, employeesCount: 3)
         let companyNames = companies.map { $0.name }
 
@@ -121,6 +121,33 @@ class ContextSyncTests: TestCase {
         XCTAssertEqual(results.count, companies.count, "Main context should return the same objects")
         results.forEach { (company: Company) in
             XCTAssertTrue(companyNames.contains(company.name), "Main context should return same objects")
+        }
+    }
+
+    func test_ThatChangesPropagate_FromChildContext_ToBackgroundContext() {
+        // GIVEN: objects in a child context
+        let childContext = inMemoryStack.childContext(concurrencyType: .PrivateQueueConcurrencyType)
+        let companies = generateDataInContext(childContext, companiesCount: 3, employeesCount: 3)
+        let companyNames = companies.map { $0.name }
+
+        // WHEN: we save the child context
+        expectationForNotification(NSManagedObjectContextDidSaveNotification, object: childContext, handler: nil)
+        saveContext(childContext) { (result) -> Void in
+            XCTAssertTrue(result == .success)
+        }
+
+        waitForExpectationsWithTimeout(DefaultTimeout) { (error) in
+            XCTAssertNil(error, "Expectation should not error")
+        }
+
+        // WHEN: we fetch the objects from the background context
+        let request = FetchRequest<Company>(entity: entity(name: Company.entityName, context: inMemoryStack.backgroundContext))
+        let results = try! fetch(request: request, inContext: inMemoryStack.backgroundContext)
+
+        // THEN: the background context returns the objects
+        XCTAssertEqual(results.count, companies.count, "Background context should return the same objects")
+        results.forEach { (company: Company) in
+            XCTAssertTrue(companyNames.contains(company.name), "Background context should return same objects")
         }
     }
     

@@ -72,7 +72,7 @@ class StackTests: XCTestCase {
         XCTAssertEqual(stack.backgroundContext.concurrencyType, NSManagedObjectContextConcurrencyType.PrivateQueueConcurrencyType)
     }
 
-    func test_ThaChildContext_IsCreatedSuccessfully() {
+    func test_ThatChildContext_IsCreatedSuccessfully_WithDefaultParameters() {
         // GIVEN: a model and stack
         let model = CoreDataModel(name: modelName, bundle: modelBundle)
         let factory = CoreDataStackFactory(model: model)
@@ -83,8 +83,8 @@ class StackTests: XCTestCase {
         let childContext = stack.childContext()
 
         // THEN: it is initialized as expected
-        XCTAssertEqual(childContext.name, "JSQCoreDataKit.CoreDataStack.context.main.child")
-        XCTAssertEqual(childContext.parentContext!, stack.mainContext)
+        XCTAssertEqual(childContext.name, "JSQCoreDataKit.CoreDataStack.context.background.child")
+        XCTAssertEqual(childContext.parentContext!, stack.backgroundContext)
         XCTAssertEqual(childContext.concurrencyType, NSManagedObjectContextConcurrencyType.PrivateQueueConcurrencyType)
         XCTAssertEqual(childContext.mergePolicy.mergeType, NSMergePolicyType.MergeByPropertyObjectTrumpMergePolicyType)
     }

@@ -139,7 +139,6 @@ public struct CoreDataStackFactory: CustomStringConvertible, Equatable {
         return .success(stack)
     }
 
-
     // MARK: Private
 
     private func createStoreCoordinator() throws -> NSPersistentStoreCoordinator {

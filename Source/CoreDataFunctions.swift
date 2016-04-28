@@ -111,23 +111,3 @@ public func fetch <T: NSManagedObject>(request request: FetchRequest<T>, inConte
 
     return results as! [T]
 }
-
-
-/**
- Deletes the objects from the specified context.
- You must save the context after calling this function to remove objects from their persistent store.
-
- - note: This function is performed synchronously in a block on the context's queue.
-
- - parameter objects: The managed objects to be deleted.
- - parameter context: The context to which the objects belong.
- */
-public func deleteObjects <T: NSManagedObject>(objects: [T], inContext context: NSManagedObjectContext) {
-    guard objects.count != 0 else { return }
-
-    context.performBlockAndWait {
-        for each in objects {
-            context.deleteObject(each)
-        }
-    }
-}

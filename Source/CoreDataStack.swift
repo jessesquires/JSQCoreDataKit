@@ -117,7 +117,7 @@ public final class CoreDataStack: CustomStringConvertible, Equatable {
         case .PrivateQueueConcurrencyType:
             childContext.parentContext = backgroundContext
         case .ConfinementConcurrencyType:
-            fatalError("ConfinementConcurrencyType is not supported because it is being deprecated in iOS 9.0")
+            fatalError("*** Error: ConfinementConcurrencyType is not supported because it is being deprecated in iOS 9.0")
         }
 
         if let name = childContext.parentContext?.name {

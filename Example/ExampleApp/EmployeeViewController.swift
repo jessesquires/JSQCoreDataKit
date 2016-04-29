@@ -59,7 +59,7 @@ class EmployeeViewController: UITableViewController, NSFetchedResultsControllerD
             let request = self.fetchRequest(backgroundChildContext)
 
             do {
-                let objects = try fetch(request: request, inContext: backgroundChildContext)
+                let objects = try backgroundChildContext.fetch(request: request)
                 backgroundChildContext.deleteObjects(objects)
                 saveContext(backgroundChildContext)
             } catch {

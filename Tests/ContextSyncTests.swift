@@ -37,7 +37,7 @@ class ContextSyncTests: TestCase {
         // WHEN: we fetch the objects from the main context
         let request = FetchRequest<Company>(entity: entity(name: Company.entityName, context: inMemoryStack.mainContext))
         let results = [Company]()
-        try! fetch(request: request, inContext: inMemoryStack.mainContext)
+        try! inMemoryStack.mainContext.fetch(request: request)
 
         // THEN: the main context does not return any objects
         XCTAssertEqual(results.count, 0, "Main context should return nothing")
@@ -61,7 +61,7 @@ class ContextSyncTests: TestCase {
 
         // WHEN: we fetch the objects in the background context
         let request = FetchRequest<Company>(entity: entity(name: Company.entityName, context: inMemoryStack.backgroundContext))
-        let results = try! fetch(request: request, inContext: inMemoryStack.backgroundContext)
+        let results = try! inMemoryStack.backgroundContext.fetch(request: request)
 
         // THEN: the background context returns the objects
         XCTAssertEqual(results.count, companies.count, "Background context should return same objects")
@@ -88,7 +88,7 @@ class ContextSyncTests: TestCase {
 
         // WHEN: we fetch the objects from the main context
         let request = FetchRequest<Company>(entity: entity(name: Company.entityName, context: inMemoryStack.mainContext))
-        let results = try! fetch(request: request, inContext: inMemoryStack.mainContext)
+        let results = try! inMemoryStack.mainContext.fetch(request: request)
 
         // THEN: the main context returns the objects
         XCTAssertEqual(results.count, companies.count, "Main context should return the same objects")
@@ -115,7 +115,7 @@ class ContextSyncTests: TestCase {
 
         // WHEN: we fetch the objects from the main context
         let request = FetchRequest<Company>(entity: entity(name: Company.entityName, context: inMemoryStack.mainContext))
-        let results = try! fetch(request: request, inContext: inMemoryStack.mainContext)
+        let results = try! inMemoryStack.mainContext.fetch(request: request)
 
         // THEN: the main context returns the objects
         XCTAssertEqual(results.count, companies.count, "Main context should return the same objects")
@@ -142,7 +142,7 @@ class ContextSyncTests: TestCase {
 
         // WHEN: we fetch the objects from the background context
         let request = FetchRequest<Company>(entity: entity(name: Company.entityName, context: inMemoryStack.backgroundContext))
-        let results = try! fetch(request: request, inContext: inMemoryStack.backgroundContext)
+        let results = try! inMemoryStack.backgroundContext.fetch(request: request)
 
         // THEN: the background context returns the objects
         XCTAssertEqual(results.count, companies.count, "Background context should return the same objects")

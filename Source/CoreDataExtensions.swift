@@ -37,4 +37,34 @@ public extension NSManagedObjectContext {
             }
         }
     }
+
+    /**
+     Executes the fetch request in the context and returns the result.
+
+     - note: This function is performed synchronously in a block on the context's queue.
+
+     - parameter request: A fetch request that specifies the search criteria for the fetch.
+
+     - throws: If the fetch fails or errors, then this function throws an `NSError`.
+
+     - returns: An array of objects that meet the criteria specified by the fetch request. This array may be empty.
+     */
+    public func fetch <T: NSManagedObject>(request request: FetchRequest<T>) throws -> [T] {
+        var results = [AnyObject]()
+        var caughtError: NSError?
+
+        performBlockAndWait {
+            do {
+                results = try self.executeFetchRequest(request)
+            }
+            catch {
+                caughtError = error as NSError
+            }
+        }
+        
+        guard caughtError == nil else { throw caughtError! }
+        
+        return results as! [T]
+    }
+
 }

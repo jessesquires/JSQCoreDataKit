@@ -137,8 +137,9 @@ public final class CoreDataStack: CustomStringConvertible, Equatable {
      - note: Removing and re-adding the persistent store is performed on a background queue.
      For binary and SQLite stores, this will also remove the store from disk.
 
-     - parameter queue:      A background queue on which to reset the stack. 
+     - parameter queue: A background queue on which to reset the stack.
      The default is a background queue with a "user initiated" quality of service class.
+
      - parameter completion: The closure to be called once resetting is complete. This is called on the main queue.
      */
     public func reset(onQueue queue: dispatch_queue_t = dispatch_get_global_queue(QOS_CLASS_USER_INITIATED, 0),

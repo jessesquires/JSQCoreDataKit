@@ -80,5 +80,5 @@ class StackResultTests: TestCase {
         let failure = StackResult.failure(NSError(domain: "err", code: 0, userInfo: nil))
         print(failure)
     }
-    
+
 }

@@ -28,6 +28,18 @@ import JSQCoreDataKit
 let DefaultTimeout = NSTimeInterval(20)
 
 
+extension CoreDataStackFactory {
+
+    func createStack() -> StackResult {
+        var result: StackResult!
+        createStack(onQueue: nil) { (r) in
+            result = r
+        }
+        return result
+    }
+}
+
+
 class TestCase: XCTestCase {
 
     let inMemoryModel = CoreDataModel(name: modelName, bundle: modelBundle, storeType: .inMemory)

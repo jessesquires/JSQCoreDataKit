@@ -39,7 +39,7 @@ class DeleteTests: TestCase {
         XCTAssertEqual(results.count, count)
 
         // WHEN: we delete the objects
-        stack.mainContext.deleteObjects(objects)
+        stack.mainContext.delete(objects: objects)
 
         // THEN: the objects are removed from the context
         let resultAfterDelete = try! stack.mainContext.fetch(request: request)
@@ -72,7 +72,7 @@ class DeleteTests: TestCase {
         XCTAssertEqual(resultForObject.first!, myEmployee, "Fetched object should equal expected model")
 
         // WHEN: we delete a specific object
-        stack.mainContext.deleteObjects([myEmployee])
+        stack.mainContext.delete(objects: [myEmployee])
 
         // THEN: the specific object is removed from the context
         let resultAfterDelete = try! stack.mainContext.fetch(request: request)
@@ -93,7 +93,7 @@ class DeleteTests: TestCase {
         let stack = self.inMemoryStack
 
         // WHEN: we delete an empty array of objects
-        stack.mainContext.deleteObjects([])
+        stack.mainContext.delete(objects: [])
         
         // THEN: the operation is ignored
         XCTAssertFalse(stack.mainContext.hasChanges)

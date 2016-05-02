@@ -28,7 +28,7 @@ public extension NSManagedObjectContext {
 
      - parameter objects: The managed objects to be deleted.
      */
-    public func deleteObjects <T: NSManagedObject>(objects: [T]) {
+    public func delete<T: NSManagedObject>(objects objects: [T]) {
         guard objects.count != 0 else { return }
 
         self.performBlockAndWait {
@@ -49,7 +49,7 @@ public extension NSManagedObjectContext {
 
      - returns: An array of objects that meet the criteria specified by the fetch request. This array may be empty.
      */
-    public func fetch <T: NSManagedObject>(request request: FetchRequest<T>) throws -> [T] {
+    public func fetch<T: NSManagedObject>(request request: FetchRequest<T>) throws -> [T] {
         var results = [AnyObject]()
         var caughtError: NSError?
 

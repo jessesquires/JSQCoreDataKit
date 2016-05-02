@@ -62,11 +62,10 @@ public final class CoreDataStack: CustomStringConvertible, Equatable {
 
     // MARK: Initialization
 
-    internal init(
-        model: CoreDataModel,
-        mainContext: NSManagedObjectContext,
-        backgroundContext: NSManagedObjectContext,
-        storeCoordinator: NSPersistentStoreCoordinator) {
+    internal init(model: CoreDataModel,
+                  mainContext: NSManagedObjectContext,
+                  backgroundContext: NSManagedObjectContext,
+                  storeCoordinator: NSPersistentStoreCoordinator) {
         self.model = model
         self.mainContext = mainContext
         self.backgroundContext = backgroundContext
@@ -104,9 +103,8 @@ public final class CoreDataStack: CustomStringConvertible, Equatable {
 
      - returns: A new child managed object context.
      */
-    public func childContext(
-        concurrencyType concurrencyType: NSManagedObjectContextConcurrencyType = .MainQueueConcurrencyType,
-                        mergePolicyType: NSMergePolicyType = .MergeByPropertyObjectTrumpMergePolicyType) -> ChildContext {
+    public func childContext(concurrencyType concurrencyType: NSManagedObjectContextConcurrencyType = .MainQueueConcurrencyType,
+                                             mergePolicyType: NSMergePolicyType = .MergeByPropertyObjectTrumpMergePolicyType) -> ChildContext {
 
         let childContext = NSManagedObjectContext(concurrencyType: concurrencyType)
         childContext.mergePolicy = NSMergePolicy(mergeType: mergePolicyType)
@@ -216,7 +214,7 @@ public final class CoreDataStack: CustomStringConvertible, Equatable {
     private func didReceiveBackgroundContextDidSaveNotification(notification: NSNotification) {
         mainContext.mergeChangesFromContextDidSaveNotification(notification)
     }
-
+    
     @objc
     private func didReceiveMainContextDidSaveNotification(notification: NSNotification) {
         backgroundContext.mergeChangesFromContextDidSaveNotification(notification)

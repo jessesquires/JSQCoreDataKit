@@ -60,7 +60,7 @@ class EmployeeViewController: UITableViewController, NSFetchedResultsControllerD
 
             do {
                 let objects = try backgroundChildContext.fetch(request: request)
-                backgroundChildContext.deleteObjects(objects)
+                backgroundChildContext.delete(objects: objects)
                 saveContext(backgroundChildContext)
             } catch {
                 print("Error deleting objects: \(error)")
@@ -138,7 +138,7 @@ class EmployeeViewController: UITableViewController, NSFetchedResultsControllerD
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if editingStyle == .Delete {
             let obj = frc?.objectAtIndexPath(indexPath) as! Employee
-            self.stack.mainContext.deleteObjects([obj])
+            self.stack.mainContext.delete(objects: [obj])
             saveContext(self.stack.mainContext)
         }
     }

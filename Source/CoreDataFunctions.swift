@@ -64,7 +64,7 @@ public func entity(name name: String, context: NSManagedObjectContext) -> NSEnti
  This is a subclass of `NSFetchRequest` that adds a type parameter specifying the type of managed objects for the fetch request.
  The type parameter acts as a phantom type.
  */
-public class FetchRequest <T: NSManagedObject>: NSFetchRequest {
+public class FetchRequest<T: NSManagedObject>: NSFetchRequest {
 
     // MARK: Initialization
 

@@ -26,9 +26,7 @@ import Foundation
 
  It is composed of a main context and a background context.
  These two contexts operate on the main queue and a private background queue, respectively.
- Both are connected to the persistent store coordinator.
-
- Data between the main and background contexts is perpetually kept in sync.
+ Both are connected to the persistent store coordinator and data between them is perpetually kept in sync.
 
  Changes to a child context are propagated to its parent context and eventually the persistent store when saving.
 
@@ -44,18 +42,20 @@ public final class CoreDataStack: CustomStringConvertible, Equatable {
 
     /**
      The main managed object context for the stack, which operates on the main queue.
-     This context is a child context of `backgroundContext`.
+     This context is a root level context that is connected to the `storeCoordinator`.
+     It is kept in sync with `backgroundContext`.
      */
     public let mainContext: NSManagedObjectContext
 
     /**
      The background managed object context for the stack, which operates on a background queue.
-     This context is the root level context that is connected to the `storeCoordinator`.
+     This context is a root level context that is connected to the `storeCoordinator`.
+     It is kept in sync with `mainContext`.
      */
     public let backgroundContext: NSManagedObjectContext
 
     /**
-     The persistent store coordinator for the stack. The `backgroundContext` is connected to this coordinator.
+     The persistent store coordinator for the stack. Both contexts are connected to this coordinator.
      */
     public let storeCoordinator: NSPersistentStoreCoordinator
 

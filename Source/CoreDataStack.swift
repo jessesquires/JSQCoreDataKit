@@ -139,7 +139,7 @@ public final class CoreDataStack: CustomStringConvertible, Equatable {
 
      - parameter queue:      A background queue on which to reset the stack. 
      The default is a background queue with a "user initiated" quality of service class.
-     - parameter completion: The closure to be called once resetting is complete. This is called on the main thread.
+     - parameter completion: The closure to be called once resetting is complete. This is called on the main queue.
      */
     public func reset(onQueue queue: dispatch_queue_t = dispatch_get_global_queue(QOS_CLASS_USER_INITIATED, 0),
                               completion: (result: StackResult) -> Void) {

@@ -19,6 +19,7 @@
 import CoreData
 import Foundation
 
+
 /**
  An error type that specifies possible errors that are thrown by calling `func migrate(model: CoreDataModel) throws`
  */
@@ -39,11 +40,12 @@ public enum MigrationError: ErrorType {
     case mappingModelNotFound(destinationModel: NSManagedObjectModel)
 }
 
+
 extension CoreDataModel {
 
     /**
      Progressively migrates the persistent store of the `CoreDataModel` based on mapping models found in the model's bundle.
-     If model returns false from `.needsMigration`, this function does nothing.
+     If the model returns false from `needsMigration`, then this function does nothing.
 
      - throws: If an error occurs, either an `NSError` or a `MigrationError` is thrown. If an `NSError` is thrown, it could
      specify any of the following: an error checking persistent store metadata, an error from `NSMigrationManager`, or
@@ -53,9 +55,9 @@ extension CoreDataModel {
      A complete 'path' of mapping models must exist between the peristent store's version and the model's version.
      */
     public func migrate() throws {
-        guard self.needsMigration else { return }
+        guard needsMigration else { return }
 
-        guard let storeURL = self.storeURL, let storeDirectory = self.storeType.storeDirectory() else {
+        guard let storeURL = self.storeURL, let storeDirectory = storeType.storeDirectory() else {
             preconditionFailure("*** Error: migration is only available for on-disk persistent stores. Invalid model: \(self)")
         }
 

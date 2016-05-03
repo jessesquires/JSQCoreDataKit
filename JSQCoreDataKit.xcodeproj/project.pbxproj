@@ -12,6 +12,9 @@
 		298F00F81C9C559100AEC77E /* Migrate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 298F00F61C9C559100AEC77E /* Migrate.swift */; };
 		298F00F91C9C559100AEC77E /* Migrate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 298F00F61C9C559100AEC77E /* Migrate.swift */; };
 		298F00FA1C9C559100AEC77E /* Migrate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 298F00F61C9C559100AEC77E /* Migrate.swift */; };
+		52351A0D1CD8AA2D0037010F /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 883378C41CB187E500205B24 /* Utils.swift */; };
+		52351A0E1CD8AA2D0037010F /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 883378C41CB187E500205B24 /* Utils.swift */; };
+		52351A0F1CD8AA2D0037010F /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 883378C41CB187E500205B24 /* Utils.swift */; };
 		881219C81B361EAF005E5AA7 /* JSQCoreDataKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88002D4F1AB8F546001787DB /* JSQCoreDataKit.framework */; };
 		883378C51CB187E500205B24 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 883378C41CB187E500205B24 /* Utils.swift */; };
 		8873E2271C51E09700DFE009 /* Equatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8873E21D1C51E09700DFE009 /* Equatable.swift */; };
@@ -530,6 +533,7 @@
 				298F00F91C9C559100AEC77E /* Migrate.swift in Sources */,
 				8873E23F1C51E0DE00DFE009 /* SaveResult.swift in Sources */,
 				8873E23E1C51E0DE00DFE009 /* CoreDataModel.swift in Sources */,
+				52351A0E1CD8AA2D0037010F /* Utils.swift in Sources */,
 				8873E23D1C51E0DE00DFE009 /* CoreDataFunctions.swift in Sources */,
 				8873E2421C51E0DE00DFE009 /* StackResult.swift in Sources */,
 				8873E23C1C51E0DE00DFE009 /* Equatable.swift in Sources */,
@@ -547,6 +551,7 @@
 				298F00F81C9C559100AEC77E /* Migrate.swift in Sources */,
 				8873E2371C51E0DD00DFE009 /* SaveResult.swift in Sources */,
 				8873E2361C51E0DD00DFE009 /* CoreDataModel.swift in Sources */,
+				52351A0D1CD8AA2D0037010F /* Utils.swift in Sources */,
 				8873E2351C51E0DD00DFE009 /* CoreDataFunctions.swift in Sources */,
 				8873E23A1C51E0DD00DFE009 /* StackResult.swift in Sources */,
 				8873E2341C51E0DD00DFE009 /* Equatable.swift in Sources */,
@@ -564,6 +569,7 @@
 				298F00FA1C9C559100AEC77E /* Migrate.swift in Sources */,
 				8873E2471C51E0DE00DFE009 /* SaveResult.swift in Sources */,
 				8873E2461C51E0DE00DFE009 /* CoreDataModel.swift in Sources */,
+				52351A0F1CD8AA2D0037010F /* Utils.swift in Sources */,
 				8873E2451C51E0DE00DFE009 /* CoreDataFunctions.swift in Sources */,
 				8873E24A1C51E0DE00DFE009 /* StackResult.swift in Sources */,
 				8873E2441C51E0DE00DFE009 /* Equatable.swift in Sources */,

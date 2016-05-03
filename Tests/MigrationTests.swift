@@ -53,7 +53,7 @@ class MigrationTests: TestCase {
         XCTAssertFalse(model.needsMigration)
 
         // THEN: calling migrate does nothing
-        try! migrate(model)
+        try! model.migrate()
     }
 
     func test_ThatModelMigrates_Successfully() {
@@ -63,7 +63,7 @@ class MigrationTests: TestCase {
 
         // WHEN: CoreDataModel is migrated
         do {
-            try migrate(model)
+            try model.migrate()
         } catch {
             XCTFail("Failed to migrate model: \(error)")
         }

@@ -39,55 +39,52 @@ public enum MigrationError: ErrorType {
     case mappingModelNotFound(destinationModel: NSManagedObjectModel)
 }
 
+extension CoreDataModel {
 
-/**
- Progressively migrates the persistent store of the specified `CoreDataModel` based on mapping models found in the model's bundle.
- If model returns false from `.needsMigration`, this function does nothing.
+    /**
+     Progressively migrates the persistent store of the `CoreDataModel` based on mapping models found in the model's bundle.
+     If model returns false from `.needsMigration`, this function does nothing.
 
- - parameter model: The `CoreDataModel` instance on which to perform a migration.
+     - throws: If an error occurs, either an `NSError` or a `MigrationError` is thrown. If an `NSError` is thrown, it could
+     specify any of the following: an error checking persistent store metadata, an error from `NSMigrationManager`, or
+     an error from `NSFileManager`.
 
- - throws: If an error occurs, either an `NSError` or a `MigrationError` is thrown. If an `NSError` is thrown, it could 
- specify any of the following: an error checking persistent store metadata, an error from `NSMigrationManager`, or
- an error from `NSFileManager`.
+     - warning: Migration is only supported for on-disk persistent stores.
+     A complete 'path' of mapping models must exist between the peristent store's version and the model's version.
+     */
+    public func migrate() throws {
+        guard self.needsMigration else { return }
 
- - warning: Migration is only supported for on-disk persistent stores.
- A complete 'path' of mapping models must exist between the peristent store's version and the model's version.
- */
-public func migrate(model: CoreDataModel) throws {
-    guard model.needsMigration else { return }
+        guard let storeURL = self.storeURL, let storeDirectory = self.storeType.storeDirectory() else {
+            preconditionFailure("*** Error: migration is only available for on-disk persistent stores. Invalid model: \(self)")
+        }
 
-    guard let storeURL = model.storeURL, let storeDirectory = model.storeType.storeDirectory() else {
-        preconditionFailure("*** Error: migration is only available for on-disk persistent stores. Received invalid model: \(model)")
-    }
+        // could also throw NSError from NSPersistentStoreCoordinator
+        guard let sourceModel = try findCompatibleModel(withBundle: bundle, storeType: storeType.type, storeURL: storeURL) else {
+            throw MigrationError.sourceModelNotFound(model: self)
+        }
 
-    let bundle = model.bundle
-    let storeType = model.storeType.type
+        let migrationSteps = try buildMigrationMappingSteps(bundle: bundle,
+                                                            sourceModel: sourceModel,
+                                                            destinationModel: managedObjectModel)
 
-    // could also throw NSError from NSPersistentStoreCoordinator
-    guard let sourceModel = try findCompatibleModel(withBundle: bundle, storeType: storeType, storeURL: storeURL) else {
-        throw MigrationError.sourceModelNotFound(model: model)
-    }
+        for step in migrationSteps {
+            let tempURL = storeDirectory.URLByAppendingPathComponent("migration." + ModelFileExtension.sqlite.rawValue)
 
-    let migrationSteps = try buildMigrationMappingSteps(bundle: bundle,
-                                                        sourceModel: sourceModel,
-                                                        destinationModel: model.managedObjectModel)
+            // could throw error from `migrateStoreFromURL`
+            let manager = NSMigrationManager(sourceModel: step.source, destinationModel: step.destination)
+            try manager.migrateStoreFromURL(storeURL,
+                                            type: storeType.type,
+                                            options: nil,
+                                            withMappingModel: step.mapping,
+                                            toDestinationURL: tempURL,
+                                            destinationType: storeType.type,
+                                            destinationOptions: nil)
 
-    for step in migrationSteps {
-        let tempURL = storeDirectory.URLByAppendingPathComponent("migration." + ModelFileExtension.sqlite.rawValue)
-
-        // could throw error from `migrateStoreFromURL`
-        let manager = NSMigrationManager(sourceModel: step.source, destinationModel: step.destination)
-        try manager.migrateStoreFromURL(storeURL,
-                                        type: storeType,
-                                        options: nil,
-                                        withMappingModel: step.mapping,
-                                        toDestinationURL: tempURL,
-                                        destinationType: storeType,
-                                        destinationOptions: nil)
-
-        // could throw file system errors
-        try model.removeExistingStore()
-        try NSFileManager.defaultManager().moveItemAtURL(tempURL, toURL: storeURL)
+            // could throw file system errors
+            try removeExistingStore()
+            try NSFileManager.defaultManager().moveItemAtURL(tempURL, toURL: storeURL)
+        }
     }
 }
 

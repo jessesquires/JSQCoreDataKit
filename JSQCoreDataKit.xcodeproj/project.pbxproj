@@ -102,7 +102,7 @@
 		297C7D2C1C710A1D008E516B /* MigrationTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MigrationTests.swift; sourceTree = "<group>"; };
 		298F00F61C9C559100AEC77E /* Migrate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Migrate.swift; sourceTree = "<group>"; };
 		88002D4F1AB8F546001787DB /* JSQCoreDataKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = JSQCoreDataKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		881219C31B361EAF005E5AA7 /* JSQCoreDataKitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JSQCoreDataKitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		881219C31B361EAF005E5AA7 /* JSQCoreDataKit-iOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "JSQCoreDataKit-iOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		883378C41CB187E500205B24 /* Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		883C83DB1C0D7647007A16F5 /* JSQCoreDataKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = JSQCoreDataKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8873E21D1C51E09700DFE009 /* Equatable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Equatable.swift; sourceTree = "<group>"; };
@@ -190,7 +190,7 @@
 			isa = PBXGroup;
 			children = (
 				88002D4F1AB8F546001787DB /* JSQCoreDataKit.framework */,
-				881219C31B361EAF005E5AA7 /* JSQCoreDataKitTests.xctest */,
+				881219C31B361EAF005E5AA7 /* JSQCoreDataKit-iOSTests.xctest */,
 				887403131C0D6A6D00FE0C31 /* JSQCoreDataKit.framework */,
 				883C83DB1C0D7647007A16F5 /* JSQCoreDataKit.framework */,
 				88AC4B331C0FD8DA00A04563 /* JSQCoreDataKit.framework */,
@@ -288,9 +288,9 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		88002D4E1AB8F546001787DB /* JSQCoreDataKit iOS */ = {
+		88002D4E1AB8F546001787DB /* JSQCoreDataKit-iOS */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 88002D651AB8F547001787DB /* Build configuration list for PBXNativeTarget "JSQCoreDataKit iOS" */;
+			buildConfigurationList = 88002D651AB8F547001787DB /* Build configuration list for PBXNativeTarget "JSQCoreDataKit-iOS" */;
 			buildPhases = (
 				88002D4A1AB8F546001787DB /* Sources */,
 				88002D4B1AB8F546001787DB /* Frameworks */,
@@ -301,14 +301,14 @@
 			);
 			dependencies = (
 			);
-			name = "JSQCoreDataKit iOS";
+			name = "JSQCoreDataKit-iOS";
 			productName = JSQCoreDataKit;
 			productReference = 88002D4F1AB8F546001787DB /* JSQCoreDataKit.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		881219C21B361EAF005E5AA7 /* JSQCoreDataKitTests */ = {
+		881219C21B361EAF005E5AA7 /* JSQCoreDataKit-iOSTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 881219CB1B361EAF005E5AA7 /* Build configuration list for PBXNativeTarget "JSQCoreDataKitTests" */;
+			buildConfigurationList = 881219CB1B361EAF005E5AA7 /* Build configuration list for PBXNativeTarget "JSQCoreDataKit-iOSTests" */;
 			buildPhases = (
 				881219BF1B361EAF005E5AA7 /* Sources */,
 				881219C01B361EAF005E5AA7 /* Frameworks */,
@@ -320,14 +320,14 @@
 				292393AF1C6BC37E0025E6EF /* PBXTargetDependency */,
 				881219CA1B361EAF005E5AA7 /* PBXTargetDependency */,
 			);
-			name = JSQCoreDataKitTests;
+			name = "JSQCoreDataKit-iOSTests";
 			productName = JSQCoreDataKitTests;
-			productReference = 881219C31B361EAF005E5AA7 /* JSQCoreDataKitTests.xctest */;
+			productReference = 881219C31B361EAF005E5AA7 /* JSQCoreDataKit-iOSTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		883C83DA1C0D7647007A16F5 /* JSQCoreDataKit watchOS */ = {
+		883C83DA1C0D7647007A16F5 /* JSQCoreDataKit-watchOS */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 883C83E01C0D7647007A16F5 /* Build configuration list for PBXNativeTarget "JSQCoreDataKit watchOS" */;
+			buildConfigurationList = 883C83E01C0D7647007A16F5 /* Build configuration list for PBXNativeTarget "JSQCoreDataKit-watchOS" */;
 			buildPhases = (
 				883C83D61C0D7647007A16F5 /* Sources */,
 				883C83D71C0D7647007A16F5 /* Frameworks */,
@@ -338,14 +338,14 @@
 			);
 			dependencies = (
 			);
-			name = "JSQCoreDataKit watchOS";
+			name = "JSQCoreDataKit-watchOS";
 			productName = "JSQCoreDataKit watchOS";
 			productReference = 883C83DB1C0D7647007A16F5 /* JSQCoreDataKit.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		887403121C0D6A6D00FE0C31 /* JSQCoreDataKit tvOS */ = {
+		887403121C0D6A6D00FE0C31 /* JSQCoreDataKit-tvOS */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 8874031B1C0D6A6D00FE0C31 /* Build configuration list for PBXNativeTarget "JSQCoreDataKit tvOS" */;
+			buildConfigurationList = 8874031B1C0D6A6D00FE0C31 /* Build configuration list for PBXNativeTarget "JSQCoreDataKit-tvOS" */;
 			buildPhases = (
 				8874030E1C0D6A6D00FE0C31 /* Sources */,
 				8874030F1C0D6A6D00FE0C31 /* Frameworks */,
@@ -356,14 +356,14 @@
 			);
 			dependencies = (
 			);
-			name = "JSQCoreDataKit tvOS";
+			name = "JSQCoreDataKit-tvOS";
 			productName = "JSQCoreDataKit tvOS";
 			productReference = 887403131C0D6A6D00FE0C31 /* JSQCoreDataKit.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		88AC4B321C0FD8DA00A04563 /* JSQCoreDataKit OSX */ = {
+		88AC4B321C0FD8DA00A04563 /* JSQCoreDataKit-OSX */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 88AC4B3B1C0FD8DB00A04563 /* Build configuration list for PBXNativeTarget "JSQCoreDataKit OSX" */;
+			buildConfigurationList = 88AC4B3B1C0FD8DB00A04563 /* Build configuration list for PBXNativeTarget "JSQCoreDataKit-OSX" */;
 			buildPhases = (
 				88AC4B2E1C0FD8DA00A04563 /* Sources */,
 				88AC4B2F1C0FD8DA00A04563 /* Frameworks */,
@@ -374,7 +374,7 @@
 			);
 			dependencies = (
 			);
-			name = "JSQCoreDataKit OSX";
+			name = "JSQCoreDataKit-OSX";
 			productName = "JSQCoreDataKit OSX";
 			productReference = 88AC4B331C0FD8DA00A04563 /* JSQCoreDataKit.framework */;
 			productType = "com.apple.product-type.framework";
@@ -424,11 +424,11 @@
 			);
 			projectRoot = "";
 			targets = (
-				88002D4E1AB8F546001787DB /* JSQCoreDataKit iOS */,
-				881219C21B361EAF005E5AA7 /* JSQCoreDataKitTests */,
-				887403121C0D6A6D00FE0C31 /* JSQCoreDataKit tvOS */,
-				883C83DA1C0D7647007A16F5 /* JSQCoreDataKit watchOS */,
-				88AC4B321C0FD8DA00A04563 /* JSQCoreDataKit OSX */,
+				88002D4E1AB8F546001787DB /* JSQCoreDataKit-iOS */,
+				881219C21B361EAF005E5AA7 /* JSQCoreDataKit-iOSTests */,
+				887403121C0D6A6D00FE0C31 /* JSQCoreDataKit-tvOS */,
+				883C83DA1C0D7647007A16F5 /* JSQCoreDataKit-watchOS */,
+				88AC4B321C0FD8DA00A04563 /* JSQCoreDataKit-OSX */,
 			);
 		};
 /* End PBXProject section */
@@ -586,7 +586,7 @@
 		};
 		881219CA1B361EAF005E5AA7 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 88002D4E1AB8F546001787DB /* JSQCoreDataKit iOS */;
+			target = 88002D4E1AB8F546001787DB /* JSQCoreDataKit-iOS */;
 			targetProxy = 881219C91B361EAF005E5AA7 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -895,7 +895,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		88002D651AB8F547001787DB /* Build configuration list for PBXNativeTarget "JSQCoreDataKit iOS" */ = {
+		88002D651AB8F547001787DB /* Build configuration list for PBXNativeTarget "JSQCoreDataKit-iOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				88002D661AB8F547001787DB /* Debug */,
@@ -904,7 +904,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		881219CB1B361EAF005E5AA7 /* Build configuration list for PBXNativeTarget "JSQCoreDataKitTests" */ = {
+		881219CB1B361EAF005E5AA7 /* Build configuration list for PBXNativeTarget "JSQCoreDataKit-iOSTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				881219CC1B361EAF005E5AA7 /* Debug */,
@@ -913,7 +913,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		883C83E01C0D7647007A16F5 /* Build configuration list for PBXNativeTarget "JSQCoreDataKit watchOS" */ = {
+		883C83E01C0D7647007A16F5 /* Build configuration list for PBXNativeTarget "JSQCoreDataKit-watchOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				883C83E11C0D7647007A16F5 /* Debug */,
@@ -922,7 +922,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		8874031B1C0D6A6D00FE0C31 /* Build configuration list for PBXNativeTarget "JSQCoreDataKit tvOS" */ = {
+		8874031B1C0D6A6D00FE0C31 /* Build configuration list for PBXNativeTarget "JSQCoreDataKit-tvOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				887403181C0D6A6D00FE0C31 /* Debug */,
@@ -931,7 +931,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		88AC4B3B1C0FD8DB00A04563 /* Build configuration list for PBXNativeTarget "JSQCoreDataKit OSX" */ = {
+		88AC4B3B1C0FD8DB00A04563 /* Build configuration list for PBXNativeTarget "JSQCoreDataKit-OSX" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				88AC4B381C0FD8DB00A04563 /* Debug */,

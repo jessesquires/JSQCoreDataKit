@@ -16,7 +16,7 @@
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "88AC4B321C0FD8DA00A04563"
                BuildableName = "JSQCoreDataKit.framework"
-               BlueprintName = "JSQCoreDataKit OSX"
+               BlueprintName = "JSQCoreDataKit-OSX"
                ReferencedContainer = "container:JSQCoreDataKit.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -47,7 +47,7 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "88AC4B321C0FD8DA00A04563"
             BuildableName = "JSQCoreDataKit.framework"
-            BlueprintName = "JSQCoreDataKit OSX"
+            BlueprintName = "JSQCoreDataKit-OSX"
             ReferencedContainer = "container:JSQCoreDataKit.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -65,7 +65,7 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "88AC4B321C0FD8DA00A04563"
             BuildableName = "JSQCoreDataKit.framework"
-            BlueprintName = "JSQCoreDataKit OSX"
+            BlueprintName = "JSQCoreDataKit-OSX"
             ReferencedContainer = "container:JSQCoreDataKit.xcodeproj">
          </BuildableReference>
       </MacroExpansion>

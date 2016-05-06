@@ -16,7 +16,7 @@
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "883C83DA1C0D7647007A16F5"
                BuildableName = "JSQCoreDataKit.framework"
-               BlueprintName = "JSQCoreDataKit watchOS"
+               BlueprintName = "JSQCoreDataKit-watchOS"
                ReferencedContainer = "container:JSQCoreDataKit.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -47,7 +47,7 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "883C83DA1C0D7647007A16F5"
             BuildableName = "JSQCoreDataKit.framework"
-            BlueprintName = "JSQCoreDataKit watchOS"
+            BlueprintName = "JSQCoreDataKit-watchOS"
             ReferencedContainer = "container:JSQCoreDataKit.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -65,7 +65,7 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "883C83DA1C0D7647007A16F5"
             BuildableName = "JSQCoreDataKit.framework"
-            BlueprintName = "JSQCoreDataKit watchOS"
+            BlueprintName = "JSQCoreDataKit-watchOS"
             ReferencedContainer = "container:JSQCoreDataKit.xcodeproj">
          </BuildableReference>
       </MacroExpansion>

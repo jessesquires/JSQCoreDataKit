@@ -14,6 +14,13 @@
 		8853946C1BC9EB7900699506 /* Employee.swift in Sources */ = {isa = PBXBuildFile; fileRef = 885394681BC9EB7900699506 /* Employee.swift */; };
 		8853946E1BC9EB7900699506 /* Company.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8853946A1BC9EB7900699506 /* Company.swift */; };
 		88807BBB1BCB24FD00F95B95 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88807BBA1BCB24FD00F95B95 /* Model.swift */; };
+		88DF3CE11CDCEA7300726A31 /* Company.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8853946A1BC9EB7900699506 /* Company.swift */; };
+		88DF3CE21CDCEA7300726A31 /* Employee.swift in Sources */ = {isa = PBXBuildFile; fileRef = 885394681BC9EB7900699506 /* Employee.swift */; };
+		88DF3CE31CDCEA7300726A31 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88807BBA1BCB24FD00F95B95 /* Model.swift */; };
+		88DF3CE41CDCEA7600726A31 /* ExampleModel.h in Headers */ = {isa = PBXBuildFile; fileRef = 8853944D1BC9EA0300699506 /* ExampleModel.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		88DF3CE51CDCEA7D00726A31 /* ExampleModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 885394641BC9EAB100699506 /* ExampleModel.xcdatamodeld */; };
+		88DF3CE61CDCEA8300726A31 /* Version2_to_Version3.xcmappingmodel in Sources */ = {isa = PBXBuildFile; fileRef = 29DD1F131C8C8D5B006091A9 /* Version2_to_Version3.xcmappingmodel */; };
+		88DF3CE71CDCEA8600726A31 /* Version1_to_Version2.xcmappingmodel in Sources */ = {isa = PBXBuildFile; fileRef = 29DD1F111C8C55F4006091A9 /* Version1_to_Version2.xcmappingmodel */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,10 +35,18 @@
 		885394681BC9EB7900699506 /* Employee.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Employee.swift; sourceTree = "<group>"; };
 		8853946A1BC9EB7900699506 /* Company.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Company.swift; sourceTree = "<group>"; };
 		88807BBA1BCB24FD00F95B95 /* Model.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
+		88DF3CD91CDCEA0D00726A31 /* ExampleModel.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ExampleModel.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		885394461BC9EA0300699506 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		88DF3CD51CDCEA0D00726A31 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -53,6 +68,7 @@
 			isa = PBXGroup;
 			children = (
 				8853944A1BC9EA0300699506 /* ExampleModel.framework */,
+				88DF3CD91CDCEA0D00726A31 /* ExampleModel.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -83,6 +99,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		88DF3CD61CDCEA0D00726A31 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				88DF3CE41CDCEA7600726A31 /* ExampleModel.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
@@ -104,6 +128,24 @@
 			productReference = 8853944A1BC9EA0300699506 /* ExampleModel.framework */;
 			productType = "com.apple.product-type.framework";
 		};
+		88DF3CD81CDCEA0D00726A31 /* ExampleModel-OSX */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 88DF3CE01CDCEA0D00726A31 /* Build configuration list for PBXNativeTarget "ExampleModel-OSX" */;
+			buildPhases = (
+				88DF3CD41CDCEA0D00726A31 /* Sources */,
+				88DF3CD51CDCEA0D00726A31 /* Frameworks */,
+				88DF3CD61CDCEA0D00726A31 /* Headers */,
+				88DF3CD71CDCEA0D00726A31 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "ExampleModel-OSX";
+			productName = "ExampleModel-OSX";
+			productReference = 88DF3CD91CDCEA0D00726A31 /* ExampleModel.framework */;
+			productType = "com.apple.product-type.framework";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -116,6 +158,9 @@
 				TargetAttributes = {
 					885394491BC9EA0300699506 = {
 						CreatedOnToolsVersion = 7.0.1;
+					};
+					88DF3CD81CDCEA0D00726A31 = {
+						CreatedOnToolsVersion = 7.3.1;
 					};
 				};
 			};
@@ -132,12 +177,20 @@
 			projectRoot = "";
 			targets = (
 				885394491BC9EA0300699506 /* ExampleModel */,
+				88DF3CD81CDCEA0D00726A31 /* ExampleModel-OSX */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
 		885394481BC9EA0300699506 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		88DF3CD71CDCEA0D00726A31 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -157,6 +210,19 @@
 				8853946E1BC9EB7900699506 /* Company.swift in Sources */,
 				88807BBB1BCB24FD00F95B95 /* Model.swift in Sources */,
 				29DD1F121C8C55F4006091A9 /* Version1_to_Version2.xcmappingmodel in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		88DF3CD41CDCEA0D00726A31 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				88DF3CE31CDCEA7300726A31 /* Model.swift in Sources */,
+				88DF3CE11CDCEA7300726A31 /* Company.swift in Sources */,
+				88DF3CE51CDCEA7D00726A31 /* ExampleModel.xcdatamodeld in Sources */,
+				88DF3CE61CDCEA8300726A31 /* Version2_to_Version3.xcmappingmodel in Sources */,
+				88DF3CE21CDCEA7300726A31 /* Employee.swift in Sources */,
+				88DF3CE71CDCEA8600726A31 /* Version1_to_Version2.xcmappingmodel in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -290,6 +356,50 @@
 			};
 			name = Release;
 		};
+		88DF3CDE1CDCEA0D00726A31 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NONNULL = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COMBINE_HIDPI_IMAGES = YES;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_VERSION = A;
+				INFOPLIST_FILE = "$(SRCROOT)/ExampleModel/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				PRODUCT_BUNDLE_IDENTIFIER = com.hexedbits.ExampleModel;
+				PRODUCT_NAME = ExampleModel;
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		88DF3CDF1CDCEA0D00726A31 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NONNULL = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COMBINE_HIDPI_IMAGES = YES;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_VERSION = A;
+				INFOPLIST_FILE = "$(SRCROOT)/ExampleModel/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				PRODUCT_BUNDLE_IDENTIFIER = com.hexedbits.ExampleModel;
+				PRODUCT_NAME = ExampleModel;
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -310,6 +420,14 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
+		};
+		88DF3CE01CDCEA0D00726A31 /* Build configuration list for PBXNativeTarget "ExampleModel-OSX" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				88DF3CDE1CDCEA0D00726A31 /* Debug */,
+				88DF3CDF1CDCEA0D00726A31 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
 

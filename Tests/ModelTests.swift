@@ -56,7 +56,14 @@ class ModelTests: XCTestCase {
         // THEN: the model is in its specified bundle
         let modelURLComponents = model.modelURL.pathComponents!
         XCTAssertEqual(String(modelURLComponents.last!), model.name + ".momd")
-        XCTAssertEqual(String(modelURLComponents[modelURLComponents.count - 2]), NSString(string: model.bundle.bundlePath).lastPathComponent)
+
+        #if os(iOS)
+            let count = modelURLComponents.count - 2
+        #elseif os(OSX)
+            let count = modelURLComponents.count - 3
+        #endif
+
+        XCTAssertEqual(String(modelURLComponents[count]), NSString(string: model.bundle.bundlePath).lastPathComponent)
 
         // THEN: the managed object model does not assert
         XCTAssertNotNil(model.managedObjectModel)
@@ -82,13 +89,27 @@ class ModelTests: XCTestCase {
         // THEN: the store file is in the tmp directory
         let storeURLComponents = model.storeURL!.pathComponents!
         XCTAssertEqual(String(storeURLComponents.last!), model.databaseFileName)
-        XCTAssertEqual(String(storeURLComponents[storeURLComponents.count - 2]), "tmp")
+
+        #if os(iOS)
+            let temp = "tmp"
+        #elseif os(OSX)
+            let temp = "T"
+        #endif
+
+        XCTAssertEqual(String(storeURLComponents[storeURLComponents.count - 2]), temp)
         XCTAssertTrue(model.storeURL!.fileURL)
 
         // THEN: the model is in its specified bundle
         let modelURLComponents = model.modelURL.pathComponents!
         XCTAssertEqual(String(modelURLComponents.last!), model.name + ".momd")
-        XCTAssertEqual(String(modelURLComponents[modelURLComponents.count - 2]), NSString(string: model.bundle.bundlePath).lastPathComponent)
+
+        #if os(iOS)
+            let count = modelURLComponents.count - 2
+        #elseif os(OSX)
+            let count = modelURLComponents.count - 3
+        #endif
+
+        XCTAssertEqual(String(modelURLComponents[count]), NSString(string: model.bundle.bundlePath).lastPathComponent)
 
         // THEN: the managed object model does not assert
         XCTAssertNotNil(model.managedObjectModel)
@@ -117,7 +138,14 @@ class ModelTests: XCTestCase {
         // THEN: the model is in its specified bundle
         let modelURLComponents = model.modelURL.pathComponents!
         XCTAssertEqual(String(modelURLComponents.last!), model.name + ".momd")
-        XCTAssertEqual(String(modelURLComponents[modelURLComponents.count - 2]), NSString(string: model.bundle.bundlePath).lastPathComponent)
+
+        #if os(iOS)
+            let count = modelURLComponents.count - 2
+        #elseif os(OSX)
+            let count = modelURLComponents.count - 3
+        #endif
+
+        XCTAssertEqual(String(modelURLComponents[count]), NSString(string: model.bundle.bundlePath).lastPathComponent)
 
         // THEN: the managed object model does not assert
         XCTAssertNotNil(model.managedObjectModel)

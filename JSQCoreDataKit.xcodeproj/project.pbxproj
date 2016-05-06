@@ -1097,6 +1097,7 @@
 				88DF3CC31CDCE89000726A31 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

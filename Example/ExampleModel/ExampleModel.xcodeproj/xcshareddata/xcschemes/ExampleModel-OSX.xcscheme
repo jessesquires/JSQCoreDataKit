@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "88DF3CD81CDCEA0D00726A31"
-               BuildableName = "ExampleModel-OSX.framework"
+               BuildableName = "ExampleModel.framework"
                BlueprintName = "ExampleModel-OSX"
                ReferencedContainer = "container:ExampleModel.xcodeproj">
             </BuildableReference>
@@ -46,7 +46,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "88DF3CD81CDCEA0D00726A31"
-            BuildableName = "ExampleModel-OSX.framework"
+            BuildableName = "ExampleModel.framework"
             BlueprintName = "ExampleModel-OSX"
             ReferencedContainer = "container:ExampleModel.xcodeproj">
          </BuildableReference>
@@ -64,7 +64,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "88DF3CD81CDCEA0D00726A31"
-            BuildableName = "ExampleModel-OSX.framework"
+            BuildableName = "ExampleModel.framework"
             BlueprintName = "ExampleModel-OSX"
             ReferencedContainer = "container:ExampleModel.xcodeproj">
          </BuildableReference>

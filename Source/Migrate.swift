@@ -21,7 +21,7 @@ import Foundation
 
 
 /**
- An error type that specifies possible errors that are thrown by calling `func migrate(model: CoreDataModel) throws`
+ An error type that specifies possible errors that are thrown by calling `CoreDataModel.migrate() throws`.
  */
 public enum MigrationError: ErrorType {
 

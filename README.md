@@ -175,9 +175,7 @@ There's an example app in the `Example/` directory. Open the `ExampleApp.xcodepr
 
 ## Unit tests
 
-There's a suite of unit tests for `JSQCoreDataKit.framework`. To run them, open `JSQCoreDataKit.xcodeproj`, select the `JSQCoreDataKit-iOS` scheme, then &#x2318;-u.
-
-These tests are well commented and serve as further documentation for how to use this library.
+There's a suite of unit tests for `JSQCoreDataKit.framework`. You can run them in the usual way from Xcode by opening `JSQCoreDataKit.xcodeproj`. These tests are well commented and serve as further documentation for how to use this library.
 
 ## Contribute
 

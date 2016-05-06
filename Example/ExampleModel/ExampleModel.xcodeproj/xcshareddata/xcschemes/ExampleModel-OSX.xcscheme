@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0700"
+   LastUpgradeVersion = "0730"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "885394491BC9EA0300699506"
-               BuildableName = "ExampleModel.framework"
-               BlueprintName = "ExampleModel"
+               BlueprintIdentifier = "88DF3CD81CDCEA0D00726A31"
+               BuildableName = "ExampleModel-OSX.framework"
+               BlueprintName = "ExampleModel-OSX"
                ReferencedContainer = "container:ExampleModel.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -29,15 +29,6 @@
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
       </Testables>
-      <MacroExpansion>
-         <BuildableReference
-            BuildableIdentifier = "primary"
-            BlueprintIdentifier = "885394491BC9EA0300699506"
-            BuildableName = "ExampleModel.framework"
-            BlueprintName = "ExampleModel"
-            ReferencedContainer = "container:ExampleModel.xcodeproj">
-         </BuildableReference>
-      </MacroExpansion>
       <AdditionalOptions>
       </AdditionalOptions>
    </TestAction>
@@ -54,9 +45,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "885394491BC9EA0300699506"
-            BuildableName = "ExampleModel.framework"
-            BlueprintName = "ExampleModel"
+            BlueprintIdentifier = "88DF3CD81CDCEA0D00726A31"
+            BuildableName = "ExampleModel-OSX.framework"
+            BlueprintName = "ExampleModel-OSX"
             ReferencedContainer = "container:ExampleModel.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -72,9 +63,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "885394491BC9EA0300699506"
-            BuildableName = "ExampleModel.framework"
-            BlueprintName = "ExampleModel"
+            BlueprintIdentifier = "88DF3CD81CDCEA0D00726A31"
+            BuildableName = "ExampleModel-OSX.framework"
+            BlueprintName = "ExampleModel-OSX"
             ReferencedContainer = "container:ExampleModel.xcodeproj">
          </BuildableReference>
       </MacroExpansion>

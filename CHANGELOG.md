@@ -4,6 +4,44 @@ The changelog for `JSQCoreDataKit`. Also see the [releases](https://github.com/j
 
 --------------------------------------
 
+4.0.0
+-----
+
+This release closes the [4.0.0 milestone](https://github.com/jessesquires/JSQCoreDataKit/issues?utf8=✓&q=milestone%3A4.0.0+).
+
+This release includes a significant change to `CoreDataStack`, which **no longer uses child contexts**. The `mainContext` and `backgroundContext` are now both connected to the persistent store coordinator. See #60 for the background and rationale behind this change. In short, child contexts **are considered bad practice** for this kind of stack setup and should really only be used for "throw away" work.
+
+While this is *technically* a breaking change, it **likely will not affect most clients**. The behavior should remain largely unchanged — data is still kept in-sync between the 2 contexts. So unless you were specifically relying on this parent-child nesting behavior, you should be fine. 👍 
+
+### Thanks
+
+Huge thanks to @Liquidsoul for closing most of the issues for this release and to @wiedem for contributing significantly as well! 🎉 
+
+### Breaking changes ⚠️ 
+
+##### Stack 
+
+- The `mainContext` and `backgroundContext` are now both connected to the persistent store coordinator (#60)
+- When creating a child context, the `concurrencyType` determines which context is the parent (#73)
+- `CoreDataStackFactory` has been simplified. There is now a single `createStack()` method. (#77)
+
+##### Free functions
+
+In alignment with the latest Swift API guidelines, the library now prefers methods/extensions over free functions.
+
+- The `resetStack()` top-level function is now a method on `CoreDataStack` (#75)
+- The `deleteObjects()` top-level function is now an extension method on `NSManagedObjectContext` (#76)
+- The `fetch()` top-level function is now an extension method on `NSManagedObjectContext` (#78)
+- The `migrate()` top-level function is now an extension method `CoreDataModel` (#82)
+
+### Documentation
+
+[All docs](http://www.jessesquires.com/JSQCoreDataKit/) have been updated. As usual, check these out for more details on the changes described above.
+
+### Refinements
+
+There have been other general refinements and additional unit tests have been added. Test coverage is 94% 😎 
+
 3.0.0
 -----
 

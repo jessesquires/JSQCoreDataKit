@@ -16,10 +16,8 @@
 //  Released under an MIT license: http://opensource.org/licenses/MIT
 //
 
-#import <UIKit/UIKit.h>
+#import <Foundation/Foundation.h>
 
-//! Project version number for ExampleModel.
 FOUNDATION_EXPORT double ExampleModelVersionNumber;
 
-//! Project version string for ExampleModel.
 FOUNDATION_EXPORT const unsigned char ExampleModelVersionString[];

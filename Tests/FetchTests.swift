@@ -36,13 +36,13 @@ class FetchTests: TestCase {
 
         // WHEN: we execute a fetch request
         let request = FetchRequest<Employee>(entity: entity(name: Employee.entityName, context: stack.mainContext))
-        let results = try! fetch(request: request, inContext: stack.mainContext)
+        let results = try! stack.mainContext.fetch(request: request)
 
         // THEN: we receive the expected data
         XCTAssertEqual(results.count, count, "Fetch should return \(count) objects")
 
         saveContext(stack.mainContext) { result in
-            XCTAssertTrue(result == .Success, "Save should not error")
+            XCTAssertTrue(result == .success, "Save should not error")
         }
     }
 
@@ -53,19 +53,19 @@ class FetchTests: TestCase {
         let count = 10
         generateEmployeesInContext(stack.mainContext, company: nil, count: count - 1)
         let myEmployee = Employee.newEmployee(stack.mainContext)
-        
+
         // WHEN: we execute a fetch request for the specific object
         let request = FetchRequest<Employee>(entity: entity(name: Employee.entityName, context: stack.mainContext))
         request.predicate = NSPredicate(format: "name == %@", myEmployee.name)
 
-        let results = try! fetch(request: request, inContext: stack.mainContext)
+        let results = try! stack.mainContext.fetch(request: request)
 
         // THEN: we receive the expected data
         XCTAssertEqual(results.count, 1, "Fetch should return specific object \(myEmployee.description)")
         XCTAssertEqual(results.first!, myEmployee, "Fetched object should equal expected model")
 
         saveContext(stack.mainContext) { result in
-            XCTAssertTrue(result == .Success, "Save should not error")
+            XCTAssertTrue(result == .success, "Save should not error")
         }
     }
 
@@ -75,7 +75,7 @@ class FetchTests: TestCase {
 
         // WHEN: we execute a fetch request
         let request = FetchRequest<Employee>(entity: entity(name: Employee.entityName, context: stack.mainContext))
-        let results = try! fetch(request: request, inContext: stack.mainContext)
+        let results = try! stack.mainContext.fetch(request: request)
 
         // THEN: we receive the expected data
         XCTAssertEqual(results.count, 0, "Fetch should return 0 objects")

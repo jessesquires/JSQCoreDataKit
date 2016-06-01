@@ -26,7 +26,7 @@ import JSQCoreDataKit
 
 
 class PersistentStoreOptionsTests: XCTestCase {
-    
+
     func test_ThatPersistentStoreOptions_AreEqual() {
         // GIVEN: two equal PersistentStoreOptions objects
         let first: PersistentStoreOptions = [
@@ -102,7 +102,7 @@ class PersistentStoreOptionsTests: XCTestCase {
 
         // WHEN: we compare them
         let result = (first == second)
-
+        
         // THEN: they are not equal
         XCTAssertFalse(result)
     }

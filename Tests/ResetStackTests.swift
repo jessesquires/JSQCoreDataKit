@@ -32,11 +32,11 @@ class ResetStackTests: TestCase {
         let stack = self.inMemoryStack
         generateCompaniesInContext(stack.mainContext, count: 3)
 
-        let expectation = expectationWithDescription("\(__FUNCTION__)")
+        let expectation = expectationWithDescription("\(#function)")
 
         // WHEN: we attempt to reset the stack
-        resetStack(stack) { (result: CoreDataStackResult) in
-            if case .Failure(let e) = result {
+        stack.reset() { (result: StackResult) in
+            if case .failure(let e) = result {
                 XCTFail("Error while resetting the stack: \(e)")
             }
             expectation.fulfill()
@@ -56,11 +56,11 @@ class ResetStackTests: TestCase {
         let stack = self.inMemoryStack
         generateCompaniesInContext(stack.backgroundContext, count: 3)
 
-        let expectation = expectationWithDescription("\(__FUNCTION__)")
+        let expectation = expectationWithDescription("\(#function)")
 
         // WHEN: we attempt to reset the stack
-        resetStack(stack) { (result: CoreDataStackResult) in
-            if case .Failure(let e) = result {
+        stack.reset() { (result: StackResult) in
+            if case .failure(let e) = result {
                 XCTFail("Error while resetting the stack: \(e)")
             }
             expectation.fulfill()
@@ -91,11 +91,11 @@ class ResetStackTests: TestCase {
         XCTAssertNil(error)
         XCTAssertEqual(objectsBefore, 3)
 
-        let expectation = expectationWithDescription("\(__FUNCTION__)")
+        let expectation = expectationWithDescription("\(#function)")
 
         // WHEN: we attempt to reset the stack
-        resetStack(stack) { (result: CoreDataStackResult) in
-            if case .Failure(let e) = result {
+        stack.reset() { (result: StackResult) in
+            if case .failure(let e) = result {
                 XCTFail("Error while resetting the stack: \(e)")
             }
             expectation.fulfill()

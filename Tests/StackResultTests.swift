@@ -26,61 +26,59 @@ import JSQCoreDataKit
 
 
 class StackResultTests: TestCase {
-    
+
     func test_StackResult_Success() {
-        let success = CoreDataStackResult.Success(inMemoryStack)
+        let success = StackResult.success(inMemoryStack)
         XCTAssertNotNil(success.stack())
         XCTAssertNil(success.error())
     }
 
     func test_StackResult_Failure() {
-        let failure = CoreDataStackResult.Failure(NSError(domain: "err", code: 0, userInfo: nil))
+        let failure = StackResult.failure(NSError(domain: "err", code: 0, userInfo: nil))
         XCTAssertNotNil(failure.error())
         XCTAssertNil(failure.stack())
     }
 
     func test_StackResult_Equality() {
-        let success = CoreDataStackResult.Success(inMemoryStack)
-        let failure = CoreDataStackResult.Failure(NSError(domain: "err", code: 0, userInfo: nil))
+        let success = StackResult.success(inMemoryStack)
+        let failure = StackResult.failure(NSError(domain: "err", code: 0, userInfo: nil))
         XCTAssertNotEqual(success, failure)
     }
 
     func test_StackResult_Equality_Success() {
-        let success1 = CoreDataStackResult.Success(inMemoryStack)
-        let success2 = CoreDataStackResult.Success(inMemoryStack)
+        let success1 = StackResult.success(inMemoryStack)
+        let success2 = StackResult.success(inMemoryStack)
         XCTAssertEqual(success1, success2)
 
-        let model = CoreDataModel(name: modelName, bundle: modelBundle, storeType: .SQLite(DefaultDirectoryURL()))
+        let model = CoreDataModel(name: modelName, bundle: modelBundle, storeType: .sqlite(defaultDirectoryURL()))
         let factory = CoreDataStackFactory(model: model)
         let result = factory.createStack()
         let stack = result.stack()!
-        let success3 = CoreDataStackResult.Success(stack)
+        let success3 = StackResult.success(stack)
         XCTAssertNotEqual(success1, success3)
 
-        do {
-            try model.removeExistingModelStore()
-        } catch { }
+        _ = try? model.removeExistingStore()
     }
 
     func test_StackResult_Equality_Failure() {
         let err = NSError(domain: "err", code: 0, userInfo: nil)
-        let failure1 = CoreDataStackResult.Failure(err)
-        let failure2 = CoreDataStackResult.Failure(err)
+        let failure1 = StackResult.failure(err)
+        let failure2 = StackResult.failure(err)
         XCTAssertEqual(failure1, failure2)
 
 
-        let failure3 = CoreDataStackResult.Failure(NSError(domain: "err3", code: 1, userInfo: nil))
+        let failure3 = StackResult.failure(NSError(domain: "err3", code: 1, userInfo: nil))
         XCTAssertNotEqual(failure1, failure3)
     }
 
     func test_StackResult_Description() {
-        print("\(__FUNCTION__)")
+        print("\(#function)")
 
-        let success = CoreDataStackResult.Success(inMemoryStack)
+        let success = StackResult.success(inMemoryStack)
         print(success)
 
-        let failure = CoreDataStackResult.Failure(NSError(domain: "err", code: 0, userInfo: nil))
+        let failure = StackResult.failure(NSError(domain: "err", code: 0, userInfo: nil))
         print(failure)
     }
-    
+
 }

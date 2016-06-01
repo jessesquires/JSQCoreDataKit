@@ -21,11 +21,30 @@ import Foundation
 
 
 /**
- An instance of `CoreDataModel` represents a Core Data model.
+ Describes a Core Data model file exention type based on the
+ [Model File Format and Versions](https://developer.apple.com/library/ios/documentation/Cocoa/Conceptual/CoreDataVersioning/Articles/vmModelFormat.html)
+ documentation.
+ */
+public enum ModelFileExtension: String {
+    /// The extension for a model bundle, or a `.xcdatamodeld` file package.
+    case bundle = "momd"
+
+    /// The extension for a versioned model file, or a `.xcdatamodel` file.
+    case versionedFile = "mom"
+
+    /// The extension for a mapping model file, or a `.xcmappingmodel` file.
+    case mapping = "cdm"
+
+    /// The extension for a sqlite store.
+    case sqlite = "sqlite"
+}
+
+
+/**
+ An instance of `CoreDataModel` represents a Core Data model — a `.xcdatamodeld` file package.
  It provides the model and store URLs as well as methods for interacting with the store.
  */
 public struct CoreDataModel: CustomStringConvertible, Equatable {
-
 
     // MARK: Properties
 
@@ -52,7 +71,7 @@ public struct CoreDataModel: CustomStringConvertible, Equatable {
     /// The file URL specifying the model file in the bundle specified by `bundle`.
     public var modelURL: NSURL {
         get {
-            guard let url = bundle.URLForResource(name, withExtension: "momd") else {
+            guard let url = bundle.URLForResource(name, withExtension: ModelFileExtension.bundle.rawValue) else {
                 fatalError("*** Error loading model URL for model named \(name) in bundle: \(bundle)")
             }
             return url
@@ -63,7 +82,7 @@ public struct CoreDataModel: CustomStringConvertible, Equatable {
     public var databaseFileName: String {
         get {
             switch storeType {
-            case .SQLite: return name + ".sqlite"
+            case .sqlite: return name + "." + ModelFileExtension.sqlite.rawValue
             default: return name
             }
         }
@@ -87,16 +106,13 @@ public struct CoreDataModel: CustomStringConvertible, Equatable {
      */
     public var needsMigration: Bool {
         get {
-            guard let storeURL = storeURL else {
-                return false
-            }
+            guard let storeURL = storeURL else { return false }
 
             do {
-                let sourceMetaData = try NSPersistentStoreCoordinator.metadataForPersistentStoreOfType(
-                    storeType.description,
-                    URL: storeURL,
-                    options: nil)
-                return !managedObjectModel.isConfiguration(nil, compatibleWithStoreMetadata: sourceMetaData)
+                let metadata = try NSPersistentStoreCoordinator.metadataForPersistentStoreOfType(storeType.type,
+                                                                                                 URL: storeURL,
+                                                                                                 options: nil)
+                return !managedObjectModel.isConfiguration(nil, compatibleWithStoreMetadata: metadata)
             }
             catch {
                 debugPrint("*** Error checking persistent store coordinator meta data: \(error)")
@@ -109,15 +125,15 @@ public struct CoreDataModel: CustomStringConvertible, Equatable {
     // MARK: Initialization
 
     /**
-    Constructs a new `CoreDataModel` instance with the specified name and bundle.
+     Constructs a new `CoreDataModel` instance with the specified name and bundle.
 
-    - parameter name:           The name of the Core Data model.
-    - parameter bundle:         The bundle in which the model is located. The default is the main bundle.
-    - parameter storeType:      The store type for the Core Data model. The default is `.SQLite`, with the user's documents directory.
+     - parameter name:      The name of the Core Data model.
+     - parameter bundle:    The bundle in which the model is located. The default is the main bundle.
+     - parameter storeType: The store type for the Core Data model. The default is `.sqlite`, with the user's documents directory.
 
-    - returns: A new `CoreDataModel` instance.
-    */
-    public init(name: String, bundle: NSBundle = .mainBundle(), storeType: StoreType = .SQLite(DefaultDirectoryURL())) {
+     - returns: A new `CoreDataModel` instance.
+     */
+    public init(name: String, bundle: NSBundle = .mainBundle(), storeType: StoreType = .sqlite(defaultDirectoryURL())) {
         self.name = name
         self.bundle = bundle
         self.storeType = storeType
@@ -127,11 +143,11 @@ public struct CoreDataModel: CustomStringConvertible, Equatable {
     // MARK: Methods
 
     /**
-    Removes the existing model store specfied by the receiver.
+     Removes the existing model store specfied by the receiver.
 
-    - throws: If removing the store fails or errors, then this function throws an `NSError`.
-    */
-    public func removeExistingModelStore() throws {
+     - throws: If removing the store fails or errors, then this function throws an `NSError`.
+     */
+    public func removeExistingStore() throws {
         let fileManager = NSFileManager.defaultManager()
         if let storePath = storeURL?.path where fileManager.fileExistsAtPath(storePath) {
             try fileManager.removeItemAtPath(storePath)
@@ -148,27 +164,5 @@ public struct CoreDataModel: CustomStringConvertible, Equatable {
                 + "modelURL=\(modelURL); storeURL=\(storeURL)>"
         }
     }
-
-}
-
-
-// MARK: Internal
-
-internal func DefaultDirectoryURL() -> NSURL {
-    do {
-        #if os(tvOS)
-            let searchPathDirectory = NSSearchPathDirectory.CachesDirectory
-        #else
-            let searchPathDirectory = NSSearchPathDirectory.DocumentDirectory
-        #endif
-		
-        return try NSFileManager.defaultManager().URLForDirectory(
-            searchPathDirectory,
-            inDomain: .UserDomainMask,
-            appropriateForURL: nil,
-            create: true)
-    }
-    catch {
-        fatalError("*** Error finding default directory: \(error)")
-    }
+    
 }

@@ -21,34 +21,24 @@ import Foundation
 
 
 /**
- A result object representing the result of creating a `CoreDataStack` via a `CoreDataStackFactory`.
+ A result object representing the result of saving an `NSManagedObjectContext`.
  */
-public enum CoreDataStackResult: CustomStringConvertible, Equatable {
+public enum SaveResult: CustomStringConvertible, Equatable {
 
-    /// The success result, containing the successfully initialized `CoreDataStack`.
-    case Success(CoreDataStack)
+    /// The success result.
+    case success
 
     /// The failure result, containing an `NSError` instance that describes the error.
-    case Failure(NSError)
+    case failure(NSError)
 
 
     // MARK: Methods
 
     /**
-    - returns: The result's `CoreDataStack` if `.Success`, otherwise `nil`.
-    */
-    public func stack() -> CoreDataStack? {
-        if case .Success(let stack) = self {
-            return stack
-        }
-        return nil
-    }
-
-    /**
      - returns: The result's `NSError` if `.Failure`, otherwise `nil`.
      */
     public func error() -> NSError? {
-        if case .Failure(let error) = self {
+        if case .failure(let error) = self {
             return error
         }
         return nil
@@ -60,12 +50,12 @@ public enum CoreDataStackResult: CustomStringConvertible, Equatable {
     /// :nodoc:
     public var description: String {
         get {
-            var str = "<\(CoreDataStackResult.self): "
+            var str = "<\(SaveResult.self): "
             switch self {
-            case .Success(let s):
-                str += ".Success(\(s)"
-            case .Failure(let e):
-                str += ".Failure(\(e))"
+            case .success:
+                str += ".success"
+            case .failure(let e):
+                str += ".failure(\(e))"
             }
             return str + ">"
         }

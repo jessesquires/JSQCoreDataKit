@@ -29,11 +29,7 @@ class ModelTests: XCTestCase {
 
     override func setUp() {
         let model = CoreDataModel(name: modelName, bundle: modelBundle)
-
-        do {
-            try model.removeExistingModelStore()
-        } catch { }
-
+        _ = try? model.removeExistingStore()
         super.setUp()
     }
 
@@ -46,10 +42,10 @@ class ModelTests: XCTestCase {
         // THEN: the model has the correct name, bundle, and type
         XCTAssertEqual(model.name, modelName)
         XCTAssertEqual(model.bundle, modelBundle)
-        XCTAssertEqual(model.storeType, StoreType.SQLite(DefaultDirectoryURL()))
+        XCTAssertEqual(model.storeType, StoreType.sqlite(defaultDirectoryURL()))
 
         // THEN: the model returns the correct database filename
-        XCTAssertEqual(model.databaseFileName, model.name + ".sqlite")
+        XCTAssertEqual(model.databaseFileName, model.name + "." + ModelFileExtension.sqlite.rawValue)
 
         // THEN: the store file is in the documents directory
         let storeURLComponents = model.storeURL!.pathComponents!
@@ -60,7 +56,14 @@ class ModelTests: XCTestCase {
         // THEN: the model is in its specified bundle
         let modelURLComponents = model.modelURL.pathComponents!
         XCTAssertEqual(String(modelURLComponents.last!), model.name + ".momd")
-        XCTAssertEqual(String(modelURLComponents[modelURLComponents.count - 2]), NSString(string: model.bundle.bundlePath).lastPathComponent)
+
+        #if os(iOS)
+            let count = modelURLComponents.count - 2
+        #elseif os(OSX)
+            let count = modelURLComponents.count - 3
+        #endif
+
+        XCTAssertEqual(String(modelURLComponents[count]), NSString(string: model.bundle.bundlePath).lastPathComponent)
 
         // THEN: the managed object model does not assert
         XCTAssertNotNil(model.managedObjectModel)
@@ -73,12 +76,12 @@ class ModelTests: XCTestCase {
         // GIVEN: a model name and bundle
 
         // WHEN: we create a model
-        let model = CoreDataModel(name: modelName, bundle: modelBundle, storeType: .Binary(NSURL(fileURLWithPath: NSTemporaryDirectory())))
+        let model = CoreDataModel(name: modelName, bundle: modelBundle, storeType: .binary(NSURL(fileURLWithPath: NSTemporaryDirectory())))
 
         // THEN: the model has the correct name, bundle, and type
         XCTAssertEqual(model.name, modelName)
         XCTAssertEqual(model.bundle, modelBundle)
-        XCTAssertEqual(model.storeType, StoreType.Binary(NSURL(fileURLWithPath: NSTemporaryDirectory())))
+        XCTAssertEqual(model.storeType, StoreType.binary(NSURL(fileURLWithPath: NSTemporaryDirectory())))
 
         // THEN: the model returns the correct database filename
         XCTAssertEqual(model.databaseFileName, model.name)
@@ -86,13 +89,27 @@ class ModelTests: XCTestCase {
         // THEN: the store file is in the tmp directory
         let storeURLComponents = model.storeURL!.pathComponents!
         XCTAssertEqual(String(storeURLComponents.last!), model.databaseFileName)
-        XCTAssertEqual(String(storeURLComponents[storeURLComponents.count - 2]), "tmp")
+
+        #if os(iOS)
+            let temp = "tmp"
+        #elseif os(OSX)
+            let temp = "T"
+        #endif
+
+        XCTAssertEqual(String(storeURLComponents[storeURLComponents.count - 2]), temp)
         XCTAssertTrue(model.storeURL!.fileURL)
 
         // THEN: the model is in its specified bundle
         let modelURLComponents = model.modelURL.pathComponents!
         XCTAssertEqual(String(modelURLComponents.last!), model.name + ".momd")
-        XCTAssertEqual(String(modelURLComponents[modelURLComponents.count - 2]), NSString(string: model.bundle.bundlePath).lastPathComponent)
+
+        #if os(iOS)
+            let count = modelURLComponents.count - 2
+        #elseif os(OSX)
+            let count = modelURLComponents.count - 3
+        #endif
+
+        XCTAssertEqual(String(modelURLComponents[count]), NSString(string: model.bundle.bundlePath).lastPathComponent)
 
         // THEN: the managed object model does not assert
         XCTAssertNotNil(model.managedObjectModel)
@@ -105,12 +122,12 @@ class ModelTests: XCTestCase {
         // GIVEN: a model name and bundle
 
         // WHEN: we create a model
-        let model = CoreDataModel(name: modelName, bundle: modelBundle, storeType: .InMemory)
+        let model = CoreDataModel(name: modelName, bundle: modelBundle, storeType: .inMemory)
 
         // THEN: the model has the correct name, bundle, and type
         XCTAssertEqual(model.name, modelName)
         XCTAssertEqual(model.bundle, modelBundle)
-        XCTAssertEqual(model.storeType, StoreType.InMemory)
+        XCTAssertEqual(model.storeType, StoreType.inMemory)
 
         // THEN: the model returns the correct database filename
         XCTAssertEqual(model.databaseFileName, model.name)
@@ -121,7 +138,14 @@ class ModelTests: XCTestCase {
         // THEN: the model is in its specified bundle
         let modelURLComponents = model.modelURL.pathComponents!
         XCTAssertEqual(String(modelURLComponents.last!), model.name + ".momd")
-        XCTAssertEqual(String(modelURLComponents[modelURLComponents.count - 2]), NSString(string: model.bundle.bundlePath).lastPathComponent)
+
+        #if os(iOS)
+            let count = modelURLComponents.count - 2
+        #elseif os(OSX)
+            let count = modelURLComponents.count - 3
+        #endif
+
+        XCTAssertEqual(String(modelURLComponents[count]), NSString(string: model.bundle.bundlePath).lastPathComponent)
 
         // THEN: the managed object model does not assert
         XCTAssertNotNil(model.managedObjectModel)
@@ -143,7 +167,7 @@ class ModelTests: XCTestCase {
 
         // WHEN: we remove the existing model store
         do {
-            try model.removeExistingModelStore()
+            try model.removeExistingStore()
         }
         catch {
             XCTFail("Removing existing model store should not error.")
@@ -165,19 +189,19 @@ class ModelTests: XCTestCase {
         // WHEN: we attempt to remove the existing model store
         var success = true
         do {
-            try model.removeExistingModelStore()
+            try model.removeExistingStore()
         }
         catch {
             success = false
         }
-        
+
         // THEN: then removal is ignored
         XCTAssertTrue(success, "Removing store should be ignored")
     }
 
     func test_ThatInMemoryModel_RemoveExistingStore_Fails() {
         // GIVEN: a core data model in-memory
-        let model = CoreDataModel(name: modelName, bundle: modelBundle, storeType: .InMemory)
+        let model = CoreDataModel(name: modelName, bundle: modelBundle, storeType: .inMemory)
 
         // THEN: the store URL is nil
         XCTAssertNil(model.storeURL)
@@ -185,7 +209,7 @@ class ModelTests: XCTestCase {
         // WHEN: we attempt to remove the existing model store
         var success = true
         do {
-            try model.removeExistingModelStore()
+            try model.removeExistingStore()
         }
         catch {
             success = false
@@ -194,11 +218,11 @@ class ModelTests: XCTestCase {
         // THEN: then removal is ignored
         XCTAssertTrue(success, "Removing store should be ignored")
     }
-
+    
     func test_Model_Description() {
-        print("\(__FUNCTION__)")
-
-        let model = CoreDataModel(name: modelName, bundle: modelBundle, storeType: .InMemory)
+        print("\(#function)")
+        
+        let model = CoreDataModel(name: modelName, bundle: modelBundle, storeType: .inMemory)
         print(model)
     }
     

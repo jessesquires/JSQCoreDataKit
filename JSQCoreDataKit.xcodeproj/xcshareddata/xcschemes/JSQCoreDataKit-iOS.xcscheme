@@ -16,7 +16,7 @@
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "88002D4E1AB8F546001787DB"
                BuildableName = "JSQCoreDataKit.framework"
-               BlueprintName = "JSQCoreDataKit iOS"
+               BlueprintName = "JSQCoreDataKit-iOS"
                ReferencedContainer = "container:JSQCoreDataKit.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -34,8 +34,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "881219C21B361EAF005E5AA7"
-               BuildableName = "JSQCoreDataKitTests.xctest"
-               BlueprintName = "JSQCoreDataKitTests"
+               BuildableName = "JSQCoreDataKit-iOSTests.xctest"
+               BlueprintName = "JSQCoreDataKit-iOSTests"
                ReferencedContainer = "container:JSQCoreDataKit.xcodeproj">
             </BuildableReference>
          </TestableReference>
@@ -45,7 +45,7 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "88002D4E1AB8F546001787DB"
             BuildableName = "JSQCoreDataKit.framework"
-            BlueprintName = "JSQCoreDataKit iOS"
+            BlueprintName = "JSQCoreDataKit-iOS"
             ReferencedContainer = "container:JSQCoreDataKit.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -67,7 +67,7 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "88002D4E1AB8F546001787DB"
             BuildableName = "JSQCoreDataKit.framework"
-            BlueprintName = "JSQCoreDataKit iOS"
+            BlueprintName = "JSQCoreDataKit-iOS"
             ReferencedContainer = "container:JSQCoreDataKit.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -85,7 +85,7 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "88002D4E1AB8F546001787DB"
             BuildableName = "JSQCoreDataKit.framework"
-            BlueprintName = "JSQCoreDataKit iOS"
+            BlueprintName = "JSQCoreDataKit-iOS"
             ReferencedContainer = "container:JSQCoreDataKit.xcodeproj">
          </BuildableReference>
       </MacroExpansion>

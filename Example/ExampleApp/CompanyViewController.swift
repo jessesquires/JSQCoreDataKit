@@ -42,13 +42,13 @@ class CompanyViewController: UITableViewController, NSFetchedResultsControllerDe
         let model = CoreDataModel(name: modelName, bundle: modelBundle)
         let factory = CoreDataStackFactory(model: model)
 
-        factory.createStackInBackground { (result: CoreDataStackResult) -> Void in
+        factory.createStack { (result: StackResult) -> Void in
             switch result {
-            case .Success(let s):
+            case .success(let s):
                 self.stack = s
                 self.setupFRC()
 
-            case .Failure(let err):
+            case .failure(let err):
                 assertionFailure("Error creating stack: \(err)")
             }
 
@@ -82,9 +82,9 @@ class CompanyViewController: UITableViewController, NSFetchedResultsControllerDe
         let request = fetchRequest(self.stack.mainContext)
 
         self.frc = NSFetchedResultsController(fetchRequest: request,
-            managedObjectContext: self.stack.mainContext,
-            sectionNameKeyPath: nil,
-            cacheName: nil)
+                                              managedObjectContext: self.stack.mainContext,
+                                              sectionNameKeyPath: nil,
+                                              cacheName: nil)
 
         self.frc?.delegate = self
 
@@ -110,7 +110,7 @@ class CompanyViewController: UITableViewController, NSFetchedResultsControllerDe
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(
             barButtonSystemItem: .Add,
             target: self,
-            action: "didTapAddButton:")
+            action: #selector(didTapAddButton(_:)))
     }
 
 
@@ -130,8 +130,8 @@ class CompanyViewController: UITableViewController, NSFetchedResultsControllerDe
             let request = self.fetchRequest(backgroundChildContext)
 
             do {
-                let objects = try fetch(request: request, inContext: backgroundChildContext)
-                deleteObjects(objects, inContext: backgroundChildContext)
+                let objects = try backgroundChildContext.fetch(request: request)
+                backgroundChildContext.delete(objects: objects)
                 saveContext(backgroundChildContext)
             } catch {
                 print("Error deleting objects: \(error)")
@@ -177,7 +177,7 @@ class CompanyViewController: UITableViewController, NSFetchedResultsControllerDe
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if editingStyle == .Delete {
             let obj = frc?.objectAtIndexPath(indexPath) as! Company
-            deleteObjects([obj], inContext: self.stack.mainContext)
+            self.stack.mainContext.delete(objects: [obj])
             saveContext(self.stack.mainContext)
         }
     }
@@ -192,35 +192,35 @@ class CompanyViewController: UITableViewController, NSFetchedResultsControllerDe
     func controller(
         controller: NSFetchedResultsController,
         didChangeSection sectionInfo: NSFetchedResultsSectionInfo,
-        atIndex sectionIndex: Int,
-        forChangeType type: NSFetchedResultsChangeType) {
-            switch type {
-            case .Insert:
-                tableView.insertSections(NSIndexSet(index: sectionIndex), withRowAnimation: .Fade)
-            case .Delete:
-                tableView.deleteSections(NSIndexSet(index: sectionIndex), withRowAnimation: .Fade)
-            default:
-                break
-            }
+                         atIndex sectionIndex: Int,
+                                 forChangeType type: NSFetchedResultsChangeType) {
+        switch type {
+        case .Insert:
+            tableView.insertSections(NSIndexSet(index: sectionIndex), withRowAnimation: .Fade)
+        case .Delete:
+            tableView.deleteSections(NSIndexSet(index: sectionIndex), withRowAnimation: .Fade)
+        default:
+            break
+        }
     }
 
     func controller(
         controller: NSFetchedResultsController,
         didChangeObject anObject: AnyObject,
-        atIndexPath indexPath: NSIndexPath?,
-        forChangeType type: NSFetchedResultsChangeType,
-        newIndexPath: NSIndexPath?) {
-            switch type {
-            case .Insert:
-                tableView.insertRowsAtIndexPaths([newIndexPath!], withRowAnimation: .Fade)
-            case .Delete:
-                tableView.deleteRowsAtIndexPaths([indexPath!], withRowAnimation: .Fade)
-            case .Update:
-                configureCell(tableView.cellForRowAtIndexPath(indexPath!)!, atIndexPath: indexPath!)
-            case .Move:
-                tableView.deleteRowsAtIndexPaths([indexPath!], withRowAnimation: .Fade)
-                tableView.insertRowsAtIndexPaths([newIndexPath!], withRowAnimation: .Fade)
-            }
+                        atIndexPath indexPath: NSIndexPath?,
+                                    forChangeType type: NSFetchedResultsChangeType,
+                                                  newIndexPath: NSIndexPath?) {
+        switch type {
+        case .Insert:
+            tableView.insertRowsAtIndexPaths([newIndexPath!], withRowAnimation: .Fade)
+        case .Delete:
+            tableView.deleteRowsAtIndexPaths([indexPath!], withRowAnimation: .Fade)
+        case .Update:
+            configureCell(tableView.cellForRowAtIndexPath(indexPath!)!, atIndexPath: indexPath!)
+        case .Move:
+            tableView.deleteRowsAtIndexPaths([indexPath!], withRowAnimation: .Fade)
+            tableView.insertRowsAtIndexPaths([newIndexPath!], withRowAnimation: .Fade)
+        }
     }
     
     func controllerDidChangeContent(controller: NSFetchedResultsController) {

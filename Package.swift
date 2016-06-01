@@ -16,18 +16,8 @@
 //  Released under an MIT license: http://opensource.org/licenses/MIT
 //
 
-import XCTest
-@testable import ExampleApp
+import PackageDescription
 
-
-class ExampleAppTests: XCTestCase {
-
-    override func setUp() {
-        super.setUp()
-    }
-
-    override func tearDown() {
-        super.tearDown()
-    }
-
-}
+let package = Package(
+    name: "JSQCoreDataKit"
+)

@@ -26,11 +26,9 @@ import Foundation
 
  It is composed of a main context and a background context.
  These two contexts operate on the main queue and a private background queue, respectively.
- The background context is the root level context, which is connected to the persistent store coordinator.
- The main context is a child of the background context.
+ Both are connected to the persistent store coordinator and data between them is perpetually kept in sync.
 
- Data between these two primary contexts and child contexts is kept in sync.
- Changes to a context are propagated to its parent context and eventually the persistent store when saving.
+ Changes to a child context are propagated to its parent context and eventually the persistent store when saving.
 
  - warning: **You cannot create a `CoreDataStack` instance directly. Instead, use a `CoreDataStackFactory` for initialization.**
  */
@@ -44,38 +42,44 @@ public final class CoreDataStack: CustomStringConvertible, Equatable {
 
     /**
      The main managed object context for the stack, which operates on the main queue.
-     This context is a child context of `backgroundContext`.
+     This context is a root level context that is connected to the `storeCoordinator`.
+     It is kept in sync with `backgroundContext`.
      */
     public let mainContext: NSManagedObjectContext
 
     /**
      The background managed object context for the stack, which operates on a background queue.
-     This context is the root level context that is connected to the `storeCoordinator`.
+     This context is a root level context that is connected to the `storeCoordinator`.
+     It is kept in sync with `mainContext`.
      */
     public let backgroundContext: NSManagedObjectContext
 
     /**
-     The persistent store coordinator for the stack. The `backgroundContext` is connected to this coordinator.
+     The persistent store coordinator for the stack. Both contexts are connected to this coordinator.
      */
     public let storeCoordinator: NSPersistentStoreCoordinator
 
 
     // MARK: Initialization
 
-    internal init(
-        model: CoreDataModel,
-        mainContext: NSManagedObjectContext,
-        backgroundContext: NSManagedObjectContext,
-        storeCoordinator: NSPersistentStoreCoordinator) {
-            self.model = model
-            self.mainContext = mainContext
-            self.backgroundContext = backgroundContext
-            self.storeCoordinator = storeCoordinator
+    internal init(model: CoreDataModel,
+                  mainContext: NSManagedObjectContext,
+                  backgroundContext: NSManagedObjectContext,
+                  storeCoordinator: NSPersistentStoreCoordinator) {
+        self.model = model
+        self.mainContext = mainContext
+        self.backgroundContext = backgroundContext
+        self.storeCoordinator = storeCoordinator
 
-            NSNotificationCenter.defaultCenter().addObserver(self,
-                selector: Selector("didReceiveChildContextDidSaveNotification:"),
-                name: NSManagedObjectContextDidSaveNotification,
-                object: mainContext)
+        let notificationCenter = NSNotificationCenter.defaultCenter()
+        notificationCenter.addObserver(self,
+                                       selector: #selector(didReceiveMainContextDidSaveNotification(_:)),
+                                       name: NSManagedObjectContextDidSaveNotification,
+                                       object: mainContext)
+        notificationCenter.addObserver(self,
+                                       selector: #selector(didReceiveBackgroundContextDidSaveNotification(_:)),
+                                       name: NSManagedObjectContextDidSaveNotification,
+                                       object: backgroundContext)
     }
 
     /// :nodoc:
@@ -83,39 +87,102 @@ public final class CoreDataStack: CustomStringConvertible, Equatable {
         NSNotificationCenter.defaultCenter().removeObserver(self)
     }
 
-
     // MARK: Child contexts
 
     /**
-    Creates a new child context whose parent is `mainContext` and has the specified `concurrencyType` and `mergePolicyType`.
-    Saving the returned context will propagate changes through `mainContext`, `backgroundContext`,
-    and finally the persistent store.
+     Creates a new child context with the specified `concurrencyType` and `mergePolicyType`.
 
-    - parameter concurrencyType: The concurrency pattern to use. The default is `.PrivateQueueConcurrencyType`.
-    - parameter mergePolicyType: The merge policy to use. The default is `.MergeByPropertyObjectTrumpMergePolicyType`.
+     The parent context is either `mainContext` or `backgroundContext` dependending on the specified `concurrencyType`:
+     * `.PrivateQueueConcurrencyType` will set `backgroundContext` as the parent.
+     * `.MainQueueConcurrencyType` will set `mainContext` as the parent.
 
-    - returns: A new child managed object context whose parent is `mainContext`.
-    */
-    public func childContext(
-        concurrencyType concurrencyType: NSManagedObjectContextConcurrencyType = .PrivateQueueConcurrencyType,
-        mergePolicyType: NSMergePolicyType = .MergeByPropertyObjectTrumpMergePolicyType) -> ChildContext {
+     Saving the returned context will propagate changes through the parent context and then to the persistent store.
 
-            let childContext = NSManagedObjectContext(concurrencyType: concurrencyType)
+     - parameter concurrencyType: The concurrency pattern to use. The default is `.MainQueueConcurrencyType`.
+     - parameter mergePolicyType: The merge policy to use. The default is `.MergeByPropertyObjectTrumpMergePolicyType`.
+
+     - returns: A new child managed object context.
+     */
+    public func childContext(concurrencyType concurrencyType: NSManagedObjectContextConcurrencyType = .MainQueueConcurrencyType,
+                                             mergePolicyType: NSMergePolicyType = .MergeByPropertyObjectTrumpMergePolicyType) -> ChildContext {
+
+        let childContext = NSManagedObjectContext(concurrencyType: concurrencyType)
+        childContext.mergePolicy = NSMergePolicy(mergeType: mergePolicyType)
+
+        switch concurrencyType {
+        case .MainQueueConcurrencyType:
             childContext.parentContext = mainContext
-            childContext.mergePolicy = NSMergePolicy(mergeType: mergePolicyType)
+        case .PrivateQueueConcurrencyType:
+            childContext.parentContext = backgroundContext
+        case .ConfinementConcurrencyType:
+            fatalError("*** Error: ConfinementConcurrencyType is not supported because it is being deprecated in iOS 9.0")
+        }
 
-            if let name = mainContext.name {
-                childContext.name = name + ".child"
-            }
+        if let name = childContext.parentContext?.name {
+            childContext.name = name + ".child"
+        }
 
-            NSNotificationCenter.defaultCenter().addObserver(self,
-                selector: Selector("didReceiveChildContextDidSaveNotification:"),
-                name: NSManagedObjectContextDidSaveNotification,
-                object: childContext)
-
-            return childContext
+        NSNotificationCenter.defaultCenter().addObserver(self,
+                                                         selector: #selector(didReceiveChildContextDidSaveNotification(_:)),
+                                                         name: NSManagedObjectContextDidSaveNotification,
+                                                         object: childContext)
+        return childContext
     }
 
+    /**
+     Resets the managed object contexts in the stack on their respective threads.
+     Then, if the coordinator is connected to a persistent store, the store will be deleted and recreated on a background thread.
+     The completion closure is executed on the main thread.
+
+     - note: Removing and re-adding the persistent store is performed on a background queue.
+     For binary and SQLite stores, this will also remove the store from disk.
+
+     - parameter queue: A background queue on which to reset the stack.
+     The default is a background queue with a "user initiated" quality of service class.
+
+     - parameter completion: The closure to be called once resetting is complete. This is called on the main queue.
+     */
+    public func reset(onQueue queue: dispatch_queue_t = dispatch_get_global_queue(QOS_CLASS_USER_INITIATED, 0),
+                              completion: (result: StackResult) -> Void) {
+        mainContext.performBlockAndWait { self.mainContext.reset() }
+        backgroundContext.performBlockAndWait { self.backgroundContext.reset() }
+
+        guard let store = storeCoordinator.persistentStores.first else {
+            dispatch_async(dispatch_get_main_queue()) {
+                completion(result: .success(self))
+            }
+            return
+        }
+
+        dispatch_async(queue) {
+            precondition(!NSThread.isMainThread(), "*** Error: cannot reset a stack on the main queue")
+
+            let storeCoordinator = self.storeCoordinator
+            let options = store.options
+            let model = self.model
+
+            storeCoordinator.performBlockAndWait {
+                do {
+                    try model.removeExistingStore()
+                    try storeCoordinator.removePersistentStore(store)
+                    try storeCoordinator.addPersistentStoreWithType(model.storeType.type,
+                        configuration: nil,
+                        URL: model.storeURL,
+                        options: options)
+                }
+                catch {
+                    dispatch_async(dispatch_get_main_queue()) {
+                        completion(result: .failure(error as NSError))
+                    }
+                    return
+                }
+
+                dispatch_async(dispatch_get_main_queue()) {
+                    completion(result: .success(self))
+                }
+            }
+        }
+    }
 
     // MARK: CustomStringConvertible
 
@@ -141,8 +208,17 @@ public final class CoreDataStack: CustomStringConvertible, Equatable {
             // have reached the root context, nothing to do
             return
         }
-        
+
         saveContext(parentContext)
     }
+
+    @objc
+    private func didReceiveBackgroundContextDidSaveNotification(notification: NSNotification) {
+        mainContext.mergeChangesFromContextDidSaveNotification(notification)
+    }
     
+    @objc
+    private func didReceiveMainContextDidSaveNotification(notification: NSNotification) {
+        backgroundContext.mergeChangesFromContextDidSaveNotification(notification)
+    }
 }

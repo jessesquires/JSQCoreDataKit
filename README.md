@@ -1,5 +1,5 @@
 # JSQCoreDataKit
-[![Build Status](https://secure.travis-ci.org/jessesquires/JSQCoreDataKit.svg)](http://travis-ci.org/jessesquires/JSQCoreDataKit) [![Version Status](https://img.shields.io/cocoapods/v/JSQCoreDataKit.svg)][podLink] [![license MIT](https://img.shields.io/cocoapods/l/JSQCoreDataKit.svg)][mitLink] [![codecov.io](https://img.shields.io/codecov/c/github/jessesquires/JSQCoreDataKit.svg)](http://codecov.io/github/jessesquires/JSQCoreDataKit) [![Platform](https://img.shields.io/cocoapods/p/JSQCoreDataKit.svg)][docsLink] [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
+[![Build Status](https://secure.travis-ci.org/jessesquires/JSQCoreDataKit.svg)](http://travis-ci.org/jessesquires/JSQCoreDataKit) [![Version Status](https://img.shields.io/cocoapods/v/JSQCoreDataKit.svg)][podLink] [![license MIT](https://img.shields.io/cocoapods/l/JSQCoreDataKit.svg)][mitLink] [![codecov](https://codecov.io/gh/jessesquires/JSQCoreDataKit/branch/develop/graph/badge.svg)](https://codecov.io/gh/jessesquires/JSQCoreDataKit) [![Platform](https://img.shields.io/cocoapods/p/JSQCoreDataKit.svg)][docsLink] [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 
 *A swifter Core Data stack*
 
@@ -10,6 +10,7 @@ This library aims to do the following:
 * Provide better interoperability with Swift
 * Harness Swift features and enforce Swift paradigms
 * Bring functional paradigms to Core Data
+* Make Core Data more *Swifty*
 * Simplify the processes of standing up the Core Data stack
 * Aid in testing your Core Data models
 * Reduce the boilerplate involved with Core Data
@@ -25,12 +26,12 @@ This library aims to do the following:
 
 ## Requirements
 
-* Xcode 7.2+
+* Xcode 7.3+
 * iOS 8.0+
 * OSX 10.10+
-* tvOS 9.1+
+* tvOS 9.0+
 * watchOS 2.0+
-* Swift 2.0+
+* Swift 2.2+
 
 ## Installation
 
@@ -74,7 +75,7 @@ let model = CoreDataModel(name: "MyModel", bundle: bundle)
 let factory = CoreDataStackFactory(model: model)
 
 let stack: CoreDataStack?
-factory.createStackInBackground { (result: CoreDataStackResult) in
+factory.createStack { (result: StackResult) in
     switch result {
         case .Success(let s):
             stack = s
@@ -90,7 +91,17 @@ factory.createStackInBackground { (result: CoreDataStackResult) in
 ````swift
 let inMemoryModel = CoreDataModel(name: myName, bundle: myBundle, storeType: .InMemory)
 let factory = CoreDataStackFactory(model: inMemoryModel)
-let stack = factory.createStack()
+
+let stack: CoreDataStack?
+factory.createStack { (result: StackResult) in
+    switch result {
+        case .Success(let s):
+            stack = s
+
+        case .Failure(let e):
+            print("Error: \(e)")
+    }
+}
 ````
 
 #### Saving a managed object context
@@ -113,27 +124,34 @@ saveContext(stack.mainContext) { result in
 let bundle = NSBundle(identifier: "com.MyApp.MyModelFramework")!
 let model = CoreDataModel(name: "MyModel", bundle: bundle)
 do {
-    try model.removeExistingModelStore()
+    try model.removeExistingStore()
 } catch {
     print("Error: \(error)")
 }
 ````
 
-#### Checking migrations
+#### Performing migrations
 
 ````swift
 let bundle = NSBundle(identifier: "com.MyApp.MyModelFramework")!
 let model = CoreDataModel(name: "MyModel", bundle: bundle)
 if model.needsMigration {
-    // do migration
+    do {
+        try model.migrate()
+    } catch {
+        print("Failed to migrate model: \(error)")
+    }
 }
 ````
 
 #### Using child contexts
 
 ````swift
-// Create a background queue child context from the main queue context
-let childContext = stack.childContext()
+// Create a main queue child context from the main context
+let childContext = stack.childContext(concurrencyType: .MainQueueConcurrencyType)
+
+// Create a background queue child context from the background context
+let childContext = stack.childContext(concurrencyType: .PrivateQueueConcurrencyType)
 ````
 
 #### Fetching
@@ -145,7 +163,7 @@ let request = FetchRequest<MyModel>(entity: entity)
 
 var results = [MyModel]()
 do {
-    results = try fetch(request: request, inContext: context)
+    results = try stack.mainContext.fetch(request: request)
 }
 catch {
     print("Fetch error: \(error)")
@@ -159,7 +177,7 @@ print("Results = \(results)")
 ````swift
 let objects: [MyModel] = /* array of MyModel objects */
 
-deleteObjects(objects, inContext: context)
+stack.mainContext.delete(objects: objects)
 
 // Commit changes to remove objects from store
 saveContext(context)
@@ -171,9 +189,7 @@ There's an example app in the `Example/` directory. Open the `ExampleApp.xcodepr
 
 ## Unit tests
 
-There's a suite of unit tests for `JSQCoreDataKit.framework`. To run them, open `JSQCoreDataKit.xcodeproj`, select the `JSQCoreDataKit-iOS` scheme, then &#x2318;-u.
-
-These tests are well commented and serve as further documentation for how to use this library.
+There's a suite of unit tests for `JSQCoreDataKit.framework`. You can run them in the usual way from Xcode by opening `JSQCoreDataKit.xcodeproj`. These tests are well commented and serve as further documentation for how to use this library.
 
 ## Contribute
 

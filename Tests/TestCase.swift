@@ -28,9 +28,21 @@ import JSQCoreDataKit
 let DefaultTimeout = NSTimeInterval(20)
 
 
+extension CoreDataStackFactory {
+
+    func createStack() -> StackResult {
+        var result: StackResult!
+        createStack(onQueue: nil) { (r) in
+            result = r
+        }
+        return result
+    }
+}
+
+
 class TestCase: XCTestCase {
 
-    let inMemoryModel = CoreDataModel(name: modelName, bundle: modelBundle, storeType: .InMemory)
+    let inMemoryModel = CoreDataModel(name: modelName, bundle: modelBundle, storeType: .inMemory)
 
     var inMemoryStack: CoreDataStack!
 
@@ -51,15 +63,15 @@ class TestCase: XCTestCase {
     // MARK: Helpers
 
     func generateDataInContext(context: NSManagedObjectContext,
-        companiesCount: Int = Int(arc4random_uniform(10)),
-        employeesCount: Int = Int(arc4random_uniform(1_000))) -> [Company] {
-            let companies = generateCompaniesInContext(context, count: companiesCount)
+                               companiesCount: Int = Int(arc4random_uniform(10)),
+                               employeesCount: Int = Int(arc4random_uniform(1_000))) -> [Company] {
+        let companies = generateCompaniesInContext(context, count: companiesCount)
 
-            companies.forEach { c in
-                generateEmployeesInContext(context, company: c, count: employeesCount)
-            }
+        companies.forEach { c in
+            generateEmployeesInContext(context, company: c, count: employeesCount)
+        }
 
-            return companies
+        return companies
     }
 
     func generateCompaniesInContext(context: NSManagedObjectContext, count: Int) -> [Company] {

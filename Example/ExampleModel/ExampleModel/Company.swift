@@ -33,24 +33,24 @@ public final class Company: NSManagedObject {
     @NSManaged public var employees: Set<Employee>
 
     public init(context: NSManagedObjectContext,
-        name: String,
-        dateFounded: NSDate,
-        profits: NSDecimalNumber) {
-            let entity = NSEntityDescription.entityForName(Company.entityName, inManagedObjectContext: context)!
-            super.init(entity: entity, insertIntoManagedObjectContext: context)
+                name: String,
+                dateFounded: NSDate,
+                profits: NSDecimalNumber) {
+        let entity = NSEntityDescription.entityForName(Company.entityName, inManagedObjectContext: context)!
+        super.init(entity: entity, insertIntoManagedObjectContext: context)
 
-            self.name = name
-            self.dateFounded = dateFounded
-            self.profits = profits
+        self.name = name
+        self.dateFounded = dateFounded
+        self.profits = profits
     }
 
     public class func newCompany(context: NSManagedObjectContext) -> Company {
         let name = "Company " + String(NSUUID().UUIDString.characters.split { $0 == "-" }.first!)
 
         return Company(context: context,
-            name: name,
-            dateFounded: NSDate.distantPast(),
-            profits: NSDecimalNumber(unsignedInt: arc4random_uniform(1_000_000)))
+                       name: name,
+                       dateFounded: NSDate.distantPast(),
+                       profits: NSDecimalNumber(unsignedInt: arc4random_uniform(1_000_000)))
     }
 
     @objc

@@ -35,12 +35,12 @@ public func ==(lhs: CoreDataStack, rhs: CoreDataStack) -> Bool {
 
 
 /// :nodoc:
-public func ==(lhs: CoreDataStackResult, rhs: CoreDataStackResult) -> Bool {
+public func ==(lhs: StackResult, rhs: StackResult) -> Bool {
     switch (lhs, rhs) {
-    case (let .Success(stack1), let .Success(stack2)):
+    case (let .success(stack1), let .success(stack2)):
         return stack1 == stack2
 
-    case (let .Failure(error1), let .Failure(error2)):
+    case (let .failure(error1), let .failure(error2)):
         return error1 == error2
 
     default:
@@ -50,12 +50,12 @@ public func ==(lhs: CoreDataStackResult, rhs: CoreDataStackResult) -> Bool {
 
 
 /// :nodoc:
-public func ==(lhs: CoreDataSaveResult, rhs: CoreDataSaveResult) -> Bool {
+public func ==(lhs: SaveResult, rhs: SaveResult) -> Bool {
     switch (lhs, rhs) {
-    case (.Success, .Success):
+    case (.success, .success):
         return true
 
-    case (let .Failure(error1), let .Failure(error2)):
+    case (let .failure(error1), let .failure(error2)):
         return error1 == error2
 
     default:
@@ -67,11 +67,11 @@ public func ==(lhs: CoreDataSaveResult, rhs: CoreDataSaveResult) -> Bool {
 /// :nodoc:
 public func ==(lhs: StoreType, rhs: StoreType) -> Bool {
     switch (lhs, rhs) {
-    case let (.SQLite(left), .SQLite(right)) where left == right:
+    case let (.sqlite(left), .sqlite(right)) where left == right:
         return true
-    case let (.Binary(left), .Binary(right)) where left == right:
+    case let (.binary(left), .binary(right)) where left == right:
         return true
-    case (.InMemory, .InMemory):
+    case (.inMemory, .inMemory):
         return true
     default:
         return false

@@ -4,6 +4,13 @@ The changelog for `JSQCoreDataKit`. Also see the [releases](https://github.com/j
 
 --------------------------------------
 
+4.0.1
+-----
+
+This release closes the [4.0.1 milestone](https://github.com/jessesquires/JSQCoreDataKit/issues?q=milestone%3A4.0.1).
+
+- Fixed a multithreading concurrency violation while merging (#83). Thanks @saurabytes!
+
 4.0.0
 -----
 

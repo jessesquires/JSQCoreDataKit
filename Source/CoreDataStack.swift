@@ -214,14 +214,14 @@ public final class CoreDataStack: CustomStringConvertible, Equatable {
 
     @objc
     private func didReceiveBackgroundContextDidSaveNotification(notification: NSNotification) {
-        self.mainContext.performBlock {
+        mainContext.performBlock {
             self.mainContext.mergeChangesFromContextDidSaveNotification(notification)
         }
     }
     
     @objc
     private func didReceiveMainContextDidSaveNotification(notification: NSNotification) {
-        self.backgroundContext.performBlock {
+        backgroundContext.performBlock {
             self.backgroundContext.mergeChangesFromContextDidSaveNotification(notification)
         }
     }

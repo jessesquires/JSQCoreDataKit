@@ -124,7 +124,7 @@ class CompanyViewController: UITableViewController, NSFetchedResultsControllerDe
     }
 
     @IBAction func didTapTrashButton(sender: UIBarButtonItem) {
-        let backgroundChildContext = self.stack.childContext()
+        let backgroundChildContext = self.stack.childContext(concurrencyType: .PrivateQueueConcurrencyType)
 
         backgroundChildContext.performBlockAndWait {
             let request = self.fetchRequest(backgroundChildContext)

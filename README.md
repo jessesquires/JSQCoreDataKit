@@ -158,8 +158,7 @@ let childContext = stack.childContext(concurrencyType: .PrivateQueueConcurrencyT
 
 ````swift
 // Create a FetchRequest<T>, where T is a phantom type
-let entity = entity(name: "MyModel", context: context)!
-let request = FetchRequest<MyModel>(entity: entity)
+let request = FetchRequest<MyModel>(context: context)
 
 var results = [MyModel]()
 do {

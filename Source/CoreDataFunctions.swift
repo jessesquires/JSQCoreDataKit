@@ -43,21 +43,21 @@ public func saveContext(context: NSManagedObjectContext, wait: Bool = true, comp
     wait ? context.performBlockAndWait(block) : context.performBlock(block)
 }
 
-
+public extension NSManagedObject {
 /**
- Returns the entity with the specified name from the managed object model associated with
+ Returns the entity of the managed object model associated with
  the specified managed object context’s persistent store coordinator.
 
- - parameter name:    The name of an entity.
  - parameter context: The managed object context to use.
 
  - returns: The entity with the specified name from the managed object
  model associated with context’s persistent store coordinator.
  */
-public func entity(name name: String, context: NSManagedObjectContext) -> NSEntityDescription {
-    return NSEntityDescription.entityForName(name, inManagedObjectContext: context)!
+    public class func entity(context: NSManagedObjectContext) -> NSEntityDescription {
+        let className = "\(self.self)"
+        return NSEntityDescription.entityForName(className, inManagedObjectContext: context)!
+    }
 }
-
 
 /**
  An instance of `FetchRequest` describes search criteria used to retrieve data from a persistent store.
@@ -70,13 +70,11 @@ public class FetchRequest<T: NSManagedObject>: NSFetchRequest {
 
     /**
      Constructs a new `FetchRequest` instance.
-
-     - parameter entity: The entity description for the entities that this request fetches.
-
+     - parameter context: The managed object context to use.
      - returns: A new `FetchRequest` instance.
      */
-    public init(entity: NSEntityDescription) {
+    public init(context: NSManagedObjectContext) {
         super.init()
-        self.entity = entity
+        self.entity = T.entity(context)
     }
 }

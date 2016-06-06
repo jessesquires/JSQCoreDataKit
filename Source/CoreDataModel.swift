@@ -148,9 +148,15 @@ public struct CoreDataModel: CustomStringConvertible, Equatable {
      - throws: If removing the store fails or errors, then this function throws an `NSError`.
      */
     public func removeExistingStore() throws {
-        let fileManager = NSFileManager.defaultManager()
-        if let storePath = storeURL?.path where fileManager.fileExistsAtPath(storePath) {
-            try fileManager.removeItemAtPath(storePath)
+        let fm = NSFileManager.defaultManager()
+        if let storePath = storeURL?.path where fm.fileExistsAtPath(storePath) {
+            try fm.removeItemAtPath(storePath)
+
+            let writeAheadLog = storePath.stringByAppendingString("-wal")
+            _ = try? fm.removeItemAtPath(writeAheadLog)
+
+            let sharedMemoryfile = storePath.stringByAppendingString("-shm")
+            _ = try? fm.removeItemAtPath(sharedMemoryfile)
         }
     }
 

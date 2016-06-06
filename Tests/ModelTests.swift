@@ -163,7 +163,11 @@ class ModelTests: XCTestCase {
         saveContext(stack.mainContext) { error in
         }
 
-        XCTAssertTrue(NSFileManager.defaultManager().fileExistsAtPath(model.storeURL!.path!), "Model store should exist on disk")
+        let fileManager = NSFileManager.defaultManager()
+
+        XCTAssertTrue(fileManager.fileExistsAtPath(model.storeURL!.path!), "Model store should exist on disk")
+        XCTAssertTrue(fileManager.fileExistsAtPath(model.storeURL!.path! + "-wal"), "Model write ahead log should exist on disk")
+        XCTAssertTrue(fileManager.fileExistsAtPath(model.storeURL!.path! + "-shm"), "Model shared memory file should exist on disk")
 
         // WHEN: we remove the existing model store
         do {
@@ -174,7 +178,7 @@ class ModelTests: XCTestCase {
         }
 
         // THEN: the model store is successfully removed
-        XCTAssertFalse(NSFileManager.defaultManager().fileExistsAtPath(model.storeURL!.path!), "Model store should not exist on disk")
+        XCTAssertFalse(fileManager.fileExistsAtPath(model.storeURL!.path!), "Model store should not exist on disk")
     }
 
     func test_ThatSQLiteModel_RemoveExistingStore_Fails() {

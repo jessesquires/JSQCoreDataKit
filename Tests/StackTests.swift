@@ -27,6 +27,12 @@ import JSQCoreDataKit
 
 class StackTests: XCTestCase {
 
+    override func tearDown() {
+        let model = CoreDataModel(name: modelName, bundle: modelBundle)
+        _ = try? model.removeExistingStore()
+        super.tearDown()
+    }
+
     func test_ThatSQLiteStack_InitializesSuccessfully() {
         // GIVEN: a SQLite model
         let sqliteModel = CoreDataModel(name: modelName, bundle: modelBundle)

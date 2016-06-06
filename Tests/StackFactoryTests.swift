@@ -28,9 +28,13 @@ import JSQCoreDataKit
 class StackFactoryTests: TestCase {
 
     override func setUp() {
-        let model = CoreDataModel(name: modelName, bundle: modelBundle)
-        _ = try? model.removeExistingStore()
+        cleanUp()
         super.setUp()
+    }
+
+    override func tearDown() {
+        cleanUp()
+        super.tearDown()
     }
 
     func test_ThatStackFactory_InitializesSuccessFully() {

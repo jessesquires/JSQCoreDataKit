@@ -34,6 +34,11 @@ class MigrationTests: TestCase {
         _ = try? model.removeExistingStore()
     }
 
+    override func tearDown() {
+        _ = try? model.removeExistingStore()
+        super.tearDown()
+    }
+
     func test_ThatCoreDataModel_NeedsMigration_WhenUsingOldModel() {
         // GIVEN: an existing SQLite file with metadata pointing to an old version of the model
         createSQLitePersistentStore(managedObjectModel: managedObjectModel(versionName: "Version 1"))

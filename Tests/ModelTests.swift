@@ -178,7 +178,9 @@ class ModelTests: XCTestCase {
         }
 
         // THEN: the model store is successfully removed
-        XCTAssertFalse(fileManager.fileExistsAtPath(model.storeURL!.path!), "Model store should not exist on disk")
+        XCTAssertFalse(fileManager.fileExistsAtPath(model.storeURL!.path!), "Model store should NOT exist on disk")
+        XCTAssertFalse(fileManager.fileExistsAtPath(model.storeURL!.path! + "-wal"), "Model write ahead log should NOT exist on disk")
+        XCTAssertFalse(fileManager.fileExistsAtPath(model.storeURL!.path! + "-shm"), "Model shared memory file should NOT exist on disk")
     }
 
     func test_ThatSQLiteModel_RemoveExistingStore_Fails() {

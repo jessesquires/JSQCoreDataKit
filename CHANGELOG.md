@@ -4,6 +4,13 @@ The changelog for `JSQCoreDataKit`. Also see the [releases](https://github.com/j
 
 --------------------------------------
 
+4.0.2
+-----
+
+This release closes the [4.0.2 milestone](https://github.com/jessesquires/JSQCoreDataKit/issues?q=milestone%3A4.0.2).
+
+- Fixed an issue where sqlite temporary files would not be cleaned up when removing the store (#85). Thanks @deemadden!
+
 4.0.1
 -----
 
@@ -18,15 +25,15 @@ This release closes the [4.0.0 milestone](https://github.com/jessesquires/JSQCor
 
 This release includes a significant change to `CoreDataStack`, which **no longer uses child contexts**. The `mainContext` and `backgroundContext` are now both connected to the persistent store coordinator. See #60 for the background and rationale behind this change. In short, child contexts **are considered bad practice** for this kind of stack setup and should really only be used for "throw away" work.
 
-While this is *technically* a breaking change, it **likely will not affect most clients**. The behavior should remain largely unchanged — data is still kept in-sync between the 2 contexts. So unless you were specifically relying on this parent-child nesting behavior, you should be fine. 👍 
+While this is *technically* a breaking change, it **likely will not affect most clients**. The behavior should remain largely unchanged — data is still kept in-sync between the 2 contexts. So unless you were specifically relying on this parent-child nesting behavior, you should be fine. 👍
 
 ### Thanks
 
-Huge thanks to @Liquidsoul for closing most of the issues for this release and to @wiedem for contributing significantly as well! 🎉 
+Huge thanks to @Liquidsoul for closing most of the issues for this release and to @wiedem for contributing significantly as well! 🎉
 
-### Breaking changes ⚠️ 
+### Breaking changes ⚠️
 
-##### Stack 
+##### Stack
 
 - The `mainContext` and `backgroundContext` are now both connected to the persistent store coordinator (#60)
 - When creating a child context, the `concurrencyType` determines which context is the parent (#73)
@@ -47,16 +54,16 @@ In alignment with the latest Swift API guidelines, the library now prefers metho
 
 ### Refinements
 
-There have been other general refinements and additional unit tests have been added. Test coverage is 94% 😎 
+There have been other general refinements and additional unit tests have been added. Test coverage is 94% 😎
 
 3.0.0
 -----
 
 This release closes the [3.0.0 milestone](https://github.com/jessesquires/JSQCoreDataKit/issues?q=milestone%3A3.0.0).
 
-The goals of this release are primarily to adopt Swift 2.2 and refine the API to make it more *Swifty*, as the definition of *Swifty* has evolved. 
+The goals of this release are primarily to adopt Swift 2.2 and refine the API to make it more *Swifty*, as the definition of *Swifty* has evolved.
 
-### Breaking changes :warning: 
+### Breaking changes :warning:
 
 There are many breaking changes in this release, however — with the exception of Swift 2.2 — they are all **merely name changes** that aim to reduce verbosity.
 
@@ -67,10 +74,10 @@ There are many breaking changes in this release, however — with the exception 
 - Renamed `CoreDataModel.removeExistingModelStore()` to `CoreDataModel.removeExistingStore()`
 - Renamed all `enum` cases to be lowercase, in line with latest [Swift API guidelines](https://github.com/apple/swift-evolution/blob/master/proposals/0006-apply-api-guidelines-to-the-standard-library.md)
 - The `StackResultClosure` typealias has been removed
- 
+
 ### New features
 
-- Support for Swift Package Manager (#55) :tada: 
+- Support for Swift Package Manager (#55) :tada:
 - Core Data model migration support! (#46, #66) Thanks @marius-serban ! :tada: See the [README](https://github.com/jessesquires/JSQCoreDataKit/blob/develop/README.md) and [docs](http://www.jessesquires.com/JSQCoreDataKit/Functions.html#/s:F14JSQCoreDataKit7migrateFzVS_13CoreDataModelT_) for details!
 
 

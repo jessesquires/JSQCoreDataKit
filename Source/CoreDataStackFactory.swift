@@ -42,6 +42,13 @@ public struct CoreDataStackFactory: CustomStringConvertible, Equatable {
      The default value is `DefaultStoreOptions`.
      */
     public let options: PersistentStoreOptions?
+    
+
+    /**
+     A method to create the NSPersistentStoreCoordinator given the model.
+     The default method produces a NSPersistentStoreCoordinator with the options provided to the initializer.
+     */
+    public let persistentStoreCoordinatorFactory: ((managedObjectModel: NSManagedObjectModel, options: PersistentStoreOptions?) throws -> NSPersistentStoreCoordinator)?
 
 
     // MARK: Initialization
@@ -49,14 +56,16 @@ public struct CoreDataStackFactory: CustomStringConvertible, Equatable {
     /**
      Constructs a new `CoreDataStackFactory` instance with the specified `model` and `options`.
 
-     - parameter model:   The model describing the stack.
-     - parameter options: Options for the persistent store.
+     - parameter model:                             The model describing the stack.
+     - parameter options:                           Options for the persistent store.
+     - parameter persistentStoreCoordinatorFactory: Method to build your own NSPersistentStoreCoordinator
 
      - returns: A new `CoreDataStackFactory` instance.
      */
-    public init(model: CoreDataModel, options: PersistentStoreOptions? = defaultStoreOptions) {
+    public init(model: CoreDataModel, options: PersistentStoreOptions? = defaultStoreOptions, persistentStoreCoordinatorFactory: ((managedObjectModel: NSManagedObjectModel, options: PersistentStoreOptions?) throws -> NSPersistentStoreCoordinator)? = nil) {
         self.model = model
         self.options = options
+        self.persistentStoreCoordinatorFactory = persistentStoreCoordinatorFactory
     }
 
 
@@ -127,11 +136,17 @@ public struct CoreDataStackFactory: CustomStringConvertible, Equatable {
     // MARK: Private
 
     private func createStoreCoordinator() throws -> NSPersistentStoreCoordinator {
-        let storeCoordinator = NSPersistentStoreCoordinator(managedObjectModel: model.managedObjectModel)
-        try storeCoordinator.addPersistentStoreWithType(model.storeType.type,
-                                                        configuration: nil,
-                                                        URL: model.storeURL,
-                                                        options: options)
+        let storeCoordinator: NSPersistentStoreCoordinator
+        
+        if let persistentStoreCoordinatorFactory = self.persistentStoreCoordinatorFactory {
+            storeCoordinator = try persistentStoreCoordinatorFactory(managedObjectModel: model.managedObjectModel, options: options)
+        } else {
+            storeCoordinator = NSPersistentStoreCoordinator(managedObjectModel: model.managedObjectModel)
+            try storeCoordinator.addPersistentStoreWithType(model.storeType.type,
+                                                            configuration: nil,
+                                                            URL: model.storeURL,
+                                                            options: options)
+        }
         return storeCoordinator
     }
 

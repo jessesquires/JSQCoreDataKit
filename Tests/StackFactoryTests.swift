@@ -95,6 +95,30 @@ class StackFactoryTests: TestCase {
 
         validateStack(stack!, fromFactory: factory)
     }
+    
+    func test_ThatStackFactory_UsesPersistentStoreCoordinatorFactory_Successfully() {
+        // GIVEN: a core data model
+        let sqliteModel = CoreDataModel(name: modelName, bundle: modelBundle)
+        
+        // GIVEN: a simple PersistentStoreCoordinator factory method
+        let persistentStoreCoordinatorFactory = { (managedObjectModel: NSManagedObjectModel, options: PersistentStoreOptions?) throws -> NSPersistentStoreCoordinator in
+            let storeCoordinator = NSPersistentStoreCoordinator(managedObjectModel: managedObjectModel)
+            try storeCoordinator.addPersistentStoreWithType(sqliteModel.storeType.type, configuration: nil, URL: sqliteModel.storeURL, options: options)
+            return storeCoordinator
+        }
+        
+        // GIVEN: a factory
+        let factory = CoreDataStackFactory(model: sqliteModel, options: nil, persistentStoreCoordinatorFactory: persistentStoreCoordinatorFactory)
+        
+        // WHEN: we create a stack
+        let result = factory.createStack()
+        let stack = result.stack()
+
+        XCTAssertNotNil(stack)
+        XCTAssertNil(result.error())
+
+        validateStack(stack!, fromFactory: factory)
+    }
 
     func test_StackFactory_Equality() {
         let factory1 = CoreDataStackFactory(model: inMemoryModel)

@@ -455,11 +455,14 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0730;
-				LastUpgradeCheck = 0720;
+				LastUpgradeCheck = 0800;
 				ORGANIZATIONNAME = "Hexed Bits";
 				TargetAttributes = {
 					88002D4E1AB8F546001787DB = {
 						CreatedOnToolsVersion = 6.3;
+						DevelopmentTeam = 5VRJU68BZ5;
+						DevelopmentTeamName = "Jesse Squires";
+						LastSwiftMigration = 0800;
 					};
 					881219C21B361EAF005E5AA7 = {
 						CreatedOnToolsVersion = 7.0;
@@ -826,6 +829,7 @@
 				PRODUCT_NAME = JSQCoreDataKit;
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 2.3;
 			};
 			name = Debug;
 		};
@@ -852,6 +856,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.hexedbits.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = JSQCoreDataKit;
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 2.3;
 			};
 			name = Release;
 		};
@@ -878,6 +884,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.hexedbits.JSQCoreDataKitTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 			};
 			name = Release;
 		};
@@ -917,6 +924,7 @@
 				PRODUCT_NAME = JSQCoreDataKit;
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				TARGETED_DEVICE_FAMILY = 4;
 				WATCHOS_DEPLOYMENT_TARGET = 2.0;
 			};
@@ -956,6 +964,7 @@
 				PRODUCT_NAME = JSQCoreDataKit;
 				SDKROOT = appletvos;
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				TARGETED_DEVICE_FAMILY = 3;
 				TVOS_DEPLOYMENT_TARGET = 9.0;
 			};
@@ -1001,6 +1010,7 @@
 				PRODUCT_NAME = JSQCoreDataKit;
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 			};
 			name = Release;
 		};
@@ -1032,6 +1042,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.hexedbits.JSQCoreDataKit-OSXTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 			};
 			name = Release;
 		};

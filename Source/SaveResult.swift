@@ -23,7 +23,7 @@ import Foundation
 /**
  A result object representing the result of saving an `NSManagedObjectContext`.
  */
-public enum SaveResult: CustomStringConvertible, Equatable {
+public enum SaveResult: Equatable {
 
     /// The success result.
     case success
@@ -42,22 +42,5 @@ public enum SaveResult: CustomStringConvertible, Equatable {
             return error
         }
         return nil
-    }
-
-
-    // MARK: CustomStringConvertible
-
-    /// :nodoc:
-    public var description: String {
-        get {
-            var str = "<\(SaveResult.self): "
-            switch self {
-            case .success:
-                str += ".success"
-            case .failure(let e):
-                str += ".failure(\(e))"
-            }
-            return str + ">"
-        }
     }
 }

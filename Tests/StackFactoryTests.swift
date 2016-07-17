@@ -112,14 +112,6 @@ class StackFactoryTests: TestCase {
         XCTAssertNotEqual(factory1, sqliteFactory)
     }
 
-    func test_StackFactory_Description() {
-        print(#function)
-
-        let factory = CoreDataStackFactory(model: inMemoryModel)
-        print(factory)
-    }
-
-
     // MARK: Helpers
 
     func validateStack(_ stack: CoreDataStack, fromFactory factory:CoreDataStackFactory) {

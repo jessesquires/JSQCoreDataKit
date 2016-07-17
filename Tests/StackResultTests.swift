@@ -24,8 +24,7 @@ import ExampleModel
 @testable
 import JSQCoreDataKit
 
-
-class StackResultTests: TestCase {
+final class StackResultTests: TestCase {
 
     func test_StackResult_Success() {
         let success = StackResult.success(inMemoryStack)
@@ -70,15 +69,4 @@ class StackResultTests: TestCase {
         let failure3 = StackResult.failure(NSError(domain: "err3", code: 1, userInfo: nil))
         XCTAssertNotEqual(failure1, failure3)
     }
-
-    func test_StackResult_Description() {
-        print(#function)
-
-        let success = StackResult.success(inMemoryStack)
-        print(success)
-
-        let failure = StackResult.failure(NSError(domain: "err", code: 0, userInfo: nil))
-        print(failure)
-    }
-
 }

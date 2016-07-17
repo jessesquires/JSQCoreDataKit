@@ -24,8 +24,7 @@ import ExampleModel
 @testable
 import JSQCoreDataKit
 
-
-class SaveTests: TestCase {
+final class SaveTests: TestCase {
 
     func test_ThatSaveAndWait_WithoutChanges_CompletionHandlerIsNotCalled() {
         // GIVEN: a stack and context without changes
@@ -282,5 +281,4 @@ class SaveTests: TestCase {
             XCTAssertTrue(didUpdateMain, "Main context should be updated")
         })
     }
-    
 }

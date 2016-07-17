@@ -24,8 +24,7 @@ import ExampleModel
 @testable
 import JSQCoreDataKit
 
-
-class MigrationTests: TestCase {
+final class MigrationTests: TestCase {
 
     let model: CoreDataModel = CoreDataModel(name: modelName, bundle: modelBundle, storeType: .sqlite(defaultDirectoryURL()))
 

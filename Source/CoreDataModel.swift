@@ -44,7 +44,7 @@ public enum ModelFileExtension: String {
  An instance of `CoreDataModel` represents a Core Data model — a `.xcdatamodeld` file package.
  It provides the model and store URLs as well as methods for interacting with the store.
  */
-public struct CoreDataModel: CustomStringConvertible, Equatable {
+public struct CoreDataModel: Equatable {
 
     // MARK: Properties
 
@@ -159,16 +159,4 @@ public struct CoreDataModel: CustomStringConvertible, Equatable {
             _ = try? fm.removeItem(atPath: sharedMemoryfile)
         }
     }
-
-
-    // MARK: CustomStringConvertible
-
-    /// :nodoc:
-    public var description: String {
-        get {
-            return "<\(CoreDataModel.self): name=\(name); storeType=\(storeType); needsMigration=\(needsMigration); "
-                + "modelURL=\(modelURL); storeURL=\(storeURL)>"
-        }
-    }
-    
 }

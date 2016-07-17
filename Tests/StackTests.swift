@@ -119,5 +119,4 @@ class StackTests: XCTestCase {
         let stack = result.stack()!
         print(stack)
     }
-    
 }

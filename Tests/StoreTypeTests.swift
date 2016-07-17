@@ -24,8 +24,7 @@ import ExampleModel
 @testable
 import JSQCoreDataKit
 
-
-class StoreTypeTests: XCTestCase {
+final class StoreTypeTests: XCTestCase {
 
     func test_StoreType_SQLite() {
         let url = defaultDirectoryURL()
@@ -87,20 +86,5 @@ class StoreTypeTests: XCTestCase {
         let memory1 = StoreType.inMemory
         let memory2 = StoreType.inMemory
         XCTAssertEqual(memory1, memory2)
-    }
-
-    func test_StoreType_Description() {
-        print(#function)
-        let url = defaultDirectoryURL()
-
-        let sqlite = StoreType.sqlite(url)
-        print(sqlite)
-
-        let binary = StoreType.binary(url)
-        print(binary)
-        
-        let memory = StoreType.inMemory
-        print(memory)
-    }
-    
+    }    
 }

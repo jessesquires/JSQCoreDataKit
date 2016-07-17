@@ -24,8 +24,7 @@ import ExampleModel
 @testable
 import JSQCoreDataKit
 
-
-class ExampleModelTests: TestCase {
+final class ExampleModelTests: TestCase {
 
     func test_ThatEmployeeInsertsSuccessfully() {
         let e = Employee.newEmployee(inMemoryStack.mainContext)
@@ -36,5 +35,4 @@ class ExampleModelTests: TestCase {
         let c = Company.newCompany(inMemoryStack.mainContext)
         XCTAssertNotNil(c)
     }
-    
 }

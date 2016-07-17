@@ -25,7 +25,7 @@ import ExampleModel
 import JSQCoreDataKit
 
 
-class SaveResultTests: XCTestCase {
+final class SaveResultTests: XCTestCase {
 
     func test_SaveResult_Error() {
         let success = SaveResult.success
@@ -55,15 +55,5 @@ class SaveResultTests: XCTestCase {
 
         let failure3 = SaveResult.failure(NSError(domain: "err2", code: 2, userInfo: nil))
         XCTAssertNotEqual(failure1, failure3)
-    }
-
-    func test_SaveResult_Description() {
-        print(#function)
-
-        let success = SaveResult.success
-        print(success)
-
-        let failure = SaveResult.failure(NSError(domain: "err", code: 0, userInfo: nil))
-        print(failure)
     }
 }

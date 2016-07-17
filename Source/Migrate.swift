@@ -93,20 +93,16 @@ extension CoreDataModel {
 
 // MARK: Internal
 
-internal struct MigrationMappingStep: CustomStringConvertible {
+internal struct MigrationMappingStep {
     let source: NSManagedObjectModel
     let mapping: NSMappingModel
     let destination: NSManagedObjectModel
-
-    var description: String {
-        get {
-            return "\(MigrationMappingStep.self): source=\(source); mapping=\(mapping); destination=\(destination);"
-        }
-    }
 }
 
 
-internal func findCompatibleModel(withBundle bundle: Bundle, storeType: String, storeURL: URL) throws -> NSManagedObjectModel? {
+internal func findCompatibleModel(withBundle bundle: Bundle,
+                                  storeType: String,
+                                  storeURL: URL) throws -> NSManagedObjectModel? {
     let storeMetadata = try NSPersistentStoreCoordinator.metadataForPersistentStore(ofType: storeType, at: storeURL, options: nil)
     let modelsInBundle = findModelsInBundle(bundle)
     for model in modelsInBundle where model.isConfiguration(withName: nil, compatibleWithStoreMetadata: storeMetadata) {
@@ -117,8 +113,9 @@ internal func findCompatibleModel(withBundle bundle: Bundle, storeType: String, 
 
 
 internal func findModelsInBundle(_ bundle: Bundle) -> [NSManagedObjectModel] {
-    guard let modelBundleDirectoryURLs = bundle.urlsForResources(withExtension: ModelFileExtension.bundle.rawValue, subdirectory: nil) else {
-        return []
+    guard let modelBundleDirectoryURLs = bundle.urlsForResources(withExtension: ModelFileExtension.bundle.rawValue,
+                                                                 subdirectory: nil) else {
+                                                                    return []
     }
 
     let modelBundleDirectoryNames = modelBundleDirectoryURLs.flatMap { url -> String? in
@@ -155,7 +152,8 @@ internal func buildMigrationMappingSteps(bundle: Bundle,
 }
 
 
-internal func nextMigrationMappingStep(fromSourceModel sourceModel: NSManagedObjectModel, bundle: Bundle) -> MigrationMappingStep? {
+internal func nextMigrationMappingStep(fromSourceModel sourceModel: NSManagedObjectModel,
+                                       bundle: Bundle) -> MigrationMappingStep? {
     let modelsInBundle = findModelsInBundle(bundle)
 
     for nextDestinationModel in modelsInBundle where nextDestinationModel != sourceModel {

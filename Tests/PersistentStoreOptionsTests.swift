@@ -24,8 +24,7 @@ import ExampleModel
 @testable
 import JSQCoreDataKit
 
-
-class PersistentStoreOptionsTests: XCTestCase {
+final class PersistentStoreOptionsTests: XCTestCase {
 
     func test_ThatPersistentStoreOptions_AreEqual() {
         // GIVEN: two equal PersistentStoreOptions objects

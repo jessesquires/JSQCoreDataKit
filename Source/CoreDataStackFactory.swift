@@ -30,7 +30,7 @@ import Foundation
 
  - warning: You should not create instances of `CoreDataStack` directly. Use a `CoreDataStackFactory` instead.
  */
-public struct CoreDataStackFactory: CustomStringConvertible, Equatable {
+public struct CoreDataStackFactory: Equatable {
 
     // MARK: Properties
 
@@ -143,15 +143,5 @@ public struct CoreDataStackFactory: CustomStringConvertible, Equatable {
         context.name = contextName + name
 
         return context
-    }
-
-
-    // MARK: CustomStringConvertible
-
-    /// :nodoc:
-    public var description: String {
-        get {
-            return "<\(CoreDataStackFactory.self): model=\(model.name); options=\(options)>"
-        }
     }
 }

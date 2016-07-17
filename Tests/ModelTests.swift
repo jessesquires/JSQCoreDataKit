@@ -224,12 +224,4 @@ class ModelTests: XCTestCase {
         // THEN: then removal is ignored
         XCTAssertTrue(success, "Removing store should be ignored")
     }
-    
-    func test_Model_Description() {
-        print(#function)
-        
-        let model = CoreDataModel(name: modelName, bundle: modelBundle, storeType: .inMemory)
-        print(model)
-    }
-    
 }

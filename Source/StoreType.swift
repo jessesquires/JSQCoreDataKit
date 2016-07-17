@@ -21,7 +21,7 @@ import Foundation
 
 
 /// Describes a Core Data persistent store type.
-public enum StoreType: CustomStringConvertible, Equatable {
+public enum StoreType: Equatable {
 
     /// The SQLite database store type. The associated file URL specifies the directory for the store.
     case sqlite(URL)
@@ -58,16 +58,6 @@ public enum StoreType: CustomStringConvertible, Equatable {
         case let .sqlite(url): return url
         case let .binary(url): return url
         case .inMemory: return nil
-        }
-    }
-
-
-    // MARK: CustomStringConvertible
-
-    /// :nodoc:
-    public var description: String {
-        get {
-            return "<\(StoreType.self): \(type); directory=\(storeDirectory()?.lastPathComponent)>"
         }
     }
 }

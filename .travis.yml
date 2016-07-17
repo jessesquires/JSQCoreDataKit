@@ -54,7 +54,7 @@ script:
 
 - if [ $BUILD_EXAMPLE == "YES" ]; then
       xcodebuild clean build -project Example/ExampleApp.xcodeproj -scheme ExampleApp -sdk "$SDK" -destination "$DESTINATION" ONLY_ACTIVE_ARCH=NO | xcpretty -c;
-      xcodebuild clean build -project Example/ExampleModel/ExampleModel.xcodeproj -scheme ExampleModel -sdk "$SDK" -destination "$DESTINATION" ONLY_ACTIVE_ARCH=NO | xcpretty -c;
+      xcodebuild clean build -project Example/ExampleModel/ExampleModel.xcodeproj -scheme ExampleModel-iOS -sdk "$SDK" -destination "$DESTINATION" ONLY_ACTIVE_ARCH=NO | xcpretty -c;
   fi
 
 - if [ $RUN_TESTS == "YES" ]; then

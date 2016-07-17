@@ -52,7 +52,7 @@ public struct CoreDataModel: CustomStringConvertible, Equatable {
     public let name: String
 
     /// The bundle in which the model is located.
-    public let bundle: NSBundle
+    public let bundle: Bundle
 
     /// The type of the Core Data persistent store for the model.
     public let storeType: StoreType
@@ -62,16 +62,16 @@ public struct CoreDataModel: CustomStringConvertible, Equatable {
 
      - note: If the store is in-memory, then this value will be `nil`.
      */
-    public var storeURL: NSURL? {
+    public var storeURL: URL? {
         get {
-            return storeType.storeDirectory()?.URLByAppendingPathComponent(databaseFileName)
+            return try! storeType.storeDirectory()?.appendingPathComponent(databaseFileName)
         }
     }
 
     /// The file URL specifying the model file in the bundle specified by `bundle`.
-    public var modelURL: NSURL {
+    public var modelURL: URL {
         get {
-            guard let url = bundle.URLForResource(name, withExtension: ModelFileExtension.bundle.rawValue) else {
+            guard let url = bundle.urlForResource(name, withExtension: ModelFileExtension.bundle.rawValue) else {
                 fatalError("*** Error loading model URL for model named \(name) in bundle: \(bundle)")
             }
             return url
@@ -91,7 +91,7 @@ public struct CoreDataModel: CustomStringConvertible, Equatable {
     /// The managed object model for the model specified by `name`.
     public var managedObjectModel: NSManagedObjectModel {
         get {
-            guard let model = NSManagedObjectModel(contentsOfURL: modelURL) else {
+            guard let model = NSManagedObjectModel(contentsOf: modelURL) else {
                 fatalError("*** Error loading managed object model at url: \(modelURL)")
             }
             return model
@@ -109,10 +109,10 @@ public struct CoreDataModel: CustomStringConvertible, Equatable {
             guard let storeURL = storeURL else { return false }
 
             do {
-                let metadata = try NSPersistentStoreCoordinator.metadataForPersistentStoreOfType(storeType.type,
-                                                                                                 URL: storeURL,
-                                                                                                 options: nil)
-                return !managedObjectModel.isConfiguration(nil, compatibleWithStoreMetadata: metadata)
+                let metadata = try NSPersistentStoreCoordinator.metadataForPersistentStore(ofType: storeType.type,
+                                                                                           at: storeURL,
+                                                                                           options: nil)
+                return !managedObjectModel.isConfiguration(withName: nil, compatibleWithStoreMetadata: metadata)
             }
             catch {
                 debugPrint("*** Error checking persistent store coordinator meta data: \(error)")
@@ -133,7 +133,7 @@ public struct CoreDataModel: CustomStringConvertible, Equatable {
 
      - returns: A new `CoreDataModel` instance.
      */
-    public init(name: String, bundle: NSBundle = .mainBundle(), storeType: StoreType = .sqlite(defaultDirectoryURL())) {
+    public init(name: String, bundle: Bundle = .main(), storeType: StoreType = .sqlite(defaultDirectoryURL())) {
         self.name = name
         self.bundle = bundle
         self.storeType = storeType
@@ -148,15 +148,15 @@ public struct CoreDataModel: CustomStringConvertible, Equatable {
      - throws: If removing the store fails or errors, then this function throws an `NSError`.
      */
     public func removeExistingStore() throws {
-        let fm = NSFileManager.defaultManager()
-        if let storePath = storeURL?.path where fm.fileExistsAtPath(storePath) {
-            try fm.removeItemAtPath(storePath)
+        let fm = FileManager.default()
+        if let storePath = storeURL?.path where fm.fileExists(atPath: storePath) {
+            try fm.removeItem(atPath: storePath)
 
-            let writeAheadLog = storePath.stringByAppendingString("-wal")
-            _ = try? fm.removeItemAtPath(writeAheadLog)
+            let writeAheadLog = storePath + "-wal"
+            _ = try? fm.removeItem(atPath: writeAheadLog)
 
-            let sharedMemoryfile = storePath.stringByAppendingString("-shm")
-            _ = try? fm.removeItemAtPath(sharedMemoryfile)
+            let sharedMemoryfile = storePath + "-shm"
+            _ = try? fm.removeItem(atPath: sharedMemoryfile)
         }
     }
 

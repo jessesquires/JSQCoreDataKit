@@ -24,13 +24,10 @@ import JSQCoreDataKit
 import ExampleModel
 
 
-
-class EmployeeViewController: UITableViewController, NSFetchedResultsControllerDelegate {
+final class EmployeeViewController: UITableViewController, NSFetchedResultsControllerDelegate {
 
     var stack: CoreDataStack!
-
-    var frc: NSFetchedResultsController?
-
+    var frc: NSFetchedResultsController<Employee>!
     var company: Company!
 
 
@@ -45,17 +42,17 @@ class EmployeeViewController: UITableViewController, NSFetchedResultsControllerD
 
     // MARK: Actions
 
-    @IBAction func didTapAddButton(sender: UIBarButtonItem) {
-        stack.mainContext.performBlockAndWait {
-            Employee.newEmployee(self.stack.mainContext, company: self.company)
+    @IBAction func didTapAddButton(_ sender: UIBarButtonItem) {
+        stack.mainContext.performAndWait {
+            _ = Employee.newEmployee(self.stack.mainContext, company: self.company)
             saveContext(self.stack.mainContext)
         }
     }
 
-    @IBAction func didTapTrashButton(sender: UIBarButtonItem) {
-        let backgroundChildContext = self.stack.childContext()
+    @IBAction func didTapTrashButton(_ sender: UIBarButtonItem) {
+        let backgroundChildContext = stack.childContext()
 
-        backgroundChildContext.performBlockAndWait {
+        backgroundChildContext.performAndWait {
             let request = self.fetchRequest(backgroundChildContext)
 
             do {
@@ -71,30 +68,26 @@ class EmployeeViewController: UITableViewController, NSFetchedResultsControllerD
 
     // MARK: Helpers
 
-    func fetchRequest(context: NSManagedObjectContext) -> FetchRequest<Employee> {
-        let e = entity(name: Employee.entityName, context: context)
-        let fetch = FetchRequest<Employee>(entity: e)
-        fetch.predicate = NSPredicate(format: "company == %@", company)
-        fetch.sortDescriptors = [NSSortDescriptor(key: "name", ascending: true)]
+    func fetchRequest(_ context: NSManagedObjectContext) -> NSFetchRequest<Employee> {
+        let fetch = NSFetchRequest<Employee>(entityName: Employee.entityName)
+        fetch.predicate = Predicate(format: "company == %@", company)
+        fetch.sortDescriptors = [SortDescriptor(key: "name", ascending: true)]
         return fetch
     }
 
     func setupFRC() {
-        let request = fetchRequest(self.stack.mainContext)
-
-        self.frc = NSFetchedResultsController(fetchRequest: request,
-                                              managedObjectContext: self.stack.mainContext,
-                                              sectionNameKeyPath: nil,
-                                              cacheName: nil)
-
-        self.frc?.delegate = self
-
+        let request = fetchRequest(stack.mainContext)
+        frc = NSFetchedResultsController(fetchRequest: request,
+                                         managedObjectContext: stack.mainContext,
+                                         sectionNameKeyPath: nil,
+                                         cacheName: nil)
+        frc.delegate = self
         fetchData()
     }
 
     func fetchData() {
         do {
-            try self.frc?.performFetch()
+            try frc.performFetch()
             tableView.reloadData()
         } catch {
             assertionFailure("Failed to fetch: \(error)")
@@ -104,88 +97,85 @@ class EmployeeViewController: UITableViewController, NSFetchedResultsControllerD
 
     // MARK: Table view data source
 
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
 
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.frc?.fetchedObjects?.count ?? 0
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return frc?.fetchedObjects?.count ?? 0
     }
 
-    func configureCell(cell: UITableViewCell, atIndexPath indexPath: NSIndexPath) {
-        let employee = self.frc?.objectAtIndexPath(indexPath) as! Employee
+    func configureCell(_ cell: UITableViewCell, atIndexPath indexPath: IndexPath) {
+        let employee = frc.object(at: indexPath)
         cell.textLabel?.text = employee.name
         cell.detailTextLabel?.text = "$\(employee.salary).00"
     }
 
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath)
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         configureCell(cell, atIndexPath: indexPath)
         return cell
     }
 
-    override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return company.name
     }
 
 
     // MARK: Table view delegate
 
-    override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         return true
     }
 
-    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        if editingStyle == .Delete {
-            let obj = frc?.objectAtIndexPath(indexPath) as! Employee
-            self.stack.mainContext.delete(objects: [obj])
-            saveContext(self.stack.mainContext)
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            let obj = frc.object(at: indexPath)
+            stack.mainContext.delete(objects: [obj])
+            saveContext(stack.mainContext)
         }
     }
 
 
     // MARK: Fetched results controller delegate
 
-    func controllerWillChangeContent(controller: NSFetchedResultsController) {
+    func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
         tableView.beginUpdates()
     }
 
-    func controller(
-        controller: NSFetchedResultsController,
-        didChangeSection sectionInfo: NSFetchedResultsSectionInfo,
-                         atIndex sectionIndex: Int,
-                                 forChangeType type: NSFetchedResultsChangeType) {
+    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>,
+                    didChange sectionInfo: NSFetchedResultsSectionInfo,
+                    atSectionIndex sectionIndex: Int,
+                    for type: NSFetchedResultsChangeType) {
         switch type {
-        case .Insert:
-            tableView.insertSections(NSIndexSet(index: sectionIndex), withRowAnimation: .Fade)
-        case .Delete:
-            tableView.deleteSections(NSIndexSet(index: sectionIndex), withRowAnimation: .Fade)
+        case .insert:
+            tableView.insertSections(IndexSet(integer: sectionIndex), with: .fade)
+        case .delete:
+            tableView.deleteSections(IndexSet(integer: sectionIndex), with: .fade)
         default:
             break
         }
     }
 
-    func controller(
-        controller: NSFetchedResultsController,
-        didChangeObject anObject: AnyObject,
-                        atIndexPath indexPath: NSIndexPath?,
-                                    forChangeType type: NSFetchedResultsChangeType,
-                                                  newIndexPath: NSIndexPath?) {
+    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>,
+                    didChange anObject: AnyObject,
+                    at indexPath: IndexPath?,
+                    for type: NSFetchedResultsChangeType,
+                    newIndexPath: IndexPath?) {
         switch type {
-        case .Insert:
-            tableView.insertRowsAtIndexPaths([newIndexPath!], withRowAnimation: .Fade)
-        case .Delete:
-            tableView.deleteRowsAtIndexPaths([indexPath!], withRowAnimation: .Fade)
-        case .Update:
-            configureCell(tableView.cellForRowAtIndexPath(indexPath!)!, atIndexPath: indexPath!)
-        case .Move:
-            tableView.deleteRowsAtIndexPaths([indexPath!], withRowAnimation: .Fade)
-            tableView.insertRowsAtIndexPaths([newIndexPath!], withRowAnimation: .Fade)
+        case .insert:
+            tableView.insertRows(at: [newIndexPath!], with: .fade)
+        case .delete:
+            tableView.deleteRows(at: [indexPath!], with: .fade)
+        case .update:
+            configureCell(tableView.cellForRow(at: indexPath!)!, atIndexPath: indexPath!)
+        case .move:
+            tableView.deleteRows(at: [indexPath!], with: .fade)
+            tableView.insertRows(at: [newIndexPath!], with: .fade)
         }
     }
-    
-    func controllerDidChangeContent(controller: NSFetchedResultsController) {
+
+    func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
         tableView.endUpdates()
     }
-    
 }

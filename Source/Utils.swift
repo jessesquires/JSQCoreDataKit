@@ -36,19 +36,18 @@ public let defaultStoreOptions: PersistentStoreOptions = [
 
 // MARK: Internal
 
-internal func defaultDirectoryURL() -> NSURL {
+internal func defaultDirectoryURL() -> URL {
     do {
         #if os(tvOS)
             let searchPathDirectory = NSSearchPathDirectory.CachesDirectory
         #else
-            let searchPathDirectory = NSSearchPathDirectory.DocumentDirectory
+            let searchPathDirectory = FileManager.SearchPathDirectory.documentDirectory
         #endif
 
-        return try NSFileManager.defaultManager().URLForDirectory(
-            searchPathDirectory,
-            inDomain: .UserDomainMask,
-            appropriateForURL: nil,
-            create: true)
+        return try FileManager.default().urlForDirectory(searchPathDirectory,
+                                                         in: .userDomainMask,
+                                                         appropriateFor: nil,
+                                                         create: true)
     }
     catch {
         fatalError("*** Error finding default directory: \(error)")

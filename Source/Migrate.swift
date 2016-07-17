@@ -23,7 +23,7 @@ import Foundation
 /**
  An error type that specifies possible errors that are thrown by calling `CoreDataModel.migrate() throws`.
  */
-public enum MigrationError: ErrorType {
+public enum MigrationError: ErrorProtocol {
 
     /**
      Specifies that the `NSManagedObjectModel` corresponding to the existing persistent store was not found in the model's bundle.
@@ -71,21 +71,21 @@ extension CoreDataModel {
                                                             destinationModel: managedObjectModel)
 
         for step in migrationSteps {
-            let tempURL = storeDirectory.URLByAppendingPathComponent("migration." + ModelFileExtension.sqlite.rawValue)
+            let tempURL = try! storeDirectory.appendingPathComponent("migration." + ModelFileExtension.sqlite.rawValue)
 
             // could throw error from `migrateStoreFromURL`
             let manager = NSMigrationManager(sourceModel: step.source, destinationModel: step.destination)
-            try manager.migrateStoreFromURL(storeURL,
-                                            type: storeType.type,
-                                            options: nil,
-                                            withMappingModel: step.mapping,
-                                            toDestinationURL: tempURL!,
-                                            destinationType: storeType.type,
-                                            destinationOptions: nil)
+            try manager.migrateStore(from: storeURL,
+                                     sourceType: storeType.type,
+                                     options: nil,
+                                     with: step.mapping,
+                                     toDestinationURL: tempURL,
+                                     destinationType: storeType.type,
+                                     destinationOptions: nil)
 
             // could throw file system errors
             try removeExistingStore()
-            try NSFileManager.defaultManager().moveItemAtURL(tempURL!, toURL: storeURL)
+            try FileManager.default().moveItem(at: tempURL, to: storeURL)
         }
     }
 }
@@ -106,18 +106,18 @@ internal struct MigrationMappingStep: CustomStringConvertible {
 }
 
 
-internal func findCompatibleModel(withBundle bundle: NSBundle, storeType: String, storeURL: NSURL) throws -> NSManagedObjectModel? {
-    let storeMetadata = try NSPersistentStoreCoordinator.metadataForPersistentStoreOfType(storeType, URL: storeURL, options: nil)
+internal func findCompatibleModel(withBundle bundle: Bundle, storeType: String, storeURL: URL) throws -> NSManagedObjectModel? {
+    let storeMetadata = try NSPersistentStoreCoordinator.metadataForPersistentStore(ofType: storeType, at: storeURL, options: nil)
     let modelsInBundle = findModelsInBundle(bundle)
-    for model in modelsInBundle where model.isConfiguration(nil, compatibleWithStoreMetadata: storeMetadata) {
+    for model in modelsInBundle where model.isConfiguration(withName: nil, compatibleWithStoreMetadata: storeMetadata) {
         return model
     }
     return nil
 }
 
 
-internal func findModelsInBundle(bundle: NSBundle) -> [NSManagedObjectModel] {
-    guard let modelBundleDirectoryURLs = bundle.URLsForResourcesWithExtension(ModelFileExtension.bundle.rawValue, subdirectory: nil) else {
+internal func findModelsInBundle(_ bundle: Bundle) -> [NSManagedObjectModel] {
+    guard let modelBundleDirectoryURLs = bundle.urlsForResources(withExtension: ModelFileExtension.bundle.rawValue, subdirectory: nil) else {
         return []
     }
 
@@ -125,21 +125,21 @@ internal func findModelsInBundle(bundle: NSBundle) -> [NSManagedObjectModel] {
         url.lastPathComponent
     }
 
-    let modelVersionFileURLs = modelBundleDirectoryNames.flatMap { name -> [NSURL]? in
-        bundle.URLsForResourcesWithExtension(ModelFileExtension.versionedFile.rawValue, subdirectory: name)
+    let modelVersionFileURLs = modelBundleDirectoryNames.flatMap { name -> [URL]? in
+        bundle.urlsForResources(withExtension: ModelFileExtension.versionedFile.rawValue, subdirectory: name)
     }
 
     let managedObjectModels = Array(modelVersionFileURLs.flatten()).flatMap { url -> NSManagedObjectModel? in
-        NSManagedObjectModel(contentsOfURL: url)
+        NSManagedObjectModel(contentsOf: url)
     }
 
     return managedObjectModels
 }
 
 
-internal func buildMigrationMappingSteps(bundle bundle: NSBundle,
-                                                sourceModel: NSManagedObjectModel,
-                                                destinationModel: NSManagedObjectModel) throws -> [MigrationMappingStep] {
+internal func buildMigrationMappingSteps(bundle: Bundle,
+                                         sourceModel: NSManagedObjectModel,
+                                         destinationModel: NSManagedObjectModel) throws -> [MigrationMappingStep] {
     var migrationSteps = [MigrationMappingStep]()
     var nextModel = sourceModel
     repeat {
@@ -155,11 +155,11 @@ internal func buildMigrationMappingSteps(bundle bundle: NSBundle,
 }
 
 
-internal func nextMigrationMappingStep(fromSourceModel sourceModel: NSManagedObjectModel, bundle: NSBundle) -> MigrationMappingStep? {
+internal func nextMigrationMappingStep(fromSourceModel sourceModel: NSManagedObjectModel, bundle: Bundle) -> MigrationMappingStep? {
     let modelsInBundle = findModelsInBundle(bundle)
 
     for nextDestinationModel in modelsInBundle where nextDestinationModel != sourceModel {
-        if let mappingModel = NSMappingModel(fromBundles: [bundle],
+        if let mappingModel = NSMappingModel(from: [bundle],
                                              forSourceModel: sourceModel,
                                              destinationModel: nextDestinationModel) {
             return MigrationMappingStep(source: sourceModel, mapping: mappingModel, destination: nextDestinationModel)

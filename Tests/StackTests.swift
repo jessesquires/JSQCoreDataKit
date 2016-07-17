@@ -43,14 +43,14 @@ class StackTests: XCTestCase {
         let stack = result.stack()!
 
         // THEN: it is setup as expected
-        XCTAssertTrue(NSFileManager.defaultManager().fileExistsAtPath(sqliteModel.storeURL!.path!), "Model store should exist on disk")
-        XCTAssertEqual(stack.mainContext.concurrencyType, NSManagedObjectContextConcurrencyType.MainQueueConcurrencyType)
-        XCTAssertEqual(stack.backgroundContext.concurrencyType, NSManagedObjectContextConcurrencyType.PrivateQueueConcurrencyType)
+        XCTAssertTrue(FileManager.default().fileExists(atPath: sqliteModel.storeURL!.path!), "Model store should exist on disk")
+        XCTAssertEqual(stack.mainContext.concurrencyType, NSManagedObjectContextConcurrencyType.mainQueueConcurrencyType)
+        XCTAssertEqual(stack.backgroundContext.concurrencyType, NSManagedObjectContextConcurrencyType.privateQueueConcurrencyType)
     }
 
     func test_ThatBinaryStack_InitializesSuccessfully() {
         // GIVEN: a binary model
-        let binaryModel = CoreDataModel(name: modelName, bundle: modelBundle, storeType: .binary(NSURL(fileURLWithPath: NSTemporaryDirectory())))
+        let binaryModel = CoreDataModel(name: modelName, bundle: modelBundle, storeType: .binary(URL(fileURLWithPath: NSTemporaryDirectory())))
 
         // WHEN: we create a stack
         let factory = CoreDataStackFactory(model: binaryModel)
@@ -58,9 +58,9 @@ class StackTests: XCTestCase {
         let stack = result.stack()!
 
         // THEN: it is setup as expected
-        XCTAssertTrue(NSFileManager.defaultManager().fileExistsAtPath(binaryModel.storeURL!.path!), "Model store should exist on disk")
-        XCTAssertEqual(stack.mainContext.concurrencyType, NSManagedObjectContextConcurrencyType.MainQueueConcurrencyType)
-        XCTAssertEqual(stack.backgroundContext.concurrencyType, NSManagedObjectContextConcurrencyType.PrivateQueueConcurrencyType)
+        XCTAssertTrue(FileManager.default().fileExists(atPath: binaryModel.storeURL!.path!), "Model store should exist on disk")
+        XCTAssertEqual(stack.mainContext.concurrencyType, NSManagedObjectContextConcurrencyType.mainQueueConcurrencyType)
+        XCTAssertEqual(stack.backgroundContext.concurrencyType, NSManagedObjectContextConcurrencyType.privateQueueConcurrencyType)
     }
 
     func test_ThatInMemoryStack_InitializesSuccessfully() {
@@ -74,8 +74,8 @@ class StackTests: XCTestCase {
 
         // THEN: it is setup as expected
         XCTAssertNil(inMemoryModel.storeURL, "Model store should not exist on disk")
-        XCTAssertEqual(stack.mainContext.concurrencyType, NSManagedObjectContextConcurrencyType.MainQueueConcurrencyType)
-        XCTAssertEqual(stack.backgroundContext.concurrencyType, NSManagedObjectContextConcurrencyType.PrivateQueueConcurrencyType)
+        XCTAssertEqual(stack.mainContext.concurrencyType, NSManagedObjectContextConcurrencyType.mainQueueConcurrencyType)
+        XCTAssertEqual(stack.backgroundContext.concurrencyType, NSManagedObjectContextConcurrencyType.privateQueueConcurrencyType)
     }
 
     func test_ThatChildContext_IsCreatedSuccessfully_WithDefaultParameters() {
@@ -90,9 +90,9 @@ class StackTests: XCTestCase {
 
         // THEN: it is initialized as expected
         XCTAssertEqual(childContext.name, "JSQCoreDataKit.CoreDataStack.context.main.child")
-        XCTAssertEqual(childContext.parentContext!, stack.mainContext)
-        XCTAssertEqual(childContext.concurrencyType, NSManagedObjectContextConcurrencyType.MainQueueConcurrencyType)
-        XCTAssertEqual(childContext.mergePolicy.mergeType, NSMergePolicyType.MergeByPropertyObjectTrumpMergePolicyType)
+        XCTAssertEqual(childContext.parent!, stack.mainContext)
+        XCTAssertEqual(childContext.concurrencyType, NSManagedObjectContextConcurrencyType.mainQueueConcurrencyType)
+        XCTAssertEqual(childContext.mergePolicy.mergeType, NSMergePolicyType.mergeByPropertyObjectTrumpMergePolicyType)
     }
 
     func test_ThatChildContext_IsCreatedSuccessfully_WithCustomParameters() {
@@ -103,13 +103,13 @@ class StackTests: XCTestCase {
         let stack = result.stack()!
 
         // WHEN: we create a child context
-        let childContext = stack.childContext(concurrencyType: .PrivateQueueConcurrencyType, mergePolicyType: .ErrorMergePolicyType)
+        let childContext = stack.childContext(concurrencyType: .privateQueueConcurrencyType, mergePolicyType: .errorMergePolicyType)
 
         // THEN: it is initialized as expected
         XCTAssertEqual(childContext.name, "JSQCoreDataKit.CoreDataStack.context.background.child")
-        XCTAssertEqual(childContext.parentContext!, stack.backgroundContext)
-        XCTAssertEqual(childContext.concurrencyType, NSManagedObjectContextConcurrencyType.PrivateQueueConcurrencyType)
-        XCTAssertEqual(childContext.mergePolicy.mergeType, NSMergePolicyType.ErrorMergePolicyType)
+        XCTAssertEqual(childContext.parent!, stack.backgroundContext)
+        XCTAssertEqual(childContext.concurrencyType, NSManagedObjectContextConcurrencyType.privateQueueConcurrencyType)
+        XCTAssertEqual(childContext.mergePolicy.mergeType, NSMergePolicyType.errorMergePolicyType)
     }
 
     func test_Stack_Description() {

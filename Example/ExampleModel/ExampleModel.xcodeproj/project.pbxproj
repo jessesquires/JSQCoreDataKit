@@ -339,7 +339,7 @@
 				PRODUCT_NAME = ExampleModel;
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 2.3;
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -358,7 +358,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.hexedbits.ExampleModel;
 				PRODUCT_NAME = ExampleModel;
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 2.3;
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};

@@ -34,7 +34,6 @@ import Foundation
  */
 public final class CoreDataStack: CustomStringConvertible, Equatable {
 
-
     // MARK: Properties
 
     /// The model for the stack.
@@ -71,20 +70,20 @@ public final class CoreDataStack: CustomStringConvertible, Equatable {
         self.backgroundContext = backgroundContext
         self.storeCoordinator = storeCoordinator
 
-        let notificationCenter = NSNotificationCenter.defaultCenter()
+        let notificationCenter = NotificationCenter.default()
         notificationCenter.addObserver(self,
-                                       selector: #selector(didReceiveMainContextDidSaveNotification(_:)),
-                                       name: NSManagedObjectContextDidSaveNotification,
+                                       selector: #selector(didReceiveMainContextDidSave(notification:)),
+                                       name: NSNotification.Name.NSManagedObjectContextDidSave,
                                        object: mainContext)
         notificationCenter.addObserver(self,
-                                       selector: #selector(didReceiveBackgroundContextDidSaveNotification(_:)),
-                                       name: NSManagedObjectContextDidSaveNotification,
+                                       selector: #selector(didReceiveBackgroundContextDidSave(notification:)),
+                                       name: NSNotification.Name.NSManagedObjectContextDidSave,
                                        object: backgroundContext)
     }
 
     /// :nodoc:
     deinit {
-        NSNotificationCenter.defaultCenter().removeObserver(self)
+        NotificationCenter.default().removeObserver(self)
     }
 
     // MARK: Child contexts
@@ -103,29 +102,29 @@ public final class CoreDataStack: CustomStringConvertible, Equatable {
 
      - returns: A new child managed object context.
      */
-    public func childContext(concurrencyType concurrencyType: NSManagedObjectContextConcurrencyType = .MainQueueConcurrencyType,
-                                             mergePolicyType: NSMergePolicyType = .MergeByPropertyObjectTrumpMergePolicyType) -> ChildContext {
+    public func childContext(concurrencyType: NSManagedObjectContextConcurrencyType = .mainQueueConcurrencyType,
+                             mergePolicyType: NSMergePolicyType = .mergeByPropertyObjectTrumpMergePolicyType) -> ChildContext {
 
         let childContext = NSManagedObjectContext(concurrencyType: concurrencyType)
-        childContext.mergePolicy = NSMergePolicy(mergeType: mergePolicyType)
+        childContext.mergePolicy = NSMergePolicy(merge: mergePolicyType)
 
         switch concurrencyType {
-        case .MainQueueConcurrencyType:
-            childContext.parentContext = mainContext
-        case .PrivateQueueConcurrencyType:
-            childContext.parentContext = backgroundContext
-        case .ConfinementConcurrencyType:
+        case .mainQueueConcurrencyType:
+            childContext.parent = mainContext
+        case .privateQueueConcurrencyType:
+            childContext.parent = backgroundContext
+        case .confinementConcurrencyType:
             fatalError("*** Error: ConfinementConcurrencyType is not supported because it is being deprecated in iOS 9.0")
         }
 
-        if let name = childContext.parentContext?.name {
+        if let name = childContext.parent?.name {
             childContext.name = name + ".child"
         }
 
-        NSNotificationCenter.defaultCenter().addObserver(self,
-                                                         selector: #selector(didReceiveChildContextDidSaveNotification(_:)),
-                                                         name: NSManagedObjectContextDidSaveNotification,
-                                                         object: childContext)
+        NotificationCenter.default().addObserver(self,
+                                                 selector: #selector(didReceiveChildContextDidSave(notification:)),
+                                                 name: NSNotification.Name.NSManagedObjectContextDidSave,
+                                                 object: childContext)
         return childContext
     }
 
@@ -142,42 +141,43 @@ public final class CoreDataStack: CustomStringConvertible, Equatable {
 
      - parameter completion: The closure to be called once resetting is complete. This is called on the main queue.
      */
-    public func reset(onQueue queue: dispatch_queue_t = dispatch_get_global_queue(QOS_CLASS_USER_INITIATED, 0),
-                              completion: (result: StackResult) -> Void) {
-        mainContext.performBlockAndWait { self.mainContext.reset() }
-        backgroundContext.performBlockAndWait { self.backgroundContext.reset() }
+    public func reset(onQueue queue: DispatchQueue = .global(attributes: .qosUserInitiated),
+                      completion: (result: StackResult) -> Void) {
+
+        mainContext.performAndWait { self.mainContext.reset() }
+        backgroundContext.performAndWait { self.backgroundContext.reset() }
 
         guard let store = storeCoordinator.persistentStores.first else {
-            dispatch_async(dispatch_get_main_queue()) {
+            DispatchQueue.main.async {
                 completion(result: .success(self))
             }
             return
         }
 
-        dispatch_async(queue) {
-            precondition(!NSThread.isMainThread(), "*** Error: cannot reset a stack on the main queue")
+        queue.async {
+            precondition(!Thread.isMainThread(), "*** Error: cannot reset a stack on the main queue")
 
             let storeCoordinator = self.storeCoordinator
             let options = store.options
             let model = self.model
 
-            storeCoordinator.performBlockAndWait {
+            storeCoordinator.performAndWait {
                 do {
                     try model.removeExistingStore()
-                    try storeCoordinator.removePersistentStore(store)
-                    try storeCoordinator.addPersistentStoreWithType(model.storeType.type,
-                        configuration: nil,
-                        URL: model.storeURL,
-                        options: options)
+                    try storeCoordinator.remove(store)
+                    try storeCoordinator.addPersistentStore(ofType: model.storeType.type,
+                                                            configurationName: nil,
+                                                            at: model.storeURL,
+                                                            options: options)
                 }
                 catch {
-                    dispatch_async(dispatch_get_main_queue()) {
+                    DispatchQueue.main.async {
                         completion(result: .failure(error as NSError))
                     }
                     return
                 }
 
-                dispatch_async(dispatch_get_main_queue()) {
+                DispatchQueue.main.async {
                     completion(result: .success(self))
                 }
             }
@@ -197,14 +197,14 @@ public final class CoreDataStack: CustomStringConvertible, Equatable {
     // MARK: Private
 
     @objc
-    private func didReceiveChildContextDidSaveNotification(notification: NSNotification) {
+    private func didReceiveChildContextDidSave(notification: Notification) {
         guard let context = notification.object as? NSManagedObjectContext else {
             assertionFailure("*** Error: \(notification.name) posted from object of type \(notification.object.self). "
                 + "Expected \(NSManagedObjectContext.self) instead.")
             return
         }
 
-        guard let parentContext = context.parentContext else {
+        guard let parentContext = context.parent else {
             // have reached the root context, nothing to do
             return
         }
@@ -213,16 +213,16 @@ public final class CoreDataStack: CustomStringConvertible, Equatable {
     }
 
     @objc
-    private func didReceiveBackgroundContextDidSaveNotification(notification: NSNotification) {
-        mainContext.performBlock {
-            self.mainContext.mergeChangesFromContextDidSaveNotification(notification)
+    private func didReceiveBackgroundContextDidSave(notification: Notification) {
+        mainContext.perform {
+            self.mainContext.mergeChanges(fromContextDidSave: notification)
         }
     }
     
     @objc
-    private func didReceiveMainContextDidSaveNotification(notification: NSNotification) {
-        backgroundContext.performBlock {
-            self.backgroundContext.mergeChangesFromContextDidSaveNotification(notification)
+    private func didReceiveMainContextDidSave(notification: Notification) {
+        backgroundContext.perform {
+            self.backgroundContext.mergeChanges(fromContextDidSave: notification)
         }
     }
 }

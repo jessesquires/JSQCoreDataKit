@@ -72,7 +72,7 @@ class StackResultTests: TestCase {
     }
 
     func test_StackResult_Description() {
-        print("\(#function)")
+        print(#function)
 
         let success = StackResult.success(inMemoryStack)
         print(success)

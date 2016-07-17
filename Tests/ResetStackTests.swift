@@ -29,13 +29,12 @@ class ResetStackTests: TestCase {
 
     func test_ThatMainContext_WithChanges_DoesNotHaveObjects_AfterReset() {
         // GIVEN: a stack and context with changes
-        let stack = self.inMemoryStack
-        generateCompaniesInContext(stack.mainContext, count: 3)
+        _ = generateCompaniesInContext(inMemoryStack.mainContext, count: 3)
 
-        let expectation = expectationWithDescription("\(#function)")
+        let expectation = self.expectation(withDescription: #function)
 
         // WHEN: we attempt to reset the stack
-        stack.reset() { (result: StackResult) in
+        inMemoryStack.reset() { (result: StackResult) in
             if case .failure(let e) = result {
                 XCTFail("Error while resetting the stack: \(e)")
             }
@@ -43,23 +42,22 @@ class ResetStackTests: TestCase {
         }
 
         // THEN: the reset succeeds and the contexts contain no objects
-        waitForExpectationsWithTimeout(DefaultTimeout) { (error) -> Void in
+        waitForExpectations(withTimeout: defaultTimeout) { (error) -> Void in
             XCTAssertNil(error, "Expectation should not error")
         }
 
-        XCTAssertEqual(stack.mainContext.registeredObjects.count, 0)
-        XCTAssertEqual(stack.backgroundContext.registeredObjects.count, 0)
+        XCTAssertEqual(inMemoryStack.mainContext.registeredObjects.count, 0)
+        XCTAssertEqual(inMemoryStack.backgroundContext.registeredObjects.count, 0)
     }
 
     func test_ThatBackgroundContext_WithChanges_DoesNotHaveObjects_AfterReset() {
         // GIVEN: a stack and context with changes
-        let stack = self.inMemoryStack
-        generateCompaniesInContext(stack.backgroundContext, count: 3)
+        _ = generateCompaniesInContext(inMemoryStack.backgroundContext, count: 3)
 
-        let expectation = expectationWithDescription("\(#function)")
+        let expectation = self.expectation(withDescription: #function)
 
         // WHEN: we attempt to reset the stack
-        stack.reset() { (result: StackResult) in
+        inMemoryStack.reset() { (result: StackResult) in
             if case .failure(let e) = result {
                 XCTFail("Error while resetting the stack: \(e)")
             }
@@ -67,12 +65,12 @@ class ResetStackTests: TestCase {
         }
 
         // THEN: the reset succeeds and the contexts contain no objects
-        waitForExpectationsWithTimeout(DefaultTimeout) { (error) -> Void in
+        waitForExpectations(withTimeout: defaultTimeout) { (error) -> Void in
             XCTAssertNil(error, "Expectation should not error")
         }
 
-        XCTAssertEqual(stack.mainContext.registeredObjects.count, 0)
-        XCTAssertEqual(stack.backgroundContext.registeredObjects.count, 0)
+        XCTAssertEqual(inMemoryStack.mainContext.registeredObjects.count, 0)
+        XCTAssertEqual(inMemoryStack.backgroundContext.registeredObjects.count, 0)
     }
 
     func test_ThatPersistentStore_WithChanges_DoesNotHaveObjects_AfterReset() {
@@ -81,18 +79,18 @@ class ResetStackTests: TestCase {
         let factory = CoreDataStackFactory(model: model)
         let stack = factory.createStack().stack()!
 
-        generateCompaniesInContext(stack.mainContext, count: 3)
+        _ = generateCompaniesInContext(inMemoryStack.mainContext, count: 3)
         saveContext(stack.mainContext)
 
-        let request = FetchRequest<Company>(entity: entity(name: Company.entityName, context: stack.mainContext))
+        let request = NSFetchRequest<Company>(entityName: Company.entityName)
 
-        let objectsBefore = try? stack.mainContext.countForFetchRequest(request)
+        let objectsBefore = try? inMemoryStack.mainContext.count(for: request)
         XCTAssertEqual(objectsBefore, 3)
 
-        let expectation = expectationWithDescription("\(#function)")
+        let expectation = self.expectation(withDescription: #function)
 
         // WHEN: we attempt to reset the stack
-        stack.reset() { (result: StackResult) in
+        inMemoryStack.reset() { (result: StackResult) in
             if case .failure(let e) = result {
                 XCTFail("Error while resetting the stack: \(e)")
             }
@@ -100,11 +98,11 @@ class ResetStackTests: TestCase {
         }
 
         // THEN: the reset succeeds and the stack contains no managed objects
-        waitForExpectationsWithTimeout(DefaultTimeout) { (error) -> Void in
+        waitForExpectations(withTimeout: defaultTimeout) { (error) -> Void in
             XCTAssertNil(error, "Expectation should not error")
         }
 
-        let objectsAfter = try? stack.mainContext.countForFetchRequest(request)
+        let objectsAfter = try? inMemoryStack.mainContext.count(for: request)
         XCTAssertEqual(objectsAfter, 0)
     }
     

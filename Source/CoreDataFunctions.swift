@@ -29,7 +29,7 @@ import Foundation
  - parameter wait:       If `true` (the default), saves synchronously. If `false`, saves asynchronously.
  - parameter completion: The closure to be executed when the save operation completes.
  */
-public func saveContext(context: NSManagedObjectContext, wait: Bool = true, completion: ((SaveResult) -> Void)? = nil) {
+public func saveContext(_ context: NSManagedObjectContext, wait: Bool = true, completion: ((SaveResult) -> Void)? = nil) {
     let block = {
         guard context.hasChanges else { return }
         do {
@@ -40,7 +40,7 @@ public func saveContext(context: NSManagedObjectContext, wait: Bool = true, comp
             completion?(.failure(error as NSError))
         }
     }
-    wait ? context.performBlockAndWait(block) : context.performBlock(block)
+    wait ? context.performAndWait(block) : context.perform(block)
 }
 
 
@@ -54,29 +54,6 @@ public func saveContext(context: NSManagedObjectContext, wait: Bool = true, comp
  - returns: The entity with the specified name from the managed object
  model associated with context’s persistent store coordinator.
  */
-public func entity(name name: String, context: NSManagedObjectContext) -> NSEntityDescription {
-    return NSEntityDescription.entityForName(name, inManagedObjectContext: context)!
-}
-
-
-/**
- An instance of `FetchRequest` describes search criteria used to retrieve data from a persistent store.
- This is a subclass of `NSFetchRequest` that adds a type parameter specifying the type of managed objects for the fetch request.
- The type parameter acts as a phantom type.
- */
-public class FetchRequest<T: NSManagedObject>: NSFetchRequest {
-
-    // MARK: Initialization
-
-    /**
-     Constructs a new `FetchRequest` instance.
-
-     - parameter entity: The entity description for the entities that this request fetches.
-
-     - returns: A new `FetchRequest` instance.
-     */
-    public init(entity: NSEntityDescription) {
-        super.init()
-        self.entity = entity
-    }
+public func entity(name: String, context: NSManagedObjectContext) -> NSEntityDescription {
+    return NSEntityDescription.entity(forEntityName: name, in: context)!
 }

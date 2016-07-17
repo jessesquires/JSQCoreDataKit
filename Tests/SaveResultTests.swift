@@ -58,7 +58,7 @@ class SaveResultTests: XCTestCase {
     }
 
     func test_SaveResult_Description() {
-        print("\(#function)")
+        print(#function)
 
         let success = SaveResult.success
         print(success)

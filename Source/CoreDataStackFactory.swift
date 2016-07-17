@@ -59,7 +59,6 @@ public struct CoreDataStackFactory: CustomStringConvertible, Equatable {
         self.options = options
     }
 
-
     // MARK: Creating a stack
 
     /**
@@ -77,8 +76,8 @@ public struct CoreDataStackFactory: CustomStringConvertible, Equatable {
      If a queue is provided, this is called asynchronously on the main queue.
      Otherwise, this is executed on the thread from which the method was originally called.
      */
-    public func createStack(onQueue queue: dispatch_queue_t? = dispatch_get_global_queue(QOS_CLASS_USER_INITIATED, 0),
-                                    completion: (result: StackResult) -> Void) {
+    public func createStack(onQueue queue: DispatchQueue? = .global(attributes: .qosUserInitiated),
+                            completion: (result: StackResult) -> Void) {
         let isAsync = (queue != nil)
 
         let creationClosure = {
@@ -87,7 +86,7 @@ public struct CoreDataStackFactory: CustomStringConvertible, Equatable {
                 storeCoordinator = try self.createStoreCoordinator()
             } catch {
                 if isAsync {
-                    dispatch_async(dispatch_get_main_queue()) {
+                    DispatchQueue.main.async {
                         completion(result: .failure(error as NSError))
                     }
                 } else {
@@ -96,10 +95,10 @@ public struct CoreDataStackFactory: CustomStringConvertible, Equatable {
                 return
             }
 
-            let backgroundContext = self.createContext(.PrivateQueueConcurrencyType, name: "background")
+            let backgroundContext = self.createContext(.privateQueueConcurrencyType, name: "background")
             backgroundContext.persistentStoreCoordinator = storeCoordinator
 
-            let mainContext = self.createContext(.MainQueueConcurrencyType, name: "main")
+            let mainContext = self.createContext(.mainQueueConcurrencyType, name: "main")
             mainContext.persistentStoreCoordinator = storeCoordinator
 
             let stack = CoreDataStack(model: self.model,
@@ -108,7 +107,7 @@ public struct CoreDataStackFactory: CustomStringConvertible, Equatable {
                                       storeCoordinator: storeCoordinator)
 
             if isAsync {
-                dispatch_async(dispatch_get_main_queue()) {
+                DispatchQueue.main.async {
                     completion(result: .success(stack))
                 }
             } else {
@@ -117,7 +116,7 @@ public struct CoreDataStackFactory: CustomStringConvertible, Equatable {
         }
 
         if let queue = queue {
-            dispatch_async(queue, creationClosure)
+            queue.async(execute: creationClosure)
         } else {
             creationClosure()
         }
@@ -128,18 +127,17 @@ public struct CoreDataStackFactory: CustomStringConvertible, Equatable {
 
     private func createStoreCoordinator() throws -> NSPersistentStoreCoordinator {
         let storeCoordinator = NSPersistentStoreCoordinator(managedObjectModel: model.managedObjectModel)
-        try storeCoordinator.addPersistentStoreWithType(model.storeType.type,
-                                                        configuration: nil,
-                                                        URL: model.storeURL,
-                                                        options: options)
+        try storeCoordinator.addPersistentStore(ofType: model.storeType.type,
+                                                configurationName: nil,
+                                                at: model.storeURL,
+                                                options: options)
         return storeCoordinator
     }
 
-    private func createContext(
-        concurrencyType: NSManagedObjectContextConcurrencyType,
-        name: String) -> NSManagedObjectContext {
+    private func createContext(_ concurrencyType: NSManagedObjectContextConcurrencyType,
+                               name: String) -> NSManagedObjectContext {
         let context = NSManagedObjectContext(concurrencyType: concurrencyType)
-        context.mergePolicy = NSMergePolicy(mergeType: .MergeByPropertyStoreTrumpMergePolicyType)
+        context.mergePolicy = NSMergePolicy(merge: .mergeByPropertyStoreTrumpMergePolicyType)
 
         let contextName = "JSQCoreDataKit.CoreDataStack.context."
         context.name = contextName + name
@@ -149,7 +147,7 @@ public struct CoreDataStackFactory: CustomStringConvertible, Equatable {
 
 
     // MARK: CustomStringConvertible
-    
+
     /// :nodoc:
     public var description: String {
         get {

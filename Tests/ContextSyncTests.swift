@@ -36,7 +36,7 @@ final class ContextSyncTests: TestCase {
 
         // WHEN: we fetch the objects from the main context
         let request = NSFetchRequest<Company>(entityName: Company.entityName)
-        let results = try? inMemoryStack.mainContext.fetch(request: request)
+        let results = try? inMemoryStack.mainContext.fetch(request)
 
         // THEN: the main context does not return any objects
         XCTAssertEqual(results?.count, 0, "Main context should return nothing")
@@ -60,7 +60,7 @@ final class ContextSyncTests: TestCase {
 
         // WHEN: we fetch the objects in the background context
         let request = NSFetchRequest<Company>(entityName: Company.entityName)
-        let results = try! inMemoryStack.backgroundContext.fetch(request: request)
+        let results = try! inMemoryStack.backgroundContext.fetch(request)
 
         // THEN: the background context returns the objects
         XCTAssertEqual(results.count, companies.count, "Background context should return same objects")
@@ -87,7 +87,7 @@ final class ContextSyncTests: TestCase {
 
         // WHEN: we fetch the objects from the main context
         let request = NSFetchRequest<Company>(entityName: Company.entityName)
-        let results = try! inMemoryStack.mainContext.fetch(request: request)
+        let results = try! inMemoryStack.mainContext.fetch(request)
 
         // THEN: the main context returns the objects
         XCTAssertEqual(results.count, companies.count, "Main context should return the same objects")
@@ -114,7 +114,7 @@ final class ContextSyncTests: TestCase {
 
         // WHEN: we fetch the objects from the main context
         let request = NSFetchRequest<Company>(entityName: Company.entityName)
-        let results = try! inMemoryStack.mainContext.fetch(request: request)
+        let results = try! inMemoryStack.mainContext.fetch(request)
 
         // THEN: the main context returns the objects
         XCTAssertEqual(results.count, companies.count, "Main context should return the same objects")
@@ -141,7 +141,7 @@ final class ContextSyncTests: TestCase {
 
         // WHEN: we fetch the objects from the background context
         let request = NSFetchRequest<Company>(entityName: Company.entityName)
-        let results = try! inMemoryStack.backgroundContext.fetch(request: request)
+        let results = try! inMemoryStack.backgroundContext.fetch(request)
 
         // THEN: the background context returns the objects
         XCTAssertEqual(results.count, companies.count, "Background context should return the same objects")

@@ -54,9 +54,7 @@
 		8873E24A1C51E0DE00DFE009 /* StackResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8873E2231C51E09700DFE009 /* StackResult.swift */; };
 		8873E24B1C51E0DE00DFE009 /* StoreType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8873E2261C51E09700DFE009 /* StoreType.swift */; };
 		8873E25C1C51E10100DFE009 /* ContextSyncTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8873E24D1C51E10100DFE009 /* ContextSyncTests.swift */; };
-		8873E25D1C51E10100DFE009 /* DeleteTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8873E24E1C51E10100DFE009 /* DeleteTests.swift */; };
 		8873E25E1C51E10100DFE009 /* ExampleModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8873E24F1C51E10100DFE009 /* ExampleModelTests.swift */; };
-		8873E25F1C51E10100DFE009 /* FetchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8873E2501C51E10100DFE009 /* FetchTests.swift */; };
 		8873E2611C51E10100DFE009 /* ModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8873E2521C51E10100DFE009 /* ModelTests.swift */; };
 		8873E2621C51E10100DFE009 /* PersistentStoreOptionsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8873E2531C51E10100DFE009 /* PersistentStoreOptionsTests.swift */; };
 		8873E2631C51E10100DFE009 /* ResetStackTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8873E2541C51E10100DFE009 /* ResetStackTests.swift */; };
@@ -70,9 +68,7 @@
 		8873E2C11C51E3D400DFE009 /* ExampleModel.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8873E2C01C51E3B000DFE009 /* ExampleModel.framework */; };
 		88DF3CBF1CDCE89000726A31 /* JSQCoreDataKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88AC4B331C0FD8DA00A04563 /* JSQCoreDataKit.framework */; };
 		88DF3CC51CDCE8D800726A31 /* ContextSyncTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8873E24D1C51E10100DFE009 /* ContextSyncTests.swift */; };
-		88DF3CC61CDCE8D800726A31 /* DeleteTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8873E24E1C51E10100DFE009 /* DeleteTests.swift */; };
 		88DF3CC71CDCE8D800726A31 /* ExampleModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8873E24F1C51E10100DFE009 /* ExampleModelTests.swift */; };
-		88DF3CC81CDCE8D800726A31 /* FetchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8873E2501C51E10100DFE009 /* FetchTests.swift */; };
 		88DF3CC91CDCE8D800726A31 /* MigrationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 297C7D2C1C710A1D008E516B /* MigrationTests.swift */; };
 		88DF3CCA1CDCE8D800726A31 /* ModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8873E2521C51E10100DFE009 /* ModelTests.swift */; };
 		88DF3CCB1CDCE8D800726A31 /* PersistentStoreOptionsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8873E2531C51E10100DFE009 /* PersistentStoreOptionsTests.swift */; };
@@ -85,10 +81,6 @@
 		88DF3CD21CDCE8D800726A31 /* StoreTypeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8873E25A1C51E10100DFE009 /* StoreTypeTests.swift */; };
 		88DF3CD31CDCE8D800726A31 /* TestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8873E25B1C51E10100DFE009 /* TestCase.swift */; };
 		88DF3CED1CDCF07700726A31 /* ExampleModel.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88DF3CEC1CDCF06200726A31 /* ExampleModel.framework */; };
-		FE3D29351CD124140076C97F /* CoreDataExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE3D29341CD124140076C97F /* CoreDataExtensions.swift */; };
-		FE3D29361CD124140076C97F /* CoreDataExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE3D29341CD124140076C97F /* CoreDataExtensions.swift */; };
-		FE3D29371CD124140076C97F /* CoreDataExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE3D29341CD124140076C97F /* CoreDataExtensions.swift */; };
-		FE3D29381CD124140076C97F /* CoreDataExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE3D29341CD124140076C97F /* CoreDataExtensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -154,9 +146,7 @@
 		8873E2251C51E09700DFE009 /* JSQCoreDataKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSQCoreDataKit.h; sourceTree = "<group>"; };
 		8873E2261C51E09700DFE009 /* StoreType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoreType.swift; sourceTree = "<group>"; };
 		8873E24D1C51E10100DFE009 /* ContextSyncTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContextSyncTests.swift; sourceTree = "<group>"; };
-		8873E24E1C51E10100DFE009 /* DeleteTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeleteTests.swift; sourceTree = "<group>"; };
 		8873E24F1C51E10100DFE009 /* ExampleModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExampleModelTests.swift; sourceTree = "<group>"; };
-		8873E2501C51E10100DFE009 /* FetchTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FetchTests.swift; sourceTree = "<group>"; };
 		8873E2511C51E10100DFE009 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8873E2521C51E10100DFE009 /* ModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModelTests.swift; sourceTree = "<group>"; };
 		8873E2531C51E10100DFE009 /* PersistentStoreOptionsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersistentStoreOptionsTests.swift; sourceTree = "<group>"; };
@@ -172,7 +162,6 @@
 		887403131C0D6A6D00FE0C31 /* JSQCoreDataKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = JSQCoreDataKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		88AC4B331C0FD8DA00A04563 /* JSQCoreDataKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = JSQCoreDataKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		88DF3CBA1CDCE89000726A31 /* JSQCoreDataKit-OSXTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "JSQCoreDataKit-OSXTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		FE3D29341CD124140076C97F /* CoreDataExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataExtensions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -250,7 +239,6 @@
 		8873E21C1C51E09700DFE009 /* Source */ = {
 			isa = PBXGroup;
 			children = (
-				FE3D29341CD124140076C97F /* CoreDataExtensions.swift */,
 				8873E21E1C51E09700DFE009 /* CoreDataFunctions.swift */,
 				8873E21F1C51E09700DFE009 /* CoreDataModel.swift */,
 				8873E2211C51E09700DFE009 /* CoreDataStack.swift */,
@@ -272,9 +260,7 @@
 			children = (
 				8873E2BB1C51E3B000DFE009 /* ExampleModel.xcodeproj */,
 				8873E24D1C51E10100DFE009 /* ContextSyncTests.swift */,
-				8873E24E1C51E10100DFE009 /* DeleteTests.swift */,
 				8873E24F1C51E10100DFE009 /* ExampleModelTests.swift */,
-				8873E2501C51E10100DFE009 /* FetchTests.swift */,
 				8873E2511C51E10100DFE009 /* Info.plist */,
 				297C7D2C1C710A1D008E516B /* MigrationTests.swift */,
 				8873E2521C51E10100DFE009 /* ModelTests.swift */,
@@ -580,7 +566,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				8873E22C1C51E09700DFE009 /* CoreDataStackFactory.swift in Sources */,
-				FE3D29351CD124140076C97F /* CoreDataExtensions.swift in Sources */,
 				8873E2301C51E09700DFE009 /* StoreType.swift in Sources */,
 				8873E22B1C51E09700DFE009 /* CoreDataStack.swift in Sources */,
 				298F00F71C9C559100AEC77E /* Migrate.swift in Sources */,
@@ -597,14 +582,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8873E25F1C51E10100DFE009 /* FetchTests.swift in Sources */,
 				8873E2651C51E10100DFE009 /* SaveTests.swift in Sources */,
 				8873E2641C51E10100DFE009 /* SaveResultTests.swift in Sources */,
 				8873E2661C51E10100DFE009 /* StackFactoryTests.swift in Sources */,
 				8873E2621C51E10100DFE009 /* PersistentStoreOptionsTests.swift in Sources */,
 				297C7D2D1C710A1D008E516B /* MigrationTests.swift in Sources */,
 				8873E2631C51E10100DFE009 /* ResetStackTests.swift in Sources */,
-				8873E25D1C51E10100DFE009 /* DeleteTests.swift in Sources */,
 				8873E2671C51E10100DFE009 /* StackResultTests.swift in Sources */,
 				8873E2681C51E10100DFE009 /* StackTests.swift in Sources */,
 				8873E26A1C51E10100DFE009 /* TestCase.swift in Sources */,
@@ -619,7 +602,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FE3D29371CD124140076C97F /* CoreDataExtensions.swift in Sources */,
 				8873E2411C51E0DE00DFE009 /* CoreDataStackFactory.swift in Sources */,
 				8873E2431C51E0DE00DFE009 /* StoreType.swift in Sources */,
 				8873E2401C51E0DE00DFE009 /* CoreDataStack.swift in Sources */,
@@ -637,7 +619,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FE3D29361CD124140076C97F /* CoreDataExtensions.swift in Sources */,
 				8873E2391C51E0DD00DFE009 /* CoreDataStackFactory.swift in Sources */,
 				8873E23B1C51E0DD00DFE009 /* StoreType.swift in Sources */,
 				8873E2381C51E0DD00DFE009 /* CoreDataStack.swift in Sources */,
@@ -655,7 +636,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FE3D29381CD124140076C97F /* CoreDataExtensions.swift in Sources */,
 				8873E2491C51E0DE00DFE009 /* CoreDataStackFactory.swift in Sources */,
 				8873E24B1C51E0DE00DFE009 /* StoreType.swift in Sources */,
 				8873E2481C51E0DE00DFE009 /* CoreDataStack.swift in Sources */,
@@ -673,9 +653,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				88DF3CC81CDCE8D800726A31 /* FetchTests.swift in Sources */,
 				88DF3CCB1CDCE8D800726A31 /* PersistentStoreOptionsTests.swift in Sources */,
-				88DF3CC61CDCE8D800726A31 /* DeleteTests.swift in Sources */,
 				88DF3CD21CDCE8D800726A31 /* StoreTypeTests.swift in Sources */,
 				88DF3CC71CDCE8D800726A31 /* ExampleModelTests.swift in Sources */,
 				88DF3CCC1CDCE8D800726A31 /* ResetStackTests.swift in Sources */,

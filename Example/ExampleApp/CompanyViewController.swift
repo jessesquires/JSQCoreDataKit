@@ -125,8 +125,10 @@ final class CompanyViewController: UITableViewController, NSFetchedResultsContro
             let request = self.fetchRequest(backgroundChildContext)
 
             do {
-                let objects = try backgroundChildContext.fetch(request: request)
-                backgroundChildContext.delete(objects: objects)
+                let objects = try backgroundChildContext.fetch(request)
+                for each in objects {
+                    backgroundChildContext.delete(each)
+                }
                 saveContext(backgroundChildContext)
             } catch {
                 print("Error deleting objects: \(error)")
@@ -172,7 +174,9 @@ final class CompanyViewController: UITableViewController, NSFetchedResultsContro
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             let obj = frc.object(at: indexPath)
-            stack.mainContext.delete(objects: [obj])
+            stack.mainContext.performAndWait {
+                self.stack.mainContext.delete(obj)
+            }
             saveContext(stack.mainContext)
         }
     }

@@ -42,18 +42,3 @@ public func saveContext(_ context: NSManagedObjectContext, wait: Bool = true, co
     }
     wait ? context.performAndWait(block) : context.perform(block)
 }
-
-
-/**
- Returns the entity with the specified name from the managed object model associated with
- the specified managed object context’s persistent store coordinator.
-
- - parameter name:    The name of an entity.
- - parameter context: The managed object context to use.
-
- - returns: The entity with the specified name from the managed object
- model associated with context’s persistent store coordinator.
- */
-public func entity(name: String, context: NSManagedObjectContext) -> NSEntityDescription {
-    return NSEntityDescription.entity(forEntityName: name, in: context)!
-}

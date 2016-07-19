@@ -43,7 +43,7 @@ class StackTests: XCTestCase {
         let stack = result.stack()!
 
         // THEN: it is setup as expected
-        XCTAssertTrue(FileManager.default().fileExists(atPath: sqliteModel.storeURL!.path!), "Model store should exist on disk")
+        XCTAssertTrue(FileManager.default.fileExists(atPath: sqliteModel.storeURL!.path!), "Model store should exist on disk")
         XCTAssertEqual(stack.mainContext.concurrencyType, NSManagedObjectContextConcurrencyType.mainQueueConcurrencyType)
         XCTAssertEqual(stack.backgroundContext.concurrencyType, NSManagedObjectContextConcurrencyType.privateQueueConcurrencyType)
     }
@@ -58,7 +58,7 @@ class StackTests: XCTestCase {
         let stack = result.stack()!
 
         // THEN: it is setup as expected
-        XCTAssertTrue(FileManager.default().fileExists(atPath: binaryModel.storeURL!.path!), "Model store should exist on disk")
+        XCTAssertTrue(FileManager.default.fileExists(atPath: binaryModel.storeURL!.path!), "Model store should exist on disk")
         XCTAssertEqual(stack.mainContext.concurrencyType, NSManagedObjectContextConcurrencyType.mainQueueConcurrencyType)
         XCTAssertEqual(stack.backgroundContext.concurrencyType, NSManagedObjectContextConcurrencyType.privateQueueConcurrencyType)
     }

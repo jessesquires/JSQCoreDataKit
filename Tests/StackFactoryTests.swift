@@ -51,11 +51,11 @@ class StackFactoryTests: TestCase {
         let factory = CoreDataStackFactory(model: sqliteModel)
 
         var stack: CoreDataStack?
-        let expectation = self.expectation(withDescription: #function)
+        let expectation = self.expectation(description: #function)
 
         // WHEN: we create a stack in the background
         factory.createStack { (result: StackResult) in
-            XCTAssertTrue(Thread.isMainThread(), "Factory completion handler should return on main thread")
+            XCTAssertTrue(Thread.isMainThread, "Factory completion handler should return on main thread")
 
             switch result {
             case .success(let s):
@@ -70,7 +70,7 @@ class StackFactoryTests: TestCase {
         }
 
         // THEN: creating a stack succeeds
-        waitForExpectations(withTimeout: defaultTimeout) { (error) -> Void in
+        waitForExpectations(timeout: defaultTimeout) { (error) -> Void in
             XCTAssertNil(error, "Expectation should not error")
         }
 

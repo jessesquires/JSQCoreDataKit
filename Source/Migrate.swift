@@ -85,7 +85,7 @@ extension CoreDataModel {
 
             // could throw file system errors
             try removeExistingStore()
-            try FileManager.default().moveItem(at: tempURL, to: storeURL)
+            try FileManager.default.moveItem(at: tempURL, to: storeURL)
         }
     }
 }

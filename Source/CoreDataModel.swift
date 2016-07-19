@@ -133,7 +133,7 @@ public struct CoreDataModel: Equatable {
 
      - returns: A new `CoreDataModel` instance.
      */
-    public init(name: String, bundle: Bundle = .main(), storeType: StoreType = .sqlite(defaultDirectoryURL())) {
+    public init(name: String, bundle: Bundle = .main, storeType: StoreType = .sqlite(defaultDirectoryURL())) {
         self.name = name
         self.bundle = bundle
         self.storeType = storeType
@@ -148,8 +148,9 @@ public struct CoreDataModel: Equatable {
      - throws: If removing the store fails or errors, then this function throws an `NSError`.
      */
     public func removeExistingStore() throws {
-        let fm = FileManager.default()
-        if let storePath = storeURL?.path where fm.fileExists(atPath: storePath) {
+        let fm = FileManager.default
+        if let storePath = storeURL?.path,
+            fm.fileExists(atPath: storePath) {
             try fm.removeItem(atPath: storePath)
 
             let writeAheadLog = storePath + "-wal"

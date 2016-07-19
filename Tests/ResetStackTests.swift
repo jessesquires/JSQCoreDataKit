@@ -30,7 +30,7 @@ final class ResetStackTests: TestCase {
         // GIVEN: a stack and context with changes
         _ = generateCompaniesInContext(inMemoryStack.mainContext, count: 3)
 
-        let expectation = self.expectation(withDescription: #function)
+        let expectation = self.expectation(description: #function)
 
         // WHEN: we attempt to reset the stack
         inMemoryStack.reset() { (result: StackResult) in
@@ -41,7 +41,7 @@ final class ResetStackTests: TestCase {
         }
 
         // THEN: the reset succeeds and the contexts contain no objects
-        waitForExpectations(withTimeout: defaultTimeout) { (error) -> Void in
+        waitForExpectations(timeout: defaultTimeout) { (error) -> Void in
             XCTAssertNil(error, "Expectation should not error")
         }
 
@@ -53,7 +53,7 @@ final class ResetStackTests: TestCase {
         // GIVEN: a stack and context with changes
         _ = generateCompaniesInContext(inMemoryStack.backgroundContext, count: 3)
 
-        let expectation = self.expectation(withDescription: #function)
+        let expectation = self.expectation(description: #function)
 
         // WHEN: we attempt to reset the stack
         inMemoryStack.reset() { (result: StackResult) in
@@ -64,7 +64,7 @@ final class ResetStackTests: TestCase {
         }
 
         // THEN: the reset succeeds and the contexts contain no objects
-        waitForExpectations(withTimeout: defaultTimeout) { (error) -> Void in
+        waitForExpectations(timeout: defaultTimeout) { (error) -> Void in
             XCTAssertNil(error, "Expectation should not error")
         }
 
@@ -86,7 +86,7 @@ final class ResetStackTests: TestCase {
         let objectsBefore = try? inMemoryStack.mainContext.count(for: request)
         XCTAssertEqual(objectsBefore, 3)
 
-        let expectation = self.expectation(withDescription: #function)
+        let expectation = self.expectation(description: #function)
 
         // WHEN: we attempt to reset the stack
         inMemoryStack.reset() { (result: StackResult) in
@@ -97,7 +97,7 @@ final class ResetStackTests: TestCase {
         }
 
         // THEN: the reset succeeds and the stack contains no managed objects
-        waitForExpectations(withTimeout: defaultTimeout) { (error) -> Void in
+        waitForExpectations(timeout: defaultTimeout) { (error) -> Void in
             XCTAssertNil(error, "Expectation should not error")
         }
 

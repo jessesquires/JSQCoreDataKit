@@ -70,7 +70,7 @@ public final class CoreDataStack: CustomStringConvertible, Equatable {
         self.backgroundContext = backgroundContext
         self.storeCoordinator = storeCoordinator
 
-        let notificationCenter = NotificationCenter.default()
+        let notificationCenter = NotificationCenter.default
         notificationCenter.addObserver(self,
                                        selector: #selector(didReceiveMainContextDidSave(notification:)),
                                        name: NSNotification.Name.NSManagedObjectContextDidSave,
@@ -83,7 +83,7 @@ public final class CoreDataStack: CustomStringConvertible, Equatable {
 
     /// :nodoc:
     deinit {
-        NotificationCenter.default().removeObserver(self)
+        NotificationCenter.default.removeObserver(self)
     }
 
     // MARK: Child contexts
@@ -121,10 +121,10 @@ public final class CoreDataStack: CustomStringConvertible, Equatable {
             childContext.name = name + ".child"
         }
 
-        NotificationCenter.default().addObserver(self,
-                                                 selector: #selector(didReceiveChildContextDidSave(notification:)),
-                                                 name: NSNotification.Name.NSManagedObjectContextDidSave,
-                                                 object: childContext)
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(didReceiveChildContextDidSave(notification:)),
+                                               name: NSNotification.Name.NSManagedObjectContextDidSave,
+                                               object: childContext)
         return childContext
     }
 
@@ -155,7 +155,7 @@ public final class CoreDataStack: CustomStringConvertible, Equatable {
         }
 
         queue.async {
-            precondition(!Thread.isMainThread(), "*** Error: cannot reset a stack on the main queue")
+            precondition(!Thread.isMainThread, "*** Error: cannot reset a stack on the main queue")
 
             let storeCoordinator = self.storeCoordinator
             let options = store.options
@@ -218,7 +218,7 @@ public final class CoreDataStack: CustomStringConvertible, Equatable {
             self.mainContext.mergeChanges(fromContextDidSave: notification)
         }
     }
-    
+
     @objc
     private func didReceiveMainContextDidSave(notification: Notification) {
         backgroundContext.perform {

@@ -163,7 +163,7 @@ class ModelTests: XCTestCase {
         saveContext(stack.mainContext) { error in
         }
 
-        let fileManager = FileManager.default()
+        let fileManager = FileManager.default
 
         XCTAssertTrue(fileManager.fileExists(atPath: model.storeURL!.path!), "Model store should exist on disk")
         XCTAssertTrue(fileManager.fileExists(atPath: model.storeURL!.path! + "-wal"), "Model write ahead log should exist on disk")
@@ -190,7 +190,7 @@ class ModelTests: XCTestCase {
         // WHEN: we do not create a core data stack
 
         // THEN: the model store does not exist on disk
-        XCTAssertFalse(FileManager.default().fileExists(atPath: model.storeURL!.path!), "Model store should not exist on disk")
+        XCTAssertFalse(FileManager.default.fileExists(atPath: model.storeURL!.path!), "Model store should not exist on disk")
 
         // WHEN: we attempt to remove the existing model store
         var success = true

@@ -58,7 +58,7 @@ final class SaveTests: TestCase {
             return true
         }
 
-        let saveExpectation = expectation(withDescription: #function)
+        let saveExpectation = expectation(description: #function)
 
         // WHEN: we attempt to save the context
         saveContext(inMemoryStack.mainContext, wait: true) { result in
@@ -69,7 +69,7 @@ final class SaveTests: TestCase {
         }
 
         // THEN: then the main and background contexts are saved and the completion handler is called
-        waitForExpectations(withTimeout: defaultTimeout, handler: { (error) -> Void in
+        waitForExpectations(timeout: defaultTimeout, handler: { (error) -> Void in
             XCTAssertNil(error, "Expectation should not error")
             XCTAssertTrue(didSaveMain, "Main context should be saved")
             XCTAssertTrue(didUpdateBackground, "Background context should be updated")
@@ -100,7 +100,7 @@ final class SaveTests: TestCase {
         saveContext(inMemoryStack.mainContext)
 
         // THEN: then the main and background contexts are saved
-        waitForExpectations(withTimeout: defaultTimeout, handler: { (error) -> Void in
+        waitForExpectations(timeout: defaultTimeout, handler: { (error) -> Void in
             XCTAssertNil(error, "Expectation should not error")
             XCTAssertTrue(didSaveMain, "Main context should be saved")
             XCTAssertTrue(didUpdateBackground, "Background context should be updated")
@@ -138,7 +138,7 @@ final class SaveTests: TestCase {
             return true
         }
 
-        let saveExpectation = expectation(withDescription: #function)
+        let saveExpectation = expectation(description: #function)
 
         // WHEN: we attempt to save the context asynchronously
         saveContext(inMemoryStack.mainContext, wait: false) { result in
@@ -149,7 +149,7 @@ final class SaveTests: TestCase {
         }
 
         // THEN: then the main and background contexts are saved and the completion handler is called
-        waitForExpectations(withTimeout: defaultTimeout, handler: { (error) -> Void in
+        waitForExpectations(timeout: defaultTimeout, handler: { (error) -> Void in
             XCTAssertNil(error, "Expectation should not error")
             XCTAssertTrue(didSaveMain, "Main context should be saved")
             XCTAssertTrue(didUpdateBackground, "Background context should be updated")
@@ -182,7 +182,7 @@ final class SaveTests: TestCase {
             return true
         }
 
-        let saveExpectation = expectation(withDescription: #function)
+        let saveExpectation = expectation(description: #function)
 
         // WHEN: we attempt to save the context
         saveContext(childContext) { result in
@@ -193,7 +193,7 @@ final class SaveTests: TestCase {
         }
 
         // THEN: then all contexts are saved, synchronized and the completion handler is called
-        waitForExpectations(withTimeout: defaultTimeout, handler: { (error) -> Void in
+        waitForExpectations(timeout: defaultTimeout, handler: { (error) -> Void in
             XCTAssertNil(error, "Expectation should not error")
             XCTAssertTrue(didSaveChild, "Child context should be saved")
             XCTAssertTrue(didSaveMain, "Main context should be saved")
@@ -227,7 +227,7 @@ final class SaveTests: TestCase {
             return true
         }
 
-        let saveExpectation = expectation(withDescription: #function)
+        let saveExpectation = expectation(description: #function)
 
         // WHEN: we attempt to save the context
         saveContext(childContext) { result in
@@ -238,7 +238,7 @@ final class SaveTests: TestCase {
         }
 
         // THEN: then all contexts are saved, synchronized and the completion handler is called
-        waitForExpectations(withTimeout: defaultTimeout, handler: { (error) -> Void in
+        waitForExpectations(timeout: defaultTimeout, handler: { (error) -> Void in
             XCTAssertNil(error, "Expectation should not error")
             XCTAssertTrue(didSaveChild, "Child context should be saved")
             XCTAssertTrue(didSaveBackground, "Background context should be saved")
@@ -264,7 +264,7 @@ final class SaveTests: TestCase {
             return true
         }
 
-        let saveExpectation = expectation(withDescription: #function)
+        let saveExpectation = expectation(description: #function)
 
         // WHEN: we attempt to save the context asynchronously
         saveContext(inMemoryStack.backgroundContext, wait: false) { result in
@@ -275,7 +275,7 @@ final class SaveTests: TestCase {
         }
 
         // THEN: then the main and background contexts are saved and the completion handler is called
-        waitForExpectations(withTimeout: defaultTimeout, handler: { (error) -> Void in
+        waitForExpectations(timeout: defaultTimeout, handler: { (error) -> Void in
             XCTAssertNil(error, "Expectation should not error")
             XCTAssertTrue(didSaveBackground, "Background context should be saved")
             XCTAssertTrue(didUpdateMain, "Main context should be updated")

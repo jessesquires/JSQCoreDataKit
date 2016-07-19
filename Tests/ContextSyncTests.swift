@@ -54,7 +54,7 @@ final class ContextSyncTests: TestCase {
             XCTAssertTrue(result == .success)
         }
 
-        waitForExpectations(withTimeout: defaultTimeout) { (error) in
+        waitForExpectations(timeout: defaultTimeout) { (error) in
             XCTAssertNil(error, "Expectation should not error")
         }
 
@@ -81,7 +81,7 @@ final class ContextSyncTests: TestCase {
             XCTAssertTrue(result == .success)
         }
 
-        waitForExpectations(withTimeout: defaultTimeout) { (error) in
+        waitForExpectations(timeout: defaultTimeout) { (error) in
             XCTAssertNil(error, "Expectation should not error")
         }
 
@@ -108,7 +108,7 @@ final class ContextSyncTests: TestCase {
             XCTAssertTrue(result == .success)
         }
 
-        waitForExpectations(withTimeout: defaultTimeout) { (error) in
+        waitForExpectations(timeout: defaultTimeout) { (error) in
             XCTAssertNil(error, "Expectation should not error")
         }
 
@@ -135,7 +135,7 @@ final class ContextSyncTests: TestCase {
             XCTAssertTrue(result == .success)
         }
 
-        waitForExpectations(withTimeout: defaultTimeout) { (error) in
+        waitForExpectations(timeout: defaultTimeout) { (error) in
             XCTAssertNil(error, "Expectation should not error")
         }
 

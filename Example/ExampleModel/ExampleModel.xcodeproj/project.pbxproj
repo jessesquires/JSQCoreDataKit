@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		29DD1F121C8C55F4006091A9 /* Version1_to_Version2.xcmappingmodel in Sources */ = {isa = PBXBuildFile; fileRef = 29DD1F111C8C55F4006091A9 /* Version1_to_Version2.xcmappingmodel */; };
 		29DD1F141C8C8D5B006091A9 /* Version2_to_Version3.xcmappingmodel in Sources */ = {isa = PBXBuildFile; fileRef = 29DD1F131C8C8D5B006091A9 /* Version2_to_Version3.xcmappingmodel */; };
+		8852A0DE1D459566006538B9 /* JSQCoreDataKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8852A0DD1D459566006538B9 /* JSQCoreDataKit.framework */; };
+		8852A0E01D459577006538B9 /* JSQCoreDataKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8852A0DF1D459577006538B9 /* JSQCoreDataKit.framework */; };
 		8853944E1BC9EA0300699506 /* ExampleModel.h in Headers */ = {isa = PBXBuildFile; fileRef = 8853944D1BC9EA0300699506 /* ExampleModel.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		885394661BC9EAB100699506 /* ExampleModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 885394641BC9EAB100699506 /* ExampleModel.xcdatamodeld */; };
 		8853946C1BC9EB7900699506 /* Employee.swift in Sources */ = {isa = PBXBuildFile; fileRef = 885394681BC9EB7900699506 /* Employee.swift */; };
@@ -28,6 +30,8 @@
 		297C7D2B1C710242008E516B /* Version 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Version 2.xcdatamodel"; sourceTree = "<group>"; };
 		29DD1F111C8C55F4006091A9 /* Version1_to_Version2.xcmappingmodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcmappingmodel; path = Version1_to_Version2.xcmappingmodel; sourceTree = "<group>"; };
 		29DD1F131C8C8D5B006091A9 /* Version2_to_Version3.xcmappingmodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcmappingmodel; path = Version2_to_Version3.xcmappingmodel; sourceTree = "<group>"; };
+		8852A0DD1D459566006538B9 /* JSQCoreDataKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JSQCoreDataKit.framework; path = "../../../../Library/Developer/Xcode/DerivedData/ExampleApp-abwupkihcodudlapwplycmvuyklq/Build/Products/Debug-iphonesimulator/JSQCoreDataKit.framework"; sourceTree = "<group>"; };
+		8852A0DF1D459577006538B9 /* JSQCoreDataKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JSQCoreDataKit.framework; path = "../../../../Library/Developer/Xcode/DerivedData/ExampleApp-abwupkihcodudlapwplycmvuyklq/Build/Products/Debug/JSQCoreDataKit.framework"; sourceTree = "<group>"; };
 		8853944A1BC9EA0300699506 /* ExampleModel.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ExampleModel.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8853944D1BC9EA0300699506 /* ExampleModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ExampleModel.h; sourceTree = "<group>"; };
 		8853944F1BC9EA0300699506 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -43,6 +47,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8852A0DE1D459566006538B9 /* JSQCoreDataKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -50,17 +55,28 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8852A0E01D459577006538B9 /* JSQCoreDataKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8852A0DC1D459566006538B9 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				8852A0DF1D459577006538B9 /* JSQCoreDataKit.framework */,
+				8852A0DD1D459566006538B9 /* JSQCoreDataKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		885394401BC9EA0300699506 = {
 			isa = PBXGroup;
 			children = (
 				8853944C1BC9EA0300699506 /* ExampleModel */,
 				8853944B1BC9EA0300699506 /* Products */,
+				8852A0DC1D459566006538B9 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};

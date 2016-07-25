@@ -18,24 +18,29 @@
 
 import Foundation
 import CoreData
+import JSQCoreDataKit
 
+public final class Company: NSManagedObject, CoreDataEntityProtocol {
 
-public final class Company: NSManagedObject {
+    // MARK: CoreDataEntityProtocol
 
-    static public let entityName = "Company"
+    public static let defaultSortDescriptors = [SortDescriptor(key: "profits", ascending: true),
+                                                SortDescriptor(key: "name", ascending: true) ]
+
+    // MARK: Properties
 
     @NSManaged public var name: String
     @NSManaged public var dateFounded: Date
     @NSManaged public var profits: NSDecimalNumber
     @NSManaged public var employees: NSSet
 
+    // MARK: Init
+
     public init(context: NSManagedObjectContext,
                 name: String,
                 dateFounded: Date,
                 profits: NSDecimalNumber) {
-        let entity = NSEntityDescription.entity(forEntityName: Company.entityName, in: context)!
-        super.init(entity: entity, insertInto: context)
-
+        super.init(entity: Company.entity(context: context), insertInto: context)
         self.name = name
         self.dateFounded = dateFounded
         self.profits = profits
@@ -43,7 +48,6 @@ public final class Company: NSManagedObject {
 
     public class func newCompany(_ context: NSManagedObjectContext) -> Company {
         let name = "Company " + String(UUID().uuidString.characters.split { $0 == "-" }.first!)
-
         return Company(context: context,
                        name: name,
                        dateFounded: Date.distantPast,

@@ -69,15 +69,8 @@ final class CompanyViewController: UITableViewController, NSFetchedResultsContro
 
     // MARK: Helpers
 
-    func fetchRequest(_ context: NSManagedObjectContext) -> NSFetchRequest<Company> {
-        let fetch = NSFetchRequest<Company>(entityName: Company.entityName)
-        fetch.sortDescriptors = [SortDescriptor(key: "name", ascending: true)]
-        return fetch
-    }
-
     func setupFRC() {
-        let request = fetchRequest(stack.mainContext)
-        frc = NSFetchedResultsController(fetchRequest: request,
+        frc = NSFetchedResultsController(fetchRequest: Company.fetchRequest,
                                          managedObjectContext: stack.mainContext,
                                          sectionNameKeyPath: nil,
                                          cacheName: nil)
@@ -122,10 +115,8 @@ final class CompanyViewController: UITableViewController, NSFetchedResultsContro
         let backgroundChildContext = stack.childContext(concurrencyType: .privateQueueConcurrencyType)
 
         backgroundChildContext.performAndWait {
-            let request = self.fetchRequest(backgroundChildContext)
-
             do {
-                let objects = try backgroundChildContext.fetch(request)
+                let objects = try backgroundChildContext.fetch(Company.fetchRequest)
                 for each in objects {
                     backgroundChildContext.delete(each)
                 }

@@ -51,12 +51,9 @@ final class EmployeeViewController: UITableViewController, NSFetchedResultsContr
 
     @IBAction func didTapTrashButton(_ sender: UIBarButtonItem) {
         let backgroundChildContext = stack.childContext()
-
         backgroundChildContext.performAndWait {
-            let request = self.fetchRequest(backgroundChildContext)
-
             do {
-                let objects = try backgroundChildContext.fetch(request)
+                let objects = try backgroundChildContext.fetch(self.fetchRequest())
                 for each in objects {
                     backgroundChildContext.delete(each)
                 }
@@ -70,16 +67,14 @@ final class EmployeeViewController: UITableViewController, NSFetchedResultsContr
 
     // MARK: Helpers
 
-    func fetchRequest(_ context: NSManagedObjectContext) -> NSFetchRequest<Employee> {
-        let fetch = NSFetchRequest<Employee>(entityName: Employee.entityName)
+    func fetchRequest() -> NSFetchRequest<Employee> {
+        let fetch = Employee.fetchRequest
         fetch.predicate = Predicate(format: "company == %@", company)
-        fetch.sortDescriptors = [SortDescriptor(key: "name", ascending: true)]
         return fetch
     }
 
     func setupFRC() {
-        let request = fetchRequest(stack.mainContext)
-        frc = NSFetchedResultsController(fetchRequest: request,
+        frc = NSFetchedResultsController(fetchRequest: fetchRequest(),
                                          managedObjectContext: stack.mainContext,
                                          sectionNameKeyPath: nil,
                                          cacheName: nil)

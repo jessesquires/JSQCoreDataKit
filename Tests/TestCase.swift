@@ -70,18 +70,20 @@ class TestCase: XCTestCase {
 
     // MARK: Helpers
 
+    @discardableResult
     func generateDataInContext(_ context: NSManagedObjectContext,
                                companiesCount: Int = Int(arc4random_uniform(10)),
                                employeesCount: Int = Int(arc4random_uniform(1_000))) -> [Company] {
         let companies = generateCompaniesInContext(context, count: companiesCount)
 
         companies.forEach { c in
-            _ = generateEmployeesInContext(context, company: c, count: employeesCount)
+            generateEmployeesInContext(context, company: c, count: employeesCount)
         }
 
         return companies
     }
 
+    @discardableResult
     func generateCompaniesInContext(_ context: NSManagedObjectContext, count: Int) -> [Company] {
         var companies = [Company]()
 
@@ -93,6 +95,7 @@ class TestCase: XCTestCase {
         return companies
     }
 
+    @discardableResult
     func generateEmployeesInContext(_ context: NSManagedObjectContext, company: Company? = nil, count: Int) -> [Employee] {
         var employees = [Employee]()
 

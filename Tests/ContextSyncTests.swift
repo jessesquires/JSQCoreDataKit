@@ -30,7 +30,9 @@ final class ContextSyncTests: TestCase {
     func test_ThatUnsavedChangesFromChildContext_DoNotPropogate() {
         // GIVEN: objects in a child context
         let childContext = inMemoryStack.childContext()
-        _ = generateDataInContext(childContext, companiesCount: 3, employeesCount: 3)
+        childContext.performAndWait {
+            self.generateDataInContext(childContext, companiesCount: 3, employeesCount: 3)
+        }
 
         // WHEN: we do not save the child context
 
@@ -44,7 +46,11 @@ final class ContextSyncTests: TestCase {
 
     func test_ThatChangesPropagate_FromMainContext_ToBackgroundContext() {
         // GIVEN: objects in the main context
-        let companies = generateDataInContext(inMemoryStack.mainContext, companiesCount:3, employeesCount:3)
+        let context = inMemoryStack.mainContext
+        var companies = [Company]()
+        context.performAndWait {
+            companies = self.generateDataInContext(context, companiesCount:3, employeesCount:3)
+        }
         let companyNames = companies.map { $0.name }
 
         // WHEN: we save the main context
@@ -71,7 +77,11 @@ final class ContextSyncTests: TestCase {
 
     func test_ThatChangesPropagate_FromBackgroundContext_ToMainContext() {
         // GIVEN: objects in the background context
-        let companies = generateDataInContext(inMemoryStack.backgroundContext, companiesCount: 3, employeesCount: 3)
+        let context = inMemoryStack.backgroundContext
+        var companies = [Company]()
+        context.performAndWait {
+            companies = self.generateDataInContext(context, companiesCount: 3, employeesCount: 3)
+        }
         let companyNames = companies.map { $0.name }
 
         // WHEN: we save the background context
@@ -99,7 +109,10 @@ final class ContextSyncTests: TestCase {
     func test_ThatChangesPropagate_FromChildContext_ToMainContext() {
         // GIVEN: objects in a child context
         let childContext = inMemoryStack.childContext(concurrencyType: .mainQueueConcurrencyType)
-        let companies = generateDataInContext(childContext, companiesCount: 3, employeesCount: 3)
+        var companies = [Company]()
+        childContext.performAndWait {
+            companies = self.generateDataInContext(childContext, companiesCount: 3, employeesCount: 3)
+        }
         let companyNames = companies.map { $0.name }
 
         // WHEN: we save the child context
@@ -126,7 +139,10 @@ final class ContextSyncTests: TestCase {
     func test_ThatChangesPropagate_FromChildContext_ToBackgroundContext() {
         // GIVEN: objects in a child context
         let childContext = inMemoryStack.childContext(concurrencyType: .privateQueueConcurrencyType)
-        let companies = generateDataInContext(childContext, companiesCount: 3, employeesCount: 3)
+        var companies = [Company]()
+        childContext.performAndWait {
+            companies = self.generateDataInContext(childContext, companiesCount: 3, employeesCount: 3)
+        }
         let companyNames = companies.map { $0.name }
 
         // WHEN: we save the child context

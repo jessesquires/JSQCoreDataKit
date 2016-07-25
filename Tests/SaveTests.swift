@@ -42,20 +42,23 @@ final class SaveTests: TestCase {
 
     func test_ThatSaveAndWait_WithChangesSucceeds_CompletionHandlerIsCalled() {
         // GIVEN: a stack and context with changes
-        _ = generateCompaniesInContext(inMemoryStack.mainContext, count: 3)
+        let context = inMemoryStack.mainContext
+        context.performAndWait {
+            self.generateCompaniesInContext(context, count: 3)
+        }
 
         var didSaveMain = false
         expectation(forNotification: Notification.Name.NSManagedObjectContextDidSave.rawValue,
                     object: inMemoryStack.mainContext) { (notification) -> Bool in
-            didSaveMain = true
-            return true
+                        didSaveMain = true
+                        return true
         }
 
         var didUpdateBackground = false
         expectation(forNotification: Notification.Name.NSManagedObjectContextObjectsDidChange.rawValue,
                     object: inMemoryStack.backgroundContext) { (notification) -> Bool in
-            didUpdateBackground = true
-            return true
+                        didUpdateBackground = true
+                        return true
         }
 
         let saveExpectation = expectation(description: #function)
@@ -78,20 +81,23 @@ final class SaveTests: TestCase {
 
     func test_ThatSaveAndWait_WithChanges_WithoutCompletionClosure_Succeeds() {
         // GIVEN: a stack and context with changes
-        _ = generateCompaniesInContext(inMemoryStack.mainContext, count: 3)
+        let context = inMemoryStack.mainContext
+        context.performAndWait {
+            self.generateCompaniesInContext(context, count: 3)
+        }
 
         var didSaveMain = false
         expectation(forNotification: Notification.Name.NSManagedObjectContextDidSave.rawValue,
                     object: inMemoryStack.mainContext) { (notification) -> Bool in
-            didSaveMain = true
-            return true
+                        didSaveMain = true
+                        return true
         }
 
         var didUpdateBackground = false
         expectation(forNotification: Notification.Name.NSManagedObjectContextObjectsDidChange.rawValue,
                     object: inMemoryStack.backgroundContext) { (notification) -> Bool in
-            didUpdateBackground = true
-            return true
+                        didUpdateBackground = true
+                        return true
         }
 
         // WHEN: we attempt to save the context
@@ -122,20 +128,23 @@ final class SaveTests: TestCase {
 
     func test_ThatSaveAsync_WithChanges_Succeeds() {
         // GIVEN: a stack and context with changes
-        _ = generateCompaniesInContext(inMemoryStack.mainContext, count: 3)
+        let context = inMemoryStack.mainContext
+        context.performAndWait {
+            self.generateCompaniesInContext(context, count: 3)
+        }
 
         var didSaveMain = false
         expectation(forNotification: Notification.Name.NSManagedObjectContextDidSave.rawValue,
                     object: inMemoryStack.mainContext) { (notification) -> Bool in
-            didSaveMain = true
-            return true
+                        didSaveMain = true
+                        return true
         }
 
         var didUpdateBackground = false
         expectation(forNotification: Notification.Name.NSManagedObjectContextObjectsDidChange.rawValue,
                     object: inMemoryStack.backgroundContext) { (notification) -> Bool in
-            didUpdateBackground = true
-            return true
+                        didUpdateBackground = true
+                        return true
         }
 
         let saveExpectation = expectation(description: #function)
@@ -159,27 +168,29 @@ final class SaveTests: TestCase {
     func test_ThatSavingChildContext_SucceedsAndSavesParentMainContext() {
         // GIVEN: a stack and child context with changes
         let childContext = inMemoryStack.childContext(concurrencyType: .mainQueueConcurrencyType)
-        _ = generateCompaniesInContext(childContext, count: 3)
+        childContext.performAndWait {
+            self.generateCompaniesInContext(childContext, count: 3)
+        }
 
         var didSaveChild = false
         expectation(forNotification: Notification.Name.NSManagedObjectContextDidSave.rawValue,
                     object: childContext) { (notification) -> Bool in
-            didSaveChild = true
-            return true
+                        didSaveChild = true
+                        return true
         }
 
         var didSaveMain = false
         expectation(forNotification: Notification.Name.NSManagedObjectContextDidSave.rawValue,
                     object: inMemoryStack.mainContext) { (notification) -> Bool in
-            didSaveMain = true
-            return true
+                        didSaveMain = true
+                        return true
         }
 
         var didUpdateBackground = false
         expectation(forNotification: Notification.Name.NSManagedObjectContextObjectsDidChange.rawValue,
                     object: inMemoryStack.backgroundContext) { (notification) -> Bool in
-            didUpdateBackground = true
-            return true
+                        didUpdateBackground = true
+                        return true
         }
 
         let saveExpectation = expectation(description: #function)
@@ -204,27 +215,29 @@ final class SaveTests: TestCase {
     func test_ThatSavingChildContext_SucceedsAndSavesParentBackgroundContext() {
         // GIVEN: a stack and child context with changes
         let childContext = inMemoryStack.childContext(concurrencyType: .privateQueueConcurrencyType)
-        _ = generateCompaniesInContext(childContext, count: 3)
+        childContext.performAndWait {
+            self.generateCompaniesInContext(childContext, count: 3)
+        }
 
         var didSaveChild = false
         expectation(forNotification: Notification.Name.NSManagedObjectContextDidSave.rawValue,
                     object: childContext) { (notification) -> Bool in
-            didSaveChild = true
-            return true
+                        didSaveChild = true
+                        return true
         }
 
         var didSaveBackground = false
         expectation(forNotification: Notification.Name.NSManagedObjectContextDidSave.rawValue,
                     object: inMemoryStack.backgroundContext) { (notification) -> Bool in
-            didSaveBackground = true
-            return true
+                        didSaveBackground = true
+                        return true
         }
 
         var didUpdateMain = false
         expectation(forNotification: Notification.Name.NSManagedObjectContextObjectsDidChange.rawValue,
                     object: inMemoryStack.mainContext) { (notification) -> Bool in
-            didUpdateMain = true
-            return true
+                        didUpdateMain = true
+                        return true
         }
 
         let saveExpectation = expectation(description: #function)
@@ -248,20 +261,23 @@ final class SaveTests: TestCase {
 
     func test_ThatSavingBackgroundContext_SucceedsAndUpdateMainContext() {
         // GIVEN: a stack and context with changes
-        _ = generateCompaniesInContext(inMemoryStack.backgroundContext, count: 3)
+        let context = inMemoryStack.backgroundContext
+        context.performAndWait {
+            self.generateCompaniesInContext(context, count: 3)
+        }
 
         var didSaveBackground = false
         expectation(forNotification: Notification.Name.NSManagedObjectContextDidSave.rawValue,
                     object: inMemoryStack.backgroundContext) { (notification) -> Bool in
-            didSaveBackground = true
-            return true
+                        didSaveBackground = true
+                        return true
         }
 
         var didUpdateMain = false
         expectation(forNotification: Notification.Name.NSManagedObjectContextObjectsDidChange.rawValue,
                     object: inMemoryStack.mainContext) { (notification) -> Bool in
-            didUpdateMain = true
-            return true
+                        didUpdateMain = true
+                        return true
         }
 
         let saveExpectation = expectation(description: #function)

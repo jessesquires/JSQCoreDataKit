@@ -27,7 +27,7 @@ public protocol CoreDataEntityProtocol: class {
     static var entityName: String { get }
 
     /// The default sort descriptors for a fetch request.
-    static var defaultSortDescriptors: [SortDescriptor] { get }
+    static var defaultSortDescriptors: [NSSortDescriptor] { get }
 }
 
 

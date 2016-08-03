@@ -44,10 +44,10 @@ internal func defaultDirectoryURL() -> URL {
             let searchPathDirectory = FileManager.SearchPathDirectory.documentDirectory
         #endif
 
-        return try FileManager.default.urlForDirectory(searchPathDirectory,
-                                                         in: .userDomainMask,
-                                                         appropriateFor: nil,
-                                                         create: true)
+        return try FileManager.default.url(for: searchPathDirectory,
+                                           in: .userDomainMask,
+                                           appropriateFor: nil,
+                                           create: true)
     }
     catch {
         fatalError("*** Error finding default directory: \(error)")

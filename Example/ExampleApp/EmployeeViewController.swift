@@ -69,7 +69,7 @@ final class EmployeeViewController: UITableViewController, NSFetchedResultsContr
 
     func fetchRequest() -> NSFetchRequest<Employee> {
         let fetch = Employee.fetchRequest
-        fetch.predicate = Predicate(format: "company == %@", company)
+        fetch.predicate = NSPredicate(format: "company == %@", company)
         return fetch
     }
 

@@ -23,7 +23,7 @@ import Foundation
 /**
  An error type that specifies possible errors that are thrown by calling `CoreDataModel.migrate() throws`.
  */
-public enum MigrationError: ErrorProtocol {
+public enum MigrationError: Error {
 
     /**
      Specifies that the `NSManagedObjectModel` corresponding to the existing persistent store was not found in the model's bundle.
@@ -71,7 +71,7 @@ extension CoreDataModel {
                                                             destinationModel: managedObjectModel)
 
         for step in migrationSteps {
-            let tempURL = try! storeDirectory.appendingPathComponent("migration." + ModelFileExtension.sqlite.rawValue)
+            let tempURL = storeDirectory.appendingPathComponent("migration." + ModelFileExtension.sqlite.rawValue)
 
             // could throw error from `migrateStoreFromURL`
             let manager = NSMigrationManager(sourceModel: step.source, destinationModel: step.destination)
@@ -113,9 +113,8 @@ internal func findCompatibleModel(withBundle bundle: Bundle,
 
 
 internal func findModelsInBundle(_ bundle: Bundle) -> [NSManagedObjectModel] {
-    guard let modelBundleDirectoryURLs = bundle.urlsForResources(withExtension: ModelFileExtension.bundle.rawValue,
-                                                                 subdirectory: nil) else {
-                                                                    return []
+    guard let modelBundleDirectoryURLs = bundle.urls(forResourcesWithExtension: ModelFileExtension.bundle.rawValue, subdirectory: nil) else {
+        return []
     }
 
     let modelBundleDirectoryNames = modelBundleDirectoryURLs.flatMap { url -> String? in
@@ -123,7 +122,7 @@ internal func findModelsInBundle(_ bundle: Bundle) -> [NSManagedObjectModel] {
     }
 
     let modelVersionFileURLs = modelBundleDirectoryNames.flatMap { name -> [URL]? in
-        bundle.urlsForResources(withExtension: ModelFileExtension.versionedFile.rawValue, subdirectory: name)
+        bundle.urls(forResourcesWithExtension: ModelFileExtension.versionedFile.rawValue, subdirectory: name)
     }
 
     let managedObjectModels = Array(modelVersionFileURLs.flatten()).flatMap { url -> NSManagedObjectModel? in

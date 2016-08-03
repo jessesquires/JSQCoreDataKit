@@ -141,7 +141,7 @@ public final class CoreDataStack: CustomStringConvertible, Equatable {
 
      - parameter completion: The closure to be called once resetting is complete. This is called on the main queue.
      */
-    public func reset(onQueue queue: DispatchQueue = .global(attributes: .qosUserInitiated),
+    public func reset(onQueue queue: DispatchQueue = .global(qos: .userInitiated),
                       completion: (result: StackResult) -> Void) {
 
         mainContext.performAndWait { self.mainContext.reset() }

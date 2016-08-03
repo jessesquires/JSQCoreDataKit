@@ -59,7 +59,7 @@ final class CompanyViewController: UITableViewController, NSFetchedResultsContro
 
     override func prepare(for segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "segue" {
-            let employeeVC = segue.destinationViewController as! EmployeeViewController
+            let employeeVC = segue.destination as! EmployeeViewController
             let company = frc.object(at: tableView.indexPathForSelectedRow!)
             employeeVC.stack = stack
             employeeVC.company = company

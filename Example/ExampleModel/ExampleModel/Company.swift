@@ -24,8 +24,8 @@ public final class Company: NSManagedObject, CoreDataEntityProtocol {
 
     // MARK: CoreDataEntityProtocol
 
-    public static let defaultSortDescriptors = [SortDescriptor(key: "profits", ascending: true),
-                                                SortDescriptor(key: "name", ascending: true) ]
+    public static let defaultSortDescriptors = [NSSortDescriptor(key: "profits", ascending: true),
+                                                NSSortDescriptor(key: "name", ascending: true) ]
 
     // MARK: Properties
 

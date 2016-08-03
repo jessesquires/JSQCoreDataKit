@@ -24,7 +24,7 @@ public final class Employee: NSManagedObject, CoreDataEntityProtocol {
 
     // MARK: CoreDataEntityProtocol
 
-    public static let defaultSortDescriptors = [ SortDescriptor(key: "name", ascending: true) ]
+    public static let defaultSortDescriptors = [ NSSortDescriptor(key: "name", ascending: true) ]
 
     // MARK: Properties
 

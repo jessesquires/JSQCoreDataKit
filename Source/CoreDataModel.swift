@@ -64,14 +64,14 @@ public struct CoreDataModel: Equatable {
      */
     public var storeURL: URL? {
         get {
-            return try! storeType.storeDirectory()?.appendingPathComponent(databaseFileName)
+            return storeType.storeDirectory()?.appendingPathComponent(databaseFileName)
         }
     }
 
     /// The file URL specifying the model file in the bundle specified by `bundle`.
     public var modelURL: URL {
         get {
-            guard let url = bundle.urlForResource(name, withExtension: ModelFileExtension.bundle.rawValue) else {
+            guard let url = bundle.url(forResource: name, withExtension: ModelFileExtension.bundle.rawValue) else {
                 fatalError("*** Error loading model URL for model named \(name) in bundle: \(bundle)")
             }
             return url

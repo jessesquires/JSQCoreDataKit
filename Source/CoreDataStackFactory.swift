@@ -76,7 +76,7 @@ public struct CoreDataStackFactory: Equatable {
      If a queue is provided, this is called asynchronously on the main queue.
      Otherwise, this is executed on the thread from which the method was originally called.
      */
-    public func createStack(onQueue queue: DispatchQueue? = .global(attributes: .qosUserInitiated),
+    public func createStack(onQueue queue: DispatchQueue? = .global(qos: .userInitiated),
                             completion: (result: StackResult) -> Void) {
         let isAsync = (queue != nil)
 

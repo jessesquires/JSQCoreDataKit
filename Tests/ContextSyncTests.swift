@@ -35,7 +35,7 @@ class ContextSyncTests: TestCase {
         // WHEN: we do not save the child context
 
         // WHEN: we fetch the objects from the main context
-        let request = FetchRequest<Company>(entity: entity(name: Company.entityName, context: inMemoryStack.mainContext))
+        let request = FetchRequest<Company>(context: inMemoryStack.mainContext)
         let results = [Company]()
         try! inMemoryStack.mainContext.fetch(request: request)
 
@@ -60,7 +60,7 @@ class ContextSyncTests: TestCase {
         }
 
         // WHEN: we fetch the objects in the background context
-        let request = FetchRequest<Company>(entity: entity(name: Company.entityName, context: inMemoryStack.backgroundContext))
+        let request = FetchRequest<Company>(context: inMemoryStack.backgroundContext)
         let results = try! inMemoryStack.backgroundContext.fetch(request: request)
 
         // THEN: the background context returns the objects
@@ -87,7 +87,7 @@ class ContextSyncTests: TestCase {
         }
 
         // WHEN: we fetch the objects from the main context
-        let request = FetchRequest<Company>(entity: entity(name: Company.entityName, context: inMemoryStack.mainContext))
+        let request = FetchRequest<Company>(context: inMemoryStack.mainContext)
         let results = try! inMemoryStack.mainContext.fetch(request: request)
 
         // THEN: the main context returns the objects
@@ -114,7 +114,7 @@ class ContextSyncTests: TestCase {
         }
 
         // WHEN: we fetch the objects from the main context
-        let request = FetchRequest<Company>(entity: entity(name: Company.entityName, context: inMemoryStack.mainContext))
+        let request = FetchRequest<Company>(context: inMemoryStack.mainContext)
         let results = try! inMemoryStack.mainContext.fetch(request: request)
 
         // THEN: the main context returns the objects
@@ -141,7 +141,7 @@ class ContextSyncTests: TestCase {
         }
 
         // WHEN: we fetch the objects from the background context
-        let request = FetchRequest<Company>(entity: entity(name: Company.entityName, context: inMemoryStack.backgroundContext))
+        let request = FetchRequest<Company>(context: inMemoryStack.backgroundContext)
         let results = try! inMemoryStack.backgroundContext.fetch(request: request)
 
         // THEN: the background context returns the objects

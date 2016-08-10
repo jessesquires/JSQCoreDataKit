@@ -35,7 +35,7 @@ class FetchTests: TestCase {
         generateEmployeesInContext(stack.mainContext, company: nil, count: count)
 
         // WHEN: we execute a fetch request
-        let request = FetchRequest<Employee>(entity: entity(name: Employee.entityName, context: stack.mainContext))
+        let request = FetchRequest<Employee>(context: stack.mainContext)
         let results = try! stack.mainContext.fetch(request: request)
 
         // THEN: we receive the expected data
@@ -55,7 +55,7 @@ class FetchTests: TestCase {
         let myEmployee = Employee.newEmployee(stack.mainContext)
 
         // WHEN: we execute a fetch request for the specific object
-        let request = FetchRequest<Employee>(entity: entity(name: Employee.entityName, context: stack.mainContext))
+        let request = FetchRequest<Employee>(context: stack.mainContext)
         request.predicate = NSPredicate(format: "name == %@", myEmployee.name)
 
         let results = try! stack.mainContext.fetch(request: request)
@@ -74,7 +74,7 @@ class FetchTests: TestCase {
         let stack = self.inMemoryStack
 
         // WHEN: we execute a fetch request
-        let request = FetchRequest<Employee>(entity: entity(name: Employee.entityName, context: stack.mainContext))
+        let request = FetchRequest<Employee>(context: stack.mainContext)
         let results = try! stack.mainContext.fetch(request: request)
 
         // THEN: we receive the expected data

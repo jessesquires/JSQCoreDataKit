@@ -85,7 +85,7 @@ class ResetStackTests: TestCase {
         saveContext(stack.mainContext)
 
         var error: NSError?
-        let request = FetchRequest<Company>(entity: entity(name: Company.entityName, context: stack.mainContext))
+        let request = FetchRequest<Company>(context: stack.mainContext)
 
         let objectsBefore = stack.mainContext.countForFetchRequest(request, error: &error)
         XCTAssertNil(error)

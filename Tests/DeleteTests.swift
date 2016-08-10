@@ -34,7 +34,7 @@ class DeleteTests: TestCase {
         let count = 10
         let objects = generateEmployeesInContext(stack.mainContext, company: nil, count: count)
 
-        let request = FetchRequest<Employee>(entity: entity(name: Employee.entityName, context: stack.mainContext))
+        let request = FetchRequest<Employee>(context: stack.mainContext)
         let results = try! stack.mainContext.fetch(request: request)
         XCTAssertEqual(results.count, count)
 
@@ -60,11 +60,11 @@ class DeleteTests: TestCase {
         generateEmployeesInContext(stack.mainContext, company: nil, count: count - 1)
         let myEmployee = Employee.newEmployee(stack.mainContext)
 
-        let request = FetchRequest<Employee>(entity: entity(name: Employee.entityName, context: stack.mainContext))
+        let request = FetchRequest<Employee>(context: stack.mainContext)
         let results = try! stack.mainContext.fetch(request: request)
         XCTAssertEqual(results.count, count, "Fetch should return all \(count) objects")
 
-        let requestForObject = FetchRequest<Employee>(entity: entity(name: Employee.entityName, context: stack.mainContext))
+        let requestForObject = FetchRequest<Employee>(context: stack.mainContext)
         requestForObject.predicate = NSPredicate(format: "name == %@", myEmployee.name)
 
         let resultForObject = try! stack.mainContext.fetch(request: requestForObject)

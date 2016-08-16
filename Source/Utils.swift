@@ -30,8 +30,8 @@ public typealias PersistentStoreOptions = [NSObject : AnyObject]
 
 /// Describes default persistent store options.
 public let defaultStoreOptions: PersistentStoreOptions = [
-    NSMigratePersistentStoresAutomaticallyOption: true,
-    NSInferMappingModelAutomaticallyOption: true
+    NSMigratePersistentStoresAutomaticallyOption as NSObject: true as AnyObject,
+    NSInferMappingModelAutomaticallyOption as NSObject: true as AnyObject
 ]
 
 // MARK: Internal

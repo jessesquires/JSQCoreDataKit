@@ -125,7 +125,7 @@ internal func findModelsInBundle(_ bundle: Bundle) -> [NSManagedObjectModel] {
         bundle.urls(forResourcesWithExtension: ModelFileExtension.versionedFile.rawValue, subdirectory: name)
     }
 
-    let managedObjectModels = Array(modelVersionFileURLs.flatten()).flatMap { url -> NSManagedObjectModel? in
+    let managedObjectModels = Array(modelVersionFileURLs.joined()).flatMap { url -> NSManagedObjectModel? in
         NSManagedObjectModel(contentsOf: url)
     }
 

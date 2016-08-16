@@ -142,14 +142,14 @@ public final class CoreDataStack: CustomStringConvertible, Equatable {
      - parameter completion: The closure to be called once resetting is complete. This is called on the main queue.
      */
     public func reset(onQueue queue: DispatchQueue = .global(qos: .userInitiated),
-                      completion: (result: StackResult) -> Void) {
+                      completion: @escaping (StackResult) -> Void) {
 
         mainContext.performAndWait { self.mainContext.reset() }
         backgroundContext.performAndWait { self.backgroundContext.reset() }
 
         guard let store = storeCoordinator.persistentStores.first else {
             DispatchQueue.main.async {
-                completion(result: .success(self))
+                completion(.success(self))
             }
             return
         }
@@ -172,13 +172,13 @@ public final class CoreDataStack: CustomStringConvertible, Equatable {
                 }
                 catch {
                     DispatchQueue.main.async {
-                        completion(result: .failure(error as NSError))
+                        completion(.failure(error as NSError))
                     }
                     return
                 }
 
                 DispatchQueue.main.async {
-                    completion(result: .success(self))
+                    completion(.success(self))
                 }
             }
         }

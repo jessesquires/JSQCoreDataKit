@@ -223,14 +223,12 @@ final class MigrationTests: TestCase {
 
     func createSQLitePersistentStore(_ managedObjectModel: NSManagedObjectModel) -> NSPersistentStore {
         let coordinator = NSPersistentStoreCoordinator(managedObjectModel: managedObjectModel)
-        let storeURL = try! defaultDirectoryURL().appendingPathComponent("\(modelName)." + ModelFileExtension.sqlite.rawValue)
-
+        let storeURL = defaultDirectoryURL().appendingPathComponent("\(modelName)." + ModelFileExtension.sqlite.rawValue)
         return try! coordinator.addPersistentStore(ofType: NSSQLiteStoreType, configurationName: nil, at: storeURL, options: nil)
     }
 
     func managedObjectModel(versionName: String) -> NSManagedObjectModel {
-        let modelURL = try! model.modelURL.appendingPathComponent("\(versionName).\(ModelFileExtension.versionedFile.rawValue)")
-
+        let modelURL = model.modelURL.appendingPathComponent("\(versionName).\(ModelFileExtension.versionedFile.rawValue)")
         guard let result = NSManagedObjectModel(contentsOf: modelURL) else {
             preconditionFailure("Model with given name not found in bundle or is invalid.")
         }
@@ -238,10 +236,9 @@ final class MigrationTests: TestCase {
     }
 
     func mappingModel(name: String) -> NSMappingModel {
-        guard let mappingModelURL = model.bundle.urlForResource(name, withExtension: ModelFileExtension.mapping.rawValue) else {
+        guard let mappingModelURL = model.bundle.url(forResource: name, withExtension: ModelFileExtension.mapping.rawValue) else {
             preconditionFailure("Mapping model named \(name) not found in bundle.")
         }
-        
         guard let result = NSMappingModel(contentsOf: mappingModelURL) else {
             preconditionFailure("Mapping model named \(name) is invalid.")
         }

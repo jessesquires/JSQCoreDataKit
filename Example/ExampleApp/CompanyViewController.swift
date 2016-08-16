@@ -57,7 +57,7 @@ final class CompanyViewController: UITableViewController, NSFetchedResultsContro
 
     // MARK: Segues
 
-    override func prepare(for segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "segue" {
             let employeeVC = segue.destination as! EmployeeViewController
             let company = frc.object(at: tableView.indexPathForSelectedRow!)
@@ -194,7 +194,7 @@ final class CompanyViewController: UITableViewController, NSFetchedResultsContro
     }
 
     func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>,
-                    didChange anObject: AnyObject,
+                    didChange anObject: Any,
                     at indexPath: IndexPath?,
                     for type: NSFetchedResultsChangeType,
                     newIndexPath: IndexPath?) {

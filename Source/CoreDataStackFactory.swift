@@ -77,7 +77,7 @@ public struct CoreDataStackFactory: Equatable {
      Otherwise, this is executed on the thread from which the method was originally called.
      */
     public func createStack(onQueue queue: DispatchQueue? = .global(qos: .userInitiated),
-                            completion: (result: StackResult) -> Void) {
+                            completion: @escaping (StackResult) -> Void) {
         let isAsync = (queue != nil)
 
         let creationClosure = {
@@ -87,10 +87,10 @@ public struct CoreDataStackFactory: Equatable {
             } catch {
                 if isAsync {
                     DispatchQueue.main.async {
-                        completion(result: .failure(error as NSError))
+                        completion(.failure(error as NSError))
                     }
                 } else {
-                    completion(result: .failure(error as NSError))
+                    completion(.failure(error as NSError))
                 }
                 return
             }
@@ -108,10 +108,10 @@ public struct CoreDataStackFactory: Equatable {
 
             if isAsync {
                 DispatchQueue.main.async {
-                    completion(result: .success(stack))
+                    completion(.success(stack))
                 }
             } else {
-                completion(result: .success(stack))
+                completion(.success(stack))
             }
         }
 

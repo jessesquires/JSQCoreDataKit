@@ -79,13 +79,13 @@ extension CoreDataModel {
                                             type: storeType.type,
                                             options: nil,
                                             withMappingModel: step.mapping,
-                                            toDestinationURL: tempURL!,
+                                            toDestinationURL: tempURL ?? NSURL(),
                                             destinationType: storeType.type,
                                             destinationOptions: nil)
 
             // could throw file system errors
             try removeExistingStore()
-            try NSFileManager.defaultManager().moveItemAtURL(tempURL!, toURL: storeURL)
+            try NSFileManager.defaultManager().moveItemAtURL(tempURL ?? NSURL(), toURL: storeURL)
         }
     }
 }

@@ -164,6 +164,7 @@
 					};
 					88DF3CD81CDCEA0D00726A31 = {
 						CreatedOnToolsVersion = 7.3.1;
+						LastSwiftMigration = 0800;
 					};
 				};
 			};
@@ -380,6 +381,7 @@
 				PRODUCT_NAME = ExampleModel;
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 2.3;
 			};
 			name = Debug;
 		};
@@ -402,6 +404,7 @@
 				PRODUCT_NAME = ExampleModel;
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 2.3;
 			};
 			name = Release;
 		};

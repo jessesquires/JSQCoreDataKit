@@ -84,11 +84,9 @@ class ResetStackTests: TestCase {
         generateCompaniesInContext(stack.mainContext, count: 3)
         saveContext(stack.mainContext)
 
-        var error: NSError?
         let request = FetchRequest<Company>(entity: entity(name: Company.entityName, context: stack.mainContext))
 
-        let objectsBefore = stack.mainContext.countForFetchRequest(request, error: &error)
-        XCTAssertNil(error)
+        let objectsBefore = try? stack.mainContext.countForFetchRequest(request)
         XCTAssertEqual(objectsBefore, 3)
 
         let expectation = expectationWithDescription("\(#function)")
@@ -106,8 +104,7 @@ class ResetStackTests: TestCase {
             XCTAssertNil(error, "Expectation should not error")
         }
 
-        let objectsAfter = stack.mainContext.countForFetchRequest(request, error: &error)
-        XCTAssertNil(error)
+        let objectsAfter = try? stack.mainContext.countForFetchRequest(request)
         XCTAssertEqual(objectsAfter, 0)
     }
     

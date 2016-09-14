@@ -231,7 +231,7 @@ class MigrationTests: TestCase {
     func managedObjectModel(versionName versionName: String) -> NSManagedObjectModel {
         let modelURL = model.modelURL.URLByAppendingPathComponent("\(versionName).\(ModelFileExtension.versionedFile.rawValue)")
 
-        guard let result = NSManagedObjectModel(contentsOfURL: modelURL) else {
+        guard let result = NSManagedObjectModel(contentsOfURL: modelURL!) else {
             preconditionFailure("Model with given name not found in bundle or is invalid.")
         }
         return result

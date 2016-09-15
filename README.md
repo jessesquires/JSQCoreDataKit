@@ -77,10 +77,10 @@ let factory = CoreDataStackFactory(model: model)
 let stack: CoreDataStack?
 factory.createStack { (result: StackResult) in
     switch result {
-        case .Success(let s):
+        case .success(let s):
             stack = s
 
-        case .Failure(let e):
+        case .failure(let e):
             print("Error: \(e)")
     }
 }

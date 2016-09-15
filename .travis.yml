@@ -60,7 +60,7 @@ script:
       xcodebuild clean build -project "$PROJECT" -scheme "$SCHEME" -sdk "$SDK" -destination "$DESTINATION" -configuration Debug ONLY_ACTIVE_ARCH=NO | xcpretty -c;
   fi
 
-Build for reporting test coverage
+# Build for reporting test coverage
 - if [ $RUN_TESTS == "YES" ]; then
       xcodebuild test -project JSQCoreDataKit.xcodeproj -scheme "JSQCoreDataKit-iOS" -destination "platform=iOS Simulator,name=iPhone 7";
   fi

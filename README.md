@@ -26,12 +26,12 @@ This library aims to do the following:
 
 ## Requirements
 
-* Xcode 7.3+
+* Xcode 8
+* Swift 2.3
 * iOS 8.0+
 * OSX 10.10+
 * tvOS 9.0+
 * watchOS 2.0+
-* Swift 2.2+
 
 ## Installation
 
@@ -95,10 +95,10 @@ let factory = CoreDataStackFactory(model: inMemoryModel)
 let stack: CoreDataStack?
 factory.createStack { (result: StackResult) in
     switch result {
-        case .Success(let s):
+        case .success(let s):
             stack = s
 
-        case .Failure(let e):
+        case .failure(let e):
             print("Error: \(e)")
     }
 }
@@ -109,10 +109,10 @@ factory.createStack { (result: StackResult) in
 ````swift
 saveContext(stack.mainContext) { result in
     switch result {
-        case .Success:
+        case .success:
             print("save succeeded")
 
-        case .Failure(let error):
+        case .failure(let error):
             print("save failed: \(error)")
     }
 }

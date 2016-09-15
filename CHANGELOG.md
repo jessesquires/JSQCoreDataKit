@@ -4,6 +4,13 @@ The changelog for `JSQCoreDataKit`. Also see the [releases](https://github.com/j
 
 --------------------------------------
 
+5.0.0
+-----
+
+This release closes the [5.0.0 milestone](https://github.com/jessesquires/JSQCoreDataKit/issues?q=milestone%3A5.0.0).
+
+**Swift 2.3 now required.**
+
 4.0.2
 -----
 

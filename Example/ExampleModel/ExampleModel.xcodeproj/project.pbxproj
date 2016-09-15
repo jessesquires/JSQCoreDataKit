@@ -158,9 +158,13 @@
 				TargetAttributes = {
 					885394491BC9EA0300699506 = {
 						CreatedOnToolsVersion = 7.0.1;
+						DevelopmentTeam = 5VRJU68BZ5;
+						DevelopmentTeamName = "Jesse Squires";
+						LastSwiftMigration = 0800;
 					};
 					88DF3CD81CDCEA0D00726A31 = {
 						CreatedOnToolsVersion = 7.3.1;
+						LastSwiftMigration = 0800;
 					};
 				};
 			};
@@ -335,6 +339,7 @@
 				PRODUCT_NAME = ExampleModel;
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 2.3;
 			};
 			name = Debug;
 		};
@@ -353,6 +358,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.hexedbits.ExampleModel;
 				PRODUCT_NAME = ExampleModel;
 				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 2.3;
 			};
 			name = Release;
 		};
@@ -375,6 +381,7 @@
 				PRODUCT_NAME = ExampleModel;
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 2.3;
 			};
 			name = Debug;
 		};
@@ -397,6 +404,7 @@
 				PRODUCT_NAME = ExampleModel;
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 2.3;
 			};
 			name = Release;
 		};
@@ -428,6 +436,7 @@
 				88DF3CDF1CDCEA0D00726A31 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 

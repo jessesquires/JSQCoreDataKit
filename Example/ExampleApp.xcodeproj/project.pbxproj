@@ -21,6 +21,20 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		881AEE0D1D3ACA10007FC785 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8873E29B1C51E32600DFE009 /* ExampleModel.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 88DF3CD91CDCEA0D00726A31;
+			remoteInfo = "ExampleModel-OSX";
+		};
+		881AEE141D3ACA10007FC785 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8873E2A51C51E33100DFE009 /* JSQCoreDataKit.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 88DF3CBA1CDCE89000726A31;
+			remoteInfo = "JSQCoreDataKit-OSXTests";
+		};
 		885394321BC9E9DE00699506 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 885394151BC9E9DE00699506 /* Project object */;
@@ -184,6 +198,7 @@
 			isa = PBXGroup;
 			children = (
 				8873E2A01C51E32600DFE009 /* ExampleModel.framework */,
+				881AEE0E1D3ACA10007FC785 /* ExampleModel.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -192,10 +207,11 @@
 			isa = PBXGroup;
 			children = (
 				8873E2AE1C51E33100DFE009 /* JSQCoreDataKit.framework */,
-				8873E2B01C51E33100DFE009 /* JSQCoreDataKitTests.xctest */,
+				8873E2B01C51E33100DFE009 /* JSQCoreDataKit-iOSTests.xctest */,
 				8873E2B21C51E33100DFE009 /* JSQCoreDataKit.framework */,
 				8873E2B41C51E33100DFE009 /* JSQCoreDataKit.framework */,
 				8873E2B61C51E33100DFE009 /* JSQCoreDataKit.framework */,
+				881AEE151D3ACA10007FC785 /* JSQCoreDataKit-OSXTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -247,14 +263,18 @@
 		885394151BC9E9DE00699506 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0700;
+				LastUpgradeCheck = 0800;
 				ORGANIZATIONNAME = "Hexed Bits";
 				TargetAttributes = {
 					8853941C1BC9E9DE00699506 = {
 						CreatedOnToolsVersion = 7.0.1;
+						DevelopmentTeam = 5VRJU68BZ5;
+						DevelopmentTeamName = "Jesse Squires";
+						LastSwiftMigration = 0800;
 					};
 					885394301BC9E9DE00699506 = {
 						CreatedOnToolsVersion = 7.0.1;
+						LastSwiftMigration = 0800;
 						TestTargetID = 8853941C1BC9E9DE00699506;
 					};
 				};
@@ -289,6 +309,20 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
+		881AEE0E1D3ACA10007FC785 /* ExampleModel.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = ExampleModel.framework;
+			remoteRef = 881AEE0D1D3ACA10007FC785 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		881AEE151D3ACA10007FC785 /* JSQCoreDataKit-OSXTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = "JSQCoreDataKit-OSXTests.xctest";
+			remoteRef = 881AEE141D3ACA10007FC785 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 		8873E2A01C51E32600DFE009 /* ExampleModel.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
@@ -303,10 +337,10 @@
 			remoteRef = 8873E2AD1C51E33100DFE009 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		8873E2B01C51E33100DFE009 /* JSQCoreDataKitTests.xctest */ = {
+		8873E2B01C51E33100DFE009 /* JSQCoreDataKit-iOSTests.xctest */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.cfbundle;
-			path = JSQCoreDataKitTests.xctest;
+			path = "JSQCoreDataKit-iOSTests.xctest";
 			remoteRef = 8873E2AF1C51E33100DFE009 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
@@ -498,24 +532,27 @@
 		8853943B1BC9E9DE00699506 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = ExampleApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.hexedbits.ExampleApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 2.3;
 			};
 			name = Debug;
 		};
 		8853943C1BC9E9DE00699506 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = ExampleApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.hexedbits.ExampleApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 2.3;
 			};
 			name = Release;
 		};
@@ -527,6 +564,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.hexedbits.ExampleAppTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 2.3;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ExampleApp.app/ExampleApp";
 			};
 			name = Debug;
@@ -539,6 +577,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.hexedbits.ExampleAppTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 2.3;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ExampleApp.app/ExampleApp";
 			};
 			name = Release;

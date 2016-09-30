@@ -1,5 +1,8 @@
 .DS_Store
 
+# SPM
+.build/
+
 # docs
 docs/docsets/
 
@@ -22,6 +25,7 @@ xcuserdata/
 ## Other
 *.moved-aside
 *.xcuserstate
+*.xccheckout
 
 ## Obj-C/Swift specific
 *.hmap

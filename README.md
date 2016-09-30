@@ -79,7 +79,7 @@ import JSQCoreDataKit
 ````swift
 // Initialize the Core Data model, this class encapsulates the notion of a .xcdatamodeld file
 // The name passed here should be the name of an .xcdatamodeld file
-let bundle = NSBundle(identifier: "com.MyApp.MyModelFramework")!
+let bundle = Bundle(identifier: "com.MyApp.MyModelFramework")!
 let model = CoreDataModel(name: "MyModel", bundle: bundle)
 
 // Initialize a stack with a factory
@@ -100,7 +100,7 @@ factory.createStack { (result: StackResult) in
 #### In-memory stacks for testing
 
 ````swift
-let inMemoryModel = CoreDataModel(name: myName, bundle: myBundle, storeType: .InMemory)
+let inMemoryModel = CoreDataModel(name: myName, bundle: myBundle, storeType: .inMemory)
 let factory = CoreDataStackFactory(model: inMemoryModel)
 
 let stack: CoreDataStack?
@@ -132,7 +132,7 @@ saveContext(stack.mainContext) { result in
 #### Deleting the store
 
 ````swift
-let bundle = NSBundle(identifier: "com.MyApp.MyModelFramework")!
+let bundle = Bundle(identifier: "com.MyApp.MyModelFramework")!
 let model = CoreDataModel(name: "MyModel", bundle: bundle)
 do {
     try model.removeExistingStore()
@@ -144,7 +144,7 @@ do {
 #### Performing migrations
 
 ````swift
-let bundle = NSBundle(identifier: "com.MyApp.MyModelFramework")!
+let bundle = Bundle(identifier: "com.MyApp.MyModelFramework")!
 let model = CoreDataModel(name: "MyModel", bundle: bundle)
 if model.needsMigration {
     do {
@@ -159,10 +159,10 @@ if model.needsMigration {
 
 ````swift
 // Create a main queue child context from the main context
-let childContext = stack.childContext(concurrencyType: .MainQueueConcurrencyType)
+let childContext = stack.childContext(concurrencyType: .mainQueueConcurrencyType)
 
 // Create a background queue child context from the background context
-let childContext = stack.childContext(concurrencyType: .PrivateQueueConcurrencyType)
+let childContext = stack.childContext(concurrencyType: .privateQueueConcurrencyType)
 ````
 
 ## Example app

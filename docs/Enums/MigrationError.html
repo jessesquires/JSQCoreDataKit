@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>MigrationError Enum Reference</title>
+    <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
+    <meta charset='utf-8'>
+    <script src="../js/jquery.min.js" defer></script>
+    <script src="../js/jazzy.js" defer></script>
+    
+  </head>
+  <body>
+    <a name="//apple_ref/swift/Enum/MigrationError" class="dashAnchor"></a>
+    <a title="MigrationError Enum Reference"></a>
+    <header>
+      <div class="content-wrapper">
+        <p><a href="../index.html">JSQCoreDataKit Docs</a> (100% documented)</p>
+        <p class="header-right"><a href="https://github.com/jessesquires/JSQCoreDataKit"><img src="../img/gh.png"/>View on GitHub</a></p>
+      </div>
+    </header>
+    <div class="content-wrapper">
+      <p id="breadcrumbs">
+        <a href="../index.html">JSQCoreDataKit Reference</a>
+        <img id="carat" src="../img/carat.png" />
+        MigrationError Enum Reference
+      </p>
+    </div>
+    <div class="content-wrapper">
+      <nav class="sidebar">
+        <ul class="nav-groups">
+          <li class="nav-group-name">
+            <a href="../Classes.html">Classes</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Classes/CoreDataStack.html">CoreDataStack</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Global Variables.html">Global Variables</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Global Variables.html#/s:v14JSQCoreDataKit19defaultStoreOptionsGVs10DictionaryCSo8NSObjectPs9AnyObject__">defaultStoreOptions</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Enums.html">Enums</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Enums/MigrationError.html">MigrationError</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/ModelFileExtension.html">ModelFileExtension</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/SaveResult.html">SaveResult</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/StackResult.html">StackResult</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/StoreType.html">StoreType</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Functions.html">Functions</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:F14JSQCoreDataKit11saveContextFTCSo22NSManagedObjectContext4waitSb10completionGSqFOS_10SaveResultT___T_">saveContext(_:wait:completion:)</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Protocols.html">Protocols</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Protocols/CoreDataEntityProtocol.html">CoreDataEntityProtocol</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Structs.html">Structs</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Structs/CoreDataModel.html">CoreDataModel</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/CoreDataStackFactory.html">CoreDataStackFactory</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Typealiases.html">Typealiases</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Typealiases.html#/s:14JSQCoreDataKit12ChildContext">ChildContext</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Typealiases.html#/s:14JSQCoreDataKit22PersistentStoreOptions">PersistentStoreOptions</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <article class="main-content">
+        <section>
+          <section class="section">
+            <h1>MigrationError</h1>
+              <div class="declaration">
+                <div class="language">
+                  <pre class="highlight"><code><span class="kd">public</span> <span class="kd">enum</span> <span class="kt">MigrationError</span><span class="p">:</span> <span class="kt">Error</span></code></pre>
+
+                </div>
+              </div>
+            <p>An error type that specifies possible errors that are thrown by calling <code>CoreDataModel.migrate() throws</code>.</p>
+
+          </section>
+          <section class="section task-group-section">
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FO14JSQCoreDataKit14MigrationError19sourceModelNotFoundFMS0_FT5modelVS_13CoreDataModel_S0_"></a>
+                    <a name="//apple_ref/swift/Element/sourceModelNotFound" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FO14JSQCoreDataKit14MigrationError19sourceModelNotFoundFMS0_FT5modelVS_13CoreDataModel_S0_">sourceModelNotFound</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Specifies that the <code>NSManagedObjectModel</code> corresponding to the existing persistent store was not found in the model&rsquo;s bundle.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">case</span> <span class="nf">sourceModelNotFound</span><span class="p">(</span><span class="nv">model</span><span class="p">:</span> <span class="kt"><a href="../Structs/CoreDataModel.html">CoreDataModel</a></span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>model</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The model that failed to be migrated.</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FO14JSQCoreDataKit14MigrationError20mappingModelNotFoundFMS0_FT16destinationModelCSo20NSManagedObjectModel_S0_"></a>
+                    <a name="//apple_ref/swift/Element/mappingModelNotFound" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FO14JSQCoreDataKit14MigrationError20mappingModelNotFoundFMS0_FT16destinationModelCSo20NSManagedObjectModel_S0_">mappingModelNotFound</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Specifies that an <code>NSMappingModel</code> was not found in the model&rsquo;s bundle in the progressive migration &lsquo;path&rsquo;.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">case</span> <span class="nf">mappingModelNotFound</span><span class="p">(</span><span class="nv">destinationModel</span><span class="p">:</span> <span class="kt">NSManagedObjectModel</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>sourceModel</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The destination managed object model for which a mapping model was not found.</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </section>
+        </section>
+        <section id="footer">
+          <p>&copy; 2016 <a class="link" href="https://twitter.com/jesse_squires" target="_blank" rel="external">Jesse Squires</a>. All rights reserved. (Last updated: 2016-10-01)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.7.2</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+        </section>
+      </article>
+    </div>
+  </body>
+</div>
+</html>

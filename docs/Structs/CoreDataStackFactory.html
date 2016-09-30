@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>CoreDataStackFactory Struct Reference</title>
+    <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
+    <meta charset='utf-8'>
+    <script src="../js/jquery.min.js" defer></script>
+    <script src="../js/jazzy.js" defer></script>
+    
+  </head>
+  <body>
+    <a name="//apple_ref/swift/Struct/CoreDataStackFactory" class="dashAnchor"></a>
+    <a title="CoreDataStackFactory Struct Reference"></a>
+    <header>
+      <div class="content-wrapper">
+        <p><a href="../index.html">JSQCoreDataKit Docs</a> (100% documented)</p>
+        <p class="header-right"><a href="https://github.com/jessesquires/JSQCoreDataKit"><img src="../img/gh.png"/>View on GitHub</a></p>
+      </div>
+    </header>
+    <div class="content-wrapper">
+      <p id="breadcrumbs">
+        <a href="../index.html">JSQCoreDataKit Reference</a>
+        <img id="carat" src="../img/carat.png" />
+        CoreDataStackFactory Struct Reference
+      </p>
+    </div>
+    <div class="content-wrapper">
+      <nav class="sidebar">
+        <ul class="nav-groups">
+          <li class="nav-group-name">
+            <a href="../Classes.html">Classes</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Classes/CoreDataStack.html">CoreDataStack</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Global Variables.html">Global Variables</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Global Variables.html#/s:v14JSQCoreDataKit19defaultStoreOptionsGVs10DictionaryCSo8NSObjectPs9AnyObject__">defaultStoreOptions</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Enums.html">Enums</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Enums/MigrationError.html">MigrationError</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/ModelFileExtension.html">ModelFileExtension</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/SaveResult.html">SaveResult</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/StackResult.html">StackResult</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/StoreType.html">StoreType</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Functions.html">Functions</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:F14JSQCoreDataKit11saveContextFTCSo22NSManagedObjectContext4waitSb10completionGSqFOS_10SaveResultT___T_">saveContext(_:wait:completion:)</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Protocols.html">Protocols</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Protocols/CoreDataEntityProtocol.html">CoreDataEntityProtocol</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Structs.html">Structs</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Structs/CoreDataModel.html">CoreDataModel</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/CoreDataStackFactory.html">CoreDataStackFactory</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Typealiases.html">Typealiases</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Typealiases.html#/s:14JSQCoreDataKit12ChildContext">ChildContext</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Typealiases.html#/s:14JSQCoreDataKit22PersistentStoreOptions">PersistentStoreOptions</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <article class="main-content">
+        <section>
+          <section class="section">
+            <h1>CoreDataStackFactory</h1>
+              <div class="declaration">
+                <div class="language">
+                  <pre class="highlight"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">CoreDataStackFactory</span><span class="p">:</span> <span class="kt">Equatable</span></code></pre>
+
+                </div>
+              </div>
+            <p>An instance of <code>CoreDataStackFactory</code> is responsible for creating instances of <code><a href="../Classes/CoreDataStack.html">CoreDataStack</a></code>.</p>
+
+<p>Because the adding of the persistent store to the persistent store coordinator during initialization
+of a <code><a href="../Classes/CoreDataStack.html">CoreDataStack</a></code> can take an unknown amount of time, you should not perform this operation on the main queue.</p>
+
+<p>See this <a href="https://developer.apple.com/library/prerelease/ios/documentation/Cocoa/Conceptual/CoreData/IntegratingCoreData.html#//apple_ref/doc/uid/TP40001075-CH9-SW1">guide</a> for more details.</p>
+
+<div class="aside aside-warning">
+    <p class="aside-title">Warning</p>
+    You should not create instances of <code><a href="../Classes/CoreDataStack.html">CoreDataStack</a></code> directly. Use a <code>CoreDataStackFactory</code> instead.
+
+</div>
+
+          </section>
+          <section class="section task-group-section">
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/Properties"></a>
+                <a name="//apple_ref/swift/Section/Properties" class="dashAnchor"></a>
+                <a href="#/Properties">
+                  <h3 class="section-name">Properties</h3>
+                </a>
+              </div>
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:vV14JSQCoreDataKit20CoreDataStackFactory5modelVS_13CoreDataModel"></a>
+                    <a name="//apple_ref/swift/Property/model" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vV14JSQCoreDataKit20CoreDataStackFactory5modelVS_13CoreDataModel">model</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The model for the stack that the factory produces.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="k">let</span> <span class="nv">model</span><span class="p">:</span> <span class="kt"><a href="../Structs/CoreDataModel.html">CoreDataModel</a></span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:vV14JSQCoreDataKit20CoreDataStackFactory7optionsGSqGVs10DictionaryCSo8NSObjectPs9AnyObject___"></a>
+                    <a name="//apple_ref/swift/Property/options" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vV14JSQCoreDataKit20CoreDataStackFactory7optionsGSqGVs10DictionaryCSo8NSObjectPs9AnyObject___">options</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>A dictionary that specifies options for the store that the factory produces.
+The default value is <code>DefaultStoreOptions</code>.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="k">let</span> <span class="nv">options</span><span class="p">:</span> <span class="kt"><a href="../Typealiases.html#/s:14JSQCoreDataKit22PersistentStoreOptions">PersistentStoreOptions</a></span><span class="p">?</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/Initialization"></a>
+                <a name="//apple_ref/swift/Section/Initialization" class="dashAnchor"></a>
+                <a href="#/Initialization">
+                  <h3 class="section-name">Initialization</h3>
+                </a>
+              </div>
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FV14JSQCoreDataKit20CoreDataStackFactorycFT5modelVS_13CoreDataModel7optionsGSqGVs10DictionaryCSo8NSObjectPs9AnyObject____S0_"></a>
+                    <a name="//apple_ref/swift/Method/init(model:options:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FV14JSQCoreDataKit20CoreDataStackFactorycFT5modelVS_13CoreDataModel7optionsGSqGVs10DictionaryCSo8NSObjectPs9AnyObject____S0_">init(model:options:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Constructs a new <code>CoreDataStackFactory</code> instance with the specified <code><a href="../Structs/CoreDataStackFactory.html#/s:vV14JSQCoreDataKit20CoreDataStackFactory5modelVS_13CoreDataModel">model</a></code> and <code><a href="../Structs/CoreDataStackFactory.html#/s:vV14JSQCoreDataKit20CoreDataStackFactory7optionsGSqGVs10DictionaryCSo8NSObjectPs9AnyObject___">options</a></code>.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="nf">init</span><span class="p">(</span><span class="nv">model</span><span class="p">:</span> <span class="kt"><a href="../Structs/CoreDataModel.html">CoreDataModel</a></span><span class="p">,</span> <span class="nv">options</span><span class="p">:</span> <span class="kt"><a href="../Typealiases.html#/s:14JSQCoreDataKit22PersistentStoreOptions">PersistentStoreOptions</a></span><span class="p">?</span> <span class="o">=</span> <span class="n"><a href="../Global Variables.html#/s:v14JSQCoreDataKit19defaultStoreOptionsGVs10DictionaryCSo8NSObjectPs9AnyObject__">defaultStoreOptions</a></span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>model</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The model describing the stack.</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>options</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Options for the persistent store.</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>A new <code>CoreDataStackFactory</code> instance.</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/Creating%20a%20stack"></a>
+                <a name="//apple_ref/swift/Section/Creating a stack" class="dashAnchor"></a>
+                <a href="#/Creating%20a%20stack">
+                  <h3 class="section-name">Creating a stack</h3>
+                </a>
+              </div>
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FV14JSQCoreDataKit20CoreDataStackFactory11createStackFT7onQueueGSqCSo13DispatchQueue_10completionFOS_11StackResultT__T_"></a>
+                    <a name="//apple_ref/swift/Method/createStack(onQueue:completion:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FV14JSQCoreDataKit20CoreDataStackFactory11createStackFT7onQueueGSqCSo13DispatchQueue_10completionFOS_11StackResultT__T_">createStack(onQueue:completion:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Initializes a new <code><a href="../Classes/CoreDataStack.html">CoreDataStack</a></code> instance using the factory&rsquo;s <code><a href="../Structs/CoreDataStackFactory.html#/s:vV14JSQCoreDataKit20CoreDataStackFactory5modelVS_13CoreDataModel">model</a></code> and <code><a href="../Structs/CoreDataStackFactory.html#/s:vV14JSQCoreDataKit20CoreDataStackFactory7optionsGSqGVs10DictionaryCSo8NSObjectPs9AnyObject___">options</a></code>.</p>
+
+<div class="aside aside-warning">
+    <p class="aside-title">Warning</p>
+    <p>If a queue is provided, this operation is performed asynchronously on the specified queue,
+and the completion closure is executed asynchronously on the main queue.
+If <code>queue</code> is <code>nil</code>, then this method and the completion closure execute synchronously on the current queue.</p>
+
+</div>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">createStack</span><span class="p">(</span><span class="n">onQueue</span> <span class="nv">queue</span><span class="p">:</span> <span class="kt">DispatchQueue</span><span class="p">?</span> <span class="o">=</span> <span class="o">.</span><span class="nf">global</span><span class="p">(</span><span class="nv">qos</span><span class="p">:</span> <span class="o">.</span><span class="n">userInitiated</span><span class="p">),</span>
+                            <span class="nv">completion</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">(</span><span class="kt"><a href="../Enums/StackResult.html">StackResult</a></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>queue</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The queue on which to initialize the stack. The default is a background queue with a “user initiated” quality of service class. If passing <code>nil</code>, this method is executed synchronously on the queue from which the method was called.</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>completion</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The closure to be called once initialization is complete. If a queue is provided, this is called asynchronously on the main queue. Otherwise, this is executed on the thread from which the method was originally called.</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </section>
+        </section>
+        <section id="footer">
+          <p>&copy; 2016 <a class="link" href="https://twitter.com/jesse_squires" target="_blank" rel="external">Jesse Squires</a>. All rights reserved. (Last updated: 2016-10-01)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.7.2</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+        </section>
+      </article>
+    </div>
+  </body>
+</div>
+</html>

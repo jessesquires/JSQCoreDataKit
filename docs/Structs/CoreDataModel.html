@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>CoreDataModel Struct Reference</title>
+    <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
+    <meta charset='utf-8'>
+    <script src="../js/jquery.min.js" defer></script>
+    <script src="../js/jazzy.js" defer></script>
+    
+  </head>
+  <body>
+    <a name="//apple_ref/swift/Struct/CoreDataModel" class="dashAnchor"></a>
+    <a title="CoreDataModel Struct Reference"></a>
+    <header>
+      <div class="content-wrapper">
+        <p><a href="../index.html">JSQCoreDataKit Docs</a> (100% documented)</p>
+        <p class="header-right"><a href="https://github.com/jessesquires/JSQCoreDataKit"><img src="../img/gh.png"/>View on GitHub</a></p>
+      </div>
+    </header>
+    <div class="content-wrapper">
+      <p id="breadcrumbs">
+        <a href="../index.html">JSQCoreDataKit Reference</a>
+        <img id="carat" src="../img/carat.png" />
+        CoreDataModel Struct Reference
+      </p>
+    </div>
+    <div class="content-wrapper">
+      <nav class="sidebar">
+        <ul class="nav-groups">
+          <li class="nav-group-name">
+            <a href="../Classes.html">Classes</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Classes/CoreDataStack.html">CoreDataStack</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Global Variables.html">Global Variables</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Global Variables.html#/s:v14JSQCoreDataKit19defaultStoreOptionsGVs10DictionaryCSo8NSObjectPs9AnyObject__">defaultStoreOptions</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Enums.html">Enums</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Enums/MigrationError.html">MigrationError</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/ModelFileExtension.html">ModelFileExtension</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/SaveResult.html">SaveResult</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/StackResult.html">StackResult</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/StoreType.html">StoreType</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Functions.html">Functions</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:F14JSQCoreDataKit11saveContextFTCSo22NSManagedObjectContext4waitSb10completionGSqFOS_10SaveResultT___T_">saveContext(_:wait:completion:)</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Protocols.html">Protocols</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Protocols/CoreDataEntityProtocol.html">CoreDataEntityProtocol</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Structs.html">Structs</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Structs/CoreDataModel.html">CoreDataModel</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/CoreDataStackFactory.html">CoreDataStackFactory</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Typealiases.html">Typealiases</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Typealiases.html#/s:14JSQCoreDataKit12ChildContext">ChildContext</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Typealiases.html#/s:14JSQCoreDataKit22PersistentStoreOptions">PersistentStoreOptions</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <article class="main-content">
+        <section>
+          <section class="section">
+            <h1>CoreDataModel</h1>
+              <div class="declaration">
+                <div class="language">
+                  <pre class="highlight"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">CoreDataModel</span><span class="p">:</span> <span class="kt">Equatable</span></code></pre>
+
+                </div>
+              </div>
+            <p>An instance of <code>CoreDataModel</code> represents a Core Data model — a <code>.xcdatamodeld</code> file package.
+It provides the model and store URLs as well as methods for interacting with the store.</p>
+
+          </section>
+          <section class="section task-group-section">
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/Properties"></a>
+                <a name="//apple_ref/swift/Section/Properties" class="dashAnchor"></a>
+                <a href="#/Properties">
+                  <h3 class="section-name">Properties</h3>
+                </a>
+              </div>
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:vV14JSQCoreDataKit13CoreDataModel4nameSS"></a>
+                    <a name="//apple_ref/swift/Property/name" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vV14JSQCoreDataKit13CoreDataModel4nameSS">name</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The name of the Core Data model resource.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="k">let</span> <span class="nv">name</span><span class="p">:</span> <span class="kt">String</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:vV14JSQCoreDataKit13CoreDataModel6bundleCSo6Bundle"></a>
+                    <a name="//apple_ref/swift/Property/bundle" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vV14JSQCoreDataKit13CoreDataModel6bundleCSo6Bundle">bundle</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The bundle in which the model is located.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="k">let</span> <span class="nv">bundle</span><span class="p">:</span> <span class="kt">Bundle</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:vV14JSQCoreDataKit13CoreDataModel9storeTypeOS_9StoreType"></a>
+                    <a name="//apple_ref/swift/Property/storeType" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vV14JSQCoreDataKit13CoreDataModel9storeTypeOS_9StoreType">storeType</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The type of the Core Data persistent store for the model.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="k">let</span> <span class="nv">storeType</span><span class="p">:</span> <span class="kt"><a href="../Enums/StoreType.html">StoreType</a></span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:vV14JSQCoreDataKit13CoreDataModel8storeURLGSqV10Foundation3URL_"></a>
+                    <a name="//apple_ref/swift/Property/storeURL" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vV14JSQCoreDataKit13CoreDataModel8storeURLGSqV10Foundation3URL_">storeURL</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The file URL specifying the full path to the store.</p>
+
+<div class="aside aside-note">
+    <p class="aside-title">Note</p>
+    If the store is in-memory, then this value will be <code>nil</code>.
+
+</div>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">storeURL</span><span class="p">:</span> <span class="kt">URL</span><span class="p">?</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:vV14JSQCoreDataKit13CoreDataModel8modelURLV10Foundation3URL"></a>
+                    <a name="//apple_ref/swift/Property/modelURL" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vV14JSQCoreDataKit13CoreDataModel8modelURLV10Foundation3URL">modelURL</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The file URL specifying the model file in the bundle specified by <code><a href="../Structs/CoreDataModel.html#/s:vV14JSQCoreDataKit13CoreDataModel6bundleCSo6Bundle">bundle</a></code>.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">modelURL</span><span class="p">:</span> <span class="kt">URL</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:vV14JSQCoreDataKit13CoreDataModel16databaseFileNameSS"></a>
+                    <a name="//apple_ref/swift/Property/databaseFileName" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vV14JSQCoreDataKit13CoreDataModel16databaseFileNameSS">databaseFileName</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The database file name for the store.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">databaseFileName</span><span class="p">:</span> <span class="kt">String</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:vV14JSQCoreDataKit13CoreDataModel18managedObjectModelCSo20NSManagedObjectModel"></a>
+                    <a name="//apple_ref/swift/Property/managedObjectModel" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vV14JSQCoreDataKit13CoreDataModel18managedObjectModelCSo20NSManagedObjectModel">managedObjectModel</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The managed object model for the model specified by <code><a href="../Structs/CoreDataModel.html#/s:vV14JSQCoreDataKit13CoreDataModel4nameSS">name</a></code>.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">managedObjectModel</span><span class="p">:</span> <span class="kt">NSManagedObjectModel</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:vV14JSQCoreDataKit13CoreDataModel14needsMigrationSb"></a>
+                    <a name="//apple_ref/swift/Property/needsMigration" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vV14JSQCoreDataKit13CoreDataModel14needsMigrationSb">needsMigration</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Queries the meta data for the persistent store specified by the receiver
+and returns whether or not a migration is needed.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">needsMigration</span><span class="p">:</span> <span class="kt">Bool</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p><code>true</code> if the store requires a migration, <code>false</code> otherwise.</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/Initialization"></a>
+                <a name="//apple_ref/swift/Section/Initialization" class="dashAnchor"></a>
+                <a href="#/Initialization">
+                  <h3 class="section-name">Initialization</h3>
+                </a>
+              </div>
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FV14JSQCoreDataKit13CoreDataModelcFT4nameSS6bundleCSo6Bundle9storeTypeOS_9StoreType_S0_"></a>
+                    <a name="//apple_ref/swift/Method/init(name:bundle:storeType:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FV14JSQCoreDataKit13CoreDataModelcFT4nameSS6bundleCSo6Bundle9storeTypeOS_9StoreType_S0_">init(name:bundle:storeType:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Constructs a new <code>CoreDataModel</code> instance with the specified name and bundle.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="nf">init</span><span class="p">(</span><span class="nv">name</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">bundle</span><span class="p">:</span> <span class="kt">Bundle</span> <span class="o">=</span> <span class="o">.</span><span class="n">main</span><span class="p">,</span> <span class="nv">storeType</span><span class="p">:</span> <span class="kt"><a href="../Enums/StoreType.html">StoreType</a></span> <span class="o">=</span> <span class="o">.</span><span class="nf">sqlite</span><span class="p">(</span><span class="nf">defaultDirectoryURL</span><span class="p">()))</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>name</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The name of the Core Data model.</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>bundle</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The bundle in which the model is located. The default is the main bundle.</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>storeType</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The store type for the Core Data model. The default is <code>.sqlite</code>, with the user’s documents directory.</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>A new <code>CoreDataModel</code> instance.</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/Methods"></a>
+                <a name="//apple_ref/swift/Section/Methods" class="dashAnchor"></a>
+                <a href="#/Methods">
+                  <h3 class="section-name">Methods</h3>
+                </a>
+              </div>
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FV14JSQCoreDataKit13CoreDataModel19removeExistingStoreFzT_T_"></a>
+                    <a name="//apple_ref/swift/Method/removeExistingStore()" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FV14JSQCoreDataKit13CoreDataModel19removeExistingStoreFzT_T_">removeExistingStore()</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Removes the existing model store specfied by the receiver.</p>
+
+<div class="aside aside-throws">
+    <p class="aside-title">Throws</p>
+    If removing the store fails or errors, then this function throws an <code>NSError</code>.
+
+</div>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">removeExistingStore</span><span class="p">()</span> <span class="k">throws</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FV14JSQCoreDataKit13CoreDataModel7migrateFzT_T_"></a>
+                    <a name="//apple_ref/swift/Method/migrate()" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FV14JSQCoreDataKit13CoreDataModel7migrateFzT_T_">migrate()</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Progressively migrates the persistent store of the <code>CoreDataModel</code> based on mapping models found in the model&rsquo;s bundle.
+If the model returns false from <code><a href="../Structs/CoreDataModel.html#/s:vV14JSQCoreDataKit13CoreDataModel14needsMigrationSb">needsMigration</a></code>, then this function does nothing.</p>
+
+<div class="aside aside-throws">
+    <p class="aside-title">Throws</p>
+    <p>If an error occurs, either an <code>NSError</code> or a <code><a href="../Enums/MigrationError.html">MigrationError</a></code> is thrown. If an <code>NSError</code> is thrown, it could
+specify any of the following: an error checking persistent store metadata, an error from <code>NSMigrationManager</code>, or
+an error from <code>NSFileManager</code>.</p>
+
+</div>
+
+<div class="aside aside-warning">
+    <p class="aside-title">Warning</p>
+    <p>Migration is only supported for on-disk persistent stores.
+A complete &lsquo;path&rsquo; of mapping models must exist between the peristent store&rsquo;s version and the model&rsquo;s version.</p>
+
+</div>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">migrate</span><span class="p">()</span> <span class="k">throws</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </section>
+        </section>
+        <section id="footer">
+          <p>&copy; 2016 <a class="link" href="https://twitter.com/jesse_squires" target="_blank" rel="external">Jesse Squires</a>. All rights reserved. (Last updated: 2016-10-01)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.7.2</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+        </section>
+      </article>
+    </div>
+  </body>
+</div>
+</html>

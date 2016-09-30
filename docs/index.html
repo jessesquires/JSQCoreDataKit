@@ -175,7 +175,7 @@
 <a href='#standing-up-the-stack' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h4 id='standing-up-the-stack'>Standing up the stack</h4>
 <pre class="highlight swift"><code><span class="c1">// Initialize the Core Data model, this class encapsulates the notion of a .xcdatamodeld file</span>
 <span class="c1">// The name passed here should be the name of an .xcdatamodeld file</span>
-<span class="k">let</span> <span class="nv">bundle</span> <span class="o">=</span> <span class="kt">NSBundle</span><span class="p">(</span><span class="nv">identifier</span><span class="p">:</span> <span class="s">"com.MyApp.MyModelFramework"</span><span class="p">)</span><span class="o">!</span>
+<span class="k">let</span> <span class="nv">bundle</span> <span class="o">=</span> <span class="kt">Bundle</span><span class="p">(</span><span class="nv">identifier</span><span class="p">:</span> <span class="s">"com.MyApp.MyModelFramework"</span><span class="p">)</span><span class="o">!</span>
 <span class="k">let</span> <span class="nv">model</span> <span class="o">=</span> <span class="kt">CoreDataModel</span><span class="p">(</span><span class="nv">name</span><span class="p">:</span> <span class="s">"MyModel"</span><span class="p">,</span> <span class="nv">bundle</span><span class="p">:</span> <span class="n">bundle</span><span class="p">)</span>
 
 <span class="c1">// Initialize a stack with a factory</span>
@@ -193,7 +193,7 @@
 <span class="p">}</span>
 </code></pre>
 <a href='#in-memory-stacks-for-testing' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h4 id='in-memory-stacks-for-testing'>In-memory stacks for testing</h4>
-<pre class="highlight swift"><code><span class="k">let</span> <span class="nv">inMemoryModel</span> <span class="o">=</span> <span class="kt">CoreDataModel</span><span class="p">(</span><span class="nv">name</span><span class="p">:</span> <span class="n">myName</span><span class="p">,</span> <span class="nv">bundle</span><span class="p">:</span> <span class="n">myBundle</span><span class="p">,</span> <span class="nv">storeType</span><span class="p">:</span> <span class="o">.</span><span class="kt">InMemory</span><span class="p">)</span>
+<pre class="highlight swift"><code><span class="k">let</span> <span class="nv">inMemoryModel</span> <span class="o">=</span> <span class="kt">CoreDataModel</span><span class="p">(</span><span class="nv">name</span><span class="p">:</span> <span class="n">myName</span><span class="p">,</span> <span class="nv">bundle</span><span class="p">:</span> <span class="n">myBundle</span><span class="p">,</span> <span class="nv">storeType</span><span class="p">:</span> <span class="o">.</span><span class="n">inMemory</span><span class="p">)</span>
 <span class="k">let</span> <span class="nv">factory</span> <span class="o">=</span> <span class="kt">CoreDataStackFactory</span><span class="p">(</span><span class="nv">model</span><span class="p">:</span> <span class="n">inMemoryModel</span><span class="p">)</span>
 
 <span class="k">let</span> <span class="nv">stack</span><span class="p">:</span> <span class="kt">CoreDataStack</span><span class="p">?</span>
@@ -219,7 +219,7 @@
 <span class="p">}</span>
 </code></pre>
 <a href='#deleting-the-store' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h4 id='deleting-the-store'>Deleting the store</h4>
-<pre class="highlight swift"><code><span class="k">let</span> <span class="nv">bundle</span> <span class="o">=</span> <span class="kt">NSBundle</span><span class="p">(</span><span class="nv">identifier</span><span class="p">:</span> <span class="s">"com.MyApp.MyModelFramework"</span><span class="p">)</span><span class="o">!</span>
+<pre class="highlight swift"><code><span class="k">let</span> <span class="nv">bundle</span> <span class="o">=</span> <span class="kt">Bundle</span><span class="p">(</span><span class="nv">identifier</span><span class="p">:</span> <span class="s">"com.MyApp.MyModelFramework"</span><span class="p">)</span><span class="o">!</span>
 <span class="k">let</span> <span class="nv">model</span> <span class="o">=</span> <span class="kt">CoreDataModel</span><span class="p">(</span><span class="nv">name</span><span class="p">:</span> <span class="s">"MyModel"</span><span class="p">,</span> <span class="nv">bundle</span><span class="p">:</span> <span class="n">bundle</span><span class="p">)</span>
 <span class="k">do</span> <span class="p">{</span>
     <span class="k">try</span> <span class="n">model</span><span class="o">.</span><span class="nf">removeExistingStore</span><span class="p">()</span>
@@ -228,7 +228,7 @@
 <span class="p">}</span>
 </code></pre>
 <a href='#performing-migrations' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h4 id='performing-migrations'>Performing migrations</h4>
-<pre class="highlight swift"><code><span class="k">let</span> <span class="nv">bundle</span> <span class="o">=</span> <span class="kt">NSBundle</span><span class="p">(</span><span class="nv">identifier</span><span class="p">:</span> <span class="s">"com.MyApp.MyModelFramework"</span><span class="p">)</span><span class="o">!</span>
+<pre class="highlight swift"><code><span class="k">let</span> <span class="nv">bundle</span> <span class="o">=</span> <span class="kt">Bundle</span><span class="p">(</span><span class="nv">identifier</span><span class="p">:</span> <span class="s">"com.MyApp.MyModelFramework"</span><span class="p">)</span><span class="o">!</span>
 <span class="k">let</span> <span class="nv">model</span> <span class="o">=</span> <span class="kt">CoreDataModel</span><span class="p">(</span><span class="nv">name</span><span class="p">:</span> <span class="s">"MyModel"</span><span class="p">,</span> <span class="nv">bundle</span><span class="p">:</span> <span class="n">bundle</span><span class="p">)</span>
 <span class="k">if</span> <span class="n">model</span><span class="o">.</span><span class="n">needsMigration</span> <span class="p">{</span>
     <span class="k">do</span> <span class="p">{</span>
@@ -240,10 +240,10 @@
 </code></pre>
 <a href='#using-child-contexts' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h4 id='using-child-contexts'>Using child contexts</h4>
 <pre class="highlight swift"><code><span class="c1">// Create a main queue child context from the main context</span>
-<span class="k">let</span> <span class="nv">childContext</span> <span class="o">=</span> <span class="n">stack</span><span class="o">.</span><span class="nf">childContext</span><span class="p">(</span><span class="nv">concurrencyType</span><span class="p">:</span> <span class="o">.</span><span class="kt">MainQueueConcurrencyType</span><span class="p">)</span>
+<span class="k">let</span> <span class="nv">childContext</span> <span class="o">=</span> <span class="n">stack</span><span class="o">.</span><span class="nf">childContext</span><span class="p">(</span><span class="nv">concurrencyType</span><span class="p">:</span> <span class="o">.</span><span class="n">mainQueueConcurrencyType</span><span class="p">)</span>
 
 <span class="c1">// Create a background queue child context from the background context</span>
-<span class="k">let</span> <span class="nv">childContext</span> <span class="o">=</span> <span class="n">stack</span><span class="o">.</span><span class="nf">childContext</span><span class="p">(</span><span class="nv">concurrencyType</span><span class="p">:</span> <span class="o">.</span><span class="kt">PrivateQueueConcurrencyType</span><span class="p">)</span>
+<span class="k">let</span> <span class="nv">childContext</span> <span class="o">=</span> <span class="n">stack</span><span class="o">.</span><span class="nf">childContext</span><span class="p">(</span><span class="nv">concurrencyType</span><span class="p">:</span> <span class="o">.</span><span class="n">privateQueueConcurrencyType</span><span class="p">)</span>
 </code></pre>
 <a href='#example-app' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h2 id='example-app'>Example app</h2>
 

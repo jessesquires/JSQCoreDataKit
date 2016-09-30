@@ -18,46 +18,46 @@
 
 import Foundation
 import CoreData
+import JSQCoreDataKit
 
-public final class Employee: NSManagedObject {
+public final class Employee: NSManagedObject, CoreDataEntityProtocol {
 
-    static public let entityName = "Employee"
+    // MARK: CoreDataEntityProtocol
+
+    public static let defaultSortDescriptors = [ NSSortDescriptor(key: "name", ascending: true) ]
+
+    // MARK: Properties
 
     @NSManaged public var name: String
-
-    @NSManaged public var birthDate: NSDate
-
+    @NSManaged public var birthDate: Date
     @NSManaged public var salary: NSDecimalNumber
-
     @NSManaged public var company: Company?
+
+    // MARK: Init
 
     public init(context: NSManagedObjectContext,
                 name: String,
-                birthDate: NSDate,
+                birthDate: Date,
                 salary: NSDecimalNumber,
                 company: Company? = nil) {
-        let entity = NSEntityDescription.entityForName(Employee.entityName, inManagedObjectContext: context)!
-        super.init(entity: entity, insertIntoManagedObjectContext: context)
-
+        super.init(entity: Employee.entity(context: context), insertInto: context)
         self.name = name
         self.birthDate = birthDate
         self.salary = salary
         self.company = company
     }
 
-    public class func newEmployee(context: NSManagedObjectContext, company: Company? = nil) -> Employee {
-        let name = "Employee " + String(NSUUID().UUIDString.characters.split { $0 == "-" }.first!)
-
+    public class func newEmployee(_ context: NSManagedObjectContext, company: Company? = nil) -> Employee {
+        let name = "Employee " + String(UUID().uuidString.characters.split { $0 == "-" }.first!)
         return Employee(context: context,
                         name: name,
-                        birthDate: NSDate.distantPast(),
-                        salary: NSDecimalNumber(unsignedInt: arc4random_uniform(100_000)),
+                        birthDate: Date.distantPast,
+                        salary: NSDecimalNumber(value: arc4random_uniform(100_000)),
                         company: company)
     }
 
     @objc
-    private override init(entity: NSEntityDescription, insertIntoManagedObjectContext context: NSManagedObjectContext?) {
-        super.init(entity: entity, insertIntoManagedObjectContext: context)
+    private override init(entity: NSEntityDescription, insertInto context: NSManagedObjectContext?) {
+        super.init(entity: entity, insertInto: context)
     }
-    
 }

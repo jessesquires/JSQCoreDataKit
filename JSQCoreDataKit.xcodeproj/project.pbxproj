@@ -17,6 +17,11 @@
 		52351A0F1CD8AA2D0037010F /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 883378C41CB187E500205B24 /* Utils.swift */; };
 		881219C81B361EAF005E5AA7 /* JSQCoreDataKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88002D4F1AB8F546001787DB /* JSQCoreDataKit.framework */; };
 		883378C51CB187E500205B24 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 883378C41CB187E500205B24 /* Utils.swift */; };
+		8852A0CD1D459048006538B9 /* CoreDataEntityProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8852A0CC1D459048006538B9 /* CoreDataEntityProtocol.swift */; };
+		8852A0CE1D459048006538B9 /* CoreDataEntityProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8852A0CC1D459048006538B9 /* CoreDataEntityProtocol.swift */; };
+		8852A0CF1D459048006538B9 /* CoreDataEntityProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8852A0CC1D459048006538B9 /* CoreDataEntityProtocol.swift */; };
+		8852A0D01D459048006538B9 /* CoreDataEntityProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8852A0CC1D459048006538B9 /* CoreDataEntityProtocol.swift */; };
+		8852A0D21D459249006538B9 /* CoreDataEntityProtocolTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8852A0D11D459249006538B9 /* CoreDataEntityProtocolTests.swift */; };
 		8873E2271C51E09700DFE009 /* Equatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8873E21D1C51E09700DFE009 /* Equatable.swift */; };
 		8873E2281C51E09700DFE009 /* CoreDataFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8873E21E1C51E09700DFE009 /* CoreDataFunctions.swift */; };
 		8873E2291C51E09700DFE009 /* CoreDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8873E21F1C51E09700DFE009 /* CoreDataModel.swift */; };
@@ -54,9 +59,7 @@
 		8873E24A1C51E0DE00DFE009 /* StackResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8873E2231C51E09700DFE009 /* StackResult.swift */; };
 		8873E24B1C51E0DE00DFE009 /* StoreType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8873E2261C51E09700DFE009 /* StoreType.swift */; };
 		8873E25C1C51E10100DFE009 /* ContextSyncTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8873E24D1C51E10100DFE009 /* ContextSyncTests.swift */; };
-		8873E25D1C51E10100DFE009 /* DeleteTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8873E24E1C51E10100DFE009 /* DeleteTests.swift */; };
 		8873E25E1C51E10100DFE009 /* ExampleModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8873E24F1C51E10100DFE009 /* ExampleModelTests.swift */; };
-		8873E25F1C51E10100DFE009 /* FetchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8873E2501C51E10100DFE009 /* FetchTests.swift */; };
 		8873E2611C51E10100DFE009 /* ModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8873E2521C51E10100DFE009 /* ModelTests.swift */; };
 		8873E2621C51E10100DFE009 /* PersistentStoreOptionsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8873E2531C51E10100DFE009 /* PersistentStoreOptionsTests.swift */; };
 		8873E2631C51E10100DFE009 /* ResetStackTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8873E2541C51E10100DFE009 /* ResetStackTests.swift */; };
@@ -70,9 +73,7 @@
 		8873E2C11C51E3D400DFE009 /* ExampleModel.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8873E2C01C51E3B000DFE009 /* ExampleModel.framework */; };
 		88DF3CBF1CDCE89000726A31 /* JSQCoreDataKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88AC4B331C0FD8DA00A04563 /* JSQCoreDataKit.framework */; };
 		88DF3CC51CDCE8D800726A31 /* ContextSyncTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8873E24D1C51E10100DFE009 /* ContextSyncTests.swift */; };
-		88DF3CC61CDCE8D800726A31 /* DeleteTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8873E24E1C51E10100DFE009 /* DeleteTests.swift */; };
 		88DF3CC71CDCE8D800726A31 /* ExampleModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8873E24F1C51E10100DFE009 /* ExampleModelTests.swift */; };
-		88DF3CC81CDCE8D800726A31 /* FetchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8873E2501C51E10100DFE009 /* FetchTests.swift */; };
 		88DF3CC91CDCE8D800726A31 /* MigrationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 297C7D2C1C710A1D008E516B /* MigrationTests.swift */; };
 		88DF3CCA1CDCE8D800726A31 /* ModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8873E2521C51E10100DFE009 /* ModelTests.swift */; };
 		88DF3CCB1CDCE8D800726A31 /* PersistentStoreOptionsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8873E2531C51E10100DFE009 /* PersistentStoreOptionsTests.swift */; };
@@ -85,10 +86,6 @@
 		88DF3CD21CDCE8D800726A31 /* StoreTypeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8873E25A1C51E10100DFE009 /* StoreTypeTests.swift */; };
 		88DF3CD31CDCE8D800726A31 /* TestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8873E25B1C51E10100DFE009 /* TestCase.swift */; };
 		88DF3CED1CDCF07700726A31 /* ExampleModel.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88DF3CEC1CDCF06200726A31 /* ExampleModel.framework */; };
-		FE3D29351CD124140076C97F /* CoreDataExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE3D29341CD124140076C97F /* CoreDataExtensions.swift */; };
-		FE3D29361CD124140076C97F /* CoreDataExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE3D29341CD124140076C97F /* CoreDataExtensions.swift */; };
-		FE3D29371CD124140076C97F /* CoreDataExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE3D29341CD124140076C97F /* CoreDataExtensions.swift */; };
-		FE3D29381CD124140076C97F /* CoreDataExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE3D29341CD124140076C97F /* CoreDataExtensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -143,6 +140,8 @@
 		881219C31B361EAF005E5AA7 /* JSQCoreDataKit-iOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "JSQCoreDataKit-iOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		883378C41CB187E500205B24 /* Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		883C83DB1C0D7647007A16F5 /* JSQCoreDataKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = JSQCoreDataKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8852A0CC1D459048006538B9 /* CoreDataEntityProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataEntityProtocol.swift; sourceTree = "<group>"; };
+		8852A0D11D459249006538B9 /* CoreDataEntityProtocolTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataEntityProtocolTests.swift; sourceTree = "<group>"; };
 		8873E21D1C51E09700DFE009 /* Equatable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Equatable.swift; sourceTree = "<group>"; };
 		8873E21E1C51E09700DFE009 /* CoreDataFunctions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataFunctions.swift; sourceTree = "<group>"; };
 		8873E21F1C51E09700DFE009 /* CoreDataModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataModel.swift; sourceTree = "<group>"; };
@@ -154,9 +153,7 @@
 		8873E2251C51E09700DFE009 /* JSQCoreDataKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSQCoreDataKit.h; sourceTree = "<group>"; };
 		8873E2261C51E09700DFE009 /* StoreType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoreType.swift; sourceTree = "<group>"; };
 		8873E24D1C51E10100DFE009 /* ContextSyncTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContextSyncTests.swift; sourceTree = "<group>"; };
-		8873E24E1C51E10100DFE009 /* DeleteTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeleteTests.swift; sourceTree = "<group>"; };
 		8873E24F1C51E10100DFE009 /* ExampleModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExampleModelTests.swift; sourceTree = "<group>"; };
-		8873E2501C51E10100DFE009 /* FetchTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FetchTests.swift; sourceTree = "<group>"; };
 		8873E2511C51E10100DFE009 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8873E2521C51E10100DFE009 /* ModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModelTests.swift; sourceTree = "<group>"; };
 		8873E2531C51E10100DFE009 /* PersistentStoreOptionsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersistentStoreOptionsTests.swift; sourceTree = "<group>"; };
@@ -172,7 +169,6 @@
 		887403131C0D6A6D00FE0C31 /* JSQCoreDataKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = JSQCoreDataKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		88AC4B331C0FD8DA00A04563 /* JSQCoreDataKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = JSQCoreDataKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		88DF3CBA1CDCE89000726A31 /* JSQCoreDataKit-OSXTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "JSQCoreDataKit-OSXTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		FE3D29341CD124140076C97F /* CoreDataExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataExtensions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -250,7 +246,7 @@
 		8873E21C1C51E09700DFE009 /* Source */ = {
 			isa = PBXGroup;
 			children = (
-				FE3D29341CD124140076C97F /* CoreDataExtensions.swift */,
+				8852A0CC1D459048006538B9 /* CoreDataEntityProtocol.swift */,
 				8873E21E1C51E09700DFE009 /* CoreDataFunctions.swift */,
 				8873E21F1C51E09700DFE009 /* CoreDataModel.swift */,
 				8873E2211C51E09700DFE009 /* CoreDataStack.swift */,
@@ -272,9 +268,8 @@
 			children = (
 				8873E2BB1C51E3B000DFE009 /* ExampleModel.xcodeproj */,
 				8873E24D1C51E10100DFE009 /* ContextSyncTests.swift */,
-				8873E24E1C51E10100DFE009 /* DeleteTests.swift */,
+				8852A0D11D459249006538B9 /* CoreDataEntityProtocolTests.swift */,
 				8873E24F1C51E10100DFE009 /* ExampleModelTests.swift */,
-				8873E2501C51E10100DFE009 /* FetchTests.swift */,
 				8873E2511C51E10100DFE009 /* Info.plist */,
 				297C7D2C1C710A1D008E516B /* MigrationTests.swift */,
 				8873E2521C51E10100DFE009 /* ModelTests.swift */,
@@ -580,7 +575,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8873E22C1C51E09700DFE009 /* CoreDataStackFactory.swift in Sources */,
-				FE3D29351CD124140076C97F /* CoreDataExtensions.swift in Sources */,
+				8852A0CD1D459048006538B9 /* CoreDataEntityProtocol.swift in Sources */,
 				8873E2301C51E09700DFE009 /* StoreType.swift in Sources */,
 				8873E22B1C51E09700DFE009 /* CoreDataStack.swift in Sources */,
 				298F00F71C9C559100AEC77E /* Migrate.swift in Sources */,
@@ -597,14 +592,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8873E25F1C51E10100DFE009 /* FetchTests.swift in Sources */,
 				8873E2651C51E10100DFE009 /* SaveTests.swift in Sources */,
+				8852A0D21D459249006538B9 /* CoreDataEntityProtocolTests.swift in Sources */,
 				8873E2641C51E10100DFE009 /* SaveResultTests.swift in Sources */,
 				8873E2661C51E10100DFE009 /* StackFactoryTests.swift in Sources */,
 				8873E2621C51E10100DFE009 /* PersistentStoreOptionsTests.swift in Sources */,
 				297C7D2D1C710A1D008E516B /* MigrationTests.swift in Sources */,
 				8873E2631C51E10100DFE009 /* ResetStackTests.swift in Sources */,
-				8873E25D1C51E10100DFE009 /* DeleteTests.swift in Sources */,
 				8873E2671C51E10100DFE009 /* StackResultTests.swift in Sources */,
 				8873E2681C51E10100DFE009 /* StackTests.swift in Sources */,
 				8873E26A1C51E10100DFE009 /* TestCase.swift in Sources */,
@@ -619,8 +613,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FE3D29371CD124140076C97F /* CoreDataExtensions.swift in Sources */,
 				8873E2411C51E0DE00DFE009 /* CoreDataStackFactory.swift in Sources */,
+				8852A0CF1D459048006538B9 /* CoreDataEntityProtocol.swift in Sources */,
 				8873E2431C51E0DE00DFE009 /* StoreType.swift in Sources */,
 				8873E2401C51E0DE00DFE009 /* CoreDataStack.swift in Sources */,
 				298F00F91C9C559100AEC77E /* Migrate.swift in Sources */,
@@ -637,8 +631,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FE3D29361CD124140076C97F /* CoreDataExtensions.swift in Sources */,
 				8873E2391C51E0DD00DFE009 /* CoreDataStackFactory.swift in Sources */,
+				8852A0CE1D459048006538B9 /* CoreDataEntityProtocol.swift in Sources */,
 				8873E23B1C51E0DD00DFE009 /* StoreType.swift in Sources */,
 				8873E2381C51E0DD00DFE009 /* CoreDataStack.swift in Sources */,
 				298F00F81C9C559100AEC77E /* Migrate.swift in Sources */,
@@ -655,8 +649,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FE3D29381CD124140076C97F /* CoreDataExtensions.swift in Sources */,
 				8873E2491C51E0DE00DFE009 /* CoreDataStackFactory.swift in Sources */,
+				8852A0D01D459048006538B9 /* CoreDataEntityProtocol.swift in Sources */,
 				8873E24B1C51E0DE00DFE009 /* StoreType.swift in Sources */,
 				8873E2481C51E0DE00DFE009 /* CoreDataStack.swift in Sources */,
 				298F00FA1C9C559100AEC77E /* Migrate.swift in Sources */,
@@ -673,9 +667,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				88DF3CC81CDCE8D800726A31 /* FetchTests.swift in Sources */,
 				88DF3CCB1CDCE8D800726A31 /* PersistentStoreOptionsTests.swift in Sources */,
-				88DF3CC61CDCE8D800726A31 /* DeleteTests.swift in Sources */,
 				88DF3CD21CDCE8D800726A31 /* StoreTypeTests.swift in Sources */,
 				88DF3CC71CDCE8D800726A31 /* ExampleModelTests.swift in Sources */,
 				88DF3CCC1CDCE8D800726A31 /* ResetStackTests.swift in Sources */,
@@ -761,7 +753,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 2.3;
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -803,7 +795,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
-				SWIFT_VERSION = 2.3;
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -834,7 +826,7 @@
 				PRODUCT_NAME = JSQCoreDataKit;
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 2.3;
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -862,7 +854,7 @@
 				PRODUCT_NAME = JSQCoreDataKit;
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
-				SWIFT_VERSION = 2.3;
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
@@ -877,7 +869,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.hexedbits.JSQCoreDataKitTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 2.3;
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -891,7 +883,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.hexedbits.JSQCoreDataKitTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
-				SWIFT_VERSION = 2.3;
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
@@ -911,7 +903,7 @@
 				PRODUCT_NAME = JSQCoreDataKit;
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 2.3;
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 4;
 				WATCHOS_DEPLOYMENT_TARGET = 2.0;
 			};
@@ -933,7 +925,7 @@
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
-				SWIFT_VERSION = 2.3;
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 4;
 				WATCHOS_DEPLOYMENT_TARGET = 2.0;
 			};
@@ -954,7 +946,7 @@
 				PRODUCT_NAME = JSQCoreDataKit;
 				SDKROOT = appletvos;
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 2.3;
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 3;
 				TVOS_DEPLOYMENT_TARGET = 9.0;
 			};
@@ -975,7 +967,7 @@
 				SDKROOT = appletvos;
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
-				SWIFT_VERSION = 2.3;
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 3;
 				TVOS_DEPLOYMENT_TARGET = 9.0;
 			};
@@ -984,7 +976,7 @@
 		88AC4B381C0FD8DB00A04563 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEFINES_MODULE = YES;
@@ -1000,14 +992,14 @@
 				PRODUCT_NAME = JSQCoreDataKit;
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 2.3;
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
 		88AC4B391C0FD8DB00A04563 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
@@ -1023,7 +1015,7 @@
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
-				SWIFT_VERSION = 2.3;
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
@@ -1031,7 +1023,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ANALYZER_NONNULL = YES;
-				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				INFOPLIST_FILE = Tests/Info.plist;
@@ -1040,7 +1032,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.hexedbits.JSQCoreDataKit-OSXTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
-				SWIFT_VERSION = 2.3;
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -1048,7 +1040,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ANALYZER_NONNULL = YES;
-				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = Tests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
@@ -1057,7 +1049,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
-				SWIFT_VERSION = 2.3;
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};

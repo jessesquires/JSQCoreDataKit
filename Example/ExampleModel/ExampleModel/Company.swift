@@ -18,43 +18,44 @@
 
 import Foundation
 import CoreData
+import JSQCoreDataKit
 
+public final class Company: NSManagedObject, CoreDataEntityProtocol {
 
-public final class Company: NSManagedObject {
+    // MARK: CoreDataEntityProtocol
 
-    static public let entityName = "Company"
+    public static let defaultSortDescriptors = [NSSortDescriptor(key: "profits", ascending: true),
+                                                NSSortDescriptor(key: "name", ascending: true) ]
+
+    // MARK: Properties
 
     @NSManaged public var name: String
-
-    @NSManaged public var dateFounded: NSDate
-
+    @NSManaged public var dateFounded: Date
     @NSManaged public var profits: NSDecimalNumber
-
     @NSManaged public var employees: NSSet
+
+    // MARK: Init
 
     public init(context: NSManagedObjectContext,
                 name: String,
-                dateFounded: NSDate,
+                dateFounded: Date,
                 profits: NSDecimalNumber) {
-        let entity = NSEntityDescription.entityForName(Company.entityName, inManagedObjectContext: context)!
-        super.init(entity: entity, insertIntoManagedObjectContext: context)
-
+        super.init(entity: Company.entity(context: context), insertInto: context)
         self.name = name
         self.dateFounded = dateFounded
         self.profits = profits
     }
 
-    public class func newCompany(context: NSManagedObjectContext) -> Company {
-        let name = "Company " + String(NSUUID().UUIDString.characters.split { $0 == "-" }.first!)
-
+    public class func newCompany(_ context: NSManagedObjectContext) -> Company {
+        let name = "Company " + String(UUID().uuidString.characters.split { $0 == "-" }.first!)
         return Company(context: context,
                        name: name,
-                       dateFounded: NSDate.distantPast(),
-                       profits: NSDecimalNumber(unsignedInt: arc4random_uniform(1_000_000)))
+                       dateFounded: Date.distantPast,
+                       profits: NSDecimalNumber(value: arc4random_uniform(1_000_000)))
     }
 
     @objc
-    private override init(entity: NSEntityDescription, insertIntoManagedObjectContext context: NSManagedObjectContext?) {
-        super.init(entity: entity, insertIntoManagedObjectContext: context)
+    private override init(entity: NSEntityDescription, insertInto context: NSManagedObjectContext?) {
+        super.init(entity: entity, insertInto: context)
     }
 }

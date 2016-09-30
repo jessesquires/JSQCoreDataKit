@@ -24,19 +24,18 @@ import ExampleModel
 @testable
 import JSQCoreDataKit
 
-
-class PersistentStoreOptionsTests: XCTestCase {
+final class PersistentStoreOptionsTests: XCTestCase {
 
     func test_ThatPersistentStoreOptions_AreEqual() {
         // GIVEN: two equal PersistentStoreOptions objects
         let first: PersistentStoreOptions = [
-            "key0": "fake value",
-            "key1": 234
+            "key0" as NSObject: "fake value" as AnyObject,
+            "key1" as NSObject: 234 as AnyObject
         ]
 
         let second: PersistentStoreOptions = [
-            "key0": "fake value",
-            "key1": 234
+            "key0" as NSObject: "fake value" as AnyObject,
+            "key1" as NSObject: 234 as AnyObject
         ]
 
         // WHEN: we compare them
@@ -49,13 +48,13 @@ class PersistentStoreOptionsTests: XCTestCase {
     func test_ThatPersistentStoreOptions_AreNotEqual_MissingKeys() {
         // GIVEN: two distinct PersistentStoreOptions objects
         let first: PersistentStoreOptions = [
-            "key0": "fake value",
-            "key1": 234,
-            "key2": NSDate()
+            "key0" as NSObject: "fake value" as AnyObject,
+            "key1" as NSObject: 234 as AnyObject,
+            "key2" as NSObject: NSDate() as AnyObject
         ]
 
         let second: PersistentStoreOptions = [
-            "key0": "fake value"
+            "key0" as NSObject: "fake value" as AnyObject
         ]
 
         // WHEN: we compare them
@@ -68,15 +67,15 @@ class PersistentStoreOptionsTests: XCTestCase {
     func test_ThatPersistentStoreOptions_AreNotEqual_DifferentValues() {
         // GIVEN: two distinct PersistentStoreOptions objects
         let first: PersistentStoreOptions = [
-            "key0": "fake value",
-            "key1": 234,
-            "key2": NSDate()
+            "key0" as NSObject: "fake value" as AnyObject,
+            "key1" as NSObject: 234 as AnyObject,
+            "key2" as NSObject: NSDate() as AnyObject
         ]
 
         let second: PersistentStoreOptions = [
-            "key0": "different",
-            "key1": 4567,
-            "key2": NSDate()
+            "key0" as NSObject: "different" as AnyObject,
+            "key1" as NSObject: 4567 as AnyObject,
+            "key2" as NSObject: NSDate() as AnyObject
         ]
 
         // WHEN: we compare them
@@ -89,15 +88,15 @@ class PersistentStoreOptionsTests: XCTestCase {
     func test_ThatPersistentStoreOptions_AreNotEqual_DifferentKeys() {
         // GIVEN: two distinct PersistentStoreOptions objects
         let first: PersistentStoreOptions = [
-            "key0": "fake value",
-            "key1": 234,
-            "key2": NSDate()
+            "key0" as NSObject: "fake value" as AnyObject,
+            "key1" as NSObject: 234 as AnyObject,
+            "key2" as NSObject: NSDate() as AnyObject
         ]
 
         let second: PersistentStoreOptions = [
-            "key7": "different",
-            "key8": 4567,
-            "key9": NSDate()
+            "key7" as NSObject: "different" as AnyObject,
+            "key8" as NSObject: 4567 as AnyObject,
+            "key9" as NSObject: NSDate() as AnyObject
         ]
 
         // WHEN: we compare them

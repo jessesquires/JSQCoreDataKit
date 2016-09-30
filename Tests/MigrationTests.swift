@@ -24,8 +24,7 @@ import ExampleModel
 @testable
 import JSQCoreDataKit
 
-
-class MigrationTests: TestCase {
+final class MigrationTests: TestCase {
 
     let model: CoreDataModel = CoreDataModel(name: modelName, bundle: modelBundle, storeType: .sqlite(defaultDirectoryURL()))
 
@@ -41,7 +40,7 @@ class MigrationTests: TestCase {
 
     func test_ThatCoreDataModel_NeedsMigration_WhenUsingOldModel() {
         // GIVEN: an existing SQLite file with metadata pointing to an old version of the model
-        createSQLitePersistentStore(managedObjectModel: managedObjectModel(versionName: "Version 1"))
+        _ = createSQLitePersistentStore(managedObjectModel(versionName: "Version 1"))
 
         // WHEN: we ask if it needs migration
         // THEN: model needs migration
@@ -51,7 +50,7 @@ class MigrationTests: TestCase {
     func test_ThatCoreDataModel_DoesNotNeedMigration_WhenUsingMostRecentModel() {
         // GIVEN: an existing SQLite file with metadata pointing to the latest version of the model
         XCTAssertFalse(model.needsMigration)
-        createSQLitePersistentStore(managedObjectModel: managedObjectModel(versionName: "Version 3"))
+        _ = createSQLitePersistentStore(managedObjectModel(versionName: "Version 3"))
 
         // WHEN: we ask if it needs migration
         // THEN: model does not need migration
@@ -63,7 +62,7 @@ class MigrationTests: TestCase {
 
     func test_ThatModelMigrates_Successfully() {
         // GIVEN: an existing SQLite file with metadata pointing to an old version of the model
-        createSQLitePersistentStore(managedObjectModel: managedObjectModel(versionName: "Version 1"))
+        _ = createSQLitePersistentStore(managedObjectModel(versionName: "Version 1"))
         XCTAssertTrue(model.needsMigration)
 
         // WHEN: CoreDataModel is migrated
@@ -126,10 +125,10 @@ class MigrationTests: TestCase {
     func test_thatWhenFindingACompatibleModel_ForAValidStore_ThenTheCorrectModelIsFound() {
         // GIVEN: a SQLite store with metadata pointing to a specific version of the model
         let version1Model = managedObjectModel(versionName: "Version 1")
-        let persistentStore = createSQLitePersistentStore(managedObjectModel: version1Model)
+        let persistentStore = createSQLitePersistentStore(version1Model)
 
         // WHEN: we search for a compatible model in the bundle
-        let foundModel = try! findCompatibleModel(withBundle: model.bundle, storeType: persistentStore.type, storeURL: persistentStore.URL!)
+        let foundModel = try! findCompatibleModel(withBundle: model.bundle, storeType: persistentStore.type, storeURL: persistentStore.url!)
 
         // THEN: the found model is the same as the one used to create the store
         XCTAssertEqual(foundModel, version1Model)
@@ -137,7 +136,7 @@ class MigrationTests: TestCase {
 
     func test_thatWhenFindingACompatibleModel_ForAnInvalidStore_ThenNoModelIsFound_AndAnErrorIsThrown() {
         // GIVEN: an invalid store bundle
-        let bundle = NSBundle(forClass: MigrationTests.self)
+        let bundle = Bundle(for: MigrationTests.self)
 
         // WHEN: we search for a compatible model in the bundle
         var foundModel: NSManagedObjectModel?
@@ -170,7 +169,7 @@ class MigrationTests: TestCase {
 
     func test_ThatFindModelsInBundle_ReturnsEmptyArrayForInvalidBundle() {
         // GIVEN: no models in a bundle
-        let bundle = NSBundle(forClass: MigrationTests.self)
+        let bundle = Bundle(for: MigrationTests.self)
 
         // WHEN: fetching all model versions from the bundle
         let modelsInBundle = findModelsInBundle(bundle)
@@ -222,27 +221,25 @@ class MigrationTests: TestCase {
 
     // MARK: Helpers
 
-    func createSQLitePersistentStore(managedObjectModel managedObjectModel: NSManagedObjectModel) -> NSPersistentStore {
+    func createSQLitePersistentStore(_ managedObjectModel: NSManagedObjectModel) -> NSPersistentStore {
         let coordinator = NSPersistentStoreCoordinator(managedObjectModel: managedObjectModel)
-        let storeURL = defaultDirectoryURL().URLByAppendingPathComponent("\(modelName)." + ModelFileExtension.sqlite.rawValue)
-        return try! coordinator.addPersistentStoreWithType(NSSQLiteStoreType, configuration: nil, URL: storeURL, options: nil)
+        let storeURL = defaultDirectoryURL().appendingPathComponent("\(modelName)." + ModelFileExtension.sqlite.rawValue)
+        return try! coordinator.addPersistentStore(ofType: NSSQLiteStoreType, configurationName: nil, at: storeURL, options: nil)
     }
 
-    func managedObjectModel(versionName versionName: String) -> NSManagedObjectModel {
-        let modelURL = model.modelURL.URLByAppendingPathComponent("\(versionName).\(ModelFileExtension.versionedFile.rawValue)")
-
-        guard let result = NSManagedObjectModel(contentsOfURL: modelURL!) else {
+    func managedObjectModel(versionName: String) -> NSManagedObjectModel {
+        let modelURL = model.modelURL.appendingPathComponent("\(versionName).\(ModelFileExtension.versionedFile.rawValue)")
+        guard let result = NSManagedObjectModel(contentsOf: modelURL) else {
             preconditionFailure("Model with given name not found in bundle or is invalid.")
         }
         return result
     }
 
-    func mappingModel(name name: String) -> NSMappingModel {
-        guard let mappingModelURL = model.bundle.URLForResource(name, withExtension: ModelFileExtension.mapping.rawValue) else {
+    func mappingModel(name: String) -> NSMappingModel {
+        guard let mappingModelURL = model.bundle.url(forResource: name, withExtension: ModelFileExtension.mapping.rawValue) else {
             preconditionFailure("Mapping model named \(name) not found in bundle.")
         }
-        
-        guard let result = NSMappingModel(contentsOfURL: mappingModelURL) else {
+        guard let result = NSMappingModel(contentsOf: mappingModelURL) else {
             preconditionFailure("Mapping model named \(name) is invalid.")
         }
         return result

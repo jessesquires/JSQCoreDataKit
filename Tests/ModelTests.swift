@@ -48,13 +48,13 @@ class ModelTests: XCTestCase {
         XCTAssertEqual(model.databaseFileName, model.name + "." + ModelFileExtension.sqlite.rawValue)
 
         // THEN: the store file is in the documents directory
-        let storeURLComponents = model.storeURL!.pathComponents!
+        let storeURLComponents = model.storeURL!.pathComponents
         XCTAssertEqual(String(storeURLComponents.last!), model.databaseFileName)
         XCTAssertEqual(String(storeURLComponents[storeURLComponents.count - 2]), "Documents")
-        XCTAssertTrue(model.storeURL!.fileURL)
+        XCTAssertTrue(model.storeURL!.isFileURL)
 
         // THEN: the model is in its specified bundle
-        let modelURLComponents = model.modelURL.pathComponents!
+        let modelURLComponents = model.modelURL.pathComponents
         XCTAssertEqual(String(modelURLComponents.last!), model.name + ".momd")
 
         #if os(iOS)
@@ -76,18 +76,18 @@ class ModelTests: XCTestCase {
         // GIVEN: a model name and bundle
 
         // WHEN: we create a model
-        let model = CoreDataModel(name: modelName, bundle: modelBundle, storeType: .binary(NSURL(fileURLWithPath: NSTemporaryDirectory())))
+        let model = CoreDataModel(name: modelName, bundle: modelBundle, storeType: .binary(URL(fileURLWithPath: NSTemporaryDirectory())))
 
         // THEN: the model has the correct name, bundle, and type
         XCTAssertEqual(model.name, modelName)
         XCTAssertEqual(model.bundle, modelBundle)
-        XCTAssertEqual(model.storeType, StoreType.binary(NSURL(fileURLWithPath: NSTemporaryDirectory())))
+        XCTAssertEqual(model.storeType, StoreType.binary(URL(fileURLWithPath: NSTemporaryDirectory())))
 
         // THEN: the model returns the correct database filename
         XCTAssertEqual(model.databaseFileName, model.name)
 
         // THEN: the store file is in the tmp directory
-        let storeURLComponents = model.storeURL!.pathComponents!
+        let storeURLComponents = model.storeURL!.pathComponents
         XCTAssertEqual(String(storeURLComponents.last!), model.databaseFileName)
 
         #if os(iOS)
@@ -97,10 +97,10 @@ class ModelTests: XCTestCase {
         #endif
 
         XCTAssertEqual(String(storeURLComponents[storeURLComponents.count - 2]), temp)
-        XCTAssertTrue(model.storeURL!.fileURL)
+        XCTAssertTrue(model.storeURL!.isFileURL)
 
         // THEN: the model is in its specified bundle
-        let modelURLComponents = model.modelURL.pathComponents!
+        let modelURLComponents = model.modelURL.pathComponents
         XCTAssertEqual(String(modelURLComponents.last!), model.name + ".momd")
 
         #if os(iOS)
@@ -136,7 +136,7 @@ class ModelTests: XCTestCase {
         XCTAssertNil(model.storeURL)
 
         // THEN: the model is in its specified bundle
-        let modelURLComponents = model.modelURL.pathComponents!
+        let modelURLComponents = model.modelURL.pathComponents
         XCTAssertEqual(String(modelURLComponents.last!), model.name + ".momd")
 
         #if os(iOS)
@@ -163,11 +163,11 @@ class ModelTests: XCTestCase {
         saveContext(stack.mainContext) { error in
         }
 
-        let fileManager = NSFileManager.defaultManager()
+        let fileManager = FileManager.default
 
-        XCTAssertTrue(fileManager.fileExistsAtPath(model.storeURL!.path!), "Model store should exist on disk")
-        XCTAssertTrue(fileManager.fileExistsAtPath(model.storeURL!.path! + "-wal"), "Model write ahead log should exist on disk")
-        XCTAssertTrue(fileManager.fileExistsAtPath(model.storeURL!.path! + "-shm"), "Model shared memory file should exist on disk")
+        XCTAssertTrue(fileManager.fileExists(atPath: model.storeURL!.path), "Model store should exist on disk")
+        XCTAssertTrue(fileManager.fileExists(atPath: model.storeURL!.path + "-wal"), "Model write ahead log should exist on disk")
+        XCTAssertTrue(fileManager.fileExists(atPath: model.storeURL!.path + "-shm"), "Model shared memory file should exist on disk")
 
         // WHEN: we remove the existing model store
         do {
@@ -178,9 +178,9 @@ class ModelTests: XCTestCase {
         }
 
         // THEN: the model store is successfully removed
-        XCTAssertFalse(fileManager.fileExistsAtPath(model.storeURL!.path!), "Model store should NOT exist on disk")
-        XCTAssertFalse(fileManager.fileExistsAtPath(model.storeURL!.path! + "-wal"), "Model write ahead log should NOT exist on disk")
-        XCTAssertFalse(fileManager.fileExistsAtPath(model.storeURL!.path! + "-shm"), "Model shared memory file should NOT exist on disk")
+        XCTAssertFalse(fileManager.fileExists(atPath: model.storeURL!.path), "Model store should NOT exist on disk")
+        XCTAssertFalse(fileManager.fileExists(atPath: model.storeURL!.path + "-wal"), "Model write ahead log should NOT exist on disk")
+        XCTAssertFalse(fileManager.fileExists(atPath: model.storeURL!.path + "-shm"), "Model shared memory file should NOT exist on disk")
     }
 
     func test_ThatSQLiteModel_RemoveExistingStore_Fails() {
@@ -190,7 +190,7 @@ class ModelTests: XCTestCase {
         // WHEN: we do not create a core data stack
 
         // THEN: the model store does not exist on disk
-        XCTAssertFalse(NSFileManager.defaultManager().fileExistsAtPath(model.storeURL!.path!), "Model store should not exist on disk")
+        XCTAssertFalse(FileManager.default.fileExists(atPath: model.storeURL!.path), "Model store should not exist on disk")
 
         // WHEN: we attempt to remove the existing model store
         var success = true
@@ -224,12 +224,4 @@ class ModelTests: XCTestCase {
         // THEN: then removal is ignored
         XCTAssertTrue(success, "Removing store should be ignored")
     }
-    
-    func test_Model_Description() {
-        print("\(#function)")
-        
-        let model = CoreDataModel(name: modelName, bundle: modelBundle, storeType: .inMemory)
-        print(model)
-    }
-    
 }

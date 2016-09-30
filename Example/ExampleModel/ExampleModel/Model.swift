@@ -20,5 +20,4 @@ import Foundation
 
 public let modelName = "ExampleModel"
 
-public let modelBundle = NSBundle(identifier: "com.hexedbits.ExampleModel")!
-
+public let modelBundle = Bundle(identifier: "com.hexedbits.ExampleModel")!

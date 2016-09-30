@@ -30,25 +30,24 @@ public typealias PersistentStoreOptions = [NSObject : AnyObject]
 
 /// Describes default persistent store options.
 public let defaultStoreOptions: PersistentStoreOptions = [
-    NSMigratePersistentStoresAutomaticallyOption: true,
-    NSInferMappingModelAutomaticallyOption: true
+    NSMigratePersistentStoresAutomaticallyOption as NSObject: true as AnyObject,
+    NSInferMappingModelAutomaticallyOption as NSObject: true as AnyObject
 ]
 
 // MARK: Internal
 
-internal func defaultDirectoryURL() -> NSURL {
+internal func defaultDirectoryURL() -> URL {
     do {
         #if os(tvOS)
-            let searchPathDirectory = NSSearchPathDirectory.CachesDirectory
+            let searchPathDirectory = FileManager.SearchPathDirectory.cachesDirectory
         #else
-            let searchPathDirectory = NSSearchPathDirectory.DocumentDirectory
+            let searchPathDirectory = FileManager.SearchPathDirectory.documentDirectory
         #endif
 
-        return try NSFileManager.defaultManager().URLForDirectory(
-            searchPathDirectory,
-            inDomain: .UserDomainMask,
-            appropriateForURL: nil,
-            create: true)
+        return try FileManager.default.url(for: searchPathDirectory,
+                                           in: .userDomainMask,
+                                           appropriateFor: nil,
+                                           create: true)
     }
     catch {
         fatalError("*** Error finding default directory: \(error)")

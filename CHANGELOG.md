@@ -4,6 +4,24 @@ The changelog for `JSQCoreDataKit`. Also see the [releases](https://github.com/j
 
 --------------------------------------
 
+6.0.0
+-----
+
+This release closes the [6.0.0 milestone](https://github.com/jessesquires/JSQCoreDataKit/milestone/12).
+
+**Swift 3.0 now required.**
+
+### Breaking
+
+- Migrated to Swift 3.0
+- Removed `entity(name: String, context: NSManagedObjectContext) -> NSEntityDescription`
+- Removed `FetchRequest<T: NSManagedObject>` (new Swift overlays now provide generic `NSFetchRequest`)
+- Remove the `delete()` and `fetch()` extensions on `NSManagedObjectContext` (new Swift overlays now provide these)
+
+### New
+
+- There's a new protocol, `CoreDataEntityProtocol`, which provides a better API for creating entity descriptions and inserting managed objects (#87). It also provides some helpful extensions. Conform to the new `CoreDataEntityProtocol` to take advantage of this. This replaces the (removed) top-level function `entity(name:, context:) -> NSEntityDescription`
+
 5.0.0
 -----
 

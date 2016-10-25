@@ -37,6 +37,9 @@ env:
    - DESTINATION="OS=2.0,name=Apple Watch - 38mm" SDK="$WATCHOS_SDK" SCHEME="$WATCHOS_SCHEME" RUN_TESTS="NO" BUILD_EXAMPLE="NO" POD_LINT="NO"
    - DESTINATION="OS=3.0,name=Apple Watch - 42mm" SDK="$WATCHOS_SDK" SCHEME="$WATCHOS_SCHEME" RUN_TESTS="NO" BUILD_EXAMPLE="NO" POD_LINT="NO"
 
+before_install:
+   - gem install cocoapods # Since Travis is not always on latest version
+
 script:
 - if [ $POD_LINT == "YES" ]; then
       pod lib lint;

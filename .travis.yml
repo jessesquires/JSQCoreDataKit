@@ -34,14 +34,14 @@ env:
 
    - DESTINATION="arch=x86_64" SDK="$OSX_SDK" SCHEME="$OSX_FRAMEWORK_SCHEME" RUN_TESTS="YES" BUILD_EXAMPLE="NO" POD_LINT="NO"
 
-   - DESTINATION="OS=9.0,name=Apple TV 1080p" SDK="$TVOS_SDK" SCHEME="$TVOS_SCHEME" RUN_TESTS="NO" BUILD_EXAMPLE="NO" POD_LINT="NO"
+   - DESTINATION="OS=9.0,name=Apple TV 1080p"  SDK="$TVOS_SDK" SCHEME="$TVOS_SCHEME" RUN_TESTS="NO" BUILD_EXAMPLE="NO" POD_LINT="NO"
    - DESTINATION="OS=10.0,name=Apple TV 1080p" SDK="$TVOS_SDK" SCHEME="$TVOS_SCHEME" RUN_TESTS="NO" BUILD_EXAMPLE="NO" POD_LINT="NO"
 
    - DESTINATION="OS=2.0,name=Apple Watch - 38mm" SDK="$WATCHOS_SDK" SCHEME="$WATCHOS_SCHEME" RUN_TESTS="NO" BUILD_EXAMPLE="NO" POD_LINT="NO"
    - DESTINATION="OS=3.0,name=Apple Watch - 42mm" SDK="$WATCHOS_SDK" SCHEME="$WATCHOS_SCHEME" RUN_TESTS="NO" BUILD_EXAMPLE="NO" POD_LINT="NO"
 
 before_install:
-   - gem install cocoapods # Since Travis is not always on latest version
+   - gem install cocoapods # travis is not always on latest version
 
 script:
 - if [ $POD_LINT == "YES" ]; then
@@ -59,10 +59,9 @@ script:
   fi
 
 # Build for reporting test coverage
-- if [ $RUN_TESTS == "YES" ]; then
-      xcodebuild test -project JSQCoreDataKit.xcodeproj -scheme "JSQCoreDataKit-iOS" -destination "platform=iOS Simulator,name=iPhone 7" CODE_SIGNING_REQUIRED=NO;
-  fi
+#- if [ $RUN_TESTS == "YES" ]; then
+#      xcodebuild test -project JSQCoreDataKit.xcodeproj -scheme "JSQCoreDataKit-iOS" -destination "platform=iOS Simulator,name=iPhone 7" CODE_SIGNING_REQUIRED=NO;
+#  fi
 
 after_success:
    - bash <(curl -s https://codecov.io/bash)
-   - sleep 5

@@ -4,6 +4,13 @@ The changelog for `JSQCoreDataKit`. Also see the [releases](https://github.com/j
 
 --------------------------------------
 
+6.0.1
+-----
+
+This release closes the [6.0.1 milestone](https://github.com/jessesquires/JSQCoreDataKit/milestone/13).
+
+- Fixed an issue with `carthage` failing. (#100, #101, #102) Thanks @darkhonor and @tonyarnold!
+
 6.0.0
 -----
 

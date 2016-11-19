@@ -145,7 +145,7 @@ internal func buildMigrationMappingSteps(bundle: Bundle,
         migrationSteps.append(nextStep)
         nextModel = nextStep.destination
 
-    } while nextModel != destinationModel
+    } while nextModel.entityVersionHashesByName != destinationModel.entityVersionHashesByName
 
     return migrationSteps
 }

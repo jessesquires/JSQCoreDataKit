@@ -163,8 +163,14 @@ public final class CoreDataStack: CustomStringConvertible, Equatable {
 
             storeCoordinator.performAndWait {
                 do {
-                    try model.removeExistingStore()
-                    try storeCoordinator.remove(store)
+                    if #available(iOS 9.0, tvOS 9, macOS 10.11, watchOS 2, *), let modelURL = model.storeURL {
+                        try storeCoordinator.destroyPersistentStore(at: modelURL,
+                                                                    ofType: model.storeType.type,
+                                                                    options: options)
+                    } else {
+                        try model.removeExistingStore()
+                        try storeCoordinator.remove(store)
+                    }
                     try storeCoordinator.addPersistentStore(ofType: model.storeType.type,
                                                             configurationName: nil,
                                                             at: model.storeURL,

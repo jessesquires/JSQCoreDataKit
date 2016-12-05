@@ -40,9 +40,7 @@ env:
    - DESTINATION="OS=3.1,name=Apple Watch - 42mm" SDK="$WATCHOS_SDK" SCHEME="$WATCHOS_SCHEME" RUN_TESTS="NO" BUILD_EXAMPLE="NO" POD_LINT="NO"
 
 script:
-- set -e
-- xcodebuild -version
-- xcodebuild -showsdks
+- set -o pipefail
 
 - if [ $POD_LINT == "YES" ]; then
       pod lib lint;

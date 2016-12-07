@@ -268,9 +268,9 @@
 				TargetAttributes = {
 					8853941C1BC9E9DE00699506 = {
 						CreatedOnToolsVersion = 7.0.1;
-						DevelopmentTeam = 5VRJU68BZ5;
 						DevelopmentTeamName = "Jesse Squires";
 						LastSwiftMigration = 0800;
+						ProvisioningStyle = Manual;
 					};
 					885394301BC9E9DE00699506 = {
 						CreatedOnToolsVersion = 7.0.1;
@@ -540,6 +540,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = ExampleApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.hexedbits.ExampleApp;
@@ -553,6 +554,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = ExampleApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.hexedbits.ExampleApp;

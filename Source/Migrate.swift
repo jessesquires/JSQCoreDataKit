@@ -145,7 +145,7 @@ internal func buildMigrationMappingSteps(bundle: Bundle,
         migrationSteps.append(nextStep)
         nextModel = nextStep.destination
 
-    } while nextModel != destinationModel
+    } while nextModel.entityVersionHashesByName != destinationModel.entityVersionHashesByName
 
     return migrationSteps
 }
@@ -155,7 +155,7 @@ internal func nextMigrationMappingStep(fromSourceModel sourceModel: NSManagedObj
                                        bundle: Bundle) -> MigrationMappingStep? {
     let modelsInBundle = findModelsInBundle(bundle)
 
-    for nextDestinationModel in modelsInBundle where nextDestinationModel != sourceModel {
+    for nextDestinationModel in modelsInBundle where nextDestinationModel.entityVersionHashesByName != sourceModel.entityVersionHashesByName {
         if let mappingModel = NSMappingModel(from: [bundle],
                                              forSourceModel: sourceModel,
                                              destinationModel: nextDestinationModel) {

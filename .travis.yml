@@ -13,7 +13,7 @@ env:
 
    - IOS_SDK=iphonesimulator10.2
    - OSX_SDK=macosx10.12
-   - TVOS_SDK=appletvsimulator10.0
+   - TVOS_SDK=appletvsimulator10.1
    - WATCHOS_SDK=watchsimulator3.1
 
    matrix:

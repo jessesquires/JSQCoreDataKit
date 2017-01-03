@@ -11,7 +11,7 @@ env:
    - TVOS_SCHEME="JSQCoreDataKit-tvOS"
    - WATCHOS_SCHEME="JSQCoreDataKit-watchOS"
 
-   - IOS_SDK=iphonesimulator10.1
+   - IOS_SDK=iphonesimulator10.2
    - OSX_SDK=macosx10.12
    - TVOS_SDK=appletvsimulator10.0
    - WATCHOS_SDK=watchsimulator3.1

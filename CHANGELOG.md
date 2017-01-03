@@ -4,6 +4,13 @@ The changelog for `JSQCoreDataKit`. Also see the [releases](https://github.com/j
 
 --------------------------------------
 
+6.0.2
+-----
+
+This release closes the [6.0.2 milestone](https://github.com/jessesquires/JSQCoreDataKit/milestone/14).
+
+- Fixed an issue where model migrations would fail. (#106, #109. Thanks @yasserislam, @marius-serban!)
+
 6.0.1
 -----
 

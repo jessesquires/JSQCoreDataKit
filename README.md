@@ -1,4 +1,5 @@
 # JSQCoreDataKit
+
 [![Build Status](https://secure.travis-ci.org/jessesquires/JSQCoreDataKit.svg)](http://travis-ci.org/jessesquires/JSQCoreDataKit) [![Version Status](https://img.shields.io/cocoapods/v/JSQCoreDataKit.svg)][podLink] [![license MIT](https://img.shields.io/cocoapods/l/JSQCoreDataKit.svg)][mitLink] [![codecov](https://codecov.io/gh/jessesquires/JSQCoreDataKit/branch/develop/graph/badge.svg)](https://codecov.io/gh/jessesquires/JSQCoreDataKit) [![Platform](https://img.shields.io/cocoapods/p/JSQCoreDataKit.svg)][docsLink] [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 
 *A swifter Core Data stack*
@@ -39,10 +40,10 @@ This library aims to do the following:
 ````ruby
 use_frameworks!
 
-# For latest release in cocoapods
+# Latest release in CocoaPods
 pod 'JSQCoreDataKit'
 
-# Feeling adventurous? Get the latest on develop
+# Latest on develop branch
 pod 'JSQCoreDataKit', :git => 'https://github.com/jessesquires/JSQCoreDataKit.git', :branch => 'develop'
 ````
 
@@ -54,7 +55,7 @@ github "jessesquires/JSQCoreDataKit"
 
 ## Documentation
 
-Read the [docs][docsLink]. Generated with [jazzy](https://github.com/realm/jazzy). Hosted by [GitHub Pages](https://pages.github.com). 
+Read the [docs][docsLink]. Generated with [jazzy](https://github.com/realm/jazzy). Hosted by [GitHub Pages](https://pages.github.com).
 
 #### Generate
 
@@ -67,111 +68,6 @@ $ ./build_docs.sh
 ````bash
 $ open index.html -a Safari
 ````
-
-## Getting Started
-
-````swift
-import JSQCoreDataKit
-````
-
-#### Standing up the stack
-
-````swift
-// Initialize the Core Data model, this class encapsulates the notion of a .xcdatamodeld file
-// The name passed here should be the name of an .xcdatamodeld file
-let bundle = Bundle(identifier: "com.MyApp.MyModelFramework")!
-let model = CoreDataModel(name: "MyModel", bundle: bundle)
-
-// Initialize a stack with a factory
-let factory = CoreDataStackFactory(model: model)
-
-let stack: CoreDataStack?
-factory.createStack { (result: StackResult) in
-    switch result {
-        case .success(let s):
-            stack = s
-
-        case .failure(let e):
-            print("Error: \(e)")
-    }
-}
-````
-
-#### In-memory stacks for testing
-
-````swift
-let inMemoryModel = CoreDataModel(name: myName, bundle: myBundle, storeType: .inMemory)
-let factory = CoreDataStackFactory(model: inMemoryModel)
-
-let stack: CoreDataStack?
-factory.createStack { (result: StackResult) in
-    switch result {
-        case .success(let s):
-            stack = s
-
-        case .failure(let e):
-            print("Error: \(e)")
-    }
-}
-````
-
-#### Saving a managed object context
-
-````swift
-saveContext(stack.mainContext) { result in
-    switch result {
-        case .success:
-            print("save succeeded")
-
-        case .failure(let error):
-            print("save failed: \(error)")
-    }
-}
-````
-
-#### Deleting the store
-
-````swift
-let bundle = Bundle(identifier: "com.MyApp.MyModelFramework")!
-let model = CoreDataModel(name: "MyModel", bundle: bundle)
-do {
-    try model.removeExistingStore()
-} catch {
-    print("Error: \(error)")
-}
-````
-
-#### Performing migrations
-
-````swift
-let bundle = Bundle(identifier: "com.MyApp.MyModelFramework")!
-let model = CoreDataModel(name: "MyModel", bundle: bundle)
-if model.needsMigration {
-    do {
-        try model.migrate()
-    } catch {
-        print("Failed to migrate model: \(error)")
-    }
-}
-````
-
-#### Using child contexts
-
-````swift
-// Create a main queue child context from the main context
-let childContext = stack.childContext(concurrencyType: .mainQueueConcurrencyType)
-
-// Create a background queue child context from the background context
-let childContext = stack.childContext(concurrencyType: .privateQueueConcurrencyType)
-````
-
-## Example app
-
-There's an example app in the `Example/` directory. Open the `ExampleApp.xcodeproj` to run it. The project exercises all basic functionality of the library.
-
-## Unit tests
-
-There's a suite of unit tests for `JSQCoreDataKit.framework`. You can run them in the usual way from Xcode by opening `JSQCoreDataKit.xcodeproj`. These tests are well commented and serve as further documentation for how to use this library.
 
 ## Contribute
 

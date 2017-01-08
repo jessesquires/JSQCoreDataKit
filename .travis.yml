@@ -1,5 +1,5 @@
 language: objective-c
-osx_image: xcode8.1
+osx_image: xcode8.2
 
 env:
    global:
@@ -11,9 +11,9 @@ env:
    - TVOS_SCHEME="JSQCoreDataKit-tvOS"
    - WATCHOS_SCHEME="JSQCoreDataKit-watchOS"
 
-   - IOS_SDK=iphonesimulator10.1
+   - IOS_SDK=iphonesimulator10.2
    - OSX_SDK=macosx10.12
-   - TVOS_SDK=appletvsimulator10.0
+   - TVOS_SDK=appletvsimulator10.1
    - WATCHOS_SDK=watchsimulator3.1
 
    matrix:
@@ -27,8 +27,9 @@ env:
    - DESTINATION="OS=9.2,name=iPhone 6s Plus" SDK="$IOS_SDK" SCHEME="$IOS_SCHEME" RUN_TESTS="YES" BUILD_EXAMPLE="NO"  POD_LINT="NO"
    - DESTINATION="OS=9.3,name=iPad Pro"       SDK="$IOS_SDK" SCHEME="$IOS_SCHEME" RUN_TESTS="YES" BUILD_EXAMPLE="NO"  POD_LINT="NO"
 
-   - DESTINATION="OS=10.0,name=iPhone 6s" SDK="$IOS_SDK" SCHEME="$IOS_SCHEME" RUN_TESTS="YES" BUILD_EXAMPLE="YES" POD_LINT="NO"
-   - DESTINATION="OS=10.1,name=iPhone 7"  SDK="$IOS_SDK" SCHEME="$IOS_SCHEME" RUN_TESTS="YES" BUILD_EXAMPLE="YES" POD_LINT="NO"
+   - DESTINATION="OS=10.0,name=iPhone 6s"  SDK="$IOS_SDK" SCHEME="$IOS_SCHEME" RUN_TESTS="YES" BUILD_EXAMPLE="YES" POD_LINT="NO"
+   - DESTINATION="OS=10.1,name=iPhone 7"   SDK="$IOS_SDK" SCHEME="$IOS_SCHEME" RUN_TESTS="YES" BUILD_EXAMPLE="NO"  POD_LINT="NO"
+   - DESTINATION="OS=10.2,name=iPad Air 2" SDK="$IOS_SDK" SCHEME="$IOS_SCHEME" RUN_TESTS="YES" BUILD_EXAMPLE="NO"  POD_LINT="NO"
 
    - DESTINATION="arch=x86_64" SDK="$OSX_SDK" SCHEME="$OSX_SCHEME" RUN_TESTS="NO" BUILD_EXAMPLE="NO" POD_LINT="NO"
 
@@ -57,7 +58,7 @@ script:
 
 # Build for reporting test coverage
 - if [ $RUN_TESTS == "YES" ] && [ $SDK == $IOS_SDK ]; then
-      xcodebuild test -project JSQCoreDataKit.xcodeproj -scheme "JSQCoreDataKit-iOS" -destination "platform=iOS Simulator,name=iPhone 7" CODE_SIGNING_REQUIRED=NO;
+      xcodebuild test -project JSQCoreDataKit.xcodeproj -scheme "JSQCoreDataKit-iOS" -destination "platform=iOS Simulator,name=iPad Air 2" CODE_SIGNING_REQUIRED=NO;
   fi
 
 after_success:

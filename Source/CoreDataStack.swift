@@ -205,8 +205,9 @@ public final class CoreDataStack: CustomStringConvertible, Equatable {
     @objc
     private func didReceiveChildContextDidSave(notification: Notification) {
         guard let context = notification.object as? NSManagedObjectContext else {
-            assertionFailure("*** Error: \(notification.name) posted from object of type \(notification.object.self). "
-                + "Expected \(NSManagedObjectContext.self) instead.")
+            assertionFailure("*** Error: \(notification.name) posted from object of type "
+                + String(describing: notification.object.self)
+                + ". Expected \(NSManagedObjectContext.self) instead.")
             return
         }
 

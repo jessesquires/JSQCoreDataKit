@@ -4,6 +4,11 @@ The changelog for `JSQCoreDataKit`. Also see the [releases](https://github.com/j
 
 --------------------------------------
 
+6.0.3
+-----
+
+- Fixed some warnings from Swift 3.1 / Xcode 8.3
+
 6.0.2
 -----
 

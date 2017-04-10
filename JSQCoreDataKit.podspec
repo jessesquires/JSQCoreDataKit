@@ -20,4 +20,5 @@ Pod::Spec.new do |s|
    s.frameworks = 'CoreData'
 
    s.requires_arc = true
+   s.pod_target_xcconfig =  { 'SWIFT_VERSION' => '3.0' }
 end

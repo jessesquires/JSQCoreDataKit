@@ -104,7 +104,7 @@ final class CompanyViewController: UITableViewController, NSFetchedResultsContro
 
     // MARK: Actions
 
-    func didTapAddButton(_ sender: UIBarButtonItem) {
+    @objc func didTapAddButton(_ sender: UIBarButtonItem) {
         stack.mainContext.performAndWait {
             _ = Company.newCompany(self.stack.mainContext)
             saveContext(self.stack.mainContext)

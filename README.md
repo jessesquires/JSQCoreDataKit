@@ -86,5 +86,5 @@ Created and maintained by [**@jesse_squires**](https://twitter.com/jesse_squires
 *Please provide attribution, it is greatly appreciated.*
 
 [podLink]:https://cocoapods.org/pods/JSQCoreDataKit
-[docsLink]:http://www.jessesquires.com/JSQCoreDataKit
+[docsLink]:http://jessesquires.github.io/JSQCoreDataKit
 [mitLink]:http://opensource.org/licenses/MIT

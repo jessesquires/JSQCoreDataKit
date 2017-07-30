@@ -54,7 +54,7 @@ final class ContextSyncTests: TestCase {
         let companyNames = companies.map { $0.name }
 
         // WHEN: we save the main context
-        expectation(forNotification: Notification.Name.NSManagedObjectContextDidSave, object: inMemoryStack.mainContext, handler: nil)
+        expectation(forNotification: .NSManagedObjectContextDidSave, object: inMemoryStack.mainContext, handler: nil)
 
         saveContext(inMemoryStack.mainContext) { result in
             XCTAssertTrue(result == .success)
@@ -89,7 +89,7 @@ final class ContextSyncTests: TestCase {
         let companyNames = companies.map { $0.name }
         
         // WHEN: we save the background context
-        expectation(forNotification: Notification.Name.NSManagedObjectContextDidSave, object: inMemoryStack.backgroundContext, handler: nil)
+        expectation(forNotification: .NSManagedObjectContextDidSave, object: inMemoryStack.backgroundContext, handler: nil)
         
         saveContext(inMemoryStack.backgroundContext) { result in
             XCTAssertTrue(result == .success)
@@ -120,7 +120,7 @@ final class ContextSyncTests: TestCase {
         let companyNames = companies.map { $0.name }
         
         // WHEN: we save the child context
-        expectation(forNotification: Notification.Name.NSManagedObjectContextDidSave, object: childContext, handler: nil)
+        expectation(forNotification: .NSManagedObjectContextDidSave, object: childContext, handler: nil)
         saveContext(childContext) { (result) -> Void in
             XCTAssertTrue(result == .success)
         }
@@ -154,7 +154,7 @@ final class ContextSyncTests: TestCase {
         let companyNames = companies.map { $0.name }
         
         // WHEN: we save the child context
-        expectation(forNotification: Notification.Name.NSManagedObjectContextDidSave, object: childContext, handler: nil)
+        expectation(forNotification: .NSManagedObjectContextDidSave, object: childContext, handler: nil)
         saveContext(childContext) { (result) -> Void in
             XCTAssertTrue(result == .success)
         }

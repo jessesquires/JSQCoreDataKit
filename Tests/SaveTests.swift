@@ -48,14 +48,14 @@ final class SaveTests: TestCase {
         }
 
         var didSaveMain = false
-        expectation(forNotification: Notification.Name.NSManagedObjectContextDidSave,
+        expectation(forNotification: .NSManagedObjectContextDidSave,
                     object: inMemoryStack.mainContext) { (notification) -> Bool in
                         didSaveMain = true
                         return true
         }
 
         var didUpdateBackground = false
-        expectation(forNotification: Notification.Name.NSManagedObjectContextObjectsDidChange,
+        expectation(forNotification: .NSManagedObjectContextObjectsDidChange,
                     object: inMemoryStack.backgroundContext) { (notification) -> Bool in
                         didUpdateBackground = true
                         return true
@@ -87,14 +87,14 @@ final class SaveTests: TestCase {
         }
 
         var didSaveMain = false
-        expectation(forNotification: Notification.Name.NSManagedObjectContextDidSave,
+        expectation(forNotification: .NSManagedObjectContextDidSave,
                     object: inMemoryStack.mainContext) { (notification) -> Bool in
                         didSaveMain = true
                         return true
         }
 
         var didUpdateBackground = false
-        expectation(forNotification: Notification.Name.NSManagedObjectContextObjectsDidChange,
+        expectation(forNotification: .NSManagedObjectContextObjectsDidChange,
                     object: inMemoryStack.backgroundContext) { (notification) -> Bool in
                         didUpdateBackground = true
                         return true
@@ -134,14 +134,14 @@ final class SaveTests: TestCase {
         }
 
         var didSaveMain = false
-        expectation(forNotification: Notification.Name.NSManagedObjectContextDidSave,
+        expectation(forNotification: .NSManagedObjectContextDidSave,
                     object: inMemoryStack.mainContext) { (notification) -> Bool in
                         didSaveMain = true
                         return true
         }
 
         var didUpdateBackground = false
-        expectation(forNotification: Notification.Name.NSManagedObjectContextObjectsDidChange,
+        expectation(forNotification: .NSManagedObjectContextObjectsDidChange,
                     object: inMemoryStack.backgroundContext) { (notification) -> Bool in
                         didUpdateBackground = true
                         return true
@@ -173,21 +173,21 @@ final class SaveTests: TestCase {
         }
 
         var didSaveChild = false
-        expectation(forNotification: Notification.Name.NSManagedObjectContextDidSave,
+        expectation(forNotification: .NSManagedObjectContextDidSave,
                     object: childContext) { (notification) -> Bool in
                         didSaveChild = true
                         return true
         }
 
         var didSaveMain = false
-        expectation(forNotification: Notification.Name.NSManagedObjectContextDidSave,
+        expectation(forNotification: .NSManagedObjectContextDidSave,
                     object: inMemoryStack.mainContext) { (notification) -> Bool in
                         didSaveMain = true
                         return true
         }
 
         var didUpdateBackground = false
-        expectation(forNotification: Notification.Name.NSManagedObjectContextObjectsDidChange,
+        expectation(forNotification: .NSManagedObjectContextObjectsDidChange,
                     object: inMemoryStack.backgroundContext) { (notification) -> Bool in
                         didUpdateBackground = true
                         return true
@@ -220,21 +220,21 @@ final class SaveTests: TestCase {
         }
 
         var didSaveChild = false
-        expectation(forNotification: Notification.Name.NSManagedObjectContextDidSave,
+        expectation(forNotification: .NSManagedObjectContextDidSave,
                     object: childContext) { (notification) -> Bool in
                         didSaveChild = true
                         return true
         }
 
         var didSaveBackground = false
-        expectation(forNotification: Notification.Name.NSManagedObjectContextDidSave,
+        expectation(forNotification: .NSManagedObjectContextDidSave,
                     object: inMemoryStack.backgroundContext) { (notification) -> Bool in
                         didSaveBackground = true
                         return true
         }
 
         var didUpdateMain = false
-        expectation(forNotification: Notification.Name.NSManagedObjectContextObjectsDidChange,
+        expectation(forNotification: .NSManagedObjectContextObjectsDidChange,
                     object: inMemoryStack.mainContext) { (notification) -> Bool in
                         didUpdateMain = true
                         return true
@@ -267,14 +267,14 @@ final class SaveTests: TestCase {
         }
 
         var didSaveBackground = false
-        expectation(forNotification: Notification.Name.NSManagedObjectContextDidSave,
+        expectation(forNotification: .NSManagedObjectContextDidSave,
                     object: inMemoryStack.backgroundContext) { (notification) -> Bool in
                         didSaveBackground = true
                         return true
         }
 
         var didUpdateMain = false
-        expectation(forNotification: Notification.Name.NSManagedObjectContextObjectsDidChange,
+        expectation(forNotification: .NSManagedObjectContextObjectsDidChange,
                     object: inMemoryStack.mainContext) { (notification) -> Bool in
                         didUpdateMain = true
                         return true

@@ -34,9 +34,9 @@ public let defaultStoreOptions: PersistentStoreOptions = [
     NSInferMappingModelAutomaticallyOption as NSObject: true as AnyObject
 ]
 
-// MARK: Internal
-
-internal func defaultDirectoryURL() -> URL {
+/// The default directory used to initialize a `CoreDataModel`.
+/// On tvOS, this is the caches directory. All other platforms use the document directory.
+public func defaultDirectoryURL() -> URL {
     do {
         #if os(tvOS)
             let searchPathDirectory = FileManager.SearchPathDirectory.cachesDirectory

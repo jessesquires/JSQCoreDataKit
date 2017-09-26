@@ -39,10 +39,10 @@ public func ==(lhs: StackResult, rhs: StackResult) -> Bool {
     switch (lhs, rhs) {
     case (let .success(stack1), let .success(stack2)):
         return stack1 == stack2
-
+        
     case (let .failure(error1), let .failure(error2)):
         return error1 == error2
-
+        
     default:
         return false
     }
@@ -54,10 +54,10 @@ public func ==(lhs: SaveResult, rhs: SaveResult) -> Bool {
     switch (lhs, rhs) {
     case (.success, .success):
         return true
-
+        
     case (let .failure(error1), let .failure(error2)):
         return error1 == error2
-
+        
     default:
         return false
     }
@@ -82,16 +82,16 @@ public func ==(lhs: StoreType, rhs: StoreType) -> Bool {
 /// :nodoc:
 public func ==(lhs: CoreDataStackFactory, rhs: CoreDataStackFactory) -> Bool {
     let equalModels = (lhs.model == rhs.model)
-
+    
     if let lhsOptions = lhs.options, let rhsOptions = rhs.options {
         return equalModels
             && lhsOptions == rhsOptions
     }
-
+    
     if lhs.options == nil && rhs.options == nil {
         return equalModels
     }
-
+    
     return false
 }
 
@@ -101,12 +101,12 @@ public func ==(lhs: PersistentStoreOptions, rhs: PersistentStoreOptions) -> Bool
     guard lhs.count == rhs.count else {
         return false
     }
-
+    
     for (key, value) in lhs {
         guard let rhsValue = rhs[key] else {
             return false
         }
-
+        
         if !rhsValue.isEqual(value) {
             return false
         }

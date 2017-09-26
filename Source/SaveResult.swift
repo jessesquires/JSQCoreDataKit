@@ -24,16 +24,16 @@ import Foundation
  A result object representing the result of saving an `NSManagedObjectContext`.
  */
 public enum SaveResult: Equatable {
-
+    
     /// The success result.
     case success
-
+    
     /// The failure result, containing an `NSError` instance that describes the error.
     case failure(NSError)
-
-
+    
+    
     // MARK: Methods
-
+    
     /**
      - returns: The result's `NSError` if `.Failure`, otherwise `nil`.
      */

@@ -19,7 +19,6 @@
 import CoreData
 import Foundation
 
-
 /**
  Describes a Core Data model file exention type based on the
  [Model File Format and Versions](https://developer.apple.com/library/ios/documentation/Cocoa/Conceptual/CoreDataVersioning/Articles/vmModelFormat.html)
@@ -121,7 +120,6 @@ public struct CoreDataModel: Equatable {
         }
     }
 
-
     // MARK: Initialization
 
     /**
@@ -138,7 +136,6 @@ public struct CoreDataModel: Equatable {
         self.bundle = bundle
         self.storeType = storeType
     }
-
 
     // MARK: Methods
 

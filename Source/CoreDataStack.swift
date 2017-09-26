@@ -182,7 +182,7 @@ public final class CoreDataStack: CustomStringConvertible, Equatable {
                     }
                     return
                 }
-
+                
                 DispatchQueue.main.async {
                     completion(.success(self))
                 }
@@ -198,7 +198,6 @@ public final class CoreDataStack: CustomStringConvertible, Equatable {
             return "\(CoreDataStack.self)(model=\(model.name); mainContext=\(mainContext); backgroundContext=\(backgroundContext))"
         }
     }
-
 
     // MARK: Private
 

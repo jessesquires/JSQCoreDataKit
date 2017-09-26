@@ -79,7 +79,7 @@ public struct CoreDataStackFactory: Equatable {
     public func createStack(onQueue queue: DispatchQueue? = .global(qos: .userInitiated),
                             completion: @escaping (StackResult) -> Void) {
         let isAsync = (queue != nil)
-
+        
         let creationClosure = {
             let storeCoordinator: NSPersistentStoreCoordinator
             do {

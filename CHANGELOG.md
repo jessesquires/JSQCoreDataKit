@@ -11,6 +11,7 @@ The changelog for `JSQCoreDataKit`. Also see the [releases](https://github.com/j
 - iOS 9.0 minimum now required
 - tvOS 10.0 minimum now required
 - watchOS 3.0 minimum now required
+- macOS 10.11 minimum now required
 
 6.0.3
 -----

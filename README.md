@@ -29,7 +29,7 @@ This library aims to do the following:
 * Xcode 9+
 * Swift 4.0+
 * iOS 9.0+
-* OSX 10.10+
+* macOS 10.11+
 * tvOS 10.0+
 * watchOS 3.0+
 

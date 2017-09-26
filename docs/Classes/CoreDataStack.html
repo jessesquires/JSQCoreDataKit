@@ -48,7 +48,7 @@
             <a href="../Global Variables.html">Global Variables</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
-                <a href="../Global Variables.html#/s:v14JSQCoreDataKit19defaultStoreOptionsGVs10DictionaryCSo8NSObjectPs9AnyObject__">defaultStoreOptions</a>
+                <a href="../Global Variables.html#/s:14JSQCoreDataKit19defaultStoreOptionss10DictionaryVySo8NSObjectCyXlGv">defaultStoreOptions</a>
               </li>
             </ul>
           </li>
@@ -76,7 +76,10 @@
             <a href="../Functions.html">Functions</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
-                <a href="../Functions.html#/s:F14JSQCoreDataKit11saveContextFTCSo22NSManagedObjectContext4waitSb10completionGSqFOS_10SaveResultT___T_">saveContext(_:wait:completion:)</a>
+                <a href="../Functions.html#/s:14JSQCoreDataKit19defaultDirectoryURL10Foundation0F0VyF">defaultDirectoryURL()</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:14JSQCoreDataKit11saveContextySo015NSManagedObjectE0C_Sb4waityAA10SaveResultOcSg10completiontF">saveContext(_:wait:completion:)</a>
               </li>
             </ul>
           </li>
@@ -103,10 +106,10 @@
             <a href="../Typealiases.html">Typealiases</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
-                <a href="../Typealiases.html#/s:14JSQCoreDataKit12ChildContext">ChildContext</a>
+                <a href="../Typealiases.html#/s:14JSQCoreDataKit12ChildContexta">ChildContext</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Typealiases.html#/s:14JSQCoreDataKit22PersistentStoreOptions">PersistentStoreOptions</a>
+                <a href="../Typealiases.html#/s:14JSQCoreDataKit22PersistentStoreOptionsa">PersistentStoreOptions</a>
               </li>
             </ul>
           </li>
@@ -130,7 +133,6 @@ These two contexts operate on the main queue and a private background queue, res
 Both are connected to the persistent store coordinator and data between them is perpetually kept in sync.</p>
 
 <p>Changes to a child context are propagated to its parent context and eventually the persistent store when saving.</p>
-
 <div class="aside aside-warning">
     <p class="aside-title">Warning</p>
     <strong>You cannot create a <code>CoreDataStack</code> instance directly. Instead, use a <code><a href="../Structs/CoreDataStackFactory.html">CoreDataStackFactory</a></code> for initialization.</strong>
@@ -151,9 +153,9 @@ Both are connected to the persistent store coordinator and data between them is 
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:vC14JSQCoreDataKit13CoreDataStack5modelVS_13CoreDataModel"></a>
+                    <a name="/s:14JSQCoreDataKit04CoreB5StackC5modelAA0dB5ModelVv"></a>
                     <a name="//apple_ref/swift/Property/model" class="dashAnchor"></a>
-                    <a class="token" href="#/s:vC14JSQCoreDataKit13CoreDataStack5modelVS_13CoreDataModel">model</a>
+                    <a class="token" href="#/s:14JSQCoreDataKit04CoreB5StackC5modelAA0dB5ModelVv">model</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -178,9 +180,9 @@ Both are connected to the persistent store coordinator and data between them is 
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:vC14JSQCoreDataKit13CoreDataStack11mainContextCSo22NSManagedObjectContext"></a>
+                    <a name="/s:14JSQCoreDataKit04CoreB5StackC11mainContextSo015NSManagedObjectG0Cv"></a>
                     <a name="//apple_ref/swift/Property/mainContext" class="dashAnchor"></a>
-                    <a class="token" href="#/s:vC14JSQCoreDataKit13CoreDataStack11mainContextCSo22NSManagedObjectContext">mainContext</a>
+                    <a class="token" href="#/s:14JSQCoreDataKit04CoreB5StackC11mainContextSo015NSManagedObjectG0Cv">mainContext</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -189,8 +191,8 @@ Both are connected to the persistent store coordinator and data between them is 
                       <div class="pointer"></div>
                       <div class="abstract">
                         <p>The main managed object context for the stack, which operates on the main queue.
-This context is a root level context that is connected to the <code><a href="../Classes/CoreDataStack.html#/s:vC14JSQCoreDataKit13CoreDataStack16storeCoordinatorCSo28NSPersistentStoreCoordinator">storeCoordinator</a></code>.
-It is kept in sync with <code><a href="../Classes/CoreDataStack.html#/s:vC14JSQCoreDataKit13CoreDataStack17backgroundContextCSo22NSManagedObjectContext">backgroundContext</a></code>.</p>
+This context is a root level context that is connected to the <code><a href="../Classes/CoreDataStack.html#/s:14JSQCoreDataKit04CoreB5StackC16storeCoordinatorSo017NSPersistentStoreG0Cv">storeCoordinator</a></code>.
+It is kept in sync with <code><a href="../Classes/CoreDataStack.html#/s:14JSQCoreDataKit04CoreB5StackC17backgroundContextSo015NSManagedObjectG0Cv">backgroundContext</a></code>.</p>
 
                       </div>
                       <div class="declaration">
@@ -207,9 +209,9 @@ It is kept in sync with <code><a href="../Classes/CoreDataStack.html#/s:vC14JSQC
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:vC14JSQCoreDataKit13CoreDataStack17backgroundContextCSo22NSManagedObjectContext"></a>
+                    <a name="/s:14JSQCoreDataKit04CoreB5StackC17backgroundContextSo015NSManagedObjectG0Cv"></a>
                     <a name="//apple_ref/swift/Property/backgroundContext" class="dashAnchor"></a>
-                    <a class="token" href="#/s:vC14JSQCoreDataKit13CoreDataStack17backgroundContextCSo22NSManagedObjectContext">backgroundContext</a>
+                    <a class="token" href="#/s:14JSQCoreDataKit04CoreB5StackC17backgroundContextSo015NSManagedObjectG0Cv">backgroundContext</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -218,8 +220,8 @@ It is kept in sync with <code><a href="../Classes/CoreDataStack.html#/s:vC14JSQC
                       <div class="pointer"></div>
                       <div class="abstract">
                         <p>The background managed object context for the stack, which operates on a background queue.
-This context is a root level context that is connected to the <code><a href="../Classes/CoreDataStack.html#/s:vC14JSQCoreDataKit13CoreDataStack16storeCoordinatorCSo28NSPersistentStoreCoordinator">storeCoordinator</a></code>.
-It is kept in sync with <code><a href="../Classes/CoreDataStack.html#/s:vC14JSQCoreDataKit13CoreDataStack11mainContextCSo22NSManagedObjectContext">mainContext</a></code>.</p>
+This context is a root level context that is connected to the <code><a href="../Classes/CoreDataStack.html#/s:14JSQCoreDataKit04CoreB5StackC16storeCoordinatorSo017NSPersistentStoreG0Cv">storeCoordinator</a></code>.
+It is kept in sync with <code><a href="../Classes/CoreDataStack.html#/s:14JSQCoreDataKit04CoreB5StackC11mainContextSo015NSManagedObjectG0Cv">mainContext</a></code>.</p>
 
                       </div>
                       <div class="declaration">
@@ -236,9 +238,9 @@ It is kept in sync with <code><a href="../Classes/CoreDataStack.html#/s:vC14JSQC
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:vC14JSQCoreDataKit13CoreDataStack16storeCoordinatorCSo28NSPersistentStoreCoordinator"></a>
+                    <a name="/s:14JSQCoreDataKit04CoreB5StackC16storeCoordinatorSo017NSPersistentStoreG0Cv"></a>
                     <a name="//apple_ref/swift/Property/storeCoordinator" class="dashAnchor"></a>
-                    <a class="token" href="#/s:vC14JSQCoreDataKit13CoreDataStack16storeCoordinatorCSo28NSPersistentStoreCoordinator">storeCoordinator</a>
+                    <a class="token" href="#/s:14JSQCoreDataKit04CoreB5StackC16storeCoordinatorSo017NSPersistentStoreG0Cv">storeCoordinator</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -274,9 +276,9 @@ It is kept in sync with <code><a href="../Classes/CoreDataStack.html#/s:vC14JSQC
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:FC14JSQCoreDataKit13CoreDataStack12childContextFT15concurrencyTypeOSC37NSManagedObjectContextConcurrencyType15mergePolicyTypeOSC17NSMergePolicyType_CSo22NSManagedObjectContext"></a>
+                    <a name="/s:14JSQCoreDataKit04CoreB5StackC12childContextSo015NSManagedObjectG0CSC0hiG15ConcurrencyTypeO011concurrencyK0_SC013NSMergePolicyK0O05mergenK0tF"></a>
                     <a name="//apple_ref/swift/Method/childContext(concurrencyType:mergePolicyType:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:FC14JSQCoreDataKit13CoreDataStack12childContextFT15concurrencyTypeOSC37NSManagedObjectContextConcurrencyType15mergePolicyTypeOSC17NSMergePolicyType_CSo22NSManagedObjectContext">childContext(concurrencyType:mergePolicyType:)</a>
+                    <a class="token" href="#/s:14JSQCoreDataKit04CoreB5StackC12childContextSo015NSManagedObjectG0CSC0hiG15ConcurrencyTypeO011concurrencyK0_SC013NSMergePolicyK0O05mergenK0tF">childContext(concurrencyType:mergePolicyType:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -286,9 +288,12 @@ It is kept in sync with <code><a href="../Classes/CoreDataStack.html#/s:vC14JSQC
                       <div class="abstract">
                         <p>Creates a new child context with the specified <code>concurrencyType</code> and <code>mergePolicyType</code>.</p>
 
-<p>The parent context is either <code><a href="../Classes/CoreDataStack.html#/s:vC14JSQCoreDataKit13CoreDataStack11mainContextCSo22NSManagedObjectContext">mainContext</a></code> or <code><a href="../Classes/CoreDataStack.html#/s:vC14JSQCoreDataKit13CoreDataStack17backgroundContextCSo22NSManagedObjectContext">backgroundContext</a></code> dependending on the specified <code>concurrencyType</code>:
-* <code>.PrivateQueueConcurrencyType</code> will set <code><a href="../Classes/CoreDataStack.html#/s:vC14JSQCoreDataKit13CoreDataStack17backgroundContextCSo22NSManagedObjectContext">backgroundContext</a></code> as the parent.
-* <code>.MainQueueConcurrencyType</code> will set <code><a href="../Classes/CoreDataStack.html#/s:vC14JSQCoreDataKit13CoreDataStack11mainContextCSo22NSManagedObjectContext">mainContext</a></code> as the parent.</p>
+<p>The parent context is either <code><a href="../Classes/CoreDataStack.html#/s:14JSQCoreDataKit04CoreB5StackC11mainContextSo015NSManagedObjectG0Cv">mainContext</a></code> or <code><a href="../Classes/CoreDataStack.html#/s:14JSQCoreDataKit04CoreB5StackC17backgroundContextSo015NSManagedObjectG0Cv">backgroundContext</a></code> dependending on the specified <code>concurrencyType</code>:</p>
+
+<ul>
+<li><code>.PrivateQueueConcurrencyType</code> will set <code><a href="../Classes/CoreDataStack.html#/s:14JSQCoreDataKit04CoreB5StackC17backgroundContextSo015NSManagedObjectG0Cv">backgroundContext</a></code> as the parent.</li>
+<li><code>.MainQueueConcurrencyType</code> will set <code><a href="../Classes/CoreDataStack.html#/s:14JSQCoreDataKit04CoreB5StackC11mainContextSo015NSManagedObjectG0Cv">mainContext</a></code> as the parent.</li>
+</ul>
 
 <p>Saving the returned context will propagate changes through the parent context and then to the persistent store.</p>
 
@@ -298,7 +303,7 @@ It is kept in sync with <code><a href="../Classes/CoreDataStack.html#/s:vC14JSQC
                         <div class="language">
                           <p class="aside-title">Swift</p>
                           <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">childContext</span><span class="p">(</span><span class="nv">concurrencyType</span><span class="p">:</span> <span class="kt">NSManagedObjectContextConcurrencyType</span> <span class="o">=</span> <span class="o">.</span><span class="n">mainQueueConcurrencyType</span><span class="p">,</span>
-                             <span class="nv">mergePolicyType</span><span class="p">:</span> <span class="kt">NSMergePolicyType</span> <span class="o">=</span> <span class="o">.</span><span class="n">mergeByPropertyObjectTrumpMergePolicyType</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt"><a href="../Typealiases.html#/s:14JSQCoreDataKit12ChildContext">ChildContext</a></span></code></pre>
+                             <span class="nv">mergePolicyType</span><span class="p">:</span> <span class="kt">NSMergePolicyType</span> <span class="o">=</span> <span class="o">.</span><span class="n">mergeByPropertyObjectTrumpMergePolicyType</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt"><a href="../Typealiases.html#/s:14JSQCoreDataKit12ChildContexta">ChildContext</a></span></code></pre>
 
                         </div>
                       </div>
@@ -315,7 +320,6 @@ It is kept in sync with <code><a href="../Classes/CoreDataStack.html#/s:vC14JSQC
                               <td>
                                 <div>
                                   <p>The concurrency pattern to use. The default is <code>.MainQueueConcurrencyType</code>.</p>
-
                                 </div>
                               </td>
                             </tr>
@@ -328,7 +332,6 @@ It is kept in sync with <code><a href="../Classes/CoreDataStack.html#/s:vC14JSQC
                               <td>
                                 <div>
                                   <p>The merge policy to use. The default is <code>.MergeByPropertyObjectTrumpMergePolicyType</code>.</p>
-
                                 </div>
                               </td>
                             </tr>
@@ -338,7 +341,6 @@ It is kept in sync with <code><a href="../Classes/CoreDataStack.html#/s:vC14JSQC
                       <div>
                         <h4>Return Value</h4>
                         <p>A new child managed object context.</p>
-
                       </div>
                     </section>
                   </div>
@@ -346,9 +348,9 @@ It is kept in sync with <code><a href="../Classes/CoreDataStack.html#/s:vC14JSQC
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:FC14JSQCoreDataKit13CoreDataStack5resetFT7onQueueCSo13DispatchQueue10completionFOS_11StackResultT__T_"></a>
+                    <a name="/s:14JSQCoreDataKit04CoreB5StackC5resetySo13DispatchQueueC02onH0_yAA0E6ResultOc10completiontF"></a>
                     <a name="//apple_ref/swift/Method/reset(onQueue:completion:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:FC14JSQCoreDataKit13CoreDataStack5resetFT7onQueueCSo13DispatchQueue10completionFOS_11StackResultT__T_">reset(onQueue:completion:)</a>
+                    <a class="token" href="#/s:14JSQCoreDataKit04CoreB5StackC5resetySo13DispatchQueueC02onH0_yAA0E6ResultOc10completiontF">reset(onQueue:completion:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -359,7 +361,6 @@ It is kept in sync with <code><a href="../Classes/CoreDataStack.html#/s:vC14JSQC
                         <p>Resets the managed object contexts in the stack on their respective threads.
 Then, if the coordinator is connected to a persistent store, the store will be deleted and recreated on a background thread.
 The completion closure is executed on the main thread.</p>
-
 <div class="aside aside-note">
     <p class="aside-title">Note</p>
     <p>Removing and re-adding the persistent store is performed on a background queue.
@@ -389,8 +390,8 @@ For binary and SQLite stores, this will also remove the store from disk.</p>
                               </td>
                               <td>
                                 <div>
-                                  <p>A background queue on which to reset the stack. The default is a background queue with a “user initiated” quality of service class.</p>
-
+                                  <p>A background queue on which to reset the stack.
+The default is a background queue with a <q>user initiated</q> quality of service class.</p>
                                 </div>
                               </td>
                             </tr>
@@ -403,7 +404,6 @@ For binary and SQLite stores, this will also remove the store from disk.</p>
                               <td>
                                 <div>
                                   <p>The closure to be called once resetting is complete. This is called on the main queue.</p>
-
                                 </div>
                               </td>
                             </tr>
@@ -418,8 +418,8 @@ For binary and SQLite stores, this will also remove the store from disk.</p>
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2017 <a class="link" href="https://twitter.com/jesse_squires" target="_blank" rel="external">Jesse Squires</a>. All rights reserved. (Last updated: 2017-04-04)</p>
-          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.7.5</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+          <p>&copy; 2017 <a class="link" href="https://twitter.com/jesse_squires" target="_blank" rel="external">Jesse Squires</a>. All rights reserved. (Last updated: 2017-09-25)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.8.3</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
         </section>
       </article>
     </div>

@@ -47,7 +47,7 @@
             <a href="Global Variables.html">Global Variables</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
-                <a href="Global Variables.html#/s:v14JSQCoreDataKit19defaultStoreOptionsGVs10DictionaryCSo8NSObjectPs9AnyObject__">defaultStoreOptions</a>
+                <a href="Global Variables.html#/s:14JSQCoreDataKit19defaultStoreOptionss10DictionaryVySo8NSObjectCyXlGv">defaultStoreOptions</a>
               </li>
             </ul>
           </li>
@@ -75,7 +75,10 @@
             <a href="Functions.html">Functions</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
-                <a href="Functions.html#/s:F14JSQCoreDataKit11saveContextFTCSo22NSManagedObjectContext4waitSb10completionGSqFOS_10SaveResultT___T_">saveContext(_:wait:completion:)</a>
+                <a href="Functions.html#/s:14JSQCoreDataKit19defaultDirectoryURL10Foundation0F0VyF">defaultDirectoryURL()</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Functions.html#/s:14JSQCoreDataKit11saveContextySo015NSManagedObjectE0C_Sb4waityAA10SaveResultOcSg10completiontF">saveContext(_:wait:completion:)</a>
               </li>
             </ul>
           </li>
@@ -102,10 +105,10 @@
             <a href="Typealiases.html">Typealiases</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
-                <a href="Typealiases.html#/s:14JSQCoreDataKit12ChildContext">ChildContext</a>
+                <a href="Typealiases.html#/s:14JSQCoreDataKit12ChildContexta">ChildContext</a>
               </li>
               <li class="nav-group-task">
-                <a href="Typealiases.html#/s:14JSQCoreDataKit22PersistentStoreOptions">PersistentStoreOptions</a>
+                <a href="Typealiases.html#/s:14JSQCoreDataKit22PersistentStoreOptionsa">PersistentStoreOptions</a>
               </li>
             </ul>
           </li>
@@ -115,12 +118,12 @@
         <section>
           <section class="section">
             
-            <a href='#getting-started' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h1 id='getting-started'>Getting Started</h1>
+            <h1 id='getting-started' class='heading'>Getting Started</h1>
 
 <p>This guide provides a brief overview for how to get started using <code>JSQCoreDataKit</code>.</p>
 <pre class="highlight swift"><code><span class="kd">import</span> <span class="kt">JSQCoreDataKit</span>
 </code></pre>
-<a href='#standing-up-the-stack' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h2 id='standing-up-the-stack'>Standing up the stack</h2>
+<h2 id='standing-up-the-stack' class='heading'>Standing up the stack</h2>
 <pre class="highlight swift"><code><span class="c1">// Initialize the Core Data model, this class encapsulates the notion of a .xcdatamodeld file</span>
 <span class="c1">// The name passed here should be the name of an .xcdatamodeld file</span>
 <span class="k">let</span> <span class="nv">bundle</span> <span class="o">=</span> <span class="kt">Bundle</span><span class="p">(</span><span class="nv">identifier</span><span class="p">:</span> <span class="s">"com.MyApp.MyModelFramework"</span><span class="p">)</span><span class="o">!</span>
@@ -140,7 +143,7 @@
     <span class="p">}</span>
 <span class="p">}</span>
 </code></pre>
-<a href='#in-memory-stacks-for-testing' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h2 id='in-memory-stacks-for-testing'>In-memory stacks for testing</h2>
+<h2 id='in-memory-stacks-for-testing' class='heading'>In-memory stacks for testing</h2>
 <pre class="highlight swift"><code><span class="k">let</span> <span class="nv">inMemoryModel</span> <span class="o">=</span> <span class="kt">CoreDataModel</span><span class="p">(</span><span class="nv">name</span><span class="p">:</span> <span class="n">myName</span><span class="p">,</span> <span class="nv">bundle</span><span class="p">:</span> <span class="n">myBundle</span><span class="p">,</span> <span class="nv">storeType</span><span class="p">:</span> <span class="o">.</span><span class="n">inMemory</span><span class="p">)</span>
 <span class="k">let</span> <span class="nv">factory</span> <span class="o">=</span> <span class="kt">CoreDataStackFactory</span><span class="p">(</span><span class="nv">model</span><span class="p">:</span> <span class="n">inMemoryModel</span><span class="p">)</span>
 
@@ -155,7 +158,7 @@
     <span class="p">}</span>
 <span class="p">}</span>
 </code></pre>
-<a href='#saving-a-managed-object-context' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h2 id='saving-a-managed-object-context'>Saving a managed object context</h2>
+<h2 id='saving-a-managed-object-context' class='heading'>Saving a managed object context</h2>
 <pre class="highlight swift"><code><span class="nf">saveContext</span><span class="p">(</span><span class="n">stack</span><span class="o">.</span><span class="n">mainContext</span><span class="p">)</span> <span class="p">{</span> <span class="n">result</span> <span class="k">in</span>
     <span class="k">switch</span> <span class="n">result</span> <span class="p">{</span>
         <span class="k">case</span> <span class="o">.</span><span class="nv">success</span><span class="p">:</span>
@@ -166,7 +169,7 @@
     <span class="p">}</span>
 <span class="p">}</span>
 </code></pre>
-<a href='#deleting-the-store' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h2 id='deleting-the-store'>Deleting the store</h2>
+<h2 id='deleting-the-store' class='heading'>Deleting the store</h2>
 <pre class="highlight swift"><code><span class="k">let</span> <span class="nv">bundle</span> <span class="o">=</span> <span class="kt">Bundle</span><span class="p">(</span><span class="nv">identifier</span><span class="p">:</span> <span class="s">"com.MyApp.MyModelFramework"</span><span class="p">)</span><span class="o">!</span>
 <span class="k">let</span> <span class="nv">model</span> <span class="o">=</span> <span class="kt">CoreDataModel</span><span class="p">(</span><span class="nv">name</span><span class="p">:</span> <span class="s">"MyModel"</span><span class="p">,</span> <span class="nv">bundle</span><span class="p">:</span> <span class="n">bundle</span><span class="p">)</span>
 <span class="k">do</span> <span class="p">{</span>
@@ -175,7 +178,7 @@
     <span class="nf">print</span><span class="p">(</span><span class="s">"Error: </span><span class="se">\(</span><span class="n">error</span><span class="se">)</span><span class="s">"</span><span class="p">)</span>
 <span class="p">}</span>
 </code></pre>
-<a href='#performing-migrations' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h2 id='performing-migrations'>Performing migrations</h2>
+<h2 id='performing-migrations' class='heading'>Performing migrations</h2>
 <pre class="highlight swift"><code><span class="k">let</span> <span class="nv">bundle</span> <span class="o">=</span> <span class="kt">Bundle</span><span class="p">(</span><span class="nv">identifier</span><span class="p">:</span> <span class="s">"com.MyApp.MyModelFramework"</span><span class="p">)</span><span class="o">!</span>
 <span class="k">let</span> <span class="nv">model</span> <span class="o">=</span> <span class="kt">CoreDataModel</span><span class="p">(</span><span class="nv">name</span><span class="p">:</span> <span class="s">"MyModel"</span><span class="p">,</span> <span class="nv">bundle</span><span class="p">:</span> <span class="n">bundle</span><span class="p">)</span>
 <span class="k">if</span> <span class="n">model</span><span class="o">.</span><span class="n">needsMigration</span> <span class="p">{</span>
@@ -186,22 +189,22 @@
     <span class="p">}</span>
 <span class="p">}</span>
 </code></pre>
-<a href='#using-child-contexts' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h2 id='using-child-contexts'>Using child contexts</h2>
+<h2 id='using-child-contexts' class='heading'>Using child contexts</h2>
 <pre class="highlight swift"><code><span class="c1">// Create a main queue child context from the main context</span>
 <span class="k">let</span> <span class="nv">childContext</span> <span class="o">=</span> <span class="n">stack</span><span class="o">.</span><span class="nf">childContext</span><span class="p">(</span><span class="nv">concurrencyType</span><span class="p">:</span> <span class="o">.</span><span class="n">mainQueueConcurrencyType</span><span class="p">)</span>
 
 <span class="c1">// Create a background queue child context from the background context</span>
 <span class="k">let</span> <span class="nv">childContext</span> <span class="o">=</span> <span class="n">stack</span><span class="o">.</span><span class="nf">childContext</span><span class="p">(</span><span class="nv">concurrencyType</span><span class="p">:</span> <span class="o">.</span><span class="n">privateQueueConcurrencyType</span><span class="p">)</span>
 </code></pre>
-<a href='#example-app' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h2 id='example-app'>Example app</h2>
+<h2 id='example-app' class='heading'>Example app</h2>
 
 <p>There&rsquo;s an example app in the <code>Example/</code> directory. Open the <code>ExampleApp.xcodeproj</code> to run it. The project exercises all basic functionality of the library.</p>
 
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2017 <a class="link" href="https://twitter.com/jesse_squires" target="_blank" rel="external">Jesse Squires</a>. All rights reserved. (Last updated: 2017-04-04)</p>
-          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.7.5</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+          <p>&copy; 2017 <a class="link" href="https://twitter.com/jesse_squires" target="_blank" rel="external">Jesse Squires</a>. All rights reserved. (Last updated: 2017-09-25)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.8.3</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
         </section>
       </article>
     </div>

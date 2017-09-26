@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+<key>FILEHEADER</key>
+<string>
+//  Created by Jesse Squires
+//  https://www.jessesquires.com
+//
+//
+//  Documentation
+//  https://jessesquires.github.io/JSQCoreDataKit
+//
+//
+//  GitHub
+//  https://github.com/jessesquires/JSQCoreDataKit
+//
+//
+//  License
+//  Copyright © 2015 Jesse Squires
+//  Released under an MIT license: https://opensource.org/licenses/MIT
+// </string>
+</dict>
+</plist>

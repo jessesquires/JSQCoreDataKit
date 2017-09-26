@@ -25,13 +25,13 @@ public typealias ChildContext = NSManagedObjectContext
 
 
 /// Describes the initialization options for a persistent store.
-public typealias PersistentStoreOptions = [NSObject : AnyObject]
+public typealias PersistentStoreOptions = [AnyHashable : AnyObject]
 
 
 /// Describes default persistent store options.
 public let defaultStoreOptions: PersistentStoreOptions = [
-    NSMigratePersistentStoresAutomaticallyOption as NSObject: true as AnyObject,
-    NSInferMappingModelAutomaticallyOption as NSObject: true as AnyObject
+    NSMigratePersistentStoresAutomaticallyOption: true as AnyObject,
+    NSInferMappingModelAutomaticallyOption: true as AnyObject
 ]
 
 /// The default directory used to initialize a `CoreDataModel`.

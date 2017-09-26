@@ -7,8 +7,10 @@ The changelog for `JSQCoreDataKit`. Also see the [releases](https://github.com/j
 7.0.0
 -----
 
-- Converted to Swift 4
-- Dropped iOS 8 support, iOS 9 minimum now required
+- Converted to Swift 4.0
+- iOS 9.0 minimum now required
+- tvOS 10.0 minimum now required
+- watchOS 3.0 minimum now required
 
 6.0.3
 -----

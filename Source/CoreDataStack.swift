@@ -1,10 +1,10 @@
 //
 //  Created by Jesse Squires
-//  http://www.jessesquires.com
+//  https://www.jessesquires.com
 //
 //
 //  Documentation
-//  http://jessesquires.github.io/JSQCoreDataKit
+//  https://jessesquires.github.io/JSQCoreDataKit
 //
 //
 //  GitHub
@@ -13,7 +13,7 @@
 //
 //  License
 //  Copyright © 2015 Jesse Squires
-//  Released under an MIT license: http://opensource.org/licenses/MIT
+//  Released under an MIT license: https://opensource.org/licenses/MIT
 //
 
 import CoreData
@@ -73,11 +73,11 @@ public final class CoreDataStack: CustomStringConvertible, Equatable {
         let notificationCenter = NotificationCenter.default
         notificationCenter.addObserver(self,
                                        selector: #selector(didReceiveMainContextDidSave(notification:)),
-                                       name: NSNotification.Name.NSManagedObjectContextDidSave,
+                                       name: .NSManagedObjectContextDidSave,
                                        object: mainContext)
         notificationCenter.addObserver(self,
                                        selector: #selector(didReceiveBackgroundContextDidSave(notification:)),
-                                       name: NSNotification.Name.NSManagedObjectContextDidSave,
+                                       name: .NSManagedObjectContextDidSave,
                                        object: backgroundContext)
     }
 
@@ -123,7 +123,7 @@ public final class CoreDataStack: CustomStringConvertible, Equatable {
 
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(didReceiveChildContextDidSave(notification:)),
-                                               name: NSNotification.Name.NSManagedObjectContextDidSave,
+                                               name: .NSManagedObjectContextDidSave,
                                                object: childContext)
         return childContext
     }
@@ -163,14 +163,12 @@ public final class CoreDataStack: CustomStringConvertible, Equatable {
 
             storeCoordinator.performAndWait {
                 do {
-                    if #available(iOS 9.0, tvOS 9, macOS 10.11, watchOS 2, *), let modelURL = model.storeURL {
+                    if let modelURL = model.storeURL {
                         try storeCoordinator.destroyPersistentStore(at: modelURL,
                                                                     ofType: model.storeType.type,
                                                                     options: options)
-                    } else {
-                        try model.removeExistingStore()
-                        try storeCoordinator.remove(store)
                     }
+
                     try storeCoordinator.addPersistentStore(ofType: model.storeType.type,
                                                             configurationName: nil,
                                                             at: model.storeURL,
@@ -182,7 +180,7 @@ public final class CoreDataStack: CustomStringConvertible, Equatable {
                     }
                     return
                 }
-
+                
                 DispatchQueue.main.async {
                     completion(.success(self))
                 }
@@ -198,7 +196,6 @@ public final class CoreDataStack: CustomStringConvertible, Equatable {
             return "\(CoreDataStack.self)(model=\(model.name); mainContext=\(mainContext); backgroundContext=\(backgroundContext))"
         }
     }
-
 
     // MARK: Private
 

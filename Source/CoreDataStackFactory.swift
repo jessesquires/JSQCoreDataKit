@@ -1,10 +1,10 @@
 //
 //  Created by Jesse Squires
-//  http://www.jessesquires.com
+//  https://www.jessesquires.com
 //
 //
 //  Documentation
-//  http://jessesquires.github.io/JSQCoreDataKit
+//  https://jessesquires.github.io/JSQCoreDataKit
 //
 //
 //  GitHub
@@ -13,7 +13,7 @@
 //
 //  License
 //  Copyright © 2015 Jesse Squires
-//  Released under an MIT license: http://opensource.org/licenses/MIT
+//  Released under an MIT license: https://opensource.org/licenses/MIT
 //
 
 import CoreData
@@ -79,7 +79,7 @@ public struct CoreDataStackFactory: Equatable {
     public func createStack(onQueue queue: DispatchQueue? = .global(qos: .userInitiated),
                             completion: @escaping (StackResult) -> Void) {
         let isAsync = (queue != nil)
-
+        
         let creationClosure = {
             let storeCoordinator: NSPersistentStoreCoordinator
             do {

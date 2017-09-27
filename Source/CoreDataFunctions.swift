@@ -1,10 +1,10 @@
 //
 //  Created by Jesse Squires
-//  http://www.jessesquires.com
+//  https://www.jessesquires.com
 //
 //
 //  Documentation
-//  http://jessesquires.github.io/JSQCoreDataKit
+//  https://jessesquires.github.io/JSQCoreDataKit
 //
 //
 //  GitHub
@@ -13,7 +13,7 @@
 //
 //  License
 //  Copyright © 2015 Jesse Squires
-//  Released under an MIT license: http://opensource.org/licenses/MIT
+//  Released under an MIT license: https://opensource.org/licenses/MIT
 //
 
 import CoreData
@@ -24,7 +24,7 @@ import Foundation
  Attempts to commit unsaved changes to registered objects in the context.
  This function is performed in a block on the context's queue. If the context has no changes,
  then this function returns immediately and the completion block is not called.
-
+ 
  - parameter context:    The managed object context to save.
  - parameter wait:       If `true` (the default), saves synchronously. If `false`, saves asynchronously.
  - parameter completion: The closure to be executed when the save operation completes.

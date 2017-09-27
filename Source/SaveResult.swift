@@ -1,10 +1,10 @@
 //
 //  Created by Jesse Squires
-//  http://www.jessesquires.com
+//  https://www.jessesquires.com
 //
 //
 //  Documentation
-//  http://jessesquires.github.io/JSQCoreDataKit
+//  https://jessesquires.github.io/JSQCoreDataKit
 //
 //
 //  GitHub
@@ -13,7 +13,7 @@
 //
 //  License
 //  Copyright © 2015 Jesse Squires
-//  Released under an MIT license: http://opensource.org/licenses/MIT
+//  Released under an MIT license: https://opensource.org/licenses/MIT
 //
 
 import CoreData
@@ -24,16 +24,16 @@ import Foundation
  A result object representing the result of saving an `NSManagedObjectContext`.
  */
 public enum SaveResult: Equatable {
-
+    
     /// The success result.
     case success
-
+    
     /// The failure result, containing an `NSError` instance that describes the error.
     case failure(NSError)
-
-
+    
+    
     // MARK: Methods
-
+    
     /**
      - returns: The result's `NSError` if `.Failure`, otherwise `nil`.
      */

@@ -20,18 +20,18 @@ This library aims to do the following:
 >
 > * [Core Data Programming Guide](https://developer.apple.com/library/mac/documentation/Cocoa/Conceptual/CoreData/cdProgrammingGuide.html)
 > * [Core Data Core Competencies Guide](https://developer.apple.com/library/ios/documentation/DataManagement/Devpedia-CoreData/coreDataStack.html#//apple_ref/doc/uid/TP40010398-CH25-SW1)
-> * [objc.io issue #4 on Core Data](http://www.objc.io/issue-4/)
+> * [objc.io issue #4 on Core Data](https://www.objc.io/issue-4/)
 > * [Concurrent Core Data Stacks – Performance Shootout](http://floriankugler.com/2013/04/29/concurrent-core-data-stack-performance-shootout/)
 > * [Backstage with Nested Managed Object Contexts](http://floriankugler.com/2013/05/13/backstage-with-nested-managed-object-contexts/)
 
 ## Requirements
 
-* Xcode 8
-* Swift 3.0
-* iOS 8.0+
-* OSX 10.10+
-* tvOS 9.0+
-* watchOS 2.0+
+* Xcode 9+
+* Swift 4.0+
+* iOS 9.0+
+* macOS 10.11+
+* tvOS 10.0+
+* watchOS 3.0+
 
 ## Installation
 
@@ -86,5 +86,5 @@ Created and maintained by [**@jesse_squires**](https://twitter.com/jesse_squires
 *Please provide attribution, it is greatly appreciated.*
 
 [podLink]:https://cocoapods.org/pods/JSQCoreDataKit
-[docsLink]:http://jessesquires.github.io/JSQCoreDataKit
-[mitLink]:http://opensource.org/licenses/MIT
+[docsLink]:https://jessesquires.github.io/JSQCoreDataKit
+[mitLink]:https://opensource.org/licenses/MIT

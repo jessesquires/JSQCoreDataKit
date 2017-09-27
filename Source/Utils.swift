@@ -1,10 +1,10 @@
 //
 //  Created by Jesse Squires
-//  http://www.jessesquires.com
+//  https://www.jessesquires.com
 //
 //
 //  Documentation
-//  http://jessesquires.github.io/JSQCoreDataKit
+//  https://jessesquires.github.io/JSQCoreDataKit
 //
 //
 //  GitHub
@@ -13,7 +13,7 @@
 //
 //  License
 //  Copyright © 2015 Jesse Squires
-//  Released under an MIT license: http://opensource.org/licenses/MIT
+//  Released under an MIT license: https://opensource.org/licenses/MIT
 //
 
 import CoreData
@@ -25,18 +25,18 @@ public typealias ChildContext = NSManagedObjectContext
 
 
 /// Describes the initialization options for a persistent store.
-public typealias PersistentStoreOptions = [NSObject : AnyObject]
+public typealias PersistentStoreOptions = [AnyHashable : AnyObject]
 
 
 /// Describes default persistent store options.
 public let defaultStoreOptions: PersistentStoreOptions = [
-    NSMigratePersistentStoresAutomaticallyOption as NSObject: true as AnyObject,
-    NSInferMappingModelAutomaticallyOption as NSObject: true as AnyObject
+    NSMigratePersistentStoresAutomaticallyOption: true as AnyObject,
+    NSInferMappingModelAutomaticallyOption: true as AnyObject
 ]
 
-// MARK: Internal
-
-internal func defaultDirectoryURL() -> URL {
+/// The default directory used to initialize a `CoreDataModel`.
+/// On tvOS, this is the caches directory. All other platforms use the document directory.
+public func defaultDirectoryURL() -> URL {
     do {
         #if os(tvOS)
             let searchPathDirectory = FileManager.SearchPathDirectory.cachesDirectory

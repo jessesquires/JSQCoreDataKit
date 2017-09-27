@@ -1,10 +1,10 @@
 //
 //  Created by Jesse Squires
-//  http://www.jessesquires.com
+//  https://www.jessesquires.com
 //
 //
 //  Documentation
-//  http://jessesquires.github.io/JSQCoreDataKit
+//  https://jessesquires.github.io/JSQCoreDataKit
 //
 //
 //  GitHub
@@ -13,7 +13,7 @@
 //
 //  License
 //  Copyright © 2015 Jesse Squires
-//  Released under an MIT license: http://opensource.org/licenses/MIT
+//  Released under an MIT license: https://opensource.org/licenses/MIT
 //
 
 import XCTest
@@ -48,14 +48,14 @@ final class SaveTests: TestCase {
         }
 
         var didSaveMain = false
-        expectation(forNotification: Notification.Name.NSManagedObjectContextDidSave.rawValue,
+        expectation(forNotification: .NSManagedObjectContextDidSave,
                     object: inMemoryStack.mainContext) { (notification) -> Bool in
                         didSaveMain = true
                         return true
         }
 
         var didUpdateBackground = false
-        expectation(forNotification: Notification.Name.NSManagedObjectContextObjectsDidChange.rawValue,
+        expectation(forNotification: .NSManagedObjectContextObjectsDidChange,
                     object: inMemoryStack.backgroundContext) { (notification) -> Bool in
                         didUpdateBackground = true
                         return true
@@ -87,14 +87,14 @@ final class SaveTests: TestCase {
         }
 
         var didSaveMain = false
-        expectation(forNotification: Notification.Name.NSManagedObjectContextDidSave.rawValue,
+        expectation(forNotification: .NSManagedObjectContextDidSave,
                     object: inMemoryStack.mainContext) { (notification) -> Bool in
                         didSaveMain = true
                         return true
         }
 
         var didUpdateBackground = false
-        expectation(forNotification: Notification.Name.NSManagedObjectContextObjectsDidChange.rawValue,
+        expectation(forNotification: .NSManagedObjectContextObjectsDidChange,
                     object: inMemoryStack.backgroundContext) { (notification) -> Bool in
                         didUpdateBackground = true
                         return true
@@ -134,14 +134,14 @@ final class SaveTests: TestCase {
         }
 
         var didSaveMain = false
-        expectation(forNotification: Notification.Name.NSManagedObjectContextDidSave.rawValue,
+        expectation(forNotification: .NSManagedObjectContextDidSave,
                     object: inMemoryStack.mainContext) { (notification) -> Bool in
                         didSaveMain = true
                         return true
         }
 
         var didUpdateBackground = false
-        expectation(forNotification: Notification.Name.NSManagedObjectContextObjectsDidChange.rawValue,
+        expectation(forNotification: .NSManagedObjectContextObjectsDidChange,
                     object: inMemoryStack.backgroundContext) { (notification) -> Bool in
                         didUpdateBackground = true
                         return true
@@ -173,21 +173,21 @@ final class SaveTests: TestCase {
         }
 
         var didSaveChild = false
-        expectation(forNotification: Notification.Name.NSManagedObjectContextDidSave.rawValue,
+        expectation(forNotification: .NSManagedObjectContextDidSave,
                     object: childContext) { (notification) -> Bool in
                         didSaveChild = true
                         return true
         }
 
         var didSaveMain = false
-        expectation(forNotification: Notification.Name.NSManagedObjectContextDidSave.rawValue,
+        expectation(forNotification: .NSManagedObjectContextDidSave,
                     object: inMemoryStack.mainContext) { (notification) -> Bool in
                         didSaveMain = true
                         return true
         }
 
         var didUpdateBackground = false
-        expectation(forNotification: Notification.Name.NSManagedObjectContextObjectsDidChange.rawValue,
+        expectation(forNotification: .NSManagedObjectContextObjectsDidChange,
                     object: inMemoryStack.backgroundContext) { (notification) -> Bool in
                         didUpdateBackground = true
                         return true
@@ -220,21 +220,21 @@ final class SaveTests: TestCase {
         }
 
         var didSaveChild = false
-        expectation(forNotification: Notification.Name.NSManagedObjectContextDidSave.rawValue,
+        expectation(forNotification: .NSManagedObjectContextDidSave,
                     object: childContext) { (notification) -> Bool in
                         didSaveChild = true
                         return true
         }
 
         var didSaveBackground = false
-        expectation(forNotification: Notification.Name.NSManagedObjectContextDidSave.rawValue,
+        expectation(forNotification: .NSManagedObjectContextDidSave,
                     object: inMemoryStack.backgroundContext) { (notification) -> Bool in
                         didSaveBackground = true
                         return true
         }
 
         var didUpdateMain = false
-        expectation(forNotification: Notification.Name.NSManagedObjectContextObjectsDidChange.rawValue,
+        expectation(forNotification: .NSManagedObjectContextObjectsDidChange,
                     object: inMemoryStack.mainContext) { (notification) -> Bool in
                         didUpdateMain = true
                         return true
@@ -267,14 +267,14 @@ final class SaveTests: TestCase {
         }
 
         var didSaveBackground = false
-        expectation(forNotification: Notification.Name.NSManagedObjectContextDidSave.rawValue,
+        expectation(forNotification: .NSManagedObjectContextDidSave,
                     object: inMemoryStack.backgroundContext) { (notification) -> Bool in
                         didSaveBackground = true
                         return true
         }
 
         var didUpdateMain = false
-        expectation(forNotification: Notification.Name.NSManagedObjectContextObjectsDidChange.rawValue,
+        expectation(forNotification: .NSManagedObjectContextObjectsDidChange,
                     object: inMemoryStack.mainContext) { (notification) -> Bool in
                         didUpdateMain = true
                         return true

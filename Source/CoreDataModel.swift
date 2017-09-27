@@ -1,10 +1,10 @@
 //
 //  Created by Jesse Squires
-//  http://www.jessesquires.com
+//  https://www.jessesquires.com
 //
 //
 //  Documentation
-//  http://jessesquires.github.io/JSQCoreDataKit
+//  https://jessesquires.github.io/JSQCoreDataKit
 //
 //
 //  GitHub
@@ -13,12 +13,11 @@
 //
 //  License
 //  Copyright © 2015 Jesse Squires
-//  Released under an MIT license: http://opensource.org/licenses/MIT
+//  Released under an MIT license: https://opensource.org/licenses/MIT
 //
 
 import CoreData
 import Foundation
-
 
 /**
  Describes a Core Data model file exention type based on the
@@ -121,7 +120,6 @@ public struct CoreDataModel: Equatable {
         }
     }
 
-
     // MARK: Initialization
 
     /**
@@ -138,7 +136,6 @@ public struct CoreDataModel: Equatable {
         self.bundle = bundle
         self.storeType = storeType
     }
-
 
     // MARK: Methods
 

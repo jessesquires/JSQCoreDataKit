@@ -48,7 +48,7 @@ public final class Employee: NSManagedObject, CoreDataEntityProtocol {
     }
 
     public class func newEmployee(_ context: NSManagedObjectContext, company: Company? = nil) -> Employee {
-        let name = "Employee " + String(UUID().uuidString.characters.split { $0 == "-" }.first!)
+        let name = "Employee " + String(UUID().uuidString.split { $0 == "-" }.first!)
         return Employee(context: context,
                         name: name,
                         birthDate: Date.distantPast,

@@ -47,7 +47,7 @@ public final class Company: NSManagedObject, CoreDataEntityProtocol {
     }
 
     public class func newCompany(_ context: NSManagedObjectContext) -> Company {
-        let name = "Company " + String(UUID().uuidString.characters.split { $0 == "-" }.first!)
+        let name = "Company " + String(UUID().uuidString.split { $0 == "-" }.first!)
         return Company(context: context,
                        name: name,
                        dateFounded: Date.distantPast,

@@ -14,7 +14,7 @@ env:
    - IOS_SDK=iphonesimulator11.2
    - OSX_SDK=macosx10.13
    - TVOS_SDK=appletvsimulator11.2
-   - WATCHOS_SDK=watchsimulator4.0
+   - WATCHOS_SDK=watchsimulator4.2
 
    matrix:
    - DESTINATION="OS=9.0,name=iPhone 6 Plus"  SDK="$IOS_SDK" SCHEME="$IOS_SCHEME" RUN_TESTS="YES" BUILD_EXAMPLE="YES" POD_LINT="YES"

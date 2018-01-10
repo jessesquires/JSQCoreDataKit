@@ -59,10 +59,10 @@ public final class CoreDataStack {
 
     // MARK: Initialization
 
-    internal init(model: CoreDataModel,
-                  mainContext: NSManagedObjectContext,
-                  backgroundContext: NSManagedObjectContext,
-                  storeCoordinator: NSPersistentStoreCoordinator) {
+    init(model: CoreDataModel,
+         mainContext: NSManagedObjectContext,
+         backgroundContext: NSManagedObjectContext,
+         storeCoordinator: NSPersistentStoreCoordinator) {
         self.model = model
         self.mainContext = mainContext
         self.backgroundContext = backgroundContext

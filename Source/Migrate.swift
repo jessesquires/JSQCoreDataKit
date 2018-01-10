@@ -90,15 +90,15 @@ extension CoreDataModel {
 
 // MARK: Internal
 
-internal struct MigrationMappingStep {
+struct MigrationMappingStep {
     let source: NSManagedObjectModel
     let mapping: NSMappingModel
     let destination: NSManagedObjectModel
 }
 
-internal func findCompatibleModel(withBundle bundle: Bundle,
-                                  storeType: String,
-                                  storeURL: URL) throws -> NSManagedObjectModel? {
+func findCompatibleModel(withBundle bundle: Bundle,
+                         storeType: String,
+                         storeURL: URL) throws -> NSManagedObjectModel? {
     let storeMetadata = try NSPersistentStoreCoordinator.metadataForPersistentStore(ofType: storeType, at: storeURL, options: nil)
     let modelsInBundle = findModelsInBundle(bundle)
     for model in modelsInBundle where model.isConfiguration(withName: nil, compatibleWithStoreMetadata: storeMetadata) {
@@ -107,7 +107,7 @@ internal func findCompatibleModel(withBundle bundle: Bundle,
     return nil
 }
 
-internal func findModelsInBundle(_ bundle: Bundle) -> [NSManagedObjectModel] {
+func findModelsInBundle(_ bundle: Bundle) -> [NSManagedObjectModel] {
     guard let modelBundleDirectoryURLs = bundle.urls(forResourcesWithExtension: ModelFileExtension.bundle.rawValue, subdirectory: nil) else {
         return []
     }
@@ -127,9 +127,9 @@ internal func findModelsInBundle(_ bundle: Bundle) -> [NSManagedObjectModel] {
     return managedObjectModels
 }
 
-internal func buildMigrationMappingSteps(bundle: Bundle,
-                                         sourceModel: NSManagedObjectModel,
-                                         destinationModel: NSManagedObjectModel) throws -> [MigrationMappingStep] {
+func buildMigrationMappingSteps(bundle: Bundle,
+                                sourceModel: NSManagedObjectModel,
+                                destinationModel: NSManagedObjectModel) throws -> [MigrationMappingStep] {
     var migrationSteps = [MigrationMappingStep]()
     var nextModel = sourceModel
     repeat {
@@ -144,8 +144,8 @@ internal func buildMigrationMappingSteps(bundle: Bundle,
     return migrationSteps
 }
 
-internal func nextMigrationMappingStep(fromSourceModel sourceModel: NSManagedObjectModel,
-                                       bundle: Bundle) -> MigrationMappingStep? {
+func nextMigrationMappingStep(fromSourceModel sourceModel: NSManagedObjectModel,
+                              bundle: Bundle) -> MigrationMappingStep? {
     let modelsInBundle = findModelsInBundle(bundle)
 
     for nextDestinationModel in modelsInBundle where nextDestinationModel.entityVersionHashesByName != sourceModel.entityVersionHashesByName {

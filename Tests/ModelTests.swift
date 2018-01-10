@@ -16,16 +16,12 @@
 //  Released under an MIT license: https://opensource.org/licenses/MIT
 //
 
-import XCTest
 import CoreData
-
 import ExampleModel
+@testable import JSQCoreDataKit
+import XCTest
 
-@testable
-import JSQCoreDataKit
-
-
-class ModelTests: XCTestCase {
+final class ModelTests: XCTestCase {
 
     override func setUp() {
         let model = CoreDataModel(name: modelName, bundle: modelBundle)
@@ -172,8 +168,7 @@ class ModelTests: XCTestCase {
         // WHEN: we remove the existing model store
         do {
             try model.removeExistingStore()
-        }
-        catch {
+        } catch {
             XCTFail("Removing existing model store should not error.")
         }
 
@@ -196,8 +191,7 @@ class ModelTests: XCTestCase {
         var success = true
         do {
             try model.removeExistingStore()
-        }
-        catch {
+        } catch {
             success = false
         }
 
@@ -216,8 +210,7 @@ class ModelTests: XCTestCase {
         var success = true
         do {
             try model.removeExistingStore()
-        }
-        catch {
+        } catch {
             success = false
         }
 

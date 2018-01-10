@@ -16,16 +16,12 @@
 //  Released under an MIT license: https://opensource.org/licenses/MIT
 //
 
-import XCTest
 import CoreData
-
 import ExampleModel
+@testable import JSQCoreDataKit
+import XCTest
 
-@testable
-import JSQCoreDataKit
-
-
-class StackTests: XCTestCase {
+final class StackTests: XCTestCase {
 
     override func tearDown() {
         let model = CoreDataModel(name: modelName, bundle: modelBundle)

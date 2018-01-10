@@ -16,21 +16,18 @@
 //  Released under an MIT license: https://opensource.org/licenses/MIT
 //
 
-import XCTest
 import CoreData
-
 import ExampleModel
-
-@testable
-import JSQCoreDataKit
+@testable import JSQCoreDataKit
+import XCTest
 
 final class ExampleModelTests: TestCase {
-    
+
     func test_ThatEmployeeInsertsSuccessfully() {
         let e = Employee.newEmployee(inMemoryStack.mainContext)
         XCTAssertNotNil(e)
     }
-    
+
     func test_ThatCompanyInsertsSuccessfully() {
         let c = Company.newCompany(inMemoryStack.mainContext)
         XCTAssertNotNil(c)

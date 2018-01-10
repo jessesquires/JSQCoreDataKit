@@ -16,17 +16,12 @@
 //  Released under an MIT license: https://opensource.org/licenses/MIT
 //
 
-import XCTest
 import CoreData
-
 import ExampleModel
-
-@testable
-import JSQCoreDataKit
-
+@testable import JSQCoreDataKit
+import XCTest
 
 let defaultTimeout = TimeInterval(20)
-
 
 extension CoreDataStackFactory {
 
@@ -39,14 +34,12 @@ extension CoreDataStackFactory {
     }
 }
 
-
 extension XCTestCase {
     func cleanUp() {
         let model = CoreDataModel(name: modelName, bundle: modelBundle)
         _ = try? model.removeExistingStore()
     }
 }
-
 
 class TestCase: XCTestCase {
 
@@ -66,7 +59,6 @@ class TestCase: XCTestCase {
         inMemoryStack = nil
         super.tearDown()
     }
-
 
     // MARK: Helpers
 
@@ -103,8 +95,7 @@ class TestCase: XCTestCase {
             let c = Employee.newEmployee(context, company: company)
             employees.append(c)
         }
-        
+
         return employees
     }
-    
 }

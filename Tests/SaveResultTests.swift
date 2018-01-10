@@ -16,14 +16,10 @@
 //  Released under an MIT license: https://opensource.org/licenses/MIT
 //
 
-import XCTest
 import CoreData
-
 import ExampleModel
-
-@testable
-import JSQCoreDataKit
-
+@testable import JSQCoreDataKit
+import XCTest
 
 final class SaveResultTests: XCTestCase {
 

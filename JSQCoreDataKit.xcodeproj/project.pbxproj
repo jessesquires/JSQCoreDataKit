@@ -22,7 +22,6 @@
 		8852A0CF1D459048006538B9 /* CoreDataEntityProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8852A0CC1D459048006538B9 /* CoreDataEntityProtocol.swift */; };
 		8852A0D01D459048006538B9 /* CoreDataEntityProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8852A0CC1D459048006538B9 /* CoreDataEntityProtocol.swift */; };
 		8852A0D21D459249006538B9 /* CoreDataEntityProtocolTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8852A0D11D459249006538B9 /* CoreDataEntityProtocolTests.swift */; };
-		8873E2271C51E09700DFE009 /* Equatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8873E21D1C51E09700DFE009 /* Equatable.swift */; };
 		8873E2281C51E09700DFE009 /* CoreDataFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8873E21E1C51E09700DFE009 /* CoreDataFunctions.swift */; };
 		8873E2291C51E09700DFE009 /* CoreDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8873E21F1C51E09700DFE009 /* CoreDataModel.swift */; };
 		8873E22A1C51E09700DFE009 /* SaveResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8873E2201C51E09700DFE009 /* SaveResult.swift */; };
@@ -34,7 +33,6 @@
 		8873E2311C51E0CF00DFE009 /* JSQCoreDataKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 8873E2251C51E09700DFE009 /* JSQCoreDataKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		8873E2321C51E0CF00DFE009 /* JSQCoreDataKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 8873E2251C51E09700DFE009 /* JSQCoreDataKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		8873E2331C51E0D000DFE009 /* JSQCoreDataKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 8873E2251C51E09700DFE009 /* JSQCoreDataKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		8873E2341C51E0DD00DFE009 /* Equatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8873E21D1C51E09700DFE009 /* Equatable.swift */; };
 		8873E2351C51E0DD00DFE009 /* CoreDataFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8873E21E1C51E09700DFE009 /* CoreDataFunctions.swift */; };
 		8873E2361C51E0DD00DFE009 /* CoreDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8873E21F1C51E09700DFE009 /* CoreDataModel.swift */; };
 		8873E2371C51E0DD00DFE009 /* SaveResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8873E2201C51E09700DFE009 /* SaveResult.swift */; };
@@ -42,7 +40,6 @@
 		8873E2391C51E0DD00DFE009 /* CoreDataStackFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8873E2221C51E09700DFE009 /* CoreDataStackFactory.swift */; };
 		8873E23A1C51E0DD00DFE009 /* StackResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8873E2231C51E09700DFE009 /* StackResult.swift */; };
 		8873E23B1C51E0DD00DFE009 /* StoreType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8873E2261C51E09700DFE009 /* StoreType.swift */; };
-		8873E23C1C51E0DE00DFE009 /* Equatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8873E21D1C51E09700DFE009 /* Equatable.swift */; };
 		8873E23D1C51E0DE00DFE009 /* CoreDataFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8873E21E1C51E09700DFE009 /* CoreDataFunctions.swift */; };
 		8873E23E1C51E0DE00DFE009 /* CoreDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8873E21F1C51E09700DFE009 /* CoreDataModel.swift */; };
 		8873E23F1C51E0DE00DFE009 /* SaveResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8873E2201C51E09700DFE009 /* SaveResult.swift */; };
@@ -50,7 +47,6 @@
 		8873E2411C51E0DE00DFE009 /* CoreDataStackFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8873E2221C51E09700DFE009 /* CoreDataStackFactory.swift */; };
 		8873E2421C51E0DE00DFE009 /* StackResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8873E2231C51E09700DFE009 /* StackResult.swift */; };
 		8873E2431C51E0DE00DFE009 /* StoreType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8873E2261C51E09700DFE009 /* StoreType.swift */; };
-		8873E2441C51E0DE00DFE009 /* Equatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8873E21D1C51E09700DFE009 /* Equatable.swift */; };
 		8873E2451C51E0DE00DFE009 /* CoreDataFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8873E21E1C51E09700DFE009 /* CoreDataFunctions.swift */; };
 		8873E2461C51E0DE00DFE009 /* CoreDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8873E21F1C51E09700DFE009 /* CoreDataModel.swift */; };
 		8873E2471C51E0DE00DFE009 /* SaveResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8873E2201C51E09700DFE009 /* SaveResult.swift */; };
@@ -142,7 +138,6 @@
 		883C83DB1C0D7647007A16F5 /* JSQCoreDataKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = JSQCoreDataKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8852A0CC1D459048006538B9 /* CoreDataEntityProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataEntityProtocol.swift; sourceTree = "<group>"; };
 		8852A0D11D459249006538B9 /* CoreDataEntityProtocolTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataEntityProtocolTests.swift; sourceTree = "<group>"; };
-		8873E21D1C51E09700DFE009 /* Equatable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Equatable.swift; sourceTree = "<group>"; };
 		8873E21E1C51E09700DFE009 /* CoreDataFunctions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataFunctions.swift; sourceTree = "<group>"; };
 		8873E21F1C51E09700DFE009 /* CoreDataModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataModel.swift; sourceTree = "<group>"; };
 		8873E2201C51E09700DFE009 /* SaveResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SaveResult.swift; sourceTree = "<group>"; };
@@ -251,7 +246,6 @@
 				8873E21F1C51E09700DFE009 /* CoreDataModel.swift */,
 				8873E2211C51E09700DFE009 /* CoreDataStack.swift */,
 				8873E2221C51E09700DFE009 /* CoreDataStackFactory.swift */,
-				8873E21D1C51E09700DFE009 /* Equatable.swift */,
 				8873E2241C51E09700DFE009 /* Info.plist */,
 				8873E2251C51E09700DFE009 /* JSQCoreDataKit.h */,
 				298F00F61C9C559100AEC77E /* Migrate.swift */,
@@ -341,6 +335,7 @@
 				88002D4B1AB8F546001787DB /* Frameworks */,
 				88002D4C1AB8F546001787DB /* Headers */,
 				88002D4D1AB8F546001787DB /* Resources */,
+				882986082006938A008DD41B /* SwiftLint */,
 			);
 			buildRules = (
 			);
@@ -574,6 +569,23 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		882986082006938A008DD41B /* SwiftLint */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = SwiftLint;
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/scripts/lint.sh\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		88002D4A1AB8F546001787DB /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -589,7 +601,6 @@
 				8873E2291C51E09700DFE009 /* CoreDataModel.swift in Sources */,
 				8873E2281C51E09700DFE009 /* CoreDataFunctions.swift in Sources */,
 				8873E22D1C51E09700DFE009 /* StackResult.swift in Sources */,
-				8873E2271C51E09700DFE009 /* Equatable.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -628,7 +639,6 @@
 				52351A0E1CD8AA2D0037010F /* Utils.swift in Sources */,
 				8873E23D1C51E0DE00DFE009 /* CoreDataFunctions.swift in Sources */,
 				8873E2421C51E0DE00DFE009 /* StackResult.swift in Sources */,
-				8873E23C1C51E0DE00DFE009 /* Equatable.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -646,7 +656,6 @@
 				52351A0D1CD8AA2D0037010F /* Utils.swift in Sources */,
 				8873E2351C51E0DD00DFE009 /* CoreDataFunctions.swift in Sources */,
 				8873E23A1C51E0DD00DFE009 /* StackResult.swift in Sources */,
-				8873E2341C51E0DD00DFE009 /* Equatable.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -664,7 +673,6 @@
 				52351A0F1CD8AA2D0037010F /* Utils.swift in Sources */,
 				8873E2451C51E0DE00DFE009 /* CoreDataFunctions.swift in Sources */,
 				8873E24A1C51E0DE00DFE009 /* StackResult.swift in Sources */,
-				8873E2441C51E0DE00DFE009 /* Equatable.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

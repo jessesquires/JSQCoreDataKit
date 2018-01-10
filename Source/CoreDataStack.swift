@@ -19,7 +19,6 @@
 import CoreData
 import Foundation
 
-
 /**
  An instance of `CoreDataStack` encapsulates the entire Core Data stack.
  It manages the managed object model, the persistent store coordinator, and managed object contexts.
@@ -32,7 +31,7 @@ import Foundation
 
  - warning: **You cannot create a `CoreDataStack` instance directly. Instead, use a `CoreDataStackFactory` for initialization.**
  */
-public final class CoreDataStack: CustomStringConvertible, Equatable {
+public final class CoreDataStack {
 
     // MARK: Properties
 
@@ -58,7 +57,6 @@ public final class CoreDataStack: CustomStringConvertible, Equatable {
      */
     public let storeCoordinator: NSPersistentStoreCoordinator
 
-
     // MARK: Initialization
 
     internal init(model: CoreDataModel,
@@ -72,11 +70,11 @@ public final class CoreDataStack: CustomStringConvertible, Equatable {
 
         let notificationCenter = NotificationCenter.default
         notificationCenter.addObserver(self,
-                                       selector: #selector(didReceiveMainContextDidSave(notification:)),
+                                       selector: #selector(_didReceiveMainContextDidSave(notification:)),
                                        name: .NSManagedObjectContextDidSave,
                                        object: mainContext)
         notificationCenter.addObserver(self,
-                                       selector: #selector(didReceiveBackgroundContextDidSave(notification:)),
+                                       selector: #selector(_didReceiveBackgroundContextDidSave(notification:)),
                                        name: .NSManagedObjectContextDidSave,
                                        object: backgroundContext)
     }
@@ -122,7 +120,7 @@ public final class CoreDataStack: CustomStringConvertible, Equatable {
         }
 
         NotificationCenter.default.addObserver(self,
-                                               selector: #selector(didReceiveChildContextDidSave(notification:)),
+                                               selector: #selector(_didReceiveChildContextDidSave(notification:)),
                                                name: .NSManagedObjectContextDidSave,
                                                object: childContext)
         return childContext
@@ -173,14 +171,12 @@ public final class CoreDataStack: CustomStringConvertible, Equatable {
                                                             configurationName: nil,
                                                             at: model.storeURL,
                                                             options: options)
-                }
-                catch {
+                } catch {
                     DispatchQueue.main.async {
                         completion(.failure(error as NSError))
                     }
                     return
                 }
-                
                 DispatchQueue.main.async {
                     completion(.success(self))
                 }
@@ -188,19 +184,10 @@ public final class CoreDataStack: CustomStringConvertible, Equatable {
         }
     }
 
-    // MARK: CustomStringConvertible
-
-    /// :nodoc:
-    public var description: String {
-        get {
-            return "\(CoreDataStack.self)(model=\(model.name); mainContext=\(mainContext); backgroundContext=\(backgroundContext))"
-        }
-    }
-
     // MARK: Private
 
     @objc
-    private func didReceiveChildContextDidSave(notification: Notification) {
+    private func _didReceiveChildContextDidSave(notification: Notification) {
         guard let context = notification.object as? NSManagedObjectContext else {
             assertionFailure("*** Error: \(notification.name) posted from object of type "
                 + String(describing: notification.object.self)
@@ -217,16 +204,30 @@ public final class CoreDataStack: CustomStringConvertible, Equatable {
     }
 
     @objc
-    private func didReceiveBackgroundContextDidSave(notification: Notification) {
+    private func _didReceiveBackgroundContextDidSave(notification: Notification) {
         mainContext.perform {
             self.mainContext.mergeChanges(fromContextDidSave: notification)
         }
     }
 
     @objc
-    private func didReceiveMainContextDidSave(notification: Notification) {
+    private func _didReceiveMainContextDidSave(notification: Notification) {
         backgroundContext.perform {
             self.backgroundContext.mergeChanges(fromContextDidSave: notification)
         }
+    }
+}
+
+extension CoreDataStack: Equatable {
+    /// :nodoc:
+    public static func == (lhs: CoreDataStack, rhs: CoreDataStack) -> Bool {
+        return lhs.model == rhs.model
+    }
+}
+
+extension CoreDataStack: CustomStringConvertible {
+    /// :nodoc:
+    public var description: String {
+        return "\(CoreDataStack.self)(model=\(model.name); mainContext=\(mainContext); backgroundContext=\(backgroundContext))"
     }
 }

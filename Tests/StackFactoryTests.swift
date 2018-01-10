@@ -16,16 +16,12 @@
 //  Released under an MIT license: https://opensource.org/licenses/MIT
 //
 
-import XCTest
 import CoreData
-
 import ExampleModel
+@testable import JSQCoreDataKit
+import XCTest
 
-@testable
-import JSQCoreDataKit
-
-
-class StackFactoryTests: TestCase {
+final class StackFactoryTests: TestCase {
 
     override func setUp() {
         cleanUp()
@@ -114,7 +110,7 @@ class StackFactoryTests: TestCase {
 
     // MARK: Helpers
 
-    func validateStack(_ stack: CoreDataStack, fromFactory factory:CoreDataStackFactory) {
+    func validateStack(_ stack: CoreDataStack, fromFactory factory: CoreDataStackFactory) {
         XCTAssertEqual(stack.model, factory.model)
 
         XCTAssertNotNil(stack.storeCoordinator)
@@ -130,5 +126,5 @@ class StackFactoryTests: TestCase {
         XCTAssertNil(stack.backgroundContext.parent)
         XCTAssertNotNil(stack.backgroundContext.persistentStoreCoordinator)
     }
-    
+
 }

@@ -16,20 +16,18 @@
 //  Released under an MIT license: https://opensource.org/licenses/MIT
 //
 
-import UIKit
 import CoreData
+import UIKit
 
 import JSQCoreDataKit
 
 import ExampleModel
-
 
 final class EmployeeViewController: UITableViewController, NSFetchedResultsControllerDelegate {
 
     var stack: CoreDataStack!
     var frc: NSFetchedResultsController<Employee>!
     var company: Company!
-
 
     // MARK: View lifecycle
 
@@ -38,7 +36,6 @@ final class EmployeeViewController: UITableViewController, NSFetchedResultsContr
         tableView.allowsSelection = false
         setupFRC()
     }
-
 
     // MARK: Actions
 
@@ -63,7 +60,6 @@ final class EmployeeViewController: UITableViewController, NSFetchedResultsContr
             }
         }
     }
-
 
     // MARK: Helpers
 
@@ -91,7 +87,6 @@ final class EmployeeViewController: UITableViewController, NSFetchedResultsContr
         }
     }
 
-
     // MARK: Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -118,7 +113,6 @@ final class EmployeeViewController: UITableViewController, NSFetchedResultsContr
         return company.name
     }
 
-
     // MARK: Table view delegate
 
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
@@ -134,7 +128,6 @@ final class EmployeeViewController: UITableViewController, NSFetchedResultsContr
             saveContext(stack.mainContext)
         }
     }
-
 
     // MARK: Fetched results controller delegate
 

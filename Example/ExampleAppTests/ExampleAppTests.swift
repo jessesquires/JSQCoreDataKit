@@ -16,11 +16,10 @@
 //  Released under an MIT license: https://opensource.org/licenses/MIT
 //
 
-import XCTest
 @testable import ExampleApp
+import XCTest
 
-
-class ExampleAppTests: XCTestCase {
+final class ExampleAppTests: XCTestCase {
 
     override func setUp() {
         super.setUp()
@@ -29,5 +28,4 @@ class ExampleAppTests: XCTestCase {
     override func tearDown() {
         super.tearDown()
     }
-
 }

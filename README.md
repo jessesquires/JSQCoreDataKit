@@ -32,6 +32,7 @@ This library aims to do the following:
 * macOS 10.11+
 * tvOS 10.0+
 * watchOS 3.0+
+* [SwiftLint](https://github.com/realm/SwiftLint)
 
 ## Installation
 
@@ -60,7 +61,7 @@ Read the [docs][docsLink]. Generated with [jazzy](https://github.com/realm/jazzy
 #### Generate
 
 ````bash
-$ ./build_docs.sh
+$ ./scripts/build_docs.sh
 ````
 
 #### Preview

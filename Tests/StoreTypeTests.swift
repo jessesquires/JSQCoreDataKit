@@ -16,13 +16,10 @@
 //  Released under an MIT license: https://opensource.org/licenses/MIT
 //
 
-import XCTest
 import CoreData
-
 import ExampleModel
-
-@testable
-import JSQCoreDataKit
+@testable import JSQCoreDataKit
+import XCTest
 
 final class StoreTypeTests: XCTestCase {
 
@@ -86,5 +83,5 @@ final class StoreTypeTests: XCTestCase {
         let memory1 = StoreType.inMemory
         let memory2 = StoreType.inMemory
         XCTAssertEqual(memory1, memory2)
-    }    
+    }
 }

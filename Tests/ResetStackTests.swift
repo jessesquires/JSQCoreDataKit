@@ -16,13 +16,10 @@
 //  Released under an MIT license: https://opensource.org/licenses/MIT
 //
 
-import XCTest
 import CoreData
-
 import ExampleModel
-
-@testable
-import JSQCoreDataKit
+@testable import JSQCoreDataKit
+import XCTest
 
 final class ResetStackTests: TestCase {
 
@@ -36,7 +33,7 @@ final class ResetStackTests: TestCase {
         let expectation = self.expectation(description: #function)
 
         // WHEN: we attempt to reset the stack
-        inMemoryStack.reset() { (result: StackResult) in
+        inMemoryStack.reset { (result: StackResult) in
             if case .failure(let e) = result {
                 XCTFail("Error while resetting the stack: \(e)")
             }
@@ -62,7 +59,7 @@ final class ResetStackTests: TestCase {
         let expectation = self.expectation(description: #function)
 
         // WHEN: we attempt to reset the stack
-        inMemoryStack.reset() { (result: StackResult) in
+        inMemoryStack.reset { (result: StackResult) in
             if case .failure(let e) = result {
                 XCTFail("Error while resetting the stack: \(e)")
             }
@@ -97,7 +94,7 @@ final class ResetStackTests: TestCase {
         let expectation = self.expectation(description: #function)
 
         // WHEN: we attempt to reset the stack
-        stack.reset() { (result: StackResult) in
+        stack.reset { (result: StackResult) in
             if case .failure(let e) = result {
                 XCTFail("Error while resetting the stack: \(e)")
             }

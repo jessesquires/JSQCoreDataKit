@@ -16,19 +16,17 @@
 //  Released under an MIT license: https://opensource.org/licenses/MIT
 //
 
-import UIKit
 import CoreData
+import UIKit
 
 import JSQCoreDataKit
 
 import ExampleModel
 
-
 final class CompanyViewController: UITableViewController, NSFetchedResultsControllerDelegate {
 
     var stack: CoreDataStack!
     var frc: NSFetchedResultsController<Company>!
-
 
     // MARK: View lifecycle
 
@@ -54,7 +52,6 @@ final class CompanyViewController: UITableViewController, NSFetchedResultsContro
         }
     }
 
-
     // MARK: Segues
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -65,7 +62,6 @@ final class CompanyViewController: UITableViewController, NSFetchedResultsContro
             employeeVC.company = company
         }
     }
-
 
     // MARK: Helpers
 
@@ -101,10 +97,10 @@ final class CompanyViewController: UITableViewController, NSFetchedResultsContro
             action: #selector(didTapAddButton(_:)))
     }
 
-
     // MARK: Actions
 
-    @objc func didTapAddButton(_ sender: UIBarButtonItem) {
+    @objc
+    func didTapAddButton(_ sender: UIBarButtonItem) {
         stack.mainContext.performAndWait {
             _ = Company.newCompany(self.stack.mainContext)
             saveContext(self.stack.mainContext)
@@ -126,7 +122,6 @@ final class CompanyViewController: UITableViewController, NSFetchedResultsContro
             }
         }
     }
-
 
     // MARK: Table view data source
 
@@ -155,7 +150,6 @@ final class CompanyViewController: UITableViewController, NSFetchedResultsContro
         return "Company"
     }
 
-
     // MARK: Table view delegate
 
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
@@ -171,7 +165,6 @@ final class CompanyViewController: UITableViewController, NSFetchedResultsContro
             saveContext(stack.mainContext)
         }
     }
-
 
     // MARK: Fetched results controller delegate
 
@@ -210,7 +203,7 @@ final class CompanyViewController: UITableViewController, NSFetchedResultsContro
             tableView.insertRows(at: [newIndexPath!], with: .fade)
         }
     }
-    
+
     func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
         tableView.endUpdates()
     }

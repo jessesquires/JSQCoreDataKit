@@ -19,14 +19,11 @@
 import CoreData
 import Foundation
 
-
 /// Describes a child managed object context.
 public typealias ChildContext = NSManagedObjectContext
 
-
 /// Describes the initialization options for a persistent store.
-public typealias PersistentStoreOptions = [AnyHashable : AnyObject]
-
+public typealias PersistentStoreOptions = [AnyHashable: AnyObject]
 
 /// Describes default persistent store options.
 public let defaultStoreOptions: PersistentStoreOptions = [
@@ -48,8 +45,25 @@ public func defaultDirectoryURL() -> URL {
                                            in: .userDomainMask,
                                            appropriateFor: nil,
                                            create: true)
-    }
-    catch {
+    } catch {
         fatalError("*** Error finding default directory: \(error)")
     }
+}
+
+/// :nodoc:
+public func == (lhs: PersistentStoreOptions, rhs: PersistentStoreOptions) -> Bool {
+    guard lhs.count == rhs.count else {
+        return false
+    }
+
+    for (key, value) in lhs {
+        guard let rhsValue = rhs[key] else {
+            return false
+        }
+
+        if !rhsValue.isEqual(value) {
+            return false
+        }
+    }
+    return true
 }

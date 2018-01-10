@@ -16,8 +16,8 @@
 //  Released under an MIT license: https://opensource.org/licenses/MIT
 //
 
-import Foundation
 import CoreData
+import Foundation
 import JSQCoreDataKit
 
 public final class Employee: NSManagedObject, CoreDataEntityProtocol {

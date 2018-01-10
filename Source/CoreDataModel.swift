@@ -38,12 +38,11 @@ public enum ModelFileExtension: String {
     case sqlite = "sqlite"
 }
 
-
 /**
  An instance of `CoreDataModel` represents a Core Data model — a `.xcdatamodeld` file package.
  It provides the model and store URLs as well as methods for interacting with the store.
  */
-public struct CoreDataModel: Equatable {
+public struct CoreDataModel {
 
     // MARK: Properties
 
@@ -62,39 +61,34 @@ public struct CoreDataModel: Equatable {
      - note: If the store is in-memory, then this value will be `nil`.
      */
     public var storeURL: URL? {
-        get {
-            return storeType.storeDirectory()?.appendingPathComponent(databaseFileName)
-        }
+        return storeType.storeDirectory()?.appendingPathComponent(databaseFileName)
     }
 
     /// The file URL specifying the model file in the bundle specified by `bundle`.
     public var modelURL: URL {
-        get {
-            guard let url = bundle.url(forResource: name, withExtension: ModelFileExtension.bundle.rawValue) else {
-                fatalError("*** Error loading model URL for model named \(name) in bundle: \(bundle)")
-            }
-            return url
+        guard let url = bundle.url(forResource: name, withExtension: ModelFileExtension.bundle.rawValue) else {
+            fatalError("*** Error loading model URL for model named \(name) in bundle: \(bundle)")
         }
+        return url
+
     }
 
     /// The database file name for the store.
     public var databaseFileName: String {
-        get {
-            switch storeType {
-            case .sqlite: return name + "." + ModelFileExtension.sqlite.rawValue
-            default: return name
-            }
+        switch storeType {
+        case .sqlite: return name + "." + ModelFileExtension.sqlite.rawValue
+        default: return name
         }
+
     }
 
     /// The managed object model for the model specified by `name`.
     public var managedObjectModel: NSManagedObjectModel {
-        get {
-            guard let model = NSManagedObjectModel(contentsOf: modelURL) else {
-                fatalError("*** Error loading managed object model at url: \(modelURL)")
-            }
-            return model
+        guard let model = NSManagedObjectModel(contentsOf: modelURL) else {
+            fatalError("*** Error loading managed object model at url: \(modelURL)")
         }
+        return model
+
     }
 
     /**
@@ -104,20 +98,17 @@ public struct CoreDataModel: Equatable {
      - returns: `true` if the store requires a migration, `false` otherwise.
      */
     public var needsMigration: Bool {
-        get {
-            guard let storeURL = storeURL else { return false }
-
-            do {
-                let metadata = try NSPersistentStoreCoordinator.metadataForPersistentStore(ofType: storeType.type,
-                                                                                           at: storeURL,
-                                                                                           options: nil)
-                return !managedObjectModel.isConfiguration(withName: nil, compatibleWithStoreMetadata: metadata)
-            }
-            catch {
-                debugPrint("*** Error checking persistent store coordinator meta data: \(error)")
-                return false
-            }
+        guard let storeURL = storeURL else { return false }
+        do {
+            let metadata = try NSPersistentStoreCoordinator.metadataForPersistentStore(ofType: storeType.type,
+                                                                                       at: storeURL,
+                                                                                       options: nil)
+            return !managedObjectModel.isConfiguration(withName: nil, compatibleWithStoreMetadata: metadata)
+        } catch {
+            debugPrint("*** Error checking persistent store coordinator meta data: \(error)")
+            return false
         }
+
     }
 
     // MARK: Initialization
@@ -156,5 +147,14 @@ public struct CoreDataModel: Equatable {
             let sharedMemoryfile = storePath + "-shm"
             _ = try? fm.removeItem(atPath: sharedMemoryfile)
         }
+    }
+}
+
+extension CoreDataModel: Equatable {
+    /// :nodoc:
+    public static func == (lhs: CoreDataModel, rhs: CoreDataModel) -> Bool {
+        return lhs.name == rhs.name
+            && lhs.bundle.isEqual(rhs.bundle)
+            && lhs.storeType == rhs.storeType
     }
 }

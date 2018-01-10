@@ -16,13 +16,10 @@
 //  Released under an MIT license: https://opensource.org/licenses/MIT
 //
 
-import XCTest
 import CoreData
-
 import ExampleModel
-
-@testable
-import JSQCoreDataKit
+@testable import JSQCoreDataKit
+import XCTest
 
 final class StackResultTests: TestCase {
 
@@ -64,7 +61,6 @@ final class StackResultTests: TestCase {
         let failure1 = StackResult.failure(err)
         let failure2 = StackResult.failure(err)
         XCTAssertEqual(failure1, failure2)
-
 
         let failure3 = StackResult.failure(NSError(domain: "err3", code: 1, userInfo: nil))
         XCTAssertNotEqual(failure1, failure3)

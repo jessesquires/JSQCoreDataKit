@@ -19,7 +19,6 @@
 import CoreData
 import Foundation
 
-
 /**
  An instance of `CoreDataStackFactory` is responsible for creating instances of `CoreDataStack`.
 
@@ -30,7 +29,7 @@ import Foundation
 
  - warning: You should not create instances of `CoreDataStack` directly. Use a `CoreDataStackFactory` instead.
  */
-public struct CoreDataStackFactory: Equatable {
+public struct CoreDataStackFactory {
 
     // MARK: Properties
 
@@ -42,7 +41,6 @@ public struct CoreDataStackFactory: Equatable {
      The default value is `DefaultStoreOptions`.
      */
     public let options: PersistentStoreOptions?
-
 
     // MARK: Initialization
 
@@ -79,11 +77,11 @@ public struct CoreDataStackFactory: Equatable {
     public func createStack(onQueue queue: DispatchQueue? = .global(qos: .userInitiated),
                             completion: @escaping (StackResult) -> Void) {
         let isAsync = (queue != nil)
-        
+
         let creationClosure = {
             let storeCoordinator: NSPersistentStoreCoordinator
             do {
-                storeCoordinator = try self.createStoreCoordinator()
+                storeCoordinator = try self._createStoreCoordinator()
             } catch {
                 if isAsync {
                     DispatchQueue.main.async {
@@ -95,10 +93,10 @@ public struct CoreDataStackFactory: Equatable {
                 return
             }
 
-            let backgroundContext = self.createContext(.privateQueueConcurrencyType, name: "background")
+            let backgroundContext = self._createContext(.privateQueueConcurrencyType, name: "background")
             backgroundContext.persistentStoreCoordinator = storeCoordinator
 
-            let mainContext = self.createContext(.mainQueueConcurrencyType, name: "main")
+            let mainContext = self._createContext(.mainQueueConcurrencyType, name: "main")
             mainContext.persistentStoreCoordinator = storeCoordinator
 
             let stack = CoreDataStack(model: self.model,
@@ -122,10 +120,9 @@ public struct CoreDataStackFactory: Equatable {
         }
     }
 
-
     // MARK: Private
 
-    private func createStoreCoordinator() throws -> NSPersistentStoreCoordinator {
+    private func _createStoreCoordinator() throws -> NSPersistentStoreCoordinator {
         let storeCoordinator = NSPersistentStoreCoordinator(managedObjectModel: model.managedObjectModel)
         try storeCoordinator.addPersistentStore(ofType: model.storeType.type,
                                                 configurationName: nil,
@@ -134,8 +131,8 @@ public struct CoreDataStackFactory: Equatable {
         return storeCoordinator
     }
 
-    private func createContext(_ concurrencyType: NSManagedObjectContextConcurrencyType,
-                               name: String) -> NSManagedObjectContext {
+    private func _createContext(_ concurrencyType: NSManagedObjectContextConcurrencyType,
+                                name: String) -> NSManagedObjectContext {
         let context = NSManagedObjectContext(concurrencyType: concurrencyType)
         context.mergePolicy = NSMergePolicy(merge: .mergeByPropertyStoreTrumpMergePolicyType)
 
@@ -143,5 +140,22 @@ public struct CoreDataStackFactory: Equatable {
         context.name = contextName + name
 
         return context
+    }
+}
+extension CoreDataStackFactory: Equatable {
+    /// :nodoc:
+    public static func == (lhs: CoreDataStackFactory, rhs: CoreDataStackFactory) -> Bool {
+        let equalModels = (lhs.model == rhs.model)
+
+        if let lhsOptions = lhs.options, let rhsOptions = rhs.options {
+            return equalModels
+                && lhsOptions == rhsOptions
+        }
+
+        if lhs.options == nil && rhs.options == nil {
+            return equalModels
+        }
+
+        return false
     }
 }

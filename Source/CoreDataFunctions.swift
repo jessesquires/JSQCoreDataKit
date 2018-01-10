@@ -19,7 +19,6 @@
 import CoreData
 import Foundation
 
-
 /**
  Attempts to commit unsaved changes to registered objects in the context.
  This function is performed in a block on the context's queue. If the context has no changes,
@@ -35,8 +34,7 @@ public func saveContext(_ context: NSManagedObjectContext, wait: Bool = true, co
         do {
             try context.save()
             completion?(.success)
-        }
-        catch {
+        } catch {
             completion?(.failure(error as NSError))
         }
     }

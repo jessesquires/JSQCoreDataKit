@@ -16,13 +16,10 @@
 //  Released under an MIT license: https://opensource.org/licenses/MIT
 //
 
-import XCTest
 import CoreData
-
 import ExampleModel
-
-@testable
-import JSQCoreDataKit
+@testable import JSQCoreDataKit
+import XCTest
 
 final class PersistentStoreOptionsTests: XCTestCase {
 
@@ -74,7 +71,7 @@ final class PersistentStoreOptionsTests: XCTestCase {
 
         let second: PersistentStoreOptions = [
             "key0" as NSObject: "different" as AnyObject,
-            "key1" as NSObject: 4567 as AnyObject,
+            "key1" as NSObject: 4_567 as AnyObject,
             "key2" as NSObject: NSDate() as AnyObject
         ]
 
@@ -95,13 +92,13 @@ final class PersistentStoreOptionsTests: XCTestCase {
 
         let second: PersistentStoreOptions = [
             "key7" as NSObject: "different" as AnyObject,
-            "key8" as NSObject: 4567 as AnyObject,
+            "key8" as NSObject: 4_567 as AnyObject,
             "key9" as NSObject: NSDate() as AnyObject
         ]
 
         // WHEN: we compare them
         let result = (first == second)
-        
+
         // THEN: they are not equal
         XCTAssertFalse(result)
     }

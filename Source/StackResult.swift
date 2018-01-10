@@ -19,18 +19,16 @@
 import CoreData
 import Foundation
 
-
 /**
  A result object representing the result of creating a `CoreDataStack` via a `CoreDataStackFactory`.
  */
-public enum StackResult: Equatable {
+public enum StackResult {
 
     /// The success result, containing the successfully initialized `CoreDataStack`.
     case success(CoreDataStack)
 
     /// The failure result, containing an `NSError` instance that describes the error.
     case failure(NSError)
-
 
     // MARK: Methods
 
@@ -52,5 +50,21 @@ public enum StackResult: Equatable {
             return error
         }
         return nil
+    }
+}
+
+extension StackResult: Equatable {
+    /// :nodoc:
+    public static func == (lhs: StackResult, rhs: StackResult) -> Bool {
+        switch (lhs, rhs) {
+        case (let .success(stack1), let .success(stack2)):
+            return stack1 == stack2
+
+        case (let .failure(error1), let .failure(error2)):
+            return error1 == error2
+
+        default:
+            return false
+        }
     }
 }

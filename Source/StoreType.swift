@@ -19,9 +19,8 @@
 import CoreData
 import Foundation
 
-
 /// Describes a Core Data persistent store type.
-public enum StoreType: Equatable {
+public enum StoreType {
 
     /// The SQLite database store type. The associated file URL specifies the directory for the store.
     case sqlite(URL)
@@ -32,20 +31,16 @@ public enum StoreType: Equatable {
     /// The in-memory store type.
     case inMemory
 
-
     // MARK: Properties
 
     /// Returns the type string description for the store type.
     public var type: String {
-        get {
-            switch self {
-            case .sqlite: return NSSQLiteStoreType
-            case .binary: return NSBinaryStoreType
-            case .inMemory: return NSInMemoryStoreType
-            }
+        switch self {
+        case .sqlite: return NSSQLiteStoreType
+        case .binary: return NSBinaryStoreType
+        case .inMemory: return NSInMemoryStoreType
         }
     }
-
 
     // MARK: Methods
 
@@ -58,6 +53,22 @@ public enum StoreType: Equatable {
         case let .sqlite(url): return url
         case let .binary(url): return url
         case .inMemory: return nil
+        }
+    }
+}
+
+extension StoreType: Equatable {
+    /// :nodoc:
+    public static func == (lhs: StoreType, rhs: StoreType) -> Bool {
+        switch (lhs, rhs) {
+        case let (.sqlite(left), .sqlite(right)) where left == right:
+            return true
+        case let (.binary(left), .binary(right)) where left == right:
+            return true
+        case (.inMemory, .inMemory):
+            return true
+        default:
+            return false
         }
     }
 }

@@ -5,6 +5,7 @@ FOUND=$(swiftlint version)
 
 if which swiftlint >/dev/null; then
     swiftlint lint --config ./.swiftlint.yml
+    exit
 else
     echo "
     Error: SwiftLint not installed!

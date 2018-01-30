@@ -45,7 +45,9 @@ env:
 
 before_install:
    - gem install cocoapods --no-rdoc --no-ri --no-document --quiet
-   
+   - brew update
+   - brew outdated swiftlint || brew upgrade swiftlint
+
 script:
 - set -o pipefail
 - xcodebuild -version -sdk

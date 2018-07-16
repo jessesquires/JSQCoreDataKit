@@ -4,6 +4,22 @@ The changelog for `JSQCoreDataKit`. Also see the [releases](https://github.com/j
 
 --------------------------------------
 
+8.0.0 (NEXT)
+-----
+
+This release closes the [8.0.0 milestone](https://github.com/jessesquires/JSQCoreDataKit/milestone/16?closed=1).
+
+- Converted to Swift 4.2
+- iOS 10.0 minimum now required (dropped iOS 9 support)
+
+7.1.0
+-----
+
+This release closes the [7.1.0 milestone](https://github.com/jessesquires/JSQCoreDataKit/milestone/17?closed=1).
+
+- Update to Swift 4.1
+- Update to Xcode 9.4
+
 7.0.0
 -----
 

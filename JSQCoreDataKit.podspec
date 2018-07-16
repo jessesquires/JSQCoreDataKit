@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
    s.name = 'JSQCoreDataKit'
-   s.version = '7.0.0'
+   s.version = '7.1.0'
    s.license = 'MIT'
 
    s.summary = 'A swifter Core Data stack'

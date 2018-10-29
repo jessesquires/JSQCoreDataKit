@@ -145,17 +145,6 @@ public struct CoreDataStackFactory {
 extension CoreDataStackFactory: Equatable {
     /// :nodoc:
     public static func == (lhs: CoreDataStackFactory, rhs: CoreDataStackFactory) -> Bool {
-        let equalModels = (lhs.model == rhs.model)
-
-        if let lhsOptions = lhs.options, let rhsOptions = rhs.options {
-            return equalModels
-                && lhsOptions == rhsOptions
-        }
-
-        if lhs.options == nil && rhs.options == nil {
-            return equalModels
-        }
-
-        return false
+        return lhs.model == rhs.model
     }
 }

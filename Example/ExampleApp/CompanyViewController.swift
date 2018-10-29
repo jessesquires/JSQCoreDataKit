@@ -85,7 +85,7 @@ final class CompanyViewController: UITableViewController, NSFetchedResultsContro
     }
 
     private func showSpinner() {
-        let spinner = UIActivityIndicatorView(activityIndicatorStyle: .gray)
+        let spinner = UIActivityIndicatorView(style: .gray)
         spinner.startAnimating()
         navigationItem.rightBarButtonItem = UIBarButtonItem(customView: spinner)
     }
@@ -156,7 +156,7 @@ final class CompanyViewController: UITableViewController, NSFetchedResultsContro
         return true
     }
 
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             let obj = frc.object(at: indexPath)
             stack.mainContext.performAndWait {

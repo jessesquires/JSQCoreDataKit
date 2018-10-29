@@ -119,7 +119,7 @@ final class EmployeeViewController: UITableViewController, NSFetchedResultsContr
         return true
     }
 
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             let obj = frc.object(at: indexPath)
             stack.mainContext.performAndWait {

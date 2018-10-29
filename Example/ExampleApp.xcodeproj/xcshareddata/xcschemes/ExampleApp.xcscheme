@@ -14,34 +14,6 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "88002D4E1AB8F546001787DB"
-               BuildableName = "JSQCoreDataKit.framework"
-               BlueprintName = "JSQCoreDataKit iOS"
-               ReferencedContainer = "container:../JSQCoreDataKit/JSQCoreDataKit.xcodeproj">
-            </BuildableReference>
-         </BuildActionEntry>
-         <BuildActionEntry
-            buildForTesting = "YES"
-            buildForRunning = "YES"
-            buildForProfiling = "YES"
-            buildForArchiving = "YES"
-            buildForAnalyzing = "YES">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "885394491BC9EA0300699506"
-               BuildableName = "ExampleModel.framework"
-               BlueprintName = "ExampleModel"
-               ReferencedContainer = "container:../ExampleModel/ExampleModel.xcodeproj">
-            </BuildableReference>
-         </BuildActionEntry>
-         <BuildActionEntry
-            buildForTesting = "YES"
-            buildForRunning = "YES"
-            buildForProfiling = "YES"
-            buildForArchiving = "YES"
-            buildForAnalyzing = "YES">
-            <BuildableReference
-               BuildableIdentifier = "primary"
                BlueprintIdentifier = "8853941C1BC9E9DE00699506"
                BuildableName = "ExampleApp.app"
                BlueprintName = "ExampleApp"

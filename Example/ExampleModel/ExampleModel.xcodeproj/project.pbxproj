@@ -9,13 +9,13 @@
 /* Begin PBXBuildFile section */
 		29DD1F121C8C55F4006091A9 /* Version1_to_Version2.xcmappingmodel in Sources */ = {isa = PBXBuildFile; fileRef = 29DD1F111C8C55F4006091A9 /* Version1_to_Version2.xcmappingmodel */; };
 		29DD1F141C8C8D5B006091A9 /* Version2_to_Version3.xcmappingmodel in Sources */ = {isa = PBXBuildFile; fileRef = 29DD1F131C8C8D5B006091A9 /* Version2_to_Version3.xcmappingmodel */; };
+		882E04C92189177B007806F0 /* JSQCoreDataKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8852A0DD1D459566006538B9 /* JSQCoreDataKit.framework */; };
 		8853944E1BC9EA0300699506 /* ExampleModel.h in Headers */ = {isa = PBXBuildFile; fileRef = 8853944D1BC9EA0300699506 /* ExampleModel.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		885394661BC9EAB100699506 /* ExampleModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 885394641BC9EAB100699506 /* ExampleModel.xcdatamodeld */; };
 		8853946C1BC9EB7900699506 /* Employee.swift in Sources */ = {isa = PBXBuildFile; fileRef = 885394681BC9EB7900699506 /* Employee.swift */; };
 		8853946E1BC9EB7900699506 /* Company.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8853946A1BC9EB7900699506 /* Company.swift */; };
 		88807BBB1BCB24FD00F95B95 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88807BBA1BCB24FD00F95B95 /* Model.swift */; };
 		88C787CA2187F5840020820F /* JSQCoreDataKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8852A0DF1D459577006538B9 /* JSQCoreDataKit.framework */; };
-		88C787CB2187F58D0020820F /* JSQCoreDataKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8852A0DD1D459566006538B9 /* JSQCoreDataKit.framework */; };
 		88DF3CE11CDCEA7300726A31 /* Company.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8853946A1BC9EB7900699506 /* Company.swift */; };
 		88DF3CE21CDCEA7300726A31 /* Employee.swift in Sources */ = {isa = PBXBuildFile; fileRef = 885394681BC9EB7900699506 /* Employee.swift */; };
 		88DF3CE31CDCEA7300726A31 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88807BBA1BCB24FD00F95B95 /* Model.swift */; };
@@ -47,7 +47,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				88C787CB2187F58D0020820F /* JSQCoreDataKit.framework in Frameworks */,
+				882E04C92189177B007806F0 /* JSQCoreDataKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

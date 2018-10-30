@@ -10,6 +10,7 @@ env:
    - LANG=en_US.UTF-8
 
    - PROJECT="JSQCoreDataKit.xcodeproj"
+
    - IOS_SCHEME="JSQCoreDataKit-iOS"
    - OSX_SCHEME="JSQCoreDataKit-OSX"
    - TVOS_SCHEME="JSQCoreDataKit-tvOS"

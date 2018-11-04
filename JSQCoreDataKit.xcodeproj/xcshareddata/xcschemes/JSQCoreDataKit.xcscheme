@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "1000"
+   LastUpgradeVersion = "1010"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "883C83DA1C0D7647007A16F5"
+               BlueprintIdentifier = "88002D4E1AB8F546001787DB"
                BuildableName = "JSQCoreDataKit.framework"
-               BlueprintName = "JSQCoreDataKit-watchOS"
+               BlueprintName = "JSQCoreDataKit"
                ReferencedContainer = "container:JSQCoreDataKit.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -28,7 +28,27 @@
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
+         <TestableReference
+            skipped = "NO"
+            testExecutionOrdering = "random">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "881219C21B361EAF005E5AA7"
+               BuildableName = "JSQCoreDataKit-Tests.xctest"
+               BlueprintName = "JSQCoreDataKit-Tests"
+               ReferencedContainer = "container:JSQCoreDataKit.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
+      <MacroExpansion>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "88002D4E1AB8F546001787DB"
+            BuildableName = "JSQCoreDataKit.framework"
+            BlueprintName = "JSQCoreDataKit"
+            ReferencedContainer = "container:JSQCoreDataKit.xcodeproj">
+         </BuildableReference>
+      </MacroExpansion>
       <AdditionalOptions>
       </AdditionalOptions>
    </TestAction>
@@ -45,9 +65,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "883C83DA1C0D7647007A16F5"
+            BlueprintIdentifier = "88002D4E1AB8F546001787DB"
             BuildableName = "JSQCoreDataKit.framework"
-            BlueprintName = "JSQCoreDataKit-watchOS"
+            BlueprintName = "JSQCoreDataKit"
             ReferencedContainer = "container:JSQCoreDataKit.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -63,9 +83,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "883C83DA1C0D7647007A16F5"
+            BlueprintIdentifier = "88002D4E1AB8F546001787DB"
             BuildableName = "JSQCoreDataKit.framework"
-            BlueprintName = "JSQCoreDataKit-watchOS"
+            BlueprintName = "JSQCoreDataKit"
             ReferencedContainer = "container:JSQCoreDataKit.xcodeproj">
          </BuildableReference>
       </MacroExpansion>

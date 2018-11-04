@@ -7,46 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		880ECB5C2187ED5B00409ADA /* JSQCoreDataKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8873E2AE1C51E33100DFE009 /* JSQCoreDataKit.framework */; };
-		880ECB5D2187ED6100409ADA /* ExampleModel.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8873E2A01C51E32600DFE009 /* ExampleModel.framework */; };
 		885394211BC9E9DE00699506 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 885394201BC9E9DE00699506 /* AppDelegate.swift */; };
 		885394231BC9E9DE00699506 /* CompanyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 885394221BC9E9DE00699506 /* CompanyViewController.swift */; };
 		885394261BC9E9DE00699506 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 885394241BC9E9DE00699506 /* Main.storyboard */; };
 		885394281BC9E9DE00699506 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 885394271BC9E9DE00699506 /* Assets.xcassets */; };
 		8853942B1BC9E9DE00699506 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 885394291BC9E9DE00699506 /* LaunchScreen.storyboard */; };
 		885394361BC9E9DE00699506 /* ExampleAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 885394351BC9E9DE00699506 /* ExampleAppTests.swift */; };
+		88AC47FB218FB11B002C04AB /* JSQCoreDataKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8873E2AE1C51E33100DFE009 /* JSQCoreDataKit.framework */; };
+		88AC47FC218FB11F002C04AB /* ExampleModel.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8873E2A01C51E32600DFE009 /* ExampleModel.framework */; };
 		88B9F8C91BCA0A510053CD6D /* EmployeeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88B9F8C81BCA0A510053CD6D /* EmployeeViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		881AEE0D1D3ACA10007FC785 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 8873E29B1C51E32600DFE009 /* ExampleModel.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 88DF3CD91CDCEA0D00726A31;
-			remoteInfo = "ExampleModel-OSX";
-		};
-		881AEE141D3ACA10007FC785 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 8873E2A51C51E33100DFE009 /* JSQCoreDataKit.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 88DF3CBA1CDCE89000726A31;
-			remoteInfo = "JSQCoreDataKit-OSXTests";
-		};
-		882E04BD2189169C007806F0 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 8873E29B1C51E32600DFE009 /* ExampleModel.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = 885394491BC9EA0300699506;
-			remoteInfo = "ExampleModel-iOS";
-		};
-		882E04C7218916A1007806F0 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 8873E2A51C51E33100DFE009 /* JSQCoreDataKit.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = 88002D4E1AB8F546001787DB;
-			remoteInfo = "JSQCoreDataKit-iOS";
-		};
 		885394321BC9E9DE00699506 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 885394151BC9E9DE00699506 /* Project object */;
@@ -74,27 +46,6 @@
 			proxyType = 2;
 			remoteGlobalIDString = 881219C31B361EAF005E5AA7;
 			remoteInfo = JSQCoreDataKitTests;
-		};
-		8873E2B11C51E33100DFE009 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 8873E2A51C51E33100DFE009 /* JSQCoreDataKit.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 887403131C0D6A6D00FE0C31;
-			remoteInfo = "JSQCoreDataKit tvOS";
-		};
-		8873E2B31C51E33100DFE009 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 8873E2A51C51E33100DFE009 /* JSQCoreDataKit.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 883C83DB1C0D7647007A16F5;
-			remoteInfo = "JSQCoreDataKit watchOS";
-		};
-		8873E2B51C51E33100DFE009 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 8873E2A51C51E33100DFE009 /* JSQCoreDataKit.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 88AC4B331C0FD8DA00A04563;
-			remoteInfo = "JSQCoreDataKit OSX";
 		};
 /* End PBXContainerItemProxy section */
 
@@ -132,8 +83,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				880ECB5D2187ED6100409ADA /* ExampleModel.framework in Frameworks */,
-				880ECB5C2187ED5B00409ADA /* JSQCoreDataKit.framework in Frameworks */,
+				88AC47FC218FB11F002C04AB /* ExampleModel.framework in Frameworks */,
+				88AC47FB218FB11B002C04AB /* JSQCoreDataKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -202,7 +153,6 @@
 			isa = PBXGroup;
 			children = (
 				8873E2A01C51E32600DFE009 /* ExampleModel.framework */,
-				881AEE0E1D3ACA10007FC785 /* ExampleModel.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -211,11 +161,7 @@
 			isa = PBXGroup;
 			children = (
 				8873E2AE1C51E33100DFE009 /* JSQCoreDataKit.framework */,
-				8873E2B01C51E33100DFE009 /* JSQCoreDataKit-iOSTests.xctest */,
-				8873E2B21C51E33100DFE009 /* JSQCoreDataKit.framework */,
-				8873E2B41C51E33100DFE009 /* JSQCoreDataKit.framework */,
-				8873E2B61C51E33100DFE009 /* JSQCoreDataKit.framework */,
-				881AEE151D3ACA10007FC785 /* JSQCoreDataKit-OSXTests.xctest */,
+				8873E2B01C51E33100DFE009 /* JSQCoreDataKit-Tests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -235,8 +181,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				882E04C8218916A1007806F0 /* PBXTargetDependency */,
-				882E04BE2189169C007806F0 /* PBXTargetDependency */,
 			);
 			name = ExampleApp;
 			productName = ExampleApp;
@@ -314,20 +258,6 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
-		881AEE0E1D3ACA10007FC785 /* ExampleModel.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = ExampleModel.framework;
-			remoteRef = 881AEE0D1D3ACA10007FC785 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		881AEE151D3ACA10007FC785 /* JSQCoreDataKit-OSXTests.xctest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = "JSQCoreDataKit-OSXTests.xctest";
-			remoteRef = 881AEE141D3ACA10007FC785 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
 		8873E2A01C51E32600DFE009 /* ExampleModel.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
@@ -342,32 +272,11 @@
 			remoteRef = 8873E2AD1C51E33100DFE009 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		8873E2B01C51E33100DFE009 /* JSQCoreDataKit-iOSTests.xctest */ = {
+		8873E2B01C51E33100DFE009 /* JSQCoreDataKit-Tests.xctest */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.cfbundle;
-			path = "JSQCoreDataKit-iOSTests.xctest";
+			path = "JSQCoreDataKit-Tests.xctest";
 			remoteRef = 8873E2AF1C51E33100DFE009 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		8873E2B21C51E33100DFE009 /* JSQCoreDataKit.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = JSQCoreDataKit.framework;
-			remoteRef = 8873E2B11C51E33100DFE009 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		8873E2B41C51E33100DFE009 /* JSQCoreDataKit.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = JSQCoreDataKit.framework;
-			remoteRef = 8873E2B31C51E33100DFE009 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		8873E2B61C51E33100DFE009 /* JSQCoreDataKit.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = JSQCoreDataKit.framework;
-			remoteRef = 8873E2B51C51E33100DFE009 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
@@ -414,16 +323,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		882E04BE2189169C007806F0 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = "ExampleModel-iOS";
-			targetProxy = 882E04BD2189169C007806F0 /* PBXContainerItemProxy */;
-		};
-		882E04C8218916A1007806F0 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = "JSQCoreDataKit-iOS";
-			targetProxy = 882E04C7218916A1007806F0 /* PBXContainerItemProxy */;
-		};
 		885394331BC9E9DE00699506 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 8853941C1BC9E9DE00699506 /* ExampleApp */;

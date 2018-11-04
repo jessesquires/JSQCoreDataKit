@@ -17,7 +17,7 @@ This release closes the [8.0.0 milestone](https://github.com/jessesquires/JSQCor
 ### New
 
 - Upgraded to Swift 4.2 (#125)
-- Update to Xcode10
+- Update to Xcode 10.1
 - Update SwiftLint to 0.27.0
 
 ### Breaking

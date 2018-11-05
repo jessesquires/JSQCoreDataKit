@@ -101,7 +101,7 @@ public final class CoreDataStack {
      - returns: A new child managed object context.
      */
     public func childContext(concurrencyType: NSManagedObjectContextConcurrencyType = .mainQueueConcurrencyType,
-                             mergePolicyType: NSMergePolicyType = .mergeByPropertyObjectTrumpMergePolicyType) -> ChildContext {
+                             mergePolicyType: NSMergePolicyType = .mergeByPropertyObjectTrumpMergePolicyType) -> NSManagedObjectContext.ChildContext {
 
         let childContext = NSManagedObjectContext(concurrencyType: concurrencyType)
         childContext.mergePolicy = NSMergePolicy(merge: mergePolicyType)
@@ -200,7 +200,7 @@ public final class CoreDataStack {
             return
         }
 
-        saveContext(parentContext)
+        parentContext.save(wait: false, completion: nil)
     }
 
     @objc

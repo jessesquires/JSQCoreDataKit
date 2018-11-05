@@ -25,7 +25,7 @@ import XCTest
 
 final class MigrationTests: TestCase {
 
-    let model: CoreDataModel = CoreDataModel(name: modelName, bundle: modelBundle, storeType: .sqlite(defaultDirectoryURL()))
+    let model = CoreDataModel(name: modelName, bundle: modelBundle, storeType: .sqlite(CoreDataModel.defaultDirectoryURL()))
 
     override func setUp() {
         super.setUp()
@@ -217,7 +217,7 @@ final class MigrationTests: TestCase {
 
     func createSQLitePersistentStore(_ managedObjectModel: NSManagedObjectModel) -> NSPersistentStore {
         let coordinator = NSPersistentStoreCoordinator(managedObjectModel: managedObjectModel)
-        let storeURL = defaultDirectoryURL().appendingPathComponent("\(modelName)." + ModelFileExtension.sqlite.rawValue)
+        let storeURL = CoreDataModel.defaultDirectoryURL().appendingPathComponent("\(modelName)." + ModelFileExtension.sqlite.rawValue)
         return try! coordinator.addPersistentStore(ofType: NSSQLiteStoreType, configurationName: nil, at: storeURL, options: nil)
     }
 

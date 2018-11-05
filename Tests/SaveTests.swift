@@ -30,7 +30,7 @@ final class SaveTests: TestCase {
         // WHEN: we attempt to save the context
 
         // THEN: the save operation is ignored
-        saveContext(inMemoryStack.mainContext) { result in
+        inMemoryStack.mainContext.save { result in
             didCallCompletion = true
         }
 
@@ -61,7 +61,7 @@ final class SaveTests: TestCase {
         let saveExpectation = expectation(description: #function)
 
         // WHEN: we attempt to save the context
-        saveContext(inMemoryStack.mainContext, wait: true) { result in
+        inMemoryStack.mainContext.save(wait: true) { result in
 
             // THEN: the save succeeds without an error
             XCTAssertTrue(result == .success, "Save should not error")
@@ -100,7 +100,7 @@ final class SaveTests: TestCase {
         // WHEN: we attempt to save the context
 
         // THEN: the save succeeds without an error
-        saveContext(inMemoryStack.mainContext)
+        inMemoryStack.mainContext.save(wait: true)
 
         // THEN: then the main and background contexts are saved
         waitForExpectations(timeout: defaultTimeout, handler: { (error) -> Void in
@@ -115,7 +115,7 @@ final class SaveTests: TestCase {
         var didCallCompletion = false
 
         // WHEN: we attempt to save the context asynchronously
-        saveContext(inMemoryStack.mainContext, wait: false) { result in
+        inMemoryStack.mainContext.save(wait: false) { result in
             didCallCompletion = true
         }
 
@@ -147,7 +147,7 @@ final class SaveTests: TestCase {
         let saveExpectation = expectation(description: #function)
 
         // WHEN: we attempt to save the context asynchronously
-        saveContext(inMemoryStack.mainContext, wait: false) { result in
+        inMemoryStack.mainContext.save(wait: false) { result in
 
             // THEN: the save succeeds without an error
             XCTAssertTrue(result == .success, "Save should not error")
@@ -193,7 +193,7 @@ final class SaveTests: TestCase {
         let saveExpectation = expectation(description: #function)
 
         // WHEN: we attempt to save the context
-        saveContext(childContext) { result in
+        childContext.save { result in
 
             // THEN: the save succeeds without an error
             XCTAssertTrue(result == .success, "Save should not error")
@@ -240,7 +240,7 @@ final class SaveTests: TestCase {
         let saveExpectation = expectation(description: #function)
 
         // WHEN: we attempt to save the context
-        saveContext(childContext) { result in
+        childContext.save { result in
 
             // THEN: the save succeeds without an error
             XCTAssertTrue(result == .success, "Save should not error")
@@ -280,7 +280,7 @@ final class SaveTests: TestCase {
         let saveExpectation = expectation(description: #function)
 
         // WHEN: we attempt to save the context asynchronously
-        saveContext(inMemoryStack.backgroundContext, wait: false) { result in
+        inMemoryStack.backgroundContext.save(wait: false) { result in
 
             // THEN: the save succeeds without an error
             XCTAssertTrue(result == .success, "Save should not error")

@@ -46,7 +46,7 @@ final class StackResultTests: TestCase {
         let success2 = StackResult.success(inMemoryStack)
         XCTAssertEqual(success1, success2)
 
-        let model = CoreDataModel(name: modelName, bundle: modelBundle, storeType: .sqlite(defaultDirectoryURL()))
+        let model = CoreDataModel(name: modelName, bundle: modelBundle, storeType: .sqlite(CoreDataModel.defaultDirectoryURL()))
         let factory = CoreDataStackFactory(model: model)
         let result = factory.createStack()
         let stack = result.stack()!

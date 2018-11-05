@@ -23,17 +23,15 @@ import XCTest
 
 final class StoreTypeTests: XCTestCase {
 
-    func test_StoreType_SQLite() {
-        let url = defaultDirectoryURL()
+    let url = CoreDataModel.defaultDirectoryURL()
 
+    func test_StoreType_SQLite() {
         let s = StoreType.sqlite(url)
         XCTAssertEqual(s.type, NSSQLiteStoreType)
         XCTAssertEqual(s.storeDirectory(), url)
     }
 
     func test_StoreType_Binary() {
-        let url = defaultDirectoryURL()
-
         let s = StoreType.binary(url)
         XCTAssertEqual(s.type, NSBinaryStoreType)
         XCTAssertEqual(s.storeDirectory(), url)
@@ -46,8 +44,6 @@ final class StoreTypeTests: XCTestCase {
     }
 
     func test_StoreType_Equality() {
-        let url = defaultDirectoryURL()
-
         let sqlite = StoreType.sqlite(url)
         let binary = StoreType.binary(url)
         let memory = StoreType.inMemory
@@ -58,8 +54,6 @@ final class StoreTypeTests: XCTestCase {
     }
 
     func test_StoreType_Equality_SQLite() {
-        let url = defaultDirectoryURL()
-
         let sqlite1 = StoreType.sqlite(url)
         let sqlite2 = StoreType.sqlite(url)
         XCTAssertEqual(sqlite1, sqlite2)
@@ -69,8 +63,6 @@ final class StoreTypeTests: XCTestCase {
     }
 
     func test_StoreType_Equality_Binary() {
-        let url = defaultDirectoryURL()
-
         let binary1 = StoreType.binary(url)
         let binary2 = StoreType.binary(url)
         XCTAssertEqual(binary1, binary2)

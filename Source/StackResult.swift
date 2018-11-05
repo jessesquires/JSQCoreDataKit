@@ -22,7 +22,7 @@ import Foundation
 /**
  A result object representing the result of creating a `CoreDataStack` via a `CoreDataStackFactory`.
  */
-public enum StackResult {
+public enum StackResult: Equatable {
 
     /// The success result, containing the successfully initialized `CoreDataStack`.
     case success(CoreDataStack)
@@ -50,21 +50,5 @@ public enum StackResult {
             return error
         }
         return nil
-    }
-}
-
-extension StackResult: Equatable {
-    /// :nodoc:
-    public static func == (lhs: StackResult, rhs: StackResult) -> Bool {
-        switch (lhs, rhs) {
-        case (let .success(stack1), let .success(stack2)):
-            return stack1 == stack2
-
-        case (let .failure(error1), let .failure(error2)):
-            return error1 == error2
-
-        default:
-            return false
-        }
     }
 }

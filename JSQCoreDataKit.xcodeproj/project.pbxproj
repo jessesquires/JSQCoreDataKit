@@ -10,10 +10,9 @@
 		297C7D2D1C710A1D008E516B /* MigrationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 297C7D2C1C710A1D008E516B /* MigrationTests.swift */; };
 		298F00F71C9C559100AEC77E /* Migrate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 298F00F61C9C559100AEC77E /* Migrate.swift */; };
 		881219C81B361EAF005E5AA7 /* JSQCoreDataKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88002D4F1AB8F546001787DB /* JSQCoreDataKit.framework */; };
-		883378C51CB187E500205B24 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 883378C41CB187E500205B24 /* Utils.swift */; };
 		8852A0CD1D459048006538B9 /* CoreDataEntityProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8852A0CC1D459048006538B9 /* CoreDataEntityProtocol.swift */; };
 		8852A0D21D459249006538B9 /* CoreDataEntityProtocolTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8852A0D11D459249006538B9 /* CoreDataEntityProtocolTests.swift */; };
-		8873E2281C51E09700DFE009 /* CoreDataFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8873E21E1C51E09700DFE009 /* CoreDataFunctions.swift */; };
+		8873E2281C51E09700DFE009 /* NSManagedObjectContext+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8873E21E1C51E09700DFE009 /* NSManagedObjectContext+Extensions.swift */; };
 		8873E2291C51E09700DFE009 /* CoreDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8873E21F1C51E09700DFE009 /* CoreDataModel.swift */; };
 		8873E22A1C51E09700DFE009 /* SaveResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8873E2201C51E09700DFE009 /* SaveResult.swift */; };
 		8873E22B1C51E09700DFE009 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8873E2211C51E09700DFE009 /* CoreDataStack.swift */; };
@@ -64,10 +63,9 @@
 		298F00F61C9C559100AEC77E /* Migrate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Migrate.swift; sourceTree = "<group>"; };
 		88002D4F1AB8F546001787DB /* JSQCoreDataKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = JSQCoreDataKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		881219C31B361EAF005E5AA7 /* JSQCoreDataKit-Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "JSQCoreDataKit-Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		883378C41CB187E500205B24 /* Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		8852A0CC1D459048006538B9 /* CoreDataEntityProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataEntityProtocol.swift; sourceTree = "<group>"; };
 		8852A0D11D459249006538B9 /* CoreDataEntityProtocolTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataEntityProtocolTests.swift; sourceTree = "<group>"; };
-		8873E21E1C51E09700DFE009 /* CoreDataFunctions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataFunctions.swift; sourceTree = "<group>"; };
+		8873E21E1C51E09700DFE009 /* NSManagedObjectContext+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSManagedObjectContext+Extensions.swift"; sourceTree = "<group>"; };
 		8873E21F1C51E09700DFE009 /* CoreDataModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataModel.swift; sourceTree = "<group>"; };
 		8873E2201C51E09700DFE009 /* SaveResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SaveResult.swift; sourceTree = "<group>"; };
 		8873E2211C51E09700DFE009 /* CoreDataStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
@@ -133,17 +131,16 @@
 			isa = PBXGroup;
 			children = (
 				8852A0CC1D459048006538B9 /* CoreDataEntityProtocol.swift */,
-				8873E21E1C51E09700DFE009 /* CoreDataFunctions.swift */,
 				8873E21F1C51E09700DFE009 /* CoreDataModel.swift */,
 				8873E2211C51E09700DFE009 /* CoreDataStack.swift */,
 				8873E2221C51E09700DFE009 /* CoreDataStackFactory.swift */,
 				8873E2241C51E09700DFE009 /* Info.plist */,
 				8873E2251C51E09700DFE009 /* JSQCoreDataKit.h */,
 				298F00F61C9C559100AEC77E /* Migrate.swift */,
+				8873E21E1C51E09700DFE009 /* NSManagedObjectContext+Extensions.swift */,
 				8873E2201C51E09700DFE009 /* SaveResult.swift */,
 				8873E2231C51E09700DFE009 /* StackResult.swift */,
 				8873E2261C51E09700DFE009 /* StoreType.swift */,
-				883378C41CB187E500205B24 /* Utils.swift */,
 			);
 			path = Source;
 			sourceTree = "<group>";
@@ -151,9 +148,9 @@
 		8873E24C1C51E10100DFE009 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
-				8873E2BB1C51E3B000DFE009 /* ExampleModel.xcodeproj */,
 				8873E24D1C51E10100DFE009 /* ContextSyncTests.swift */,
 				8852A0D11D459249006538B9 /* CoreDataEntityProtocolTests.swift */,
+				8873E2BB1C51E3B000DFE009 /* ExampleModel.xcodeproj */,
 				8873E24F1C51E10100DFE009 /* ExampleModelTests.swift */,
 				8873E2511C51E10100DFE009 /* Info.plist */,
 				297C7D2C1C710A1D008E516B /* MigrationTests.swift */,
@@ -331,9 +328,8 @@
 				8873E22B1C51E09700DFE009 /* CoreDataStack.swift in Sources */,
 				298F00F71C9C559100AEC77E /* Migrate.swift in Sources */,
 				8873E22A1C51E09700DFE009 /* SaveResult.swift in Sources */,
-				883378C51CB187E500205B24 /* Utils.swift in Sources */,
 				8873E2291C51E09700DFE009 /* CoreDataModel.swift in Sources */,
-				8873E2281C51E09700DFE009 /* CoreDataFunctions.swift in Sources */,
+				8873E2281C51E09700DFE009 /* NSManagedObjectContext+Extensions.swift in Sources */,
 				8873E22D1C51E09700DFE009 /* StackResult.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

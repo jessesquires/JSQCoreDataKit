@@ -31,7 +31,18 @@ import Foundation
  */
 public struct CoreDataStackFactory {
 
+    // MARK: Typealiases
+
+    /// Describes the initialization options for a persistent store.
+    public typealias PersistentStoreOptions = [AnyHashable: Any]
+
     // MARK: Properties
+
+    /// Describes default persistent store options.
+    public static let defaultStoreOptions: PersistentStoreOptions = [
+        NSMigratePersistentStoresAutomaticallyOption: true as AnyObject,
+        NSInferMappingModelAutomaticallyOption: true as AnyObject
+    ]
 
     /// The model for the stack that the factory produces.
     public let model: CoreDataModel

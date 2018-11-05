@@ -42,7 +42,7 @@ final class EmployeeViewController: UITableViewController, NSFetchedResultsContr
     @IBAction func didTapAddButton(_ sender: UIBarButtonItem) {
         stack.mainContext.performAndWait {
             _ = Employee.newEmployee(self.stack.mainContext, company: self.company)
-            saveContext(self.stack.mainContext)
+            self.stack.mainContext.save(wait: true)
         }
     }
 
@@ -54,7 +54,7 @@ final class EmployeeViewController: UITableViewController, NSFetchedResultsContr
                 for each in objects {
                     backgroundChildContext.delete(each)
                 }
-                saveContext(backgroundChildContext)
+                backgroundChildContext.save(wait: true)
             } catch {
                 print("Error deleting objects: \(error)")
             }
@@ -125,7 +125,7 @@ final class EmployeeViewController: UITableViewController, NSFetchedResultsContr
             stack.mainContext.performAndWait {
                 self.stack.mainContext.delete(obj)
             }
-            saveContext(stack.mainContext)
+            stack.mainContext.save(wait: true)
         }
     }
 

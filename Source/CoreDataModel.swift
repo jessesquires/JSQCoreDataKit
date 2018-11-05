@@ -148,6 +148,25 @@ public struct CoreDataModel {
             _ = try? fm.removeItem(atPath: sharedMemoryfile)
         }
     }
+
+    /// The default directory used to initialize a `CoreDataModel`.
+    /// On tvOS, this is the caches directory. All other platforms use the document directory.
+    public static func defaultDirectoryURL() -> URL {
+        do {
+            #if os(tvOS)
+            let searchPathDirectory = FileManager.SearchPathDirectory.cachesDirectory
+            #else
+            let searchPathDirectory = FileManager.SearchPathDirectory.documentDirectory
+            #endif
+
+            return try FileManager.default.url(for: searchPathDirectory,
+                                               in: .userDomainMask,
+                                               appropriateFor: nil,
+                                               create: true)
+        } catch {
+            fatalError("*** Error finding default directory: \(error)")
+        }
+    }
 }
 
 extension CoreDataModel: Equatable {

@@ -24,6 +24,15 @@ This release closes the [8.0.0 milestone](https://github.com/jessesquires/JSQCor
 
 - `PersistentStoreOptions` typealias is now `[AnyHashable: Any]` (#119)
 
+- Make APIs more "swifty" (#120)
+    - Nest top-level function `defaultDirectoryURL()` under `CoreDataModel`
+    - Nest `ChildContext` typealias under `NSManagedObjectContext` extension
+    - Move `saveContext()` top-level function to extension method on `NSManagedObjectContext`
+
+### Changed
+
+- Use `Equatable` auto-synthesis where possible
+
 7.0.0
 -----
 

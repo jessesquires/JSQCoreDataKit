@@ -85,7 +85,7 @@ final class ResetStackTests: TestCase {
         context.performAndWait {
             self.generateCompaniesInContext(context, count: 3)
         }
-        saveContext(context)
+        context.save(wait: true)
 
         let request = Company.fetchRequest
         let objectsBefore = try? context.count(for: request)

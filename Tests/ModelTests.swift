@@ -38,7 +38,7 @@ final class ModelTests: XCTestCase {
         // THEN: the model has the correct name, bundle, and type
         XCTAssertEqual(model.name, modelName)
         XCTAssertEqual(model.bundle, modelBundle)
-        XCTAssertEqual(model.storeType, StoreType.sqlite(defaultDirectoryURL()))
+        XCTAssertEqual(model.storeType, StoreType.sqlite(CoreDataModel.defaultDirectoryURL()))
 
         // THEN: the model returns the correct database filename
         XCTAssertEqual(model.databaseFileName, model.name + "." + ModelFileExtension.sqlite.rawValue)
@@ -162,8 +162,7 @@ final class ModelTests: XCTestCase {
         let factory = CoreDataStackFactory(model: model)
         let result = factory.createStack()
         let stack = result.stack()!
-        saveContext(stack.mainContext) { error in
-        }
+        stack.mainContext.save(wait: true)
 
         let fileManager = FileManager.default
 

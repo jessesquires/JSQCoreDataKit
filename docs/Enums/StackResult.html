@@ -45,14 +45,6 @@
             </ul>
           </li>
           <li class="nav-group-name">
-            <a href="../Global Variables.html">Global Variables</a>
-            <ul class="nav-group-tasks">
-              <li class="nav-group-task">
-                <a href="../Global Variables.html#/s:14JSQCoreDataKit19defaultStoreOptionss10DictionaryVys11AnyHashableVyXlGv">defaultStoreOptions</a>
-              </li>
-            </ul>
-          </li>
-          <li class="nav-group-name">
             <a href="../Enums.html">Enumerations</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
@@ -73,13 +65,10 @@
             </ul>
           </li>
           <li class="nav-group-name">
-            <a href="../Functions.html">Functions</a>
+            <a href="../Extensions.html">Extensions</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
-                <a href="../Functions.html#/s:14JSQCoreDataKit19defaultDirectoryURL10Foundation0F0VyF">defaultDirectoryURL()</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="../Functions.html#/s:14JSQCoreDataKit11saveContextySo015NSManagedObjectE0C_Sb4waityAA10SaveResultOcSg10completiontF">saveContext(_:wait:completion:)</a>
+                <a href="../Extensions/NSManagedObjectContext.html">NSManagedObjectContext</a>
               </li>
             </ul>
           </li>
@@ -102,17 +91,6 @@
               </li>
             </ul>
           </li>
-          <li class="nav-group-name">
-            <a href="../Typealiases.html">Type Aliases</a>
-            <ul class="nav-group-tasks">
-              <li class="nav-group-task">
-                <a href="../Typealiases.html#/s:14JSQCoreDataKit12ChildContexta">ChildContext</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="../Typealiases.html#/s:14JSQCoreDataKit22PersistentStoreOptionsa">PersistentStoreOptions</a>
-              </li>
-            </ul>
-          </li>
         </ul>
       </nav>
       <article class="main-content">
@@ -121,7 +99,7 @@
             <h1>StackResult</h1>
               <div class="declaration">
                 <div class="language">
-                  <pre class="highlight"><code><span class="kd">public</span> <span class="kd">enum</span> <span class="kt">StackResult</span><span class="p">:</span> <span class="kt">Equatable</span></code></pre>
+                  <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">enum</span> <span class="kt">StackResult</span> <span class="p">:</span> <span class="kt">Equatable</span></code></pre>
 
                 </div>
               </div>
@@ -134,9 +112,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:14JSQCoreDataKit11StackResultO7successAcA04CorebD0CcACmF"></a>
-                    <a name="//apple_ref/swift/Element/success" class="dashAnchor"></a>
-                    <a class="token" href="#/s:14JSQCoreDataKit11StackResultO7successAcA04CorebD0CcACmF">success</a>
+                    <a name="/s:14JSQCoreDataKit11StackResultO7successyAcA04CorebD0CcACmF"></a>
+                    <a name="//apple_ref/swift/Element/success(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:14JSQCoreDataKit11StackResultO7successyAcA04CorebD0CcACmF">success(_:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -151,23 +129,19 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="k">case</span> <span class="nf">success</span><span class="p">(</span><span class="kt"><a href="../Classes/CoreDataStack.html">CoreDataStack</a></span><span class="p">)</span></code></pre>
+                          <pre class="highlight swift"><code><span class="k">case</span> <span class="nf">success</span><span class="p">(</span><span class="kt"><a href="../Classes/CoreDataStack.html">CoreDataStack</a></span><span class="p">)</span></code></pre>
 
                         </div>
                       </div>
                     </section>
                   </div>
                 </li>
-              </ul>
-            </div>
-            <div class="task-group">
-              <ul>
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:14JSQCoreDataKit11StackResultO7failureACSo7NSErrorCcACmF"></a>
-                    <a name="//apple_ref/swift/Element/failure" class="dashAnchor"></a>
-                    <a class="token" href="#/s:14JSQCoreDataKit11StackResultO7failureACSo7NSErrorCcACmF">failure</a>
+                    <a name="/s:14JSQCoreDataKit11StackResultO7failureyACSo7NSErrorCcACmF"></a>
+                    <a name="//apple_ref/swift/Element/failure(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:14JSQCoreDataKit11StackResultO7failureyACSo7NSErrorCcACmF">failure(_:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -182,7 +156,7 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="k">case</span> <span class="nf">failure</span><span class="p">(</span><span class="kt">NSError</span><span class="p">)</span></code></pre>
+                          <pre class="highlight swift"><code><span class="k">case</span> <span class="nf">failure</span><span class="p">(</span><span class="kt">NSError</span><span class="p">)</span></code></pre>
 
                         </div>
                       </div>
@@ -219,7 +193,7 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">stack</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kt"><a href="../Classes/CoreDataStack.html">CoreDataStack</a></span><span class="p">?</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">stack</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kt"><a href="../Classes/CoreDataStack.html">CoreDataStack</a></span><span class="p">?</span></code></pre>
 
                         </div>
                       </div>
@@ -249,7 +223,7 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">error</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kt">NSError</span><span class="p">?</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">error</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kt">NSError</span><span class="p">?</span></code></pre>
 
                         </div>
                       </div>
@@ -265,8 +239,8 @@
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2017 <a class="link" href="https://twitter.com/jesse_squires" target="_blank" rel="external">Jesse Squires</a>. All rights reserved. (Last updated: 2017-12-31)</p>
-          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.0</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+          <p>&copy; 2018 <a class="link" href="https://twitter.com/jesse_squires" target="_blank" rel="external">Jesse Squires</a>. All rights reserved. (Last updated: 2018-11-04)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.4</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
         </section>
       </article>
     </div>

@@ -26,12 +26,12 @@ This library aims to do the following:
 
 ## Requirements
 
-* Xcode 9+
-* Swift 4.0+
-* iOS 9.0+
-* macOS 10.11+
-* tvOS 10.0+
-* watchOS 3.0+
+* Xcode 10+
+* Swift 4.2+
+* iOS 11.0+
+* macOS 10.12+
+* tvOS 11.0+
+* watchOS 4.0+
 * [SwiftLint](https://github.com/realm/SwiftLint)
 
 ## Installation

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="9525" systemVersion="15D21" minimumToolsVersion="Xcode 7.0">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14315.18" systemVersion="18A391" minimumToolsVersion="Xcode 7.0" sourceLanguage="Objective-C" userDefinedModelVersionIdentifier="2">
     <entity name="Employee" representedClassName=".Employee" syncable="YES">
-        <attribute name="birthDate" attributeType="Date" syncable="YES"/>
-        <attribute name="companyDateFounded" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="birthDate" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="companyDateFounded" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="companyName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="companyProfits" optional="YES" attributeType="Decimal" defaultValueString="0.0" syncable="YES"/>
         <attribute name="name" attributeType="String" syncable="YES"/>

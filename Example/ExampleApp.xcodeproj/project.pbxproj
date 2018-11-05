@@ -13,28 +13,12 @@
 		885394281BC9E9DE00699506 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 885394271BC9E9DE00699506 /* Assets.xcassets */; };
 		8853942B1BC9E9DE00699506 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 885394291BC9E9DE00699506 /* LaunchScreen.storyboard */; };
 		885394361BC9E9DE00699506 /* ExampleAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 885394351BC9E9DE00699506 /* ExampleAppTests.swift */; };
-		8873E2A11C51E32A00DFE009 /* ExampleModel.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8873E2A01C51E32600DFE009 /* ExampleModel.framework */; };
-		8873E2A21C51E32A00DFE009 /* ExampleModel.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 8873E2A01C51E32600DFE009 /* ExampleModel.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		8873E2B71C51E33B00DFE009 /* JSQCoreDataKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8873E2AE1C51E33100DFE009 /* JSQCoreDataKit.framework */; };
-		8873E2B81C51E33B00DFE009 /* JSQCoreDataKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 8873E2AE1C51E33100DFE009 /* JSQCoreDataKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		88AC47FB218FB11B002C04AB /* JSQCoreDataKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8873E2AE1C51E33100DFE009 /* JSQCoreDataKit.framework */; };
+		88AC47FC218FB11F002C04AB /* ExampleModel.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8873E2A01C51E32600DFE009 /* ExampleModel.framework */; };
 		88B9F8C91BCA0A510053CD6D /* EmployeeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88B9F8C81BCA0A510053CD6D /* EmployeeViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		881AEE0D1D3ACA10007FC785 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 8873E29B1C51E32600DFE009 /* ExampleModel.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 88DF3CD91CDCEA0D00726A31;
-			remoteInfo = "ExampleModel-OSX";
-		};
-		881AEE141D3ACA10007FC785 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 8873E2A51C51E33100DFE009 /* JSQCoreDataKit.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 88DF3CBA1CDCE89000726A31;
-			remoteInfo = "JSQCoreDataKit-OSXTests";
-		};
 		885394321BC9E9DE00699506 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 885394151BC9E9DE00699506 /* Project object */;
@@ -47,13 +31,6 @@
 			containerPortal = 8873E29B1C51E32600DFE009 /* ExampleModel.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = 8853944A1BC9EA0300699506;
-			remoteInfo = ExampleModel;
-		};
-		8873E2A31C51E32A00DFE009 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 8873E29B1C51E32600DFE009 /* ExampleModel.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = 885394491BC9EA0300699506;
 			remoteInfo = ExampleModel;
 		};
 		8873E2AD1C51E33100DFE009 /* PBXContainerItemProxy */ = {
@@ -70,34 +47,6 @@
 			remoteGlobalIDString = 881219C31B361EAF005E5AA7;
 			remoteInfo = JSQCoreDataKitTests;
 		};
-		8873E2B11C51E33100DFE009 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 8873E2A51C51E33100DFE009 /* JSQCoreDataKit.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 887403131C0D6A6D00FE0C31;
-			remoteInfo = "JSQCoreDataKit tvOS";
-		};
-		8873E2B31C51E33100DFE009 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 8873E2A51C51E33100DFE009 /* JSQCoreDataKit.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 883C83DB1C0D7647007A16F5;
-			remoteInfo = "JSQCoreDataKit watchOS";
-		};
-		8873E2B51C51E33100DFE009 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 8873E2A51C51E33100DFE009 /* JSQCoreDataKit.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 88AC4B331C0FD8DA00A04563;
-			remoteInfo = "JSQCoreDataKit OSX";
-		};
-		8873E2B91C51E33B00DFE009 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 8873E2A51C51E33100DFE009 /* JSQCoreDataKit.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = 88002D4E1AB8F546001787DB;
-			remoteInfo = "JSQCoreDataKit iOS";
-		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -107,8 +56,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				8873E2A21C51E32A00DFE009 /* ExampleModel.framework in Embed Frameworks */,
-				8873E2B81C51E33B00DFE009 /* JSQCoreDataKit.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -136,8 +83,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8873E2A11C51E32A00DFE009 /* ExampleModel.framework in Frameworks */,
-				8873E2B71C51E33B00DFE009 /* JSQCoreDataKit.framework in Frameworks */,
+				88AC47FC218FB11F002C04AB /* ExampleModel.framework in Frameworks */,
+				88AC47FB218FB11B002C04AB /* JSQCoreDataKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -151,6 +98,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		880ECB5B2187ED5B00409ADA /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		885394141BC9E9DE00699506 = {
 			isa = PBXGroup;
 			children = (
@@ -159,6 +113,7 @@
 				8873E29B1C51E32600DFE009 /* ExampleModel.xcodeproj */,
 				8873E2A51C51E33100DFE009 /* JSQCoreDataKit.xcodeproj */,
 				8853941E1BC9E9DE00699506 /* Products */,
+				880ECB5B2187ED5B00409ADA /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -198,7 +153,6 @@
 			isa = PBXGroup;
 			children = (
 				8873E2A01C51E32600DFE009 /* ExampleModel.framework */,
-				881AEE0E1D3ACA10007FC785 /* ExampleModel.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -207,11 +161,7 @@
 			isa = PBXGroup;
 			children = (
 				8873E2AE1C51E33100DFE009 /* JSQCoreDataKit.framework */,
-				8873E2B01C51E33100DFE009 /* JSQCoreDataKit-iOSTests.xctest */,
-				8873E2B21C51E33100DFE009 /* JSQCoreDataKit.framework */,
-				8873E2B41C51E33100DFE009 /* JSQCoreDataKit.framework */,
-				8873E2B61C51E33100DFE009 /* JSQCoreDataKit.framework */,
-				881AEE151D3ACA10007FC785 /* JSQCoreDataKit-OSXTests.xctest */,
+				8873E2B01C51E33100DFE009 /* JSQCoreDataKit-Tests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -231,8 +181,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				8873E2A41C51E32A00DFE009 /* PBXTargetDependency */,
-				8873E2BA1C51E33B00DFE009 /* PBXTargetDependency */,
 			);
 			name = ExampleApp;
 			productName = ExampleApp;
@@ -263,7 +211,7 @@
 		885394151BC9E9DE00699506 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0900;
+				LastUpgradeCheck = 0940;
 				ORGANIZATIONNAME = "Hexed Bits";
 				TargetAttributes = {
 					8853941C1BC9E9DE00699506 = {
@@ -310,20 +258,6 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
-		881AEE0E1D3ACA10007FC785 /* ExampleModel.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = ExampleModel.framework;
-			remoteRef = 881AEE0D1D3ACA10007FC785 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		881AEE151D3ACA10007FC785 /* JSQCoreDataKit-OSXTests.xctest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = "JSQCoreDataKit-OSXTests.xctest";
-			remoteRef = 881AEE141D3ACA10007FC785 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
 		8873E2A01C51E32600DFE009 /* ExampleModel.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
@@ -338,32 +272,11 @@
 			remoteRef = 8873E2AD1C51E33100DFE009 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		8873E2B01C51E33100DFE009 /* JSQCoreDataKit-iOSTests.xctest */ = {
+		8873E2B01C51E33100DFE009 /* JSQCoreDataKit-Tests.xctest */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.cfbundle;
-			path = "JSQCoreDataKit-iOSTests.xctest";
+			path = "JSQCoreDataKit-Tests.xctest";
 			remoteRef = 8873E2AF1C51E33100DFE009 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		8873E2B21C51E33100DFE009 /* JSQCoreDataKit.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = JSQCoreDataKit.framework;
-			remoteRef = 8873E2B11C51E33100DFE009 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		8873E2B41C51E33100DFE009 /* JSQCoreDataKit.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = JSQCoreDataKit.framework;
-			remoteRef = 8873E2B31C51E33100DFE009 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		8873E2B61C51E33100DFE009 /* JSQCoreDataKit.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = JSQCoreDataKit.framework;
-			remoteRef = 8873E2B51C51E33100DFE009 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
@@ -415,16 +328,6 @@
 			target = 8853941C1BC9E9DE00699506 /* ExampleApp */;
 			targetProxy = 885394321BC9E9DE00699506 /* PBXContainerItemProxy */;
 		};
-		8873E2A41C51E32A00DFE009 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = ExampleModel;
-			targetProxy = 8873E2A31C51E32A00DFE009 /* PBXContainerItemProxy */;
-		};
-		8873E2BA1C51E33B00DFE009 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = "JSQCoreDataKit iOS";
-			targetProxy = 8873E2B91C51E33B00DFE009 /* PBXContainerItemProxy */;
-		};
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
@@ -459,12 +362,14 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -491,12 +396,12 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -513,12 +418,14 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -539,10 +446,10 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 			};
@@ -553,12 +460,16 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = ExampleApp/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.hexedbits.ExampleApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_VERSION = 4.2;
 			};
 			name = Debug;
 		};
@@ -567,13 +478,17 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = ExampleApp/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.hexedbits.ExampleApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 			};
 			name = Release;
 		};
@@ -588,7 +503,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.hexedbits.ExampleAppTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ExampleApp.app/ExampleApp";
 			};
 			name = Debug;
@@ -605,7 +520,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ExampleApp.app/ExampleApp";
 			};
 			name = Release;

@@ -43,19 +43,25 @@ final class ModelTests: XCTestCase {
         // THEN: the model returns the correct database filename
         XCTAssertEqual(model.databaseFileName, model.name + "." + ModelFileExtension.sqlite.rawValue)
 
-        // THEN: the store file is in the documents directory
+        // THEN: the store file is in the correct directory
+        #if os(iOS) || os(macOS)
+            let dir = "Documents"
+        #elseif os(tvOS)
+            let dir = "Caches"
+        #endif
+
         let storeURLComponents = model.storeURL!.pathComponents
         XCTAssertEqual(String(storeURLComponents.last!), model.databaseFileName)
-        XCTAssertEqual(String(storeURLComponents[storeURLComponents.count - 2]), "Documents")
+        XCTAssertEqual(String(storeURLComponents[storeURLComponents.count - 2]), dir)
         XCTAssertTrue(model.storeURL!.isFileURL)
 
         // THEN: the model is in its specified bundle
         let modelURLComponents = model.modelURL.pathComponents
         XCTAssertEqual(String(modelURLComponents.last!), model.name + ".momd")
 
-        #if os(iOS)
+        #if os(iOS) || os(tvOS)
             let count = modelURLComponents.count - 2
-        #elseif os(OSX)
+        #elseif os(macOS)
             let count = modelURLComponents.count - 3
         #endif
 
@@ -86,9 +92,9 @@ final class ModelTests: XCTestCase {
         let storeURLComponents = model.storeURL!.pathComponents
         XCTAssertEqual(String(storeURLComponents.last!), model.databaseFileName)
 
-        #if os(iOS)
+        #if os(iOS) || os(tvOS)
             let temp = "tmp"
-        #elseif os(OSX)
+        #elseif os(macOS)
             let temp = "T"
         #endif
 
@@ -99,9 +105,9 @@ final class ModelTests: XCTestCase {
         let modelURLComponents = model.modelURL.pathComponents
         XCTAssertEqual(String(modelURLComponents.last!), model.name + ".momd")
 
-        #if os(iOS)
+        #if os(iOS) || os(tvOS)
             let count = modelURLComponents.count - 2
-        #elseif os(OSX)
+        #elseif os(macOS)
             let count = modelURLComponents.count - 3
         #endif
 
@@ -135,9 +141,9 @@ final class ModelTests: XCTestCase {
         let modelURLComponents = model.modelURL.pathComponents
         XCTAssertEqual(String(modelURLComponents.last!), model.name + ".momd")
 
-        #if os(iOS)
+        #if os(iOS) || os(tvOS)
             let count = modelURLComponents.count - 2
-        #elseif os(OSX)
+        #elseif os(macOS)
             let count = modelURLComponents.count - 3
         #endif
 

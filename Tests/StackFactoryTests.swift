@@ -36,7 +36,8 @@ final class StackFactoryTests: TestCase {
     func test_ThatStackFactory_InitializesSuccessFully() {
         let factory = CoreDataStackFactory(model: inMemoryModel)
         XCTAssertEqual(factory.model, inMemoryModel)
-        XCTAssertTrue(factory.options! == defaultStoreOptions)
+        XCTAssertTrue(factory.options?[NSMigratePersistentStoresAutomaticallyOption] as! Bool)
+        XCTAssertTrue(factory.options?[NSInferMappingModelAutomaticallyOption] as! Bool)
     }
 
     func test_ThatStackFactory_CreatesStackInBackground_Successfully() {
@@ -98,7 +99,7 @@ final class StackFactoryTests: TestCase {
         XCTAssertEqual(factory1, factory2)
 
         let factory3 = CoreDataStackFactory(model: inMemoryModel, options: nil)
-        XCTAssertNotEqual(factory1, factory3)
+        XCTAssertEqual(factory1, factory3)
 
         let factory4 = CoreDataStackFactory(model: inMemoryModel, options: nil)
         XCTAssertEqual(factory3, factory4)

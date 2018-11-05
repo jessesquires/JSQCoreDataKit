@@ -1,6 +1,6 @@
 #!/bin/bash
 
-VERSION="0.24.2"
+VERSION="0.27.0"
 FOUND=$(swiftlint version)
 
 if which swiftlint >/dev/null; then
@@ -12,7 +12,6 @@ else
     Download from https://github.com/realm/SwiftLint,
     or brew install swiftlint.
     "
-    exit 1
 fi
 
 if [ $(swiftlint version) != $VERSION ]; then

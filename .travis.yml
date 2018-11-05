@@ -1,5 +1,5 @@
 language: objective-c
-osx_image: xcode9.2
+osx_image: xcode10.1
 branches:
   only:
     - master
@@ -10,38 +10,24 @@ env:
    - LANG=en_US.UTF-8
 
    - PROJECT="JSQCoreDataKit.xcodeproj"
-   - IOS_SCHEME="JSQCoreDataKit-iOS"
-   - OSX_SCHEME="JSQCoreDataKit-OSX"
-   - TVOS_SCHEME="JSQCoreDataKit-tvOS"
-   - WATCHOS_SCHEME="JSQCoreDataKit-watchOS"
 
-   - IOS_SDK=iphonesimulator11.2
-   - OSX_SDK=macosx10.13
-   - TVOS_SDK=appletvsimulator11.2
-   - WATCHOS_SDK=watchsimulator4.2
+   - SCHEME="JSQCoreDataKit"
+
+   - OSX_SDK=macosx10.14
+   - IOS_SDK=iphonesimulator12.1
+   - TVOS_SDK=appletvsimulator12.1
+   - WATCHOS_SDK=watchsimulator5.1
 
    matrix:
-   - DESTINATION="OS=9.0,name=iPhone 6 Plus"  SDK="$IOS_SDK" SCHEME="$IOS_SCHEME" RUN_TESTS="YES" BUILD_EXAMPLE="YES" POD_LINT="YES"
-   - DESTINATION="OS=9.1,name=iPhone 6s"      SDK="$IOS_SDK" SCHEME="$IOS_SCHEME" RUN_TESTS="YES" BUILD_EXAMPLE="NO"  POD_LINT="NO"
-   - DESTINATION="OS=9.2,name=iPhone 6s Plus" SDK="$IOS_SDK" SCHEME="$IOS_SCHEME" RUN_TESTS="YES" BUILD_EXAMPLE="NO"  POD_LINT="NO"
-   - DESTINATION="OS=9.3,name=iPad Air 2"     SDK="$IOS_SDK" SCHEME="$IOS_SCHEME" RUN_TESTS="YES" BUILD_EXAMPLE="NO"  POD_LINT="NO"
+   - DESTINATION="OS=11.4,name=iPhone X" SDK="$IOS_SDK" RUN_TESTS="YES" BUILD_EXAMPLE="YES" POD_LINT="YES"
 
-   - DESTINATION="OS=10.0,name=iPhone 6s"  SDK="$IOS_SDK" SCHEME="$IOS_SCHEME" RUN_TESTS="YES" BUILD_EXAMPLE="YES" POD_LINT="NO"
-   - DESTINATION="OS=10.1,name=iPhone 7"   SDK="$IOS_SDK" SCHEME="$IOS_SCHEME" RUN_TESTS="YES" BUILD_EXAMPLE="NO"  POD_LINT="NO"
-   - DESTINATION="OS=10.2,name=iPad Air 2" SDK="$IOS_SDK" SCHEME="$IOS_SCHEME" RUN_TESTS="YES" BUILD_EXAMPLE="NO"  POD_LINT="NO"
-   - DESTINATION="OS=10.3.1,name=iPhone 7" SDK="$IOS_SDK" SCHEME="$IOS_SCHEME" RUN_TESTS="YES" BUILD_EXAMPLE="NO"  POD_LINT="NO"
+   - DESTINATION="OS=12.1,name=iPhone X" SDK="$IOS_SDK" RUN_TESTS="YES" BUILD_EXAMPLE="YES" POD_LINT="NO"
 
-   - DESTINATION="OS=11.0.1,name=iPhone X" SDK="$IOS_SDK" SCHEME="$IOS_SCHEME" RUN_TESTS="YES" BUILD_EXAMPLE="YES" POD_LINT="NO"
-   - DESTINATION="OS=11.1,name=iPhone X"   SDK="$IOS_SDK" SCHEME="$IOS_SCHEME" RUN_TESTS="YES" BUILD_EXAMPLE="NO"  POD_LINT="NO"
-   - DESTINATION="OS=11.2,name=iPhone X"   SDK="$IOS_SDK" SCHEME="$IOS_SCHEME" RUN_TESTS="YES" BUILD_EXAMPLE="NO"  POD_LINT="NO"
+   - DESTINATION="arch=x86_64" SDK="$OSX_SDK" RUN_TESTS="YES" BUILD_EXAMPLE="NO" POD_LINT="NO"
 
-   - DESTINATION="arch=x86_64" SDK="$OSX_SDK" SCHEME="$OSX_SCHEME" RUN_TESTS="NO" BUILD_EXAMPLE="NO" POD_LINT="NO"
+   - DESTINATION="OS=12.1,name=Apple TV" SDK="$TVOS_SDK" RUN_TESTS="YES" BUILD_EXAMPLE="NO" POD_LINT="NO"
 
-   - DESTINATION="OS=10.0,name=Apple TV 1080p" SDK="$TVOS_SDK" SCHEME="$TVOS_SCHEME" RUN_TESTS="NO" BUILD_EXAMPLE="NO" POD_LINT="NO"
-   - DESTINATION="OS=11.0,name=Apple TV 4K"    SDK="$TVOS_SDK" SCHEME="$TVOS_SCHEME" RUN_TESTS="NO" BUILD_EXAMPLE="NO" POD_LINT="NO"
-
-   - DESTINATION="OS=3.2,name=Apple Watch Series 2 - 42mm" SDK="$WATCHOS_SDK" SCHEME="$WATCHOS_SCHEME" RUN_TESTS="NO" BUILD_EXAMPLE="NO" POD_LINT="NO"
-   - DESTINATION="OS=4.0,name=Apple Watch - 38mm"          SDK="$WATCHOS_SDK" SCHEME="$WATCHOS_SCHEME" RUN_TESTS="NO" BUILD_EXAMPLE="NO" POD_LINT="NO"
+   - DESTINATION="OS=5.1,name=Apple Watch Series 4 - 40mm" SDK="$WATCHOS_SDK" RUN_TESTS="NO" BUILD_EXAMPLE="NO" POD_LINT="NO"
 
 before_install:
    - gem install cocoapods --no-rdoc --no-ri --no-document --quiet
@@ -61,14 +47,14 @@ script:
   fi
 
 - if [ $RUN_TESTS == "YES" ]; then
-      xcodebuild analyze test -project "$PROJECT" -scheme "$SCHEME" -sdk "$SDK" -destination "$DESTINATION" -configuration Debug ONLY_ACTIVE_ARCH=NO CODE_SIGNING_REQUIRED=NO | xcpretty -c;
+      xcodebuild test -project "$PROJECT" -scheme JSQCoreDataKit -sdk "$SDK" -destination "$DESTINATION" -configuration Debug ONLY_ACTIVE_ARCH=NO CODE_SIGNING_REQUIRED=NO | xcpretty -c;
   else
-      xcodebuild build analyze -project "$PROJECT" -scheme "$SCHEME" -sdk "$SDK" -destination "$DESTINATION" -configuration Debug ONLY_ACTIVE_ARCH=NO CODE_SIGNING_REQUIRED=NO | xcpretty -c;
+      xcodebuild build analyze -project "$PROJECT" -scheme JSQCoreDataKit -sdk "$SDK" -destination "$DESTINATION" -configuration Debug ONLY_ACTIVE_ARCH=NO CODE_SIGNING_REQUIRED=NO | xcpretty -c;
   fi
 
 # Build for reporting test coverage
 - if [ $RUN_TESTS == "YES" ] && [ $SDK == $IOS_SDK ]; then
-      xcodebuild test -project JSQCoreDataKit.xcodeproj -scheme "JSQCoreDataKit-iOS" -destination "platform=iOS Simulator,name=iPad Air 2" CODE_SIGNING_REQUIRED=NO;
+      xcodebuild test -project JSQCoreDataKit.xcodeproj -scheme JSQCoreDataKit -destination "platform=iOS Simulator,name=iPhone X" CODE_SIGNING_REQUIRED=NO;
   fi
 
 after_success:

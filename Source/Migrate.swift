@@ -112,15 +112,17 @@ func findModelsInBundle(_ bundle: Bundle) -> [NSManagedObjectModel] {
         return []
     }
 
-    let modelBundleDirectoryNames = modelBundleDirectoryURLs.flatMap { url -> String? in
+    let modelBundleDirectoryNames = modelBundleDirectoryURLs.compactMap { url -> String? in
         url.lastPathComponent
     }
 
-    let modelVersionFileURLs = modelBundleDirectoryNames.flatMap { name -> [URL]? in
+    let modelVersionFileURLs = modelBundleDirectoryNames.compactMap { name -> [URL]? in
         bundle.urls(forResourcesWithExtension: ModelFileExtension.versionedFile.rawValue, subdirectory: name)
-    }
+        }
+        .joined()
+        .sorted { $0.absoluteString < $1.absoluteString }
 
-    let managedObjectModels = Array(modelVersionFileURLs.joined()).flatMap { url -> NSManagedObjectModel? in
+    let managedObjectModels = modelVersionFileURLs.compactMap { url -> NSManagedObjectModel? in
         NSManagedObjectModel(contentsOf: url)
     }
 

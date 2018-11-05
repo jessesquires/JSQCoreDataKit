@@ -4,6 +4,26 @@ The changelog for `JSQCoreDataKit`. Also see the [releases](https://github.com/j
 
 --------------------------------------
 
+8.0.0
+-----
+
+This release closes the [8.0.0 milestone](https://github.com/jessesquires/JSQCoreDataKit/milestone/16?closed=1).
+
+- iOS 11.0 minimum now required
+- tvOS 11.0 minimum now required
+- macOS 10.12 minimum now required
+- watchOS 4.0 minimum now required
+
+### New
+
+- Upgraded to Swift 4.2 (#125)
+- Update to Xcode 10.1
+- Update SwiftLint to 0.27.0
+
+### Breaking
+
+- `PersistentStoreOptions` typealias is now `[AnyHashable: Any]` (#119)
+
 7.0.0
 -----
 

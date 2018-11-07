@@ -39,7 +39,7 @@ script:
 - xcodebuild -version -sdk
 
 - if [ $POD_LINT == "YES" ]; then
-      pod lib lint;
+      pod lib lint --skip-tests;
   fi
 
 - if [ $BUILD_EXAMPLE == "YES" ]; then

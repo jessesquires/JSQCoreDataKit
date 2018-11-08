@@ -30,7 +30,7 @@ env:
    - DESTINATION="OS=5.1,name=Apple Watch Series 4 - 40mm" SDK="$WATCHOS_SDK" RUN_TESTS="NO" BUILD_EXAMPLE="NO" POD_LINT="NO"
 
 before_install:
-   - gem install cocoapods --no-rdoc --no-ri --no-document --quiet
+   - gem install cocoapods --pre --no-rdoc --no-ri --no-document --quiet
    - brew update
    - brew outdated swiftlint || brew upgrade swiftlint
 

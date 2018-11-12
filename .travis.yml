@@ -11,8 +11,6 @@ env:
 
    - PROJECT="JSQCoreDataKit.xcodeproj"
 
-   - SCHEME="JSQCoreDataKit"
-
    - OSX_SDK=macosx10.14
    - IOS_SDK=iphonesimulator12.1
    - TVOS_SDK=appletvsimulator12.1

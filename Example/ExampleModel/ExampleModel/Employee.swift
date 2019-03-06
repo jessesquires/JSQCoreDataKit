@@ -52,12 +52,12 @@ public final class Employee: NSManagedObject, CoreDataEntityProtocol {
         return Employee(context: context,
                         name: name,
                         birthDate: Date.distantPast,
-                        salary: NSDecimalNumber(value: arc4random_uniform(100_000)),
+                        salary: NSDecimalNumber(value: Int.random(in: 0...100_000)),
                         company: company)
     }
 
     @objc
-    private override init(entity: NSEntityDescription, insertInto context: NSManagedObjectContext?) {
+    override private init(entity: NSEntityDescription, insertInto context: NSManagedObjectContext?) {
         super.init(entity: entity, insertInto: context)
     }
 }

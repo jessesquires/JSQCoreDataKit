@@ -58,7 +58,7 @@ final class ContextSyncTests: TestCase {
             XCTAssertTrue(result == .success)
         }
 
-        waitForExpectations(timeout: defaultTimeout) { (error) in
+        waitForExpectations(timeout: defaultTimeout) { error in
             XCTAssertNil(error, "Expectation should not error")
         }
 
@@ -93,7 +93,7 @@ final class ContextSyncTests: TestCase {
             XCTAssertTrue(result == .success)
         }
 
-        waitForExpectations(timeout: defaultTimeout) { (error) in
+        waitForExpectations(timeout: defaultTimeout) { error in
             XCTAssertNil(error, "Expectation should not error")
         }
 
@@ -119,11 +119,11 @@ final class ContextSyncTests: TestCase {
 
         // WHEN: we save the child context
         expectation(forNotification: .NSManagedObjectContextDidSave, object: childContext, handler: nil)
-        childContext.save { (result) -> Void in
+        childContext.save { result -> Void in
             XCTAssertTrue(result == .success)
         }
 
-        waitForExpectations(timeout: defaultTimeout) { (error) in
+        waitForExpectations(timeout: defaultTimeout) { error in
             XCTAssertNil(error, "Expectation should not error")
         }
 
@@ -153,11 +153,11 @@ final class ContextSyncTests: TestCase {
 
         // WHEN: we save the child context
         expectation(forNotification: .NSManagedObjectContextDidSave, object: childContext, handler: nil)
-        childContext.save { (result) -> Void in
+        childContext.save { result -> Void in
             XCTAssertTrue(result == .success)
         }
 
-        waitForExpectations(timeout: defaultTimeout) { (error) in
+        waitForExpectations(timeout: defaultTimeout) { error in
             XCTAssertNil(error, "Expectation should not error")
         }
 

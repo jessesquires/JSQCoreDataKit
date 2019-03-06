@@ -51,11 +51,11 @@ public final class Company: NSManagedObject, CoreDataEntityProtocol {
         return Company(context: context,
                        name: name,
                        dateFounded: Date.distantPast,
-                       profits: NSDecimalNumber(value: arc4random_uniform(1_000_000)))
+                       profits: NSDecimalNumber(value: Int.random(in: 0...1_000_000)))
     }
 
     @objc
-    private override init(entity: NSEntityDescription, insertInto context: NSManagedObjectContext?) {
+    override private init(entity: NSEntityDescription, insertInto context: NSManagedObjectContext?) {
         super.init(entity: entity, insertInto: context)
     }
 }

@@ -20,7 +20,7 @@ import CoreData
 import Foundation
 
 /// Describes an entity in Core Data.
-public protocol CoreDataEntityProtocol: class {
+public protocol CoreDataEntityProtocol: AnyObject {
 
     /// The name of the entity.
     static var entityName: String { get }
@@ -29,7 +29,7 @@ public protocol CoreDataEntityProtocol: class {
     static var defaultSortDescriptors: [NSSortDescriptor] { get }
 }
 
-public extension CoreDataEntityProtocol where Self: NSManagedObject {
+extension CoreDataEntityProtocol where Self: NSManagedObject {
 
     /// Returns a default entity name for this managed object based on its class name.
     public static var entityName: String {

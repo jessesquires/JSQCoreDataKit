@@ -179,8 +179,10 @@ final class CompanyViewController: UITableViewController, NSFetchedResultsContro
         switch type {
         case .insert:
             tableView.insertSections(IndexSet(integer: sectionIndex), with: .fade)
+
         case .delete:
             tableView.deleteSections(IndexSet(integer: sectionIndex), with: .fade)
+
         default:
             break
         }
@@ -194,10 +196,13 @@ final class CompanyViewController: UITableViewController, NSFetchedResultsContro
         switch type {
         case .insert:
             tableView.insertRows(at: [newIndexPath!], with: .fade)
+
         case .delete:
             tableView.deleteRows(at: [indexPath!], with: .fade)
+
         case .update:
             configureCell(tableView.cellForRow(at: indexPath!)!, atIndexPath: indexPath!)
+
         case .move:
             tableView.deleteRows(at: [indexPath!], with: .fade)
             tableView.insertRows(at: [newIndexPath!], with: .fade)

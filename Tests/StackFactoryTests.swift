@@ -67,7 +67,7 @@ final class StackFactoryTests: TestCase {
         }
 
         // THEN: creating a stack succeeds
-        waitForExpectations(timeout: defaultTimeout) { (error) -> Void in
+        waitForExpectations(timeout: defaultTimeout) { error -> Void in
             XCTAssertNil(error, "Expectation should not error")
         }
 

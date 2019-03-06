@@ -105,12 +105,12 @@ final class MigrationTests: TestCase {
         let destinationModel = sourceModel
 
         // WHEN: building the mapping steps
-        var mappingSteps: [MigrationMappingStep]?
+        var mappingSteps = [MigrationMappingStep]()
         do {
             mappingSteps = try buildMigrationMappingSteps(bundle: model.bundle, sourceModel: sourceModel, destinationModel: destinationModel)
         } catch MigrationError.mappingModelNotFound(let destinationModel) {
             // THEN: the expected error is thrown
-            XCTAssertNil(mappingSteps)
+            XCTAssertTrue(mappingSteps.isEmpty)
             XCTAssertEqual(destinationModel, managedObjectModel(versionName: "Version 3"))
         } catch {
             XCTFail("Unexpected error was thrown: \(error)")

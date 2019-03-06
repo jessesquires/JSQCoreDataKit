@@ -27,7 +27,7 @@ extension CoreDataStackFactory {
 
     func createStack() -> StackResult {
         var result: StackResult!
-        createStack(onQueue: nil) { (r) in
+        createStack(onQueue: nil) { r in
             result = r
         }
         return result
@@ -64,12 +64,12 @@ class TestCase: XCTestCase {
 
     @discardableResult
     func generateDataInContext(_ context: NSManagedObjectContext,
-                               companiesCount: Int = Int(arc4random_uniform(10)),
-                               employeesCount: Int = Int(arc4random_uniform(1_000))) -> [Company] {
+                               companiesCount: Int = Int.random(in: 0...10),
+                               employeesCount: Int = Int.random(in: 0...1_000)) -> [Company] {
         let companies = generateCompaniesInContext(context, count: companiesCount)
 
         companies.forEach { c in
-            generateEmployeesInContext(context, company: c, count: employeesCount)
+            generateEmployeesInContext(context, count: employeesCount, company: c)
         }
 
         return companies
@@ -88,7 +88,7 @@ class TestCase: XCTestCase {
     }
 
     @discardableResult
-    func generateEmployeesInContext(_ context: NSManagedObjectContext, company: Company? = nil, count: Int) -> [Employee] {
+    func generateEmployeesInContext(_ context: NSManagedObjectContext, count: Int, company: Company? = nil) -> [Employee] {
         var employees = [Employee]()
 
         for _ in 0..<count {

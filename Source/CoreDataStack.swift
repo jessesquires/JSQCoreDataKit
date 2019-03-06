@@ -109,8 +109,10 @@ public final class CoreDataStack {
         switch concurrencyType {
         case .mainQueueConcurrencyType:
             childContext.parent = mainContext
+
         case .privateQueueConcurrencyType:
             childContext.parent = backgroundContext
+
         case .confinementConcurrencyType:
             fatalError("*** Error: ConfinementConcurrencyType is not supported because it is being deprecated in iOS 9.0")
         }

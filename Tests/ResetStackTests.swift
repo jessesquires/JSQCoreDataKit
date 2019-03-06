@@ -41,7 +41,7 @@ final class ResetStackTests: TestCase {
         }
 
         // THEN: the reset succeeds and the contexts contain no objects
-        waitForExpectations(timeout: defaultTimeout) { (error) -> Void in
+        waitForExpectations(timeout: defaultTimeout) { error -> Void in
             XCTAssertNil(error, "Expectation should not error")
         }
 
@@ -67,7 +67,7 @@ final class ResetStackTests: TestCase {
         }
 
         // THEN: the reset succeeds and the contexts contain no objects
-        waitForExpectations(timeout: defaultTimeout) { (error) -> Void in
+        waitForExpectations(timeout: defaultTimeout) { error -> Void in
             XCTAssertNil(error, "Expectation should not error")
         }
 
@@ -102,7 +102,7 @@ final class ResetStackTests: TestCase {
         }
 
         // THEN: the reset succeeds and the stack contains no managed objects
-        waitForExpectations(timeout: defaultTimeout) { (error) -> Void in
+        waitForExpectations(timeout: defaultTimeout) { error -> Void in
             XCTAssertNil(error, "Expectation should not error")
         }
 

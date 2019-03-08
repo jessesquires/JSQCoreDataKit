@@ -73,7 +73,7 @@ final class SaveTests: TestCase {
             XCTAssertNil(error, "Expectation should not error")
             XCTAssertTrue(didSaveMain, "Main context should be saved")
             XCTAssertTrue(didUpdateBackground, "Background context should be updated")
-        })
+        }
     }
 
     func test_ThatSaveAndWait_WithChanges_WithoutCompletionClosure_Succeeds() {
@@ -107,7 +107,7 @@ final class SaveTests: TestCase {
             XCTAssertNil(error, "Expectation should not error")
             XCTAssertTrue(didSaveMain, "Main context should be saved")
             XCTAssertTrue(didUpdateBackground, "Background context should be updated")
-        })
+        }
     }
 
     func test_ThatSaveAsync_WithoutChanges_ReturnsImmediately() {
@@ -159,7 +159,7 @@ final class SaveTests: TestCase {
             XCTAssertNil(error, "Expectation should not error")
             XCTAssertTrue(didSaveMain, "Main context should be saved")
             XCTAssertTrue(didUpdateBackground, "Background context should be updated")
-        })
+        }
     }
 
     func test_ThatSavingChildContext_SucceedsAndSavesParentMainContext() {
@@ -206,7 +206,7 @@ final class SaveTests: TestCase {
             XCTAssertTrue(didSaveChild, "Child context should be saved")
             XCTAssertTrue(didSaveMain, "Main context should be saved")
             XCTAssertTrue(didUpdateBackground, "Background context should be updated")
-        })
+        }
     }
 
     func test_ThatSavingChildContext_SucceedsAndSavesParentBackgroundContext() {
@@ -253,7 +253,7 @@ final class SaveTests: TestCase {
             XCTAssertTrue(didSaveChild, "Child context should be saved")
             XCTAssertTrue(didSaveBackground, "Background context should be saved")
             XCTAssertTrue(didUpdateMain, "Main context should be updated")
-        })
+        }
     }
 
     func test_ThatSavingBackgroundContext_SucceedsAndUpdateMainContext() {
@@ -292,6 +292,6 @@ final class SaveTests: TestCase {
             XCTAssertNil(error, "Expectation should not error")
             XCTAssertTrue(didSaveBackground, "Background context should be saved")
             XCTAssertTrue(didUpdateMain, "Main context should be updated")
-        })
+        }
     }
 }

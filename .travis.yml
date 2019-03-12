@@ -1,11 +1,16 @@
 os: osx
 osx_image: xcode10.1
+rvm: 2.5.1
 
 addons:
   homebrew:
     packages:
     - swiftlint
     update: true
+
+cache:
+    - bundler
+    - pip
 
 branches:
   only:
@@ -35,7 +40,9 @@ env:
    - DESTINATION="OS=5.1,name=Apple Watch Series 4 - 40mm" SDK="$WATCHOS_SDK" RUN_TESTS="NO" BUILD_EXAMPLE="NO" POD_LINT="NO"
 
 before_install:
-   - gem install cocoapods --pre --no-rdoc --no-ri --no-document --quiet
+  - pip3 install proselint
+  - gem update --system
+  - gem install bundler
 
 script:
 - set -o pipefail
@@ -59,6 +66,8 @@ script:
 - if [ $RUN_TESTS == "YES" ] && [ $SDK == $IOS_SDK ]; then
       xcodebuild test -project JSQCoreDataKit.xcodeproj -scheme JSQCoreDataKit -destination "platform=iOS Simulator,name=iPhone X" CODE_SIGNING_REQUIRED=NO;
   fi
+
+- bundle exec danger
 
 after_success:
    - bash <(curl -s https://codecov.io/bash)

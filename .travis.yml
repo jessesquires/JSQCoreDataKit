@@ -1,6 +1,6 @@
 os: osx
 osx_image: xcode10.1
-rvm: 2.5.1
+rvm: 2.6.0
 
 addons:
   homebrew:
@@ -9,8 +9,8 @@ addons:
     update: true
 
 cache:
-    - bundler
-    - pip
+  - bundler
+  - pip
 
 branches:
   only:
@@ -18,26 +18,23 @@ branches:
     - develop
 
 env:
-   global:
-   - LANG=en_US.UTF-8
+  global:
+    - PROJECT="JSQCoreDataKit.xcodeproj"
+    - OSX_SDK=macosx10.14
+    - IOS_SDK=iphonesimulator12.1
+    - TVOS_SDK=appletvsimulator12.1
+    - WATCHOS_SDK=watchsimulator5.1
 
-   - PROJECT="JSQCoreDataKit.xcodeproj"
+  matrix:
+    - DESTINATION="OS=11.4,name=iPhone X" SDK="$IOS_SDK" RUN_TESTS="YES" BUILD_EXAMPLE="YES"
 
-   - OSX_SDK=macosx10.14
-   - IOS_SDK=iphonesimulator12.1
-   - TVOS_SDK=appletvsimulator12.1
-   - WATCHOS_SDK=watchsimulator5.1
+    - DESTINATION="OS=12.1,name=iPhone X" SDK="$IOS_SDK" RUN_TESTS="YES" BUILD_EXAMPLE="YES"
 
-   matrix:
-   - DESTINATION="OS=11.4,name=iPhone X" SDK="$IOS_SDK" RUN_TESTS="YES" BUILD_EXAMPLE="YES" POD_LINT="YES"
+    - DESTINATION="arch=x86_64" SDK="$OSX_SDK" RUN_TESTS="YES" BUILD_EXAMPLE="NO"
 
-   - DESTINATION="OS=12.1,name=iPhone X" SDK="$IOS_SDK" RUN_TESTS="YES" BUILD_EXAMPLE="YES" POD_LINT="NO"
+    - DESTINATION="OS=12.1,name=Apple TV" SDK="$TVOS_SDK" RUN_TESTS="YES" BUILD_EXAMPLE="NO"
 
-   - DESTINATION="arch=x86_64" SDK="$OSX_SDK" RUN_TESTS="YES" BUILD_EXAMPLE="NO" POD_LINT="NO"
-
-   - DESTINATION="OS=12.1,name=Apple TV" SDK="$TVOS_SDK" RUN_TESTS="YES" BUILD_EXAMPLE="NO" POD_LINT="NO"
-
-   - DESTINATION="OS=5.1,name=Apple Watch Series 4 - 40mm" SDK="$WATCHOS_SDK" RUN_TESTS="NO" BUILD_EXAMPLE="NO" POD_LINT="NO"
+    - DESTINATION="OS=5.1,name=Apple Watch Series 4 - 40mm" SDK="$WATCHOS_SDK" RUN_TESTS="NO" BUILD_EXAMPLE="NO"
 
 before_install:
   - pip3 install proselint
@@ -48,26 +45,23 @@ script:
 - set -o pipefail
 - xcodebuild -version -sdk
 
-- if [ $POD_LINT == "YES" ]; then
-      pod lib lint --skip-tests;
-  fi
-
 - if [ $BUILD_EXAMPLE == "YES" ]; then
-      xcodebuild build analyze -project Example/ExampleApp.xcodeproj -scheme ExampleApp -sdk "$SDK" -destination "$DESTINATION" ONLY_ACTIVE_ARCH=NO CODE_SIGNING_REQUIRED=NO | xcpretty -c;
+      xcodebuild build analyze -project Example/ExampleApp.xcodeproj -scheme ExampleApp -sdk "$SDK" -destination "$DESTINATION" ONLY_ACTIVE_ARCH=NO CODE_SIGNING_REQUIRED=NO | bundle exec xcpretty -c;
   fi
 
 - if [ $RUN_TESTS == "YES" ]; then
-      xcodebuild test -project "$PROJECT" -scheme JSQCoreDataKit -sdk "$SDK" -destination "$DESTINATION" -configuration Debug ONLY_ACTIVE_ARCH=NO CODE_SIGNING_REQUIRED=NO | xcpretty -c;
+      xcodebuild test -project "$PROJECT" -scheme JSQCoreDataKit -sdk "$SDK" -destination "$DESTINATION" -enableCodeCoverage YES -configuration Debug ONLY_ACTIVE_ARCH=NO CODE_SIGNING_REQUIRED=NO | bundle exec xcpretty -c;
   else
-      xcodebuild build analyze -project "$PROJECT" -scheme JSQCoreDataKit -sdk "$SDK" -destination "$DESTINATION" -configuration Debug ONLY_ACTIVE_ARCH=NO CODE_SIGNING_REQUIRED=NO | xcpretty -c;
-  fi
-
-# Build for reporting test coverage
-- if [ $RUN_TESTS == "YES" ] && [ $SDK == $IOS_SDK ]; then
-      xcodebuild test -project JSQCoreDataKit.xcodeproj -scheme JSQCoreDataKit -destination "platform=iOS Simulator,name=iPhone X" CODE_SIGNING_REQUIRED=NO;
+      xcodebuild build analyze -project "$PROJECT" -scheme JSQCoreDataKit -sdk "$SDK" -destination "$DESTINATION" -configuration Debug ONLY_ACTIVE_ARCH=NO CODE_SIGNING_REQUIRED=NO | bundle exec xcpretty -c;
   fi
 
 - bundle exec danger
 
 after_success:
    - bash <(curl -s https://codecov.io/bash)
+
+jobs:
+  include:
+    - stage: lint
+      name: "pod lint"
+      script: bundle exec pod lib lint

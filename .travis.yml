@@ -57,7 +57,7 @@ jobs:
       name: tvOS 12.1
       env: DESTINATION="OS=12.1,name=Apple TV" SDK="$TVOS_SDK"
 
-      stage: build only
+    - stage: build only
       name: watchOS 5.1
       env: DESTINATION="OS=5.1,name=Apple Watch Series 4 - 40mm" SDK="$WATCHOS_SDK"
       script:

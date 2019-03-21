@@ -88,6 +88,7 @@ jobs:
 
 stages:
   - test
+  - build only
   - build examples
   - lint
   - carthage

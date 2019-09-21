@@ -103,7 +103,7 @@ final class CompanyViewController: UITableViewController, NSFetchedResultsContro
     func didTapAddButton(_ sender: UIBarButtonItem) {
         stack.mainContext.performAndWait {
             _ = Company.newCompany(self.stack.mainContext)
-            self.stack.mainContext.save(wait: true)
+            self.stack.mainContext.saveSync()
         }
     }
 
@@ -116,7 +116,7 @@ final class CompanyViewController: UITableViewController, NSFetchedResultsContro
                 for each in objects {
                     backgroundChildContext.delete(each)
                 }
-                backgroundChildContext.save(wait: true)
+                backgroundChildContext.saveSync()
             } catch {
                 print("Error deleting objects: \(error)")
             }
@@ -162,7 +162,7 @@ final class CompanyViewController: UITableViewController, NSFetchedResultsContro
             stack.mainContext.performAndWait {
                 self.stack.mainContext.delete(obj)
             }
-            stack.mainContext.save(wait: true)
+            stack.mainContext.saveSync()
         }
     }
 

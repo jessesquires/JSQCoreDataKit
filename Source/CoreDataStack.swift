@@ -12,7 +12,7 @@
 //
 //
 //  License
-//  Copyright © 2015 Jesse Squires
+//  Copyright © 2015-present Jesse Squires
 //  Released under an MIT license: https://opensource.org/licenses/MIT
 //
 
@@ -114,7 +114,9 @@ public final class CoreDataStack {
             childContext.parent = backgroundContext
 
         case .confinementConcurrencyType:
-            fatalError("*** Error: ConfinementConcurrencyType is not supported because it is being deprecated in iOS 9.0")
+            fatalError("*** Error: ConfinementConcurrencyType is not supported because it is deprecated.")
+        @unknown default:
+            fatalError("*** Error: unsupported, unknown concurrency type \(concurrencyType).")
         }
 
         if let name = childContext.parent?.name {

@@ -12,7 +12,7 @@
 //
 //
 //  License
-//  Copyright © 2015 Jesse Squires
+//  Copyright © 2015-present Jesse Squires
 //  Released under an MIT license: https://opensource.org/licenses/MIT
 //
 
@@ -206,6 +206,8 @@ final class CompanyViewController: UITableViewController, NSFetchedResultsContro
         case .move:
             tableView.deleteRows(at: [indexPath!], with: .fade)
             tableView.insertRows(at: [newIndexPath!], with: .fade)
+        @unknown default:
+            fatalError("Unknown change type \(type)")
         }
     }
 

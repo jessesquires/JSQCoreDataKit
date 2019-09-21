@@ -88,7 +88,6 @@ final class StackFactoryTests: TestCase {
         let stack = try? result.get()
 
         XCTAssertNotNil(stack)
-        XCTAssertNil(result.mapError { $0 })
 
         validateStack(stack!, fromFactory: factory)
     }

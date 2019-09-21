@@ -25,7 +25,7 @@ import XCTest
 
 let defaultTimeout = TimeInterval(20)
 
-extension CoreDataStackFactory {
+extension CoreDataStackProvider {
 
     func createStack() -> CoreDataStack.StackResult {
         var result: CoreDataStack.StackResult!
@@ -52,7 +52,7 @@ class TestCase: XCTestCase {
     override func setUp() {
         super.setUp()
 
-        let factory = CoreDataStackFactory(model: inMemoryModel)
+        let factory = CoreDataStackProvider(model: inMemoryModel)
         let result = factory.createStack()
         inMemoryStack = try! result.get()
     }

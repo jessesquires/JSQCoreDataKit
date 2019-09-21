@@ -36,7 +36,7 @@ final class CompanyViewController: UITableViewController, NSFetchedResultsContro
         showSpinner()
 
         let model = CoreDataModel(name: modelName, bundle: modelBundle)
-        let factory = CoreDataStackFactory(model: model)
+        let factory = CoreDataStackProvider(model: model)
 
         factory.createStack { result in
             switch result {

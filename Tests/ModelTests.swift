@@ -161,7 +161,7 @@ final class ModelTests: XCTestCase {
     func test_ThatSQLiteModel_RemoveExistingStore_Succeeds() {
         // GIVEN: a core data model and stack
         let model = CoreDataModel(name: modelName, bundle: modelBundle)
-        let factory = CoreDataStackFactory(model: model)
+        let factory = CoreDataStackProvider(model: model)
         let result = factory.createStack()
         let stack = try! result.get()
         stack.mainContext.saveSync()

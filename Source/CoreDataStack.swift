@@ -29,7 +29,7 @@ import Foundation
 
  Changes to a child context are propagated to its parent context and eventually the persistent store when saving.
 
- - warning: **You cannot create a `CoreDataStack` instance directly. Instead, use a `CoreDataStackFactory` for initialization.**
+ - warning: **You cannot create a `CoreDataStack` instance directly. Instead, use a `CoreDataStackProvider` for initialization.**
  */
 public final class CoreDataStack {
 

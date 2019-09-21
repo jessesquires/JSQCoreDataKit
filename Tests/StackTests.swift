@@ -36,7 +36,7 @@ final class StackTests: XCTestCase {
         let sqliteModel = CoreDataModel(name: modelName, bundle: modelBundle)
 
         // WHEN: we create a stack
-        let factory = CoreDataStackFactory(model: sqliteModel)
+        let factory = CoreDataStackProvider(model: sqliteModel)
         let result = factory.createStack()
         let stack = try! result.get()
 
@@ -51,7 +51,7 @@ final class StackTests: XCTestCase {
         let binaryModel = CoreDataModel(name: modelName, bundle: modelBundle, storeType: .binary(URL(fileURLWithPath: NSTemporaryDirectory())))
 
         // WHEN: we create a stack
-        let factory = CoreDataStackFactory(model: binaryModel)
+        let factory = CoreDataStackProvider(model: binaryModel)
         let result = factory.createStack()
         let stack = try! result.get()
 
@@ -66,7 +66,7 @@ final class StackTests: XCTestCase {
         let inMemoryModel = CoreDataModel(name: modelName, bundle: modelBundle, storeType: .inMemory)
 
         // WHEN: we create a stack
-        let factory = CoreDataStackFactory(model: inMemoryModel, options: nil)
+        let factory = CoreDataStackProvider(model: inMemoryModel, options: nil)
         let result = factory.createStack()
         let stack = try! result.get()
 
@@ -79,7 +79,7 @@ final class StackTests: XCTestCase {
     func test_ThatChildContext_IsCreatedSuccessfully_WithDefaultParameters() {
         // GIVEN: a model and stack
         let model = CoreDataModel(name: modelName, bundle: modelBundle)
-        let factory = CoreDataStackFactory(model: model)
+        let factory = CoreDataStackProvider(model: model)
         let result = factory.createStack()
         let stack = try! result.get()
 
@@ -96,7 +96,7 @@ final class StackTests: XCTestCase {
     func test_ThatChildContext_IsCreatedSuccessfully_WithCustomParameters() {
         // GIVEN: a model and stack
         let model = CoreDataModel(name: modelName, bundle: modelBundle)
-        let factory = CoreDataStackFactory(model: model)
+        let factory = CoreDataStackProvider(model: model)
         let result = factory.createStack()
         let stack = try! result.get()
 
@@ -112,7 +112,7 @@ final class StackTests: XCTestCase {
 
     func test_Stack_Description() {
         let model = CoreDataModel(name: modelName, bundle: modelBundle)
-        let factory = CoreDataStackFactory(model: model)
+        let factory = CoreDataStackProvider(model: model)
         let result = factory.createStack()
         let stack = try! result.get()
         print(stack)

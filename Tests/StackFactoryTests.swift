@@ -34,7 +34,7 @@ final class StackFactoryTests: TestCase {
     }
 
     func test_ThatStackFactory_InitializesSuccessFully() {
-        let factory = CoreDataStackFactory(model: inMemoryModel)
+        let factory = CoreDataStackProvider(model: inMemoryModel)
         XCTAssertEqual(factory.model, inMemoryModel)
         XCTAssertTrue(factory.options?[NSMigratePersistentStoresAutomaticallyOption] as! Bool)
         XCTAssertTrue(factory.options?[NSInferMappingModelAutomaticallyOption] as! Bool)
@@ -45,7 +45,7 @@ final class StackFactoryTests: TestCase {
         let sqliteModel = CoreDataModel(name: modelName, bundle: modelBundle)
 
         // GIVEN: a factory
-        let factory = CoreDataStackFactory(model: sqliteModel)
+        let factory = CoreDataStackProvider(model: sqliteModel)
 
         var stack: CoreDataStack?
         let expectation = self.expectation(description: #function)
@@ -81,7 +81,7 @@ final class StackFactoryTests: TestCase {
         let sqliteModel = CoreDataModel(name: modelName, bundle: modelBundle)
 
         // GIVEN: a factory
-        let factory = CoreDataStackFactory(model: sqliteModel)
+        let factory = CoreDataStackProvider(model: sqliteModel)
 
         // WHEN: we create a stack
         let result = factory.createStack()
@@ -93,24 +93,24 @@ final class StackFactoryTests: TestCase {
     }
 
     func test_StackFactory_Equality() {
-        let factory1 = CoreDataStackFactory(model: inMemoryModel)
-        let factory2 = CoreDataStackFactory(model: inMemoryModel)
+        let factory1 = CoreDataStackProvider(model: inMemoryModel)
+        let factory2 = CoreDataStackProvider(model: inMemoryModel)
         XCTAssertEqual(factory1, factory2)
 
-        let factory3 = CoreDataStackFactory(model: inMemoryModel, options: nil)
+        let factory3 = CoreDataStackProvider(model: inMemoryModel, options: nil)
         XCTAssertEqual(factory1, factory3)
 
-        let factory4 = CoreDataStackFactory(model: inMemoryModel, options: nil)
+        let factory4 = CoreDataStackProvider(model: inMemoryModel, options: nil)
         XCTAssertEqual(factory3, factory4)
 
         let sqliteModel = CoreDataModel(name: modelName, bundle: modelBundle)
-        let sqliteFactory = CoreDataStackFactory(model: sqliteModel)
+        let sqliteFactory = CoreDataStackProvider(model: sqliteModel)
         XCTAssertNotEqual(factory1, sqliteFactory)
     }
 
     // MARK: Helpers
 
-    func validateStack(_ stack: CoreDataStack, fromFactory factory: CoreDataStackFactory) {
+    func validateStack(_ stack: CoreDataStack, fromFactory factory: CoreDataStackProvider) {
         XCTAssertEqual(stack.model, factory.model)
 
         XCTAssertNotNil(stack.storeCoordinator)

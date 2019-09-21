@@ -54,8 +54,8 @@ final class ContextSyncTests: TestCase {
         // WHEN: we save the main context
         expectation(forNotification: .NSManagedObjectContextDidSave, object: inMemoryStack.mainContext, handler: nil)
 
-        inMemoryStack.mainContext.save { result in
-            XCTAssertTrue(result == .success)
+        inMemoryStack.mainContext.saveAsync { result in
+            XCTAssertNotNil(try? result.get(), "Save should not error")
         }
 
         waitForExpectations(timeout: defaultTimeout) { error in
@@ -89,8 +89,8 @@ final class ContextSyncTests: TestCase {
         // WHEN: we save the background context
         expectation(forNotification: .NSManagedObjectContextDidSave, object: inMemoryStack.backgroundContext, handler: nil)
 
-        inMemoryStack.backgroundContext.save { result in
-            XCTAssertTrue(result == .success)
+        inMemoryStack.backgroundContext.saveSync { result in
+            XCTAssertNotNil(try? result.get(), "Save should not error")
         }
 
         waitForExpectations(timeout: defaultTimeout) { error in
@@ -119,8 +119,8 @@ final class ContextSyncTests: TestCase {
 
         // WHEN: we save the child context
         expectation(forNotification: .NSManagedObjectContextDidSave, object: childContext, handler: nil)
-        childContext.save { result -> Void in
-            XCTAssertTrue(result == .success)
+        childContext.saveAsync { result in
+            XCTAssertNotNil(try? result.get(), "Save should not error")
         }
 
         waitForExpectations(timeout: defaultTimeout) { error in
@@ -153,8 +153,8 @@ final class ContextSyncTests: TestCase {
 
         // WHEN: we save the child context
         expectation(forNotification: .NSManagedObjectContextDidSave, object: childContext, handler: nil)
-        childContext.save { result -> Void in
-            XCTAssertTrue(result == .success)
+        childContext.saveSync { result in
+            XCTAssertNotNil(try? result.get(), "Save should not error")
         }
 
         waitForExpectations(timeout: defaultTimeout) { error in

@@ -204,7 +204,7 @@ public final class CoreDataStack {
             return
         }
 
-        parentContext.save(wait: false, completion: nil)
+        parentContext.saveAsync(completion: nil)
     }
 
     @objc

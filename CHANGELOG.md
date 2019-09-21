@@ -4,6 +4,27 @@ The changelog for `JSQCoreDataKit`. Also see the [releases](https://github.com/j
 
 --------------------------------------
 
+9.0.0
+-----
+
+This release closes the [9.0.0 milestone](https://github.com/jessesquires/JSQCoreDataKit/milestone/17?closed=1).
+
+### Breaking
+
+- Removed `NSManagedObjectContext` extension `func save(wait:, completion:)`. Replaced with two new extension methods, `func saveAsync(completion:)` and `func saveSync(completion:)`.
+
+- Removed `SaveResult` type in favor of Swift's new generic `Result` type.
+
+### New
+
+- Added `typealias SaveResult = Result<NSManagedObjectContext, Error>` (Replaces the former `SaveResult` type.)
+
+### Changed
+
+- Upgraded to Swift 5.1
+- Update to Xcode 11
+- Update SwiftLint to 0.35.0, add new rules
+
 8.0.0
 -----
 

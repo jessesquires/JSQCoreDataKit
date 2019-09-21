@@ -162,7 +162,7 @@ final class ModelTests: XCTestCase {
         let factory = CoreDataStackFactory(model: model)
         let result = factory.createStack()
         let stack = result.stack()!
-        stack.mainContext.save(wait: true)
+        stack.mainContext.saveSync()
 
         let fileManager = FileManager.default
 

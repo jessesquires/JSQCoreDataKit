@@ -21,6 +21,8 @@ import ExampleModel
 @testable import JSQCoreDataKit
 import XCTest
 
+// swiftlint:disable force_try
+
 final class StackTests: XCTestCase {
 
     override func tearDown() {
@@ -36,7 +38,7 @@ final class StackTests: XCTestCase {
         // WHEN: we create a stack
         let factory = CoreDataStackFactory(model: sqliteModel)
         let result = factory.createStack()
-        let stack = result.stack()!
+        let stack = try! result.get()
 
         // THEN: it is setup as expected
         XCTAssertTrue(FileManager.default.fileExists(atPath: sqliteModel.storeURL!.path), "Model store should exist on disk")
@@ -51,7 +53,7 @@ final class StackTests: XCTestCase {
         // WHEN: we create a stack
         let factory = CoreDataStackFactory(model: binaryModel)
         let result = factory.createStack()
-        let stack = result.stack()!
+        let stack = try! result.get()
 
         // THEN: it is setup as expected
         XCTAssertTrue(FileManager.default.fileExists(atPath: binaryModel.storeURL!.path), "Model store should exist on disk")
@@ -66,7 +68,7 @@ final class StackTests: XCTestCase {
         // WHEN: we create a stack
         let factory = CoreDataStackFactory(model: inMemoryModel, options: nil)
         let result = factory.createStack()
-        let stack = result.stack()!
+        let stack = try! result.get()
 
         // THEN: it is setup as expected
         XCTAssertNil(inMemoryModel.storeURL, "Model store should not exist on disk")
@@ -79,7 +81,7 @@ final class StackTests: XCTestCase {
         let model = CoreDataModel(name: modelName, bundle: modelBundle)
         let factory = CoreDataStackFactory(model: model)
         let result = factory.createStack()
-        let stack = result.stack()!
+        let stack = try! result.get()
 
         // WHEN: we create a child context
         let childContext = stack.childContext()
@@ -96,7 +98,7 @@ final class StackTests: XCTestCase {
         let model = CoreDataModel(name: modelName, bundle: modelBundle)
         let factory = CoreDataStackFactory(model: model)
         let result = factory.createStack()
-        let stack = result.stack()!
+        let stack = try! result.get()
 
         // WHEN: we create a child context
         let childContext = stack.childContext(concurrencyType: .privateQueueConcurrencyType, mergePolicyType: .errorMergePolicyType)
@@ -112,7 +114,9 @@ final class StackTests: XCTestCase {
         let model = CoreDataModel(name: modelName, bundle: modelBundle)
         let factory = CoreDataStackFactory(model: model)
         let result = factory.createStack()
-        let stack = result.stack()!
+        let stack = try! result.get()
         print(stack)
     }
 }
+
+// swiftlint:enable force_try

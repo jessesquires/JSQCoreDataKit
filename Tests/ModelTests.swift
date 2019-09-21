@@ -21,6 +21,8 @@ import ExampleModel
 @testable import JSQCoreDataKit
 import XCTest
 
+// swiftlint:disable force_try
+
 final class ModelTests: XCTestCase {
 
     override func setUp() {
@@ -161,7 +163,7 @@ final class ModelTests: XCTestCase {
         let model = CoreDataModel(name: modelName, bundle: modelBundle)
         let factory = CoreDataStackFactory(model: model)
         let result = factory.createStack()
-        let stack = result.stack()!
+        let stack = try! result.get()
         stack.mainContext.saveSync()
 
         let fileManager = FileManager.default
@@ -223,3 +225,5 @@ final class ModelTests: XCTestCase {
         XCTAssertTrue(success, "Removing store should be ignored")
     }
 }
+
+// swiftlint:enable force_try

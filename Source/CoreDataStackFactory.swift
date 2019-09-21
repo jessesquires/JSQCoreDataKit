@@ -86,7 +86,7 @@ public struct CoreDataStackFactory {
      Otherwise, this is executed on the thread from which the method was originally called.
      */
     public func createStack(onQueue queue: DispatchQueue? = .global(qos: .userInitiated),
-                            completion: @escaping (StackResult) -> Void) {
+                            completion: @escaping (CoreDataStack.StackResult) -> Void) {
         let isAsync = (queue != nil)
 
         let creationClosure = {
@@ -96,10 +96,10 @@ public struct CoreDataStackFactory {
             } catch {
                 if isAsync {
                     DispatchQueue.main.async {
-                        completion(.failure(error as NSError))
+                        completion(.failure(error))
                     }
                 } else {
-                    completion(.failure(error as NSError))
+                    completion(.failure(error))
                 }
                 return
             }

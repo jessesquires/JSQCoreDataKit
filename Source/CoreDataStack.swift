@@ -33,6 +33,11 @@ import Foundation
  */
 public final class CoreDataStack {
 
+    // MARK: Typealiases
+
+    /// Describes the result type for creating a `CoreDataStack`.
+    public typealias StackResult = Result<CoreDataStack, Error>
+
     // MARK: Properties
 
     /// The model for the stack.

@@ -51,7 +51,7 @@ final class StackFactoryTests: TestCase {
         let expectation = self.expectation(description: #function)
 
         // WHEN: we create a stack in the background
-        factory.createStack { (result: StackResult) in
+        factory.createStack { result in
             XCTAssertTrue(Thread.isMainThread, "Factory completion handler should return on main thread")
 
             switch result {
@@ -85,10 +85,10 @@ final class StackFactoryTests: TestCase {
 
         // WHEN: we create a stack
         let result = factory.createStack()
-        let stack = result.stack()
+        let stack = try? result.get()
 
         XCTAssertNotNil(stack)
-        XCTAssertNil(result.error())
+        XCTAssertNil(result.mapError { $0 })
 
         validateStack(stack!, fromFactory: factory)
     }

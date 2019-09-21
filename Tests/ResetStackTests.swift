@@ -21,6 +21,8 @@ import ExampleModel
 @testable import JSQCoreDataKit
 import XCTest
 
+// swiftlint:disable force_try
+
 final class ResetStackTests: TestCase {
 
     func test_ThatMainContext_WithChanges_DoesNotHaveObjects_AfterReset() {
@@ -33,7 +35,7 @@ final class ResetStackTests: TestCase {
         let expectation = self.expectation(description: #function)
 
         // WHEN: we attempt to reset the stack
-        inMemoryStack.reset { (result: StackResult) in
+        inMemoryStack.reset { result in
             if case .failure(let e) = result {
                 XCTFail("Error while resetting the stack: \(e)")
             }
@@ -59,7 +61,7 @@ final class ResetStackTests: TestCase {
         let expectation = self.expectation(description: #function)
 
         // WHEN: we attempt to reset the stack
-        inMemoryStack.reset { (result: StackResult) in
+        inMemoryStack.reset { result in
             if case .failure(let e) = result {
                 XCTFail("Error while resetting the stack: \(e)")
             }
@@ -79,7 +81,7 @@ final class ResetStackTests: TestCase {
         // GIVEN: a stack and persistent store with data
         let model = CoreDataModel(name: modelName, bundle: modelBundle)
         let factory = CoreDataStackFactory(model: model)
-        let stack = factory.createStack().stack()!
+        let stack = try! factory.createStack().get()
         let context = stack.mainContext
 
         context.performAndWait {
@@ -94,7 +96,7 @@ final class ResetStackTests: TestCase {
         let expectation = self.expectation(description: #function)
 
         // WHEN: we attempt to reset the stack
-        stack.reset { (result: StackResult) in
+        stack.reset { result in
             if case .failure(let e) = result {
                 XCTFail("Error while resetting the stack: \(e)")
             }
@@ -110,3 +112,5 @@ final class ResetStackTests: TestCase {
         XCTAssertEqual(objectsAfter, 0)
     }
 }
+
+// swiftlint:enable force_try

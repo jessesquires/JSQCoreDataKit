@@ -16,6 +16,8 @@
 //  Released under an MIT license: https://opensource.org/licenses/MIT
 //
 
+// swiftlint:disable force_try
+
 import CoreData
 import ExampleModel
 @testable import JSQCoreDataKit
@@ -25,8 +27,8 @@ let defaultTimeout = TimeInterval(20)
 
 extension CoreDataStackFactory {
 
-    func createStack() -> StackResult {
-        var result: StackResult!
+    func createStack() -> CoreDataStack.StackResult {
+        var result: CoreDataStack.StackResult!
         createStack(onQueue: nil) { r in
             result = r
         }
@@ -52,7 +54,7 @@ class TestCase: XCTestCase {
 
         let factory = CoreDataStackFactory(model: inMemoryModel)
         let result = factory.createStack()
-        inMemoryStack = result.stack()
+        inMemoryStack = try! result.get()
     }
 
     override func tearDown() {
@@ -99,3 +101,5 @@ class TestCase: XCTestCase {
         return employees
     }
 }
+
+// swiftlint:enable force_try

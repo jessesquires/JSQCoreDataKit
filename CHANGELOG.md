@@ -15,9 +15,13 @@ This release closes the [9.0.0 milestone](https://github.com/jessesquires/JSQCor
 
 - Removed `SaveResult` type in favor of Swift's new generic `Result` type.
 
+- Removed `StackResult` type in favor of Swift's new generic `Result` type.
+
 ### New
 
 - Added `typealias SaveResult = Result<NSManagedObjectContext, Error>` (Replaces the former `SaveResult` type.)
+
+- Added `typealias StackResult = Result<CoreDataStack, Error>` (Replaces the former `StackResult` type.)
 
 ### Changed
 

@@ -14,11 +14,11 @@ import JSQCoreDataKit
 let bundle = Bundle(identifier: "com.MyApp.MyModelFramework")!
 let model = CoreDataModel(name: "MyModel", bundle: bundle)
 
-// Initialize a stack with a factory
-let factory = CoreDataStackFactory(model: model)
+// Initialize a stack with a provider
+let provider = CoreDataStackProvider(model: model)
 
 let stack: CoreDataStack?
-factory.createStack { (result: StackResult) in
+provider.createStack { result in
     switch result {
         case .success(let s):
             stack = s
@@ -33,10 +33,10 @@ factory.createStack { (result: StackResult) in
 
 ````swift
 let inMemoryModel = CoreDataModel(name: myName, bundle: myBundle, storeType: .inMemory)
-let factory = CoreDataStackFactory(model: inMemoryModel)
+let provider = CoreDataStackProvider(model: inMemoryModel)
 
 let stack: CoreDataStack?
-factory.createStack { (result: StackResult) in
+provider.createStack { result in
     switch result {
         case .success(let s):
             stack = s
@@ -50,7 +50,7 @@ factory.createStack { (result: StackResult) in
 ## Saving a managed object context
 
 ````swift
-saveContext(stack.mainContext) { result in
+stack.mainContext.saveSync { result in
     switch result {
         case .success:
             print("save succeeded")

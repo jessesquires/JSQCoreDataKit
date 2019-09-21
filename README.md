@@ -8,6 +8,7 @@
 
 This library aims to do the following:
 
+* Encode Core Data best practices, so you don't have to think "is this correct?" or "is this the right way to do this?"
 * Provide better interoperability with Swift
 * Harness Swift features and enforce Swift paradigms
 * Bring functional paradigms to Core Data

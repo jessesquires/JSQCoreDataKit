@@ -54,12 +54,6 @@
                 <a href="../Enums/ModelFileExtension.html">ModelFileExtension</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Enums/SaveResult.html">SaveResult</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="../Enums/StackResult.html">StackResult</a>
-              </li>
-              <li class="nav-group-task">
                 <a href="../Enums/StoreType.html">StoreType</a>
               </li>
             </ul>
@@ -87,7 +81,7 @@
                 <a href="../Structs/CoreDataModel.html">CoreDataModel</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Structs/CoreDataStackFactory.html">CoreDataStackFactory</a>
+                <a href="../Structs/CoreDataStackProvider.html">CoreDataStackProvider</a>
               </li>
             </ul>
           </li>
@@ -113,12 +107,50 @@ Both are connected to the persistent store coordinator and data between them is 
 <p>Changes to a child context are propagated to its parent context and eventually the persistent store when saving.</p>
 <div class="aside aside-warning">
     <p class="aside-title">Warning</p>
-    <strong>You cannot create a <code>CoreDataStack</code> instance directly. Instead, use a <code><a href="../Structs/CoreDataStackFactory.html">CoreDataStackFactory</a></code> for initialization.</strong>
+    <strong>You cannot create a <code>CoreDataStack</code> instance directly. Instead, use a <code><a href="../Structs/CoreDataStackProvider.html">CoreDataStackProvider</a></code> for initialization.</strong>
 
 </div>
 
           </section>
           <section class="section task-group-section">
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/Typealiases"></a>
+                <a name="//apple_ref/swift/Section/Typealiases" class="dashAnchor"></a>
+                <a href="#/Typealiases">
+                  <h3 class="section-name">Typealiases</h3>
+                </a>
+              </div>
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:14JSQCoreDataKit04CoreB5StackC0E6Resulta"></a>
+                    <a name="//apple_ref/swift/Alias/StackResult" class="dashAnchor"></a>
+                    <a class="token" href="#/s:14JSQCoreDataKit04CoreB5StackC0E6Resulta">StackResult</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Describes the result type for creating a <code>CoreDataStack</code>.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">typealias</span> <span class="kt">StackResult</span> <span class="o">=</span> <span class="kt">Result</span><span class="o">&lt;</span><span class="kt">CoreDataStack</span><span class="p">,</span> <span class="kt">Error</span><span class="o">&gt;</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
             <div class="task-group">
               <div class="task-name-container">
                 <a name="/Properties"></a>
@@ -326,9 +358,9 @@ It is kept in sync with <code><a href="../Classes/CoreDataStack.html#/s:14JSQCor
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:14JSQCoreDataKit04CoreB5StackC5reset7onQueue10completionySo17OS_dispatch_queueC_yAA0E6ResultOctF"></a>
+                    <a name="/s:14JSQCoreDataKit04CoreB5StackC5reset7onQueue10completionySo17OS_dispatch_queueC_ys6ResultOyACs5Error_pGctF"></a>
                     <a name="//apple_ref/swift/Method/reset(onQueue:completion:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:14JSQCoreDataKit04CoreB5StackC5reset7onQueue10completionySo17OS_dispatch_queueC_yAA0E6ResultOctF">reset(onQueue:completion:)</a>
+                    <a class="token" href="#/s:14JSQCoreDataKit04CoreB5StackC5reset7onQueue10completionySo17OS_dispatch_queueC_ys6ResultOyACs5Error_pGctF">reset(onQueue:completion:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -352,7 +384,7 @@ For binary and SQLite stores, this will also remove the store from disk.</p>
                         <div class="language">
                           <p class="aside-title">Swift</p>
                           <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">reset</span><span class="p">(</span><span class="n">onQueue</span> <span class="nv">queue</span><span class="p">:</span> <span class="kt">DispatchQueue</span> <span class="o">=</span> <span class="o">.</span><span class="nf">global</span><span class="p">(</span><span class="nv">qos</span><span class="p">:</span> <span class="o">.</span><span class="n">userInitiated</span><span class="p">),</span>
-                  <span class="nv">completion</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">(</span><span class="kt"><a href="../Enums/StackResult.html">StackResult</a></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">)</span></code></pre>
+                  <span class="nv">completion</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">(</span><span class="kt"><a href="../Classes/CoreDataStack.html#/s:14JSQCoreDataKit04CoreB5StackC0E6Resulta">StackResult</a></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">)</span></code></pre>
 
                         </div>
                       </div>
@@ -396,8 +428,8 @@ The default is a background queue with a <q>user initiated</q> quality of servic
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2019 <a class="link" href="https://twitter.com/jesse_squires" target="_blank" rel="external">Jesse Squires</a>. All rights reserved. (Last updated: 2019-03-06)</p>
-          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.4</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+          <p>&copy; 2019 <a class="link" href="https://twitter.com/jesse_squires" target="_blank" rel="external">Jesse Squires</a>. All rights reserved. (Last updated: 2019-09-21)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.11.1</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
         </section>
       </article>
     </div>

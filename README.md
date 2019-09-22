@@ -29,12 +29,10 @@ This library aims to do the following:
 
 * Xcode 11+
 * Swift 5.1+
-
 * iOS 11.0+
 * macOS 10.12+
 * tvOS 11.0+
 * watchOS 4.0+
-
 * [SwiftLint](https://github.com/realm/SwiftLint)
 
 ## Installation

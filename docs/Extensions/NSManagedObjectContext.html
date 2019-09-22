@@ -54,12 +54,6 @@
                 <a href="../Enums/ModelFileExtension.html">ModelFileExtension</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Enums/SaveResult.html">SaveResult</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="../Enums/StackResult.html">StackResult</a>
-              </li>
-              <li class="nav-group-task">
                 <a href="../Enums/StoreType.html">StoreType</a>
               </li>
             </ul>
@@ -87,7 +81,7 @@
                 <a href="../Structs/CoreDataModel.html">CoreDataModel</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Structs/CoreDataStackFactory.html">CoreDataStackFactory</a>
+                <a href="../Structs/CoreDataStackProvider.html">CoreDataStackProvider</a>
               </li>
             </ul>
           </li>
@@ -99,7 +93,7 @@
             <h1>NSManagedObjectContext</h1>
               <div class="declaration">
                 <div class="language">
-                  <pre class="highlight swift"><code><span class="kd">class</span> <span class="kt">NSManagedObjectContext</span> <span class="p">:</span> <span class="kt">NSObject</span><span class="p">,</span> <span class="kt">NSCoding</span><span class="p">,</span> <span class="kt">NSLocking</span></code></pre>
+                  <pre class="highlight swift"><code><span class="kd">extension</span> <span class="kt">NSManagedObjectContext</span></code></pre>
 
                 </div>
               </div>
@@ -138,9 +132,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:So22NSManagedObjectContextC14JSQCoreDataKitE4save4wait10completionySb_yAC10SaveResultOcSgtF"></a>
-                    <a name="//apple_ref/swift/Method/save(wait:completion:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:So22NSManagedObjectContextC14JSQCoreDataKitE4save4wait10completionySb_yAC10SaveResultOcSgtF">save(wait:completion:)</a>
+                    <a name="/s:So22NSManagedObjectContextC14JSQCoreDataKitE10SaveResulta"></a>
+                    <a name="//apple_ref/swift/Alias/SaveResult" class="dashAnchor"></a>
+                    <a class="token" href="#/s:So22NSManagedObjectContextC14JSQCoreDataKitE10SaveResulta">SaveResult</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -148,7 +142,34 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Attempts to commit unsaved changes to registered objects in the context.
+                        <p>Describes the result type for saving a managed object context.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">typealias</span> <span class="kt">SaveResult</span> <span class="o">=</span> <span class="kt">Result</span><span class="o">&lt;</span><span class="kt">NSManagedObjectContext</span><span class="p">,</span> <span class="kt">Error</span><span class="o">&gt;</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:So22NSManagedObjectContextC14JSQCoreDataKitE9saveAsync10completionyys6ResultOyABs5Error_pGcSg_tF"></a>
+                    <a name="//apple_ref/swift/Method/saveAsync(completion:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:So22NSManagedObjectContextC14JSQCoreDataKitE9saveAsync10completionyys6ResultOyABs5Error_pGcSg_tF">saveAsync(completion:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Attempts to <strong>asynchronously</strong> commit unsaved changes to registered objects in the context.
 This function is performed in a block on the context&rsquo;s queue. If the context has no changes,
 then this function returns immediately and the completion block is not called.</p>
 
@@ -157,7 +178,7 @@ then this function returns immediately and the completion block is not called.</
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">save</span><span class="p">(</span><span class="nv">wait</span><span class="p">:</span> <span class="kt">Bool</span> <span class="o">=</span> <span class="kc">true</span><span class="p">,</span> <span class="nv">completion</span><span class="p">:</span> <span class="p">((</span><span class="kt"><a href="../Enums/SaveResult.html">SaveResult</a></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">)?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">saveAsync</span><span class="p">(</span><span class="nv">completion</span><span class="p">:</span> <span class="p">((</span><span class="kt"><a href="../Extensions/NSManagedObjectContext.html#/s:So22NSManagedObjectContextC14JSQCoreDataKitE10SaveResulta">SaveResult</a></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">)?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span></code></pre>
 
                         </div>
                       </div>
@@ -168,15 +189,51 @@ then this function returns immediately and the completion block is not called.</
                             <tr>
                               <td>
                                 <code>
-                                <em>wait</em>
+                                <em>completion</em>
                                 </code>
                               </td>
                               <td>
                                 <div>
-                                  <p>If <code>true</code> (the default), saves synchronously. If <code>false</code>, saves asynchronously.</p>
+                                  <p>The closure to be executed when the save operation completes.</p>
                                 </div>
                               </td>
                             </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:So22NSManagedObjectContextC14JSQCoreDataKitE8saveSync10completionyys6ResultOyABs5Error_pGcSg_tF"></a>
+                    <a name="//apple_ref/swift/Method/saveSync(completion:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:So22NSManagedObjectContextC14JSQCoreDataKitE8saveSync10completionyys6ResultOyABs5Error_pGcSg_tF">saveSync(completion:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Attempts to <strong>synchronously</strong> commit unsaved changes to registered objects in the context.
+This function is performed in a block on the context&rsquo;s queue. If the context has no changes,
+then this function returns immediately and the completion block is not called.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">saveSync</span><span class="p">(</span><span class="nv">completion</span><span class="p">:</span> <span class="p">((</span><span class="kt"><a href="../Extensions/NSManagedObjectContext.html#/s:So22NSManagedObjectContextC14JSQCoreDataKitE10SaveResulta">SaveResult</a></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">)?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
                             <tr>
                               <td>
                                 <code>
@@ -200,8 +257,8 @@ then this function returns immediately and the completion block is not called.</
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2019 <a class="link" href="https://twitter.com/jesse_squires" target="_blank" rel="external">Jesse Squires</a>. All rights reserved. (Last updated: 2019-03-06)</p>
-          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.4</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+          <p>&copy; 2019 <a class="link" href="https://twitter.com/jesse_squires" target="_blank" rel="external">Jesse Squires</a>. All rights reserved. (Last updated: 2019-09-21)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.11.1</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
         </section>
       </article>
     </div>

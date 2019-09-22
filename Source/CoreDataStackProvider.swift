@@ -12,7 +12,7 @@
 //
 //
 //  License
-//  Copyright © 2015 Jesse Squires
+//  Copyright © 2015-present Jesse Squires
 //  Released under an MIT license: https://opensource.org/licenses/MIT
 //
 
@@ -20,16 +20,16 @@ import CoreData
 import Foundation
 
 /**
- An instance of `CoreDataStackFactory` is responsible for creating instances of `CoreDataStack`.
+ An instance of `CoreDataStackProvider` is responsible for creating instances of `CoreDataStack`.
 
  Because the adding of the persistent store to the persistent store coordinator during initialization
  of a `CoreDataStack` can take an unknown amount of time, you should not perform this operation on the main queue.
 
  See this [guide](https://developer.apple.com/library/prerelease/ios/documentation/Cocoa/Conceptual/CoreData/IntegratingCoreData.html#//apple_ref/doc/uid/TP40001075-CH9-SW1) for more details.
 
- - warning: You should not create instances of `CoreDataStack` directly. Use a `CoreDataStackFactory` instead.
+ - warning: You should not create instances of `CoreDataStack` directly. Use a `CoreDataStackProvider` instead.
  */
-public struct CoreDataStackFactory {
+public struct CoreDataStackProvider {
 
     // MARK: Typealiases
 
@@ -56,12 +56,12 @@ public struct CoreDataStackFactory {
     // MARK: Initialization
 
     /**
-     Constructs a new `CoreDataStackFactory` instance with the specified `model` and `options`.
+     Constructs a new `CoreDataStackProvider` instance with the specified `model` and `options`.
 
      - parameter model:   The model describing the stack.
      - parameter options: Options for the persistent store.
 
-     - returns: A new `CoreDataStackFactory` instance.
+     - returns: A new `CoreDataStackProvider` instance.
      */
     public init(model: CoreDataModel, options: PersistentStoreOptions? = defaultStoreOptions) {
         self.model = model
@@ -86,7 +86,7 @@ public struct CoreDataStackFactory {
      Otherwise, this is executed on the thread from which the method was originally called.
      */
     public func createStack(onQueue queue: DispatchQueue? = .global(qos: .userInitiated),
-                            completion: @escaping (StackResult) -> Void) {
+                            completion: @escaping (CoreDataStack.StackResult) -> Void) {
         let isAsync = (queue != nil)
 
         let creationClosure = {
@@ -96,10 +96,10 @@ public struct CoreDataStackFactory {
             } catch {
                 if isAsync {
                     DispatchQueue.main.async {
-                        completion(.failure(error as NSError))
+                        completion(.failure(error))
                     }
                 } else {
-                    completion(.failure(error as NSError))
+                    completion(.failure(error))
                 }
                 return
             }
@@ -153,9 +153,9 @@ public struct CoreDataStackFactory {
         return context
     }
 }
-extension CoreDataStackFactory: Equatable {
+extension CoreDataStackProvider: Equatable {
     /// :nodoc:
-    public static func == (lhs: CoreDataStackFactory, rhs: CoreDataStackFactory) -> Bool {
+    public static func == (lhs: CoreDataStackProvider, rhs: CoreDataStackProvider) -> Bool {
         return lhs.model == rhs.model
     }
 }

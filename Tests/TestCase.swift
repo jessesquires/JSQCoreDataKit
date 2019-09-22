@@ -12,9 +12,11 @@
 //
 //
 //  License
-//  Copyright © 2015 Jesse Squires
+//  Copyright © 2015-present Jesse Squires
 //  Released under an MIT license: https://opensource.org/licenses/MIT
 //
+
+// swiftlint:disable force_try
 
 import CoreData
 import ExampleModel
@@ -23,10 +25,10 @@ import XCTest
 
 let defaultTimeout = TimeInterval(20)
 
-extension CoreDataStackFactory {
+extension CoreDataStackProvider {
 
-    func createStack() -> StackResult {
-        var result: StackResult!
+    func createStack() -> CoreDataStack.StackResult {
+        var result: CoreDataStack.StackResult!
         createStack(onQueue: nil) { r in
             result = r
         }
@@ -50,9 +52,9 @@ class TestCase: XCTestCase {
     override func setUp() {
         super.setUp()
 
-        let factory = CoreDataStackFactory(model: inMemoryModel)
+        let factory = CoreDataStackProvider(model: inMemoryModel)
         let result = factory.createStack()
-        inMemoryStack = result.stack()
+        inMemoryStack = try! result.get()
     }
 
     override func tearDown() {
@@ -99,3 +101,5 @@ class TestCase: XCTestCase {
         return employees
     }
 }
+
+// swiftlint:enable force_try

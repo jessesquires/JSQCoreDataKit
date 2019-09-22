@@ -12,7 +12,7 @@
 //
 //
 //  License
-//  Copyright © 2015 Jesse Squires
+//  Copyright © 2015-present Jesse Squires
 //  Released under an MIT license: https://opensource.org/licenses/MIT
 //
 
@@ -20,6 +20,8 @@ import CoreData
 import ExampleModel
 @testable import JSQCoreDataKit
 import XCTest
+
+// swiftlint:disable force_try
 
 final class ModelTests: XCTestCase {
 
@@ -159,10 +161,10 @@ final class ModelTests: XCTestCase {
     func test_ThatSQLiteModel_RemoveExistingStore_Succeeds() {
         // GIVEN: a core data model and stack
         let model = CoreDataModel(name: modelName, bundle: modelBundle)
-        let factory = CoreDataStackFactory(model: model)
+        let factory = CoreDataStackProvider(model: model)
         let result = factory.createStack()
-        let stack = result.stack()!
-        stack.mainContext.save(wait: true)
+        let stack = try! result.get()
+        stack.mainContext.saveSync()
 
         let fileManager = FileManager.default
 
@@ -223,3 +225,5 @@ final class ModelTests: XCTestCase {
         XCTAssertTrue(success, "Removing store should be ignored")
     }
 }
+
+// swiftlint:enable force_try

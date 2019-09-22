@@ -8,6 +8,7 @@
 
 This library aims to do the following:
 
+* Encode Core Data best practices, so you don't have to think "is this correct?" or "is this the right way to do this?"
 * Provide better interoperability with Swift
 * Harness Swift features and enforce Swift paradigms
 * Bring functional paradigms to Core Data
@@ -26,8 +27,8 @@ This library aims to do the following:
 
 ## Requirements
 
-* Xcode 10+
-* Swift 4.2+
+* Xcode 11+
+* Swift 5.1+
 * iOS 11.0+
 * macOS 10.12+
 * tvOS 11.0+
@@ -46,12 +47,6 @@ pod 'JSQCoreDataKit'
 
 # Latest on develop branch
 pod 'JSQCoreDataKit', :git => 'https://github.com/jessesquires/JSQCoreDataKit.git', :branch => 'develop'
-````
-
-#### [Carthage](https://github.com/Carthage/Carthage)
-
-````bash
-github "jessesquires/JSQCoreDataKit"
 ````
 
 ## Documentation

@@ -14,20 +14,16 @@
 		8852A0D21D459249006538B9 /* CoreDataEntityProtocolTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8852A0D11D459249006538B9 /* CoreDataEntityProtocolTests.swift */; };
 		8873E2281C51E09700DFE009 /* NSManagedObjectContext+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8873E21E1C51E09700DFE009 /* NSManagedObjectContext+Extensions.swift */; };
 		8873E2291C51E09700DFE009 /* CoreDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8873E21F1C51E09700DFE009 /* CoreDataModel.swift */; };
-		8873E22A1C51E09700DFE009 /* SaveResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8873E2201C51E09700DFE009 /* SaveResult.swift */; };
 		8873E22B1C51E09700DFE009 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8873E2211C51E09700DFE009 /* CoreDataStack.swift */; };
-		8873E22C1C51E09700DFE009 /* CoreDataStackFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8873E2221C51E09700DFE009 /* CoreDataStackFactory.swift */; };
-		8873E22D1C51E09700DFE009 /* StackResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8873E2231C51E09700DFE009 /* StackResult.swift */; };
+		8873E22C1C51E09700DFE009 /* CoreDataStackProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8873E2221C51E09700DFE009 /* CoreDataStackProvider.swift */; };
 		8873E22F1C51E09700DFE009 /* JSQCoreDataKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 8873E2251C51E09700DFE009 /* JSQCoreDataKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		8873E2301C51E09700DFE009 /* StoreType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8873E2261C51E09700DFE009 /* StoreType.swift */; };
 		8873E25C1C51E10100DFE009 /* ContextSyncTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8873E24D1C51E10100DFE009 /* ContextSyncTests.swift */; };
 		8873E25E1C51E10100DFE009 /* ExampleModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8873E24F1C51E10100DFE009 /* ExampleModelTests.swift */; };
 		8873E2611C51E10100DFE009 /* ModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8873E2521C51E10100DFE009 /* ModelTests.swift */; };
 		8873E2631C51E10100DFE009 /* ResetStackTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8873E2541C51E10100DFE009 /* ResetStackTests.swift */; };
-		8873E2641C51E10100DFE009 /* SaveResultTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8873E2551C51E10100DFE009 /* SaveResultTests.swift */; };
 		8873E2651C51E10100DFE009 /* SaveTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8873E2561C51E10100DFE009 /* SaveTests.swift */; };
 		8873E2661C51E10100DFE009 /* StackFactoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8873E2571C51E10100DFE009 /* StackFactoryTests.swift */; };
-		8873E2671C51E10100DFE009 /* StackResultTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8873E2581C51E10100DFE009 /* StackResultTests.swift */; };
 		8873E2681C51E10100DFE009 /* StackTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8873E2591C51E10100DFE009 /* StackTests.swift */; };
 		8873E2691C51E10100DFE009 /* StoreTypeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8873E25A1C51E10100DFE009 /* StoreTypeTests.swift */; };
 		8873E26A1C51E10100DFE009 /* TestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8873E25B1C51E10100DFE009 /* TestCase.swift */; };
@@ -67,10 +63,8 @@
 		8852A0D11D459249006538B9 /* CoreDataEntityProtocolTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataEntityProtocolTests.swift; sourceTree = "<group>"; };
 		8873E21E1C51E09700DFE009 /* NSManagedObjectContext+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSManagedObjectContext+Extensions.swift"; sourceTree = "<group>"; };
 		8873E21F1C51E09700DFE009 /* CoreDataModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataModel.swift; sourceTree = "<group>"; };
-		8873E2201C51E09700DFE009 /* SaveResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SaveResult.swift; sourceTree = "<group>"; };
 		8873E2211C51E09700DFE009 /* CoreDataStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
-		8873E2221C51E09700DFE009 /* CoreDataStackFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataStackFactory.swift; sourceTree = "<group>"; };
-		8873E2231C51E09700DFE009 /* StackResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StackResult.swift; sourceTree = "<group>"; };
+		8873E2221C51E09700DFE009 /* CoreDataStackProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataStackProvider.swift; sourceTree = "<group>"; };
 		8873E2241C51E09700DFE009 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8873E2251C51E09700DFE009 /* JSQCoreDataKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSQCoreDataKit.h; sourceTree = "<group>"; };
 		8873E2261C51E09700DFE009 /* StoreType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoreType.swift; sourceTree = "<group>"; };
@@ -79,10 +73,8 @@
 		8873E2511C51E10100DFE009 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8873E2521C51E10100DFE009 /* ModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModelTests.swift; sourceTree = "<group>"; };
 		8873E2541C51E10100DFE009 /* ResetStackTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResetStackTests.swift; sourceTree = "<group>"; };
-		8873E2551C51E10100DFE009 /* SaveResultTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SaveResultTests.swift; sourceTree = "<group>"; };
 		8873E2561C51E10100DFE009 /* SaveTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SaveTests.swift; sourceTree = "<group>"; };
 		8873E2571C51E10100DFE009 /* StackFactoryTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StackFactoryTests.swift; sourceTree = "<group>"; };
-		8873E2581C51E10100DFE009 /* StackResultTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StackResultTests.swift; sourceTree = "<group>"; };
 		8873E2591C51E10100DFE009 /* StackTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StackTests.swift; sourceTree = "<group>"; };
 		8873E25A1C51E10100DFE009 /* StoreTypeTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoreTypeTests.swift; sourceTree = "<group>"; };
 		8873E25B1C51E10100DFE009 /* TestCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestCase.swift; sourceTree = "<group>"; };
@@ -133,13 +125,11 @@
 				8852A0CC1D459048006538B9 /* CoreDataEntityProtocol.swift */,
 				8873E21F1C51E09700DFE009 /* CoreDataModel.swift */,
 				8873E2211C51E09700DFE009 /* CoreDataStack.swift */,
-				8873E2221C51E09700DFE009 /* CoreDataStackFactory.swift */,
+				8873E2221C51E09700DFE009 /* CoreDataStackProvider.swift */,
 				8873E2241C51E09700DFE009 /* Info.plist */,
 				8873E2251C51E09700DFE009 /* JSQCoreDataKit.h */,
 				298F00F61C9C559100AEC77E /* Migrate.swift */,
 				8873E21E1C51E09700DFE009 /* NSManagedObjectContext+Extensions.swift */,
-				8873E2201C51E09700DFE009 /* SaveResult.swift */,
-				8873E2231C51E09700DFE009 /* StackResult.swift */,
 				8873E2261C51E09700DFE009 /* StoreType.swift */,
 			);
 			path = Source;
@@ -156,10 +146,8 @@
 				297C7D2C1C710A1D008E516B /* MigrationTests.swift */,
 				8873E2521C51E10100DFE009 /* ModelTests.swift */,
 				8873E2541C51E10100DFE009 /* ResetStackTests.swift */,
-				8873E2551C51E10100DFE009 /* SaveResultTests.swift */,
 				8873E2561C51E10100DFE009 /* SaveTests.swift */,
 				8873E2571C51E10100DFE009 /* StackFactoryTests.swift */,
-				8873E2581C51E10100DFE009 /* StackResultTests.swift */,
 				8873E2591C51E10100DFE009 /* StackTests.swift */,
 				8873E25A1C51E10100DFE009 /* StoreTypeTests.swift */,
 				8873E25B1C51E10100DFE009 /* TestCase.swift */,
@@ -234,27 +222,28 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0730;
-				LastUpgradeCheck = 0940;
+				LastUpgradeCheck = 1100;
 				ORGANIZATIONNAME = "Hexed Bits";
 				TargetAttributes = {
 					88002D4E1AB8F546001787DB = {
 						CreatedOnToolsVersion = 6.3;
 						DevelopmentTeamName = "Jesse Squires";
-						LastSwiftMigration = 0900;
+						LastSwiftMigration = 1100;
 					};
 					881219C21B361EAF005E5AA7 = {
 						CreatedOnToolsVersion = 7.0;
-						LastSwiftMigration = 0900;
+						LastSwiftMigration = 1100;
 						ProvisioningStyle = Manual;
 					};
 				};
 			};
 			buildConfigurationList = 88002D491AB8F546001787DB /* Build configuration list for PBXProject "JSQCoreDataKit" */;
 			compatibilityVersion = "Xcode 3.2";
-			developmentRegion = English;
+			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				Base,
 			);
 			mainGroup = 88002D451AB8F546001787DB;
 			productRefGroup = 88002D501AB8F546001787DB /* Products */;
@@ -322,15 +311,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8873E22C1C51E09700DFE009 /* CoreDataStackFactory.swift in Sources */,
+				8873E22C1C51E09700DFE009 /* CoreDataStackProvider.swift in Sources */,
 				8852A0CD1D459048006538B9 /* CoreDataEntityProtocol.swift in Sources */,
 				8873E2301C51E09700DFE009 /* StoreType.swift in Sources */,
 				8873E22B1C51E09700DFE009 /* CoreDataStack.swift in Sources */,
 				298F00F71C9C559100AEC77E /* Migrate.swift in Sources */,
-				8873E22A1C51E09700DFE009 /* SaveResult.swift in Sources */,
 				8873E2291C51E09700DFE009 /* CoreDataModel.swift in Sources */,
 				8873E2281C51E09700DFE009 /* NSManagedObjectContext+Extensions.swift in Sources */,
-				8873E22D1C51E09700DFE009 /* StackResult.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -340,11 +327,9 @@
 			files = (
 				8873E2651C51E10100DFE009 /* SaveTests.swift in Sources */,
 				8852A0D21D459249006538B9 /* CoreDataEntityProtocolTests.swift in Sources */,
-				8873E2641C51E10100DFE009 /* SaveResultTests.swift in Sources */,
 				8873E2661C51E10100DFE009 /* StackFactoryTests.swift in Sources */,
 				297C7D2D1C710A1D008E516B /* MigrationTests.swift in Sources */,
 				8873E2631C51E10100DFE009 /* ResetStackTests.swift in Sources */,
-				8873E2671C51E10100DFE009 /* StackResultTests.swift in Sources */,
 				8873E2681C51E10100DFE009 /* StackTests.swift in Sources */,
 				8873E26A1C51E10100DFE009 /* TestCase.swift in Sources */,
 				8873E25E1C51E10100DFE009 /* ExampleModelTests.swift in Sources */,
@@ -374,6 +359,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -428,10 +414,12 @@
 				SDKROOT = iphoneos;
 				SUPPORTED_PLATFORMS = "iphoneos appletvos watchos macosx iphonesimulator appletvsimulator watchsimulator";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2,3,4";
+				TVOS_DEPLOYMENT_TARGET = 11.0;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
+				WATCHOS_DEPLOYMENT_TARGET = 4.0;
 			};
 			name = Debug;
 		};
@@ -439,6 +427,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -484,11 +473,13 @@
 				RESOURCES_TARGETED_DEVICE_FAMILY = "";
 				SDKROOT = iphoneos;
 				SUPPORTED_PLATFORMS = "iphoneos appletvos watchos macosx iphonesimulator appletvsimulator watchsimulator";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2,3,4";
+				TVOS_DEPLOYMENT_TARGET = 11.0;
 				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
+				WATCHOS_DEPLOYMENT_TARGET = 4.0;
 			};
 			name = Release;
 		};
@@ -511,11 +502,10 @@
 				GCC_WARN_PEDANTIC = NO;
 				INFOPLIST_FILE = "$(SRCROOT)/Source/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				MARKETING_VERSION = 9.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.hexedbits.$(PRODUCT_NAME:rfc1034identifier)";
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 4.2;
 			};
 			name = Debug;
 		};
@@ -539,11 +529,10 @@
 				GCC_WARN_PEDANTIC = NO;
 				INFOPLIST_FILE = "$(SRCROOT)/Source/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				MARKETING_VERSION = 9.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.hexedbits.$(PRODUCT_NAME:rfc1034identifier)";
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
-				SWIFT_VERSION = 4.2;
 			};
 			name = Release;
 		};
@@ -552,14 +541,13 @@
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = Tests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.hexedbits.JSQCoreDataKitTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 4.2;
 			};
 			name = Debug;
 		};
@@ -568,13 +556,12 @@
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
 				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = Tests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.hexedbits.JSQCoreDataKitTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
-				SWIFT_VERSION = 4.2;
 			};
 			name = Release;
 		};

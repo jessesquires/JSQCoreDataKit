@@ -12,7 +12,7 @@
 //
 //
 //  License
-//  Copyright © 2015 Jesse Squires
+//  Copyright © 2015-present Jesse Squires
 //  Released under an MIT license: https://opensource.org/licenses/MIT
 //
 
@@ -29,9 +29,14 @@ import Foundation
 
  Changes to a child context are propagated to its parent context and eventually the persistent store when saving.
 
- - warning: **You cannot create a `CoreDataStack` instance directly. Instead, use a `CoreDataStackFactory` for initialization.**
+ - warning: **You cannot create a `CoreDataStack` instance directly. Instead, use a `CoreDataStackProvider` for initialization.**
  */
 public final class CoreDataStack {
+
+    // MARK: Typealiases
+
+    /// Describes the result type for creating a `CoreDataStack`.
+    public typealias StackResult = Result<CoreDataStack, Error>
 
     // MARK: Properties
 
@@ -114,7 +119,9 @@ public final class CoreDataStack {
             childContext.parent = backgroundContext
 
         case .confinementConcurrencyType:
-            fatalError("*** Error: ConfinementConcurrencyType is not supported because it is being deprecated in iOS 9.0")
+            fatalError("*** Error: ConfinementConcurrencyType is not supported because it is deprecated.")
+        @unknown default:
+            fatalError("*** Error: unsupported, unknown concurrency type \(concurrencyType).")
         }
 
         if let name = childContext.parent?.name {
@@ -202,7 +209,7 @@ public final class CoreDataStack {
             return
         }
 
-        parentContext.save(wait: false, completion: nil)
+        parentContext.saveAsync(completion: nil)
     }
 
     @objc

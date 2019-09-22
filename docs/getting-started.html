@@ -53,12 +53,6 @@
                 <a href="Enums/ModelFileExtension.html">ModelFileExtension</a>
               </li>
               <li class="nav-group-task">
-                <a href="Enums/SaveResult.html">SaveResult</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Enums/StackResult.html">StackResult</a>
-              </li>
-              <li class="nav-group-task">
                 <a href="Enums/StoreType.html">StoreType</a>
               </li>
             </ul>
@@ -86,7 +80,7 @@
                 <a href="Structs/CoreDataModel.html">CoreDataModel</a>
               </li>
               <li class="nav-group-task">
-                <a href="Structs/CoreDataStackFactory.html">CoreDataStackFactory</a>
+                <a href="Structs/CoreDataStackProvider.html">CoreDataStackProvider</a>
               </li>
             </ul>
           </li>
@@ -107,11 +101,11 @@
 <span class="k">let</span> <span class="nv">bundle</span> <span class="o">=</span> <span class="kt">Bundle</span><span class="p">(</span><span class="nv">identifier</span><span class="p">:</span> <span class="s">"com.MyApp.MyModelFramework"</span><span class="p">)</span><span class="o">!</span>
 <span class="k">let</span> <span class="nv">model</span> <span class="o">=</span> <span class="kt">CoreDataModel</span><span class="p">(</span><span class="nv">name</span><span class="p">:</span> <span class="s">"MyModel"</span><span class="p">,</span> <span class="nv">bundle</span><span class="p">:</span> <span class="n">bundle</span><span class="p">)</span>
 
-<span class="c1">// Initialize a stack with a factory</span>
-<span class="k">let</span> <span class="nv">factory</span> <span class="o">=</span> <span class="kt">CoreDataStackFactory</span><span class="p">(</span><span class="nv">model</span><span class="p">:</span> <span class="n">model</span><span class="p">)</span>
+<span class="c1">// Initialize a stack with a provider</span>
+<span class="k">let</span> <span class="nv">provider</span> <span class="o">=</span> <span class="kt">CoreDataStackProvider</span><span class="p">(</span><span class="nv">model</span><span class="p">:</span> <span class="n">model</span><span class="p">)</span>
 
 <span class="k">let</span> <span class="nv">stack</span><span class="p">:</span> <span class="kt">CoreDataStack</span><span class="p">?</span>
-<span class="n">factory</span><span class="o">.</span><span class="n">createStack</span> <span class="p">{</span> <span class="p">(</span><span class="nv">result</span><span class="p">:</span> <span class="kt">StackResult</span><span class="p">)</span> <span class="k">in</span>
+<span class="n">provider</span><span class="o">.</span><span class="n">createStack</span> <span class="p">{</span> <span class="n">result</span> <span class="k">in</span>
     <span class="k">switch</span> <span class="n">result</span> <span class="p">{</span>
         <span class="k">case</span> <span class="o">.</span><span class="nf">success</span><span class="p">(</span><span class="k">let</span> <span class="nv">s</span><span class="p">):</span>
             <span class="n">stack</span> <span class="o">=</span> <span class="n">s</span>
@@ -123,10 +117,10 @@
 </code></pre>
 <h2 id='in-memory-stacks-for-testing' class='heading'>In-memory stacks for testing</h2>
 <pre class="highlight swift"><code><span class="k">let</span> <span class="nv">inMemoryModel</span> <span class="o">=</span> <span class="kt">CoreDataModel</span><span class="p">(</span><span class="nv">name</span><span class="p">:</span> <span class="n">myName</span><span class="p">,</span> <span class="nv">bundle</span><span class="p">:</span> <span class="n">myBundle</span><span class="p">,</span> <span class="nv">storeType</span><span class="p">:</span> <span class="o">.</span><span class="n">inMemory</span><span class="p">)</span>
-<span class="k">let</span> <span class="nv">factory</span> <span class="o">=</span> <span class="kt">CoreDataStackFactory</span><span class="p">(</span><span class="nv">model</span><span class="p">:</span> <span class="n">inMemoryModel</span><span class="p">)</span>
+<span class="k">let</span> <span class="nv">provider</span> <span class="o">=</span> <span class="kt">CoreDataStackProvider</span><span class="p">(</span><span class="nv">model</span><span class="p">:</span> <span class="n">inMemoryModel</span><span class="p">)</span>
 
 <span class="k">let</span> <span class="nv">stack</span><span class="p">:</span> <span class="kt">CoreDataStack</span><span class="p">?</span>
-<span class="n">factory</span><span class="o">.</span><span class="n">createStack</span> <span class="p">{</span> <span class="p">(</span><span class="nv">result</span><span class="p">:</span> <span class="kt">StackResult</span><span class="p">)</span> <span class="k">in</span>
+<span class="n">provider</span><span class="o">.</span><span class="n">createStack</span> <span class="p">{</span> <span class="n">result</span> <span class="k">in</span>
     <span class="k">switch</span> <span class="n">result</span> <span class="p">{</span>
         <span class="k">case</span> <span class="o">.</span><span class="nf">success</span><span class="p">(</span><span class="k">let</span> <span class="nv">s</span><span class="p">):</span>
             <span class="n">stack</span> <span class="o">=</span> <span class="n">s</span>
@@ -137,7 +131,7 @@
 <span class="p">}</span>
 </code></pre>
 <h2 id='saving-a-managed-object-context' class='heading'>Saving a managed object context</h2>
-<pre class="highlight swift"><code><span class="nf">saveContext</span><span class="p">(</span><span class="n">stack</span><span class="o">.</span><span class="n">mainContext</span><span class="p">)</span> <span class="p">{</span> <span class="n">result</span> <span class="k">in</span>
+<pre class="highlight swift"><code><span class="n">stack</span><span class="o">.</span><span class="n">mainContext</span><span class="o">.</span><span class="n">saveSync</span> <span class="p">{</span> <span class="n">result</span> <span class="k">in</span>
     <span class="k">switch</span> <span class="n">result</span> <span class="p">{</span>
         <span class="k">case</span> <span class="o">.</span><span class="nv">success</span><span class="p">:</span>
             <span class="nf">print</span><span class="p">(</span><span class="s">"save succeeded"</span><span class="p">)</span>
@@ -181,8 +175,8 @@
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2019 <a class="link" href="https://twitter.com/jesse_squires" target="_blank" rel="external">Jesse Squires</a>. All rights reserved. (Last updated: 2019-03-06)</p>
-          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.4</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+          <p>&copy; 2019 <a class="link" href="https://twitter.com/jesse_squires" target="_blank" rel="external">Jesse Squires</a>. All rights reserved. (Last updated: 2019-09-21)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.11.1</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
         </section>
       </article>
     </div>

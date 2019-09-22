@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>CoreDataStackFactory Structure Reference</title>
+    <title>CoreDataStackProvider Structure Reference</title>
     <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
     <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
     <meta charset='utf-8'>
@@ -10,8 +10,8 @@
     
   </head>
   <body>
-    <a name="//apple_ref/swift/Struct/CoreDataStackFactory" class="dashAnchor"></a>
-    <a title="CoreDataStackFactory Structure Reference"></a>
+    <a name="//apple_ref/swift/Struct/CoreDataStackProvider" class="dashAnchor"></a>
+    <a title="CoreDataStackProvider Structure Reference"></a>
     <header>
       <div class="content-wrapper">
         <p><a href="../index.html">JSQCoreDataKit Docs</a> (100% documented)</p>
@@ -22,7 +22,7 @@
       <p id="breadcrumbs">
         <a href="../index.html">JSQCoreDataKit Reference</a>
         <img id="carat" src="../img/carat.png" />
-        CoreDataStackFactory Structure Reference
+        CoreDataStackProvider Structure Reference
       </p>
     </div>
     <div class="content-wrapper">
@@ -54,12 +54,6 @@
                 <a href="../Enums/ModelFileExtension.html">ModelFileExtension</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Enums/SaveResult.html">SaveResult</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="../Enums/StackResult.html">StackResult</a>
-              </li>
-              <li class="nav-group-task">
                 <a href="../Enums/StoreType.html">StoreType</a>
               </li>
             </ul>
@@ -87,7 +81,7 @@
                 <a href="../Structs/CoreDataModel.html">CoreDataModel</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Structs/CoreDataStackFactory.html">CoreDataStackFactory</a>
+                <a href="../Structs/CoreDataStackProvider.html">CoreDataStackProvider</a>
               </li>
             </ul>
           </li>
@@ -96,14 +90,14 @@
       <article class="main-content">
         <section>
           <section class="section">
-            <h1>CoreDataStackFactory</h1>
+            <h1>CoreDataStackProvider</h1>
               <div class="declaration">
                 <div class="language">
-                  <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">CoreDataStackFactory</span></code></pre>
+                  <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">CoreDataStackProvider</span></code></pre>
 
                 </div>
               </div>
-            <p>An instance of <code>CoreDataStackFactory</code> is responsible for creating instances of <code><a href="../Classes/CoreDataStack.html">CoreDataStack</a></code>.</p>
+            <p>An instance of <code>CoreDataStackProvider</code> is responsible for creating instances of <code><a href="../Classes/CoreDataStack.html">CoreDataStack</a></code>.</p>
 
 <p>Because the adding of the persistent store to the persistent store coordinator during initialization
 of a <code><a href="../Classes/CoreDataStack.html">CoreDataStack</a></code> can take an unknown amount of time, you should not perform this operation on the main queue.</p>
@@ -111,7 +105,7 @@ of a <code><a href="../Classes/CoreDataStack.html">CoreDataStack</a></code> can 
 <p>See this <a href="https://developer.apple.com/library/prerelease/ios/documentation/Cocoa/Conceptual/CoreData/IntegratingCoreData.html#//apple_ref/doc/uid/TP40001075-CH9-SW1">guide</a> for more details.</p>
 <div class="aside aside-warning">
     <p class="aside-title">Warning</p>
-    You should not create instances of <code><a href="../Classes/CoreDataStack.html">CoreDataStack</a></code> directly. Use a <code>CoreDataStackFactory</code> instead.
+    You should not create instances of <code><a href="../Classes/CoreDataStack.html">CoreDataStack</a></code> directly. Use a <code>CoreDataStackProvider</code> instead.
 
 </div>
 
@@ -129,9 +123,9 @@ of a <code><a href="../Classes/CoreDataStack.html">CoreDataStack</a></code> can 
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:14JSQCoreDataKit04CoreB12StackFactoryV22PersistentStoreOptionsa"></a>
+                    <a name="/s:14JSQCoreDataKit04CoreB13StackProviderV22PersistentStoreOptionsa"></a>
                     <a name="//apple_ref/swift/Alias/PersistentStoreOptions" class="dashAnchor"></a>
-                    <a class="token" href="#/s:14JSQCoreDataKit04CoreB12StackFactoryV22PersistentStoreOptionsa">PersistentStoreOptions</a>
+                    <a class="token" href="#/s:14JSQCoreDataKit04CoreB13StackProviderV22PersistentStoreOptionsa">PersistentStoreOptions</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -167,9 +161,9 @@ of a <code><a href="../Classes/CoreDataStack.html">CoreDataStack</a></code> can 
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:14JSQCoreDataKit04CoreB12StackFactoryV19defaultStoreOptionsSDys11AnyHashableVypGvpZ"></a>
+                    <a name="/s:14JSQCoreDataKit04CoreB13StackProviderV19defaultStoreOptionsSDys11AnyHashableVypGvpZ"></a>
                     <a name="//apple_ref/swift/Variable/defaultStoreOptions" class="dashAnchor"></a>
-                    <a class="token" href="#/s:14JSQCoreDataKit04CoreB12StackFactoryV19defaultStoreOptionsSDys11AnyHashableVypGvpZ">defaultStoreOptions</a>
+                    <a class="token" href="#/s:14JSQCoreDataKit04CoreB13StackProviderV19defaultStoreOptionsSDys11AnyHashableVypGvpZ">defaultStoreOptions</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -184,7 +178,7 @@ of a <code><a href="../Classes/CoreDataStack.html">CoreDataStack</a></code> can 
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">static</span> <span class="k">let</span> <span class="nv">defaultStoreOptions</span><span class="p">:</span> <span class="kt">CoreDataStackFactory</span><span class="o">.</span><span class="kt"><a href="../Structs/CoreDataStackFactory.html#/s:14JSQCoreDataKit04CoreB12StackFactoryV22PersistentStoreOptionsa">PersistentStoreOptions</a></span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">static</span> <span class="k">let</span> <span class="nv">defaultStoreOptions</span><span class="p">:</span> <span class="kt">CoreDataStackProvider</span><span class="o">.</span><span class="kt"><a href="../Structs/CoreDataStackProvider.html#/s:14JSQCoreDataKit04CoreB13StackProviderV22PersistentStoreOptionsa">PersistentStoreOptions</a></span></code></pre>
 
                         </div>
                       </div>
@@ -194,9 +188,9 @@ of a <code><a href="../Classes/CoreDataStack.html">CoreDataStack</a></code> can 
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:14JSQCoreDataKit04CoreB12StackFactoryV5modelAA0dB5ModelVvp"></a>
+                    <a name="/s:14JSQCoreDataKit04CoreB13StackProviderV5modelAA0dB5ModelVvp"></a>
                     <a name="//apple_ref/swift/Property/model" class="dashAnchor"></a>
-                    <a class="token" href="#/s:14JSQCoreDataKit04CoreB12StackFactoryV5modelAA0dB5ModelVvp">model</a>
+                    <a class="token" href="#/s:14JSQCoreDataKit04CoreB13StackProviderV5modelAA0dB5ModelVvp">model</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -221,9 +215,9 @@ of a <code><a href="../Classes/CoreDataStack.html">CoreDataStack</a></code> can 
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:14JSQCoreDataKit04CoreB12StackFactoryV7optionsSDys11AnyHashableVypGSgvp"></a>
+                    <a name="/s:14JSQCoreDataKit04CoreB13StackProviderV7optionsSDys11AnyHashableVypGSgvp"></a>
                     <a name="//apple_ref/swift/Property/options" class="dashAnchor"></a>
-                    <a class="token" href="#/s:14JSQCoreDataKit04CoreB12StackFactoryV7optionsSDys11AnyHashableVypGSgvp">options</a>
+                    <a class="token" href="#/s:14JSQCoreDataKit04CoreB13StackProviderV7optionsSDys11AnyHashableVypGSgvp">options</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -239,7 +233,7 @@ The default value is <code>DefaultStoreOptions</code>.</p>
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">let</span> <span class="nv">options</span><span class="p">:</span> <span class="kt"><a href="../Structs/CoreDataStackFactory.html#/s:14JSQCoreDataKit04CoreB12StackFactoryV22PersistentStoreOptionsa">PersistentStoreOptions</a></span><span class="p">?</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">let</span> <span class="nv">options</span><span class="p">:</span> <span class="kt"><a href="../Structs/CoreDataStackProvider.html#/s:14JSQCoreDataKit04CoreB13StackProviderV22PersistentStoreOptionsa">PersistentStoreOptions</a></span><span class="p">?</span></code></pre>
 
                         </div>
                       </div>
@@ -260,9 +254,9 @@ The default value is <code>DefaultStoreOptions</code>.</p>
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:14JSQCoreDataKit04CoreB12StackFactoryV5model7optionsAcA0dB5ModelV_SDys11AnyHashableVypGSgtcfc"></a>
+                    <a name="/s:14JSQCoreDataKit04CoreB13StackProviderV5model7optionsAcA0dB5ModelV_SDys11AnyHashableVypGSgtcfc"></a>
                     <a name="//apple_ref/swift/Method/init(model:options:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:14JSQCoreDataKit04CoreB12StackFactoryV5model7optionsAcA0dB5ModelV_SDys11AnyHashableVypGSgtcfc">init(model:options:)</a>
+                    <a class="token" href="#/s:14JSQCoreDataKit04CoreB13StackProviderV5model7optionsAcA0dB5ModelV_SDys11AnyHashableVypGSgtcfc">init(model:options:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -270,14 +264,14 @@ The default value is <code>DefaultStoreOptions</code>.</p>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Constructs a new <code>CoreDataStackFactory</code> instance with the specified <code><a href="../Structs/CoreDataStackFactory.html#/s:14JSQCoreDataKit04CoreB12StackFactoryV5modelAA0dB5ModelVvp">model</a></code> and <code><a href="../Structs/CoreDataStackFactory.html#/s:14JSQCoreDataKit04CoreB12StackFactoryV7optionsSDys11AnyHashableVypGSgvp">options</a></code>.</p>
+                        <p>Constructs a new <code>CoreDataStackProvider</code> instance with the specified <code><a href="../Structs/CoreDataStackProvider.html#/s:14JSQCoreDataKit04CoreB13StackProviderV5modelAA0dB5ModelVvp">model</a></code> and <code><a href="../Structs/CoreDataStackProvider.html#/s:14JSQCoreDataKit04CoreB13StackProviderV7optionsSDys11AnyHashableVypGSgvp">options</a></code>.</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="nf">init</span><span class="p">(</span><span class="nv">model</span><span class="p">:</span> <span class="kt"><a href="../Structs/CoreDataModel.html">CoreDataModel</a></span><span class="p">,</span> <span class="nv">options</span><span class="p">:</span> <span class="kt"><a href="../Structs/CoreDataStackFactory.html#/s:14JSQCoreDataKit04CoreB12StackFactoryV22PersistentStoreOptionsa">PersistentStoreOptions</a></span><span class="p">?</span> <span class="o">=</span> <span class="n"><a href="../Structs/CoreDataStackFactory.html#/s:14JSQCoreDataKit04CoreB12StackFactoryV19defaultStoreOptionsSDys11AnyHashableVypGvpZ">defaultStoreOptions</a></span><span class="p">)</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="nf">init</span><span class="p">(</span><span class="nv">model</span><span class="p">:</span> <span class="kt"><a href="../Structs/CoreDataModel.html">CoreDataModel</a></span><span class="p">,</span> <span class="nv">options</span><span class="p">:</span> <span class="kt"><a href="../Structs/CoreDataStackProvider.html#/s:14JSQCoreDataKit04CoreB13StackProviderV22PersistentStoreOptionsa">PersistentStoreOptions</a></span><span class="p">?</span> <span class="o">=</span> <span class="n"><a href="../Structs/CoreDataStackProvider.html#/s:14JSQCoreDataKit04CoreB13StackProviderV19defaultStoreOptionsSDys11AnyHashableVypGvpZ">defaultStoreOptions</a></span><span class="p">)</span></code></pre>
 
                         </div>
                       </div>
@@ -314,7 +308,7 @@ The default value is <code>DefaultStoreOptions</code>.</p>
                       </div>
                       <div>
                         <h4>Return Value</h4>
-                        <p>A new <code>CoreDataStackFactory</code> instance.</p>
+                        <p>A new <code>CoreDataStackProvider</code> instance.</p>
                       </div>
                     </section>
                   </div>
@@ -333,9 +327,9 @@ The default value is <code>DefaultStoreOptions</code>.</p>
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:14JSQCoreDataKit04CoreB12StackFactoryV06createE07onQueue10completionySo17OS_dispatch_queueCSg_yAA0E6ResultOctF"></a>
+                    <a name="/s:14JSQCoreDataKit04CoreB13StackProviderV06createE07onQueue10completionySo17OS_dispatch_queueCSg_ys6ResultOyAA0dbE0Cs5Error_pGctF"></a>
                     <a name="//apple_ref/swift/Method/createStack(onQueue:completion:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:14JSQCoreDataKit04CoreB12StackFactoryV06createE07onQueue10completionySo17OS_dispatch_queueCSg_yAA0E6ResultOctF">createStack(onQueue:completion:)</a>
+                    <a class="token" href="#/s:14JSQCoreDataKit04CoreB13StackProviderV06createE07onQueue10completionySo17OS_dispatch_queueCSg_ys6ResultOyAA0dbE0Cs5Error_pGctF">createStack(onQueue:completion:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -343,7 +337,7 @@ The default value is <code>DefaultStoreOptions</code>.</p>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Initializes a new <code><a href="../Classes/CoreDataStack.html">CoreDataStack</a></code> instance using the factory&rsquo;s <code><a href="../Structs/CoreDataStackFactory.html#/s:14JSQCoreDataKit04CoreB12StackFactoryV5modelAA0dB5ModelVvp">model</a></code> and <code><a href="../Structs/CoreDataStackFactory.html#/s:14JSQCoreDataKit04CoreB12StackFactoryV7optionsSDys11AnyHashableVypGSgvp">options</a></code>.</p>
+                        <p>Initializes a new <code><a href="../Classes/CoreDataStack.html">CoreDataStack</a></code> instance using the factory&rsquo;s <code><a href="../Structs/CoreDataStackProvider.html#/s:14JSQCoreDataKit04CoreB13StackProviderV5modelAA0dB5ModelVvp">model</a></code> and <code><a href="../Structs/CoreDataStackProvider.html#/s:14JSQCoreDataKit04CoreB13StackProviderV7optionsSDys11AnyHashableVypGSgvp">options</a></code>.</p>
 <div class="aside aside-warning">
     <p class="aside-title">Warning</p>
     <p>If a queue is provided, this operation is performed asynchronously on the specified queue,
@@ -358,7 +352,7 @@ If <code>queue</code> is <code>nil</code>, then this method and the completion c
                         <div class="language">
                           <p class="aside-title">Swift</p>
                           <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">createStack</span><span class="p">(</span><span class="n">onQueue</span> <span class="nv">queue</span><span class="p">:</span> <span class="kt">DispatchQueue</span><span class="p">?</span> <span class="o">=</span> <span class="o">.</span><span class="nf">global</span><span class="p">(</span><span class="nv">qos</span><span class="p">:</span> <span class="o">.</span><span class="n">userInitiated</span><span class="p">),</span>
-                        <span class="nv">completion</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">(</span><span class="kt"><a href="../Enums/StackResult.html">StackResult</a></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">)</span></code></pre>
+                        <span class="nv">completion</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">(</span><span class="kt"><a href="../Classes/CoreDataStack.html">CoreDataStack</a></span><span class="o">.</span><span class="kt">StackResult</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">)</span></code></pre>
 
                         </div>
                       </div>
@@ -405,8 +399,8 @@ Otherwise, this is executed on the thread from which the method was originally c
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2019 <a class="link" href="https://twitter.com/jesse_squires" target="_blank" rel="external">Jesse Squires</a>. All rights reserved. (Last updated: 2019-03-06)</p>
-          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.4</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+          <p>&copy; 2019 <a class="link" href="https://twitter.com/jesse_squires" target="_blank" rel="external">Jesse Squires</a>. All rights reserved. (Last updated: 2019-09-21)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.11.1</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
         </section>
       </article>
     </div>

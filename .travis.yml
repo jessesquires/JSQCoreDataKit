@@ -91,9 +91,20 @@ jobs:
     - stage: lint
       name: pod lint
       script: bundle exec pod lib lint
+    
+    - &carthage
+      stage: carthage
+      osx_image: xcode10.3
+      name: Xcode 10.3
+      script: carthage build --no-skip-current --configuration Release
+
+    - <<: *carthage
+      osx_image: xcode11
+      name: Xcode 11
 
 stages:
   - test
   - build only
   - build examples
   - lint
+  - carthage

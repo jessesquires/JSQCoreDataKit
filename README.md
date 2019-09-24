@@ -49,6 +49,12 @@ pod 'JSQCoreDataKit'
 pod 'JSQCoreDataKit', :git => 'https://github.com/jessesquires/JSQCoreDataKit.git', :branch => 'develop'
 ````
 
+#### [Carthage](https://github.com/Carthage/Carthage)
+
+````bash
+github "jessesquires/JSQCoreDataKit"
+````
+
 ## Documentation
 
 Read the [docs][docsLink]. Generated with [jazzy](https://github.com/realm/jazzy). Hosted by [GitHub Pages](https://pages.github.com).

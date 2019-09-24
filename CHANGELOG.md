@@ -4,6 +4,15 @@ The changelog for `JSQCoreDataKit`. Also see the [releases](https://github.com/j
 
 --------------------------------------
 
+9.0.1
+-----
+
+This release closes the [9.0.1 milestone](https://github.com/jessesquires/JSQCoreDataKit/milestone/18?closed=1).
+
+### Fixed
+
+- Carthage support (#92, #138, @kevnm67)
+
 9.0.0
 -----
 

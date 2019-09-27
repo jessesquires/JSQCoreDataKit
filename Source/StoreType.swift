@@ -56,3 +56,10 @@ public enum StoreType: Equatable {
         }
     }
 }
+
+extension StoreType: CustomStringConvertible {
+    /// :nodoc:
+    public var description: String {
+        return self.type
+    }
+}

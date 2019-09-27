@@ -50,9 +50,11 @@ public struct CoreDataModel {
     public let name: String
 
     /// The bundle in which the model is located.
+    /// The default is the main bundle.
     public let bundle: Bundle
 
     /// The type of the Core Data persistent store for the model.
+    /// The default is `.sqlite` with the user's documents directory.
     public let storeType: StoreType
 
     /**
@@ -118,7 +120,7 @@ public struct CoreDataModel {
 
      - parameter name:      The name of the Core Data model.
      - parameter bundle:    The bundle in which the model is located. The default is the main bundle.
-     - parameter storeType: The store type for the Core Data model. The default is `.sqlite`, with the user's documents directory.
+     - parameter storeType: The store type for the Core Data model. The default is `.sqlite` with the user's documents directory.
 
      - returns: A new `CoreDataModel` instance.
      */

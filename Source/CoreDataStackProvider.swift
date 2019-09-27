@@ -40,8 +40,8 @@ public struct CoreDataStackProvider {
 
     /// Describes default persistent store options.
     public static let defaultStoreOptions: PersistentStoreOptions = [
-        NSMigratePersistentStoresAutomaticallyOption: true as AnyObject,
-        NSInferMappingModelAutomaticallyOption: true as AnyObject
+        NSMigratePersistentStoresAutomaticallyOption: true,
+        NSInferMappingModelAutomaticallyOption: true
     ]
 
     /// The model for the stack that the factory produces.

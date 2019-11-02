@@ -1,6 +1,6 @@
 os: osx
-osx_image: xcode11
-rvm: 2.6.0
+osx_image: xcode11.2
+rvm: 2.6.4
 
 addons:
   homebrew:
@@ -22,9 +22,9 @@ env:
     - PROJECT="JSQCoreDataKit.xcodeproj"
     - SCHEME="JSQCoreDataKit"
     - OSX_SDK=macosx10.15
-    - IOS_SDK=iphonesimulator13.0
-    - TVOS_SDK=appletvsimulator13.0
-    - WATCHOS_SDK=watchsimulator6.0
+    - IOS_SDK=iphonesimulator13.2
+    - TVOS_SDK=appletvsimulator13.2
+    - WATCHOS_SDK=watchsimulator6.1
 
 before_install:
   - pip3 install proselint
@@ -35,8 +35,8 @@ jobs:
   include:
     - &test
       stage: test
-      name: iOS 11.1
-      env: DESTINATION="OS=11.1,name=iPhone X" SDK="$IOS_SDK"
+      name: iOS 11.0
+      env: DESTINATION="OS=11.0,name=iPhone X" SDK="$IOS_SDK"
       script:
         - set -o pipefail
         - xcodebuild -version -sdk
@@ -73,8 +73,8 @@ jobs:
 
     - &build-examples
       stage: build examples
-      name: iOS 11.1
-      env: DESTINATION="OS=11.1,name=iPhone X" SDK="$IOS_SDK"
+      name: iOS 11.0
+      env: DESTINATION="OS=11.0,name=iPhone X" SDK="$IOS_SDK"
       script:
         - set -o pipefail
         - xcodebuild -version -sdk

@@ -1,6 +1,6 @@
 os: osx
-osx_image: xcode11
-rvm: 2.6.0
+osx_image: xcode11.2
+rvm: 2.6.4
 
 addons:
   homebrew:
@@ -22,14 +22,14 @@ env:
     - PROJECT="JSQCoreDataKit.xcodeproj"
     - SCHEME="JSQCoreDataKit"
     - OSX_SDK=macosx10.15
-    - IOS_SDK=iphonesimulator13.0
-    - TVOS_SDK=appletvsimulator13.0
-    - WATCHOS_SDK=watchsimulator6.0
+    - IOS_SDK=iphonesimulator13.2
+    - TVOS_SDK=appletvsimulator13.2
+    - WATCHOS_SDK=watchsimulator6.1
 
 before_install:
   - pip3 install proselint
-  - gem update --system
-  - gem install bundler
+  - bundle update --bundler
+  - bundle install --without=documentation
 
 jobs:
   include:
@@ -50,8 +50,8 @@ jobs:
       env: DESTINATION="OS=12.0,name=iPhone X" SDK="$IOS_SDK"
 
     - <<: *test
-      name: iOS 13.0
-      env: DESTINATION="OS=13.0,name=iPhone 11" SDK="$IOS_SDK"
+      name: iOS 13.2
+      env: DESTINATION="OS=13.2,name=iPhone 11" SDK="$IOS_SDK"
 
     - <<: *test
       name: macOS
@@ -62,12 +62,12 @@ jobs:
       env: DESTINATION="OS=12.0,name=Apple TV" SDK="$TVOS_SDK"
 
     - <<: *test
-      name: tvOS 13.0
-      env: DESTINATION="OS=12.0,name=Apple TV" SDK="$TVOS_SDK"
+      name: tvOS 13.2
+      env: DESTINATION="OS=13.2,name=Apple TV" SDK="$TVOS_SDK"
 
     - stage: build only
-      name: watchOS 6.0
-      env: DESTINATION="OS=6.0,name=Apple Watch Series 5 - 40mm" SDK="$WATCHOS_SDK"
+      name: watchOS 6.1
+      env: DESTINATION="OS=6.1,name=Apple Watch Series 5 - 40mm" SDK="$WATCHOS_SDK"
       script:
         - xcodebuild clean build -project "$PROJECT" -scheme "$SCHEME" -sdk "$SDK" -destination "$DESTINATION" -configuration Debug ONLY_ACTIVE_ARCH=NO CODE_SIGNING_REQUIRED=NO | bundle exec xcpretty -c;
 
@@ -85,8 +85,8 @@ jobs:
       env: DESTINATION="OS=12.0,name=iPhone X" SDK="$IOS_SDK"
 
     - <<: *build-examples
-      name: iOS 13.0
-      env: DESTINATION="OS=13.0,name=iPhone 11" SDK="$IOS_SDK"
+      name: iOS 13.2
+      env: DESTINATION="OS=13.2,name=iPhone 11" SDK="$IOS_SDK"
 
     - stage: lint
       name: pod lint

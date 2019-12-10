@@ -50,8 +50,8 @@ jobs:
       env: DESTINATION="OS=12.0,name=iPhone X" SDK="$IOS_SDK"
 
     - <<: *test
-      name: iOS 13.2
-      env: DESTINATION="OS=13.2,name=iPhone 11" SDK="$IOS_SDK"
+      name: iOS 13.2.2
+      env: DESTINATION="OS=13.2.2,name=iPhone 11" SDK="$IOS_SDK"
 
     - <<: *test
       name: macOS
@@ -85,8 +85,8 @@ jobs:
       env: DESTINATION="OS=12.0,name=iPhone X" SDK="$IOS_SDK"
 
     - <<: *build-examples
-      name: iOS 13.2
-      env: DESTINATION="OS=13.2,name=iPhone 11" SDK="$IOS_SDK"
+      name: iOS 13.2.2
+      env: DESTINATION="OS=13.2.2,name=iPhone 11" SDK="$IOS_SDK"
 
     - stage: lint
       name: pod lint

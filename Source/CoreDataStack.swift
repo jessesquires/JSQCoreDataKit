@@ -230,13 +230,13 @@ public final class CoreDataStack {
 extension CoreDataStack: Equatable {
     /// :nodoc:
     public static func == (lhs: CoreDataStack, rhs: CoreDataStack) -> Bool {
-        return lhs.model == rhs.model
+        lhs.model == rhs.model
     }
 }
 
 extension CoreDataStack: CustomStringConvertible {
     /// :nodoc:
     public var description: String {
-        return "\(CoreDataStack.self)(model=\(model.name); mainContext=\(mainContext); backgroundContext=\(backgroundContext))"
+        "\(CoreDataStack.self)(model=\(model.name); mainContext=\(mainContext); backgroundContext=\(backgroundContext))"
     }
 }

@@ -33,7 +33,7 @@ extension CoreDataEntityProtocol where Self: NSManagedObject {
 
     /// Returns a default entity name for this managed object based on its class name.
     public static var entityName: String {
-        return "\(Self.self)"
+        "\(Self.self)"
     }
 
     /// Returns a new fetch request with `defaultSortDescriptors`.
@@ -50,6 +50,6 @@ extension CoreDataEntityProtocol where Self: NSManagedObject {
     ///
     /// - returns: Returns the entity description for this managed object.
     public static func entity(context: NSManagedObjectContext) -> NSEntityDescription {
-        return NSEntityDescription.entity(forEntityName: entityName, in: context)!
+        NSEntityDescription.entity(forEntityName: entityName, in: context)!
     }
 }

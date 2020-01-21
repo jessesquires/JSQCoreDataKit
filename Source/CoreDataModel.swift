@@ -63,7 +63,7 @@ public struct CoreDataModel {
      - note: If the store is in-memory, then this value will be `nil`.
      */
     public var storeURL: URL? {
-        return storeType.storeDirectory()?.appendingPathComponent(databaseFileName)
+        storeType.storeDirectory()?.appendingPathComponent(databaseFileName)
     }
 
     /// The file URL specifying the model file in the bundle specified by `bundle`.
@@ -174,7 +174,7 @@ public struct CoreDataModel {
 extension CoreDataModel: Equatable {
     /// :nodoc:
     public static func == (lhs: CoreDataModel, rhs: CoreDataModel) -> Bool {
-        return lhs.name == rhs.name
+        lhs.name == rhs.name
             && lhs.bundle.isEqual(rhs.bundle)
             && lhs.storeType == rhs.storeType
     }

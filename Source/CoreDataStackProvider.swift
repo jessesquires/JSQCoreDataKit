@@ -156,6 +156,6 @@ public struct CoreDataStackProvider {
 extension CoreDataStackProvider: Equatable {
     /// :nodoc:
     public static func == (lhs: CoreDataStackProvider, rhs: CoreDataStackProvider) -> Bool {
-        return lhs.model == rhs.model
+        lhs.model == rhs.model
     }
 }

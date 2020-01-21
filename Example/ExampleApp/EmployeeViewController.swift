@@ -90,11 +90,11 @@ final class EmployeeViewController: UITableViewController, NSFetchedResultsContr
     // MARK: Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
+        1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return frc?.fetchedObjects?.count ?? 0
+        frc?.fetchedObjects?.count ?? 0
     }
 
     func configureCell(_ cell: UITableViewCell, atIndexPath indexPath: IndexPath) {
@@ -110,13 +110,13 @@ final class EmployeeViewController: UITableViewController, NSFetchedResultsContr
     }
 
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return company.name
+        company.name
     }
 
     // MARK: Table view delegate
 
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        return true
+        true
     }
 
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {

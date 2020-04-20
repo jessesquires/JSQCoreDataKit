@@ -47,6 +47,11 @@ public final class Employee: NSManagedObject, CoreDataEntityProtocol {
         self.company = company
     }
 
+    @objc
+    override private init(entity: NSEntityDescription, insertInto context: NSManagedObjectContext?) {
+        super.init(entity: entity, insertInto: context)
+    }
+
     public class func newEmployee(_ context: NSManagedObjectContext, company: Company? = nil) -> Employee {
         let name = "Employee " + String(UUID().uuidString.split { $0 == "-" }.first!)
         return Employee(context: context,
@@ -54,10 +59,5 @@ public final class Employee: NSManagedObject, CoreDataEntityProtocol {
                         birthDate: Date.distantPast,
                         salary: NSDecimalNumber(value: Int.random(in: 0...100_000)),
                         company: company)
-    }
-
-    @objc
-    override private init(entity: NSEntityDescription, insertInto context: NSManagedObjectContext?) {
-        super.init(entity: entity, insertInto: context)
     }
 }

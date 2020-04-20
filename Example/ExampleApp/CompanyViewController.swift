@@ -50,6 +50,32 @@ final class CompanyViewController: UITableViewController, NSFetchedResultsContro
         }
     }
 
+    // MARK: Actions
+
+    @IBAction func didTapTrashButton(_ sender: UIBarButtonItem) {
+        let backgroundChildContext = stack.childContext(concurrencyType: .privateQueueConcurrencyType)
+
+        backgroundChildContext.performAndWait {
+            do {
+                let objects = try backgroundChildContext.fetch(Company.fetchRequest)
+                for each in objects {
+                    backgroundChildContext.delete(each)
+                }
+                backgroundChildContext.saveSync()
+            } catch {
+                print("Error deleting objects: \(error)")
+            }
+        }
+    }
+
+    @objc
+    func didTapAddButton(_ sender: UIBarButtonItem) {
+        stack.mainContext.performAndWait {
+            _ = Company.newCompany(self.stack.mainContext)
+            self.stack.mainContext.saveSync()
+        }
+    }
+
     // MARK: Segues
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -93,32 +119,6 @@ final class CompanyViewController: UITableViewController, NSFetchedResultsContro
             barButtonSystemItem: .add,
             target: self,
             action: #selector(didTapAddButton(_:)))
-    }
-
-    // MARK: Actions
-
-    @objc
-    func didTapAddButton(_ sender: UIBarButtonItem) {
-        stack.mainContext.performAndWait {
-            _ = Company.newCompany(self.stack.mainContext)
-            self.stack.mainContext.saveSync()
-        }
-    }
-
-    @IBAction func didTapTrashButton(_ sender: UIBarButtonItem) {
-        let backgroundChildContext = stack.childContext(concurrencyType: .privateQueueConcurrencyType)
-
-        backgroundChildContext.performAndWait {
-            do {
-                let objects = try backgroundChildContext.fetch(Company.fetchRequest)
-                for each in objects {
-                    backgroundChildContext.delete(each)
-                }
-                backgroundChildContext.saveSync()
-            } catch {
-                print("Error deleting objects: \(error)")
-            }
-        }
     }
 
     // MARK: Table view data source

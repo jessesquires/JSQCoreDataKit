@@ -132,25 +132,6 @@ public struct CoreDataModel {
 
     // MARK: Methods
 
-    /**
-     Removes the existing model store specfied by the receiver.
-
-     - throws: If removing the store fails or errors, then this function throws an `NSError`.
-     */
-    public func removeExistingStore() throws {
-        let fm = FileManager.default
-        if let storePath = storeURL?.path,
-            fm.fileExists(atPath: storePath) {
-            try fm.removeItem(atPath: storePath)
-
-            let writeAheadLog = storePath + "-wal"
-            _ = try? fm.removeItem(atPath: writeAheadLog)
-
-            let sharedMemoryfile = storePath + "-shm"
-            _ = try? fm.removeItem(atPath: sharedMemoryfile)
-        }
-    }
-
     /// The default directory used to initialize a `CoreDataModel`.
     /// On tvOS, this is the caches directory. All other platforms use the document directory.
     public static func defaultDirectoryURL() -> URL {
@@ -167,6 +148,25 @@ public struct CoreDataModel {
                                                create: true)
         } catch {
             fatalError("*** Error finding default directory: \(error)")
+        }
+    }
+
+    /**
+     Removes the existing model store specfied by the receiver.
+
+     - throws: If removing the store fails or errors, then this function throws an `NSError`.
+     */
+    public func removeExistingStore() throws {
+        let fm = FileManager.default
+        if let storePath = storeURL?.path,
+            fm.fileExists(atPath: storePath) {
+            try fm.removeItem(atPath: storePath)
+
+            let writeAheadLog = storePath + "-wal"
+            _ = try? fm.removeItem(atPath: writeAheadLog)
+
+            let sharedMemoryfile = storePath + "-shm"
+            _ = try? fm.removeItem(atPath: sharedMemoryfile)
         }
     }
 }

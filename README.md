@@ -1,6 +1,4 @@
-# JSQCoreDataKit
-
-[![Build Status](https://secure.travis-ci.org/jessesquires/JSQCoreDataKit.svg)](http://travis-ci.org/jessesquires/JSQCoreDataKit) 
+# JSQCoreDataKit [![Build Status](https://secure.travis-ci.org/jessesquires/JSQCoreDataKit.svg)](http://travis-ci.org/jessesquires/JSQCoreDataKit) 
 
 *A swifter Core Data stack*
 

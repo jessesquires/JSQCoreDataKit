@@ -4,6 +4,15 @@ The changelog for `JSQCoreDataKit`. Also see the [releases](https://github.com/j
 
 --------------------------------------
 
+NEXT
+-----
+
+### Changed
+
+- Upgraded to Swift 5.2
+- Updated to Xcode 11.4
+- Updated SwiftLint
+
 9.0.1
 -----
 

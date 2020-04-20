@@ -1,6 +1,4 @@
-# JSQCoreDataKit
-
-[![Build Status](https://secure.travis-ci.org/jessesquires/JSQCoreDataKit.svg)](http://travis-ci.org/jessesquires/JSQCoreDataKit) [![Version Status](https://img.shields.io/cocoapods/v/JSQCoreDataKit.svg)][podLink] [![license MIT](https://img.shields.io/cocoapods/l/JSQCoreDataKit.svg)][mitLink] [![codecov](https://codecov.io/gh/jessesquires/JSQCoreDataKit/branch/develop/graph/badge.svg)](https://codecov.io/gh/jessesquires/JSQCoreDataKit) [![Platform](https://img.shields.io/cocoapods/p/JSQCoreDataKit.svg)][docsLink] [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
+# JSQCoreDataKit [![Build Status](https://secure.travis-ci.org/jessesquires/JSQCoreDataKit.svg)](http://travis-ci.org/jessesquires/JSQCoreDataKit) 
 
 *A swifter Core Data stack*
 
@@ -27,8 +25,8 @@ This library aims to do the following:
 
 ## Requirements
 
-* Xcode 11+
-* Swift 5.1+
+* Xcode 11.4+
+* Swift 5.2+
 * iOS 11.0+
 * macOS 10.12+
 * tvOS 11.0+
@@ -37,39 +35,30 @@ This library aims to do the following:
 
 ## Installation
 
-#### [CocoaPods](http://cocoapods.org) (recommended)
+### [CocoaPods](http://cocoapods.org)
 
 ````ruby
-use_frameworks!
+pod 'JSQCoreDataKit', '~> 9.0.0'
 
-# Latest release in CocoaPods
-pod 'JSQCoreDataKit'
-
-# Latest on develop branch
+# develop branch
 pod 'JSQCoreDataKit', :git => 'https://github.com/jessesquires/JSQCoreDataKit.git', :branch => 'develop'
 ````
 
-#### [Carthage](https://github.com/Carthage/Carthage)
+### [Swift Package Manager](https://swift.org/package-manager/)
 
-````bash
-github "jessesquires/JSQCoreDataKit"
-````
+Add `JSQCoreDataKit` to the `dependencies` value of your `Package.swift`.
+
+```swift
+dependencies: [
+    .package(url: "https://github.com/jessesquires/JSQCoreDataKit.git", from: "9.0.0")
+]
+```
+
+Alternatively, you can add the package [directly via Xcode](https://developer.apple.com/documentation/xcode/adding_package_dependencies_to_your_app).
 
 ## Documentation
 
-Read the [docs][docsLink]. Generated with [jazzy](https://github.com/realm/jazzy). Hosted by [GitHub Pages](https://pages.github.com).
-
-#### Generate
-
-````bash
-$ ./scripts/build_docs.sh
-````
-
-#### Preview
-
-````bash
-$ open index.html -a Safari
-````
+You can read the [documentation here](https://jessesquires.github.io/JSQCoreDataKit). Generated with [jazzy](https://github.com/realm/jazzy). Hosted by [GitHub Pages](https://pages.github.com).
 
 ## Contributing
 
@@ -80,7 +69,8 @@ Interested in making contributions to this project? Please review the guides bel
 - [Support and Help](https://github.com/jessesquires/.github/blob/master/SUPPORT.md)
 - [Security Policy](https://github.com/jessesquires/.github/blob/master/SECURITY.md)
 
-Also, consider [sponsoring this project](https://www.jessesquires.com/sponsor/) or [buying my apps](https://www.hexedbits.com)! :v:
+Also, consider [sponsoring this project](https://www.jessesquires.com/sponsor/) or [buying my apps](https://www.hexedbits.com)! ✌️
+
 
 ## Credits
 
@@ -88,12 +78,6 @@ Created and maintained by [**@jesse_squires**](https://twitter.com/jesse_squires
 
 ## License
 
-`JSQCoreDataKit` is released under an [MIT License][mitLink]. See `LICENSE` for details.
+Released under the MIT License. See `LICENSE` for details.
 
->**Copyright &copy; 2015-present Jesse Squires.**
-
-*Please provide attribution, it is greatly appreciated.*
-
-[podLink]:https://cocoapods.org/pods/JSQCoreDataKit
-[docsLink]:https://jessesquires.github.io/JSQCoreDataKit
-[mitLink]:https://opensource.org/licenses/MIT
+> **Copyright &copy; 2015-present Jesse Squires.**

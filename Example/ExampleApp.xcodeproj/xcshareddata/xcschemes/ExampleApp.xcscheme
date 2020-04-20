@@ -14,6 +14,34 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
+               BlueprintIdentifier = "88002D4E1AB8F546001787DB"
+               BuildableName = "JSQCoreDataKit.framework"
+               BlueprintName = "JSQCoreDataKit"
+               ReferencedContainer = "container:../JSQCoreDataKit.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "885394491BC9EA0300699506"
+               BuildableName = "ExampleModel.framework"
+               BlueprintName = "ExampleModel"
+               ReferencedContainer = "container:ExampleModel/ExampleModel.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
                BlueprintIdentifier = "8853941C1BC9E9DE00699506"
                BuildableName = "ExampleApp.app"
                BlueprintName = "ExampleApp"
@@ -38,12 +66,14 @@
       </MacroExpansion>
       <Testables>
          <TestableReference
-            skipped = "NO">
+            skipped = "NO"
+            parallelizable = "YES"
+            testExecutionOrdering = "random">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "885394301BC9E9DE00699506"
-               BuildableName = "ExampleAppTests.xctest"
-               BlueprintName = "ExampleAppTests"
+               BlueprintIdentifier = "88C9C9F3244E646E001B9BFA"
+               BuildableName = "ExampleAppUITests.xctest"
+               BlueprintName = "ExampleAppUITests"
                ReferencedContainer = "container:ExampleApp.xcodeproj">
             </BuildableReference>
          </TestableReference>

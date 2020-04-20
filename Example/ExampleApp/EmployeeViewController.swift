@@ -17,11 +17,9 @@
 //
 
 import CoreData
-import UIKit
-
-import JSQCoreDataKit
-
 import ExampleModel
+import JSQCoreDataKit
+import UIKit
 
 final class EmployeeViewController: UITableViewController, NSFetchedResultsControllerDelegate {
 

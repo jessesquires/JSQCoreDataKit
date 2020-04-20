@@ -14,18 +14,18 @@
 //  License
 //  Copyright © 2015-present Jesse Squires
 //  Released under an MIT license: https://opensource.org/licenses/MIT
-//
+// 
 
-@testable import ExampleApp
 import XCTest
 
-final class ExampleAppTests: XCTestCase {
+final class ExampleAppUITests: XCTestCase {
 
-    override func setUp() {
-        super.setUp()
+    override func setUpWithError() throws {
+        continueAfterFailure = false
     }
 
-    override func tearDown() {
-        super.tearDown()
+    func testExample() throws {
+        let app = XCUIApplication()
+        app.launch()
     }
 }

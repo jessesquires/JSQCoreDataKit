@@ -14,7 +14,7 @@
 		8853946C1BC9EB7900699506 /* Employee.swift in Sources */ = {isa = PBXBuildFile; fileRef = 885394681BC9EB7900699506 /* Employee.swift */; };
 		8853946E1BC9EB7900699506 /* Company.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8853946A1BC9EB7900699506 /* Company.swift */; };
 		88807BBB1BCB24FD00F95B95 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88807BBA1BCB24FD00F95B95 /* Model.swift */; };
-		88AC47F6218FAC30002C04AB /* JSQCoreDataKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88AC47F5218FAC30002C04AB /* JSQCoreDataKit.framework */; };
+		88C9CA00244E656A001B9BFA /* JSQCoreDataKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88C9C9FF244E656A001B9BFA /* JSQCoreDataKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +32,8 @@
 		8853946A1BC9EB7900699506 /* Company.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Company.swift; sourceTree = "<group>"; };
 		88807BBA1BCB24FD00F95B95 /* Model.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		88AC47F5218FAC30002C04AB /* JSQCoreDataKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = JSQCoreDataKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		88C9C9FE244E6555001B9BFA /* JSQCoreDataKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = JSQCoreDataKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		88C9C9FF244E656A001B9BFA /* JSQCoreDataKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = JSQCoreDataKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -39,7 +41,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				88AC47F6218FAC30002C04AB /* JSQCoreDataKit.framework in Frameworks */,
+				88C9CA00244E656A001B9BFA /* JSQCoreDataKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -49,6 +51,8 @@
 		8852A0DC1D459566006538B9 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				88C9C9FF244E656A001B9BFA /* JSQCoreDataKit.framework */,
+				88C9C9FE244E6555001B9BFA /* JSQCoreDataKit.framework */,
 				88AC47F5218FAC30002C04AB /* JSQCoreDataKit.framework */,
 				8852A0DF1D459577006538B9 /* JSQCoreDataKit.framework */,
 				8852A0DD1D459566006538B9 /* JSQCoreDataKit.framework */,

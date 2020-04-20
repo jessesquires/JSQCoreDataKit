@@ -54,8 +54,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "881219C21B361EAF005E5AA7"
-               BuildableName = "JSQCoreDataKit-Tests.xctest"
-               BlueprintName = "JSQCoreDataKit-Tests"
+               BuildableName = "JSQCoreDataKitTests.xctest"
+               BlueprintName = "JSQCoreDataKitTests"
                ReferencedContainer = "container:JSQCoreDataKit.xcodeproj">
             </BuildableReference>
          </TestableReference>

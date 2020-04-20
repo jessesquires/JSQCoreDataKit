@@ -58,7 +58,7 @@
 		297C7D2C1C710A1D008E516B /* MigrationTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MigrationTests.swift; sourceTree = "<group>"; };
 		298F00F61C9C559100AEC77E /* Migrate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Migrate.swift; sourceTree = "<group>"; };
 		88002D4F1AB8F546001787DB /* JSQCoreDataKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = JSQCoreDataKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		881219C31B361EAF005E5AA7 /* JSQCoreDataKit-Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "JSQCoreDataKit-Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		881219C31B361EAF005E5AA7 /* JSQCoreDataKitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JSQCoreDataKitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8852A0CC1D459048006538B9 /* CoreDataEntityProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataEntityProtocol.swift; sourceTree = "<group>"; };
 		8852A0D11D459249006538B9 /* CoreDataEntityProtocolTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataEntityProtocolTests.swift; sourceTree = "<group>"; };
 		8873E21E1C51E09700DFE009 /* NSManagedObjectContext+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSManagedObjectContext+Extensions.swift"; sourceTree = "<group>"; };
@@ -114,7 +114,7 @@
 			isa = PBXGroup;
 			children = (
 				88002D4F1AB8F546001787DB /* JSQCoreDataKit.framework */,
-				881219C31B361EAF005E5AA7 /* JSQCoreDataKit-Tests.xctest */,
+				881219C31B361EAF005E5AA7 /* JSQCoreDataKitTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -196,9 +196,9 @@
 			productReference = 88002D4F1AB8F546001787DB /* JSQCoreDataKit.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		881219C21B361EAF005E5AA7 /* JSQCoreDataKit-Tests */ = {
+		881219C21B361EAF005E5AA7 /* JSQCoreDataKitTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 881219CB1B361EAF005E5AA7 /* Build configuration list for PBXNativeTarget "JSQCoreDataKit-Tests" */;
+			buildConfigurationList = 881219CB1B361EAF005E5AA7 /* Build configuration list for PBXNativeTarget "JSQCoreDataKitTests" */;
 			buildPhases = (
 				881219BF1B361EAF005E5AA7 /* Sources */,
 				881219C01B361EAF005E5AA7 /* Frameworks */,
@@ -210,9 +210,9 @@
 				292393AF1C6BC37E0025E6EF /* PBXTargetDependency */,
 				881219CA1B361EAF005E5AA7 /* PBXTargetDependency */,
 			);
-			name = "JSQCoreDataKit-Tests";
+			name = JSQCoreDataKitTests;
 			productName = JSQCoreDataKitTests;
-			productReference = 881219C31B361EAF005E5AA7 /* JSQCoreDataKit-Tests.xctest */;
+			productReference = 881219C31B361EAF005E5AA7 /* JSQCoreDataKitTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -257,7 +257,7 @@
 			projectRoot = "";
 			targets = (
 				88002D4E1AB8F546001787DB /* JSQCoreDataKit */,
-				881219C21B361EAF005E5AA7 /* JSQCoreDataKit-Tests */,
+				881219C21B361EAF005E5AA7 /* JSQCoreDataKitTests */,
 			);
 		};
 /* End PBXProject section */
@@ -590,7 +590,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		881219CB1B361EAF005E5AA7 /* Build configuration list for PBXNativeTarget "JSQCoreDataKit-Tests" */ = {
+		881219CB1B361EAF005E5AA7 /* Build configuration list for PBXNativeTarget "JSQCoreDataKitTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				881219CC1B361EAF005E5AA7 /* Debug */,

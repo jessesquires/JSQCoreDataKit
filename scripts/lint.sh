@@ -1,6 +1,15 @@
 #!/bin/bash
 
-VERSION="0.35.0"
+#  Created by Jesse Squires
+#  https://www.jessesquires.com
+#
+#  Copyright © 2020-present Jesse Squires
+#
+#  SwiftLint
+#  https://github.com/realm/SwiftLint/releases/latest
+#  ------------------------------
+
+VERSION="0.39.2"
 FOUND=$(swiftlint version)
 
 if which swiftlint >/dev/null; then

@@ -104,7 +104,7 @@
 		88002D451AB8F546001787DB = {
 			isa = PBXGroup;
 			children = (
-				8873E21C1C51E09700DFE009 /* Source */,
+				8873E21C1C51E09700DFE009 /* Sources */,
 				8873E24C1C51E10100DFE009 /* Tests */,
 				88002D501AB8F546001787DB /* Products */,
 			);
@@ -119,7 +119,7 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		8873E21C1C51E09700DFE009 /* Source */ = {
+		8873E21C1C51E09700DFE009 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
 				8852A0CC1D459048006538B9 /* CoreDataEntityProtocol.swift */,
@@ -132,7 +132,7 @@
 				8873E21E1C51E09700DFE009 /* NSManagedObjectContext+Extensions.swift */,
 				8873E2261C51E09700DFE009 /* StoreType.swift */,
 			);
-			path = Source;
+			path = Sources;
 			sourceTree = "<group>";
 		};
 		8873E24C1C51E10100DFE009 /* Tests */ = {

@@ -12,7 +12,7 @@ on:
 
 env:
   DEVELOPER_DIR: /Applications/Xcode_11.4.app/Contents/Developer
-  
+
   IOS_SDK: iphonesimulator13.4
   TVOS_SDK: appletvsimulator13.4
   WATCHOS_SDK: watchsimulator6.2
@@ -32,11 +32,13 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        destination: [
-          "OS=11.1,name=iPhone X",
-          "OS=12.0,name=iPhone X",
-          "OS=13.4,name=iPhone 11"
-        ]
+        sdk: ["$IOS_SDK", "$TVOS_SDK"]
+        destination: [ ]
+        include:
+          - sdk: "$IOS_SDK"
+            destination: ["OS=11.1,name=iPhone X", "OS=12.0,name=iPhone X", "OS=13.4,name=iPhone 11"]
+          - sdk: "$TVOS_SDK"
+            destination: ["OS=13.4,name=Apple TV"]
 
     steps:
       - name: git checkout
@@ -62,7 +64,7 @@ jobs:
           xcodebuild clean test \
               -project "$PROJECT" \
               -scheme "$SCHEME" \
-              -sdk "$IOS_SDK" \
+              -sdk "${{ matrix.sdk }}" \
               -destination "${{ matrix.destination }}" \
               ONLY_ACTIVE_ARCH=NO CODE_SIGNING_REQUIRED=NO | xcpretty -c
 

@@ -40,7 +40,9 @@ jobs:
           - sdk: "$TVOS_SDK"
             destination: ["OS=13.4,name=Apple TV"]
         exclude:
-          - sdk: ["$IOS_SDK", "$TVOS_SDK"]
+          - sdk: "$IOS_SDK"
+            destination: placeholder
+          - sdk: "$TVOS_SDK"
             destination: placeholder
 
     steps:

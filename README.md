@@ -1,4 +1,4 @@
-# JSQCoreDataKit [![Build Status](https://secure.travis-ci.org/jessesquires/JSQCoreDataKit.svg)](http://travis-ci.org/jessesquires/JSQCoreDataKit) 
+# JSQCoreDataKit ![CI](https://github.com/jessesquires/JSQCoreDataKit/workflows/CI/badge.svg)
 
 *A swifter Core Data stack*
 

@@ -1,0 +1,46 @@
+name: CocoaPods Lint
+
+on:
+  push:
+    branches:
+      - master
+      - dev
+      - develop
+  pull_request:
+    branches:
+      - master
+      - dev
+      - develop
+
+env:
+  DEVELOPER_DIR: /Applications/Xcode_11.4.app/Contents/Developer
+
+jobs:
+  job-pod-lint:
+    name: CocoaPods Lint
+    runs-on: macOS-latest
+    steps:
+      - name: git checkout
+        uses: actions/checkout@v1
+
+      - name: ruby versions
+        run: |
+          ruby --version
+          gem --version
+          bundler --version
+
+      - name: cache gems
+        uses: actions/cache@v1
+        with:
+          path: vendor/bundle
+          key: ${{ runner.os }}-gem-${{ hashFiles('**/Gemfile.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-gem-
+
+      - name: bundle install
+        run: |
+          bundle config path vendor/bundle
+          bundle install --without=documentation --jobs 4 --retry 3
+
+      - name: pod lint
+        run: bundle exec pod lib lint

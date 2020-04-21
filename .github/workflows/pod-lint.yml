@@ -4,12 +4,10 @@ on:
   push:
     branches:
       - master
-      - dev
       - develop
   pull_request:
     branches:
       - master
-      - dev
       - develop
 
 env:

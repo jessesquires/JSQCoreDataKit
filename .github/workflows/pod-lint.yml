@@ -15,7 +15,7 @@ env:
 
 jobs:
   job-pod-lint:
-    name: CocoaPods Lint
+    name: Pod Lint
     runs-on: macOS-latest
     steps:
       - name: git checkout

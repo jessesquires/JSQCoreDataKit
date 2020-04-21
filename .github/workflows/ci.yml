@@ -26,24 +26,13 @@ env:
   EXAMPLE_DEST: "OS=13.4,name=iPhone 11"
 
 jobs:
-  job-build-test:
-    name: Build and Test
+  job-iOS:
+    name: iOS Test
     runs-on: macOS-latest
     strategy:
       fail-fast: false
       matrix:
-        sdk: ["$IOS_SDK", "$TVOS_SDK"]
-        destination: [ placeholder ]
-        include:
-          - sdk: "$IOS_SDK"
-            destination: ["OS=11.1,name=iPhone X", "OS=12.0,name=iPhone X", "OS=13.4,name=iPhone 11"]
-          - sdk: "$TVOS_SDK"
-            destination: ["OS=13.4,name=Apple TV"]
-        exclude:
-          - sdk: "$IOS_SDK"
-            destination: placeholder
-          - sdk: "$TVOS_SDK"
-            destination: placeholder
+        destination: ["OS=11.1,name=iPhone X", "OS=12.0,name=iPhone X", "OS=13.4,name=iPhone 11"]
 
     steps:
       - name: git checkout
@@ -69,12 +58,73 @@ jobs:
           xcodebuild clean test \
               -project "$PROJECT" \
               -scheme "$SCHEME" \
-              -sdk "${{ matrix.sdk }}" \
+              -sdk "$IOS_SDK" \
               -destination "${{ matrix.destination }}" \
               ONLY_ACTIVE_ARCH=NO CODE_SIGNING_REQUIRED=NO | xcpretty -c
 
+  job-tvOS:
+    name: tvOS Test
+    runs-on: macOS-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        destination: ["OS=13.4,name=Apple TV"]
+
+    steps:
+      - name: git checkout
+        uses: actions/checkout@v1
+
+      - name: unit tests
+        run: |
+          set -o pipefail
+          xcodebuild clean test \
+              -project "$PROJECT" \
+              -scheme "$SCHEME" \
+              -sdk "$TVOS_SDK" \
+              -destination "${{ matrix.destination }}" \
+              ONLY_ACTIVE_ARCH=NO CODE_SIGNING_REQUIRED=NO | xcpretty -c
+
+  job-watchOS:
+    name: watchOS Build
+    runs-on: macOS-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        destination: ["OS=6.2,name=Apple Watch Series 5 - 44mm"]
+
+    steps:
+      - name: git checkout
+        uses: actions/checkout@v1
+
+      - name: build
+        run: |
+          set -o pipefail
+          xcodebuild clean build \
+              -project "$PROJECT" \
+              -scheme "$SCHEME" \
+              -sdk "$WATCHOS_SDK" \
+              -destination "${{ matrix.destination }}" \
+              ONLY_ACTIVE_ARCH=NO CODE_SIGNING_REQUIRED=NO | xcpretty -c
+
+  job-macOS:
+    name: macOS Test
+    runs-on: macOS-latest
+    steps:
+      - name: git checkout
+        uses: actions/checkout@v1
+
+      - name: unit tests
+        run: |
+          set -o pipefail
+          xcodebuild clean test \
+              -project "$PROJECT" \
+              -scheme "$SCHEME" \
+              -sdk "$MACOS_SDK" \
+              -destination "arch=x86_64" \
+              ONLY_ACTIVE_ARCH=NO CODE_SIGNING_REQUIRED=NO | xcpretty -c
+
   job-example-proj:
-    name: Test Example Project
+    name: Example Project Test
     runs-on: macOS-latest
     steps:
       - name: git checkout

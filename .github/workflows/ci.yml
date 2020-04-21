@@ -4,17 +4,18 @@ on:
   push:
     branches:
       - master
-      - dev
       - develop
   pull_request:
     branches:
       - master
-      - dev
       - develop
 
 env:
   DEVELOPER_DIR: /Applications/Xcode_11.4.app/Contents/Developer
   IOS_SDK: iphonesimulator13.4
+  TVOS_SDK: appletvsimulator13.4
+  WATCHOS_SDK: watchsimulator6.2
+  MACOS_SDK: macosx10.15
 
   PROJECT: JSQCoreDataKit.xcodeproj
   SCHEME: JSQCoreDataKit

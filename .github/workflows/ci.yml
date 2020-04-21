@@ -12,6 +12,7 @@ on:
 
 env:
   DEVELOPER_DIR: /Applications/Xcode_11.4.app/Contents/Developer
+  
   IOS_SDK: iphonesimulator13.4
   TVOS_SDK: appletvsimulator13.4
   WATCHOS_SDK: watchsimulator6.2
@@ -22,12 +23,14 @@ env:
 
   EXAMPLE_PROJECT: Example/ExampleApp.xcodeproj
   EXAMPLE_SCHEME: ExampleApp
+  EXAMPLE_DEST: "OS=13.4,name=iPhone 11"
 
 jobs:
   job-build-test:
     name: Build and Test
     runs-on: macOS-latest
     strategy:
+      fail-fast: false
       matrix:
         destination: [
           "OS=11.1,name=iPhone X",
@@ -66,12 +69,6 @@ jobs:
   job-example-proj:
     name: Test Example Project
     runs-on: macOS-latest
-    strategy:
-      matrix:
-        destination: [
-          "OS=13.4,name=iPhone 11"
-        ]
-
     steps:
       - name: git checkout
         uses: actions/checkout@v1
@@ -83,5 +80,5 @@ jobs:
               -project "$EXAMPLE_PROJECT" \
               -scheme "$EXAMPLE_SCHEME" \
               -sdk "$IOS_SDK" \
-              -destination "${{ matrix.destination }}" \
+              -destination "$EXAMPLE_DEST" \
               ONLY_ACTIVE_ARCH=NO CODE_SIGNING_REQUIRED=NO | xcpretty -c

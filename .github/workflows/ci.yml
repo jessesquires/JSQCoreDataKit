@@ -1,0 +1,141 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - master
+      - develop
+  pull_request:
+    branches:
+      - master
+      - develop
+
+env:
+  DEVELOPER_DIR: /Applications/Xcode_11.4.app/Contents/Developer
+
+  IOS_SDK: iphonesimulator13.4
+  TVOS_SDK: appletvsimulator13.4
+  WATCHOS_SDK: watchsimulator6.2
+  MACOS_SDK: macosx10.15
+
+  PROJECT: JSQCoreDataKit.xcodeproj
+  SCHEME: JSQCoreDataKit
+
+  EXAMPLE_PROJECT: Example/ExampleApp.xcodeproj
+  EXAMPLE_SCHEME: ExampleApp
+  EXAMPLE_DEST: "OS=13.4,name=iPhone 11"
+
+jobs:
+  job-iOS:
+    name: iOS Test
+    runs-on: macOS-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        destination: ["OS=11.1,name=iPhone X", "OS=12.0,name=iPhone X", "OS=13.4,name=iPhone 11"]
+
+    steps:
+      - name: git checkout
+        uses: actions/checkout@v1
+
+      - name: xcode version
+        run: xcodebuild -version -sdk
+
+      - name: list simulators
+        run: |
+          xcrun simctl delete unavailable
+          xcrun simctl list
+
+      - name: install simulators
+        run: |
+          gem install xcode-install
+          xcversion simulators --install='iOS 11.1'
+          xcversion simulators --install='iOS 12.0'
+
+      - name: unit tests
+        run: |
+          set -o pipefail
+          xcodebuild clean test \
+              -project "$PROJECT" \
+              -scheme "$SCHEME" \
+              -sdk "$IOS_SDK" \
+              -destination "${{ matrix.destination }}" \
+              ONLY_ACTIVE_ARCH=NO CODE_SIGNING_REQUIRED=NO | xcpretty -c
+
+  job-tvOS:
+    name: tvOS Test
+    runs-on: macOS-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        destination: ["OS=13.4,name=Apple TV"]
+
+    steps:
+      - name: git checkout
+        uses: actions/checkout@v1
+
+      - name: unit tests
+        run: |
+          set -o pipefail
+          xcodebuild clean test \
+              -project "$PROJECT" \
+              -scheme "$SCHEME" \
+              -sdk "$TVOS_SDK" \
+              -destination "${{ matrix.destination }}" \
+              ONLY_ACTIVE_ARCH=NO CODE_SIGNING_REQUIRED=NO | xcpretty -c
+
+  job-watchOS:
+    name: watchOS Build
+    runs-on: macOS-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        destination: ["OS=6.2,name=Apple Watch Series 5 - 44mm"]
+
+    steps:
+      - name: git checkout
+        uses: actions/checkout@v1
+
+      - name: build
+        run: |
+          set -o pipefail
+          xcodebuild clean build \
+              -project "$PROJECT" \
+              -scheme "$SCHEME" \
+              -sdk "$WATCHOS_SDK" \
+              -destination "${{ matrix.destination }}" \
+              ONLY_ACTIVE_ARCH=NO CODE_SIGNING_REQUIRED=NO | xcpretty -c
+
+  job-macOS:
+    name: macOS Test
+    runs-on: macOS-latest
+    steps:
+      - name: git checkout
+        uses: actions/checkout@v1
+
+      - name: unit tests
+        run: |
+          set -o pipefail
+          xcodebuild clean test \
+              -project "$PROJECT" \
+              -scheme "$SCHEME" \
+              -sdk "$MACOS_SDK" \
+              -destination "arch=x86_64" \
+              ONLY_ACTIVE_ARCH=NO CODE_SIGNING_REQUIRED=NO | xcpretty -c
+
+  job-example-proj:
+    name: Example Project Test
+    runs-on: macOS-latest
+    steps:
+      - name: git checkout
+        uses: actions/checkout@v1
+
+      - name: ui tests
+        run: |
+          set -o pipefail
+          xcodebuild clean test \
+              -project "$EXAMPLE_PROJECT" \
+              -scheme "$EXAMPLE_SCHEME" \
+              -sdk "$IOS_SDK" \
+              -destination "$EXAMPLE_DEST" \
+              ONLY_ACTIVE_ARCH=NO CODE_SIGNING_REQUIRED=NO | xcpretty -c

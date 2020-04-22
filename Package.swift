@@ -26,14 +26,10 @@ let package = Package(
         .macOS(.v10_12)
     ],
     products: [
-        .library(
-            name: "JSQCoreDataKit",
-            targets: ["JSQCoreDataKit"])
+        .library(name: "JSQCoreDataKit", targets: ["JSQCoreDataKit"])
     ],
     targets: [
-        .target(
-            name: "JSQCoreDataKit",
-            path: "Sources"),
+        .target(name: "JSQCoreDataKit", path: "Sources")
 
         // Unfortunately, we cannot include tests right now.
         // The test target depends on a fixture project, `ExampleModel`.

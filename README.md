@@ -1,4 +1,4 @@
-# JSQCoreDataKit ![CI](https://github.com/jessesquires/JSQCoreDataKit/workflows/CI/badge.svg)
+# JSQCoreDataKit [![CI](https://github.com/jessesquires/JSQCoreDataKit/workflows/CI/badge.svg)](https://github.com/jessesquires/JSQCoreDataKit/actions)
 
 *A swifter Core Data stack*
 

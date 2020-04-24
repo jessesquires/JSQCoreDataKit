@@ -6,8 +6,14 @@
 #  Copyright © 2020-present Jesse Squires
 #
 #  Docs by jazzy
-#  https://github.com/realm/jazzy
+#  https://github.com/realm/jazzy/releases/latest
 #  ------------------------------
+
+VERSION="0.13.2"
+
+FOUND=$(jazzy --version)
+LINK="https://github.com/realm/jazzy"
+INSTALL="gem install jazzy"
 
 PROJECT="JSQCoreDataKit"
 
@@ -22,11 +28,25 @@ if which jazzy >/dev/null; then
         --readme "README.md" \
         --documentation "Guides/*.md" \
         --output docs/
-        exit
 else
     echo "
-    Error: jazzy not installed! <https://github.com/realm/jazzy>
-    Install: gem install jazzy
+    Error: Jazzy not installed!
+
+    Download: $LINK
+    Install: $INSTALL
     "
     exit 1
 fi
+
+if [ "$FOUND" != "jazzy version: $VERSION" ]; then
+    echo "
+    Warning: incorrect Jazzy installed! Please upgrade.
+    Expected: $VERSION
+    Found: $FOUND
+
+    Download: $LINK
+    Install: $INSTALL
+    "
+fi
+
+exit

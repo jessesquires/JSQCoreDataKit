@@ -10,26 +10,30 @@
 #  ------------------------------
 
 VERSION="0.39.2"
+
 FOUND=$(swiftlint version)
+LINK="https://github.com/realm/SwiftLint"
+INSTALL="brew install swiftlint"
 
 if which swiftlint >/dev/null; then
     swiftlint lint --config ./.swiftlint.yml
-    exit
 else
     echo "
     Error: SwiftLint not installed!
-    Download from https://github.com/realm/SwiftLint,
-    or brew install swiftlint.
+
+    Download: $LINK
+    Install: $INSTALL
     "
 fi
 
-if [ $(swiftlint version) != $VERSION ]; then
+if [ $FOUND != $VERSION ]; then
     echo "
-    Warning: incorrect SwiftLint installed!
+    Warning: incorrect SwiftLint installed! Please upgrade.
     Expected: $VERSION
     Found: $FOUND
-    Download from https://github.com/realm/SwiftLint,
-    or brew upgrade swiftlint.
+
+    Download: $LINK
+    Install: $INSTALL
     "
 fi
 

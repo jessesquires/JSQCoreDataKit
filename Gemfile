@@ -15,8 +15,6 @@ gem 'danger-todoist'
 gem 'danger-prose'
 
 # xcode, ios, macos
-gem 'danger-xcov'
-
 gem 'danger-swiftlint'
 
 gem 'danger-jazzy'

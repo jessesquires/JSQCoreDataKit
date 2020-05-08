@@ -11,7 +11,7 @@ on:
       - develop
 
 env:
-  DEVELOPER_DIR: /Applications/Xcode_11.4.app/Contents/Developer
+  DEVELOPER_DIR: /Applications/Xcode_11.4.1.app/Contents/Developer
 
 jobs:
   job-pod-lint:

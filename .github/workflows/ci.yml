@@ -11,7 +11,7 @@ on:
       - develop
 
 env:
-  DEVELOPER_DIR: /Applications/Xcode_11.4.app/Contents/Developer
+  DEVELOPER_DIR: /Applications/Xcode_11.4.1.app/Contents/Developer
 
   IOS_SDK: iphonesimulator13.4
   TVOS_SDK: appletvsimulator13.4
@@ -32,7 +32,11 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        destination: ["OS=11.1,name=iPhone X", "OS=12.0,name=iPhone X", "OS=13.4,name=iPhone 11"]
+        destination: [
+          "OS=11.1,name=iPhone X",
+          "OS=12.0,name=iPhone XS",
+          "OS=13.4,name=iPhone 11"
+        ]
 
     steps:
       - name: git checkout

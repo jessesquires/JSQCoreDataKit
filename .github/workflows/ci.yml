@@ -23,7 +23,7 @@ env:
 
   EXAMPLE_PROJECT: Example/ExampleApp.xcodeproj
   EXAMPLE_SCHEME: ExampleApp
-  EXAMPLE_DEST: "OS=13.4,name=iPhone 11"
+  EXAMPLE_DEST: "OS=13.4.1,name=iPhone 11"
 
 jobs:
   job-iOS:
@@ -35,7 +35,7 @@ jobs:
         destination: [
           "OS=11.1,name=iPhone X",
           "OS=12.0,name=iPhone XS",
-          "OS=13.4,name=iPhone 11"
+          "OS=13.4.1,name=iPhone 11"
         ]
 
     steps:

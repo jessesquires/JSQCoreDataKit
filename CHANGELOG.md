@@ -7,6 +7,13 @@ The changelog for `JSQCoreDataKit`. Also see the [releases](https://github.com/j
 NEXT
 -----
 
+> TBD
+
+9.0.2
+-----
+
+This release closes the [9.0.2 milestone](https://github.com/jessesquires/JSQCoreDataKit/milestone/19?closed=1).
+
 ### New
 
 - Support for Swift Package Manager
@@ -15,7 +22,7 @@ NEXT
 
 - Upgraded to Swift 5.2
 - Upgraded to Xcode 11.4
-- Upgraded to SwiftLint 0.39.1
+- Upgraded to SwiftLint 0.39.2
 
 9.0.1
 -----

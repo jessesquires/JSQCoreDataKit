@@ -38,7 +38,7 @@ This library aims to do the following:
 ### [CocoaPods](http://cocoapods.org)
 
 ````ruby
-pod 'JSQCoreDataKit', '~> 9.0.0'
+pod 'JSQCoreDataKit', '~> 9.0.2'
 
 # develop branch
 pod 'JSQCoreDataKit', :git => 'https://github.com/jessesquires/JSQCoreDataKit.git', :branch => 'develop'
@@ -50,7 +50,7 @@ Add `JSQCoreDataKit` to the `dependencies` value of your `Package.swift`.
 
 ```swift
 dependencies: [
-    .package(url: "https://github.com/jessesquires/JSQCoreDataKit.git", from: "9.0.0")
+    .package(url: "https://github.com/jessesquires/JSQCoreDataKit.git", from: "9.0.2")
 ]
 ```
 

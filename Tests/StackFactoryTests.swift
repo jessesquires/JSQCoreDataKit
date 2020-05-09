@@ -21,7 +21,6 @@ import ExampleModel
 @testable import JSQCoreDataKit
 import XCTest
 
-#if !os(macOS)
 final class StackFactoryTests: TestCase {
 
     override func setUp() {
@@ -127,5 +126,5 @@ final class StackFactoryTests: TestCase {
         XCTAssertNil(stack.backgroundContext.parent)
         XCTAssertNotNil(stack.backgroundContext.persistentStoreCoordinator)
     }
+
 }
-#endif

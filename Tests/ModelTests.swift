@@ -22,7 +22,7 @@ import ExampleModel
 import XCTest
 
 // swiftlint:disable force_try
-#if !os(macOS)
+
 final class ModelTests: XCTestCase {
 
     override func setUp() {
@@ -225,5 +225,5 @@ final class ModelTests: XCTestCase {
         XCTAssertTrue(success, "Removing store should be ignored")
     }
 }
-#endif
+
 // swiftlint:enable force_try

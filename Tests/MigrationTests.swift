@@ -23,6 +23,7 @@ import XCTest
 
 // swiftlint:disable force_try
 
+#if !os(macOS)
 final class MigrationTests: TestCase {
 
     let model = CoreDataModel(name: modelName, bundle: modelBundle, storeType: .sqlite(CoreDataModel.defaultDirectoryURL()))
@@ -239,5 +240,6 @@ final class MigrationTests: TestCase {
         return result
     }
 }
+#endif
 
 // swiftlint:enable force_try

@@ -22,7 +22,7 @@ import ExampleModel
 import XCTest
 
 // swiftlint:disable force_try
-
+#if !os(macOS)
 final class StackTests: XCTestCase {
 
     override func tearDown() {
@@ -118,5 +118,5 @@ final class StackTests: XCTestCase {
         print(stack)
     }
 }
-
+#endif
 // swiftlint:enable force_try

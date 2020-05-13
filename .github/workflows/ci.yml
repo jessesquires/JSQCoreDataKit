@@ -23,21 +23,16 @@ env:
 
   EXAMPLE_PROJECT: Example/ExampleApp.xcodeproj
   EXAMPLE_SCHEME: ExampleApp
-  EXAMPLE_DEST: "OS=13.4.1,name=iPhone 11"
+
+  IOS_DEST: "OS=13.4.1,name=iPhone 11"
+  TVOS_DEST: "OS=13.4,name=Apple TV"
+  WATCHOS_DEST: "OS=6.2,name=Apple Watch Series 5 - 44mm"
+  MACOS_DEST: "arch=x86_64"
 
 jobs:
   job-iOS:
     name: iOS Test
     runs-on: macOS-latest
-    strategy:
-      fail-fast: false
-      matrix:
-        destination: [
-          "OS=11.1,name=iPhone X",
-          "OS=12.0,name=iPhone XS",
-          "OS=13.4.1,name=iPhone 11"
-        ]
-
     steps:
       - name: git checkout
         uses: actions/checkout@v1
@@ -50,12 +45,6 @@ jobs:
           xcrun simctl delete unavailable
           xcrun simctl list
 
-      - name: install simulators
-        run: |
-          gem install xcode-install
-          xcversion simulators --install='iOS 11.1'
-          xcversion simulators --install='iOS 12.0'
-
       - name: unit tests
         run: |
           set -o pipefail
@@ -63,17 +52,12 @@ jobs:
               -project "$PROJECT" \
               -scheme "$SCHEME" \
               -sdk "$IOS_SDK" \
-              -destination "${{ matrix.destination }}" \
+              -destination "$IOS_DEST" \
               ONLY_ACTIVE_ARCH=NO CODE_SIGNING_REQUIRED=NO | xcpretty -c
 
   job-tvOS:
     name: tvOS Test
     runs-on: macOS-latest
-    strategy:
-      fail-fast: false
-      matrix:
-        destination: ["OS=13.4,name=Apple TV"]
-
     steps:
       - name: git checkout
         uses: actions/checkout@v1
@@ -85,17 +69,12 @@ jobs:
               -project "$PROJECT" \
               -scheme "$SCHEME" \
               -sdk "$TVOS_SDK" \
-              -destination "${{ matrix.destination }}" \
+              -destination "$TVOS_DEST" \
               ONLY_ACTIVE_ARCH=NO CODE_SIGNING_REQUIRED=NO | xcpretty -c
 
   job-watchOS:
     name: watchOS Build
     runs-on: macOS-latest
-    strategy:
-      fail-fast: false
-      matrix:
-        destination: ["OS=6.2,name=Apple Watch Series 5 - 44mm"]
-
     steps:
       - name: git checkout
         uses: actions/checkout@v1
@@ -107,24 +86,25 @@ jobs:
               -project "$PROJECT" \
               -scheme "$SCHEME" \
               -sdk "$WATCHOS_SDK" \
-              -destination "${{ matrix.destination }}" \
+              -destination "$WATCHOS_DEST" \
               ONLY_ACTIVE_ARCH=NO CODE_SIGNING_REQUIRED=NO | xcpretty -c
 
+  # for some reason, macOS unit tests hang on GH-actions, so build-only for now
   job-macOS:
-    name: macOS Test
+    name: macOS Build
     runs-on: macOS-latest
     steps:
       - name: git checkout
         uses: actions/checkout@v1
 
-      - name: unit tests
+      - name: build
         run: |
           set -o pipefail
-          xcodebuild clean test \
+          xcodebuild clean build \
               -project "$PROJECT" \
               -scheme "$SCHEME" \
               -sdk "$MACOS_SDK" \
-              -destination "arch=x86_64" \
+              -destination "$MACOS_DEST" \
               ONLY_ACTIVE_ARCH=NO CODE_SIGNING_REQUIRED=NO | xcpretty -c
 
   job-example-proj:
@@ -141,5 +121,5 @@ jobs:
               -project "$EXAMPLE_PROJECT" \
               -scheme "$EXAMPLE_SCHEME" \
               -sdk "$IOS_SDK" \
-              -destination "$EXAMPLE_DEST" \
+              -destination "$IOS_DEST" \
               ONLY_ACTIVE_ARCH=NO CODE_SIGNING_REQUIRED=NO | xcpretty -c

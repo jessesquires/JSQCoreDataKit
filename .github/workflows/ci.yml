@@ -89,7 +89,7 @@ jobs:
               -destination "$WATCHOS_DEST" \
               ONLY_ACTIVE_ARCH=NO CODE_SIGNING_REQUIRED=NO | xcpretty -c
 
-  # for some reason, unit tests hang on GH-actions
+  # for some reason, macOS unit tests hang on GH-actions, so build-only for now
   job-macOS:
     name: macOS Build
     runs-on: macOS-latest

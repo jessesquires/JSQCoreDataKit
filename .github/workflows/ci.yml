@@ -11,9 +11,9 @@ on:
       - develop
 
 env:
-  DEVELOPER_DIR: /Applications/Xcode_11.4.1.app/Contents/Developer
+  DEVELOPER_DIR: /Applications/Xcode_11.5.app/Contents/Developer
 
-  IOS_SDK: iphonesimulator13.4
+  IOS_SDK: iphonesimulator13.5
   TVOS_SDK: appletvsimulator13.4
   WATCHOS_SDK: watchsimulator6.2
   MACOS_SDK: macosx10.15
@@ -24,9 +24,9 @@ env:
   EXAMPLE_PROJECT: Example/ExampleApp.xcodeproj
   EXAMPLE_SCHEME: ExampleApp
 
-  IOS_DEST: "OS=13.4.1,name=iPhone 11"
+  IOS_DEST: "OS=13.5,name=iPhone 11"
   TVOS_DEST: "OS=13.4,name=Apple TV"
-  WATCHOS_DEST: "OS=6.2,name=Apple Watch Series 5 - 44mm"
+  WATCHOS_DEST: "OS=6.2.1,name=Apple Watch Series 5 - 44mm"
   MACOS_DEST: "arch=x86_64"
 
 jobs:

@@ -25,8 +25,8 @@ This library aims to do the following:
 
 ## Requirements
 
-* Xcode 11.4+
-* Swift 5.2+
+* Xcode 12.0+
+* Swift 5.3+
 * iOS 11.0+
 * macOS 10.12+
 * tvOS 11.0+
@@ -38,7 +38,7 @@ This library aims to do the following:
 ### [CocoaPods](http://cocoapods.org)
 
 ````ruby
-pod 'JSQCoreDataKit', '~> 9.0.2'
+pod 'JSQCoreDataKit', '~> 9.0.0'
 
 # develop branch
 pod 'JSQCoreDataKit', :git => 'https://github.com/jessesquires/JSQCoreDataKit.git', :branch => 'develop'
@@ -50,7 +50,7 @@ Add `JSQCoreDataKit` to the `dependencies` value of your `Package.swift`.
 
 ```swift
 dependencies: [
-    .package(url: "https://github.com/jessesquires/JSQCoreDataKit.git", from: "9.0.2")
+    .package(url: "https://github.com/jessesquires/JSQCoreDataKit.git", from: "9.0.0")
 ]
 ```
 
@@ -70,7 +70,6 @@ Interested in making contributions to this project? Please review the guides bel
 - [Security Policy](https://github.com/jessesquires/.github/blob/master/SECURITY.md)
 
 Also, consider [sponsoring this project](https://www.jessesquires.com/sponsor/) or [buying my apps](https://www.hexedbits.com)! ✌️
-
 
 ## Credits
 

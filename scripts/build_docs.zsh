@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/zsh
 
 #  Created by Jesse Squires
 #  https://www.jessesquires.com
@@ -9,7 +9,7 @@
 #  https://github.com/realm/jazzy/releases/latest
 #  ------------------------------
 
-VERSION="0.13.3"
+VERSION="0.13.5"
 
 FOUND=$(jazzy --version)
 LINK="https://github.com/realm/jazzy"

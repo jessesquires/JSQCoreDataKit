@@ -301,8 +301,8 @@
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/scripts/lint.sh\"\n";
+			shellPath = /bin/zsh;
+			shellScript = "\"${SRCROOT}/scripts/lint.zsh\"\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 

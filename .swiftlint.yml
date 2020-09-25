@@ -3,6 +3,7 @@ excluded:
   - docs
   - build
   - scripts
+  - swiftpm
 
 disabled_rules:
   # metrics

@@ -11,7 +11,8 @@ on:
       - develop
 
 env:
-  DEVELOPER_DIR: /Applications/Xcode_11.5.app/Contents/Developer
+  # https://github.com/actions/virtual-environments/tree/main/images/macos
+  DEVELOPER_DIR: /Applications/Xcode_12.app/Contents/Developer
 
 jobs:
   job-pod-lint:

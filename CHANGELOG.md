@@ -9,6 +9,13 @@ NEXT
 
 > TBD
 
+9.0.3
+-----
+
+This release closes the [9.0.3 milestone](https://github.com/jessesquires/JSQCoreDataKit/milestone/20?closed=1).
+
+- Upgraded to Xcode 12 and Swift 5.3
+
 9.0.2
 -----
 

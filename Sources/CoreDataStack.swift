@@ -84,11 +84,6 @@ public final class CoreDataStack {
                                        object: backgroundContext)
     }
 
-    /// :nodoc:
-    deinit {
-        NotificationCenter.default.removeObserver(self)
-    }
-
     // MARK: Child contexts
 
     /**

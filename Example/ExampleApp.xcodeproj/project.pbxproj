@@ -15,9 +15,9 @@
 		88B9F8C91BCA0A510053CD6D /* EmployeeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88B9F8C81BCA0A510053CD6D /* EmployeeViewController.swift */; };
 		88C9CA04244E65F7001B9BFA /* ExampleAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88C9CA03244E65F7001B9BFA /* ExampleAppUITests.swift */; };
 		88C9CA05244E6775001B9BFA /* ExampleModel.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8873E2A01C51E32600DFE009 /* ExampleModel.framework */; };
-		88C9CA06244E6775001B9BFA /* ExampleModel.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 8873E2A01C51E32600DFE009 /* ExampleModel.framework */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		88C9CA06244E6775001B9BFA /* ExampleModel.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 8873E2A01C51E32600DFE009 /* ExampleModel.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		88C9CA07244E6777001B9BFA /* JSQCoreDataKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8873E2AE1C51E33100DFE009 /* JSQCoreDataKit.framework */; };
-		88C9CA08244E6777001B9BFA /* JSQCoreDataKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 8873E2AE1C51E33100DFE009 /* JSQCoreDataKit.framework */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		88C9CA08244E6777001B9BFA /* JSQCoreDataKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 8873E2AE1C51E33100DFE009 /* JSQCoreDataKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -156,7 +156,7 @@
 			isa = PBXGroup;
 			children = (
 				8873E2AE1C51E33100DFE009 /* JSQCoreDataKit.framework */,
-				8873E2B01C51E33100DFE009 /* JSQCoreDataKit-Tests.xctest */,
+				8873E2B01C51E33100DFE009 /* JSQCoreDataKitTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -216,7 +216,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1140;
-				LastUpgradeCheck = 1100;
+				LastUpgradeCheck = 1200;
 				ORGANIZATIONNAME = "Hexed Bits";
 				TargetAttributes = {
 					8853941C1BC9E9DE00699506 = {
@@ -276,10 +276,10 @@
 			remoteRef = 8873E2AD1C51E33100DFE009 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		8873E2B01C51E33100DFE009 /* JSQCoreDataKit-Tests.xctest */ = {
+		8873E2B01C51E33100DFE009 /* JSQCoreDataKitTests.xctest */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.cfbundle;
-			path = "JSQCoreDataKit-Tests.xctest";
+			path = JSQCoreDataKitTests.xctest;
 			remoteRef = 8873E2AF1C51E33100DFE009 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
@@ -377,6 +377,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -401,7 +402,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -434,6 +435,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -452,7 +454,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_VERSION = 5.0;

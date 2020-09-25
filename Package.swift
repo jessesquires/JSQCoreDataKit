@@ -1,4 +1,4 @@
-// swift-tools-version:5.2
+// swift-tools-version:5.3
 // The swift-tools-version declares the minimum version
 // of Swift required to build this package.
 // ----------------------------------------------------
@@ -29,7 +29,7 @@ let package = Package(
         .library(name: "JSQCoreDataKit", targets: ["JSQCoreDataKit"])
     ],
     targets: [
-        .target(name: "JSQCoreDataKit", path: "Sources")
+        .target(name: "JSQCoreDataKit", path: "Sources", exclude: ["Info.plist"])
 
         // Unfortunately, we cannot include tests right now.
         // The test target depends on a fixture project, `ExampleModel`.

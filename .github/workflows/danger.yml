@@ -12,7 +12,7 @@ jobs:
     runs-on: macOS-latest
     steps:
       - name: git checkout
-        uses: actions/checkout@v1
+        uses: actions/checkout@v2
 
       - name: ruby versions
         run: |
@@ -21,7 +21,7 @@ jobs:
           bundler --version
 
       - name: cache gems
-        uses: actions/cache@v1
+        uses: actions/cache@v2
         with:
           path: vendor/bundle
           key: ${{ runner.os }}-gem-${{ hashFiles('**/Gemfile.lock') }}

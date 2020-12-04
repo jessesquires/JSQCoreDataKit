@@ -22,6 +22,7 @@ final class ExampleAppUITests: XCTestCase {
 
     override func setUpWithError() throws {
         continueAfterFailure = false
+        try super.setUpWithError()
     }
 
     func testExample() throws {

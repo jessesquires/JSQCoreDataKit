@@ -12,12 +12,12 @@ on:
 
 env:
   # https://github.com/actions/virtual-environments/tree/main/images/macos
-  DEVELOPER_DIR: /Applications/Xcode_12.app/Contents/Developer
+  DEVELOPER_DIR: /Applications/Xcode_12.2.app/Contents/Developer
 
-  IOS_SDK: iphonesimulator14.0
-  TVOS_SDK: appletvsimulator14.0
-  WATCHOS_SDK: watchsimulator7.0
-  MACOS_SDK: macosx10.15
+  IOS_SDK: iphonesimulator14.2
+  TVOS_SDK: appletvsimulator14.2
+  WATCHOS_SDK: watchsimulator7.1
+  MACOS_SDK: macosx11.0
 
   PROJECT: JSQCoreDataKit.xcodeproj
   SCHEME: JSQCoreDataKit
@@ -25,14 +25,14 @@ env:
   EXAMPLE_PROJECT: Example/ExampleApp.xcodeproj
   EXAMPLE_SCHEME: ExampleApp
 
-  IOS_DEST: "OS=14.0,name=iPhone 11"
-  TVOS_DEST: "OS=14.0,name=Apple TV"
-  WATCHOS_DEST: "OS=7.0,name=Apple Watch Series 6 - 44mm"
+  IOS_DEST: "OS=14.2,name=iPhone 12 Mini"
+  TVOS_DEST: "OS=14.2,name=Apple TV"
+  WATCHOS_DEST: "OS=7.1,name=Apple Watch Series 6 - 44mm"
   MACOS_DEST: "arch=x86_64"
 
 jobs:
   job-iOS:
-    name: iOS Test
+    name: iOS test
     runs-on: macOS-latest
     steps:
       - name: git checkout
@@ -57,7 +57,7 @@ jobs:
               ONLY_ACTIVE_ARCH=NO CODE_SIGNING_REQUIRED=NO | xcpretty -c
 
   job-tvOS:
-    name: tvOS Test
+    name: tvOS test
     runs-on: macOS-latest
     steps:
       - name: git checkout
@@ -74,7 +74,7 @@ jobs:
               ONLY_ACTIVE_ARCH=NO CODE_SIGNING_REQUIRED=NO | xcpretty -c
 
   job-watchOS:
-    name: watchOS Build
+    name: watchOS build
     runs-on: macOS-latest
     steps:
       - name: git checkout
@@ -90,15 +90,15 @@ jobs:
               -destination "$WATCHOS_DEST" \
               ONLY_ACTIVE_ARCH=NO CODE_SIGNING_REQUIRED=NO | xcpretty -c
 
-  # for some reason, macOS unit tests hang on GH-actions, so build-only for now
   job-macOS:
-    name: macOS Build
+    name: macOS test
     runs-on: macOS-latest
     steps:
       - name: git checkout
         uses: actions/checkout@v2
 
-      - name: build
+      # for some reason, macOS unit tests hang on GH-actions, so build-only for now
+      - name: build #unit tests
         run: |
           set -o pipefail
           xcodebuild clean build \

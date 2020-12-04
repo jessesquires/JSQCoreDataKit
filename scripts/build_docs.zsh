@@ -8,8 +8,9 @@
 #  Docs by jazzy
 #  https://github.com/realm/jazzy/releases/latest
 #  ------------------------------
+#  Generates documentation using jazzy and checks for installation.
 
-VERSION="0.13.5"
+VERSION="0.13.6"
 
 FOUND=$(jazzy --version)
 LINK="https://github.com/realm/jazzy"

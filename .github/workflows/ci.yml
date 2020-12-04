@@ -16,8 +16,8 @@ env:
 
   IOS_SDK: iphonesimulator14.2
   TVOS_SDK: appletvsimulator14.2
-  WATCHOS_SDK: watchsimulator7.0
-  MACOS_SDK: macosx10.15
+  WATCHOS_SDK: watchsimulator7.1
+  MACOS_SDK: macosx11.0
 
   PROJECT: JSQCoreDataKit.xcodeproj
   SCHEME: JSQCoreDataKit
@@ -27,7 +27,7 @@ env:
 
   IOS_DEST: "OS=14.2,name=iPhone 12 Mini"
   TVOS_DEST: "OS=14.2,name=Apple TV"
-  WATCHOS_DEST: "OS=7.0,name=Apple Watch Series 6 - 44mm"
+  WATCHOS_DEST: "OS=7.1,name=Apple Watch Series 6 - 44mm"
   MACOS_DEST: "arch=x86_64"
 
 jobs:

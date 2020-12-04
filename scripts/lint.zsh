@@ -8,8 +8,9 @@
 #  SwiftLint
 #  https://github.com/realm/SwiftLint/releases/latest
 #  ------------------------------
+#  Runs SwiftLint and checks for installation.
 
-VERSION="0.40.3"
+VERSION="0.41.0"
 
 FOUND=$(swiftlint version)
 LINK="https://github.com/realm/SwiftLint"

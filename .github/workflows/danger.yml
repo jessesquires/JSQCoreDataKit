@@ -4,7 +4,7 @@ on: pull_request
 
 env:
   # https://github.com/actions/virtual-environments/tree/main/images/macos
-  DEVELOPER_DIR: /Applications/Xcode_12.2.app/Contents/Developer
+  DEVELOPER_DIR: /Applications/Xcode_12.3.app/Contents/Developer
 
 jobs:
   job-danger:

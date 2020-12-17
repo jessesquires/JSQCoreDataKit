@@ -42,4 +42,4 @@ jobs:
           bundle install --without=documentation --jobs 4 --retry 3
 
       - name: pod lint
-        run: bundle exec pod lib lint --alow-warnings
+        run: bundle exec pod lib lint --allow-warnings

@@ -12,7 +12,7 @@ on:
 
 env:
   # https://github.com/actions/virtual-environments/tree/main/images/macos
-  DEVELOPER_DIR: /Applications/Xcode_12.2.app/Contents/Developer
+  DEVELOPER_DIR: /Applications/Xcode_12.3.app/Contents/Developer
 
 jobs:
   job-pod-lint:
@@ -42,4 +42,4 @@ jobs:
           bundle install --without=documentation --jobs 4 --retry 3
 
       - name: pod lint
-        run: bundle exec pod lib lint
+        run: bundle exec pod lib lint --allow-warnings

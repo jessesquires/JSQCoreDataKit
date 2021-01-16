@@ -1,0 +1,50 @@
+name: Generate Documentation
+
+on:
+  - workflow_dispatch
+
+jobs:
+  main:
+    name: create docs pr
+    runs-on: macOS-latest
+    steps:
+      - name: git checkout
+        uses: actions/checkout@v2
+
+#       - name: ruby versions
+#         run: |
+#           ruby --version
+#           gem --version
+#           bundler --version
+# 
+#       - name: cache gems
+#         uses: actions/cache@v2
+#         with:
+#           path: vendor/bundle
+#           key: ${{ runner.os }}-gem-${{ hashFiles('**/Gemfile.lock') }}
+#           restore-keys: |
+#             ${{ runner.os }}-gem-
+# 
+#       - name: bundle install
+#         run: |
+#           bundle config path vendor/bundle
+#           bundle install --jobs 4 --retry 3
+
+      - name: install jazzy
+        run: gem install jazzy --no-document
+  
+      - name: generate docs
+        run: ./scripts/build_docs.zsh
+
+      - name: create pull request
+        uses: peter-evans/create-pull-request@v3
+        with:
+          commit-message: "[automated] generate docs"
+          title: "[automated] generate docs"
+          body: Documentation automatically generated via GitHub Actions.
+          branch: automated/docs
+          delete-branch: true
+          labels: documentation
+          assignees: ${{ github.actor }}
+          reviewers: ${{ github.actor }}
+          draft: false

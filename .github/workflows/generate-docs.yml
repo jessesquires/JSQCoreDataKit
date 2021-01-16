@@ -1,0 +1,31 @@
+name: Generate Documentation
+
+on:
+  - workflow_dispatch
+
+jobs:
+  main:
+    name: create docs pr
+    runs-on: macOS-latest
+    steps:
+      - name: git checkout
+        uses: actions/checkout@v2
+
+      - name: install jazzy
+        run: gem install jazzy --no-document
+  
+      - name: generate docs
+        run: ./scripts/build_docs.zsh
+
+      - name: create pull request
+        uses: peter-evans/create-pull-request@v3
+        with:
+          commit-message: "[automated] generate docs"
+          title: "[automated] generate docs"
+          body: Documentation automatically generated via GitHub Actions.
+          branch: automated/gen-docs
+          delete-branch: true
+          labels: documentation
+          assignees: ${{ github.actor }}
+          reviewers: ${{ github.actor }}
+          draft: false

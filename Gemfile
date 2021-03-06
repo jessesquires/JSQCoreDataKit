@@ -7,9 +7,6 @@ gem 'cocoapods', '~> 1.10'
 # ------------
 gem 'danger'
 
-# github
-gem 'danger-auto_label'
-
 # general
 gem 'danger-todoist'
 gem 'danger-prose'

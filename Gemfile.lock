@@ -88,7 +88,7 @@ GEM
     escape (0.0.4)
     ethon (0.14.0)
       ffi (>= 1.15.0)
-    excon (0.81.0)
+    excon (0.82.0)
     faraday (1.4.1)
       faraday-excon (~> 1.1)
       faraday-net_http (~> 1.0)

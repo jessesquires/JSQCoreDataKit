@@ -1,15 +1,19 @@
+# GitHub Actions Virtual Environments
+# https://github.com/actions/virtual-environments/
+
 name: Danger
 
-on: pull_request
+on:
+  pull_request:
+    types: [synchronize, opened, reopened, labeled, unlabeled, edited]
 
 env:
-  # https://github.com/actions/virtual-environments/tree/main/images/macos
-  DEVELOPER_DIR: /Applications/Xcode_12.3.app/Contents/Developer
+  DEVELOPER_DIR: /Applications/Xcode_12.5.app/Contents/Developer
 
 jobs:
-  job-danger:
+  main:
     name: Review, Lint, Verify
-    runs-on: macOS-latest
+    runs-on: macOS-11
     steps:
       - name: git checkout
         uses: actions/checkout@v2
@@ -20,18 +24,16 @@ jobs:
           gem --version
           bundler --version
 
-      - name: cache gems
-        uses: actions/cache@v2
+      # https://github.com/ruby/setup-ruby
+      - name: ruby setup
+        uses: ruby/setup-ruby@v1
         with:
-          path: vendor/bundle
-          key: ${{ runner.os }}-gem-${{ hashFiles('**/Gemfile.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-gem-
+          ruby-version: 2.7
+          bundler-cache: true
 
-      - name: bundle install
+      # for danger prose-lint
+      - name: python setup
         run: |
-          bundle config path vendor/bundle
-          bundle install --without=documentation --jobs 4 --retry 3
           echo "/Users/runner/Library/Python/2.7/bin" >> $GITHUB_PATH
 
       - name: jazzy docs
@@ -40,4 +42,4 @@ jobs:
       - name: danger
         env:
           DANGER_GITHUB_API_TOKEN: ${{ secrets.DANGER_GITHUB_API_TOKEN }}
-        run: bundle exec danger
+        run: bundle exec danger --verbose

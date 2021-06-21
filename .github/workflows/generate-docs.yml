@@ -1,19 +1,25 @@
+# GitHub Actions Virtual Environments
+# https://github.com/actions/virtual-environments/
+
 name: Generate Documentation
 
 on:
   - workflow_dispatch
 
+env:
+  DEVELOPER_DIR: /Applications/Xcode_12.5.app/Contents/Developer
+
 jobs:
   main:
-    name: create docs pr
-    runs-on: macOS-latest
+    name: Create docs PR
+    runs-on: macOS-11
     steps:
       - name: git checkout
         uses: actions/checkout@v2
 
       - name: install jazzy
         run: gem install jazzy --no-document
-  
+
       - name: generate docs
         run: ./scripts/build_docs.zsh
 

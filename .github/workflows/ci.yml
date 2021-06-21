@@ -1,43 +1,54 @@
+# GitHub Actions Virtual Environments
+# https://github.com/actions/virtual-environments/
+
+# A template workflow intended for Apple Platform libraries
+
 name: CI
 
 on:
   push:
     branches:
-      - master
-      - develop
+      - main
+    paths:
+      - '.github/workflows/ci.yml'
+      - 'Sources/**/*.*'
+      - 'Tests/**/*.*'
+      - 'Example/**/*.*'
   pull_request:
     branches:
-      - master
-      - develop
+      - main
+    paths:
+      - '.github/workflows/ci.yml'
+      - 'Sources/**/*.*'
+      - 'Tests/**/*.*'
+      - 'Example/**/*.*'
 
 env:
-  # https://github.com/actions/virtual-environments/tree/main/images/macos
-  DEVELOPER_DIR: /Applications/Xcode_12.3.app/Contents/Developer
-
-  IOS_SDK: iphonesimulator14.3
-  TVOS_SDK: appletvsimulator14.3
-  WATCHOS_SDK: watchsimulator7.2
-  MACOS_SDK: macosx11.1
-
   PROJECT: JSQCoreDataKit.xcodeproj
   SCHEME: JSQCoreDataKit
 
   EXAMPLE_PROJECT: Example/ExampleApp.xcodeproj
   EXAMPLE_SCHEME: ExampleApp
 
-  IOS_DEST: "OS=14.3,name=iPhone 12 Mini"
-  TVOS_DEST: "OS=14.3,name=Apple TV"
-  WATCHOS_DEST: "OS=7.2,name=Apple Watch Series 6 - 44mm"
+  DEVELOPER_DIR: /Applications/Xcode_12.5.app/Contents/Developer
+
+  IOS_SDK: iphonesimulator14.5
+  IOS_DEST: "OS=14.5,name=iPhone 12 Mini"
+
+  TVOS_SDK: appletvsimulator14.5
+  TVOS_DEST: "OS=14.5,name=Apple TV"
+
+  WATCHOS_SDK: watchsimulator7.4
+  WATCHOS_DEST: "OS=7.4,name=Apple Watch Series 6 - 44mm"
+
+  MACOS_SDK: macosx11.3
   MACOS_DEST: "arch=x86_64"
 
 jobs:
-  job-iOS:
-    name: iOS test
-    runs-on: macOS-latest
+  env-details:
+    name: Environment details
+    runs-on: macOS-11
     steps:
-      - name: git checkout
-        uses: actions/checkout@v2
-
       - name: xcode version
         run: xcodebuild -version -sdk
 
@@ -45,6 +56,13 @@ jobs:
         run: |
           xcrun simctl delete unavailable
           xcrun simctl list
+
+  test-iOS:
+    name: iOS unit test
+    runs-on: macOS-11
+    steps:
+      - name: git checkout
+        uses: actions/checkout@v2
 
       - name: unit tests
         run: |
@@ -56,9 +74,9 @@ jobs:
               -destination "$IOS_DEST" \
               ONLY_ACTIVE_ARCH=NO CODE_SIGNING_REQUIRED=NO | xcpretty -c
 
-  job-tvOS:
-    name: tvOS test
-    runs-on: macOS-latest
+  test-tvOS:
+    name: tvOS unit test
+    runs-on: macOS-11
     steps:
       - name: git checkout
         uses: actions/checkout@v2
@@ -73,44 +91,43 @@ jobs:
               -destination "$TVOS_DEST" \
               ONLY_ACTIVE_ARCH=NO CODE_SIGNING_REQUIRED=NO | xcpretty -c
 
-  job-watchOS:
-    name: watchOS build
-    runs-on: macOS-latest
+  test-watchOS:
+    name: watchOS unit test
+    runs-on: macOS-11
     steps:
       - name: git checkout
         uses: actions/checkout@v2
 
-      - name: build
+      - name: test
         run: |
           set -o pipefail
-          xcodebuild clean build \
+          xcodebuild clean test \
               -project "$PROJECT" \
               -scheme "$SCHEME" \
               -sdk "$WATCHOS_SDK" \
               -destination "$WATCHOS_DEST" \
               ONLY_ACTIVE_ARCH=NO CODE_SIGNING_REQUIRED=NO | xcpretty -c
 
-  job-macOS:
-    name: macOS test
-    runs-on: macOS-latest
+  test-macOS:
+    name: macOS unit test
+    runs-on: macOS-11
     steps:
       - name: git checkout
         uses: actions/checkout@v2
 
-      # for some reason, macOS unit tests hang on GH-actions, so build-only for now
-      - name: build #unit tests
+      - name: unit tests
         run: |
           set -o pipefail
-          xcodebuild clean build \
+          xcodebuild clean test \
               -project "$PROJECT" \
               -scheme "$SCHEME" \
               -sdk "$MACOS_SDK" \
               -destination "$MACOS_DEST" \
               ONLY_ACTIVE_ARCH=NO CODE_SIGNING_REQUIRED=NO | xcpretty -c
 
-  job-example-proj:
-    name: Example Project Test
-    runs-on: macOS-latest
+  ui-test-iOS:
+    name: iOS UI test
+    runs-on: macOS-11
     steps:
       - name: git checkout
         uses: actions/checkout@v2

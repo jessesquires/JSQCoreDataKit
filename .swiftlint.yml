@@ -40,7 +40,6 @@ opt_in_rules:
   - unavailable_function
   - no_space_in_method_call
   - discouraged_assert
-  - file_name
   - file_name_no_space
 
   # style

@@ -24,10 +24,10 @@ if github.pr_body.length < 25
 end
 
 # -----------------------------------------------------------------------------
-# All pull requests should be submitted to dev/develop branch
+# All pull requests should be submitted to main branch
 # -----------------------------------------------------------------------------
-if github.branch_for_base != "dev" && github.branch_for_base != "develop"
-    warn("Pull requests should be submitted to the dev branch only.")
+if github.branch_for_base != "main"
+    warn("Pull requests should be submitted to the main branch only.")
 end
 
 # -----------------------------------------------------------------------------

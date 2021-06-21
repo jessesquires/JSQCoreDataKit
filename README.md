@@ -15,14 +15,6 @@ This library aims to do the following:
 * Aid in testing your Core Data models
 * Reduce the boilerplate involved with Core Data
 
-> **Further reading on Core Data:**
->
-> * [Core Data Programming Guide](https://developer.apple.com/library/mac/documentation/Cocoa/Conceptual/CoreData/cdProgrammingGuide.html)
-> * [Core Data Core Competencies Guide](https://developer.apple.com/library/ios/documentation/DataManagement/Devpedia-CoreData/coreDataStack.html#//apple_ref/doc/uid/TP40010398-CH25-SW1)
-> * [objc.io issue #4 on Core Data](https://www.objc.io/issue-4/)
-> * [Concurrent Core Data Stacks – Performance Shootout](http://floriankugler.com/2013/04/29/concurrent-core-data-stack-performance-shootout/)
-> * [Backstage with Nested Managed Object Contexts](http://floriankugler.com/2013/05/13/backstage-with-nested-managed-object-contexts/)
-
 ## Requirements
 
 * Xcode 12.0+
@@ -39,9 +31,6 @@ This library aims to do the following:
 
 ````ruby
 pod 'JSQCoreDataKit', '~> 9.0.0'
-
-# develop branch
-pod 'JSQCoreDataKit', :git => 'https://github.com/jessesquires/JSQCoreDataKit.git', :branch => 'develop'
 ````
 
 ### [Swift Package Manager](https://swift.org/package-manager/)
@@ -59,6 +48,14 @@ Alternatively, you can add the package [directly via Xcode](https://developer.ap
 ## Documentation
 
 You can read the [documentation here](https://jessesquires.github.io/JSQCoreDataKit). Generated with [jazzy](https://github.com/realm/jazzy). Hosted by [GitHub Pages](https://pages.github.com).
+
+## Additional Resources
+
+* [Core Data Programming Guide](https://developer.apple.com/library/mac/documentation/Cocoa/Conceptual/CoreData/cdProgrammingGuide.html)
+* [Core Data Core Competencies Guide](https://developer.apple.com/library/ios/documentation/DataManagement/Devpedia-CoreData/coreDataStack.html#//apple_ref/doc/uid/TP40010398-CH25-SW1)
+* [objc.io issue #4 on Core Data](https://www.objc.io/issue-4/)
+* [Concurrent Core Data Stacks – Performance Shootout](http://floriankugler.com/2013/04/29/concurrent-core-data-stack-performance-shootout/)
+* [Backstage with Nested Managed Object Contexts](http://floriankugler.com/2013/05/13/backstage-with-nested-managed-object-contexts/)
 
 ## Contributing
 

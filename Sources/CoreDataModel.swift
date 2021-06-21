@@ -42,7 +42,7 @@ public enum ModelFileExtension: String {
  An instance of `CoreDataModel` represents a Core Data model — a `.xcdatamodeld` file package.
  It provides the model and store URLs as well as methods for interacting with the store.
  */
-public struct CoreDataModel {
+public struct CoreDataModel: Equatable {
 
     // MARK: Properties
 
@@ -168,14 +168,5 @@ public struct CoreDataModel {
             let sharedMemoryfile = storePath + "-shm"
             _ = try? fileManager.removeItem(atPath: sharedMemoryfile)
         }
-    }
-}
-
-extension CoreDataModel: Equatable {
-    /// :nodoc:
-    public static func == (left: CoreDataModel, right: CoreDataModel) -> Bool {
-        left.name == right.name
-            && left.bundle.isEqual(right.bundle)
-            && left.storeType == right.storeType
     }
 }

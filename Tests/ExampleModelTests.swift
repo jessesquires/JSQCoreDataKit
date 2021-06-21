@@ -16,7 +16,6 @@
 //  Released under an MIT license: https://opensource.org/licenses/MIT
 //
 
-import CoreData
 import ExampleModel
 @testable import JSQCoreDataKit
 import XCTest
@@ -24,12 +23,12 @@ import XCTest
 final class ExampleModelTests: TestCase {
 
     func test_ThatEmployeeInsertsSuccessfully() {
-        let employee = Employee.newEmployee(inMemoryStack.mainContext)
+        let employee = Employee.newEmployee(self.inMemoryStack.mainContext)
         XCTAssertNotNil(employee)
     }
 
     func test_ThatCompanyInsertsSuccessfully() {
-        let company = Company.newCompany(inMemoryStack.mainContext)
+        let company = Company.newCompany(self.inMemoryStack.mainContext)
         XCTAssertNotNil(company)
     }
 }

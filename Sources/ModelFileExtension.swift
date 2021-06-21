@@ -14,9 +14,7 @@
 //  License
 //  Copyright © 2015-present Jesse Squires
 //  Released under an MIT license: https://opensource.org/licenses/MIT
-// 
-
-import Foundation
+//
 
 /**
  Describes a Core Data model file exention type based on the

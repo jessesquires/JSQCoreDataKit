@@ -17,7 +17,6 @@
 //
 
 import CoreData
-import Foundation
 
 /**
  An instance of `CoreDataStackProvider` is responsible for creating instances of `CoreDataStack`.
@@ -134,11 +133,11 @@ public struct CoreDataStackProvider {
     // MARK: Private
 
     private func _createStoreCoordinator() throws -> NSPersistentStoreCoordinator {
-        let storeCoordinator = NSPersistentStoreCoordinator(managedObjectModel: model.managedObjectModel)
-        try storeCoordinator.addPersistentStore(ofType: model.storeType.type,
+        let storeCoordinator = NSPersistentStoreCoordinator(managedObjectModel: self.model.managedObjectModel)
+        try storeCoordinator.addPersistentStore(ofType: self.model.storeType.type,
                                                 configurationName: nil,
-                                                at: model.storeURL,
-                                                options: options)
+                                                at: self.model.storeURL,
+                                                options: self.options)
         return storeCoordinator
     }
 

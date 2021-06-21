@@ -17,7 +17,6 @@
 //
 
 import CoreData
-import ExampleModel
 @testable import JSQCoreDataKit
 import XCTest
 
@@ -26,15 +25,15 @@ final class StoreTypeTests: XCTestCase {
     let url = CoreDataModel.defaultDirectoryURL()
 
     func test_StoreType_SQLite() {
-        let store = StoreType.sqlite(url)
+        let store = StoreType.sqlite(self.url)
         XCTAssertEqual(store.type, NSSQLiteStoreType)
-        XCTAssertEqual(store.storeDirectory(), url)
+        XCTAssertEqual(store.storeDirectory(), self.url)
     }
 
     func test_StoreType_Binary() {
-        let store = StoreType.binary(url)
+        let store = StoreType.binary(self.url)
         XCTAssertEqual(store.type, NSBinaryStoreType)
-        XCTAssertEqual(store.storeDirectory(), url)
+        XCTAssertEqual(store.storeDirectory(), self.url)
     }
 
     func test_StoreType_InMemory() {
@@ -44,8 +43,8 @@ final class StoreTypeTests: XCTestCase {
     }
 
     func test_StoreType_Equality() {
-        let sqlite = StoreType.sqlite(url)
-        let binary = StoreType.binary(url)
+        let sqlite = StoreType.sqlite(self.url)
+        let binary = StoreType.binary(self.url)
         let memory = StoreType.inMemory
 
         XCTAssertNotEqual(sqlite, binary)
@@ -54,8 +53,8 @@ final class StoreTypeTests: XCTestCase {
     }
 
     func test_StoreType_Equality_SQLite() {
-        let sqlite1 = StoreType.sqlite(url)
-        let sqlite2 = StoreType.sqlite(url)
+        let sqlite1 = StoreType.sqlite(self.url)
+        let sqlite2 = StoreType.sqlite(self.url)
         XCTAssertEqual(sqlite1, sqlite2)
 
         let sqlite3 = StoreType.sqlite(URL(fileURLWithPath: NSTemporaryDirectory()))
@@ -63,8 +62,8 @@ final class StoreTypeTests: XCTestCase {
     }
 
     func test_StoreType_Equality_Binary() {
-        let binary1 = StoreType.binary(url)
-        let binary2 = StoreType.binary(url)
+        let binary1 = StoreType.binary(self.url)
+        let binary2 = StoreType.binary(self.url)
         XCTAssertEqual(binary1, binary2)
 
         let binary3 = StoreType.binary(URL(fileURLWithPath: NSTemporaryDirectory()))

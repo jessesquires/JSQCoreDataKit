@@ -29,7 +29,7 @@ extension CoreDataStackProvider {
 
     func createStack() -> CoreDataStack.StackResult {
         var result: CoreDataStack.StackResult!
-        createStack(onQueue: nil) { result = $0 }
+        self.createStack(onQueue: nil) { result = $0 }
         return result
     }
 }
@@ -50,13 +50,13 @@ class TestCase: XCTestCase {
     override func setUp() {
         super.setUp()
 
-        let factory = CoreDataStackProvider(model: inMemoryModel)
+        let factory = CoreDataStackProvider(model: self.inMemoryModel)
         let result = factory.createStack()
-        inMemoryStack = try! result.get()
+        self.inMemoryStack = try! result.get()
     }
 
     override func tearDown() {
-        inMemoryStack = nil
+        self.inMemoryStack = nil
         super.tearDown()
     }
 
@@ -66,10 +66,10 @@ class TestCase: XCTestCase {
     func generateDataInContext(_ context: NSManagedObjectContext,
                                companiesCount: Int = Int.random(in: 0...10),
                                employeesCount: Int = Int.random(in: 0...1_000)) -> [Company] {
-        let companies = generateCompaniesInContext(context, count: companiesCount)
+        let companies = self.generateCompaniesInContext(context, count: companiesCount)
 
         companies.forEach { company in
-            generateEmployeesInContext(context, count: employeesCount, company: company)
+            self.generateEmployeesInContext(context, count: employeesCount, company: company)
         }
 
         return companies

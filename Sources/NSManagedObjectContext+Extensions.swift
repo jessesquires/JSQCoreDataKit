@@ -17,7 +17,6 @@
 //
 
 import CoreData
-import Foundation
 
 extension NSManagedObjectContext {
 
@@ -33,7 +32,7 @@ extension NSManagedObjectContext {
     ///
     /// - Parameter completion: The closure to be executed when the save operation completes.
     public func saveAsync(completion: ((SaveResult) -> Void)? = nil) {
-        _save(wait: false, completion: completion)
+        self._save(wait: false, completion: completion)
     }
 
     /// Attempts to **synchronously** commit unsaved changes to registered objects in the context.
@@ -42,7 +41,7 @@ extension NSManagedObjectContext {
     ///
     /// - Parameter completion: The closure to be executed when the save operation completes.
     public func saveSync(completion: ((SaveResult) -> Void)? = nil) {
-        _save(wait: true, completion: completion)
+        self._save(wait: true, completion: completion)
     }
 
     /// Attempts to commit unsaved changes to registered objects in the context.
@@ -60,6 +59,6 @@ extension NSManagedObjectContext {
                 completion?(.failure(error))
             }
         }
-        wait ? performAndWait(block) : perform(block)
+        wait ? self.performAndWait(block) : self.perform(block)
     }
 }

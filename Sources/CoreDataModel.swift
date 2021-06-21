@@ -44,13 +44,13 @@ public struct CoreDataModel: Equatable {
      - note: If the store is in-memory, then this value will be `nil`.
      */
     public var storeURL: URL? {
-        storeType.storeDirectory()?.appendingPathComponent(databaseFileName)
+        self.storeType.storeDirectory()?.appendingPathComponent(self.databaseFileName)
     }
 
     /// The file URL specifying the model file in the bundle specified by `bundle`.
     public var modelURL: URL {
-        guard let url = bundle.url(forResource: name, withExtension: ModelFileExtension.bundle.rawValue) else {
-            fatalError("*** Error loading model URL for model named \(name) in bundle: \(bundle)")
+        guard let url = self.bundle.url(forResource: self.name, withExtension: ModelFileExtension.bundle.rawValue) else {
+            fatalError("*** Error loading model URL for model named \(self.name) in bundle: \(self.bundle)")
         }
         return url
 
@@ -58,17 +58,17 @@ public struct CoreDataModel: Equatable {
 
     /// The database file name for the store.
     public var databaseFileName: String {
-        switch storeType {
-        case .sqlite: return name + "." + ModelFileExtension.sqlite.rawValue
-        default: return name
+        switch self.storeType {
+        case .sqlite: return self.name + "." + ModelFileExtension.sqlite.rawValue
+        default: return self.name
         }
 
     }
 
     /// The managed object model for the model specified by `name`.
     public var managedObjectModel: NSManagedObjectModel {
-        guard let model = NSManagedObjectModel(contentsOf: modelURL) else {
-            fatalError("*** Error loading managed object model at url: \(modelURL)")
+        guard let model = NSManagedObjectModel(contentsOf: self.modelURL) else {
+            fatalError("*** Error loading managed object model at url: \(self.modelURL)")
         }
         return model
 
@@ -81,12 +81,12 @@ public struct CoreDataModel: Equatable {
      - returns: `true` if the store requires a migration, `false` otherwise.
      */
     public var needsMigration: Bool {
-        guard let storeURL = storeURL else { return false }
+        guard let storeURL = self.storeURL else { return false }
         do {
-            let metadata = try NSPersistentStoreCoordinator.metadataForPersistentStore(ofType: storeType.type,
+            let metadata = try NSPersistentStoreCoordinator.metadataForPersistentStore(ofType: self.storeType.type,
                                                                                        at: storeURL,
                                                                                        options: nil)
-            return !managedObjectModel.isConfiguration(withName: nil, compatibleWithStoreMetadata: metadata)
+            return !self.managedObjectModel.isConfiguration(withName: nil, compatibleWithStoreMetadata: metadata)
         } catch {
             debugPrint("*** Error checking persistent store coordinator meta data: \(error)")
             return false
@@ -139,7 +139,7 @@ public struct CoreDataModel: Equatable {
      */
     public func removeExistingStore() throws {
         let fileManager = FileManager.default
-        if let storePath = storeURL?.path,
+        if let storePath = self.storeURL?.path,
            fileManager.fileExists(atPath: storePath) {
             try fileManager.removeItem(atPath: storePath)
 

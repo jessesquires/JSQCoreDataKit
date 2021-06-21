@@ -26,21 +26,21 @@ final class StoreTypeTests: XCTestCase {
     let url = CoreDataModel.defaultDirectoryURL()
 
     func test_StoreType_SQLite() {
-        let s = StoreType.sqlite(url)
-        XCTAssertEqual(s.type, NSSQLiteStoreType)
-        XCTAssertEqual(s.storeDirectory(), url)
+        let store = StoreType.sqlite(url)
+        XCTAssertEqual(store.type, NSSQLiteStoreType)
+        XCTAssertEqual(store.storeDirectory(), url)
     }
 
     func test_StoreType_Binary() {
-        let s = StoreType.binary(url)
-        XCTAssertEqual(s.type, NSBinaryStoreType)
-        XCTAssertEqual(s.storeDirectory(), url)
+        let store = StoreType.binary(url)
+        XCTAssertEqual(store.type, NSBinaryStoreType)
+        XCTAssertEqual(store.storeDirectory(), url)
     }
 
     func test_StoreType_InMemory() {
-        let s = StoreType.inMemory
-        XCTAssertEqual(s.type, NSInMemoryStoreType)
-        XCTAssertNil(s.storeDirectory())
+        let store = StoreType.inMemory
+        XCTAssertEqual(store.type, NSInMemoryStoreType)
+        XCTAssertNil(store.storeDirectory())
     }
 
     func test_StoreType_Equality() {

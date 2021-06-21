@@ -36,8 +36,8 @@ final class ResetStackTests: TestCase {
 
         // WHEN: we attempt to reset the stack
         inMemoryStack.reset { result in
-            if case .failure(let e) = result {
-                XCTFail("Error while resetting the stack: \(e)")
+            if case .failure(let error) = result {
+                XCTFail("Error while resetting the stack: \(error)")
             }
             expectation.fulfill()
         }
@@ -62,8 +62,8 @@ final class ResetStackTests: TestCase {
 
         // WHEN: we attempt to reset the stack
         inMemoryStack.reset { result in
-            if case .failure(let e) = result {
-                XCTFail("Error while resetting the stack: \(e)")
+            if case .failure(let error) = result {
+                XCTFail("Error while resetting the stack: \(error)")
             }
             expectation.fulfill()
         }
@@ -97,8 +97,8 @@ final class ResetStackTests: TestCase {
 
         // WHEN: we attempt to reset the stack
         stack.reset { result in
-            if case .failure(let e) = result {
-                XCTFail("Error while resetting the stack: \(e)")
+            if case .failure(let error) = result {
+                XCTFail("Error while resetting the stack: \(error)")
             }
             expectation.fulfill()
         }

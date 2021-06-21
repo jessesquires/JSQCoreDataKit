@@ -24,12 +24,12 @@ import XCTest
 final class ExampleModelTests: TestCase {
 
     func test_ThatEmployeeInsertsSuccessfully() {
-        let e = Employee.newEmployee(inMemoryStack.mainContext)
-        XCTAssertNotNil(e)
+        let employee = Employee.newEmployee(inMemoryStack.mainContext)
+        XCTAssertNotNil(employee)
     }
 
     func test_ThatCompanyInsertsSuccessfully() {
-        let c = Company.newCompany(inMemoryStack.mainContext)
-        XCTAssertNotNil(c)
+        let company = Company.newCompany(inMemoryStack.mainContext)
+        XCTAssertNotNil(company)
     }
 }

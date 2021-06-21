@@ -157,25 +157,25 @@ public struct CoreDataModel {
      - throws: If removing the store fails or errors, then this function throws an `NSError`.
      */
     public func removeExistingStore() throws {
-        let fm = FileManager.default
+        let fileManager = FileManager.default
         if let storePath = storeURL?.path,
-            fm.fileExists(atPath: storePath) {
-            try fm.removeItem(atPath: storePath)
+           fileManager.fileExists(atPath: storePath) {
+            try fileManager.removeItem(atPath: storePath)
 
             let writeAheadLog = storePath + "-wal"
-            _ = try? fm.removeItem(atPath: writeAheadLog)
+            _ = try? fileManager.removeItem(atPath: writeAheadLog)
 
             let sharedMemoryfile = storePath + "-shm"
-            _ = try? fm.removeItem(atPath: sharedMemoryfile)
+            _ = try? fileManager.removeItem(atPath: sharedMemoryfile)
         }
     }
 }
 
 extension CoreDataModel: Equatable {
     /// :nodoc:
-    public static func == (lhs: CoreDataModel, rhs: CoreDataModel) -> Bool {
-        lhs.name == rhs.name
-            && lhs.bundle.isEqual(rhs.bundle)
-            && lhs.storeType == rhs.storeType
+    public static func == (left: CoreDataModel, right: CoreDataModel) -> Bool {
+        left.name == right.name
+            && left.bundle.isEqual(right.bundle)
+            && left.storeType == right.storeType
     }
 }

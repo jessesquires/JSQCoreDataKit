@@ -29,9 +29,7 @@ extension CoreDataStackProvider {
 
     func createStack() -> CoreDataStack.StackResult {
         var result: CoreDataStack.StackResult!
-        createStack(onQueue: nil) { r in
-            result = r
-        }
+        createStack(onQueue: nil) { result = $0 }
         return result
     }
 }
@@ -70,8 +68,8 @@ class TestCase: XCTestCase {
                                employeesCount: Int = Int.random(in: 0...1_000)) -> [Company] {
         let companies = generateCompaniesInContext(context, count: companiesCount)
 
-        companies.forEach { c in
-            generateEmployeesInContext(context, count: employeesCount, company: c)
+        companies.forEach { company in
+            generateEmployeesInContext(context, count: employeesCount, company: company)
         }
 
         return companies
@@ -82,8 +80,8 @@ class TestCase: XCTestCase {
         var companies = [Company]()
 
         for _ in 0..<count {
-            let c = Company.newCompany(context)
-            companies.append(c)
+            let company = Company.newCompany(context)
+            companies.append(company)
         }
 
         return companies
@@ -94,8 +92,8 @@ class TestCase: XCTestCase {
         var employees = [Employee]()
 
         for _ in 0..<count {
-            let c = Employee.newEmployee(context, company: company)
-            employees.append(c)
+            let company = Employee.newEmployee(context, company: company)
+            employees.append(company)
         }
 
         return employees

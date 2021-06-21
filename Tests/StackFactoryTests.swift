@@ -55,12 +55,12 @@ final class StackFactoryTests: TestCase {
             XCTAssertTrue(Thread.isMainThread, "Factory completion handler should return on main thread")
 
             switch result {
-            case .success(let s):
-                stack = s
-                XCTAssertNotNil(s)
+            case .success(let stack):
+                stack = stack
+                XCTAssertNotNil(stack)
 
-            case .failure(let e):
-                XCTFail("Error: \(e)")
+            case .failure(let error):
+                XCTFail("Error: \(error)")
             }
 
             expectation.fulfill()

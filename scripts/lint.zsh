@@ -5,19 +5,17 @@
 #
 #  Copyright © 2020-present Jesse Squires
 #
-#  SwiftLint
-#  https://github.com/realm/SwiftLint/releases/latest
-#  ------------------------------
+#  SwiftLint: https://github.com/realm/SwiftLint/releases/latest
 #  Runs SwiftLint and checks for installation.
 
-VERSION="0.41.0"
+VERSION="0.43.1"
 
 FOUND=$(swiftlint version)
 LINK="https://github.com/realm/SwiftLint"
 INSTALL="brew install swiftlint"
 
 if which swiftlint >/dev/null; then
-    swiftlint lint --config ./.swiftlint.yml
+    swiftlint --fix --config ./.swiftlint.yml && swiftlint --config ./.swiftlint.yml
 else
     echo "
     Error: SwiftLint not installed!

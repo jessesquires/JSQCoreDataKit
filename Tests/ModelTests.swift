@@ -45,7 +45,7 @@ final class ModelTests: XCTestCase {
         XCTAssertEqual(model.databaseFileName, model.name + "." + ModelFileExtension.sqlite.rawValue)
 
         // THEN: the store file is in the correct directory
-        #if os(iOS) || os(macOS)
+        #if os(iOS) || os(macOS) || os(watchOS)
         let dir = "Documents"
         #elseif os(tvOS)
         let dir = "Caches"
@@ -60,7 +60,7 @@ final class ModelTests: XCTestCase {
         let modelURLComponents = model.modelURL.pathComponents
         XCTAssertEqual(String(modelURLComponents.last!), model.name + ".momd")
 
-        #if os(iOS) || os(tvOS)
+        #if os(iOS) || os(tvOS) || os(watchOS)
         let count = modelURLComponents.count - 2
         #elseif os(macOS)
         let count = modelURLComponents.count - 3
@@ -93,7 +93,7 @@ final class ModelTests: XCTestCase {
         let storeURLComponents = model.storeURL!.pathComponents
         XCTAssertEqual(String(storeURLComponents.last!), model.databaseFileName)
 
-        #if os(iOS) || os(tvOS)
+        #if os(iOS) || os(tvOS) || os(watchOS)
         let temp = "tmp"
         #elseif os(macOS)
         let temp = "T"
@@ -106,7 +106,7 @@ final class ModelTests: XCTestCase {
         let modelURLComponents = model.modelURL.pathComponents
         XCTAssertEqual(String(modelURLComponents.last!), model.name + ".momd")
 
-        #if os(iOS) || os(tvOS)
+        #if os(iOS) || os(tvOS) || os(watchOS)
         let count = modelURLComponents.count - 2
         #elseif os(macOS)
         let count = modelURLComponents.count - 3
@@ -142,7 +142,7 @@ final class ModelTests: XCTestCase {
         let modelURLComponents = model.modelURL.pathComponents
         XCTAssertEqual(String(modelURLComponents.last!), model.name + ".momd")
 
-        #if os(iOS) || os(tvOS)
+        #if os(iOS) || os(tvOS) || os(watchOS)
         let count = modelURLComponents.count - 2
         #elseif os(macOS)
         let count = modelURLComponents.count - 3

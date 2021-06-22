@@ -37,18 +37,18 @@ final class CoreDataEntityProtocolTests: TestCase {
         // WHEN: we ask for entity descriptions
         // THEN: we receive expected values
 
-        let companyEntity = Company.entity(context: inMemoryStack.mainContext)
+        let companyEntity = Company.entity(context: self.inMemoryStack.mainContext)
         XCTAssertEqual(companyEntity.name, "Company")
-        XCTAssertEqual(companyEntity.managedObjectModel, inMemoryModel.managedObjectModel)
+        XCTAssertEqual(companyEntity.managedObjectModel, self.inMemoryModel.managedObjectModel)
 
-        let employeeEntity = Employee.entity(context: inMemoryStack.mainContext)
+        let employeeEntity = Employee.entity(context: self.inMemoryStack.mainContext)
         XCTAssertEqual(employeeEntity.name, "Employee")
-        XCTAssertEqual(employeeEntity.managedObjectModel, inMemoryModel.managedObjectModel)
+        XCTAssertEqual(employeeEntity.managedObjectModel, self.inMemoryModel.managedObjectModel)
     }
 
     func test_thatManagedObjects_returnCorrect_fetchRequest_andFetchesFromContext() {
         // GIVEN: managed objects
-        let context = inMemoryStack.mainContext
+        let context = self.inMemoryStack.mainContext
         context.performAndWait {
             self.generateDataInContext(context, companiesCount: 2, employeesCount: 4)
         }

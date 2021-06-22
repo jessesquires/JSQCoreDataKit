@@ -1,23 +1,28 @@
-name: CocoaPods Lint
+# GitHub Actions Virtual Environments
+# https://github.com/actions/virtual-environments/
+
+name: Pod Lint
 
 on:
   push:
     branches:
-      - master
-      - develop
+      - main
   pull_request:
     branches:
-      - master
-      - develop
+      - main
+    paths:
+      - '.github/workflows/pod-lint.yml'
+      - '*.podspec'
+      - 'Gemfile*'
+      - 'Sources/**/*.*'
 
 env:
-  # https://github.com/actions/virtual-environments/tree/main/images/macos
-  DEVELOPER_DIR: /Applications/Xcode_12.3.app/Contents/Developer
+  DEVELOPER_DIR: /Applications/Xcode_12.5.app/Contents/Developer
 
 jobs:
-  job-pod-lint:
+  main:
     name: Pod Lint
-    runs-on: macOS-latest
+    runs-on: macOS-11
     steps:
       - name: git checkout
         uses: actions/checkout@v2
@@ -28,18 +33,12 @@ jobs:
           gem --version
           bundler --version
 
-      - name: cache gems
-        uses: actions/cache@v2
+      # https://github.com/ruby/setup-ruby
+      - name: ruby setup
+        uses: ruby/setup-ruby@v1
         with:
-          path: vendor/bundle
-          key: ${{ runner.os }}-gem-${{ hashFiles('**/Gemfile.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-gem-
-
-      - name: bundle install
-        run: |
-          bundle config path vendor/bundle
-          bundle install --without=documentation --jobs 4 --retry 3
+          ruby-version: 2.7
+          bundler-cache: true
 
       - name: pod lint
-        run: bundle exec pod lib lint --allow-warnings
+        run: bundle exec pod lib lint --verbose

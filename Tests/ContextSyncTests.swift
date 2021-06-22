@@ -25,9 +25,9 @@ import XCTest
 
 final class ContextSyncTests: TestCase {
 
-    func test_ThatUnsavedChangesFromChildContext_DoNotPropogate() {
+    func test_ThatUnsavedChangesFromChildContext_DoNotPropagate() {
         // GIVEN: objects in a child context
-        let childContext = inMemoryStack.childContext()
+        let childContext = self.inMemoryStack.childContext()
         childContext.performAndWait {
             self.generateDataInContext(childContext, companiesCount: 3, employeesCount: 3)
         }
@@ -36,7 +36,7 @@ final class ContextSyncTests: TestCase {
 
         // WHEN: we fetch the objects from the main context
         let request = Company.fetchRequest
-        let results = try? inMemoryStack.mainContext.fetch(request)
+        let results = try? self.inMemoryStack.mainContext.fetch(request)
 
         // THEN: the main context does not return any objects
         XCTAssertEqual(results?.count, 0, "Main context should return nothing")
@@ -44,7 +44,7 @@ final class ContextSyncTests: TestCase {
 
     func test_ThatChangesPropagate_FromMainContext_ToBackgroundContext() {
         // GIVEN: objects in the main context
-        let context = inMemoryStack.mainContext
+        let context = self.inMemoryStack.mainContext
         var companies = [Company]()
         context.performAndWait {
             companies = self.generateDataInContext(context, companiesCount: 3, employeesCount: 3)
@@ -52,19 +52,19 @@ final class ContextSyncTests: TestCase {
         let companyNames = companies.map { $0.name }
 
         // WHEN: we save the main context
-        expectation(forNotification: .NSManagedObjectContextDidSave, object: inMemoryStack.mainContext, handler: nil)
+        self.expectation(forNotification: .NSManagedObjectContextDidSave, object: self.inMemoryStack.mainContext, handler: nil)
 
-        inMemoryStack.mainContext.saveAsync { result in
+        self.inMemoryStack.mainContext.saveAsync { result in
             XCTAssertNotNil(try? result.get(), "Save should not error")
         }
 
-        waitForExpectations(timeout: defaultTimeout) { error in
+        self.waitForExpectations(timeout: defaultTimeout) { error in
             XCTAssertNil(error, "Expectation should not error")
         }
 
         // WHEN: we fetch the objects in the background context
         let request = Company.fetchRequest
-        let bgContext = inMemoryStack.backgroundContext
+        let bgContext = self.inMemoryStack.backgroundContext
         var results = [Company]()
         bgContext.performAndWait {
             results = try! bgContext.fetch(request)
@@ -79,7 +79,7 @@ final class ContextSyncTests: TestCase {
 
     func test_ThatChangesPropagate_FromBackgroundContext_ToMainContext() {
         // GIVEN: objects in the background context
-        let context = inMemoryStack.backgroundContext
+        let context = self.inMemoryStack.backgroundContext
         var companies = [Company]()
         context.performAndWait {
             companies = self.generateDataInContext(context, companiesCount: 3, employeesCount: 3)
@@ -87,19 +87,19 @@ final class ContextSyncTests: TestCase {
         let companyNames = companies.map { $0.name }
 
         // WHEN: we save the background context
-        expectation(forNotification: .NSManagedObjectContextDidSave, object: inMemoryStack.backgroundContext, handler: nil)
+        self.expectation(forNotification: .NSManagedObjectContextDidSave, object: self.inMemoryStack.backgroundContext, handler: nil)
 
-        inMemoryStack.backgroundContext.saveSync { result in
+        self.inMemoryStack.backgroundContext.saveSync { result in
             XCTAssertNotNil(try? result.get(), "Save should not error")
         }
 
-        waitForExpectations(timeout: defaultTimeout) { error in
+        self.waitForExpectations(timeout: defaultTimeout) { error in
             XCTAssertNil(error, "Expectation should not error")
         }
 
         // WHEN: we fetch the objects from the main context
         let request = NSFetchRequest<Company>(entityName: Company.entityName)
-        let results = try! inMemoryStack.mainContext.fetch(request)
+        let results = try! self.inMemoryStack.mainContext.fetch(request)
 
         // THEN: the main context returns the objects
         XCTAssertEqual(results.count, companies.count, "Main context should return the same objects")
@@ -110,7 +110,7 @@ final class ContextSyncTests: TestCase {
 
     func test_ThatChangesPropagate_FromChildContext_ToMainContext() {
         // GIVEN: objects in a child context
-        let childContext = inMemoryStack.childContext(concurrencyType: .mainQueueConcurrencyType)
+        let childContext = self.inMemoryStack.childContext(concurrencyType: .mainQueueConcurrencyType)
         var companies = [Company]()
         childContext.performAndWait {
             companies = self.generateDataInContext(childContext, companiesCount: 3, employeesCount: 3)
@@ -118,18 +118,18 @@ final class ContextSyncTests: TestCase {
         let companyNames = companies.map { $0.name }
 
         // WHEN: we save the child context
-        expectation(forNotification: .NSManagedObjectContextDidSave, object: childContext, handler: nil)
+        self.expectation(forNotification: .NSManagedObjectContextDidSave, object: childContext, handler: nil)
         childContext.saveAsync { result in
             XCTAssertNotNil(try? result.get(), "Save should not error")
         }
 
-        waitForExpectations(timeout: defaultTimeout) { error in
+        self.waitForExpectations(timeout: defaultTimeout) { error in
             XCTAssertNil(error, "Expectation should not error")
         }
 
         // WHEN: we fetch the objects from the main context
         let request = Company.fetchRequest
-        let context = inMemoryStack.mainContext
+        let context = self.inMemoryStack.mainContext
         var results = [Company]()
         context.performAndWait {
             results = try! context.fetch(request)
@@ -144,7 +144,7 @@ final class ContextSyncTests: TestCase {
 
     func test_ThatChangesPropagate_FromChildContext_ToBackgroundContext() {
         // GIVEN: objects in a child context
-        let childContext = inMemoryStack.childContext(concurrencyType: .privateQueueConcurrencyType)
+        let childContext = self.inMemoryStack.childContext(concurrencyType: .privateQueueConcurrencyType)
         var companies = [Company]()
         childContext.performAndWait {
             companies = self.generateDataInContext(childContext, companiesCount: 3, employeesCount: 3)
@@ -152,18 +152,18 @@ final class ContextSyncTests: TestCase {
         let companyNames = companies.map { $0.name }
 
         // WHEN: we save the child context
-        expectation(forNotification: .NSManagedObjectContextDidSave, object: childContext, handler: nil)
+        self.expectation(forNotification: .NSManagedObjectContextDidSave, object: childContext, handler: nil)
         childContext.saveSync { result in
             XCTAssertNotNil(try? result.get(), "Save should not error")
         }
 
-        waitForExpectations(timeout: defaultTimeout) { error in
+        self.waitForExpectations(timeout: defaultTimeout) { error in
             XCTAssertNil(error, "Expectation should not error")
         }
 
         // WHEN: we fetch the objects from the background context
         let request = Company.fetchRequest
-        let context = inMemoryStack.backgroundContext
+        let context = self.inMemoryStack.backgroundContext
         var results = [Company]()
         context.performAndWait {
             results = try! context.fetch(request)

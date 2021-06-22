@@ -7,7 +7,7 @@ The changelog for `JSQCoreDataKit`. Also see the [releases](https://github.com/j
 NEXT
 -----
 
-> TBD
+- Upgraded to Xcode 12.5 and Swift 5.4
 
 9.0.3
 -----

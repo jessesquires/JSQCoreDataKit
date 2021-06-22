@@ -75,11 +75,11 @@ public final class CoreDataStack {
 
         let notificationCenter = NotificationCenter.default
         notificationCenter.addObserver(self,
-                                       selector: #selector(_didReceiveMainContextDidSave(notification:)),
+                                       selector: #selector(self._didReceiveMainContextDidSave(notification:)),
                                        name: .NSManagedObjectContextDidSave,
                                        object: mainContext)
         notificationCenter.addObserver(self,
-                                       selector: #selector(_didReceiveBackgroundContextDidSave(notification:)),
+                                       selector: #selector(self._didReceiveBackgroundContextDidSave(notification:)),
                                        name: .NSManagedObjectContextDidSave,
                                        object: backgroundContext)
     }
@@ -108,10 +108,10 @@ public final class CoreDataStack {
 
         switch concurrencyType {
         case .mainQueueConcurrencyType:
-            childContext.parent = mainContext
+            childContext.parent = self.mainContext
 
         case .privateQueueConcurrencyType:
-            childContext.parent = backgroundContext
+            childContext.parent = self.backgroundContext
 
         case .confinementConcurrencyType:
             fatalError("*** Error: ConfinementConcurrencyType is not supported because it is deprecated.")
@@ -124,7 +124,7 @@ public final class CoreDataStack {
         }
 
         NotificationCenter.default.addObserver(self,
-                                               selector: #selector(_didReceiveChildContextDidSave(notification:)),
+                                               selector: #selector(self._didReceiveChildContextDidSave(notification:)),
                                                name: .NSManagedObjectContextDidSave,
                                                object: childContext)
         return childContext
@@ -146,10 +146,10 @@ public final class CoreDataStack {
     public func reset(onQueue queue: DispatchQueue = .global(qos: .userInitiated),
                       completion: @escaping (StackResult) -> Void) {
 
-        mainContext.performAndWait { self.mainContext.reset() }
-        backgroundContext.performAndWait { self.backgroundContext.reset() }
+        self.mainContext.performAndWait { self.mainContext.reset() }
+        self.backgroundContext.performAndWait { self.backgroundContext.reset() }
 
-        guard let store = storeCoordinator.persistentStores.first else {
+        guard let store = self.storeCoordinator.persistentStores.first else {
             DispatchQueue.main.async {
                 completion(.success(self))
             }
@@ -194,8 +194,8 @@ public final class CoreDataStack {
     private func _didReceiveChildContextDidSave(notification: Notification) {
         guard let context = notification.object as? NSManagedObjectContext else {
             assertionFailure("*** Error: \(notification.name) posted from object of type "
-                + String(describing: notification.object.self)
-                + ". Expected \(NSManagedObjectContext.self) instead.")
+                                + String(describing: notification.object.self)
+                                + ". Expected \(NSManagedObjectContext.self) instead.")
             return
         }
 
@@ -209,14 +209,14 @@ public final class CoreDataStack {
 
     @objc
     private func _didReceiveBackgroundContextDidSave(notification: Notification) {
-        mainContext.perform {
+        self.mainContext.perform {
             self.mainContext.mergeChanges(fromContextDidSave: notification)
         }
     }
 
     @objc
     private func _didReceiveMainContextDidSave(notification: Notification) {
-        backgroundContext.perform {
+        self.backgroundContext.perform {
             self.backgroundContext.mergeChanges(fromContextDidSave: notification)
         }
     }
@@ -232,6 +232,6 @@ extension CoreDataStack: Equatable {
 extension CoreDataStack: CustomStringConvertible {
     /// :nodoc:
     public var description: String {
-        "\(CoreDataStack.self)(model=\(model.name); mainContext=\(mainContext); backgroundContext=\(backgroundContext))"
+        "\(CoreDataStack.self)(model=\(self.model.name); mainContext=\(self.mainContext); backgroundContext=\(self.backgroundContext))"
     }
 }

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0B1AD67726812DB300F17925 /* ModelFileExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B1AD67626812DB300F17925 /* ModelFileExtension.swift */; };
 		297C7D2D1C710A1D008E516B /* MigrationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 297C7D2C1C710A1D008E516B /* MigrationTests.swift */; };
 		298F00F71C9C559100AEC77E /* Migrate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 298F00F61C9C559100AEC77E /* Migrate.swift */; };
 		881219C81B361EAF005E5AA7 /* JSQCoreDataKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88002D4F1AB8F546001787DB /* JSQCoreDataKit.framework */; };
@@ -16,7 +17,6 @@
 		8873E2291C51E09700DFE009 /* CoreDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8873E21F1C51E09700DFE009 /* CoreDataModel.swift */; };
 		8873E22B1C51E09700DFE009 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8873E2211C51E09700DFE009 /* CoreDataStack.swift */; };
 		8873E22C1C51E09700DFE009 /* CoreDataStackProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8873E2221C51E09700DFE009 /* CoreDataStackProvider.swift */; };
-		8873E22F1C51E09700DFE009 /* JSQCoreDataKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 8873E2251C51E09700DFE009 /* JSQCoreDataKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		8873E2301C51E09700DFE009 /* StoreType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8873E2261C51E09700DFE009 /* StoreType.swift */; };
 		8873E25C1C51E10100DFE009 /* ContextSyncTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8873E24D1C51E10100DFE009 /* ContextSyncTests.swift */; };
 		8873E25E1C51E10100DFE009 /* ExampleModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8873E24F1C51E10100DFE009 /* ExampleModelTests.swift */; };
@@ -55,6 +55,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0B1AD67626812DB300F17925 /* ModelFileExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelFileExtension.swift; sourceTree = "<group>"; };
 		297C7D2C1C710A1D008E516B /* MigrationTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MigrationTests.swift; sourceTree = "<group>"; };
 		298F00F61C9C559100AEC77E /* Migrate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Migrate.swift; sourceTree = "<group>"; };
 		88002D4F1AB8F546001787DB /* JSQCoreDataKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = JSQCoreDataKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -66,7 +67,6 @@
 		8873E2211C51E09700DFE009 /* CoreDataStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 		8873E2221C51E09700DFE009 /* CoreDataStackProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataStackProvider.swift; sourceTree = "<group>"; };
 		8873E2241C51E09700DFE009 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		8873E2251C51E09700DFE009 /* JSQCoreDataKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSQCoreDataKit.h; sourceTree = "<group>"; };
 		8873E2261C51E09700DFE009 /* StoreType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoreType.swift; sourceTree = "<group>"; };
 		8873E24D1C51E10100DFE009 /* ContextSyncTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContextSyncTests.swift; sourceTree = "<group>"; };
 		8873E24F1C51E10100DFE009 /* ExampleModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExampleModelTests.swift; sourceTree = "<group>"; };
@@ -124,10 +124,10 @@
 			children = (
 				8852A0CC1D459048006538B9 /* CoreDataEntityProtocol.swift */,
 				8873E21F1C51E09700DFE009 /* CoreDataModel.swift */,
+				0B1AD67626812DB300F17925 /* ModelFileExtension.swift */,
 				8873E2211C51E09700DFE009 /* CoreDataStack.swift */,
 				8873E2221C51E09700DFE009 /* CoreDataStackProvider.swift */,
 				8873E2241C51E09700DFE009 /* Info.plist */,
-				8873E2251C51E09700DFE009 /* JSQCoreDataKit.h */,
 				298F00F61C9C559100AEC77E /* Migrate.swift */,
 				8873E21E1C51E09700DFE009 /* NSManagedObjectContext+Extensions.swift */,
 				8873E2261C51E09700DFE009 /* StoreType.swift */,
@@ -170,7 +170,6 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8873E22F1C51E09700DFE009 /* JSQCoreDataKit.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -312,6 +311,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8873E22C1C51E09700DFE009 /* CoreDataStackProvider.swift in Sources */,
+				0B1AD67726812DB300F17925 /* ModelFileExtension.swift in Sources */,
 				8852A0CD1D459048006538B9 /* CoreDataEntityProtocol.swift in Sources */,
 				8873E2301C51E09700DFE009 /* StoreType.swift in Sources */,
 				8873E22B1C51E09700DFE009 /* CoreDataStack.swift in Sources */,

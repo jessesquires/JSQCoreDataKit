@@ -24,18 +24,18 @@ import XCTest
 final class StackFactoryTests: TestCase {
 
     override func setUp() {
-        cleanUp()
+        self.cleanUp()
         super.setUp()
     }
 
     override func tearDown() {
-        cleanUp()
+        self.cleanUp()
         super.tearDown()
     }
 
     func test_ThatStackFactory_InitializesSuccessFully() {
-        let factory = CoreDataStackProvider(model: inMemoryModel)
-        XCTAssertEqual(factory.model, inMemoryModel)
+        let factory = CoreDataStackProvider(model: self.inMemoryModel)
+        XCTAssertEqual(factory.model, self.inMemoryModel)
         XCTAssertTrue(factory.options?[NSMigratePersistentStoresAutomaticallyOption] as! Bool)
         XCTAssertTrue(factory.options?[NSInferMappingModelAutomaticallyOption] as! Bool)
     }
@@ -55,25 +55,25 @@ final class StackFactoryTests: TestCase {
             XCTAssertTrue(Thread.isMainThread, "Factory completion handler should return on main thread")
 
             switch result {
-            case .success(let s):
-                stack = s
-                XCTAssertNotNil(s)
+            case .success(let success):
+                stack = success
+                XCTAssertNotNil(stack)
 
-            case .failure(let e):
-                XCTFail("Error: \(e)")
+            case .failure(let error):
+                XCTFail("Error: \(error)")
             }
 
             expectation.fulfill()
         }
 
         // THEN: creating a stack succeeds
-        waitForExpectations(timeout: defaultTimeout) { error -> Void in
+        self.waitForExpectations(timeout: defaultTimeout) { error -> Void in
             XCTAssertNil(error, "Expectation should not error")
         }
 
         XCTAssertNotNil(stack)
 
-        validateStack(stack!, fromFactory: factory)
+        self.validateStack(stack!, fromFactory: factory)
     }
 
     func test_ThatStackFactory_CreatesStackSynchronously_Successfully() {
@@ -89,18 +89,18 @@ final class StackFactoryTests: TestCase {
 
         XCTAssertNotNil(stack)
 
-        validateStack(stack!, fromFactory: factory)
+        self.validateStack(stack!, fromFactory: factory)
     }
 
     func test_StackFactory_Equality() {
-        let factory1 = CoreDataStackProvider(model: inMemoryModel)
-        let factory2 = CoreDataStackProvider(model: inMemoryModel)
+        let factory1 = CoreDataStackProvider(model: self.inMemoryModel)
+        let factory2 = CoreDataStackProvider(model: self.inMemoryModel)
         XCTAssertEqual(factory1, factory2)
 
-        let factory3 = CoreDataStackProvider(model: inMemoryModel, options: nil)
+        let factory3 = CoreDataStackProvider(model: self.inMemoryModel, options: nil)
         XCTAssertEqual(factory1, factory3)
 
-        let factory4 = CoreDataStackProvider(model: inMemoryModel, options: nil)
+        let factory4 = CoreDataStackProvider(model: self.inMemoryModel, options: nil)
         XCTAssertEqual(factory3, factory4)
 
         let sqliteModel = CoreDataModel(name: modelName, bundle: modelBundle)

@@ -38,8 +38,8 @@ final class CompanyViewController: UITableViewController, NSFetchedResultsContro
 
         factory.createStack { result in
             switch result {
-            case .success(let s):
-                self.stack = s
+            case .success(let stack):
+                self.stack = stack
                 self.setupFRC()
 
             case .failure(let err):

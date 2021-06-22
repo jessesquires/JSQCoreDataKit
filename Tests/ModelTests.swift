@@ -16,7 +16,6 @@
 //  Released under an MIT license: https://opensource.org/licenses/MIT
 //
 
-import CoreData
 import ExampleModel
 @testable import JSQCoreDataKit
 import XCTest
@@ -46,10 +45,10 @@ final class ModelTests: XCTestCase {
         XCTAssertEqual(model.databaseFileName, model.name + "." + ModelFileExtension.sqlite.rawValue)
 
         // THEN: the store file is in the correct directory
-        #if os(iOS) || os(macOS)
-            let dir = "Documents"
+        #if os(iOS) || os(macOS) || os(watchOS)
+        let dir = "Documents"
         #elseif os(tvOS)
-            let dir = "Caches"
+        let dir = "Caches"
         #endif
 
         let storeURLComponents = model.storeURL!.pathComponents
@@ -61,10 +60,10 @@ final class ModelTests: XCTestCase {
         let modelURLComponents = model.modelURL.pathComponents
         XCTAssertEqual(String(modelURLComponents.last!), model.name + ".momd")
 
-        #if os(iOS) || os(tvOS)
-            let count = modelURLComponents.count - 2
+        #if os(iOS) || os(tvOS) || os(watchOS)
+        let count = modelURLComponents.count - 2
         #elseif os(macOS)
-            let count = modelURLComponents.count - 3
+        let count = modelURLComponents.count - 3
         #endif
 
         XCTAssertEqual(String(modelURLComponents[count]), NSString(string: model.bundle.bundlePath).lastPathComponent)
@@ -94,10 +93,10 @@ final class ModelTests: XCTestCase {
         let storeURLComponents = model.storeURL!.pathComponents
         XCTAssertEqual(String(storeURLComponents.last!), model.databaseFileName)
 
-        #if os(iOS) || os(tvOS)
-            let temp = "tmp"
+        #if os(iOS) || os(tvOS) || os(watchOS)
+        let temp = "tmp"
         #elseif os(macOS)
-            let temp = "T"
+        let temp = "T"
         #endif
 
         XCTAssertEqual(String(storeURLComponents[storeURLComponents.count - 2]), temp)
@@ -107,10 +106,10 @@ final class ModelTests: XCTestCase {
         let modelURLComponents = model.modelURL.pathComponents
         XCTAssertEqual(String(modelURLComponents.last!), model.name + ".momd")
 
-        #if os(iOS) || os(tvOS)
-            let count = modelURLComponents.count - 2
+        #if os(iOS) || os(tvOS) || os(watchOS)
+        let count = modelURLComponents.count - 2
         #elseif os(macOS)
-            let count = modelURLComponents.count - 3
+        let count = modelURLComponents.count - 3
         #endif
 
         XCTAssertEqual(String(modelURLComponents[count]), NSString(string: model.bundle.bundlePath).lastPathComponent)
@@ -143,10 +142,10 @@ final class ModelTests: XCTestCase {
         let modelURLComponents = model.modelURL.pathComponents
         XCTAssertEqual(String(modelURLComponents.last!), model.name + ".momd")
 
-        #if os(iOS) || os(tvOS)
-            let count = modelURLComponents.count - 2
+        #if os(iOS) || os(tvOS) || os(watchOS)
+        let count = modelURLComponents.count - 2
         #elseif os(macOS)
-            let count = modelURLComponents.count - 3
+        let count = modelURLComponents.count - 3
         #endif
 
         XCTAssertEqual(String(modelURLComponents[count]), NSString(string: model.bundle.bundlePath).lastPathComponent)

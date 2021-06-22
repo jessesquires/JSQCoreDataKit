@@ -17,7 +17,6 @@
 //
 
 import CoreData
-import ExampleModel
 @testable import JSQCoreDataKit
 import XCTest
 
@@ -30,7 +29,7 @@ final class SaveTests: TestCase {
         // WHEN: we attempt to save the context
 
         // THEN: the save operation is ignored
-        inMemoryStack.mainContext.saveSync { _ in
+        self.inMemoryStack.mainContext.saveSync { _ in
             didCallCompletion = true
         }
 
@@ -39,29 +38,29 @@ final class SaveTests: TestCase {
 
     func test_ThatSaveAndWait_WithChangesSucceeds_CompletionHandlerIsCalled() {
         // GIVEN: a stack and context with changes
-        let context = inMemoryStack.mainContext
+        let context = self.inMemoryStack.mainContext
         context.performAndWait {
             self.generateCompaniesInContext(context, count: 3)
         }
 
         var didSaveMain = false
-        expectation(forNotification: .NSManagedObjectContextDidSave,
-                    object: inMemoryStack.mainContext) { _ -> Bool in
-                        didSaveMain = true
-                        return true
+        self.expectation(forNotification: .NSManagedObjectContextDidSave,
+                         object: self.inMemoryStack.mainContext) { _ -> Bool in
+            didSaveMain = true
+            return true
         }
 
         var didUpdateBackground = false
-        expectation(forNotification: .NSManagedObjectContextObjectsDidChange,
-                    object: inMemoryStack.backgroundContext) { _ -> Bool in
-                        didUpdateBackground = true
-                        return true
+        self.expectation(forNotification: .NSManagedObjectContextObjectsDidChange,
+                         object: self.inMemoryStack.backgroundContext) { _ -> Bool in
+            didUpdateBackground = true
+            return true
         }
 
-        let saveExpectation = expectation(description: #function)
+        let saveExpectation = self.expectation(description: #function)
 
         // WHEN: we attempt to save the context
-        inMemoryStack.mainContext.saveSync { result in
+        self.inMemoryStack.mainContext.saveSync { result in
 
             // THEN: the save succeeds without an error
             XCTAssertNotNil(try? result.get(), "Save should not error")
@@ -69,7 +68,7 @@ final class SaveTests: TestCase {
         }
 
         // THEN: then the main and background contexts are saved and the completion handler is called
-        waitForExpectations(timeout: defaultTimeout) { error -> Void in
+        self.waitForExpectations(timeout: defaultTimeout) { error -> Void in
             XCTAssertNil(error, "Expectation should not error")
             XCTAssertTrue(didSaveMain, "Main context should be saved")
             XCTAssertTrue(didUpdateBackground, "Background context should be updated")
@@ -78,32 +77,32 @@ final class SaveTests: TestCase {
 
     func test_ThatSaveAndWait_WithChanges_WithoutCompletionClosure_Succeeds() {
         // GIVEN: a stack and context with changes
-        let context = inMemoryStack.mainContext
+        let context = self.inMemoryStack.mainContext
         context.performAndWait {
             self.generateCompaniesInContext(context, count: 3)
         }
 
         var didSaveMain = false
-        expectation(forNotification: .NSManagedObjectContextDidSave,
-                    object: inMemoryStack.mainContext) { _ -> Bool in
-                        didSaveMain = true
-                        return true
+        self.expectation(forNotification: .NSManagedObjectContextDidSave,
+                         object: self.inMemoryStack.mainContext) { _ -> Bool in
+            didSaveMain = true
+            return true
         }
 
         var didUpdateBackground = false
-        expectation(forNotification: .NSManagedObjectContextObjectsDidChange,
-                    object: inMemoryStack.backgroundContext) { _ -> Bool in
-                        didUpdateBackground = true
-                        return true
+        self.expectation(forNotification: .NSManagedObjectContextObjectsDidChange,
+                         object: self.inMemoryStack.backgroundContext) { _ -> Bool in
+            didUpdateBackground = true
+            return true
         }
 
         // WHEN: we attempt to save the context
 
         // THEN: the save succeeds without an error
-        inMemoryStack.mainContext.saveSync()
+        self.inMemoryStack.mainContext.saveSync()
 
         // THEN: then the main and background contexts are saved
-        waitForExpectations(timeout: defaultTimeout) { error -> Void in
+        self.waitForExpectations(timeout: defaultTimeout) { error -> Void in
             XCTAssertNil(error, "Expectation should not error")
             XCTAssertTrue(didSaveMain, "Main context should be saved")
             XCTAssertTrue(didUpdateBackground, "Background context should be updated")
@@ -115,7 +114,7 @@ final class SaveTests: TestCase {
         var didCallCompletion = false
 
         // WHEN: we attempt to save the context asynchronously
-        inMemoryStack.mainContext.saveAsync { _ in
+        self.inMemoryStack.mainContext.saveAsync { _ in
             didCallCompletion = true
         }
 
@@ -125,29 +124,29 @@ final class SaveTests: TestCase {
 
     func test_ThatSaveAsync_WithChanges_Succeeds() {
         // GIVEN: a stack and context with changes
-        let context = inMemoryStack.mainContext
+        let context = self.inMemoryStack.mainContext
         context.performAndWait {
             self.generateCompaniesInContext(context, count: 3)
         }
 
         var didSaveMain = false
-        expectation(forNotification: .NSManagedObjectContextDidSave,
-                    object: inMemoryStack.mainContext) { _ -> Bool in
-                        didSaveMain = true
-                        return true
+        self.expectation(forNotification: .NSManagedObjectContextDidSave,
+                         object: self.inMemoryStack.mainContext) { _ -> Bool in
+            didSaveMain = true
+            return true
         }
 
         var didUpdateBackground = false
-        expectation(forNotification: .NSManagedObjectContextObjectsDidChange,
-                    object: inMemoryStack.backgroundContext) { _ -> Bool in
-                        didUpdateBackground = true
-                        return true
+        self.expectation(forNotification: .NSManagedObjectContextObjectsDidChange,
+                         object: self.inMemoryStack.backgroundContext) { _ -> Bool in
+            didUpdateBackground = true
+            return true
         }
 
-        let saveExpectation = expectation(description: #function)
+        let saveExpectation = self.expectation(description: #function)
 
         // WHEN: we attempt to save the context asynchronously
-        inMemoryStack.mainContext.saveAsync { result in
+        self.inMemoryStack.mainContext.saveAsync { result in
 
             // THEN: the save succeeds without an error
             XCTAssertNotNil(try? result.get(), "Save should not error")
@@ -155,7 +154,7 @@ final class SaveTests: TestCase {
         }
 
         // THEN: then the main and background contexts are saved and the completion handler is called
-        waitForExpectations(timeout: defaultTimeout) { error -> Void in
+        self.waitForExpectations(timeout: defaultTimeout) { error -> Void in
             XCTAssertNil(error, "Expectation should not error")
             XCTAssertTrue(didSaveMain, "Main context should be saved")
             XCTAssertTrue(didUpdateBackground, "Background context should be updated")
@@ -164,33 +163,33 @@ final class SaveTests: TestCase {
 
     func test_ThatSavingChildContext_SucceedsAndSavesParentMainContext() {
         // GIVEN: a stack and child context with changes
-        let childContext = inMemoryStack.childContext(concurrencyType: .mainQueueConcurrencyType)
+        let childContext = self.inMemoryStack.childContext(concurrencyType: .mainQueueConcurrencyType)
         childContext.performAndWait {
             self.generateCompaniesInContext(childContext, count: 3)
         }
 
         var didSaveChild = false
-        expectation(forNotification: .NSManagedObjectContextDidSave,
-                    object: childContext) { _ -> Bool in
-                        didSaveChild = true
-                        return true
+        self.expectation(forNotification: .NSManagedObjectContextDidSave,
+                         object: childContext) { _ -> Bool in
+            didSaveChild = true
+            return true
         }
 
         var didSaveMain = false
-        expectation(forNotification: .NSManagedObjectContextDidSave,
-                    object: inMemoryStack.mainContext) { _ -> Bool in
-                        didSaveMain = true
-                        return true
+        self.expectation(forNotification: .NSManagedObjectContextDidSave,
+                         object: self.inMemoryStack.mainContext) { _ -> Bool in
+            didSaveMain = true
+            return true
         }
 
         var didUpdateBackground = false
-        expectation(forNotification: .NSManagedObjectContextObjectsDidChange,
-                    object: inMemoryStack.backgroundContext) { _ -> Bool in
-                        didUpdateBackground = true
-                        return true
+        self.expectation(forNotification: .NSManagedObjectContextObjectsDidChange,
+                         object: self.inMemoryStack.backgroundContext) { _ -> Bool in
+            didUpdateBackground = true
+            return true
         }
 
-        let saveExpectation = expectation(description: #function)
+        let saveExpectation = self.expectation(description: #function)
 
         // WHEN: we attempt to save the context
         childContext.saveSync { result in
@@ -201,7 +200,7 @@ final class SaveTests: TestCase {
         }
 
         // THEN: then all contexts are saved, synchronized and the completion handler is called
-        waitForExpectations(timeout: defaultTimeout) { error -> Void in
+        self.waitForExpectations(timeout: defaultTimeout) { error -> Void in
             XCTAssertNil(error, "Expectation should not error")
             XCTAssertTrue(didSaveChild, "Child context should be saved")
             XCTAssertTrue(didSaveMain, "Main context should be saved")
@@ -211,33 +210,33 @@ final class SaveTests: TestCase {
 
     func test_ThatSavingChildContext_SucceedsAndSavesParentBackgroundContext() {
         // GIVEN: a stack and child context with changes
-        let childContext = inMemoryStack.childContext(concurrencyType: .privateQueueConcurrencyType)
+        let childContext = self.inMemoryStack.childContext(concurrencyType: .privateQueueConcurrencyType)
         childContext.performAndWait {
             self.generateCompaniesInContext(childContext, count: 3)
         }
 
         var didSaveChild = false
-        expectation(forNotification: .NSManagedObjectContextDidSave,
-                    object: childContext) { _ -> Bool in
-                        didSaveChild = true
-                        return true
+        self.expectation(forNotification: .NSManagedObjectContextDidSave,
+                         object: childContext) { _ -> Bool in
+            didSaveChild = true
+            return true
         }
 
         var didSaveBackground = false
-        expectation(forNotification: .NSManagedObjectContextDidSave,
-                    object: inMemoryStack.backgroundContext) { _ -> Bool in
-                        didSaveBackground = true
-                        return true
+        self.expectation(forNotification: .NSManagedObjectContextDidSave,
+                         object: self.inMemoryStack.backgroundContext) { _ -> Bool in
+            didSaveBackground = true
+            return true
         }
 
         var didUpdateMain = false
-        expectation(forNotification: .NSManagedObjectContextObjectsDidChange,
-                    object: inMemoryStack.mainContext) { _ -> Bool in
-                        didUpdateMain = true
-                        return true
+        self.expectation(forNotification: .NSManagedObjectContextObjectsDidChange,
+                         object: self.inMemoryStack.mainContext) { _ -> Bool in
+            didUpdateMain = true
+            return true
         }
 
-        let saveExpectation = expectation(description: #function)
+        let saveExpectation = self.expectation(description: #function)
 
         // WHEN: we attempt to save the context
         childContext.saveSync { result in
@@ -248,7 +247,7 @@ final class SaveTests: TestCase {
         }
 
         // THEN: then all contexts are saved, synchronized and the completion handler is called
-        waitForExpectations(timeout: defaultTimeout) { error -> Void in
+        self.waitForExpectations(timeout: defaultTimeout) { error -> Void in
             XCTAssertNil(error, "Expectation should not error")
             XCTAssertTrue(didSaveChild, "Child context should be saved")
             XCTAssertTrue(didSaveBackground, "Background context should be saved")
@@ -258,29 +257,29 @@ final class SaveTests: TestCase {
 
     func test_ThatSavingBackgroundContext_SucceedsAndUpdateMainContext() {
         // GIVEN: a stack and context with changes
-        let context = inMemoryStack.backgroundContext
+        let context = self.inMemoryStack.backgroundContext
         context.performAndWait {
             self.generateCompaniesInContext(context, count: 3)
         }
 
         var didSaveBackground = false
-        expectation(forNotification: .NSManagedObjectContextDidSave,
-                    object: inMemoryStack.backgroundContext) { _ -> Bool in
-                        didSaveBackground = true
-                        return true
+        self.expectation(forNotification: .NSManagedObjectContextDidSave,
+                         object: self.inMemoryStack.backgroundContext) { _ -> Bool in
+            didSaveBackground = true
+            return true
         }
 
         var didUpdateMain = false
-        expectation(forNotification: .NSManagedObjectContextObjectsDidChange,
-                    object: inMemoryStack.mainContext) { _ -> Bool in
-                        didUpdateMain = true
-                        return true
+        self.expectation(forNotification: .NSManagedObjectContextObjectsDidChange,
+                         object: self.inMemoryStack.mainContext) { _ -> Bool in
+            didUpdateMain = true
+            return true
         }
 
-        let saveExpectation = expectation(description: #function)
+        let saveExpectation = self.expectation(description: #function)
 
         // WHEN: we attempt to save the context asynchronously
-        inMemoryStack.backgroundContext.saveAsync { result in
+        self.inMemoryStack.backgroundContext.saveAsync { result in
 
             // THEN: the save succeeds without an error
             XCTAssertNotNil(try? result.get(), "Save should not error")
@@ -288,7 +287,7 @@ final class SaveTests: TestCase {
         }
 
         // THEN: then the main and background contexts are saved and the completion handler is called
-        waitForExpectations(timeout: defaultTimeout) { error -> Void in
+        self.waitForExpectations(timeout: defaultTimeout) { error -> Void in
             XCTAssertNil(error, "Expectation should not error")
             XCTAssertTrue(didSaveBackground, "Background context should be saved")
             XCTAssertTrue(didUpdateMain, "Main context should be updated")

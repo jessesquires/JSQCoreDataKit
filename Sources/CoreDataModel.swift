@@ -20,29 +20,10 @@ import CoreData
 import Foundation
 
 /**
- Describes a Core Data model file exention type based on the
- [Model File Format and Versions](https://developer.apple.com/library/ios/documentation/Cocoa/Conceptual/CoreDataVersioning/Articles/vmModelFormat.html)
- documentation.
- */
-public enum ModelFileExtension: String {
-    /// The extension for a model bundle, or a `.xcdatamodeld` file package.
-    case bundle = "momd"
-
-    /// The extension for a versioned model file, or a `.xcdatamodel` file.
-    case versionedFile = "mom"
-
-    /// The extension for a mapping model file, or a `.xcmappingmodel` file.
-    case mapping = "cdm"
-
-    /// The extension for a sqlite store.
-    case sqlite = "sqlite"
-}
-
-/**
  An instance of `CoreDataModel` represents a Core Data model — a `.xcdatamodeld` file package.
  It provides the model and store URLs as well as methods for interacting with the store.
  */
-public struct CoreDataModel {
+public struct CoreDataModel: Equatable {
 
     // MARK: Properties
 
@@ -63,13 +44,13 @@ public struct CoreDataModel {
      - note: If the store is in-memory, then this value will be `nil`.
      */
     public var storeURL: URL? {
-        storeType.storeDirectory()?.appendingPathComponent(databaseFileName)
+        self.storeType.storeDirectory()?.appendingPathComponent(self.databaseFileName)
     }
 
     /// The file URL specifying the model file in the bundle specified by `bundle`.
     public var modelURL: URL {
-        guard let url = bundle.url(forResource: name, withExtension: ModelFileExtension.bundle.rawValue) else {
-            fatalError("*** Error loading model URL for model named \(name) in bundle: \(bundle)")
+        guard let url = self.bundle.url(forResource: self.name, withExtension: ModelFileExtension.bundle.rawValue) else {
+            fatalError("*** Error loading model URL for model named \(self.name) in bundle: \(self.bundle)")
         }
         return url
 
@@ -77,17 +58,17 @@ public struct CoreDataModel {
 
     /// The database file name for the store.
     public var databaseFileName: String {
-        switch storeType {
-        case .sqlite: return name + "." + ModelFileExtension.sqlite.rawValue
-        default: return name
+        switch self.storeType {
+        case .sqlite: return self.name + "." + ModelFileExtension.sqlite.rawValue
+        default: return self.name
         }
 
     }
 
     /// The managed object model for the model specified by `name`.
     public var managedObjectModel: NSManagedObjectModel {
-        guard let model = NSManagedObjectModel(contentsOf: modelURL) else {
-            fatalError("*** Error loading managed object model at url: \(modelURL)")
+        guard let model = NSManagedObjectModel(contentsOf: self.modelURL) else {
+            fatalError("*** Error loading managed object model at url: \(self.modelURL)")
         }
         return model
 
@@ -100,12 +81,12 @@ public struct CoreDataModel {
      - returns: `true` if the store requires a migration, `false` otherwise.
      */
     public var needsMigration: Bool {
-        guard let storeURL = storeURL else { return false }
+        guard let storeURL = self.storeURL else { return false }
         do {
-            let metadata = try NSPersistentStoreCoordinator.metadataForPersistentStore(ofType: storeType.type,
+            let metadata = try NSPersistentStoreCoordinator.metadataForPersistentStore(ofType: self.storeType.type,
                                                                                        at: storeURL,
                                                                                        options: nil)
-            return !managedObjectModel.isConfiguration(withName: nil, compatibleWithStoreMetadata: metadata)
+            return !self.managedObjectModel.isConfiguration(withName: nil, compatibleWithStoreMetadata: metadata)
         } catch {
             debugPrint("*** Error checking persistent store coordinator meta data: \(error)")
             return false
@@ -157,25 +138,16 @@ public struct CoreDataModel {
      - throws: If removing the store fails or errors, then this function throws an `NSError`.
      */
     public func removeExistingStore() throws {
-        let fm = FileManager.default
-        if let storePath = storeURL?.path,
-            fm.fileExists(atPath: storePath) {
-            try fm.removeItem(atPath: storePath)
+        let fileManager = FileManager.default
+        if let storePath = self.storeURL?.path,
+           fileManager.fileExists(atPath: storePath) {
+            try fileManager.removeItem(atPath: storePath)
 
             let writeAheadLog = storePath + "-wal"
-            _ = try? fm.removeItem(atPath: writeAheadLog)
+            _ = try? fileManager.removeItem(atPath: writeAheadLog)
 
             let sharedMemoryfile = storePath + "-shm"
-            _ = try? fm.removeItem(atPath: sharedMemoryfile)
+            _ = try? fileManager.removeItem(atPath: sharedMemoryfile)
         }
-    }
-}
-
-extension CoreDataModel: Equatable {
-    /// :nodoc:
-    public static func == (lhs: CoreDataModel, rhs: CoreDataModel) -> Bool {
-        lhs.name == rhs.name
-            && lhs.bundle.isEqual(rhs.bundle)
-            && lhs.storeType == rhs.storeType
     }
 }

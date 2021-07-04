@@ -22,7 +22,6 @@ opt_in_rules:
   - contains_over_filter_count
   - contains_over_filter_is_empty
   - empty_collection_literal
-  - type_contents_order
 
   # idiomatic
   - fatal_error_message
@@ -91,21 +90,3 @@ nesting:
   function_level: 2
   check_nesting_in_closures_and_statements: true
   always_allow_one_type_in_functions: false
-
-type_contents_order:
-  order:
-    - associated_type
-    - type_alias
-    - case
-    - subtype
-    - type_property
-    - ib_outlet
-    - ib_inspectable
-    - instance_property
-    - initializer
-    - deinitializer
-    - subscript
-    - type_method
-    - view_life_cycle_method
-    - ib_action
-    - other_method

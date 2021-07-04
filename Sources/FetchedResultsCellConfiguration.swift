@@ -23,13 +23,13 @@ import UIKit
 
 public protocol FetchedResultsCellConfiguration {
 
-    associatedtype Cell: UICollectionViewCell
+    associatedtype CellType: UICollectionViewCell
 
     associatedtype Object: NSManagedObject
 
-    typealias Registration = UICollectionView.CellRegistration<Cell, Object>
+    typealias Registration = UICollectionView.CellRegistration<CellType, Object>
 
-    func configure(cell: Cell, with object: Object)
+    func configure(cell: CellType, with object: Object)
 }
 
 extension FetchedResultsCellConfiguration {

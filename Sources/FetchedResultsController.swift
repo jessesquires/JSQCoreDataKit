@@ -53,6 +53,10 @@ public final class FetchedResultsController<ObjectType: NSManagedObject>: NSFetc
         self.object(at: indexPath)
     }
 
+    public subscript (section index: Int) -> NSFetchedResultsSectionInfo {
+        self.section(at: index)
+    }
+
     // MARK: Methods
 
     public func deleteCache() {
@@ -63,12 +67,16 @@ public final class FetchedResultsController<ObjectType: NSManagedObject>: NSFetc
         self.sections().count
     }
 
+    public func numberOfItems(in section: Int) -> Int {
+        self.sections?[section].numberOfObjects ?? 0
+    }
+
     public func sections() -> [NSFetchedResultsSectionInfo] {
         self.sections ?? []
     }
 
-    public func numberOfItems(in section: Int) -> Int {
-        self.sections?[section].numberOfObjects ?? 0
+    public func section(at index: Int) -> NSFetchedResultsSectionInfo {
+        self.sections()[index]
     }
 
     public func fetchedObjects() -> [ObjectType] {

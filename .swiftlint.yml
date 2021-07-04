@@ -8,8 +8,8 @@ excluded:
   - vendor
 
 disabled_rules:
-  # idiomatic
   - force_cast
+  - type_name
 
 opt_in_rules:
   # performance

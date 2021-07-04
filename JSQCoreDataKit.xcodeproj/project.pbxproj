@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		0B1AD67726812DB300F17925 /* ModelFileExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B1AD67626812DB300F17925 /* ModelFileExtension.swift */; };
+		0BE5B6D726913EA60015587B /* FetchedResultsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BE5B6D626913EA60015587B /* FetchedResultsCoordinator.swift */; };
+		0BE5B6D926913F0D0015587B /* FetchedResultsCellConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BE5B6D826913F0D0015587B /* FetchedResultsCellConfiguration.swift */; };
+		0BE5B6DF26914BCA0015587B /* FetchedResultsDiffableDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BE5B6DE26914BCA0015587B /* FetchedResultsDiffableDataSource.swift */; };
+		0BE5B6E12691503E0015587B /* FetchedResultsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BE5B6E02691503E0015587B /* FetchedResultsController.swift */; };
 		297C7D2D1C710A1D008E516B /* MigrationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 297C7D2C1C710A1D008E516B /* MigrationTests.swift */; };
 		298F00F71C9C559100AEC77E /* Migrate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 298F00F61C9C559100AEC77E /* Migrate.swift */; };
 		881219C81B361EAF005E5AA7 /* JSQCoreDataKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88002D4F1AB8F546001787DB /* JSQCoreDataKit.framework */; };
@@ -56,6 +60,10 @@
 
 /* Begin PBXFileReference section */
 		0B1AD67626812DB300F17925 /* ModelFileExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelFileExtension.swift; sourceTree = "<group>"; };
+		0BE5B6D626913EA60015587B /* FetchedResultsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchedResultsCoordinator.swift; sourceTree = "<group>"; };
+		0BE5B6D826913F0D0015587B /* FetchedResultsCellConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchedResultsCellConfiguration.swift; sourceTree = "<group>"; };
+		0BE5B6DE26914BCA0015587B /* FetchedResultsDiffableDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchedResultsDiffableDataSource.swift; sourceTree = "<group>"; };
+		0BE5B6E02691503E0015587B /* FetchedResultsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchedResultsController.swift; sourceTree = "<group>"; };
 		297C7D2C1C710A1D008E516B /* MigrationTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MigrationTests.swift; sourceTree = "<group>"; };
 		298F00F61C9C559100AEC77E /* Migrate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Migrate.swift; sourceTree = "<group>"; };
 		88002D4F1AB8F546001787DB /* JSQCoreDataKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = JSQCoreDataKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -124,11 +132,15 @@
 			children = (
 				8852A0CC1D459048006538B9 /* CoreDataEntityProtocol.swift */,
 				8873E21F1C51E09700DFE009 /* CoreDataModel.swift */,
-				0B1AD67626812DB300F17925 /* ModelFileExtension.swift */,
 				8873E2211C51E09700DFE009 /* CoreDataStack.swift */,
 				8873E2221C51E09700DFE009 /* CoreDataStackProvider.swift */,
+				0BE5B6D826913F0D0015587B /* FetchedResultsCellConfiguration.swift */,
+				0BE5B6E02691503E0015587B /* FetchedResultsController.swift */,
+				0BE5B6D626913EA60015587B /* FetchedResultsCoordinator.swift */,
+				0BE5B6DE26914BCA0015587B /* FetchedResultsDiffableDataSource.swift */,
 				8873E2241C51E09700DFE009 /* Info.plist */,
 				298F00F61C9C559100AEC77E /* Migrate.swift */,
+				0B1AD67626812DB300F17925 /* ModelFileExtension.swift */,
 				8873E21E1C51E09700DFE009 /* NSManagedObjectContext+Extensions.swift */,
 				8873E2261C51E09700DFE009 /* StoreType.swift */,
 			);
@@ -311,13 +323,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				8873E22C1C51E09700DFE009 /* CoreDataStackProvider.swift in Sources */,
+				0BE5B6D726913EA60015587B /* FetchedResultsCoordinator.swift in Sources */,
 				0B1AD67726812DB300F17925 /* ModelFileExtension.swift in Sources */,
 				8852A0CD1D459048006538B9 /* CoreDataEntityProtocol.swift in Sources */,
 				8873E2301C51E09700DFE009 /* StoreType.swift in Sources */,
+				0BE5B6DF26914BCA0015587B /* FetchedResultsDiffableDataSource.swift in Sources */,
 				8873E22B1C51E09700DFE009 /* CoreDataStack.swift in Sources */,
 				298F00F71C9C559100AEC77E /* Migrate.swift in Sources */,
 				8873E2291C51E09700DFE009 /* CoreDataModel.swift in Sources */,
 				8873E2281C51E09700DFE009 /* NSManagedObjectContext+Extensions.swift in Sources */,
+				0BE5B6D926913F0D0015587B /* FetchedResultsCellConfiguration.swift in Sources */,
+				0BE5B6E12691503E0015587B /* FetchedResultsController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -405,8 +421,8 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
-				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = JSQCoreDataKit;
@@ -416,10 +432,10 @@
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2,3,4";
-				TVOS_DEPLOYMENT_TARGET = 12.0;
+				TVOS_DEPLOYMENT_TARGET = 14.1;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
-				WATCHOS_DEPLOYMENT_TARGET = 4.0;
+				WATCHOS_DEPLOYMENT_TARGET = 6.0;
 			};
 			name = Debug;
 		};
@@ -466,8 +482,8 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
-				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				PRODUCT_NAME = JSQCoreDataKit;
 				RESOURCES_TARGETED_DEVICE_FAMILY = "";
@@ -475,11 +491,11 @@
 				SUPPORTED_PLATFORMS = "iphoneos appletvos watchos macosx iphonesimulator appletvsimulator watchsimulator";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2,3,4";
-				TVOS_DEPLOYMENT_TARGET = 12.0;
+				TVOS_DEPLOYMENT_TARGET = 14.1;
 				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
-				WATCHOS_DEPLOYMENT_TARGET = 4.0;
+				WATCHOS_DEPLOYMENT_TARGET = 6.0;
 			};
 			name = Release;
 		};

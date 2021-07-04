@@ -7,7 +7,30 @@ The changelog for `JSQCoreDataKit`. Also see the [releases](https://github.com/j
 NEXT
 -----
 
+- TBA
+
+10.0.0
+------
+
+This release closes the [10.0.0 milestone](https://github.com/jessesquires/JSQCoreDataKit/milestone/21?closed=1).
+
+### New
+
+- Introduced a new component, `FetchedResultsCoordinator`, which handles all of the boilerplate for setting up an `NSFetchedResultsController` and updating the content of a `UICollectionView`. All you need to do is provide a `FetchedResultsCellConfiguration` and an `NSFetchRequest`. See the documentation and example project for details. (#201)
+
+- Added `FetchedResultsController`, a generic subclass of `NSFetchedResultsController` that's nicer to use in Swift.
+
+### Changed
+
 - Upgraded to Xcode 12.5 and Swift 5.4
+
+### Breaking
+
+- Dropped support for old OS versions:
+    - iOS 14+ now required
+    - tvOS 14+ now required
+    - watchOS 6+ now required
+    - macOS 10.14+ now required
 
 9.0.3
 -----

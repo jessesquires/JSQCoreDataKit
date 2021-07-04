@@ -21,40 +21,44 @@ import ExampleModel
 import JSQCoreDataKit
 import UIKit
 
-final class CompanyViewController: UITableViewController, NSFetchedResultsControllerDelegate {
+final class CompanyViewController: CollectionViewController {
 
     var stack: CoreDataStack!
-    var frc: NSFetchedResultsController<Company>!
+
+    var coordinator: FetchedResultsCoordinator<Company, CompanyCellConfig>?
 
     // MARK: View lifecycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        showSpinner()
+        self.title = "JSQCoreDataKit"
 
         let model = CoreDataModel(name: modelName, bundle: modelBundle)
-        let factory = CoreDataStackProvider(model: model)
-
-        factory.createStack { result in
+        let provider = CoreDataStackProvider(model: model)
+        provider.createStack { result in
             switch result {
             case .success(let stack):
                 self.stack = stack
-                self.setupFRC()
+                self.setupCoordinator()
+                self.coordinator?.performFetch()
 
             case .failure(let err):
                 assertionFailure("Error creating stack: \(err)")
             }
-
-            self.hideSpinner()
         }
     }
 
     // MARK: Actions
 
-    @IBAction func didTapTrashButton(_ sender: UIBarButtonItem) {
-        let backgroundChildContext = stack.childContext(concurrencyType: .privateQueueConcurrencyType)
+    override func addAction() {
+        self.stack.mainContext.performAndWait {
+            _ = Company.newCompany(self.stack.mainContext)
+            self.stack.mainContext.saveSync()
+        }
+    }
 
+    override func deleteAction() {
+        let backgroundChildContext = stack.childContext(concurrencyType: .privateQueueConcurrencyType)
         backgroundChildContext.performAndWait {
             do {
                 let objects = try backgroundChildContext.fetch(Company.fetchRequest)
@@ -68,148 +72,24 @@ final class CompanyViewController: UITableViewController, NSFetchedResultsContro
         }
     }
 
-    @objc
-    func didTapAddButton(_ sender: UIBarButtonItem) {
-        stack.mainContext.performAndWait {
-            _ = Company.newCompany(self.stack.mainContext)
-            self.stack.mainContext.saveSync()
-        }
-    }
-
-    // MARK: Segues
-
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "segue" {
-            let employeeVC = segue.destination as! EmployeeViewController
-            let company = frc.object(at: tableView.indexPathForSelectedRow!)
-            employeeVC.stack = stack
-            employeeVC.company = company
-        }
-    }
-
     // MARK: Helpers
 
-    func setupFRC() {
-        frc = NSFetchedResultsController(fetchRequest: Company.fetchRequest,
-                                         managedObjectContext: stack.mainContext,
-                                         sectionNameKeyPath: nil,
-                                         cacheName: nil)
-
-        frc.delegate = self
-        fetchData()
+    func setupCoordinator() {
+        self.coordinator = FetchedResultsCoordinator(
+            fetchRequest: Company.fetchRequest,
+            context: self.stack.mainContext,
+            sectionNameKeyPath: nil,
+            cacheName: nil,
+            cellConfiguration: CompanyCellConfig(),
+            collectionView: self.collectionView
+        )
     }
 
-    func fetchData() {
-        do {
-            try frc.performFetch()
-            tableView.reloadData()
-        } catch {
-            assertionFailure("Failed to fetch: \(error)")
-        }
-    }
+    // MARK: Collection view delegate
 
-    private func showSpinner() {
-        let spinner = UIActivityIndicatorView(style: .gray)
-        spinner.startAnimating()
-        navigationItem.rightBarButtonItem = UIBarButtonItem(customView: spinner)
-    }
-
-    private func hideSpinner() {
-        navigationItem.rightBarButtonItem = UIBarButtonItem(
-            barButtonSystemItem: .add,
-            target: self,
-            action: #selector(didTapAddButton(_:)))
-    }
-
-    // MARK: Table view data source
-
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        1
-    }
-
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        frc?.fetchedObjects?.count ?? 0
-    }
-
-    func configureCell(_ cell: UITableViewCell, atIndexPath indexPath: IndexPath) {
-        let company = frc.object(at: indexPath)
-        cell.textLabel?.text = company.name
-        cell.detailTextLabel?.text = "$\(company.profits).00"
-        cell.accessoryType = .disclosureIndicator
-    }
-
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        configureCell(cell, atIndexPath: indexPath)
-        return cell
-    }
-
-    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        "Company"
-    }
-
-    // MARK: Table view delegate
-
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        true
-    }
-
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            let obj = frc.object(at: indexPath)
-            stack.mainContext.performAndWait {
-                self.stack.mainContext.delete(obj)
-            }
-            stack.mainContext.saveSync()
-        }
-    }
-
-    // MARK: Fetched results controller delegate
-
-    func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
-        tableView.beginUpdates()
-    }
-
-    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>,
-                    didChange sectionInfo: NSFetchedResultsSectionInfo,
-                    atSectionIndex sectionIndex: Int,
-                    for type: NSFetchedResultsChangeType) {
-        switch type {
-        case .insert:
-            tableView.insertSections(IndexSet(integer: sectionIndex), with: .fade)
-
-        case .delete:
-            tableView.deleteSections(IndexSet(integer: sectionIndex), with: .fade)
-
-        default:
-            break
-        }
-    }
-
-    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>,
-                    didChange anObject: Any,
-                    at indexPath: IndexPath?,
-                    for type: NSFetchedResultsChangeType,
-                    newIndexPath: IndexPath?) {
-        switch type {
-        case .insert:
-            tableView.insertRows(at: [newIndexPath!], with: .fade)
-
-        case .delete:
-            tableView.deleteRows(at: [indexPath!], with: .fade)
-
-        case .update:
-            configureCell(tableView.cellForRow(at: indexPath!)!, atIndexPath: indexPath!)
-
-        case .move:
-            tableView.deleteRows(at: [indexPath!], with: .fade)
-            tableView.insertRows(at: [newIndexPath!], with: .fade)
-        @unknown default:
-            fatalError("Unknown change type \(type)")
-        }
-    }
-
-    func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
-        tableView.endUpdates()
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let company = self.coordinator![indexPath]
+        let employeeVC = EmployeeViewController(stack: self.stack, company: company)
+        self.navigationController?.pushViewController(employeeVC, animated: true)
     }
 }

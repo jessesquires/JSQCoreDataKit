@@ -51,6 +51,10 @@ final class EmployeeViewController: CollectionViewController {
         super.viewDidLoad()
         self.title = self.company.name
         self.collectionView.allowsSelection = false
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         self.coordinator.performFetch()
     }
 

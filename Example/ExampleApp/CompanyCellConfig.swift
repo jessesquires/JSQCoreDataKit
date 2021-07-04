@@ -24,5 +24,6 @@ struct CompanyCellConfig: FetchedResultsCellConfiguration {
 
     func configure(cell: CollectionViewCell, with object: Company) {
         cell.configure(primaryText: object.name, secondaryText: "$\(object.profits).00")
+        cell.accessories = [.disclosureIndicator()]
     }
 }

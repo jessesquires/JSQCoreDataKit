@@ -25,6 +25,5 @@ final class CollectionViewCell: UICollectionViewListCell {
         contentConfiguration.text = primaryText
         contentConfiguration.secondaryText = secondaryText
         self.contentConfiguration = contentConfiguration
-        self.accessories = [.disclosureIndicator()]
     }
 }

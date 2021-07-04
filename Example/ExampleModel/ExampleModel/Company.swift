@@ -51,7 +51,7 @@ public final class Company: NSManagedObject, CoreDataEntityProtocol {
         super.init(entity: entity, insertInto: context)
     }
 
-    public class func newCompany(_ context: NSManagedObjectContext) -> Company {
+    public static func newCompany(_ context: NSManagedObjectContext) -> Company {
         let name = "Company " + String(UUID().uuidString.split { $0 == "-" }.first!)
         return Company(context: context,
                        name: name,

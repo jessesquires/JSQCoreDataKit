@@ -27,12 +27,17 @@ final class EmployeeViewController: CollectionViewController {
     let company: Company
 
     lazy var coordinator: FetchedResultsCoordinator<Employee, EmployeeCellConfig> = {
-        FetchedResultsCoordinator(
+        let supplementaryViews = [
+            AnyFetchedResultsSupplementaryConfiguration(EmployeeHeaderConfig()),
+            AnyFetchedResultsSupplementaryConfiguration(EmployeeFooterConfig())
+        ]
+        return FetchedResultsCoordinator(
             fetchRequest: Employee.fetchRequest(for: self.company),
             context: self.stack.mainContext,
             sectionNameKeyPath: nil,
             cacheName: nil,
             cellConfiguration: EmployeeCellConfig(),
+            supplementaryConfigurations: supplementaryViews,
             collectionView: self.collectionView
         )
     }()

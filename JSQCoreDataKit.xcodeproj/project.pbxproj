@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0B1AD67726812DB300F17925 /* ModelFileExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B1AD67626812DB300F17925 /* ModelFileExtension.swift */; };
+		0B2E59D3269176610064BA4F /* FetchedResultsSupplementaryConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B2E59D2269176610064BA4F /* FetchedResultsSupplementaryConfiguration.swift */; };
 		0BE5B6D726913EA60015587B /* FetchedResultsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BE5B6D626913EA60015587B /* FetchedResultsCoordinator.swift */; };
 		0BE5B6D926913F0D0015587B /* FetchedResultsCellConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BE5B6D826913F0D0015587B /* FetchedResultsCellConfiguration.swift */; };
 		0BE5B6DF26914BCA0015587B /* FetchedResultsDiffableDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BE5B6DE26914BCA0015587B /* FetchedResultsDiffableDataSource.swift */; };
@@ -60,6 +61,7 @@
 
 /* Begin PBXFileReference section */
 		0B1AD67626812DB300F17925 /* ModelFileExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelFileExtension.swift; sourceTree = "<group>"; };
+		0B2E59D2269176610064BA4F /* FetchedResultsSupplementaryConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchedResultsSupplementaryConfiguration.swift; sourceTree = "<group>"; };
 		0BE5B6D626913EA60015587B /* FetchedResultsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchedResultsCoordinator.swift; sourceTree = "<group>"; };
 		0BE5B6D826913F0D0015587B /* FetchedResultsCellConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchedResultsCellConfiguration.swift; sourceTree = "<group>"; };
 		0BE5B6DE26914BCA0015587B /* FetchedResultsDiffableDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchedResultsDiffableDataSource.swift; sourceTree = "<group>"; };
@@ -138,6 +140,7 @@
 				0BE5B6E02691503E0015587B /* FetchedResultsController.swift */,
 				0BE5B6D626913EA60015587B /* FetchedResultsCoordinator.swift */,
 				0BE5B6DE26914BCA0015587B /* FetchedResultsDiffableDataSource.swift */,
+				0B2E59D2269176610064BA4F /* FetchedResultsSupplementaryConfiguration.swift */,
 				8873E2241C51E09700DFE009 /* Info.plist */,
 				298F00F61C9C559100AEC77E /* Migrate.swift */,
 				0B1AD67626812DB300F17925 /* ModelFileExtension.swift */,
@@ -330,6 +333,7 @@
 				0BE5B6DF26914BCA0015587B /* FetchedResultsDiffableDataSource.swift in Sources */,
 				8873E22B1C51E09700DFE009 /* CoreDataStack.swift in Sources */,
 				298F00F71C9C559100AEC77E /* Migrate.swift in Sources */,
+				0B2E59D3269176610064BA4F /* FetchedResultsSupplementaryConfiguration.swift in Sources */,
 				8873E2291C51E09700DFE009 /* CoreDataModel.swift in Sources */,
 				8873E2281C51E09700DFE009 /* NSManagedObjectContext+Extensions.swift in Sources */,
 				0BE5B6D926913F0D0015587B /* FetchedResultsCellConfiguration.swift in Sources */,

@@ -23,9 +23,9 @@ extension UICollectionViewCompositionalLayout {
 
     static func list() -> UICollectionViewCompositionalLayout {
         UICollectionViewCompositionalLayout { _, layoutEnvironment in
-            let configuration = UICollectionLayoutListConfiguration(appearance: .insetGrouped)
-            // configuration.headerMode = .supplementary
-            // configuration.footerMode = .supplementary
+            var configuration = UICollectionLayoutListConfiguration(appearance: .insetGrouped)
+            configuration.headerMode = .supplementary
+            configuration.footerMode = .supplementary
             let section = NSCollectionLayoutSection.list(using: configuration, layoutEnvironment: layoutEnvironment)
             return section
         }

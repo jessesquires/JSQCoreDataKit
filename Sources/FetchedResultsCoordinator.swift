@@ -22,13 +22,16 @@ import CoreData
 import Foundation
 import UIKit
 
-// swiftlint:disable:next colon
-public final class FetchedResultsCoordinator<Object, CellConfig: FetchedResultsCellConfiguration>:
-    NSObject, NSFetchedResultsControllerDelegate where CellConfig.Object == Object {
+public final class FetchedResultsCoordinator<
+    Object,
+    CellConfig: FetchedResultsCellConfiguration
+>: NSObject, NSFetchedResultsControllerDelegate where CellConfig.Object == Object {
 
     public let controller: FetchedResultsController<Object>
 
     public let cellConfiguration: CellConfig
+
+    public let supplementaryConfigurations: [AnyFetchedResultsSupplementaryConfiguration<Object>]
 
     public var animateUpdates = true
 
@@ -41,6 +44,7 @@ public final class FetchedResultsCoordinator<Object, CellConfig: FetchedResultsC
                 sectionNameKeyPath: String?,
                 cacheName: String?,
                 cellConfiguration: CellConfig,
+                supplementaryConfigurations: [AnyFetchedResultsSupplementaryConfiguration<Object>] = [],
                 collectionView: UICollectionView) {
         let controller = FetchedResultsController(
             fetchRequest: fetchRequest,
@@ -51,13 +55,14 @@ public final class FetchedResultsCoordinator<Object, CellConfig: FetchedResultsC
 
         self.controller = controller
         self.cellConfiguration = cellConfiguration
-        self._collectionView = collectionView
+        self.supplementaryConfigurations = supplementaryConfigurations
         self._dataSource = _FetchedResultsDiffableDataSource(
             collectionView: collectionView,
             controller: controller,
-            cellConfig: cellConfiguration
+            cellConfig: cellConfiguration,
+            supplementaryConfigs: supplementaryConfigurations
         )
-
+        self._collectionView = collectionView
         super.init()
         controller.delegate = self
         collectionView.dataSource = self._dataSource
@@ -134,6 +139,8 @@ public final class FetchedResultsCoordinator<Object, CellConfig: FetchedResultsC
         } else {
             self._dataSource.apply(fetchedSnapshot, animatingDifferences: self.animateUpdates)
         }
+
+        // TODO: need to refresh supplementary views
     }
 }
 

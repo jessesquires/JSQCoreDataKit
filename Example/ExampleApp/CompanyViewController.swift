@@ -75,12 +75,18 @@ final class CompanyViewController: CollectionViewController {
     // MARK: Helpers
 
     func setupCoordinator() {
+        let supplementaryViews = [
+            AnyFetchedResultsSupplementaryConfiguration(CompanyHeaderConfig()),
+            AnyFetchedResultsSupplementaryConfiguration(CompanyFooterConfig())
+        ]
+
         self.coordinator = FetchedResultsCoordinator(
             fetchRequest: Company.fetchRequest,
             context: self.stack.mainContext,
             sectionNameKeyPath: nil,
             cacheName: nil,
             cellConfiguration: CompanyCellConfig(),
+            supplementaryConfigurations: supplementaryViews,
             collectionView: self.collectionView
         )
     }

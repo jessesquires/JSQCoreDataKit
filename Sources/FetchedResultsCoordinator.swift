@@ -91,23 +91,49 @@ public final class FetchedResultsCoordinator<Object, CellConfig: FetchedResultsC
         var fetchedSnapshot = snapshot as _FetchedResultsDiffableSnapshot
         let currentSnapshot = self._dataSource.snapshot()
 
-        // taken from: https://www.avanderlee.com/swift/diffable-data-sources-core-data/
-        let reloadIdentifiers: [NSManagedObjectID] = fetchedSnapshot.itemIdentifiers.compactMap { itemIdentifier in
-            guard let currentIndex = currentSnapshot.indexOfItem(itemIdentifier),
-                  let index = fetchedSnapshot.indexOfItem(itemIdentifier),
-                  index == currentIndex else {
+        // Ensure updated managed objects get reloaded
+        // Taken from: https://www.avanderlee.com/swift/diffable-data-sources-core-data/
+        let itemsToReload: [NSManagedObjectID] = fetchedSnapshot.itemIdentifiers.compactMap { itemId in
+            // the item is at the same index
+            guard let currentIndex = currentSnapshot.indexOfItem(itemId),
+                  let fetchedIndex = fetchedSnapshot.indexOfItem(itemId),
+                  fetchedIndex == currentIndex else {
                       return nil
                   }
-            guard let existingObject = try? controller.managedObjectContext.existingObject(with: itemIdentifier),
+            // the item has been updated
+            guard let existingObject = try? controller.managedObjectContext.existingObject(with: itemId),
                   existingObject.isUpdated else {
                       return nil
                   }
-            return itemIdentifier
+            return itemId
         }
-        fetchedSnapshot.reloadItems(reloadIdentifiers)
 
-        let shouldAnimate = self.animateUpdates && self._collectionView.numberOfSections != 0
-        self._dataSource.apply(fetchedSnapshot, animatingDifferences: shouldAnimate)
+        if #available(iOS 15.0, *) {
+            fetchedSnapshot.reconfigureItems(itemsToReload)
+        } else {
+            fetchedSnapshot.reloadItems(itemsToReload)
+        }
+
+        // Fix issue with "empty sections" appearing.
+        // If a section has no items, delete it.
+        let sections = fetchedSnapshot.sectionIdentifiers.filter {
+            fetchedSnapshot.numberOfItems(inSection: $0) == 0
+        }
+        fetchedSnapshot.deleteSections(sections)
+
+        // If current snapshot is empty, this is our first load.
+        // Don't animate a diff, just reload.
+        if currentSnapshot.isEmpty {
+            if #available(iOS 15.0, *) {
+                self._dataSource.applySnapshotUsingReloadData(fetchedSnapshot, completion: nil)
+            } else {
+                // prior to iOS 15, passing false means reload data
+                // https://jessesquires.github.io/wwdc-notes/2021/10252_blazing_fast_collection_views.html
+                self._dataSource.apply(fetchedSnapshot, animatingDifferences: false)
+            }
+        } else {
+            self._dataSource.apply(fetchedSnapshot, animatingDifferences: self.animateUpdates)
+        }
     }
 }
 

@@ -140,7 +140,23 @@ public final class FetchedResultsCoordinator<
             self._dataSource.apply(fetchedSnapshot, animatingDifferences: self.animateUpdates)
         }
 
-        // TODO: need to refresh supplementary views
+        self.supplementaryConfigurations.forEach { config in
+            let kind = config.kind
+            let visibleIndexPaths = self._collectionView.indexPathsForVisibleSupplementaryElements(ofKind: kind)
+
+            visibleIndexPaths.forEach { indexPath in
+                guard let view = self._collectionView.supplementaryView(forElementKind: kind, at: indexPath) else {
+                    return
+                }
+
+                var object: Object?
+                if self.controller.hasObject(at: indexPath) {
+                    object = self.controller.object(at: indexPath)
+                }
+                let sectionInfo = self.controller.section(at: indexPath.section)
+                config.configure(view: view, with: object, in: sectionInfo)
+            }
+        }
     }
 }
 

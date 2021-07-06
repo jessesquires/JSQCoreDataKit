@@ -19,6 +19,14 @@
 import CoreData
 import Foundation
 
+#if os(macOS)
+import AppKit
+#endif
+
+#if os(iOS) || os(tvOS) || os(watchOS)
+import UIKit
+#endif
+
 /// A generic `NSFetchedResultsController`.
 public final class FetchedResultsController<ObjectType: NSManagedObject>: NSFetchedResultsController<NSFetchRequestResult> {
 

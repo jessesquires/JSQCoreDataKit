@@ -113,7 +113,7 @@ public final class FetchedResultsCoordinator<
             return itemId
         }
 
-        if #available(iOS 15.0, *) {
+        if #available(iOS 15.0, tvOS 15.0, *) {
             fetchedSnapshot.reconfigureItems(itemsToReload)
         } else {
             fetchedSnapshot.reloadItems(itemsToReload)
@@ -129,7 +129,7 @@ public final class FetchedResultsCoordinator<
         // If current snapshot is empty, this is our first load.
         // Don't animate a diff, just reload.
         if currentSnapshot.isEmpty {
-            if #available(iOS 15.0, *) {
+            if #available(iOS 15.0, tvOS 15.0, *) {
                 self._dataSource.applySnapshotUsingReloadData(fetchedSnapshot, completion: nil)
             } else {
                 // prior to iOS 15, passing false means reload data

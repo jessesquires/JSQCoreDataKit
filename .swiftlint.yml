@@ -30,7 +30,6 @@ opt_in_rules:
   - discouraged_optional_boolean
   - discouraged_optional_collection
   - for_where
-  - function_default_parameter_at_end
   - legacy_random
   - no_extension_access_modifier
   - redundant_type_annotation
@@ -91,3 +90,6 @@ nesting:
   function_level: 2
   check_nesting_in_closures_and_statements: true
   always_allow_one_type_in_functions: false
+
+identifier_name:
+  allowed_symbols: ['_']

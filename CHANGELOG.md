@@ -22,9 +22,11 @@ This release closes the [10.0.0 milestone](https://github.com/jessesquires/JSQCo
 
 ### Changed
 
-- Upgraded to Xcode 12.5 and Swift 5.4
+- Upgraded to Swift 5.4
 
 ### Breaking
+
+- Xcode 13.0 now required
 
 - Dropped support for old OS versions:
     - iOS 14+ now required

@@ -44,7 +44,8 @@ opt_in_rules:
   # style
   - attributes
   - number_separator
-  - operator_usage_whitespace
+  # disabled for false positives: https://github.com/realm/SwiftLint/issues/3668
+  # - operator_usage_whitespace
   - sorted_imports
   - vertical_parameter_alignment_on_call
   - void_return

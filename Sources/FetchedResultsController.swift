@@ -83,6 +83,14 @@ public final class FetchedResultsController<ObjectType: NSManagedObject>: NSFetc
         (self.fetchedObjects ?? []) as! [ObjectType]
     }
 
+    public func hasObject(at indexPath: IndexPath) -> Bool {
+        if self.fetchedObjects().isEmpty {
+            return false
+        }
+        let numberOfItems = self.numberOfItems(in: indexPath.section)
+        return numberOfItems > 0 && indexPath.item < numberOfItems
+    }
+
     public func object(at indexPath: IndexPath) -> ObjectType {
         super.object(at: indexPath) as! ObjectType
     }

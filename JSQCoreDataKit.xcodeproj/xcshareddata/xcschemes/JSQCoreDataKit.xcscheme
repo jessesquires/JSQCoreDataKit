@@ -9,14 +9,28 @@
          <BuildActionEntry
             buildForTesting = "YES"
             buildForRunning = "YES"
-            buildForProfiling = "YES"
-            buildForArchiving = "YES"
-            buildForAnalyzing = "YES">
+            buildForProfiling = "NO"
+            buildForArchiving = "NO"
+            buildForAnalyzing = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "88002D4E1AB8F546001787DB"
                BuildableName = "JSQCoreDataKit.framework"
                BlueprintName = "JSQCoreDataKit"
+               ReferencedContainer = "container:JSQCoreDataKit.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "NO"
+            buildForArchiving = "NO"
+            buildForAnalyzing = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "881219C21B361EAF005E5AA7"
+               BuildableName = "JSQCoreDataKitTests.xctest"
+               BlueprintName = "JSQCoreDataKitTests"
                ReferencedContainer = "container:JSQCoreDataKit.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>

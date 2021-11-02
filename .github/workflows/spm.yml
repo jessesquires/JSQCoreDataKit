@@ -15,14 +15,9 @@ on:
   pull_request:
     branches:
       - main
-    paths:
-      - '.github/workflows/spm.yml'
-      - 'Package*'
-      - 'Sources/**/*.*'
-      - 'Tests/**/*.*'
 
 env:
-  DEVELOPER_DIR: /Applications/Xcode_13.0.app/Contents/Developer
+  DEVELOPER_DIR: /Applications/Xcode_13.1.app/Contents/Developer
 
 jobs:
   main:

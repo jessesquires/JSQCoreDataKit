@@ -25,16 +25,16 @@ env:
   EXAMPLE_PROJECT: Example/ExampleApp.xcodeproj
   EXAMPLE_SCHEME: ExampleApp
 
-  DEVELOPER_DIR: /Applications/Xcode_13.1.app/Contents/Developer
+  DEVELOPER_DIR: /Applications/Xcode_13.0.app/Contents/Developer
 
   IOS_SDK: iphonesimulator15.0
-  IOS_DEST: "OS=15.0,name=iPhone 13 Mini"
+  IOS_DEST: "OS=15.0,name=iPhone 12 Mini"
 
   TVOS_SDK: appletvsimulator15.0
   TVOS_DEST: "OS=15.0,name=Apple TV"
 
   WATCHOS_SDK: watchsimulator8.0
-  WATCHOS_DEST: "OS=8.0,name=Apple Watch Series 7 - 41mm"
+  WATCHOS_DEST: "OS=8.0,name=Apple Watch Series 6 - 40mm"
 
   MACOS_SDK: macosx12.0
   MACOS_DEST: "arch=x86_64"

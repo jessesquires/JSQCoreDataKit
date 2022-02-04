@@ -8,7 +8,7 @@ on:
     types: [synchronize, opened, reopened, labeled, unlabeled, edited]
 
 env:
-  DEVELOPER_DIR: /Applications/Xcode_13.1.app/Contents/Developer
+  DEVELOPER_DIR: /Applications/Xcode_13.2.1.app/Contents/Developer
 
 jobs:
   main:
@@ -30,11 +30,6 @@ jobs:
         with:
           ruby-version: 2.7
           bundler-cache: true
-
-      # for danger prose-lint
-      - name: python setup
-        run: |
-          echo "/Users/runner/Library/Python/2.7/bin" >> $GITHUB_PATH
 
       - name: jazzy docs
         run: bundle exec jazzy --output docs/

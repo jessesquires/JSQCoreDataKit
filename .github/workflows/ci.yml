@@ -25,19 +25,12 @@ env:
   EXAMPLE_PROJECT: Example/ExampleApp.xcodeproj
   EXAMPLE_SCHEME: ExampleApp
 
-  DEVELOPER_DIR: /Applications/Xcode_13.1.app/Contents/Developer
+  DEVELOPER_DIR: /Applications/Xcode_13.2.1.app/Contents/Developer
 
-  IOS_SDK: iphonesimulator15.0
-  IOS_DEST: "OS=15.0,name=iPhone 13 Mini"
-
-  TVOS_SDK: appletvsimulator15.0
-  TVOS_DEST: "OS=15.0,name=Apple TV"
-
-  WATCHOS_SDK: watchsimulator8.0
-  WATCHOS_DEST: "OS=8.0,name=Apple Watch Series 7 - 41mm"
-
-  MACOS_SDK: macosx12.0
-  MACOS_DEST: "arch=x86_64"
+  IOS_DEST: "platform=iOS Simulator,name=iPhone 13 Mini,OS=latest"
+  TVOS_DEST: "platform=tvOS Simulator,name=Apple TV,OS=latest"
+  WATCHOS_DEST: "platform=watchOS Simulator,name=Apple Watch Series 7 - 41mm,OS=latest"
+  MACOS_DEST: "platform=macOS,arch=x86_64"
 
 jobs:
   env-details:
@@ -65,9 +58,8 @@ jobs:
           xcodebuild clean test \
               -project "$PROJECT" \
               -scheme "$SCHEME" \
-              -sdk "$IOS_SDK" \
               -destination "$IOS_DEST" \
-              ONLY_ACTIVE_ARCH=NO CODE_SIGNING_REQUIRED=NO | xcpretty -c
+              CODE_SIGN_IDENTITY="-" | xcpretty -c
 
   test-tvOS:
     name: tvOS unit test
@@ -82,9 +74,8 @@ jobs:
           xcodebuild clean test \
               -project "$PROJECT" \
               -scheme "$SCHEME" \
-              -sdk "$TVOS_SDK" \
               -destination "$TVOS_DEST" \
-              ONLY_ACTIVE_ARCH=NO CODE_SIGNING_REQUIRED=NO | xcpretty -c
+              CODE_SIGN_IDENTITY="-" | xcpretty -c
 
   test-watchOS:
     name: watchOS unit test
@@ -99,9 +90,8 @@ jobs:
           xcodebuild clean test \
               -project "$PROJECT" \
               -scheme "$SCHEME" \
-              -sdk "$WATCHOS_SDK" \
               -destination "$WATCHOS_DEST" \
-              ONLY_ACTIVE_ARCH=NO CODE_SIGNING_REQUIRED=NO | xcpretty -c
+              CODE_SIGN_IDENTITY="-" | xcpretty -c
 
   test-macOS:
     name: macOS unit test
@@ -116,9 +106,8 @@ jobs:
           xcodebuild clean test \
               -project "$PROJECT" \
               -scheme "$SCHEME" \
-              -sdk "$MACOS_SDK" \
               -destination "$MACOS_DEST" \
-              ONLY_ACTIVE_ARCH=NO CODE_SIGNING_REQUIRED=NO | xcpretty -c
+              CODE_SIGN_IDENTITY="-" | xcpretty -c
 
   test-example:
     name: Example Project Test
@@ -133,6 +122,5 @@ jobs:
           xcodebuild clean test \
               -project "$EXAMPLE_PROJECT" \
               -scheme "$EXAMPLE_SCHEME" \
-              -sdk "$IOS_SDK" \
               -destination "$IOS_DEST" \
-              ONLY_ACTIVE_ARCH=NO CODE_SIGNING_REQUIRED=NO | xcpretty -c
+              CODE_SIGN_IDENTITY="-" | xcpretty -c

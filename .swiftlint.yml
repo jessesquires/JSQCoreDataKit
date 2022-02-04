@@ -1,3 +1,7 @@
+# SwiftLint configuration
+# Rule directory: https://realm.github.io/SwiftLint/rule-directory.html
+# GitHub: https://github.com/realm/SwiftLint
+
 excluded:
   - Pods
   - docs
@@ -30,6 +34,7 @@ opt_in_rules:
   - discouraged_optional_boolean
   - discouraged_optional_collection
   - for_where
+  - function_default_parameter_at_end
   - legacy_random
   - no_extension_access_modifier
   - redundant_type_annotation
@@ -44,8 +49,7 @@ opt_in_rules:
   # style
   - attributes
   - number_separator
-  # disabled for false positives: https://github.com/realm/SwiftLint/issues/3668
-  # - operator_usage_whitespace
+  - operator_usage_whitespace
   - sorted_imports
   - vertical_parameter_alignment_on_call
   - void_return
@@ -58,6 +62,7 @@ opt_in_rules:
   - trailing_closure
   - unneeded_parentheses_in_closure_argument
   - vertical_whitespace_between_cases
+  - prefer_self_in_static_references
 
   # lint
   - overridden_super_call
@@ -74,9 +79,10 @@ opt_in_rules:
 
 # Rules run by `swiftlint analyze` (experimental)
 analyzer_rules:
-  - unused_import
+  # - unused_import
   - unused_declaration
   - explicit_self
+  - capture_variable
 
 line_length: 200
 file_length: 600

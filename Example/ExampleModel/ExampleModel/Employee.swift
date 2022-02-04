@@ -40,7 +40,7 @@ public final class Employee: NSManagedObject, CoreDataEntityProtocol {
                 birthDate: Date,
                 salary: NSDecimalNumber,
                 company: Company? = nil) {
-        super.init(entity: Employee.entity(context: context), insertInto: context)
+        super.init(entity: Self.entity(context: context), insertInto: context)
         self.name = name
         self.birthDate = birthDate
         self.salary = salary
@@ -62,7 +62,7 @@ public final class Employee: NSManagedObject, CoreDataEntityProtocol {
     }
 
     public static func fetchRequest(for company: Company) -> NSFetchRequest<Employee> {
-        let fetch = Employee.fetchRequest
+        let fetch = self.fetchRequest
         fetch.predicate = NSPredicate(format: "company == %@", company)
         return fetch
     }

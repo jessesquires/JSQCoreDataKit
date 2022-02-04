@@ -102,22 +102,6 @@ if did_update_gemfile && !files_changed_as_set(gem_files)
 end
 
 # -----------------------------------------------------------------------------
-# Lint all changed markdown files
-# -----------------------------------------------------------------------------
-markdown_files = (git.added_files + git.modified_files).grep(%r{.*\.md/})
-unless markdown_files.empty?
-    # Run proselint to check prose and check spelling
-    prose.language = "en-us"
-    prose.ignore_acronyms = true
-    prose.ignore_numbers = true
-    prose.ignored_words = ["jessesquires", "swiftpm", "iOS",
-        "macOS", "watchOS", "tvOS", "Xcode", "JSQCoreDataKit"
-    ]
-    prose.lint_files markdown_files
-    prose.check_spelling markdown_files
-end
-
-# -----------------------------------------------------------------------------
 # Run SwiftLint
 # -----------------------------------------------------------------------------
 swiftlint.verbose = true

@@ -20,16 +20,16 @@ import PackageDescription
 let package = Package(
     name: "JSQCoreDataKit",
     platforms: [
-        .iOS(.v11),
-        .tvOS(.v11),
-        .watchOS(.v4),
-        .macOS(.v10_12)
+        .iOS(.v14),
+        .tvOS(.v14),
+        .watchOS(.v6),
+        .macOS(.v10_14)
     ],
     products: [
         .library(name: "JSQCoreDataKit", targets: ["JSQCoreDataKit"])
     ],
     targets: [
-        .target(name: "JSQCoreDataKit", path: "Sources", exclude: ["Info.plist"])
+        .target(name: "JSQCoreDataKit", path: "Sources")
 
         // Unfortunately, we cannot include tests right now.
         // The test target depends on a fixture project, `ExampleModel`.

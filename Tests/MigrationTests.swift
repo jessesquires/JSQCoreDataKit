@@ -133,7 +133,7 @@ final class MigrationTests: TestCase {
 
     func test_thatWhenFindingACompatibleModel_ForAnInvalidStore_ThenNoModelIsFound_AndAnErrorIsThrown() {
         // GIVEN: an invalid store bundle
-        let bundle = Bundle(for: MigrationTests.self)
+        let bundle = Bundle(for: Self.self)
 
         // WHEN: we search for a compatible model in the bundle
         var foundModel: NSManagedObjectModel?
@@ -165,7 +165,7 @@ final class MigrationTests: TestCase {
 
     func test_ThatFindModelsInBundle_ReturnsEmptyArrayForInvalidBundle() {
         // GIVEN: no models in a bundle
-        let bundle = Bundle(for: MigrationTests.self)
+        let bundle = Bundle(for: Self.self)
 
         // WHEN: fetching all model versions from the bundle
         let modelsInBundle = findModelsInBundle(bundle)

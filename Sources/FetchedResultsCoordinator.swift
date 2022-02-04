@@ -14,7 +14,7 @@
 //  License
 //  Copyright © 2015-present Jesse Squires
 //  Released under an MIT license: https://opensource.org/licenses/MIT
-// 
+//
 
 #if os(iOS) || os(tvOS)
 
@@ -43,9 +43,9 @@ public final class FetchedResultsCoordinator<
                 context: NSManagedObjectContext,
                 sectionNameKeyPath: String?,
                 cacheName: String?,
+                collectionView: UICollectionView,
                 cellConfiguration: CellConfig,
-                supplementaryConfigurations: [AnyFetchedResultsSupplementaryConfiguration<Object>] = [],
-                collectionView: UICollectionView) {
+                supplementaryConfigurations: [AnyFetchedResultsSupplementaryConfiguration<Object>] = []) {
         let controller = FetchedResultsController(
             fetchRequest: fetchRequest,
             context: context,
@@ -103,13 +103,13 @@ public final class FetchedResultsCoordinator<
             guard let currentIndex = currentSnapshot.indexOfItem(itemId),
                   let fetchedIndex = fetchedSnapshot.indexOfItem(itemId),
                   fetchedIndex == currentIndex else {
-                      return nil
-                  }
+                return nil
+            }
             // the item has been updated
             guard let existingObject = try? controller.managedObjectContext.existingObject(with: itemId),
                   existingObject.isUpdated else {
-                      return nil
-                  }
+                return nil
+            }
             return itemId
         }
 

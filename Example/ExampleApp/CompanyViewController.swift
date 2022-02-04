@@ -85,9 +85,9 @@ final class CompanyViewController: CollectionViewController {
             context: self.stack.mainContext,
             sectionNameKeyPath: nil,
             cacheName: nil,
+            collectionView: self.collectionView,
             cellConfiguration: CompanyCellConfig(),
-            supplementaryConfigurations: supplementaryViews,
-            collectionView: self.collectionView
+            supplementaryConfigurations: supplementaryViews
         )
     }
 

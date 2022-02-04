@@ -14,7 +14,7 @@
 //  License
 //  Copyright © 2015-present Jesse Squires
 //  Released under an MIT license: https://opensource.org/licenses/MIT
-// 
+//
 
 import CoreData
 import Foundation
@@ -68,7 +68,7 @@ public final class FetchedResultsController<ObjectType: NSManagedObject>: NSFetc
     // MARK: Methods
 
     public func deleteCache() {
-        FetchedResultsController.deleteCache(withName: self.cacheName)
+        Self.deleteCache(withName: self.cacheName)
     }
 
     public func numberOfSections() -> Int {

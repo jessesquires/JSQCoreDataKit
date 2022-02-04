@@ -36,9 +36,9 @@ final class EmployeeViewController: CollectionViewController {
             context: self.stack.mainContext,
             sectionNameKeyPath: nil,
             cacheName: nil,
+            collectionView: self.collectionView,
             cellConfiguration: EmployeeCellConfig(),
-            supplementaryConfigurations: supplementaryViews,
-            collectionView: self.collectionView
+            supplementaryConfigurations: supplementaryViews
         )
     }()
 

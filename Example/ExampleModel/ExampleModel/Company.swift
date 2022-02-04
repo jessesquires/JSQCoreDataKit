@@ -40,7 +40,7 @@ public final class Company: NSManagedObject, CoreDataEntityProtocol {
                 name: String,
                 dateFounded: Date,
                 profits: NSDecimalNumber) {
-        super.init(entity: Company.entity(context: context), insertInto: context)
+        super.init(entity: Self.entity(context: context), insertInto: context)
         self.name = name
         self.dateFounded = dateFounded
         self.profits = profits

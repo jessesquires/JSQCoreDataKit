@@ -1,17 +1,13 @@
 source 'https://rubygems.org'
 
-gem 'cocoapods', '~> 1.11'
-gem 'synx'
+# https://github.com/CocoaPods/CocoaPods
+gem 'cocoapods', '~> 1.0'
 
-# ------------
-# Danger Setup
-# ------------
-gem 'danger', '~> 8.4'
+# https://github.com/realm/jazzy
+gem 'jazzy'
 
-# general
-gem 'danger-prose'
-
-# xcode, ios, macos
+# Danger
+# https://danger.systems/ruby/
+gem 'danger', '~> 8.0'
 gem 'danger-swiftlint'
 gem 'danger-jazzy'
-gem 'jazzy'

@@ -76,11 +76,9 @@
 		8873E21F1C51E09700DFE009 /* CoreDataModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataModel.swift; sourceTree = "<group>"; };
 		8873E2211C51E09700DFE009 /* CoreDataStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 		8873E2221C51E09700DFE009 /* CoreDataStackProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataStackProvider.swift; sourceTree = "<group>"; };
-		8873E2241C51E09700DFE009 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8873E2261C51E09700DFE009 /* StoreType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoreType.swift; sourceTree = "<group>"; };
 		8873E24D1C51E10100DFE009 /* ContextSyncTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContextSyncTests.swift; sourceTree = "<group>"; };
 		8873E24F1C51E10100DFE009 /* ExampleModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExampleModelTests.swift; sourceTree = "<group>"; };
-		8873E2511C51E10100DFE009 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8873E2521C51E10100DFE009 /* ModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModelTests.swift; sourceTree = "<group>"; };
 		8873E2541C51E10100DFE009 /* ResetStackTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResetStackTests.swift; sourceTree = "<group>"; };
 		8873E2561C51E10100DFE009 /* SaveTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SaveTests.swift; sourceTree = "<group>"; };
@@ -141,7 +139,6 @@
 				0BE5B6D626913EA60015587B /* FetchedResultsCoordinator.swift */,
 				0BE5B6DE26914BCA0015587B /* FetchedResultsDiffableDataSource.swift */,
 				0B2E59D2269176610064BA4F /* FetchedResultsSupplementaryConfiguration.swift */,
-				8873E2241C51E09700DFE009 /* Info.plist */,
 				298F00F61C9C559100AEC77E /* Migrate.swift */,
 				0B1AD67626812DB300F17925 /* ModelFileExtension.swift */,
 				8873E21E1C51E09700DFE009 /* NSManagedObjectContext+Extensions.swift */,
@@ -157,7 +154,6 @@
 				8852A0D11D459249006538B9 /* CoreDataEntityProtocolTests.swift */,
 				8873E2BB1C51E3B000DFE009 /* ExampleModel.xcodeproj */,
 				8873E24F1C51E10100DFE009 /* ExampleModelTests.swift */,
-				8873E2511C51E10100DFE009 /* Info.plist */,
 				297C7D2C1C710A1D008E516B /* MigrationTests.swift */,
 				8873E2521C51E10100DFE009 /* ModelTests.swift */,
 				8873E2541C51E10100DFE009 /* ResetStackTests.swift */,
@@ -524,7 +520,7 @@
 				GCC_TREAT_WARNINGS_AS_ERRORS = YES;
 				GCC_WARN_ABOUT_MISSING_NEWLINE = YES;
 				GCC_WARN_PEDANTIC = NO;
-				INFOPLIST_FILE = Sources/Info.plist;
+				GENERATE_INFOPLIST_FILE = YES;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MARKETING_VERSION = 9.0.3;
@@ -557,7 +553,7 @@
 				GCC_TREAT_WARNINGS_AS_ERRORS = YES;
 				GCC_WARN_ABOUT_MISSING_NEWLINE = YES;
 				GCC_WARN_PEDANTIC = NO;
-				INFOPLIST_FILE = Sources/Info.plist;
+				GENERATE_INFOPLIST_FILE = YES;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MARKETING_VERSION = 9.0.3;
@@ -579,7 +575,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEVELOPMENT_TEAM = "";
-				INFOPLIST_FILE = Tests/Info.plist;
+				GENERATE_INFOPLIST_FILE = YES;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.hexedbits.JSQCoreDataKitTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -598,7 +594,7 @@
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = "";
-				INFOPLIST_FILE = Tests/Info.plist;
+				GENERATE_INFOPLIST_FILE = YES;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.hexedbits.JSQCoreDataKitTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";

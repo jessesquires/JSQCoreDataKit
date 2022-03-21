@@ -3,7 +3,7 @@ GEM
   specs:
     CFPropertyList (3.0.5)
       rexml
-    activesupport (6.1.4.4)
+    activesupport (6.1.5)
       concurrent-ruby (~> 1.0, >= 1.0.2)
       i18n (>= 1.6, < 2)
       minitest (>= 5.1)
@@ -118,9 +118,9 @@ GEM
     git (1.10.2)
       rchardet (~> 1.8)
     httpclient (2.8.3)
-    i18n (1.9.1)
+    i18n (1.10.0)
       concurrent-ruby (~> 1.0)
-    jazzy (0.14.1)
+    jazzy (0.14.2)
       cocoapods (~> 1.5)
       mustache (~> 1.1)
       open4 (~> 1.3)

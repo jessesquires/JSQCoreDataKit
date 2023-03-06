@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 # https://github.com/CocoaPods/CocoaPods
-gem 'cocoapods', '~> 1.0'
+gem 'cocoapods', '~> 1.12'
 
 # https://github.com/realm/jazzy
 gem 'jazzy'

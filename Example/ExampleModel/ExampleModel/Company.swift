@@ -53,9 +53,9 @@ public final class Company: NSManagedObject, CoreDataEntityProtocol {
 
     public static func newCompany(_ context: NSManagedObjectContext) -> Company {
         let name = "Company " + String(UUID().uuidString.split { $0 == "-" }.first!)
-        return Company(context: context,
-                       name: name,
-                       dateFounded: Date.distantPast,
-                       profits: NSDecimalNumber(value: Int.random(in: 0...1_000_000)))
+        return Self(context: context,
+                    name: name,
+                    dateFounded: Date.distantPast,
+                    profits: NSDecimalNumber(value: Int.random(in: 0...1_000_000)))
     }
 }

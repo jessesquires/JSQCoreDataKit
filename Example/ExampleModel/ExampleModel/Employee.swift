@@ -54,11 +54,11 @@ public final class Employee: NSManagedObject, CoreDataEntityProtocol {
 
     public static func newEmployee(_ context: NSManagedObjectContext, company: Company? = nil) -> Employee {
         let name = "Employee " + String(UUID().uuidString.split { $0 == "-" }.first!)
-        return Employee(context: context,
-                        name: name,
-                        birthDate: Date.distantPast,
-                        salary: NSDecimalNumber(value: Int.random(in: 0...100_000)),
-                        company: company)
+        return Self(context: context,
+                    name: name,
+                    birthDate: Date.distantPast,
+                    salary: NSDecimalNumber(value: Int.random(in: 0...100_000)),
+                    company: company)
     }
 
     public static func fetchRequest(for company: Company) -> NSFetchRequest<Employee> {

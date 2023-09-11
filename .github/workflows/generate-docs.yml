@@ -15,7 +15,7 @@ jobs:
     runs-on: macos-12
     steps:
       - name: git checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: install jazzy
         run: gem install jazzy --no-document

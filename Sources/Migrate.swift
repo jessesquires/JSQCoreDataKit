@@ -122,11 +122,9 @@ func findModelsInBundle(_ bundle: Bundle) -> [NSManagedObjectModel] {
     .joined()
     .sorted { $0.absoluteString < $1.absoluteString }
 
-    let managedObjectModels = modelVersionFileURLs.compactMap { url -> NSManagedObjectModel? in
+    return modelVersionFileURLs.compactMap { url -> NSManagedObjectModel? in
         NSManagedObjectModel(contentsOf: url)
     }
-
-    return managedObjectModels
 }
 
 func buildMigrationMappingSteps(bundle: Bundle,

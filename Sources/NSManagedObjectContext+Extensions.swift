@@ -59,6 +59,8 @@ extension NSManagedObjectContext {
                 completion?(.failure(error))
             }
         }
+
+        // swiftlint:disable:next void_function_in_ternary
         wait ? self.performAndWait(block) : self.perform(block)
     }
 }

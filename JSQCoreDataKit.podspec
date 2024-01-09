@@ -6,7 +6,7 @@ Pod::Spec.new do |s|
    s.summary = 'A swifter Core Data stack'
    s.homepage = 'https://github.com/jessesquires/JSQCoreDataKit'
    s.documentation_url = 'https://jessesquires.github.io/JSQCoreDataKit'
-   s.social_media_url = 'https://twitter.com/jesse_squires'
+   s.social_media_url = 'https://www.jessesquires.com'
    s.author = 'Jesse Squires'
 
    s.source = { :git => 'https://github.com/jessesquires/JSQCoreDataKit.git', :tag => s.version }

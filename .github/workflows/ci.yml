@@ -1,19 +1,12 @@
 # GitHub Actions Virtual Environments
 # https://github.com/actions/virtual-environments/
 
-# A template workflow intended for Apple Platform libraries
-
 name: CI
 
 on:
   push:
     branches:
       - main
-    paths:
-      - '.github/workflows/ci.yml'
-      - 'Sources/**/*.*'
-      - 'Tests/**/*.*'
-      - 'Example/**/*.*'
   pull_request:
     branches:
       - main
@@ -25,17 +18,17 @@ env:
   EXAMPLE_PROJECT: Example/ExampleApp.xcodeproj
   EXAMPLE_SCHEME: ExampleApp
 
-  DEVELOPER_DIR: /Applications/Xcode_13.3.app/Contents/Developer
+  DEVELOPER_DIR: /Applications/Xcode_15.1.app/Contents/Developer
 
-  IOS_DEST: "platform=iOS Simulator,name=iPhone 13 Mini,OS=latest"
+  IOS_DEST: "platform=iOS Simulator,name=iPhone 15,OS=latest"
   TVOS_DEST: "platform=tvOS Simulator,name=Apple TV,OS=latest"
-  WATCHOS_DEST: "platform=watchOS Simulator,name=Apple Watch Series 7 - 41mm,OS=latest"
+  WATCHOS_DEST: "platform=watchOS Simulator,name=Apple Watch Series 9 (41mm),OS=latest"
   MACOS_DEST: "platform=macOS,arch=x86_64"
 
 jobs:
   env-details:
     name: Environment details
-    runs-on: macos-12
+    runs-on: macos-13
     steps:
       - name: xcode version
         run: xcodebuild -version -sdk
@@ -47,7 +40,7 @@ jobs:
 
   test-iOS:
     name: iOS unit test
-    runs-on: macos-12
+    runs-on: macos-13
     steps:
       - name: git checkout
         uses: actions/checkout@v4
@@ -63,7 +56,7 @@ jobs:
 
   test-tvOS:
     name: tvOS unit test
-    runs-on: macos-12
+    runs-on: macos-13
     steps:
       - name: git checkout
         uses: actions/checkout@v4
@@ -79,7 +72,7 @@ jobs:
 
   test-watchOS:
     name: watchOS unit test
-    runs-on: macos-12
+    runs-on: macos-13
     steps:
       - name: git checkout
         uses: actions/checkout@v4
@@ -95,7 +88,7 @@ jobs:
 
   test-macOS:
     name: macOS unit test
-    runs-on: macos-12
+    runs-on: macos-13
     steps:
       - name: git checkout
         uses: actions/checkout@v4
@@ -111,7 +104,7 @@ jobs:
 
   test-example:
     name: Example Project Test
-    runs-on: macos-12
+    runs-on: macos-13
     steps:
       - name: git checkout
         uses: actions/checkout@v4

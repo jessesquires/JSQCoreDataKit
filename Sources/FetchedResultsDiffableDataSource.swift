@@ -61,13 +61,12 @@ extension _FetchedResultsDiffableDataSource {
             }
             let sectionInfo = controller.section(at: indexPath.section)
             let config = configMap[kind]!
-            let view = config._dequeueAndConfigureViewFor(
+            return config._dequeueAndConfigureViewFor(
                 collectionView: collectionView,
                 at: indexPath,
                 with: object,
                 in: sectionInfo
             )
-            return view
         }
     }
 }

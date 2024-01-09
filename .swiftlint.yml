@@ -43,8 +43,15 @@ opt_in_rules:
   - unavailable_function
   - no_space_in_method_call
   - discouraged_assert
+  # - legacy_objc_type
+  # - file_name
   - file_name_no_space
   - discouraged_none_name
+  - return_value_from_void_function
+  - prefer_zero_over_explicit_init
+  - shorthand_optional_binding
+  - xct_specific_matcher
+  - unneeded_synthesized_initializer
 
   # style
   - attributes
@@ -63,19 +70,27 @@ opt_in_rules:
   - unneeded_parentheses_in_closure_argument
   - vertical_whitespace_between_cases
   - prefer_self_in_static_references
+  - comma_inheritance
+  - direct_return
+  - period_spacing
+  - superfluous_else
+  # - sorted_enum_cases
+  - non_overridable_class_declaration
 
   # lint
   - overridden_super_call
   - override_in_extension
   - yoda_condition
-  - anyobject_protocol
   - array_init
   - empty_xctest_method
   - identical_operands
   - prohibited_super_call
-  - unused_capture_list
   - duplicate_enum_cases
   - legacy_multiple
+  - accessibility_label_for_image
+  - lower_acl_than_parent
+  - unhandled_throwing_task
+  - private_swiftui_state
 
 # Rules run by `swiftlint analyze` (experimental)
 analyzer_rules:

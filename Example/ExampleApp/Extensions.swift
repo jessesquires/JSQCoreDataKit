@@ -26,8 +26,7 @@ extension UICollectionViewCompositionalLayout {
             var configuration = UICollectionLayoutListConfiguration(appearance: .insetGrouped)
             configuration.headerMode = .supplementary
             configuration.footerMode = .supplementary
-            let section = NSCollectionLayoutSection.list(using: configuration, layoutEnvironment: layoutEnvironment)
-            return section
+            return NSCollectionLayoutSection.list(using: configuration, layoutEnvironment: layoutEnvironment)
         }
     }
 }

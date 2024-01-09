@@ -123,7 +123,7 @@ public struct CoreDataStackProvider {
             }
         }
 
-        if let queue = queue {
+        if let queue {
             queue.async(execute: creationClosure)
         } else {
             creationClosure()

@@ -12,12 +12,12 @@ on:
       - main
 
 env:
-  DEVELOPER_DIR: /Applications/Xcode_13.3.app/Contents/Developer
+  DEVELOPER_DIR: /Applications/Xcode_15.1.app/Contents/Developer
 
 jobs:
   main:
     name: Pod Lint
-    runs-on: macos-12
+    runs-on: macos-13
     steps:
       - name: git checkout
         uses: actions/checkout@v4
@@ -32,7 +32,6 @@ jobs:
       - name: ruby setup
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: 2.7
           bundler-cache: true
 
       - name: pod lint

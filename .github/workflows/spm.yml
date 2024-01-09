@@ -7,22 +7,17 @@ on:
   push:
     branches:
       - main
-    paths:
-      - '.github/workflows/spm.yml'
-      - 'Package*'
-      - 'Sources/**/*.*'
-      - 'Tests/**/*.*'
   pull_request:
     branches:
       - main
 
 env:
-  DEVELOPER_DIR: /Applications/Xcode_13.3.app/Contents/Developer
+  DEVELOPER_DIR: /Applications/Xcode_15.1.app/Contents/Developer
 
 jobs:
   main:
     name: SwiftPM Build
-    runs-on: macos-12
+    runs-on: macos-13
     steps:
       - name: git checkout
         uses: actions/checkout@v4

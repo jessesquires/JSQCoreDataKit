@@ -19,13 +19,18 @@ This library aims to do the following:
 
 ## Requirements
 
+#### Tooling
+
 * Xcode 15.0+
 * Swift 5.9+
+* [SwiftLint](https://github.com/realm/SwiftLint)
+
+#### Platforms
+
 * iOS 11.0+
 * macOS 10.12+
 * tvOS 11.0+
 * watchOS 4.0+
-* [SwiftLint](https://github.com/realm/SwiftLint)
 
 ## Installation
 

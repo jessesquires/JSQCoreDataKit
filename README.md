@@ -19,8 +19,8 @@ This library aims to do the following:
 
 ## Requirements
 
-* Xcode 13.0+
-* Swift 5.5+
+* Xcode 15.0+
+* Swift 5.9+
 * iOS 11.0+
 * macOS 10.12+
 * tvOS 11.0+

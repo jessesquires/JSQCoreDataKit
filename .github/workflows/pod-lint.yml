@@ -20,7 +20,7 @@ jobs:
     runs-on: macos-13
     steps:
       - name: git checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
 
       - name: ruby versions
         run: |

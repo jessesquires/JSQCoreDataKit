@@ -8,6 +8,6 @@ gem 'jazzy'
 
 # Danger
 # https://danger.systems/ruby/
-gem 'danger', '~> 9.5'
+gem 'danger', '~> 9.6'
 gem 'danger-swiftlint'
 gem 'danger-jazzy'
